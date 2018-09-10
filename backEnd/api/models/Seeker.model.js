@@ -89,4 +89,4 @@ const Seeker = new Schema({
   },
 });
 
-module.exports = mongoose.model('Notes', Seeker);
+module.exports = mongoose.model('Seekers', Seeker);

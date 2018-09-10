@@ -28,4 +28,4 @@ const Education = new Schema({
   },
 });
 
-module.exports = mongoose.model('Notes', Education);
+module.exports = mongoose.model('Educations', Education);

@@ -33,4 +33,4 @@ const Experience = new Schema({
   },
 });
 
-module.exports = mongoose.model('Notes', Experience);
+module.exports = mongoose.model('Experience', Experience);

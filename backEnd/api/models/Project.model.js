@@ -29,4 +29,4 @@ const Project = new Schema({
   },
 });
 
-module.exports = mongoose.model('Notes', Project);
+module.exports = mongoose.model('Projects', Project);
