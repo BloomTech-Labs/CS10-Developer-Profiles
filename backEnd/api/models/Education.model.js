@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const Education = new Schema({
   id: { type: ObjectId },
-  employee: [{ type: ObjectId, ref: 'Seekers' }],
+  seeker: [{ type: ObjectId, ref: 'Seekers' }],
   school: {
     type: String,
     required: [true, 'School is required'],

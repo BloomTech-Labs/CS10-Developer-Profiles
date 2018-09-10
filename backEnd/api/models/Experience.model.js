@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const Experience = new Schema({
   id: { type: ObjectId },
-  employee: [{ type: ObjectId, ref: 'Seekers' }],
+  seeker: [{ type: ObjectId, ref: 'Seekers' }],
   title: {
     type: String,
     required: [true, 'A title is required'],
