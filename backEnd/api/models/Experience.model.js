@@ -9,11 +9,13 @@ const Experience = new Schema({
     type: String,
     required: [true, 'A title is required'],
   },
-  companu: {
+  company: {
     type: String,
+    required: [true, 'Company is required'],
   },
   location: {
     type: String,
+    required: [true, 'A location is required'],
     // PENDING Validate
   },
   headline: {
