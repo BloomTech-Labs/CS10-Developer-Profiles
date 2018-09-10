@@ -9,7 +9,7 @@ const Project = new Schema({
     type: String,
     required: [true, 'A title is required'],
   },
-  despription: {
+  description: {
     type: String,
   },
   imgUrl: {
@@ -20,7 +20,7 @@ const Project = new Schema({
     type: String,
     // PENDING Validate URL
   },
-  gitubRepoLink: {
+  githubRepoLink: {
     type: String,
     // PENDING Validate URL
   },
