@@ -1,12 +1,12 @@
 const express = require('express');
 
-const Users = require('../models/Seeker.model');
+const Seekers = require('../models/Seeker.model');
 
 const { RouterFactory } = require('express-router-factory');
 
 const router = express.Router();
 
-const RF = new RouterFactory(router, Users);
+const RF = new RouterFactory(router, Seekers);
 
 // Create all CRUD endpoints.
 RF.CRUD();

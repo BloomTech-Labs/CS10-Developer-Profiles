@@ -13,7 +13,7 @@ module.exports = function(server) {
     Ex:
     server.use('/api/tasks', tasksRouter);
   */
-  server.use('/api/employees', seekersRouter);
+  server.use('/api/seekers', seekersRouter);
 
   server.get('/api', (req, res) => {
     res.set('Content-Type', 'application/json');
