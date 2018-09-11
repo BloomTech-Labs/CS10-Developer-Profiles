@@ -3,7 +3,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const Schema = mongoose.Schema;
 import { STACK, SKILLS } from '../../utils/skillsAndLanguagesList';
 
-const OpenPosition = new Schema({
+const openPositionSchema = new Schema({
   id: { type: ObjectId },
   projectName: {
     type: String,
@@ -35,4 +35,4 @@ const OpenPosition = new Schema({
   },
 });
 
-module.exports = mongoose.model('OpenPositions', OpenPosition);
+module.exports = mongoose.model('OpenPositions', openPositionSchema);
