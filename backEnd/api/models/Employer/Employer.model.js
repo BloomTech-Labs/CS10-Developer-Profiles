@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const Schema = mongoose.Schema;
 
-import OpenPosition from './OpenPosition.embeddedModel';
+const openPositionSchema = require('./OpenPosition.embeddedModel');
 
 const employerSchema = new Schema({
   id: { type: ObjectId },
@@ -53,7 +53,7 @@ const employerSchema = new Schema({
       message: '{VALUE} is not a valid email address',
     },
   },
-  openPossitions: [OpenPosition],
+  openPossitions: [openPositionSchema],
 });
 
 module.exports = mongoose.model('Employers', employerSchema);
