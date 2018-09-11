@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
@@ -168,5 +169,17 @@ const seekerSchema = new Schema({
   experience: [experienceSchema],
   education: [educationSchema],
 });
+
+seekerSchema.pre('save', function(next){
+  bcrypt.hash(this.password, 12, (err, hash) => {
+    if(err) next(err);
+    this.password = hash;
+    next();
+  });
+});
+
+seekerSchema.methods.isValidPassword = function(testPassword){
+  return bcrypt.compare(testPassword, this.password);
+};
 
 module.exports = mongoose.model('Seeker', seekerSchema);
