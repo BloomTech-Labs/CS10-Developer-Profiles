@@ -1,6 +1,3 @@
 # Local development
 .vscode
 .DS_Store
-
-# yarn
-yarn.lock
