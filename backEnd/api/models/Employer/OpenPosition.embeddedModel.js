@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const Schema = mongoose.Schema;
-import { STACK, SKILLS } from '../../utils/skillsAndLanguagesList';
+const { STACK, SKILLS } = require('../../utils/skillsAndLanguagesList');
+// console.log({ STACK, SKILLS });
 
 const openPositionSchema = new Schema({
   id: { type: ObjectId },
@@ -18,12 +19,12 @@ const openPositionSchema = new Schema({
     required: [true, 'A title for the offered position is required.'],
   },
   techStack: {
-    enum: [STACK],
-    type: Array,
+    enum: STACK,
+    type: String,
   },
   skills: {
-    enum: [SKILLS], // to be filled, so we ensure that filtering works as expected and validation will be easy. Is alot of work but can be done.
-    type: Array,
+    enum: SKILLS, // to be filled, so we ensure that filtering works as expected and validation will be easy. Is alot of work but can be done.
+    type: String,
   },
   minSalary: {
     type: Number,
@@ -35,4 +36,4 @@ const openPositionSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('OpenPositions', openPositionSchema);
+module.exports = openPositionSchema;
