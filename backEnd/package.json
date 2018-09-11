@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon index",
-    "start": "node index"
+    "start": "node index",
+    "test": "cross-env NODE_ENV=test jest --watch --verbose"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
@@ -18,6 +22,7 @@
   },
   "homepage": "https://github.com/Lambda-School-Labs/CS10-Developer-Profiles#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-router-factory": "^1.0.0",
@@ -25,6 +30,8 @@
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
-    "nodemon": "^1.18.4"
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4",
+    "supertest": "^3.3.0"
   }
 }

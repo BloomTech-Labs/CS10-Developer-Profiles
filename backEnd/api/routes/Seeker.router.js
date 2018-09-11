@@ -1,6 +1,6 @@
 const express = require('express');
 
-const Seekers = require('../models/Seeker.model');
+const Seekers = require('../models/Seeker/Seeker.model');
 
 const { RouterFactory } = require('express-router-factory');
 
