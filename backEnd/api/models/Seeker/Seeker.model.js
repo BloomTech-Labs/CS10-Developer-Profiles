@@ -54,7 +54,8 @@ const seekerSchema = new Schema({
     // PENDING: Implement validation.
   },
   summary: {
-    type: String
+    type: String,
+    maxlength: [128, 'Summary can not exceed 128 characters']
   },
   github: {
     type: String
