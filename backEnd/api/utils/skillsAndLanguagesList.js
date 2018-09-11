@@ -1,5 +1,5 @@
 module.exports = {
-  LANGUAGES: [
+  STACK: [
     'A# .NET',
     'A# (Axiom)',
     'A-0 System',
