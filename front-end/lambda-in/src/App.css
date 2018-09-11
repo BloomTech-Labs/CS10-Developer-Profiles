@@ -1,28 +1,44 @@
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.navBar {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.leftNavBar {
+  width:50vw;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.App-title {
-  font-size: 1.5em;
+.rightNavBar {
+  width:50vw;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.App-intro {
-  font-size: large;
+.headline{
+  padding:16px;
+}
+.formConatiner {
+  width: 100vw;
+  display: flex;
+  padding: 16px;
+  flex-direction: row;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.form2{
+  width: 30vw;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
 }
