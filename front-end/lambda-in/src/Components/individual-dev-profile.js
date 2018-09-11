@@ -29,14 +29,25 @@ class individual-dev-profile extends React.Component {
                             <div className="tag-cloud"/>
                         </div>
                         <div className="top-card-right"> 
-                            <a href={this.props.acclaimBadge}><img src="" width="50" height="50" title="Acclaimed Badge" alt="Badge"/></a>
-                            <a href={this.props.github}><img src="" width="50" height="50" title="Github" alt="Github Repo"/></a>
-                            <a href={this.props.linkedin}><img src="" width="50" height="50" title="Linkedin" alt="Linkedin"/></a>
-                            <a href={this.props.portfolio}><img src="" width="50" height="50" title="Portfolio" alt="Portfolio"/></a>
+                            <a href={this.props.seeker.acclaimBadge}><img src="" width="50" height="50" title="Acclaimed Badge" alt="Badge"/></a>
+                            <a href={this.props.seeker.github}><img src="" width="50" height="50" title="Github" alt="Github Repo"/></a>
+                            <a href={this.props.seeker.linkedin}><img src="" width="50" height="50" title="Linkedin" alt="Linkedin"/></a>
+                            <a href={this.props.seeker.portfolio}><img src="" width="50" height="50" title="Portfolio" alt="Portfolio"/></a>
                         </div>
                     </div>
                     <div classname="profile-body">
-
+                        <h1>Projects</h1>
+                        <p>{this.props.seeker.projects}</p>
+                        <hr/>
+                        <h1>Experience</h1>
+                        <p>{this.props.seeker.experiences}</p>
+                        <hr/>
+                        <h1>Education</h1>
+                        <p>{this.props.seeker.Education}</p>
+                        <hr/>
+                        <h1>Locations Interested</h1>
+                        <p>{this.props.seeker.placesInterested}</p>
+                    </div>
                 </div>
             </div>
         );
