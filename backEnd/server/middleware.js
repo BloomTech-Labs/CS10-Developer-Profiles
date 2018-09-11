@@ -8,3 +8,9 @@ module.exports = {
     */
   }
 };
+
+{"firstName": "first",
+"lastName": "last",
+"password": "12345",
+"email": "a@a.com",
+"desiredTitle": "title",}

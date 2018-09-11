@@ -2,9 +2,9 @@
   IMPORT API ROUTES
 
   Ex:
-  const { tasksRouter } = require('../api/routes/tasks');
   const { usersRouter } = require('../api/routes/users');
 */
+const seekersRouter = require('../api/routes/Seeker.router');
 
 module.exports = function(server) {
   /*
@@ -12,8 +12,8 @@ module.exports = function(server) {
 
     Ex:
     server.use('/api/tasks', tasksRouter);
-    server.use('/api/users', usersRouter);
   */
+  server.use('/api/employees', seekersRouter);
 
   server.get('/api', (req, res) => {
     res.set('Content-Type', 'application/json');

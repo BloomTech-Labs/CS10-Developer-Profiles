@@ -528,6 +528,10 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+express-router-factory@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/express-router-factory/-/express-router-factory-1.0.0.tgz#e6121eb28f99ead6a6442e12cde6d72df543a951"
+
 express@^4.16.3:
   version "4.16.3"
   resolved "http://registry.npmjs.org/express/-/express-4.16.3.tgz#6af8a502350db3246ecc4becf6b5a34d22f7ed53"
