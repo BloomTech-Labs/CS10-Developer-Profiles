@@ -25,6 +25,24 @@ describe('seeker model', () => {
     });
   });
 
+  it('should disallow passwords shorter than 8 characters', () => {
+    const invalidData = Object.assign({}, testSeeker, { password: 'Pa3&' });
+    const seeker = new Seeker(invalidData);
+
+    seeker.validate((err) => {
+      expect(err.errors).toHaveProperty('password');
+    });
+  });
+
+  it('should disallow any passwords that do not contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character', () => {
+    const invalidData = Object.assign({}, testSeeker, { password: 'Password123' });
+    const seeker = new Seeker(invalidData);
+
+    seeker.validate((err) => {
+      expect(err.errors).toHaveProperty('password');
+    });
+  });
+
   it('should hash password before saving', async () => {
     const newSeeker = await Seeker.create(testSeeker);
 
