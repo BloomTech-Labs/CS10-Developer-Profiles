@@ -13,6 +13,8 @@ class ImageContainer extends React.Component {
                 </h1>
                 <span className='search'><input placeholder='What are you looking for?' /></span>
                 <span className='search-button'><Button variant="contained" color="secondary">Get Started</Button></span>
+                <p className='create-text'><span className='bold'>Create your resume</span> - Try our Fill-N-Hired!® resume form</p>
+                <p className='employer-text'><span className='bold'>Employers:</span> Check the new payment method</p>
             </div>
             
         )

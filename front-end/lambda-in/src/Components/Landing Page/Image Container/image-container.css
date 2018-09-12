@@ -76,3 +76,21 @@ table {
     left: 640px;
     background-color: f50057;
 }
+.create-text {
+    position: absolute;
+    top: 290px;
+    left: 450px;
+    color: #ffffff;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.employer-text {
+    position: absolute;
+    top: 320px;
+    left: 480px;
+    color: #ffffff;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.bold {
+    font-weight: bold;
+    font-size: 20px;
+}
