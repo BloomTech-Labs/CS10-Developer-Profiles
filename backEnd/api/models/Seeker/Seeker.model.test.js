@@ -1,29 +1,30 @@
-// const mongoose = require('mongoose');
-// const User = require('./User');
+require('dotenv').config();
 
-// describe('user model', () => {
-//   const testUser = {};
+const mongoose = require('mongoose');
+const Seeker = require('./Seeker.model');
 
-//   beforeAll(() => {
-//     testUser.username = 'dannyv';
-//     testUser.password = 'password';
-//     return mongoose.connect('mongodb://localhost/testdb');
-//   });
+const { MONGODB_URI_TEST } = process.env;
 
-//   afterEach(() => User.remove());
+describe('seeker model', () => {
+  const testSeeker = {};
 
-//   afterAll(() => mongoose.disconnect());
+  beforeAll(() => {
+    testSeeker.firstName = 'John';
+    testSeeker.lastName = 'Smith';
+    testSeeker.password = 'Password123&';
+    testSeeker.email = 'jsmith@example.com';
+    testSeeker.desiredTitle = 'Software Engineer';
 
-//   it('should hash password before saving the user', async () => {
-//     const savedUser = await User.create(testUser);
-//     expect(savedUser.password).not.toBe(testUser.password);
-//   });
+    return mongoose.connect(MONGODB_URI_TEST);
+  });
 
-//   it('should have method isValidPassword that checks if given password is correct', async () => {
-//     const savedUser = await User.create(testUser);
-//     const correctPassword = await savedUser.isValidPassword(testUser.password);
-//     const incorrectPassword = await savedUser.isValidPassword(`not${correctPassword}`);
-//     expect(correctPassword).toBeTruthy();
-//     expect(incorrectPassword).toBeFalsy();
-//   });
-// });
+  afterEach(() => Seeker.remove());
+
+  afterAll(() => mongoose.disconnect());
+
+  it('should hash password before saving', async () => {
+    const newSeeker = await Seeker.create(testSeeker);
+
+    expect(newSeeker.password).not.toBe(testSeeker.password);
+  });
+});
