@@ -49,40 +49,41 @@ Componets prefixed with '_**@**_', belongs to _Material Design_
 ```
   - index.js
       - App.js
-          - DevLogin.js
-          |     - @Paper
-          |     |       - @Button : Find Developer
-          |     |       - @Button : Browse
-          |     |       - @Button : Profile
-          |     |       - @Button : Billing
-          |     |       - @Button : Setting
-          |     |- @Typography : h3
-          |     |- @Typography : p
-          |     |- @Paper
-          |             - @Typography : h3
-          |             - @TextField : email
-          |             - @TextField : password
-          |             - @Button : Submit
-          |- DevSignUp.js
-                - @Paper
-                |       - @Button : Find Developer
-                |       - @Button : Browse
-                |       - @Button : Profile
-                |       - @Button : Billing
-                |       - @Button : Setting
-                |- @Typography : h3
-                |- @Typography : p
-                |- @Paper
-                        - @TextField : First name
-                        - @TextField : Last name
-                        - @TextField : email
-                        - @TextField : Desired Title
-                        - @TextField : Current location
-                        - @TextField : Github
-                        - @TextField : Linkedin
-                        - @TextField : Portfolio
-                        - @TextField : Acclaim badge
-                        - @TextField : Password
-                        - @TextField : Confirm password
-                        - @Button : Submit
+            - LandingPage.js
+            - DevLogin.js
+            |     - @Paper
+            |     |       - @Button : Find Developer
+            |     |       - @Button : Browse
+            |     |       - @Button : Profile
+            |     |       - @Button : Billing
+            |     |       - @Button : Setting
+            |     |- @Typography : h3
+            |     |- @Typography : p
+            |     |- @Paper
+            |             - @Typography : h3
+            |             - @TextField : email
+            |             - @TextField : password
+            |             - @Button : Submit
+            |- DevSignUp.js
+                    - @Paper
+                    |       - @Button : Find Developer
+                    |       - @Button : Browse
+                    |       - @Button : Profile
+                    |       - @Button : Billing
+                    |       - @Button : Setting
+                    |- @Typography : h3
+                    |- @Typography : p
+                    |- @Paper
+                            - @TextField : First name
+                            - @TextField : Last name
+                            - @TextField : email
+                            - @TextField : Desired Title
+                            - @TextField : Current location
+                            - @TextField : Github
+                            - @TextField : Linkedin
+                            - @TextField : Portfolio
+                            - @TextField : Acclaim badge
+                            - @TextField : Password
+                            - @TextField : Confirm password
+                            - @Button : Submit
 ```
