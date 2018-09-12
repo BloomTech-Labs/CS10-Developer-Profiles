@@ -28,12 +28,57 @@ The dream team behind this project:
 
 # Backend Structure
 
-Detailed docs with installations and running instructions on [Backend.md]()
+> Detailed docs with installations and running instructions on [Backend.md]()
 
 # Frontend Structure
 
-Detailed docs with installations and running instructions on [Frontend.md]()
+> Detailed docs with installations and running instructions on [Frontend.md]()
+
+### Location:
+
+> [./front-end/lambda-in](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/front-end/lambda-in)
+
+### Components structure
+
+Componets prefixed with '_**@**_', belongs to _Material Design_
 
 ```
-
+  - index.js
+      - App.js
+          - DevLogin.js
+          |     - @Paper
+          |     |       - @Button : Find Developer
+          |     |       - @Button : Browse
+          |     |       - @Button : Profile
+          |     |       - @Button : Billing
+          |     |       - @Button : Setting
+          |     |- @Typography : h3
+          |     |- @Typography : p
+          |     |- @Paper
+          |             - @Typography : h3
+          |             - @TextField : email
+          |             - @TextField : password
+          |             - @Button : Submit
+          |- DevSignUp.js
+                - @Paper
+                |       - @Button : Find Developer
+                |       - @Button : Browse
+                |       - @Button : Profile
+                |       - @Button : Billing
+                |       - @Button : Setting
+                |- @Typography : h3
+                |- @Typography : p
+                |- @Paper
+                        - @TextField : First name
+                        - @TextField : Last name
+                        - @TextField : email
+                        - @TextField : Desired Title
+                        - @TextField : Current location
+                        - @TextField : Github
+                        - @TextField : Linkedin
+                        - @TextField : Portfolio
+                        - @TextField : Acclaim badge
+                        - @TextField : Password
+                        - @TextField : Confirm password
+                        - @Button : Submit
 ```
