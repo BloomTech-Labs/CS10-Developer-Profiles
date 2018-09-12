@@ -26,17 +26,21 @@ The dream team behind this project:
 > - Encryption: _bcrypt_
 > - Deployment platform: _Heroku - mLab_
 
-# Backend Structure
+# Backend API
 
 > Detailed docs with installations and running instructions on [Backend.md]()
 
-# Frontend Structure
+### Location:
+
+> [./backEnd/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/backEnd)
+
+# Frontend APP
 
 > Detailed docs with installations and running instructions on [Frontend.md]()
 
 ### Location:
 
-> [./front-end/lambda-in](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/front-end/lambda-in)
+> [./front-end/lambda-in/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/front-end/lambda-in)
 
 ### Components structure
 
