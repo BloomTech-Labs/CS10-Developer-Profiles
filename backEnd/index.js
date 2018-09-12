@@ -2,17 +2,20 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const { server } = require('./server/server');
-const PORT = process.env.PORT;
-const DB_URI = process.env.MONGODB_URI;
+
+const { PORT, MONGODB_URI } = process.env;
 
 mongoose
-  .connect(DB_URI)
+  .connect(MONGODB_URI)
   .then(() => {
+    // eslint-disable-next-line no-console
     console.log('\n*** CONNECTED to database ***\n');
     server.listen(PORT, () => {
+      // eslint-disable-next-line no-console
       console.log(`\n*** Listening on port ${PORT} ***\n`);
     });
   })
-  .catch(err => {
+  .catch((err) => {
+    // eslint-disable-next-line no-console
     console.log('\n*** ERROR connecting to database ***\n', err);
   });
