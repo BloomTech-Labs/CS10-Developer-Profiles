@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const Schema = mongoose.Schema;
 
@@ -39,5 +40,17 @@ const employerSchema = new Schema({
   hiringManagers: [hiringManagerSchema],
   openPositions: [openPositionSchema],
 });
+
+employerSchema.pre('save', function(next) {
+  bcrypt.hash(this.password, 12, (err, hash) => {
+    if (err) next(err);
+    this.password = hash;
+    next();
+  });
+});
+
+employerSchema.methods.isValidPassword = function(testPassword) {
+  return bcrypt.compare(testPassword, this.password);
+};
 
 module.exports = mongoose.model('Employers', employerSchema);
