@@ -22,7 +22,3 @@ module.exports = function(server) {
     res.send('{"message":"Developer Profiles API"}');
   });
 };
-
-{
-  'hiringManagerFirstName', 'hiringManagerLastName', 'hiringManagerEmail';
-}
