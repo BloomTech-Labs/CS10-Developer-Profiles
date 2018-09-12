@@ -1,8 +1,6 @@
 const express = require('express');
-
-const Employer = require('../models/Employer/Employer.model');
-
 const { RouterFactory } = require('express-router-factory');
+const Employer = require('../models/Employer/Employer.model');
 
 const router = express.Router();
 

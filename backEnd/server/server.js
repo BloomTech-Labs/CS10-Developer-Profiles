@@ -6,5 +6,5 @@ setupMiddleware(server);
 setupRoutes(server);
 
 module.exports = {
-  server
+  server,
 };

@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt');
 const educationSchema = require('./Education.embeddedModel');
 const experienceSchema = require('./Experience.embeddedModel');
 const projectSchema = require('./Project.embeddedModel');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const seekerSchema = new Schema({
   img: {
