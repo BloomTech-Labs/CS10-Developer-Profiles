@@ -1,21 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import DevSignUp from './Components/DevSignUp/DevSignUp';
+import DevLogin from './Components/DevLogIn/DevLogIn';
+
 
 class App extends Component {
+  state = {
+    isSignedIn: false
+  }
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    if(this.state.isSignedIn){
+      return (
+        <div>
+          <DevLogin />
+        </div>
+      );
+    }
+    else{
+      return (
+        <div>
+          <DevSignUp />
+        </div>
+      );
+    }
+  
   }
 }
 
+
 export default App;
+
+
