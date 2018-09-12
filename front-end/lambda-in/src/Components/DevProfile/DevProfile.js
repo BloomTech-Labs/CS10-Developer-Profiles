@@ -24,7 +24,7 @@ class DevProfile extends Component {
         portfolio: 'JeanLucPicard.com',
         acclaimBadge: 'Lambda Badge',
         projects: 'Battle of Maxia',
-        experiences: 'Captain of USS Stargazer',
+        experience: 'Captain of USS Stargazer',
         education: 'Star Fleet Academy',
         placesInterested: 'USS Enterprise',
     }
@@ -60,10 +60,10 @@ class DevProfile extends Component {
                                 </div>
                                 <div className="basicInfo">
                                     <div className="name">
-                                        <h2>{this.state.firstName} {this.state.lastName}</h2>
+                                        <h1>{this.state.firstName} {this.state.lastName}</h1>
                                     </div>
-                                    <h3 className="location">{this.state.currentLocation}</h3>
-                                    <p className="description">{this.state.summary}</p>
+                                    <h3 className="currentLocation">{this.state.currentLocation}</h3>
+                                    <p className="summary">{this.state.summary}</p>
                                 </div>
                             </div>
                             <div className="desiredTitle">
@@ -112,18 +112,23 @@ class DevProfile extends Component {
                             </a>
                         </div>
                     </div>
-                    <div classname="profileBody">
-                        <h1>Projects</h1>
-                        <p>{this.state.projects}</p>
-                        <hr/>
-                        <h1>Experience</h1>
-                        <p>{this.state.experiences}</p>
-                        <hr/>
-                        <h1>Education</h1>
-                        <p>{this.state.education}</p>
-                        <hr/>
-                        <h1>Locations Interested</h1>
-                        <p>{this.state.placesInterested}</p>
+                    <div className="profileBody">
+                        <div className="projects">
+                            <h2>Projects</h2>
+                            <p>{this.state.projects}</p>
+                        </div>
+                        <div className="experience">
+                            <h2>Experience</h2>
+                            <p>{this.state.experience}</p>
+                        </div>
+                        <div className="education">
+                            <h2>Education</h2>
+                            <p>{this.state.education}</p>
+                        </div>
+                        <div className="placesInterested">
+                            <h2>Locations Interested</h2>
+                            <p>{this.state.placesInterested}</p>
+                        </div>
                     </div>
                 </div>
             </div>

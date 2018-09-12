@@ -1,3 +1,12 @@
+h1, h2 {
+    font-family: Palatino;
+    margin: 0.2em 0;
+}
+
+h3 {
+    margin: 0;
+}
+
 .navBar {
     width: 100vw;
     height: 5vh;
@@ -23,14 +32,8 @@
     color: #4A4A4A;
     max-width: 50vw;
     border: solid 2px;
-    margin: auto;
+    margin: 3vw auto;
     padding: 2vw;
-}
-
-hr {
-    color: #4A4A4A;
-    border: solid 1px;
-    width: 85%;
 }
 
 .topCard {
@@ -64,10 +67,27 @@ hr {
     width: 80%;
 }
 
+.name {
+    font-family: Palatino;
+    padding: 0;
+    margin: 0;
+}
+
 .topCardRight {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    padding-left: 1vw;
+    width: 10%;
+}
+
+.currentLocation {
+    padding:0;
+    margin:0;
+}
+
+.summary {
+    padding:0;
+    margin:1vw 0 1vw 0;
 }
 
 .desiredTitle {
@@ -75,18 +95,33 @@ hr {
     flex-direction: row;
     align-items: center;
     border-top: solid #4A4A4A 2px;
+    padding: 0;
 }
-.desiredTitle {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-top: solid #4A4A4A 2px;
+.title1 {
+    margin: 0;
+    padding: 0;
 }
 .title2 {
-    margin-left: 1vw;
+    margin: 0 0 0 1vw;
+    padding: 0;
 }
 
 .tagCloud {
+    width: 100%;
+    border-top: solid #4A4A4A 2px;
+}
+
+.experience {
+    width: 100%;
+    border-top: solid #4A4A4A 2px;
+}
+
+.education {
+    width: 100%;
+    border-top: solid #4A4A4A 2px;
+}
+
+.placesInterested {
     width: 100%;
     border-top: solid #4A4A4A 2px;
 }
