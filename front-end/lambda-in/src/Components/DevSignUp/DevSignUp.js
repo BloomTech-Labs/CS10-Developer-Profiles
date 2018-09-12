@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
+import { Link } from 'react-router-dom';
 import '../DevSignUp/DevSignUp.css'
 
 export default class DevSignUp extends Component {
@@ -28,22 +28,22 @@ export default class DevSignUp extends Component {
       };
       render() {
         return (
-          <div class="App">
+          <div className="App">
              <Paper>
-              <div class="navBar">
-                <div class="leftNavBar">
+              <div className="navBar">
+                <div className="leftNavBar">
                   <Button>find Devlopers</Button>
                   <Button>Browse</Button>
                   <Button>profile</Button>
                 </div> 
-                <div class="rightNavBar">
+                <div className="rightNavBar">
                   <Button>Billing</Button>
                   <Button>Setting</Button>
                 </div> 
               </div>
             </Paper>
     
-            <div class="headline">
+            <div className="headline">
                 <Typography variant="headline" component="h3">
                   Fill-N-Hired
                 </Typography>
@@ -53,9 +53,9 @@ export default class DevSignUp extends Component {
                
             </div>
             
-            <div class="formConatiner">
+            <div className="formConatiner">
             <Paper >
-              <div class="form2">
+              <div className="form2">
                 
                      {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
                 <TextField
@@ -153,7 +153,15 @@ export default class DevSignUp extends Component {
                 <Button variant="contained" color="primary">Submit</Button>
                 
               </div>
+              <div className="login">
+                <Link to="/login">
+                  <Button >
+                    Already have an account? 
+                  </Button>
+                </Link>
+              </div>
               </Paper>
+              
             </div>
             
           </div>
