@@ -1,21 +1,92 @@
-h1 {
-    font-size: 1.5em;
-    font-family: 'Palatino';
-    color: #4A4A4A;
+.navBar {
+    width: 100vw;
+    height: 5vh;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-h2 {
-    font-size: 1.0em;
-    font-family: 'Palatino';
-    color: #4A4A4A;
+.leftNavBar {
+    width:50vw;
+    height: 5vh;
+    display: flex;
+    justify-content: flex-start;
 }
 
-p {
-    font-size: 1.0em;
-    font-family: 'Roboto';
+.rightNavBar {
+    width:50vw;
+    height: 5vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container {
     color: #4A4A4A;
+    max-width: 50vw;
+    border: solid 2px;
+    margin: auto;
+    padding: 2vw;
 }
 
 hr {
     color: #4A4A4A;
+    border: solid 1px;
+    width: 85%;
+}
+
+.topCard {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.topCardLeft {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    justify-content: flex-start;
+}
+
+.nameCard {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.photo {
+    display: flex;
+    max-width: 20%;
+    justify-content: flex-start;
+}
+
+.basicInfo {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.topCardRight {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.desiredTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: solid #4A4A4A 2px;
+}
+.desiredTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: solid #4A4A4A 2px;
+}
+.title2 {
+    margin-left: 1vw;
+}
+
+.tagCloud {
+    width: 100%;
+    border-top: solid #4A4A4A 2px;
 }

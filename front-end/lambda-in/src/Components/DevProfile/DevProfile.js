@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
 // temporary css
 import './DevProfile.css';
+
+
 
 class DevProfile extends Component {
     // constructor(props) {
@@ -20,38 +26,58 @@ class DevProfile extends Component {
         projects: 'Battle of Maxia',
         experiences: 'Captain of USS Stargazer',
         education: 'Star Fleet Academy',
-        placesInterested: 'USS Enterprise, Qo\'nos',
+        placesInterested: 'USS Enterprise',
     }
 
     render() {
         return (
             <div>
+            <Paper>
+              <div class="navBar">
+                <div class="leftNavBar">
+                  <Button>find Devlopers</Button>
+                  <Button>Browse</Button>
+                  <Button>profile</Button>
+                </div> 
+                <div class="rightNavBar">
+                  <Button>Billing</Button>
+                  <Button>Setting</Button>
+                </div> 
+              </div>
+            </Paper>
+
                 <div className="container">
-                    <div className="top-card">
-                        <div className="top-card-left">
-                            <div className="photo">
-                                <img
-                                    src=""
-                                    width="150"
-                                    height="150"
-                                    title="Profile Photo"
-                                    alt="Photo"/>
+                    <div className="topCard">
+                        <div className="topCardLeft">
+                            <div className="nameCard">
+                                <div className="photo">
+                                    <img
+                                        src=""
+                                        width="150"
+                                        height="150"
+                                        title="Profile Photo"
+                                        alt="Photo"/>
+                                </div>
+                                <div className="basicInfo">
+                                    <div className="name">
+                                        <h2>{this.state.firstName} {this.state.lastName}</h2>
+                                    </div>
+                                    <h3 className="location">{this.state.currentLocation}</h3>
+                                    <p className="description">{this.state.summary}</p>
+                                </div>
                             </div>
-                            <div classname="nameCard">
-                                <h1 className="name">
-                                    {this.state.firstName} {this.state.lastName}
-                                </h1>
-                                <h2 className="location">{this.state.currentLocation}</h2>
-                                <p className="description">{this.state.summary}</p>
+                            <div className="desiredTitle">
+                                <div classname="title1">
+                                    <h2>Desired Title:</h2>
+                                </div>
+                                <div className="title2">
+                                    <h3>{this.state.desiredTitle}</h3>
+                                </div>
                             </div>
-                            <hr/>
-                            <h1>Desired Title</h1>
-                            <hr/>
-                            <h2>{this.state.desiredTitle}</h2>
                             {/* insert tag cloud here */}
-                            <div className="tag-cloud"/>
+                            <div className="tagCloud"/>
                         </div>
-                        <div className="top-card-right"> 
+                        <div className="topCardRight"> 
                             <a href={this.state.acclaimBadge}>
                                 <img
                                     src=""
@@ -86,7 +112,7 @@ class DevProfile extends Component {
                             </a>
                         </div>
                     </div>
-                    <div classname="profile-body">
+                    <div classname="profileBody">
                         <h1>Projects</h1>
                         <p>{this.state.projects}</p>
                         <hr/>
