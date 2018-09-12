@@ -36,7 +36,7 @@ The dream team behind this project:
 
 # Frontend APP
 
-> Detailed docs with installations and running instructions on [Frontend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/master/backEnd/Frontend.md)
+> Detailed docs with installations and running instructions on [Frontend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/Documentation/front-end/Frontend.md)
 
 ### Location:
 
@@ -44,7 +44,7 @@ The dream team behind this project:
 
 ### Components structure
 
-Componets prefixed with '_**@**_', belongs to _Material Design_
+Components prefixed with '_**@**_', belongs to _Material Design_
 
 ```
   - index.js

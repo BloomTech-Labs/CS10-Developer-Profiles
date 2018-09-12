@@ -26,7 +26,7 @@ lastly, install dependencies and run the server:
 
 ```
   $ yarn
-  ... isntalling dependencies
+  ... installing dependencies
   ...
   ... success installing dependencies
   $ yarn start
