@@ -1,28 +1,29 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const educationSchema = new Schema({
   school: {
     type: String,
-    required: [true, 'School is required']
+    required: [true, 'School is required'],
   },
   degree: {
-    type: String
+    type: String,
   },
   fieldOfStudy: {
     type: String,
-    required: [true, 'Field of study is required']
+    required: [true, 'Field of study is required'],
   },
   startYear: {
     type: Date,
-    required: [true, 'Start year is required']
+    required: [true, 'Start year is required'],
   },
   endYear: {
-    type: Date
+    type: Date,
   },
   description: {
-    type: String
-  }
+    type: String,
+  },
 });
 
 module.exports = educationSchema;
