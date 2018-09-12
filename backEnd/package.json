@@ -6,7 +6,8 @@
   "scripts": {
     "server": "nodemon index",
     "start": "node index",
-    "test": "cross-env NODE_ENV=test jest --watch --verbose"
+    "test": "cross-env NODE_ENV=test jest --watch --verbose",
+    "test-console-log": "cross-env NODE_ENV=test TERM=dumb jest --watch --verbose"
   },
   "jest": {
     "testEnvironment": "node"
