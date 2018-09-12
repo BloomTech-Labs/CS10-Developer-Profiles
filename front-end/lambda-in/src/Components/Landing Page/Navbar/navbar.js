@@ -16,7 +16,7 @@ class NavBar extends React.Component {
                     </div>
                     <div className="rightNavBar">
                         <Button>Billing</Button>
-                        <Button>Setting</Button>
+                        <Button>Log-in</Button>
                     </div>
                 </div>
             </Paper>
