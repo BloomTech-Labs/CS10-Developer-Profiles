@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const openPositionSchema = require('./OpenPosition.embeddedModel');
 const hiringManagerSchema = require('./HiringManager.embeddedModel');
 
@@ -35,5 +36,17 @@ const employerSchema = new Schema({
   hiringManagers: [hiringManagerSchema],
   openPositions: [openPositionSchema],
 });
+
+employerSchema.pre('save', function hashPassword(next) {
+  bcrypt.hash(this.password, 12, (err, hash) => {
+    if (err) next(err);
+    this.password = hash;
+    next();
+  });
+});
+
+employerSchema.methods.isValidPassword = function comparePassword(testPassword) {
+  return bcrypt.compare(testPassword, this.password);
+};
 
 module.exports = mongoose.model('Employers', employerSchema);
