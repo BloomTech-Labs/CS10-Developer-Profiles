@@ -2,28 +2,20 @@ import React, { Component } from 'react';
 import './App.css';
 import DevSignUp from './Components/DevSignUp/DevSignUp';
 import DevLogin from './Components/DevLogIn/DevLogIn';
-
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
-    isSignedIn: false
+    isSignedIn: true
   }
   render() {
-    if(this.state.isSignedIn){
-      return (
-        <div>
-          <DevLogin />
-        </div>
-      );
-    }
-    else{
-      return (
-        <div>
-          <DevSignUp />
-        </div>
-      );
-    }
-  
+    return (
+      <div>
+          <Route exact path="/" render={ (props) =>  <DevLogin {...props} />  } />
+          <Route path="/login" render={ (props) =>  (<DevLogin {...props} />  )  } />
+          <Route path="/signup" render={ (props) =>  (<DevSignUp {...props} />  )  } />
+      </div>
+    );
   }
 }
 

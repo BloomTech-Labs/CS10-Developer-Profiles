@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
+import { Link } from 'react-router-dom'
 import '../DevSignUp/DevSignUp.css'
 
 export default class DevSignUp extends Component {
@@ -152,6 +152,12 @@ export default class DevSignUp extends Component {
     
                 <Button variant="contained" color="primary">Submit</Button>
                 
+              </div>
+
+               <div>
+                <Link to="/login">
+                  <Button>Login</Button>
+                </Link>
               </div>
               </Paper>
             </div>

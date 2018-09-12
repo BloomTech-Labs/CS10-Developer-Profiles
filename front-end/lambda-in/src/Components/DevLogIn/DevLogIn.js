@@ -3,19 +3,23 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
 import '../DevLogIn/DevLogin.css'
+import { Link } from 'react-router-dom'
 
 export default class DevLogin extends Component {
     state = {
         email: 'abc@xyz.com',
-        confirmPassword: ''
+        confirmPassword: '',
       };
+
+
       handleChange = name => event => {
         this.setState({
           [name]: event.target.value,
         });
       };
+
+
       render() {
         return (
           <div class="App">
@@ -70,6 +74,13 @@ export default class DevLogin extends Component {
     
     
                 <Button variant="contained" color="primary">Submit</Button>
+                
+              </div>
+
+              <div>
+              <Link to="/signup">
+                <Button> sign up! </Button>
+              </Link>
                 
               </div>
               </Paper>
