@@ -126,6 +126,9 @@ export default class DevList extends Component {
                     </div>
                     <div className="cardBar">
                         <DevProfileCard />  
+                        <DevProfileCard />  
+                        <DevProfileCard />  
+                        <DevProfileCard />  
                     </div>
                 </div>
                 

@@ -27,7 +27,6 @@
 .mainBar {
     width: 100vw;
     height: 100vh;
-    border: 5px solid black;
     display: flex;
     flex-direction: row;
 }
@@ -39,13 +38,14 @@
     margin: 20px;
     padding: 10px;
     height: 95vh;
-    border: 5px solid black;
+ 
 }
 
 .cardBar {
-    width:60vw;
+    width:50vw;
     height: 100vh;
-    border: 5px solid black;
+    margin: 20px;
+    padding: 10px;
 }
 
 
