@@ -28,7 +28,7 @@ The dream team behind this project:
 
 # Backend API
 
-> Detailed docs with installations and running instructions on [Backend.md]()
+> Detailed docs with installations and running instructions on [Backend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/master/backEnd/Backend.md)
 
 ### Location:
 
@@ -36,7 +36,7 @@ The dream team behind this project:
 
 # Frontend APP
 
-> Detailed docs with installations and running instructions on [Frontend.md]()
+> Detailed docs with installations and running instructions on [Frontend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/master/backEnd/Frontend.md)
 
 ### Location:
 
