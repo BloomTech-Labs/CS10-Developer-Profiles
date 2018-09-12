@@ -10,7 +10,10 @@ const { MONGODB_URI_TEST } = process.env;
 describe('Employer Model', () => {
   // Connect to MongoDB
   beforeAll(() => {
-    const connect = mongoose.connect(MONGODB_URI_TEST);
+    const connect = mongoose.connect(
+      MONGODB_URI_TEST,
+      { useNewUrlParser: true }
+    );
     // const connect = mongoose.connect('mongodb://localhost/testdb');
     return connect
       .then(() => console.log('\n=== connected to TEST DB ==='))
@@ -25,15 +28,50 @@ describe('Employer Model', () => {
       .catch(e => console.log('error', e));
   });
 
-  // delete form the DB the data created by each test
-  afterAll(() => {
-    const deletingEmployer = EmployerModel.deleteMany({});
-    return deletingEmployer
-      .then(response => console.log('Deleting document', response))
-      .catch(e => console.log('error', e));
+  describe('*** All created fields exist in the DB ***', () => {
+    // Create a new Employer
+    beforeAll(() => {
+      const newEmployer = EmployerModel.create({
+        companyName: 'The company inc',
+        companyEmail: 'company@email.com',
+        password: 'Super4duper$sercret',
+      });
+      return newEmployer.then(() => console.log('Document created')).catch(e => console.log('error', { e }));
+    });
+
+    // Delete all entries in DB
+    afterAll(() => {
+      const deletingEmployer = EmployerModel.deleteMany({});
+      return deletingEmployer
+        .then(response => console.log('Deleting all documents', response))
+        .catch(e => console.log('error', e));
+    });
+
+    test('companyName is in DB', async () => {
+      const doc = await EmployerModel.findOne({ companyEmail: 'company@email.com' });
+      expect(doc.companyName).toMatch('The company inc');
+    });
+
+    test('companyEmail is in DB', async () => {
+      const doc = await EmployerModel.findOne({ companyEmail: 'company@email.com' });
+      expect(doc.companyEmail).toMatch('company@email.com');
+    });
+
+    test('password is in DB', async () => {
+      const doc = await EmployerModel.findOne({ companyEmail: 'company@email.com' });
+      expect(doc.password).toBeTruthy();
+    });
   });
 
   describe('*** Validate required fields ***', () => {
+    // Delete form the DB the documents created.
+    afterEach(() => {
+      const deletingEmployer = EmployerModel.deleteMany({});
+      return deletingEmployer
+        .then(response => console.log('Deleting document', response))
+        .catch(e => console.log('error', e));
+    });
+
     test('Validate companyName', () => {
       const newEmployer = EmployerModel.create({
         // companyName: 'The company inc',
