@@ -1,14 +1,20 @@
 import React from 'react';
 import './image-container.css';
+import Button from '@material-ui/core/Button';
 
 class ImageContainer extends React.Component {
     render () {
         return (
             <div className='image-container'>
-                <img className='image' src='https://files.slack.com/files-pri/T4JUEB3ME-FCQQ89V7B/landingimage.png'/>
-                <h1>Your business is your quest, we can help you find the perfect party</h1>
-                <h2>Our developers train with the best and are ready to carry your CEO to victory</h2>
+                <h1 className='cta-1'>
+                Your business is your quest,
+                <br/> We can help you find the perfect
+                <span className= 'party'> party</span>!
+                </h1>
+                <span className='search'><input placeholder='What are you looking for?' /></span>
+                <span className='search-button'><Button variant="contained" color="secondary">Get Started</Button></span>
             </div>
+            
         )
     }
 }
