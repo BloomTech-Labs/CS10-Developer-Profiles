@@ -24,7 +24,9 @@ const seekerSchema = new Schema({
     required: [true, 'Password is required'],
     minlength: [8, 'Password must be at least 8 characters'],
     validate: {
-      validator: val => /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[!@#$%&]).{8,})\S$/.test(val),
+      validator: val => {
+        return /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[!@#$%&]).{8,})\S$/.test(val);
+      },
       message:
         'Password must contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character: !, @, #, $, %, &',
     },
@@ -34,9 +36,9 @@ const seekerSchema = new Schema({
     unique: true,
     required: [true, 'Email address is required'],
     validate: {
-      validator: val => /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(
-        val,
-      ),
+      validator: val => {
+        return /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(val);
+      },
       message: '{VALUE} is not a valid email address',
     },
   },
@@ -86,12 +88,16 @@ const seekerSchema = new Schema({
   familiarWith: {
     type: Array,
   },
+  socialNetwork: {
+    type: String,
+    // TODO: Validate the URL
+  },
   projects: [projectSchema],
   experience: [experienceSchema],
   education: [educationSchema],
 });
 
-seekerSchema.pre('save', function hashPassword(next) {
+seekerSchema.pre('save', function(next) {
   bcrypt.hash(this.password, 12, (err, hash) => {
     if (err) next(err);
     this.password = hash;
@@ -99,7 +105,7 @@ seekerSchema.pre('save', function hashPassword(next) {
   });
 });
 
-seekerSchema.methods.isValidPassword = function comparePassword(testPassword) {
+seekerSchema.methods.isValidPassword = function(testPassword) {
   return bcrypt.compare(testPassword, this.password);
 };
 
