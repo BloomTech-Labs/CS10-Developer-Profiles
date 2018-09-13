@@ -17,7 +17,7 @@ export default class EmployerSignUp extends Component {
         password: 'nechayev-7-alpha',
         
         projectName: 'Enterprise-D',
-        description: '',
+        description: 'We are watching for the captain of the Federation Flagship.',
         jobTitle: 'Captain',
         techStack: 'full stack',
         skills: ['Diplomacy', 'Leadership', 'Tactical Strategy'],
@@ -74,71 +74,39 @@ export default class EmployerSignUp extends Component {
                 />
     
                 <TextField
-                  id="email"
-                  label="Email"
-                  value={this.state.email}
-                  onChange={this.handleChange('email')}
+                  id="hiringManagerFirstName"
+                  label="Hiring Manager's FirstName"
+                  value={this.state.hiringManagerFirstName}
+                  onChange={this.handleChange('hiringManagerFirstName')}
                   margin="normal"
                 />
     
     
                 <TextField
-                  id="desiredTitle"
-                  label="Desired Title"
-                  value={this.state.desiredTitle}
-                  onChange={this.handleChange('desiredTitle')}
+                  id="hiringManagerLastName"
+                  label="Hiring Manager's Last Name"
+                  value={this.state.hiringManagerLastName}
+                  onChange={this.handleChange('hiringManagerLastName')}
                   margin="normal"
                 />
     
                 <TextField
-                  id="currentLocation"
-                  label="Current Location"
-                  value={this.state.currentLocation}
-                  onChange={this.handleChange('currentLocation')}
+                  id="hiringManagerEmail"
+                  label="Hiring Manager's Email"
+                  value={this.state.hiringManagerEmail}
+                  onChange={this.handleChange('hiringManagerEmail')}
                   margin="normal"
                 />
     
                 <TextField
-                  id="github"
-                  label="Github"
-                  value={this.state.github}
-                  onChange={this.handleChange('github')}
-                  margin="normal"
-                />
-    
-                <TextField
-                  id="linkedin"
-                  label="Linkedin"
-                  value={this.state.linkedin}
-                  onChange={this.handleChange('Linkedin')}
-                  margin="normal"
-                />
-    
-                <TextField
-                  id="portfolio"
-                  label="portfolio"
-                  value={this.state.portfolio}
-                  onChange={this.handleChange('portfolio')}
-                  margin="normal"
-                />
-    
-                <TextField
-                  id="acclaimBadge"
-                  label="Acclaim Badge"
-                  value={this.state.acclaimBadge}
-                  onChange={this.handleChange('acclaimBadge')}
-                  margin="normal"
-                />
-    
-                <TextField
-                  id="newPassword"
+                  id="password"
                   type="password"
-                  label="New Password"
-                  value={this.state.newPassword}
-                  onChange={this.handleChange('newPassword')}
+                  label="Password"
+                  value={this.state.password}
+                  onChange={this.handleChange('password')}
                   margin="normal"
                 />
-    
+
                 <TextField
                   id="confirmPassword"
                   type="password"
@@ -148,13 +116,67 @@ export default class EmployerSignUp extends Component {
                   margin="normal"
                 />
     
+                <TextField
+                  id="projectName"
+                  label="Project Name"
+                  value={this.state.projectName}
+                  onChange={this.handleChange('projectName')}
+                  margin="normal"
+                />
     
+                <TextField
+                  id="description"
+                  label="description"
+                  value={this.state.description}
+                  onChange={this.handleChange('description')}
+                  margin="normal"
+                />
+    
+                <TextField
+                  id="jobTitle"
+                  label="Job Title"
+                  value={this.state.jobTitle}
+                  onChange={this.handleChange('jobTitle')}
+                  margin="normal"
+                />
+
+                <TextField
+                  id="techStack"
+                  label="Tech Stack"
+                  value={this.state.techStack}
+                  onChange={this.handleChange('techStack')}
+                  margin="normal"
+                />
+
+                <TextField
+                  id="skills"
+                  label="Skills"
+                  value={this.state.skills}
+                  onChange={this.handleChange('skills')}
+                  margin="normal"
+                />
+                
+                <TextField
+                  id="minSalrary"
+                  label="Minimum Salrary Range"
+                  value={this.state.jobTitle}
+                  onChange={this.handleChange('minSalrary')}
+                  margin="normal"
+                />
+
+                <TextField
+                  id="maxSalary"
+                  label="Maximum Salary Range"
+                  value={this.state.maxSalary}
+                  onChange={this.handleChange('maxSalary')}
+                  margin="normal"
+                />
+
                 <Button variant="contained" color="primary">Submit</Button>
                 
               </div>
               </Paper>
             </div>
-            
           </div>
         );
     }
