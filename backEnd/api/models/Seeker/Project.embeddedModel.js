@@ -1,29 +1,30 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const projectSchema = new Schema({
   title: {
     type: String,
-    required: [true, 'Project title is required']
+    required: [true, 'Project title is required'],
   },
   description: {
-    type: String
+    type: String,
   },
   img: {
-    type: String
+    type: String,
     // PENDING Validate URL
   },
   link: {
-    type: String
+    type: String,
     // PENDING Validate URL
   },
   repo: {
-    type: String
+    type: String,
     // PENDING Validate URL
   },
   tech: {
-    type: Array
-  }
+    type: Array,
+  },
 });
 
 module.exports = projectSchema;

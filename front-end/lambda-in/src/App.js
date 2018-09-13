@@ -17,6 +17,7 @@ class App extends Component {
           <Route exact path="/signup" render={ (props) =>  <DevSignUp {...props}/> } />
         </div>
       );
+    }
   }
 }
 
