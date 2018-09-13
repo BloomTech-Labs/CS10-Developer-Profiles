@@ -63,6 +63,18 @@ describe('seeker model', () => {
     });
   });
 
+  it('should not allow summary to exceed 128 characters', () => {
+    const invalidData = Object.assign({}, testSeeker, {
+      summary:
+        'Lorem ipsum dolor sit amet, quem movet habemus eu his, quis pericula conceptam in sea, laudem fierent consetetur ei eos. Ad deserunt scribentur philosophia vis, autem veritus eum et.',
+    });
+    const seeker = new Seeker(invalidData);
+
+    seeker.validate((err) => {
+      expect(err.errors).toHaveProperty('summary');
+    });
+  });
+
   it('should hash password before saving', async () => {
     const newSeeker = await Seeker.create(testSeeker);
 
