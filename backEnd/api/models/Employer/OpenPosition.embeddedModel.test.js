@@ -4,7 +4,7 @@ const EmployerModel = require('./Employer.model');
 
 const { MONGODB_URI_TEST } = process.env;
 
-describe('Hiring Manager Model', () => {
+describe('Open Position Model', () => {
   // Connect to MongoDB
   beforeAll(() => {
     const connect = mongoose.connect(
@@ -35,36 +35,36 @@ describe('Hiring Manager Model', () => {
         companyName: 'We hire talent inc',
         companyEmail: 'hiring-manager@email.com',
         password: 'Super4duper$sercret',
-        hiringManagers: [
+        openPositions: [
           {
-            hiringManagerFirstName: 'Manager name',
-            hiringManagerEmail: 'a@a.com',
-            hiringManagerLastName: 'Manager last name',
+            jobTitle: 'Super Developer',
+            projectName: 'Super project',
           },
         ],
       });
+
       return newEmployer.then(() => console.log('Document created')).catch(e => console.log('error', { e }));
     });
 
     // Delete all entries in DB
     afterAll(() => {
       const deletingEmployer = EmployerModel.deleteMany({});
+
       return deletingEmployer
         .then(response => console.log('Deleting all documents', response))
         .catch(e => console.log('error', e));
     });
 
-    test('should create the hiring manager document', async () => {
+    test('should create the open position document', async () => {
       const doc = await EmployerModel.findOne({ companyEmail: 'hiring-manager@email.com' });
-      expect(doc).toHaveProperty('hiringManagers');
+      expect(doc).toHaveProperty('openPositions');
     });
 
     test('should have paths with key-values pairs', async () => {
       const doc = await EmployerModel.findOne({ companyEmail: 'hiring-manager@email.com' });
-      const { hiringManagers } = doc;
-      expect(hiringManagers[0].hiringManagerFirstName).toMatch('Manager name');
-      expect(hiringManagers[0].hiringManagerEmail).toMatch('a@a.com');
-      expect(hiringManagers[0].hiringManagerLastName).toMatch('Manager last name');
+      const { openPositions } = doc;
+      expect(openPositions[0].jobTitle).toMatch('Super Developer');
+      expect(openPositions[0].projectName).toMatch('Super project');
     });
   });
 });
