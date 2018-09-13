@@ -3,7 +3,7 @@ const educationSchema = require('./Education.embeddedModel');
 
 const Education = mongoose.model('Education', educationSchema);
 
-describe('education model', () => {
+describe('Education Model', () => {
   it('should require school, fieldOfStudy, startYear', (done) => {
     const education = new Education();
 
