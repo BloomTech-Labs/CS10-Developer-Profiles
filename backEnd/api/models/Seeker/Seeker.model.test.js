@@ -6,12 +6,28 @@ const { testSeeker, invalidEmails, validEmails } = require('../../utils/testData
 
 const { MONGODB_URI_TEST } = process.env;
 
-describe('seeker model', () => {
-  beforeAll(() => mongoose.connect(MONGODB_URI_TEST));
+describe('Seeker Model', () => {
+  beforeAll(() => mongoose
+    .connect(
+      MONGODB_URI_TEST,
+      { useNewUrlParser: true },
+    )
+  // eslint-disable-next-line no-console
+    .then(() => console.log('\n*** CONNECTED to database ***\n'))
+  // eslint-disable-next-line no-console
+    .catch(err => console.log('\n*** ERROR connecting to database ***\n', err)));
 
-  afterEach(() => Seeker.remove());
+  afterEach(() => Seeker.deleteMany()
+  // eslint-disable-next-line no-console
+    .then(() => console.log('\n*** CLEAR database ***\n'))
+  // eslint-disable-next-line no-console
+    .catch(err => console.log('\n*** ERROR clearing database ***\n', err)));
 
-  afterAll(() => mongoose.disconnect());
+  afterAll(() => mongoose.disconnect()
+  // eslint-disable-next-line no-console
+    .then(() => console.log('\n*** DISCONNECTED from database ***\n'))
+  // eslint-disable-next-line no-console
+    .catch(err => console.log('\n*** ERROR disconnecting from database ***\n', err)));
 
   it('should require firstName, lastName, password, email, desiredTitle', () => {
     const seeker = new Seeker();
