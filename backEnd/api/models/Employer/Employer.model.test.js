@@ -4,16 +4,12 @@ const EmployerModel = require('./Employer.model');
 
 const { MONGODB_URI_TEST } = process.env;
 
-describe('Employer Model', () => {
+describe('*** Employer Model ***', () => {
   // Connect to MongoDB
   beforeAll(() => mongoose.connect(MONGODB_URI_TEST).catch(e => console.log('Error Connecting to DB', e)));
 
   // Disconnect DB
-  afterAll(async () => {
-    const disconnect = await mongoose.disconnect();
-
-    disconnect.catch(e => console.log('Error disconecting from DB', e));
-  });
+  afterAll(() => mongoose.disconnect().catch(e => console.log('Error disconecting from DB', e)));
 
   // TESTING MONOG DB
   describe('*** All created fields exist in the DB ***', () => {
