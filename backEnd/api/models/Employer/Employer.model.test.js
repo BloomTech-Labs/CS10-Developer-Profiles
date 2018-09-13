@@ -1,6 +1,3 @@
-// Set envirement variable NODE_ENV to 'test'
-// process.env.NODE_ENV = 'test';
-
 require('dotenv').config();
 const mongoose = require('mongoose');
 const EmployerModel = require('./Employer.model');
@@ -12,7 +9,7 @@ describe('Employer Model', () => {
   beforeAll(() => {
     const connect = mongoose.connect(
       MONGODB_URI_TEST,
-      { useNewUrlParser: true }
+      { useNewUrlParser: true } // A mongo feature is deprecated, to fix that change it is neccesary to pass this options.
     );
     // const connect = mongoose.connect('mongodb://localhost/testdb');
     return connect
@@ -31,13 +28,18 @@ describe('Employer Model', () => {
   // TESTING MONOG DB
   describe('*** All created fields exist in the DB ***', () => {
     // Create a new Employer
-    beforeAll(() => {
-      const newEmployer = EmployerModel.create({
+    beforeAll(async () => {
+      // Clean DB
+      EmployerModel.deleteMany({});
+
+      // Create a new Employer document
+      const newEmployer = await EmployerModel.create({
         companyName: 'The company inc',
         companyEmail: 'company@email.com',
         password: 'Super4duper$sercret',
       });
-      return newEmployer.then(() => console.log('Document created')).catch(e => console.log('error', { e }));
+
+      // return newEmployer.then(() => console.log('Document created')).catch(e => console.log('error', { e }));
     });
 
     // Delete all entries in DB
@@ -108,6 +110,9 @@ describe('Employer Model', () => {
   // TEST THAT THE PASSWORD IS HASHED. THAT REQUIRES A PRE-SAVE HOOK TO BE CALLED
   describe('should use the pre save hook', () => {
     beforeAll(() => {
+      // Clean DB
+      EmployerModel.deleteMany({});
+
       const newEmployer = EmployerModel.create({
         companyName: 'The company inc',
         companyEmail: 'company@email.com',
