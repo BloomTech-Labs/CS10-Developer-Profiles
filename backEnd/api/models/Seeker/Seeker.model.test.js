@@ -76,7 +76,7 @@ describe('Seeker Model', () => {
       });
     });
   });
-  
+
   describe('*** Middleware/Methods ***', () => {
     beforeAll(() => mongoose
       .connect(
