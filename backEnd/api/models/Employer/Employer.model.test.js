@@ -6,23 +6,13 @@ const { MONGODB_URI_TEST } = process.env;
 
 describe('Employer Model', () => {
   // Connect to MongoDB
-  beforeAll(() => {
-    const connect = mongoose.connect(
-      MONGODB_URI_TEST,
-      { useNewUrlParser: true } // A mongo feature is deprecated, to fix that change it is neccesary to pass this options.
-    );
-    // const connect = mongoose.connect('mongodb://localhost/testdb');
-    return connect
-      .then(() => console.log('\n=== connected to TEST DB ==='))
-      .catch(e => console.log('Error Connecting to DB', e));
-  });
+  beforeAll(() => mongoose.connect(MONGODB_URI_TEST).catch(e => console.log('Error Connecting to DB', e)));
 
   // Disconnect DB
-  afterAll(() => {
-    const disconnect = mongoose.disconnect();
-    return disconnect
-      .then(() => console.log('\n=== disconnected from TEST DB ==='))
-      .catch(e => console.log('error', e));
+  afterAll(async () => {
+    const disconnect = await mongoose.disconnect();
+
+    disconnect.catch(e => console.log('Error disconecting from DB', e));
   });
 
   // TESTING MONOG DB
@@ -30,24 +20,19 @@ describe('Employer Model', () => {
     // Create a new Employer
     beforeAll(async () => {
       // Clean DB
-      EmployerModel.deleteMany({});
+      await EmployerModel.deleteMany({}).catch(e => console.log('ERROR: Could delete data form DB.', e));
 
       // Create a new Employer document
-      const newEmployer = await EmployerModel.create({
+      await EmployerModel.create({
         companyName: 'The company inc',
         companyEmail: 'company@email.com',
         password: 'Super4duper$sercret',
       });
-
-      // return newEmployer.then(() => console.log('Document created')).catch(e => console.log('error', { e }));
     });
 
     // Delete all entries in DB
-    afterAll(() => {
-      const deletingEmployer = EmployerModel.deleteMany({});
-      return deletingEmployer
-        .then(response => console.log('Deleting all documents', response))
-        .catch(e => console.log('error', e));
+    afterAll(async () => {
+      await EmployerModel.deleteMany({}).catch(e => console.log('ERROR: Could delete data form DB.', e));
     });
 
     test('companyName is in DB', async () => {
@@ -69,11 +54,8 @@ describe('Employer Model', () => {
   // TESTING VALIDATION OF REQUIRED FIELDS
   describe('*** Validate required fields ***', () => {
     // Delete form the DB the documents created.
-    afterEach(() => {
-      const deletingEmployer = EmployerModel.deleteMany({});
-      return deletingEmployer
-        .then(response => console.log('Deleting document', response))
-        .catch(e => console.log('error', e));
+    afterEach(async () => {
+      await EmployerModel.deleteMany({}).catch(e => console.log('ERROR: Could delete data form DB.', e));
     });
 
     test('should require companyName', () => {
@@ -109,24 +91,21 @@ describe('Employer Model', () => {
 
   // TEST THAT THE PASSWORD IS HASHED. THAT REQUIRES A PRE-SAVE HOOK TO BE CALLED
   describe('should use the pre save hook', () => {
-    beforeAll(() => {
+    beforeAll(async () => {
       // Clean DB
-      EmployerModel.deleteMany({});
+      await EmployerModel.deleteMany({});
 
-      const newEmployer = EmployerModel.create({
+      // Create a new Employer document
+      await EmployerModel.create({
         companyName: 'The company inc',
         companyEmail: 'company@email.com',
         password: 'Super4duper$sercret',
       });
-      return newEmployer.then(() => console.log('Document created')).catch(e => console.log('error', { e }));
     });
 
     // Delete all entries in DB
-    afterAll(() => {
-      const deletingEmployer = EmployerModel.deleteMany({});
-      return deletingEmployer
-        .then(response => console.log('Deleting all documents', response))
-        .catch(e => console.log('error', e));
+    afterAll(async () => {
+      await EmployerModel.deleteMany({}).catch(e => console.log('ERROR: Could delete data form DB.', e));
     });
 
     test('password is hashed', async () => {
