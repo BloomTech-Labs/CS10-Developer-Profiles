@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
+import { Link } from 'react-router-dom';
 import '../DevLogIn/DevLogin.css'
 
 export default class DevLogin extends Component {
@@ -18,22 +18,22 @@ export default class DevLogin extends Component {
       };
       render() {
         return (
-          <div class="App">
+          <div className="App">
              <Paper>
-              <div class="navBar">
-                <div class="leftNavBar">
+              <div className="navBar">
+                <div className="leftNavBar">
                   <Button>find Devlopers</Button>
                   <Button>Browse</Button>
                   <Button>profile</Button>
                 </div> 
-                <div class="rightNavBar">
+                <div className="rightNavBar">
                   <Button>Billing</Button>
                   <Button>Setting</Button>
                 </div> 
               </div>
             </Paper>
     
-            <div class="headline">
+            <div className="headline">
                 <Typography variant="headline" component="h3">
                   Fill-N-Hired
                 </Typography>
@@ -43,9 +43,9 @@ export default class DevLogin extends Component {
                
             </div>
             
-            <div class="formConatiner">
+            <div className="formConatiner">
             <Paper >
-              <div class="form2">
+              <div className="form2">
                 
                      {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
                 <Typography variant="headline" component="h3">
@@ -71,6 +71,13 @@ export default class DevLogin extends Component {
     
                 <Button variant="contained" color="primary">Submit</Button>
                 
+              </div>
+              <div className="signup" >
+                <Link to="/signup">
+                  <Button className="signup">
+                    Register here! 
+                  </Button>
+                </Link>
               </div>
               </Paper>
             </div>
