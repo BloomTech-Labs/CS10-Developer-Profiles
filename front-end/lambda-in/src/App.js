@@ -9,6 +9,9 @@ import DevProfile from './Components/DevProfile/DevProfile';
 import Browse from './Components/Browse/browse(employer-view)';
 import Billing from './Components/Billing/billing';
 
+import DevList from './Components/DevList/DevList';
+
+
 class App extends Component {
   state = {
     isSignedIn: false,
