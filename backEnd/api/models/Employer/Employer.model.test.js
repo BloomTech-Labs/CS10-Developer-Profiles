@@ -28,6 +28,7 @@ describe('Employer Model', () => {
       .catch(e => console.log('error', e));
   });
 
+  // TESTING MONOG DB
   describe('*** All created fields exist in the DB ***', () => {
     // Create a new Employer
     beforeAll(() => {
@@ -63,6 +64,7 @@ describe('Employer Model', () => {
     });
   });
 
+  // TESTING VALIDATION OF REQUIRED FIELDS
   describe('*** Validate required fields ***', () => {
     // Delete form the DB the documents created.
     afterEach(() => {
@@ -72,7 +74,7 @@ describe('Employer Model', () => {
         .catch(e => console.log('error', e));
     });
 
-    test('Validate companyName', () => {
+    test('should require companyName', () => {
       const newEmployer = EmployerModel.create({
         // companyName: 'The company inc',
         companyEmail: 'company@email.com',
@@ -82,7 +84,7 @@ describe('Employer Model', () => {
       return newEmployer.catch(e => expect(e.name).toEqual('ValidationError'));
     });
 
-    test('Validate companyEmail', () => {
+    test('should require companyEmail', () => {
       const newEmployer = EmployerModel.create({
         companyName: 'The company inc',
         // companyEmail: 'company@email.com',
@@ -92,7 +94,7 @@ describe('Employer Model', () => {
       return newEmployer.catch(e => expect(e.name).toEqual('ValidationError'));
     });
 
-    test('Validate password', () => {
+    test('should require password', () => {
       const newEmployer = EmployerModel.create({
         companyName: 'The company inc',
         companyEmail: 'company@email.com',
@@ -103,6 +105,7 @@ describe('Employer Model', () => {
     });
   });
 
+  // TEST THAT THE PASSWORD IS HASHED. THAT REQUIRES A PRE-SAVE HOOK TO BE CALLED
   describe('should use the pre save hook', () => {
     beforeAll(() => {
       const newEmployer = EmployerModel.create({
