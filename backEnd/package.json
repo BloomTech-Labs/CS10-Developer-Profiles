@@ -4,6 +4,8 @@
   "description": "Node.js/MongoDB Backend for Developer Profiles",
   "main": "index.js",
   "scripts": {
+    "client": "cd ../front-end/lambda-in && yarn start",
+    "dev": "cross-env NODE_ENV=development concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
     "server": "nodemon index",
     "start": "node index",
     "test": "cross-env NODE_ENV=test jest --watch --verbose",
