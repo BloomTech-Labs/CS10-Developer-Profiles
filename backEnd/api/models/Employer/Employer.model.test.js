@@ -103,9 +103,28 @@ describe('Employer Model', () => {
     });
   });
 
-  // Test OpenPosition.embeddedModel.js
-  describe('OpenPosition.embeddedModel.js', () => {});
+  describe('should use the pre save hook', () => {
+    beforeAll(() => {
+      const newEmployer = EmployerModel.create({
+        companyName: 'The company inc',
+        companyEmail: 'company@email.com',
+        password: 'Super4duper$sercret',
+      });
+      return newEmployer.then(() => console.log('Document created')).catch(e => console.log('error', { e }));
+    });
 
-  // Test HiringManager.embeddedModel.js
-  describe('HiringManager.embeddedModel.js', () => {});
+    // Delete all entries in DB
+    afterAll(() => {
+      const deletingEmployer = EmployerModel.deleteMany({});
+      return deletingEmployer
+        .then(response => console.log('Deleting all documents', response))
+        .catch(e => console.log('error', e));
+    });
+
+    test('password is hashed', async () => {
+      const doc = await EmployerModel.findOne({ companyEmail: 'company@email.com' });
+      // Hashed passwords must have a length === 60
+      expect(doc.password).toHaveLength(60);
+    });
+  });
 });
