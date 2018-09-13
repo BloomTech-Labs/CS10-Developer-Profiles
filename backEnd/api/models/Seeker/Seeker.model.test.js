@@ -76,6 +76,7 @@ describe('Seeker Model', () => {
       });
     });
   });
+  
   describe('*** Middleware/Methods ***', () => {
     beforeAll(() => mongoose
       .connect(
@@ -95,9 +96,9 @@ describe('Seeker Model', () => {
       .catch(err => console.log('\n*** ERROR disconnecting from database ***\n', err)));
 
     afterEach(() => Seeker.deleteMany()
-    // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
       .then(() => console.log('\n*** CLEAR database ***\n'))
-    // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
       .catch(err => console.log('\n*** ERROR clearing database ***\n', err)));
 
     it('should hash password before saving', async () => {
