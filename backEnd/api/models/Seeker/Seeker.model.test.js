@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const Seeker = require('./Seeker.model');
-const { testSeeker } = require('../../utils/seeker.testData');
+const { testSeeker, invalidEmails, validEmails } = require('../../utils/testData');
 
 const { MONGODB_URI_TEST } = process.env;
 
@@ -40,6 +40,26 @@ describe('seeker model', () => {
 
     seeker.validate((err) => {
       expect(err.errors).toHaveProperty('password');
+    });
+  });
+
+  it('should disallow invalid email formats', () => {
+    invalidEmails.forEach((email) => {
+      const invalidData = Object.assign({}, testSeeker, { email });
+      const seeker = new Seeker(invalidData);
+
+      seeker.validate((err) => {
+        expect(err.errors).toHaveProperty('email');
+      });
+    });
+
+    validEmails.forEach((email) => {
+      const validData = Object.assign({}, testSeeker, { email });
+      const seeker = new Seeker(validData);
+
+      seeker.validate((err) => {
+        expect(err).toBeNull();
+      });
     });
   });
 
