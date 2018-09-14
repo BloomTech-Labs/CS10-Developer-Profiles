@@ -28,11 +28,11 @@ The dream team behind this project:
 
 # Backend API
 
-> Detailed docs with installations and running instructions on [Backend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/master/backEnd/Backend.md)
+> Detailed docs with installations and running instructions on [Backend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/master/backend/Backend.md)
 
 ### Location:
 
-> [./backEnd/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/backEnd)
+> [./backend/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/backend)
 
 # Frontend APP
 
