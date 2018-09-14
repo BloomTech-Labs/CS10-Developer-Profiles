@@ -23,8 +23,9 @@ export default class DevSignUp extends Component {
       portfolio: 'batman.com',
       acclaimBadge: 'lambda Batch',
       placesInterested: ' earh etc',
-      password: '',
+      password: '12345678Aa$',
       confirmPassword: '',
+      isSignedIn: false,
     };
   }
   
@@ -41,22 +42,32 @@ export default class DevSignUp extends Component {
 
     axios
       .post('http://localhost:5000/api/register/seekers', {
-          "firstName": "jeaned1",
-          "lastName": "surkouf1",
-          "email": "e211r1d1tftte13@i.com",
-          "password": "12345678Aa$",
+          "firstName": this.state.firstName,
+          "lastName": this.state.lastName,
+          "email": this.state.email,
+          "password": this.state.password,
           "summary": " boo"
       })
       .then(response => {
         console.log(response)
+        localStorage.setItem('token', response.data.jwt)
+        this.setState({
+          uid: response.data.uid
+        })
+        //this.loginHandler('Logged In')
+        // document.window.sessionStorage.accessToken = response.body.access_token;
+        console.log(localStorage.getItem('token'))
       })
       .catch(err => {
         console.log(err)
       })
 
       this.setState({
-        username: '',
-        password: '',
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "password": "",
+        "summary": " boo"
       })
 
   }
