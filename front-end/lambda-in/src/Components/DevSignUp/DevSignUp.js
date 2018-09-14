@@ -19,7 +19,7 @@ export default class DevSignUp extends Component {
     portfolio: 'batman.com',
     acclaimBadge: 'lambda Batch',
     placesInterested: ' earh etc',
-    newPassword: '',
+    password: '',
     confirmPassword: '',
   };
   handleChange = name => event => {
@@ -69,71 +69,71 @@ export default class DevSignUp extends Component {
                 margin="normal"
               />
 
-              <TextField
+              {/* <TextField
                 id="desiredTitle"
                 label="Desired Title"
                 value={this.state.desiredTitle}
                 onChange={this.handleChange('desiredTitle')}
                 margin="normal"
-              />
+              /> */}
 
-              <TextField
+              {/* <TextField
                 id="currentLocation"
                 label="Current Location"
                 value={this.state.currentLocation}
                 onChange={this.handleChange('currentLocation')}
                 margin="normal"
-              />
+              /> */}
 
-              <TextField
+              {/* <TextField
                 id="github"
                 label="Github"
                 value={this.state.github}
                 onChange={this.handleChange('github')}
                 margin="normal"
-              />
+              /> */}
 
-              <TextField
+              {/* <TextField
                 id="linkedin"
                 label="Linkedin"
                 value={this.state.linkedin}
                 onChange={this.handleChange('Linkedin')}
                 margin="normal"
-              />
+              /> */}
 
-              <TextField
+              {/* <TextField
                 id="portfolio"
                 label="portfolio"
                 value={this.state.portfolio}
                 onChange={this.handleChange('portfolio')}
                 margin="normal"
-              />
+              /> */}
 
-              <TextField
+              {/* <TextField
                 id="acclaimBadge"
                 label="Acclaim Badge"
                 value={this.state.acclaimBadge}
                 onChange={this.handleChange('acclaimBadge')}
                 margin="normal"
-              />
+              /> */}
 
               <TextField
-                id="newPassword"
+                id="password"
                 type="password"
-                label="New Password"
-                value={this.state.newPassword}
-                onChange={this.handleChange('newPassword')}
+                label="Password"
+                value={this.state.password}
+                onChange={this.handleChange('password')}
                 margin="normal"
               />
 
-              <TextField
+              {/* <TextField
                 id="confirmPassword"
                 type="password"
                 label="Confirm Password"
                 value={this.state.confirmPassword}
                 onChange={this.handleChange('confirmPassword')}
                 margin="normal"
-              />
+              /> */}
 
               <Button variant="contained" color="primary">
                 Submit
