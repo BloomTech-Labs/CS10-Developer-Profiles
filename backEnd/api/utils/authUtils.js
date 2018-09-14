@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const jwk_secret = process.env.JWT_SECRET;
+
+const jwtSecret = process.env.JWT_SECRET;
 
 module.exports = {
   createToken: function createToken(data) {
@@ -7,12 +8,12 @@ module.exports = {
       expiresIn: '1h',
     };
     const payload = { ...data };
-    return jwt.sign(payload, jwk_secret, options);
+    return jwt.sign(payload, jwtSecret, options);
   },
   userHasToken: function userHasToken(req, res, next) {
     const token = req.headers.authorization;
     if (!token) res.status(401).json('You must be registered/logged in before go on');
-    jwt.verify(token, jwk_secret, (err, tokenDecoded) => {
+    jwt.verify(token, jwtSecret, (err, tokenDecoded) => {
       req.token = token;
       req.decodedToken = tokenDecoded;
       if (err) {
