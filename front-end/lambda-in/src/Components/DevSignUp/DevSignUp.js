@@ -5,34 +5,69 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
+import axios from 'axios';
+
 import '../DevSignUp/DevSignUp.css';
 
 export default class DevSignUp extends Component {
-  state = {
-    email: 'abc@xyz.com',
-    firstName: 'bat',
-    lastName: 'man',
-    desiredTitle: 'BOSS',
-    currentLocation: 'mars',
-    github: 'github.com/batman',
-    linkedin: 'linkedin.com/batman',
-    portfolio: 'batman.com',
-    acclaimBadge: 'lambda Batch',
-    placesInterested: ' earh etc',
-    password: '',
-    confirmPassword: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: 'abc@xyz.com',
+      firstName: 'bat',
+      lastName: 'man',
+      desiredTitle: 'BOSS',
+      currentLocation: 'mars',
+      github: 'github.com/batman',
+      linkedin: 'linkedin.com/batman',
+      portfolio: 'batman.com',
+      acclaimBadge: 'lambda Batch',
+      placesInterested: ' earh etc',
+      password: '',
+      confirmPassword: '',
+    };
+  }
+  
+
+
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
     });
   };
+
+  handNewUser = (event) => {
+    event.preventDefault();
+
+    axios
+      .post('http://localhost:5000/api/register/seekers', {
+          "firstName": "jeaned1",
+          "lastName": "surkouf1",
+          "email": "e211r1d1tftte13@i.com",
+          "password": "12345678Aa$",
+          "summary": " boo"
+      })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+      this.setState({
+        username: '',
+        password: '',
+      })
+
+  }
+
+
   render() {
     return (
-      <div class="App">
+      <div className="App">
         <NavBar />
 
-        <div class="headline">
+        <div className="headline">
           <Typography variant="headline" component="h3">
             Fill-N-Hired
           </Typography>
@@ -41,9 +76,9 @@ export default class DevSignUp extends Component {
           </Typography>
         </div>
 
-        <div class="formConatiner">
+        <div className="formConatiner">
           <Paper>
-            <div class="form2">
+            <div className="form2">
               {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
               <TextField
                 id="firstName"
@@ -135,7 +170,7 @@ export default class DevSignUp extends Component {
                 margin="normal"
               /> */}
 
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={this.handNewUser} >
                 Submit
               </Button>
             </div>
