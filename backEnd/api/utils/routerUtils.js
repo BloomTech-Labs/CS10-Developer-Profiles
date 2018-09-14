@@ -32,4 +32,16 @@ module.exports = {
         res.status(500).json({ e });
       });
   },
+  register: function registerUser(model, req, res) {
+    // prettier-ignore
+    model
+      .create(req.body)
+      .then((newUser) => {
+        const { _id, email } = newUser;
+        // console.log({ name, username, password });
+        const jwt = utils.createToken({ _id, email });
+        res.status(201).json({ newUser, jwt });
+      })
+      .catch(err => res.status(500).json({ ERROR: err.message }));
+  },
 };
