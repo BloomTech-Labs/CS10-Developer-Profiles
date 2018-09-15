@@ -23,7 +23,7 @@ export default class DevLogin extends Component {
     event.preventDefault();
 
     axios
-      .post('http://localhost:5000/api/login/seekers', {
+      .post(`${process.env.REACT_APP_API}login/seekers`, {
         email: this.state.email,
         password: this.state.password,
       })
