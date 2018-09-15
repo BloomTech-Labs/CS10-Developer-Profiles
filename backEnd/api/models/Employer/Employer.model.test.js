@@ -4,7 +4,7 @@ const EmployerModel = require('./Employer.model');
 
 const { MONGODB_URI_TEST } = process.env;
 
-describe('*** Employer Model ***', () => {
+describe('Employer Model', () => {
   // Connect to MongoDB
   // prettier-ignore
   beforeAll(() => mongoose
@@ -42,17 +42,17 @@ describe('*** Employer Model ***', () => {
       await EmployerModel.deleteMany({}).catch(e => console.log("ERROR: Couldn't delete data form DB.", e));
     });
 
-    test('companyName is in DB', async () => {
+    test('should exist companyName in DB', async () => {
       const doc = await EmployerModel.findOne({ email: 'company@email.com' });
       expect(doc.companyName).toMatch('The company inc');
     });
 
-    test('email is in DB', async () => {
+    test('should exist email in DB', async () => {
       const doc = await EmployerModel.findOne({ email: 'company@email.com' });
       expect(doc.email).toMatch('company@email.com');
     });
 
-    test('password is in DB', async () => {
+    test('should exist password in DB', async () => {
       const doc = await EmployerModel.findOne({ email: 'company@email.com' });
       expect(doc.password).toBeTruthy();
     });
@@ -116,7 +116,7 @@ describe('*** Employer Model ***', () => {
   });
 
   // TEST THAT THE PASSWORD IS HASHED. THAT REQUIRES A PRE-SAVE HOOK TO BE CALLED
-  describe('should use the pre save hook', () => {
+  describe('*** Use of the pre-save hook ***', () => {
     beforeAll(async () => {
       // Clean DB
       // eslint-disable-next-line no-console
@@ -136,7 +136,7 @@ describe('*** Employer Model ***', () => {
       await EmployerModel.deleteMany({}).catch(e => console.log("ERROR: Couldn't delete data form DB.", e));
     });
 
-    test('password is hashed', async () => {
+    test('should be the password hashed', async () => {
       const doc = await EmployerModel.findOne({ email: 'company@email.com' });
       // Hashed passwords must have a length === 60
       expect(doc.password).toHaveLength(60);

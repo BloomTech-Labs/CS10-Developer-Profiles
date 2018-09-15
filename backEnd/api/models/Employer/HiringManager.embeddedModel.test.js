@@ -20,7 +20,7 @@ describe('Hiring Manager Model', () => {
   // eslint-disable-next-line no-console
   afterAll(() => mongoose.disconnect().catch(e => console.log('Error disconecting from DB', e)));
 
-  describe('The document is created.', () => {
+  describe('*** The document is created ***', () => {
     // Clean DB
     // eslint-disable-next-line no-console
     beforeAll(() => EmployerModel.deleteMany({}).catch(e => console.log("ERROR: Couldn't delete data form DB.", e)));
