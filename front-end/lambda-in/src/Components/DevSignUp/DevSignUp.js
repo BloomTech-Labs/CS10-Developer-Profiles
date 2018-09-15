@@ -28,8 +28,6 @@ export default class DevSignUp extends Component {
       isSignedIn: false,
     };
   }
-  
-
 
   handleChange = name => event => {
     this.setState({
@@ -37,41 +35,39 @@ export default class DevSignUp extends Component {
     });
   };
 
-  handNewUser = (event) => {
+  handNewUser = event => {
     event.preventDefault();
 
     axios
       .post('http://localhost:5000/api/register/seekers', {
-          "firstName": this.state.firstName,
-          "lastName": this.state.lastName,
-          "email": this.state.email,
-          "password": this.state.password,
-          "summary": " boo"
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password,
+        summary: ' boo',
       })
       .then(response => {
-        console.log(response)
-        localStorage.setItem('token', response.data.jwt)
+        console.log(response);
+        localStorage.setItem('token', response.data.jwt);
         this.setState({
-          uid: response.data.uid
-        })
+          uid: response.data.uid,
+        });
         //this.loginHandler('Logged In')
         // document.window.sessionStorage.accessToken = response.body.access_token;
-        console.log(localStorage.getItem('token'))
+        console.log(localStorage.getItem('token'));
       })
       .catch(err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
 
-      this.setState({
-        "firstName": "",
-        "lastName": "",
-        "email": "",
-        "password": "",
-        "summary": " boo"
-      })
-
-  }
-
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      summary: 'boo',
+    });
+  };
 
   render() {
     return (
@@ -181,7 +177,7 @@ export default class DevSignUp extends Component {
                 margin="normal"
               /> */}
 
-              <Button variant="contained" color="primary" onClick={this.handNewUser} >
+              <Button variant="contained" color="primary" onClick={this.handNewUser}>
                 Submit
               </Button>
             </div>
