@@ -15,7 +15,7 @@ The dream team behind this project:
 ### **Frontend**
 
 > - JS Framework: _React_
-> - CSS Freamwork: _Material Design_
+> - CSS Framework: _Material Design_
 > - HTTP Client: _Axios_
 
 ### **Backend**
@@ -36,11 +36,11 @@ The dream team behind this project:
 
 # Frontend APP
 
-> Detailed docs with installations and running instructions on [Frontend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/Documentation/front-end/Frontend.md)
+> Detailed docs with installations and running instructions on [Frontend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/Documentation/frontend/Frontend.md)
 
 ### Location:
 
-> [./front-end/lambda-in/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/front-end/lambda-in)
+> [./frontend/lambda-in/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/frontend/lambda-in)
 
 ### Components structure
 
