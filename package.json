@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "CS10 Developer Profiles",
   "scripts": {
-    "server": "cd backend/ && yarn start",
+    "server": "cd backend/ && yarn install && yarn start",
     "client": "cd frontend/lambda-in/ && yarn install && yarn build",
-    "heroku-postbuild": "yarn run server && yarn run client"
+    "heroku-postbuild": "yarn server && yarn client"
   },
   "cacheDirectories": [
     "backend/node_modules",
