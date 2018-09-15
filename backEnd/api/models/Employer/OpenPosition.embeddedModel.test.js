@@ -29,7 +29,7 @@ describe('Open Position Model', () => {
     // prettier-ignore
     beforeEach(() => EmployerModel.create({
       companyName: 'We hire talent inc',
-      companyEmail: 'hiring-manager@email.com',
+      email: 'company@email.com',
       password: 'Super4duper$sercret',
       openPositions: [
         {
@@ -44,15 +44,17 @@ describe('Open Position Model', () => {
     afterEach(() => EmployerModel.deleteMany({}).catch(e => console.log("ERROR: Couldn't delete data form DB.", e)));
 
     test('should create the open position document', async () => {
-      const doc = await EmployerModel.findOne({ companyEmail: 'hiring-manager@email.com' });
+      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
+
       expect(doc).toHaveProperty('openPositions');
     });
 
     test('should have paths with key-values pairs', async () => {
-      const doc = await EmployerModel.findOne({ companyEmail: 'hiring-manager@email.com' });
+      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
       const { openPositions } = doc;
-      expect(openPositions[0].jobTitle).toMatch('Super Developer');
-      expect(openPositions[0].projectName).toMatch('Super project');
+
+      expect(openPositions[0].jobTitle).toBe('Super Developer');
+      expect(openPositions[0].projectName).toBe('Super project');
     });
   });
 });
