@@ -33,10 +33,7 @@ const seekerSchema = new Schema({
     unique: true,
     required: [true, 'Email address is required'],
     validate: {
-      // prettier-ignore
-      validator: (val) => {
-        return /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(val);
-      },
+      validator: val => /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(val),
       message: '{VALUE} is not a valid email address',
     },
   },
