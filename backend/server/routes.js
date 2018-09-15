@@ -13,7 +13,7 @@ module.exports = (server) => {
   });
 
   // In production build all other requests return the frontend client
-  if (process.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'production') {
     server.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, '../../frontend/lambda-in/build', 'index.html'));
     });
