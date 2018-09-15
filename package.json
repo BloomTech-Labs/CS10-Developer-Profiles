@@ -5,7 +5,7 @@
   "scripts": {
     "server": "cd ./backend && yarn install && yarn start",
     "client": "cd ./frontend/lambda-in && yarn install && yarn build",
-    "heroku-postbuild": "ls -a"
+    "heroku-postbuild": "yarn server && yarn client"
   },
   "cacheDirectories": [
     "backend/node_modules",
