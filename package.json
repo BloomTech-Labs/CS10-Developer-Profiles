@@ -1,0 +1,26 @@
+{
+  "name": "cs10-developer-profiles",
+  "version": "1.0.0",
+  "description": "CS10 Developer Profiles",
+  "scripts": {
+    "heroku-prebuild": "cd ./backend/ && yarn install",
+    "heroku-postbuild": "cd ./frontend/lambda-in/ && yarn install && yarn build"
+  },
+  "cacheDirectories": [
+    "./backend/node_modules",
+    "./frontend/lambda-in/node_modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lambda-School-Labs/CS10-Developer-Profiles.git"
+  },
+  "author": "Danny Vail, Jean Surkouf Ariza Varela, Nate Flory, Samar Vir, Il Ho Kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/issues"
+  },
+  "homepage": "https://github.com/Lambda-School-Labs/CS10-Developer-Profiles#readme",
+  "engines": {
+    "node": "10.1.0"
+  }
+}
