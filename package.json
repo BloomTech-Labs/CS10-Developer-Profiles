@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "CS10 Developer Profiles",
   "scripts": {
-    "server": "cd backend/ && yarn install",
+    "server": "cd backend/ && yarn start",
     "client": "cd frontend/lambda-in/ && yarn install && yarn build",
-    "heroku-postbuild": "\"yarn run server\" \"npm run client\""
+    "heroku-postbuild": "\"yarn run server\" \"yarn run client\""
   },
   "cacheDirectories": [
     "backend/node_modules",
@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/Lambda-School-Labs/CS10-Developer-Profiles#readme",
   "engines": {
-    "node": "10.1.0",
     "yarn": "1.9.4"
   }
 }
