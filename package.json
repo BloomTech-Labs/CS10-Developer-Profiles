@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "CS10 Developer Profiles",
   "scripts": {
-    "server": "cd ./backend && yarn install && yarn start",
+    "server": "cd ./backend && yarn install",
     "client": "cd ./frontend/lambda-in && yarn install && yarn build",
     "heroku-postbuild": "yarn server && yarn client"
   },
