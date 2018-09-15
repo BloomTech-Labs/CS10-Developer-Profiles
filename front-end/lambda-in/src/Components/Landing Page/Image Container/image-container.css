@@ -1,0 +1,194 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.image-container {
+    display: block;
+    height: 500px;
+    background-image: url('http://localhost:3000/landingimage.png');
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+}
+
+.cta-1 {
+    position: absolute;
+    top: 150px;
+    left: 400px;
+    color: #ffffff;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 30px;
+}
+
+.party {
+    color: #f50057;
+}
+
+.search {
+    position: absolute;
+    top: 250px;
+    left: 450px;
+}
+
+.search-button {
+    position: absolute;
+    top: 242px;
+    left: 640px;
+    background-color: f50057;
+}
+
+.create-text {
+    position: absolute;
+    top: 290px;
+    left: 450px;
+    color: #ffffff;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.employer-text {
+    position: absolute;
+    top: 320px;
+    left: 480px;
+    color: #ffffff;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 20px;
+}
