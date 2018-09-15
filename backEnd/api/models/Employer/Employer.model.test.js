@@ -31,7 +31,7 @@ describe('*** Employer Model ***', () => {
       // Create a new Employer document
       await EmployerModel.create({
         companyName: 'The company inc',
-        companyEmail: 'company@email.com',
+        email: 'company@email.com',
         password: 'Super4duper$sercret',
       });
     });
@@ -43,17 +43,17 @@ describe('*** Employer Model ***', () => {
     });
 
     test('companyName is in DB', async () => {
-      const doc = await EmployerModel.findOne({ companyEmail: 'company@email.com' });
+      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
       expect(doc.companyName).toMatch('The company inc');
     });
 
-    test('companyEmail is in DB', async () => {
-      const doc = await EmployerModel.findOne({ companyEmail: 'company@email.com' });
-      expect(doc.companyEmail).toMatch('company@email.com');
+    test('email is in DB', async () => {
+      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
+      expect(doc.email).toMatch('company@email.com');
     });
 
     test('password is in DB', async () => {
-      const doc = await EmployerModel.findOne({ companyEmail: 'company@email.com' });
+      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
       expect(doc.password).toBeTruthy();
     });
   });
@@ -69,31 +69,49 @@ describe('*** Employer Model ***', () => {
     test('should require companyName', () => {
       const newEmployer = EmployerModel.create({
         // companyName: 'The company inc',
-        companyEmail: 'company@email.com',
-        password: 'super4duper-sercret',
+        email: 'company@email.com',
+        password: '12345678Aa$',
       });
 
-      return newEmployer.catch(e => expect(e.name).toEqual('ValidationError'));
+      // prettier-ignore
+      return newEmployer.catch((e) => {
+        expect(e.name).toEqual('ValidationError');
+        expect(e.errors).toHaveProperty('companyName');
+        expect(e.errors).not.toHaveProperty('email');
+        expect(e.errors).not.toHaveProperty('password');
+      });
     });
 
-    test('should require companyEmail', () => {
+    test('should require email', () => {
       const newEmployer = EmployerModel.create({
         companyName: 'The company inc',
-        // companyEmail: 'company@email.com',
-        password: 'super4duper-sercret',
+        // email: 'company@email.com',
+        password: '12345678Aa$',
       });
 
-      return newEmployer.catch(e => expect(e.name).toEqual('ValidationError'));
+      // prettier-ignore
+      return newEmployer.catch((e) => {
+        expect(e.name).toEqual('ValidationError');
+        expect(e.errors).not.toHaveProperty('companyName');
+        expect(e.errors).toHaveProperty('email');
+        expect(e.errors).not.toHaveProperty('password');
+      });
     });
 
     test('should require password', () => {
       const newEmployer = EmployerModel.create({
         companyName: 'The company inc',
-        companyEmail: 'company@email.com',
-        // password: 'super4duper-sercret',
+        email: 'company@email.com',
+        // password: '12345678Aa$',
       });
 
-      return newEmployer.catch(e => expect(e.name).toEqual('ValidationError'));
+      // prettier-ignore
+      return newEmployer.catch((e) => {
+        expect(e.name).toEqual('ValidationError');
+        expect(e.errors).not.toHaveProperty('companyName');
+        expect(e.errors).not.toHaveProperty('email');
+        expect(e.errors).toHaveProperty('password');
+      });
     });
   });
 
@@ -107,7 +125,7 @@ describe('*** Employer Model ***', () => {
       // Create a new Employer document
       await EmployerModel.create({
         companyName: 'The company inc',
-        companyEmail: 'company@email.com',
+        email: 'company@email.com',
         password: 'Super4duper$sercret',
       });
     });
@@ -119,7 +137,7 @@ describe('*** Employer Model ***', () => {
     });
 
     test('password is hashed', async () => {
-      const doc = await EmployerModel.findOne({ companyEmail: 'company@email.com' });
+      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
       // Hashed passwords must have a length === 60
       expect(doc.password).toHaveLength(60);
     });
