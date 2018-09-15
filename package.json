@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "CS10 Developer Profiles",
   "scripts": {
-    "heroku-prebuild": "cd ./backend/ && yarn install",
-    "heroku-postbuild": "cd ./frontend/lambda-in/ && yarn install && yarn build"
+    "heroku-prebuild": "cd backend/ && yarn install",
+    "heroku-postbuild": "cd frontend/lambda-in/ && yarn install && yarn build"
   },
   "cacheDirectories": [
-    "./backend/node_modules",
-    "./frontend/lambda-in/node_modules"
+    "backend/node_modules",
+    "frontend/lambda-in/node_modules"
   ],
   "repository": {
     "type": "git",
