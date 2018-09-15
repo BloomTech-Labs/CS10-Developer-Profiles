@@ -19,7 +19,7 @@ const styles = theme => ({
 export default class EmployerSignUp extends Component {
   state = {
     companyName: "Star Fleet",
-    companyEmail: "starfleetcommand@starfleet.ufp",
+    email: "starfleetcommand@starfleet.ufp",
 
     hiringManagerFirstName: "Alynna",
     hiringManagerLastName: "Nechayev",
