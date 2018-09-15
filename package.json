@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Lambda-School-Labs/CS10-Developer-Profiles#readme",
   "engines": {
+    "node": "10.1.0",
     "yarn": "1.9.4"
   }
 }
