@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const EmployerModel = require('./Employer.model');
@@ -116,7 +117,7 @@ describe('Employer Model', () => {
   });
 
   // TEST THAT THE PASSWORD IS HASHED. THAT REQUIRES A PRE-SAVE HOOK TO BE CALLED
-  describe('*** Use of the pre-save hook ***', () => {
+  describe('*** Methods and pre-save hook ***', () => {
     beforeAll(async () => {
       // Clean DB
       // eslint-disable-next-line no-console
@@ -136,10 +137,33 @@ describe('Employer Model', () => {
       await EmployerModel.deleteMany({}).catch(e => console.log("ERROR: Couldn't delete data form DB.", e));
     });
 
-    test('should be the password hashed', async () => {
+    describe('== isValidPassword Method ==', () => {
+      test('should return `true` is password is valid', async () => {
+        const doc = await EmployerModel.findOne({ email: 'company@email.com' });
+        const isValidPassword = await doc.isValidPassword('Super4duper$sercret', doc.password);
+        expect(isValidPassword).toBeTruthy();
+      });
+      test('should return `false` is password is invalid', async () => {
+        const doc = await EmployerModel.findOne({ email: 'company@email.com' });
+        const isValidPassword = await doc.isValidPassword('wrong-password-Super4duper$sercret', doc.password);
+        expect(isValidPassword).toBeFalsy();
+      });
+    });
+
+    describe('== Pre-save hook ==', async () => {
       const doc = await EmployerModel.findOne({ email: 'company@email.com' });
-      // Hashed passwords must have a length === 60
-      expect(doc.password).toHaveLength(60);
+      test('should be the password hashed', () => {
+        expect(doc.password).toHaveLength(60);
+      });
+
+      test('should match test-hashed-password with the hashed password in DB', () => {
+        let testHashedPassword;
+        bcrypt.hash('Super4duper$sercret', 12, (err, hash) => {
+          testHashedPassword = hash;
+        });
+
+        expect(doc.password).toMatch(new RegExp(testHashedPassword));
+      });
     });
   });
 });
