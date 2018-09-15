@@ -8,8 +8,8 @@
     "heroku-postbuild": "yarn server && yarn client"
   },
   "cacheDirectories": [
-    "backend/node_modules",
-    "frontend/lambda-in/node_modules"
+    "./backend/node_modules",
+    "./frontend/lambda-in/node_modules"
   ],
   "repository": {
     "type": "git",
