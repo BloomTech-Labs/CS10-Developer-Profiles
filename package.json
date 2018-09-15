@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "CS10 Developer Profiles",
   "scripts": {
-    "heroku-prebuild": "cd backend/ && yarn install",
-    "heroku-postbuild": "cd frontend/lambda-in/ && yarn install && yarn build"
+    "server": "cd backend/ && yarn install",
+    "client": "cd frontend/lambda-in/ && yarn install && yarn build",
+    "heroku-postbuild": "\"yarn run server\" \"npm run client\""
   },
   "cacheDirectories": [
     "backend/node_modules",
