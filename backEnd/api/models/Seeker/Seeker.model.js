@@ -34,15 +34,13 @@ const seekerSchema = new Schema({
     unique: true,
     required: [true, 'Email address is required'],
     validate: {
-      validator: val => /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(
-        val,
-      ),
+      validator: val => /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(val),
       message: '{VALUE} is not a valid email address',
     },
   },
   desiredTitle: {
     type: String,
-    required: [true, 'Desired title is required'],
+    // required: [true, 'Desired title is required'],
   },
   currentLocation: {
     type: String,
