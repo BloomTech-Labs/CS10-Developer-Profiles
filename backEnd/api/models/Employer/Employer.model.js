@@ -11,15 +11,13 @@ const employerSchema = new Schema({
     required: [true, 'Company name is required.'],
     unique: true,
   },
-
-  companyEmail: {
+  // Company email
+  email: {
     type: String,
     unique: true,
     required: [true, 'A main email for this account is required'],
     validate: {
-      validator: val => /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(
-        val,
-      ),
+      validator: val => /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(val),
       message: '{VALUE} is not a valid email address',
     },
   },

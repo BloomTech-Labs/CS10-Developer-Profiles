@@ -18,8 +18,7 @@ class NavBar extends React.Component {
             <Link to="/">
               <Button>Browse</Button>
             </Link>
-            {/* <Link to="/profile"> */}
-            <Link to="/">
+            <Link to="/dev-profiles">
               <Button>profile</Button>
             </Link>
 
