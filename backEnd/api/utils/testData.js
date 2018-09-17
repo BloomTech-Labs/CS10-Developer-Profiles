@@ -4,6 +4,15 @@ module.exports = {
     email: 'company@email.com',
     password: 'Super4duper$sercret',
   },
+  testHiringManager: {
+    hiringManagerFirstName: 'Manager name',
+    hiringManagerEmail: 'hiring-manager@email.com',
+    hiringManagerLastName: 'Manager last name',
+  },
+  testOpenPositions: {
+    jobTitle: 'Super Developer',
+    projectName: 'Super project',
+  },
   testSeeker: {
     firstName: 'John',
     lastName: 'Smith',
