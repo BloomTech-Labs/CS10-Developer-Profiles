@@ -1276,9 +1276,9 @@ expect@^23.6.0:
     jest-message-util "^23.4.0"
     jest-regex-util "^23.3.0"
 
-express-router-factory@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/express-router-factory/-/express-router-factory-1.0.3.tgz#a7db03eed9a8cd7e5552ae01d2ea054e77f50ccb"
+express-router-factory@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/express-router-factory/-/express-router-factory-1.1.0.tgz#e005247c2857c14095b95bc908e0fdd5cd86a3c3"
 
 express@^4.16.3:
   version "4.16.3"
