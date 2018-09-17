@@ -1,4 +1,9 @@
 module.exports = {
+  testEmployer: {
+    companyName: 'The company inc',
+    email: 'company@email.com',
+    password: 'Super4duper$sercret',
+  },
   testSeeker: {
     firstName: 'John',
     lastName: 'Smith',

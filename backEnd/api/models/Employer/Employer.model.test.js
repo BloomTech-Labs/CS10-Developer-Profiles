@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const EmployerModel = require('./Employer.model');
+const { testEmployer } = require('../../utils/testData');
 
 const { MONGODB_URI_TEST } = process.env;
 
@@ -23,39 +24,13 @@ describe('Employer Model', () => {
 
   // TESTING MONOG DB
   describe('*** All created fields exist in the DB ***', () => {
-    // Create a new Employer
-    beforeAll(async () => {
-      // Clean DB
-      // eslint-disable-next-line no-console
-      await EmployerModel.deleteMany({}).catch(e => console.log("ERROR: Couldn't delete data form DB.", e));
+    test('should exist companyName, email and password in the Mongoose document', async () => {
+      let employer = await new EmployerModel(testEmployer);
 
-      // Create a new Employer document
-      await EmployerModel.create({
-        companyName: 'The company inc',
-        email: 'company@email.com',
-        password: 'Super4duper$sercret',
-      });
-    });
-
-    // Delete all entries in DB
-    afterAll(async () => {
-      // eslint-disable-next-line no-console
-      await EmployerModel.deleteMany({}).catch(e => console.log("ERROR: Couldn't delete data form DB.", e));
-    });
-
-    test('should exist companyName in DB', async () => {
-      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
-      expect(doc.companyName).toMatch('The company inc');
-    });
-
-    test('should exist email in DB', async () => {
-      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
-      expect(doc.email).toMatch('company@email.com');
-    });
-
-    test('should exist password in DB', async () => {
-      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
-      expect(doc.password).toBeTruthy();
+      expect(employer.companyName).toBe('The company inc');
+      expect(employer.email).toBe('company@email.com');
+      expect(employer.password).toBe('Super4duper$sercret');
+      employer = null;
     });
   });
 
@@ -67,12 +42,12 @@ describe('Employer Model', () => {
       await EmployerModel.deleteMany({}).catch(e => console.log("ERROR: Couldn't delete data form DB.", e));
     });
 
-    test('should require companyName', () => {
-      const newEmployer = EmployerModel.create({
-        // companyName: 'The company inc',
-        email: 'company@email.com',
-        password: '12345678Aa$',
-      });
+    // prettier-ignore
+    test('should require companyName', (done) => {
+      const badData = { ...testEmployer };
+      delete badData.companyName;
+
+      const newEmployer = EmployerModel.create(badData);
 
       // prettier-ignore
       return newEmployer.catch((e) => {
@@ -80,15 +55,16 @@ describe('Employer Model', () => {
         expect(e.errors).toHaveProperty('companyName');
         expect(e.errors).not.toHaveProperty('email');
         expect(e.errors).not.toHaveProperty('password');
+        done();
       });
     });
 
-    test('should require email', () => {
-      const newEmployer = EmployerModel.create({
-        companyName: 'The company inc',
-        // email: 'company@email.com',
-        password: '12345678Aa$',
-      });
+    // prettier-ignore
+    test('should require email', (done) => {
+      const badData = { ...testEmployer };
+      delete badData.email;
+
+      const newEmployer = EmployerModel.create(badData);
 
       // prettier-ignore
       return newEmployer.catch((e) => {
@@ -96,15 +72,16 @@ describe('Employer Model', () => {
         expect(e.errors).not.toHaveProperty('companyName');
         expect(e.errors).toHaveProperty('email');
         expect(e.errors).not.toHaveProperty('password');
+        done();
       });
     });
 
-    test('should require password', () => {
-      const newEmployer = EmployerModel.create({
-        companyName: 'The company inc',
-        email: 'company@email.com',
-        // password: '12345678Aa$',
-      });
+    // prettier-ignore
+    test('should require password', (done) => {
+      const badData = { ...testEmployer };
+      delete badData.password;
+
+      const newEmployer = EmployerModel.create(badData);
 
       // prettier-ignore
       return newEmployer.catch((e) => {
@@ -112,6 +89,7 @@ describe('Employer Model', () => {
         expect(e.errors).not.toHaveProperty('companyName');
         expect(e.errors).not.toHaveProperty('email');
         expect(e.errors).toHaveProperty('password');
+        done();
       });
     });
   });
@@ -141,22 +119,23 @@ describe('Employer Model', () => {
       test('should return `true` is password is valid', async () => {
         const doc = await EmployerModel.findOne({ email: 'company@email.com' });
         const isValidPassword = await doc.isValidPassword('Super4duper$sercret', doc.password);
+        console.log({ isValidPassword });
         expect(isValidPassword).toBeTruthy();
-      });
-      test('should return `false` is password is invalid', async () => {
-        const doc = await EmployerModel.findOne({ email: 'company@email.com' });
-        const isValidPassword = await doc.isValidPassword('wrong-password-Super4duper$sercret', doc.password);
-        expect(isValidPassword).toBeFalsy();
+
+        const isNotValidPassword = await doc.isValidPassword('wrong-password-Super4duper$sercret', doc.password);
+        console.log({ isNotValidPassword });
+        expect(isNotValidPassword).toBeFalsy();
       });
     });
 
-    describe('== Pre-save hook ==', async () => {
-      const doc = await EmployerModel.findOne({ email: 'company@email.com' });
-      test('should be the password hashed', () => {
+    describe('== Pre-save hook ==', () => {
+      test('should be the password hashed', async () => {
+        const doc = await EmployerModel.findOne({ email: 'company@email.com' });
         expect(doc.password).toHaveLength(60);
       });
 
-      test('should match test-hashed-password with the hashed password in DB', () => {
+      test('should match test-hashed-password with the hashed password in DB', async () => {
+        const doc = await EmployerModel.findOne({ email: 'company@email.com' });
         let testHashedPassword;
         bcrypt.hash('Super4duper$sercret', 12, (err, hash) => {
           testHashedPassword = hash;
