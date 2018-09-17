@@ -1,10 +1,11 @@
 const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
 
 module.exports = {
   server(server) {
     server.use(express.json());
-    /*
-      ADD ADDITIONAL EXPRESS MIDDLEWARE
-    */
+    server.use(helmet());
+    server.use(cors({}));
   },
 };

@@ -4,9 +4,12 @@
   "description": "Node.js/MongoDB Backend for Developer Profiles",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index",
+    "client": "cd ../front-end/lambda-in && yarn start",
+    "dev": "cross-env NODE_ENV=development concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
+    "server": "cross-env NODE_ENV=development nodemon index",
     "start": "node index",
-    "test": "cross-env NODE_ENV=test jest --watch --verbose"
+    "test": "cross-env NODE_ENV=test jest --watch --verbose",
+    "test-console-log": "cross-env NODE_ENV=test TERM=dumb jest --watch --verbose"
   },
   "jest": {
     "testEnvironment": "node"
@@ -24,13 +27,17 @@
   "dependencies": {
     "bcrypt": "^3.0.0",
     "cross-env": "^5.2.0",
+    "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "express-router-factory": "^1.0.0",
+    "express-router-factory": "^1.0.3",
+    "helmet": "^3.13.0",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.14"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",

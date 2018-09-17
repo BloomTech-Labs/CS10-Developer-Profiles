@@ -137,7 +137,6 @@ table {
 .image-container {
     display: block;
     height: 500px;
-    background-image: url('http://localhost:3000/landingimage.png');
     background-position: center;
     /* Center the image */
     background-repeat: no-repeat;
