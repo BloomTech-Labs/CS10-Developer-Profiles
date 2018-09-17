@@ -71,4 +71,44 @@ lastly, install dependencies and run the server:
 
 # Code Style
 
-The backend is folowing the Aribnb base code style.
+The backend is following the Airbnb base code style.
+
+# Available Scripts
+
+Change your working directory to the `backend` root folder:
+
+```
+  $ cd backend/
+```
+
+From here you can run:
+
+### `yarn client`
+
+Runs client in development mode.
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### `yarn dev`
+
+Runs full application, client and server, in development mode.
+
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- API can be accessed at [http://localhost:5000/api/](http://localhost:5000/api/). See API documentation for more information.
+
+### `yarn server`
+
+Runs the server in development mode. Nodemon will cause the page to reload if you make edits.
+- API can be accessed at [http://localhost:5000/api/](http://localhost:5000/api/). See API documentation for more information.
+
+### `yarn start`
+
+Runs the server.
+- API can be accessed at [http://localhost:5000/api/](http://localhost:5000/api/). See API documentation for more information.
+
+### `yarn test`
+
+Launches Jest in interactive watch mode.
+
+### `yarn test-console-log`
+
+Launches Jest in interactive watch mode but prevents Jest from overwritting console logs.

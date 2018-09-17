@@ -6,7 +6,10 @@ const { server } = require('./server/server');
 const { PORT, MONGODB_URI } = process.env;
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(
+    MONGODB_URI,
+    { useNewUrlParser: true },
+  )
   .then(() => {
     // eslint-disable-next-line no-console
     console.log('\n*** CONNECTED to database ***\n');
