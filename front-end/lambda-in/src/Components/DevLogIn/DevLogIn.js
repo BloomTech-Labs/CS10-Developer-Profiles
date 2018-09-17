@@ -1,81 +1,100 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import NavBar from '../../Components/Navbar/navbar';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
-import '../DevLogIn/DevLogin.css'
+import axios from 'axios';
+
+import '../DevLogIn/DevLogin.css';
 
 export default class DevLogin extends Component {
-    state = {
-        email: 'abc@xyz.com',
-        confirmPassword: ''
-      };
-      handleChange = name => event => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      isSignedIn: false,
+    };
+  }
+
+  handleLogin = event => {
+    event.preventDefault();
+
+    axios
+      .post(`${process.env.REACT_APP_API}login/seekers`, {
+        email: this.state.email,
+        password: this.state.password,
+      })
+      .then(response => {
+        localStorage.setItem('token', response.data.jwt);
         this.setState({
-          [name]: event.target.value,
+          isSignedIn: true,
         });
-      };
-      render() {
-        return (
-          <div class="App">
-             <Paper>
-              <div class="navBar">
-                <div class="leftNavBar">
-                  <Button>find Devlopers</Button>
-                  <Button>Browse</Button>
-                  <Button>profile</Button>
-                </div> 
-                <div class="rightNavBar">
-                  <Button>Billing</Button>
-                  <Button>Setting</Button>
-                </div> 
-              </div>
-            </Paper>
-    
-            <div class="headline">
-                <Typography variant="headline" component="h3">
-                  Fill-N-Hired
-                </Typography>
-                <Typography component="p">
-                  Our match making starts from here. Fill the most sophisticated resume form and get hired confidently.
-                </Typography>
-               
+        console.log(localStorage.getItem('token'));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+    this.setState({
+      username: '',
+      password: '',
+    });
+  };
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <NavBar />
+
+        <div className="headline">
+          <Typography variant="headline" component="h3">
+            Fill-N-Hired
+          </Typography>
+          <Typography component="p">
+            Our match making starts from here. Fill the most sophisticated resume form and get hired confidently.
+          </Typography>
+        </div>
+
+        <div className="formConatiner">
+          <Paper>
+            <div className="form2">
+              {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
+              <Typography variant="headline" component="h3">
+                Log In
+              </Typography>
+              <TextField
+                id="email"
+                label="Email"
+                value={this.state.email}
+                onChange={this.handleChange('email')}
+                margin="normal"
+              />
+
+              <TextField
+                id="password"
+                type="password"
+                label="password"
+                value={this.state.password}
+                onChange={this.handleChange('password')}
+                margin="normal"
+              />
+
+              <Button variant="contained" color="primary" onClick={this.handleLogin}>
+                Submit
+              </Button>
             </div>
-            
-            <div class="formConatiner">
-            <Paper >
-              <div class="form2">
-                
-                     {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
-                <Typography variant="headline" component="h3">
-                  Log In
-                </Typography>
-                <TextField
-                  id="email"
-                  label="Email"
-                  value={this.state.email}
-                  onChange={this.handleChange('email')}
-                  margin="normal"
-                />
-    
-                <TextField
-                  id="confirmPassword"
-                  type="password"
-                  label="Confirm Password"
-                  value={this.state.confirmPassword}
-                  onChange={this.handleChange('confirmPassword')}
-                  margin="normal"
-                />
-    
-    
-                <Button variant="contained" color="primary">Submit</Button>
-                
-              </div>
-              </Paper>
-            </div>
-            
-          </div>
-        );
-    }
+          </Paper>
+        </div>
+      </div>
+    );
+  }
 }
