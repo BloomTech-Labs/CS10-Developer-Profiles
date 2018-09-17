@@ -26,12 +26,8 @@
   "homepage": "https://github.com/Lambda-School-Labs/CS10-Developer-Profiles#readme",
   "dependencies": {
     "bcrypt": "^3.0.0",
-<<<<<<< HEAD
     "cross-env": "^5.2.0",
-||||||| merged common ancestors
-=======
     "cors": "^2.8.4",
->>>>>>> 81d1b4fd39d7d1d01d5240a26d8f68cbb5837f49
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-router-factory": "^1.0.3",
