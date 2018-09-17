@@ -29,7 +29,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/dev-profiles" component={DevProfile} />
-            <Route path="/dev-sigup" component={DevSignUp} />
+            <Route path="/dev-signup" component={DevSignUp} />
             <Route path="/browse-developers" component={Browse} />
             <Route path="/billing" component={Billing} />
 
