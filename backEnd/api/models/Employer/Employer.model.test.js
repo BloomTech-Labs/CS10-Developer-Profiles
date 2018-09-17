@@ -24,13 +24,12 @@ describe('Employer Model', () => {
 
   // TESTING MONOG DB
   describe('*** All created fields exist in the DB ***', () => {
-    test('should exist companyName, email and password in the Mongoose document', async () => {
-      let employer = await new EmployerModel(testEmployer);
+    test('should exist companyName, email and password in the Mongoose document', () => {
+      const employer = new EmployerModel(testEmployer);
 
       expect(employer.companyName).toBe('The company inc');
       expect(employer.email).toBe('company@email.com');
       expect(employer.password).toBe('Super4duper$sercret');
-      employer = null;
     });
   });
 
@@ -102,11 +101,7 @@ describe('Employer Model', () => {
       await EmployerModel.deleteMany({}).catch(e => console.log("ERROR: Couldn't delete data form DB.", e));
 
       // Create a new Employer document
-      await EmployerModel.create({
-        companyName: 'The company inc',
-        email: 'company@email.com',
-        password: 'Super4duper$sercret',
-      });
+      await EmployerModel.create(testEmployer);
     });
 
     // Delete all entries in DB
@@ -118,12 +113,11 @@ describe('Employer Model', () => {
     describe('== isValidPassword Method ==', () => {
       test('should return `true` is password is valid', async () => {
         const doc = await EmployerModel.findOne({ email: 'company@email.com' });
+
         const isValidPassword = await doc.isValidPassword('Super4duper$sercret', doc.password);
-        console.log({ isValidPassword });
         expect(isValidPassword).toBeTruthy();
 
         const isNotValidPassword = await doc.isValidPassword('wrong-password-Super4duper$sercret', doc.password);
-        console.log({ isNotValidPassword });
         expect(isNotValidPassword).toBeFalsy();
       });
     });
