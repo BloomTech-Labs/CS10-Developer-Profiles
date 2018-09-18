@@ -1,13 +1,23 @@
 const express = require('express');
-const path = require('path');
+const helmet = require('helmet');
+const { userHasToken } = require('../api/utils/authUtils');
 
 module.exports = {
-  server(server) {
+  globals(server) {
     server.use(express.json());
+    server.use(helmet());
 
     // In production build, serve frontend build as static files
     if (process.env.NODE_ENV === 'production') {
-      server.use(express.static(path.resolve(__dirname, '../../frontend/lambda-in/build')));
+      server.use(
+        express.static(
+          path.resolve(__dirname, '../../frontend/lambda-in/build')
+        )
+      );
     }
+  },
+  auth(server) {
+    // Validate if client has a valid token
+    server.use(userHasToken);
   },
 };

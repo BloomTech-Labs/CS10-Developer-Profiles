@@ -15,7 +15,7 @@ class NavBar extends React.Component {
               <Button>find Devlopers</Button>
             </Link>
             {/* <Link to="/browse-developers"> */}
-            <Link to="/">
+            <Link to="/dev-list">
               <Button>Browse</Button>
             </Link>
             <Link to="/dev-profiles">
@@ -30,7 +30,7 @@ class NavBar extends React.Component {
           </div>
           <div className="rightNavBar">
             {/* <Link to="/billing"> */}
-            <Link to="/">
+            <Link to="/billing">
               <Button>Billing</Button>
             </Link>
             <Link to="/dev-login">

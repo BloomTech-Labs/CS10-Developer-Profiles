@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 import '../DevSignUp/DevSignUp.css';
@@ -72,20 +72,20 @@ export default class DevSignUp extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
-
-        <div className="headline">
-          <Typography variant="headline" component="h3">
-            Fill-N-Hired
-          </Typography>
-          <Typography component="p">
-            Our match making starts from here. Fill the most sophisticated resume form and get hired confidently.
-          </Typography>
-        </div>
-
         <div className="formConatiner">
-          <Paper>
+          <Paper className="paper">
+          
             <div className="form2">
+              <div>
+              <Typography variant="display1" gutterBottom align="center">
+                 Lambda Network
+               </Typography>
+                
+               <Typography variant="headline" gutterBottom align="center">
+                  Sign Up
+                </Typography>
+                
+              </div>
               {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
               <TextField
                 id="firstName"
@@ -176,12 +176,21 @@ export default class DevSignUp extends Component {
                 onChange={this.handleChange('confirmPassword')}
                 margin="normal"
               /> */}
-
+              <br />
               <Button variant="contained" color="primary" onClick={this.handNewUser}>
                 Submit
               </Button>
             </div>
+            <div className="login">
+              <Link to="/dev-login">
+                <Typography variant="caption" gutterBottom align="center">
+                    already have an account? Login here!
+                </Typography>
+              </Link>
+            </div>
           </Paper>
+
+         
         </div>
       </div>
     );

@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 import '../DevLogIn/DevLogin.css';
@@ -15,7 +15,7 @@ export default class DevLogin extends Component {
     this.state = {
       email: '',
       password: '',
-      isSignedIn: false
+      isSignedIn: true
     };
   }
 
@@ -53,26 +53,21 @@ export default class DevLogin extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
-
-        <div className="headline">
-          <Typography variant="headline" component="h3">
-            Fill-N-Hired
-          </Typography>
-          <Typography component="p">
-            Our match making starts from here. Fill the most sophisticated
-            resume form and get hired confidently.
-          </Typography>
-        </div>
-
         <div className="formConatiner">
-          <Paper>
+          <Paper className="paper">
+          
             <div className="form2">
-              {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
-              <Typography variant="headline" component="h3">
-                Log In
-              </Typography>
-              <TextField
+              <div>
+              <Typography variant="display1" gutterBottom align="center">
+                 Lambda Network
+               </Typography>
+                
+               <Typography variant="headline" gutterBottom align="center">
+                  Login
+                </Typography>
+                
+              </div>
+                 <TextField
                 id="email"
                 label="Email"
                 value={this.state.email}
@@ -89,16 +84,28 @@ export default class DevLogin extends Component {
                 margin="normal"
               />
 
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={this.handleLogin}
-              >
+              <br />
+              <Button variant="contained" color="primary" onClick={this.handleLogin}>
                 Submit
               </Button>
+             
+              
+                
+            </div>
+
+            <div className="login">
+              <Link to="/dev-signup">
+                <Typography variant="caption" gutterBottom align="center">
+                    Not Registered? Signup here!
+                </Typography>
+              </Link>
+              <br />
+              <Typography variant="caption" gutterBottom align="center">
+                   forgot password?
+              </Typography>
             </div>
           </Paper>
-        </div>
+        </div>    
       </div>
     );
   }

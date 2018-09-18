@@ -1,0 +1,7 @@
+.checkout {
+    display: flex;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
