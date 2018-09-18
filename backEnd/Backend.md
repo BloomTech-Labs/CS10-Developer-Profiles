@@ -123,3 +123,8 @@ Launches Jest in interactive watch mode but prevents Jest from overwritting cons
 Is only accesible for registerd/logged-in clients.
 
 > The Auth workflow is done with JWT
+
+### To access private endpoints
+
+> 1. Remember to add the Authorization header to your HTTP requests.
+> 2. `Authorization`'s value == JWT
