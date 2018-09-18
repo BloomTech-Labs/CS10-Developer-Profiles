@@ -1,9 +1,10 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-
+import landingImage from '../../../static/images/landingImage.png';
 import './image-container.css';
+
 const backgroundImage = {
-  backgroundImage: `url('${process.env.REACT_APP_URL}landingimage.png')`,
+  backgroundImage: `url(${landingImage})`,
 };
 
 class ImageContainer extends React.Component {
@@ -24,7 +25,8 @@ class ImageContainer extends React.Component {
           </Button>
         </span>
         <p className="create-text">
-          <span className="bold">Create your resume</span> - Try our Fill-N-Hired!® resume form
+          <span className="bold">Create your resume</span> - Try our
+          Fill-N-Hired!® resume form
         </p>
         <p className="employer-text">
           <span className="bold">Employers:</span> Check the new payment method
