@@ -1,7 +1,5 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
-const helmet = require('helmet');
 
 module.exports = {
   server(server) {
@@ -10,6 +8,6 @@ module.exports = {
     // In production build, serve frontend build as static files
     if (process.env.NODE_ENV === 'production') {
       server.use(express.static(path.resolve(__dirname, '../../frontend/lambda-in/build')));
-    };
+    }
   },
 };
