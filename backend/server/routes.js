@@ -14,4 +14,8 @@ module.exports = (server) => {
     res.set('Content-Type', 'application/json');
     res.send('{"message":"Developer Profiles API"}');
   });
+
+  server.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../frontend/lambda-in/build', 'index.html'));
+  });
 };
