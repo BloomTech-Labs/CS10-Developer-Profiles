@@ -23,8 +23,8 @@ class App extends Component {
             <Route exact path="/" component={LandingPage} />
             <Route path="/dev-profiles" component={DevProfile} />
             <Route path="/dev-sigup" component={DevSignUp} />
-            {/* <Route path="/browse-developers" component={Browse} />
-            <Route path="/billing" component={Billing} /> */}
+            <Route path="/browse-developers" component={Browse} />
+            <Route path="/billing" component={Billing} />
             <Route path="/dev-list" component={DevList} />
             {/* For testing purpose */}
             <Route path="/dev-signup" component={DevSignUp} />
