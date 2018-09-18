@@ -15,7 +15,7 @@ export default class DevLogin extends Component {
     this.state = {
       email: '',
       password: '',
-      isSignedIn: false,
+      isSignedIn: false
     };
   }
 
@@ -23,14 +23,14 @@ export default class DevLogin extends Component {
     event.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_API}login/seekers`, {
+      .post('/api/login/seekers', {
         email: this.state.email,
-        password: this.state.password,
+        password: this.state.password
       })
       .then(response => {
         localStorage.setItem('token', response.data.jwt);
         this.setState({
-          isSignedIn: true,
+          isSignedIn: true
         });
         console.log(localStorage.getItem('token'));
       })
@@ -40,13 +40,13 @@ export default class DevLogin extends Component {
 
     this.setState({
       username: '',
-      password: '',
+      password: ''
     });
   };
 
   handleChange = name => event => {
     this.setState({
-      [name]: event.target.value,
+      [name]: event.target.value
     });
   };
 
@@ -60,7 +60,8 @@ export default class DevLogin extends Component {
             Fill-N-Hired
           </Typography>
           <Typography component="p">
-            Our match making starts from here. Fill the most sophisticated resume form and get hired confidently.
+            Our match making starts from here. Fill the most sophisticated
+            resume form and get hired confidently.
           </Typography>
         </div>
 
@@ -88,7 +89,11 @@ export default class DevLogin extends Component {
                 margin="normal"
               />
 
-              <Button variant="contained" color="primary" onClick={this.handleLogin}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.handleLogin}
+              >
                 Submit
               </Button>
             </div>
