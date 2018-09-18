@@ -11,13 +11,13 @@ const router = express.Router();
  */
 const seekersRF = new RouterFactory(router, Seekers);
 // Currying Seekers model into 'login(model, req, res)' middleware
-seekersRF.POST('/seekers', 'auth', login.bind(this, Seekers));
+seekersRF.POST('/seekers', 'login', login.bind(this, Seekers));
 
 /**
  * Employers: login
  */
 const employersRF = new RouterFactory(router, Employers);
 // Currying Employers model into 'login(model, req, res)' middleware
-employersRF.POST('/employers', 'auth', login.bind(this, Employers));
+employersRF.POST('/employers', 'login', login.bind(this, Employers));
 
 module.exports = router;
