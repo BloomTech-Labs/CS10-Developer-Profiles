@@ -1,9 +1,28 @@
 const server = require('express')();
-const setupMiddleware = require('./middleware').server;
-const setupRoutes = require('./routes');
+const setupGlobalMiddleware = require('./middleware').globals;
+const setupPublicRoutes = require('./routes').public;
+const setupAuthMiddleware = require('./middleware').auth;
+const setupPrivateRoutes = require('./routes').private;
 
-setupMiddleware(server);
-setupRoutes(server);
+/**
+ * Public: endpoints
+ */
+// Apply global middlewares
+setupGlobalMiddleware(server);
+
+// Public access endpoints
+setupPublicRoutes(server);
+
+/**
+ * Private: endpoints
+ * Validate credentials,
+ * If credentials are no valid do not allow access
+ * to private endpoints
+ */
+setupAuthMiddleware(server);
+
+// Private access endpoints
+setupPrivateRoutes(server);
 
 module.exports = {
   server,
