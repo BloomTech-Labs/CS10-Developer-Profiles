@@ -1,6 +1,7 @@
 .App {
     width: 100vw;
     height: 100vh;
+    display: flex;
   }
   
   .navBar {
@@ -28,11 +29,16 @@
     padding:16px;
   }
   .formConatiner {
+    align-self: center;
     width: 100vw;
     display: flex;
     padding: 16px;
-    flex-direction: row;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .paper {
+    align-self: center;
   }
   
   .form2{

@@ -15,7 +15,7 @@ class NavBar extends React.Component {
               <Button>find Devlopers</Button>
             </Link>
             {/* <Link to="/browse-developers"> */}
-            <Link to="/">
+            <Link to="/dev-list">
               <Button>Browse</Button>
             </Link>
             <Link to="/dev-profiles">
