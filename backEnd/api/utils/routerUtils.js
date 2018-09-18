@@ -7,7 +7,7 @@ module.exports = {
       res.status(422).json({ Error: 'email and password are required fields.' });
       return;
     }
-
+    
     // prettier-ignore
     model
       .findOne({ email }, { password: 1, _id: 1 })

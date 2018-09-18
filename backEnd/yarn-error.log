@@ -1,30 +1,25 @@
 Arguments: 
-  /usr/local/Cellar/node/10.7.0/bin/node /usr/local/Cellar/yarn/1.7.0/libexec/bin/yarn.js add CORS
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.7.0/libexec/bin/yarn.js
 
 PATH: 
-  /Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/share/python:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/share/python
+  /Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/jesuarva/mongodb-osx-x86_64-enterprise-3.6.5/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/jesuarva/mongodb-osx-x86_64-enterprise-3.6.5/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/sbin:/Applications/Sublime Text.app/Contents/SharedSupport/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin
 
 Yarn version: 
   1.7.0
 
 Node version: 
-  10.7.0
+  10.0.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/CORS: Not found
-      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:65656:18)
-      at Request.self.callback (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:134675:22)
-      at Request.emit (events.js:182:13)
-      at Request.<anonymous> (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:135658:10)
-      at Request.emit (events.js:182:13)
-      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:135578:12)
-      at Object.onceWrapper (events.js:273:13)
-      at IncomingMessage.emit (events.js:187:15)
-      at endReadableNT (_stream_readable.js:1081:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  SyntaxError: /Users/jesuarva/Sites/Lambda-School/24_LABS/CS10-Developer-Profiles/backEnd/package.json: Unexpected token < in JSON at position 1097
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:1130:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:98:30)
+      at /usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:109:13
 
 npm manifest: 
   {
@@ -33,9 +28,12 @@ npm manifest:
     "description": "Node.js/MongoDB Backend for Developer Profiles",
     "main": "index.js",
     "scripts": {
-      "server": "nodemon index",
+      "client": "cd ../front-end/lambda-in && yarn start",
+      "dev": "cross-env NODE_ENV=development concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
+      "server": "cross-env NODE_ENV=development nodemon index",
       "start": "node index",
-      "test": "cross-env NODE_ENV=test jest --watch --verbose"
+      "test": "cross-env NODE_ENV=test jest --watch --verbose",
+      "test-console-log": "cross-env NODE_ENV=test TERM=dumb jest --watch --verbose"
     },
     "jest": {
       "testEnvironment": "node"
@@ -52,15 +50,22 @@ npm manifest:
     "homepage": "https://github.com/Lambda-School-Labs/CS10-Developer-Profiles#readme",
     "dependencies": {
       "bcrypt": "^3.0.0",
+  <<<<<<< HEAD
+      "cross-env": "^5.2.0",
+  ||||||| merged common ancestors
+  =======
+      "cors": "^2.8.4",
+  >>>>>>> 81d1b4fd39d7d1d01d5240a26d8f68cbb5837f49
       "dotenv": "^6.0.0",
       "express": "^4.16.3",
-      "express-router-factory": "^1.0.0",
+      "express-router-factory": "^1.0.3",
       "helmet": "^3.13.0",
       "jsonwebtoken": "^8.3.0",
       "mongoose": "^5.2.14"
     },
     "devDependencies": {
       "concurrently": "^4.0.1",
+      "cross-env": "^5.2.0",
       "eslint": "^5.5.0",
       "eslint-config-airbnb-base": "^13.1.0",
       "eslint-plugin-import": "^2.14.0",
@@ -830,11 +835,25 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   
+  cors@^2.8.4:
+    version "2.8.4"
+    resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.4.tgz#2bd381f2eb201020105cd50ea59da63090694686"
+    dependencies:
+      object-assign "^4"
+      vary "^1"
+  
   create-error-class@^3.0.0:
     version "3.0.2"
     resolved "https://registry.yarnpkg.com/create-error-class/-/create-error-class-3.0.2.tgz#06be7abef947a3f14a30fd610671d401bca8b7b6"
     dependencies:
       capture-stack-trace "^1.0.0"
+  
+  cross-env@^5.2.0:
+    version "5.2.0"
+    resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.2.0.tgz#6ecd4c015d5773e614039ee529076669b9d126f2"
+    dependencies:
+      cross-spawn "^6.0.5"
+      is-windows "^1.0.0"
   
   cross-spawn@^5.0.1:
     version "5.1.0"
@@ -1338,9 +1357,9 @@ Lockfile:
       jest-message-util "^23.4.0"
       jest-regex-util "^23.3.0"
   
-  express-router-factory@^1.0.0:
-    version "1.0.0"
-    resolved "https://registry.yarnpkg.com/express-router-factory/-/express-router-factory-1.0.0.tgz#e6121eb28f99ead6a6442e12cde6d72df543a951"
+  express-router-factory@^1.0.3:
+    version "1.0.3"
+    resolved "https://registry.yarnpkg.com/express-router-factory/-/express-router-factory-1.0.3.tgz#a7db03eed9a8cd7e5552ae01d2ea054e77f50ccb"
   
   express@^4.16.3:
     version "4.16.3"
@@ -2227,7 +2246,7 @@ Lockfile:
     version "0.2.1"
     resolved "https://registry.yarnpkg.com/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
   
-  is-windows@^1.0.2:
+  is-windows@^1.0.0, is-windows@^1.0.2:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
   
@@ -3300,7 +3319,7 @@ Lockfile:
     version "0.9.0"
     resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
   
-  object-assign@^4.0.1, object-assign@^4.1.0:
+  object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   
@@ -4642,7 +4661,7 @@ Lockfile:
       spdx-correct "^3.0.0"
       spdx-expression-parse "^3.0.0"
   
-  vary@~1.1.2:
+  vary@^1, vary@~1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   
