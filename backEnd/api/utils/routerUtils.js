@@ -3,7 +3,7 @@ const utils = require('../utils/authUtils');
 module.exports = {
   login: function loginUser(model, req, res) {
     const { email, password } = req.body;
-
+    
     // prettier-ignore
     model
       .findOne({ email }, { password: 1, _id: 1 })
