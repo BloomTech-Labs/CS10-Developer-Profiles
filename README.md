@@ -28,19 +28,19 @@ The dream team behind this project:
 
 # Backend API
 
-> Detailed docs with installations and running instructions on [Backend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/master/backEnd/Backend.md)
+> Detailed docs with installations and running instructions on [Backend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/master/backend/Backend.md)
 
 ### Location:
 
-> [./backEnd/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/backEnd)
+> [./backend/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/backend)
 
 # Frontend APP
 
-> Detailed docs with installations and running instructions on [Frontend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/Documentation/front-end/Frontend.md)
+> Detailed docs with installations and running instructions on [Frontend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/Documentation/frontend/Frontend.md)
 
 ### Location:
 
-> [./front-end/lambda-in/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/front-end/lambda-in)
+> [./frontend/lambda-in/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/frontend/lambda-in)
 
 ### Components structure
 
