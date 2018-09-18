@@ -52,7 +52,7 @@ class RadioButtonsGroup extends React.Component {
             <FormControlLabel
               value="male"
               control={<Radio color="primary" />}
-              label="3 months - $19.99"
+              label="   3 months - $19.99"
               labelPlacement="start"
             />
             <FormControlLabel
