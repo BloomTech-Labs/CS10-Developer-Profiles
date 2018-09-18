@@ -17,22 +17,15 @@ class App extends Component {
     isSignedIn: false,
   };
   render() {
-    if (this.state.isSignedIn) {
-      return (
-        <div>
-          <DevLogin />
-        </div>
-      );
-    } else {
       return (
         <div>
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/dev-profiles" component={DevProfile} />
+            <Route path="/dev-profiles" component={DevProfile} />
             <Route path="/dev-sigup" component={DevSignUp} />
             {/* <Route path="/browse-developers" component={Browse} />
             <Route path="/billing" component={Billing} /> */}
-
+            <Route path="/dev-list" component={DevList} />
             {/* For testing purpose */}
             <Route path="/dev-signup" component={DevSignUp} />
             <Route path="/dev-login" component={DevLogin} />
@@ -40,7 +33,7 @@ class App extends Component {
         </div>
       );
     }
-  }
+  
 }
 
 export default App;
