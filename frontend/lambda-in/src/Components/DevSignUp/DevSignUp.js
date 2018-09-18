@@ -39,7 +39,7 @@ export default class DevSignUp extends Component {
     event.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_API}register/seekers`, {
+      .post('/api/register/seekers', {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         email: this.state.email,
