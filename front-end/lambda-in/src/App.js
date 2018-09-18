@@ -6,6 +6,7 @@ import DevSignUp from './Components/DevSignUp/DevSignUp';
 import DevLogin from './Components/DevLogIn/DevLogIn';
 import LandingPage from './Components/Landing Page/landing-page';
 import DevProfile from './Components/DevProfile/DevProfile';
+import DevInfoEdit from './Components/DevInfoEdit/DevInfoEdit'
 import Browse from './Components/Browse/browse(employer-view)';
 import Billing from './Components/Billing/billing';
 
@@ -29,6 +30,7 @@ class App extends Component {
             {/* For testing purpose */}
             <Route path="/dev-signup" component={DevSignUp} />
             <Route path="/dev-login" component={DevLogin} />
+            <Route path="/Dev-Info-Edit" component={DevInfoEdit} />
           </Switch>
         </div>
       );
