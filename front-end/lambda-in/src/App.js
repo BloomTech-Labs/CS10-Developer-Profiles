@@ -7,7 +7,6 @@ import DevLogin from './Components/DevLogIn/DevLogIn';
 import LandingPage from './Components/Landing Page/landing-page';
 import DevProfile from './Components/DevProfile/DevProfile';
 import Browse from './Components/Browse/browse(employer-view)';
-import authflow from '../src/Components/Authflow/Authflow';
 import Billing from './Components/Billing/billing';
 
 import DevList from './Components/DevList/DevList';
