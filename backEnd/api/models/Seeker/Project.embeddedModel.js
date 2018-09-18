@@ -9,6 +9,7 @@ const projectSchema = new Schema({
   },
   description: {
     type: String,
+    required: [true, 'Project description is required'],
   },
   img: {
     type: String,
