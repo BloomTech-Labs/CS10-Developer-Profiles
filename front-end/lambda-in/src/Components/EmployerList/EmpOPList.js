@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import EmployerOpenPositionCard from "./EmployerOpenPositionCard";
+import EmployerOpenPositionCard from "./EmpOPCard";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 // import NavBar from '../../Components/Navbar/navbar';
 
-import "./EmployerOpenPositionList.css";
+import "./EmpOPList.css";
 import { Typography } from "@material-ui/core";
 
 class EmplyoerOpenPositionList extends React.Component {

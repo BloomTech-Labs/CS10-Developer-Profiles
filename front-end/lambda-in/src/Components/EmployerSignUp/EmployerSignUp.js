@@ -3,14 +3,12 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 
-import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
-
+import NavBar from "../../Components/Navbar/navbar";
 import "../EmployerSignUp/EmployerSignUp.css";
 
-import NavBar from "../../Components/Navbar/navbar";
 
 const styles = theme => ({
   paper: {
@@ -19,29 +17,68 @@ const styles = theme => ({
 });
 
 export default class EmployerSignUp extends Component {
-  state = {
-    companyName: "Star Fleet",
-    companyEmail: "starfleetcommand@starfleet.ufp",
+  constructor(props) {
+    super(props);
 
-    hiringManagerFirstName: "Alynna",
-    hiringManagerLastName: "Nechayev",
-    hiringManagerEmail: "nechayev@starfleet.ufp",
-    password: "nechayev-7-alpha",
-    confirmPassword: "nechayev-7-alpha",
-
-    projectName: "Enterprise-D",
-    description: "We are watching for the captain of the Federation Flagship.",
-    jobTitle: "Captain",
-    techStack: "full stack",
-    skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
-    minSalrary: 1000000,
-    maxSalary: 2000000
-  };
-
+    this.state = {
+      companyName: "Star Fleet",
+      email: "starfleetcommand@starfleet.ufp",
+      hiringManagerFirstName: "Alynna",
+      hiringManagerLastName: "Nechayev",
+      hiringManagerEmail: "nechayev@starfleet.ufp",
+      password: "!Nnechayev7alpha",
+      confirmPassword: "!Nechayev7alpha",
+      projectName: "Enterprise-D",
+      description:
+        "We are watching for the captain of the Federation Flagship.",
+      jobTitle: "Captain",
+      techStack: "full stack",
+      skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
+      minSalrary: 1000000,
+      maxSalary: 2000000
+    };
+  }
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value
     });
+  };
+
+  handleNewEmp = event => {
+    // event.preventDefault();
+
+    axios
+      // .post(`${process.env.REACT_APP_API}register/employers`, {
+        .post('http://localhost:5000/api/employers', {
+        companyName: this.state.companyName,
+        email: this.state.email,
+        // password: this.state.password
+        // hiringManagers: {
+        //   hiringManagerFirstName: this.state.hiringManagerFirstName,
+        //   hiringManagerLastName: this.state.hiringManagerLastName,
+        //   hiringManagerEmail: this.state.hiringManagerEmail
+        // },
+        // openPositions: {
+        //   projectName: this.state.projectName,
+        //   description: this.state.description,
+        //   jobTitle: this.state.jobTitle,
+        //   techStack: this.state.techStack,
+        //   skills: this.state.skills,
+        //   minSalrary: this.state.minSalrary,
+        //   maxSalary: this.state.maxSalary
+        // }
+      })
+      .then(response => {
+        console.log(response);
+        localStorage.setItem("token", response.data.jwt);
+        this.setState({
+          uid: response.data.uid
+        });
+        console.log(localStorage.getItem("token"));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -67,12 +104,12 @@ export default class EmployerSignUp extends Component {
               <TextField
                 id="companyEmail"
                 label="Company Email"
-                value={this.state.companyEmail}
-                onChange={this.handleChange("companyEmail")}
+                value={this.state.email}
+                onChange={this.handleChange("email")}
                 margin="normal"
                 fullWidth="true"
               />
-
+              {/* 
               <TextField
                 id="hiringManagerFirstName"
                 label="Hiring Manager's FirstName"
@@ -114,8 +151,13 @@ export default class EmployerSignUp extends Component {
                 onChange={this.handleChange("confirmPassword")}
                 margin="normal"
               />
+             */}
 
-              <Button variant="contained" color="primary">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.handleNewEmp}
+              >
                 Save Profile
               </Button>
             </Paper>
