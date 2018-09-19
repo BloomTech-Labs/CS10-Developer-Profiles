@@ -15,7 +15,6 @@ At the `/frontend/lambda-in` folder, create a `.env.local` file with the followi
 ```
   NODE_ENV= development
   REACT_APP_URL=http://localhost:3000/
-  REACT_APP_API=http://localhost:5000/api/
 ```
 
 then change your working directory to the `frontend/lambda-in` root folder:
@@ -49,9 +48,6 @@ lastly, go to the APP in your browser:
     "react-form": "^3.5.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5"
-  },
-  "devDependencies": {
-    "dotenv": "^6.0.0"
   }
 ```
 
