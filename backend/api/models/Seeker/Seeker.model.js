@@ -38,6 +38,10 @@ const seekerSchema = new Schema({
       message: '{VALUE} is not a valid email address',
     },
   },
+  currentTitle: {
+    type: String,
+    // PENDING: Implement validation. Must match a list of allowed titles.
+  },
   desiredTitle: {
     type: String,
     required: [true, 'Desired title is required'],
