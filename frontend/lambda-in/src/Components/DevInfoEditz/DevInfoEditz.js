@@ -38,7 +38,7 @@ export default class DevInfoEdit extends Component {
     });
   };
 
-  // axios 1 argument is URL and 2 argument is data 3 argument is data
+  // axios 1 argument is URL and 2 argument is data 3 argument is options
   update = () => {
     const _id = localStorage.getItem('_id');
     if (_id) {
