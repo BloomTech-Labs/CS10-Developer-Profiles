@@ -72,6 +72,7 @@ export default class DevSignUp extends Component {
   render() {
     return (
       <div className="App">
+      <NavBar />
         <div className="formConatiner">
           <Paper className="paper">
           
