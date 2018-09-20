@@ -96,6 +96,10 @@ Runs full application, client and server, in development mode.
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - API can be accessed at [http://localhost:5000/api/](http://localhost:5000/api/). See API documentation for more information.
 
+### `yarn seed`
+
+Seeds local development database with mock data records for testing. Raw data can be found in `./backend/api/data`.
+
 ### `yarn server`
 
 Runs the server in development mode. Nodemon will cause the page to reload if you make edits.
