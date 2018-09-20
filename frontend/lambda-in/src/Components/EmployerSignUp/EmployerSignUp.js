@@ -9,7 +9,6 @@ import Grid from "@material-ui/core/Grid";
 import NavBar from "../../Components/Navbar/navbar";
 import "../EmployerSignUp/EmployerSignUp.css";
 
-
 const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 2
@@ -23,11 +22,11 @@ export default class EmployerSignUp extends Component {
     this.state = {
       companyName: "Star Fleet",
       email: "starfleetcommand@starfleet.ufp",
+      password: "!Nechayev7alpha",
+      confirmPassword: "!Nechayev7alpha",
       hiringManagerFirstName: "Alynna",
       hiringManagerLastName: "Nechayev",
       hiringManagerEmail: "nechayev@starfleet.ufp",
-      password: "!Nnechayev7alpha",
-      confirmPassword: "!Nechayev7alpha",
       projectName: "Enterprise-D",
       description:
         "We are watching for the captain of the Federation Flagship.",
@@ -38,43 +37,43 @@ export default class EmployerSignUp extends Component {
       maxSalary: 2000000
     };
   }
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value
-    });
+  handleChange = name => e => {
+    this.setState({ [name]: e.target.value });
   };
 
   handleNewEmp = event => {
-    // event.preventDefault();
+    event.preventDefault();
+
+    const newEmp = {
+      companyName: this.state.companyName,
+      email: this.state.email,
+      password: this.state.password
+      // hiringManagers: {
+      //   hiringManagerFirstName: this.state.hiringManagerFirstName,
+      //   hiringManagerLastName: this.state.hiringManagerLastName,
+      //   hiringManagerEmail: this.state.hiringManagerEmail
+      // },
+      // openPositions: {
+      //   projectName: this.state.projectName,
+      //   description: this.state.description,
+      //   jobTitle: this.state.jobTitle,
+      //   techStack: this.state.techStack,
+      //   skills: this.state.skills,
+      //   minSalrary: this.state.minSalrary,
+      //   maxSalary: this.state.maxSalary
+    };
 
     axios
-      // .post(`${process.env.REACT_APP_API}register/employers`, {
-        .post('http://localhost:5000/api/employers', {
-        companyName: this.state.companyName,
-        email: this.state.email,
-        // password: this.state.password
-        // hiringManagers: {
-        //   hiringManagerFirstName: this.state.hiringManagerFirstName,
-        //   hiringManagerLastName: this.state.hiringManagerLastName,
-        //   hiringManagerEmail: this.state.hiringManagerEmail
-        // },
-        // openPositions: {
-        //   projectName: this.state.projectName,
-        //   description: this.state.description,
-        //   jobTitle: this.state.jobTitle,
-        //   techStack: this.state.techStack,
-        //   skills: this.state.skills,
-        //   minSalrary: this.state.minSalrary,
-        //   maxSalary: this.state.maxSalary
-        // }
-      })
+      .post(`${process.env.REACT_APP_API}register/employers`, newEmp)
       .then(response => {
         console.log(response);
         localStorage.setItem("token", response.data.jwt);
+        localStorage.setItem("_id", response.data.newEmp._id);
         this.setState({
-          uid: response.data.uid
+          isSignedIn: true
         });
         console.log(localStorage.getItem("token"));
+        console.log(response.data.newEmp._id);
       })
       .catch(err => {
         console.log(err);
@@ -109,6 +108,15 @@ export default class EmployerSignUp extends Component {
                 margin="normal"
                 fullWidth="true"
               />
+
+              <TextField
+                id="password"
+                type="password"
+                label="Password"
+                value={this.state.password}
+                onChange={this.handleChange("password")}
+                margin="normal"
+              />
               {/* 
               <TextField
                 id="hiringManagerFirstName"
@@ -135,15 +143,6 @@ export default class EmployerSignUp extends Component {
               />
 
               <TextField
-                id="password"
-                type="password"
-                label="Password"
-                value={this.state.password}
-                onChange={this.handleChange("password")}
-                margin="normal"
-              />
-
-              <TextField
                 id="confirmPassword"
                 type="password"
                 label="Confirm Password"
@@ -162,7 +161,7 @@ export default class EmployerSignUp extends Component {
               </Button>
             </Paper>
           </div>
-
+          {/* 
           <Paper>
             <div class="addJobFormContainer">
               <div class="headline">
@@ -229,9 +228,9 @@ export default class EmployerSignUp extends Component {
 
               <Button variant="contained" color="primary">
                 Submit
-              </Button>
+              </Button> 
             </div>
-          </Paper>
+          </Paper>*/}
         </div>
       </div>
     );
