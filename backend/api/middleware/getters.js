@@ -27,21 +27,20 @@ const getSeekers = (model, req, res) => {
   Seeker.estimatedDocumentCount()
     .then((count) => {
       const pages = Math.ceil(count / PAGINATION_LIMIT);
-      const skip = getSkipAmount(+page);
-      const nextPage = getNextPage(+page, pages);
-      const prevPage = getPrevPage(+page);
-      const results = {
-        count,
-        next: nextPage ? `${SEEKERS_API_PATH}?page=${nextPage}` : null,
-        prev: prevPage ? `${SEEKERS_API_PATH}?page=${prevPage}` : null,
-      };
 
       if (page > pages) return sendErr(res, '404', 'Page number is invalid.');
 
-      Seeker.find({}, null, { skip, limit: PAGINATION_LIMIT })
+      Seeker.find({}, null, { skip: getSkipAmount(+page), limit: PAGINATION_LIMIT })
         .then((seekers) => {
-          const data = Object.assign({}, results, { results: seekers });
-          sendRes(res, '200', data);
+          const nextPage = getNextPage(+page, pages);
+          const prevPage = getPrevPage(+page);
+
+          sendRes(res, '200', {
+            count,
+            next: nextPage ? `${SEEKERS_API_PATH}?page=${nextPage}` : null,
+            prev: prevPage ? `${SEEKERS_API_PATH}?page=${prevPage}` : null,
+            results: seekers,
+          });
         })
         .catch(err => sendErr(res, err, 'The list of seekers could not be retrieved.'));
 
