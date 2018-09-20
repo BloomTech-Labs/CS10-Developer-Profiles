@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../../Components/Navbar/navbar';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -72,7 +71,6 @@ export default class DevSignUp extends Component {
   render() {
     return (
       <div className="App">
-      <NavBar />
         <div className="formConatiner">
           <Paper className="paper">
           

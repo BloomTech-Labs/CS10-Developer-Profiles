@@ -8,6 +8,7 @@ import LandingPage from './Components/Landing Page/landing-page';
 import DevProfile from './Components/DevProfile/DevProfile';
 import Browse from './Components/Browse/browse(employer-view)';
 import Billing from './Components/Billing/billing';
+import NavBar from './Components/Navbar/navbar'
 
 import DevList from './Components/DevList/DevList';
 
@@ -19,6 +20,7 @@ class App extends Component {
   render() {
       return (
         <div>
+          <NavBar />
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route path="/dev-profiles" component={DevProfile} />

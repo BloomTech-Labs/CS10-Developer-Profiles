@@ -7,7 +7,6 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
         <ImageContainer />
         <Footer />
       </div>
