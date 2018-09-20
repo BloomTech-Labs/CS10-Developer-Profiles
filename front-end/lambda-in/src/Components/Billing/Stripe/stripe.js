@@ -3,7 +3,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
 const CURRENCY = 'USD';
-const PAYMENT_SERVER_URL = process.env.NODE_ENV === 'production' ? 'http://myapidomain.com' : 'http://localhost:8080';
+const PAYMENT_SERVER_URL = process.env.NODE_ENV === 'production' ? 'http://myapidomain.com' : 'http://localhost:5000';
 const STRIPE_PUBLISHABLE = process.env.NODE_ENV === 'production' ? 'pk_test_TrhkR0IYq5UE3tsvU5NON1r5' : 'pk_test_TrhkR0IYq5UE3tsvU5NON1r5';
 
 const fromDollarToCent = amount => amount * 100;

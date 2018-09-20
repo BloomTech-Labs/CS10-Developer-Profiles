@@ -15,6 +15,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
 import { Link } from 'react-router-dom';
+import NavBar from '../../Components/Navbar/navbar';
 
 import DevProfileCard from './DevProfileCard'
 import '../DevList/DevList.css'
@@ -32,22 +33,8 @@ export default class DevList extends Component {
     render() {
         return (
             <div className="App">
-                <Paper>
-                    <div className="navBar">
-                        <div className="leftNavBar">
-                            <Button>find Devlopers</Button>
-                            <Button>Browse</Button>
-                            <Button>profile</Button>
-                        </div> 
-
-                        <div className="rightNavBar">
-                            <Button>Billing</Button>
-                            <Button>Setting</Button>
-                        </div> 
-                    </div>
-                </Paper>
-
-                <div className="mainBar" >
+                <NavBar />
+                    <div className="mainBar" >
                     <div className="sideBar">
                         <Typography variant="headline" component="h3">
                             Filters
