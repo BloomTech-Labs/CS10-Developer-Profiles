@@ -1,6 +1,7 @@
 /**
  * Implement pagination, sorting and filtering for Seekers
  */
+
 const Seeker = require('../models/Seeker/Seeker.model');
 const { sendErr, sendRes } = require('../utils/apiResponses');
 const {
