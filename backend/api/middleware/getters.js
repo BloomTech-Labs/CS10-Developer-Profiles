@@ -3,7 +3,12 @@
  */
 const Seeker = require('../models/Seeker/Seeker.model');
 const { sendErr, sendRes } = require('../utils/apiResponses');
-const { PAGINATION_LIMIT, SORT_OPTIONS, SEEKERS_API_PATH } = require('../utils/constants');
+const {
+  PAGINATION_LIMIT,
+  SORT_OPTIONS,
+  FILTER_VALUE,
+  SEEKERS_API_PATH,
+} = require('../utils/constants');
 
 const getNextPage = (currentPage, totalPages) => {
   if (!currentPage || currentPage === 1) return 2;
@@ -38,8 +43,39 @@ const getSortOptions = (sortQuery) => {
   return sortOptions;
 };
 
+const getFilterByValue = (val) => {
+  const regex = new RegExp(val.replace(/\+/g, ' '), 'i');
+  return regex;
+};
+
+const getFilters = (query) => {
+  const filters = {};
+
+  Object.keys(query).forEach((key) => {
+    if (query[key]) {
+      if (FILTER_VALUE[key]) filters[FILTER_VALUE[key]] = getFilterByValue(query[key]);
+    }
+  });
+
+  return filters;
+};
+
 const getSeekers = (model, req, res) => {
-  const { page } = req.query;
+  const {
+    page,
+    desiredTitle,
+    location,
+    github,
+    linkedin,
+    portfolio,
+    resume,
+    acclaim,
+    places,
+    skills,
+    projects,
+    experience,
+    education,
+  } = req.query;
   const sort = req.query.sort || 'default';
 
   Seeker.estimatedDocumentCount()
@@ -48,11 +84,28 @@ const getSeekers = (model, req, res) => {
 
       if (page > pages) return sendErr(res, '404', 'Page number is invalid.');
 
-      Seeker.find({}, null, {
-        sort: getSortOptions(sort),
-        skip: getSkipAmount(+page),
-        limit: PAGINATION_LIMIT,
-      })
+      Seeker.find(
+        getFilters({
+          desiredTitle,
+          location,
+          github,
+          linkedin,
+          portfolio,
+          resume,
+          acclaim,
+          places,
+          skills,
+          projects,
+          experience,
+          education,
+        }),
+        null,
+        {
+          sort: getSortOptions(sort),
+          skip: getSkipAmount(+page),
+          limit: PAGINATION_LIMIT,
+        },
+      )
         .then((seekers) => {
           const nextPage = getNextPage(+page, pages);
           const prevPage = getPrevPage(+page);
