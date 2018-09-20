@@ -13,8 +13,8 @@ export default class DevLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'abc@xyz.com',
+      password: '12345678Aa$',
       isSignedIn: true
     };
   }
@@ -33,6 +33,7 @@ export default class DevLogin extends Component {
           isSignedIn: true
         });
         console.log(localStorage.getItem('token'));
+        console.log(response)
       })
       .catch(err => {
         console.log(err);
@@ -52,7 +53,7 @@ export default class DevLogin extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="loginContainer">
         <div className="formConatiner">
           <Paper className="paper">
           
