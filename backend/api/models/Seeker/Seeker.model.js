@@ -73,10 +73,7 @@ const seekerSchema = new Schema({
     // PENDING: Validate via API
     // TODO: Validate the URL
   },
-  placesInterested: {
-    type: Array,
-    // TODO: Validate city's names
-  },
+  placesInterested: [locationSchema],
   topSkills: {
     type: Array,
   },
