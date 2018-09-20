@@ -60,7 +60,6 @@ const getFilterByArrayValue = (val) => {
 const getFilters = (query) => {
   const filters = {};
 
-
   Object.keys(query).forEach((key) => {
     if (query[key]) {
       if (FILTER_VALUE[key]) filters[FILTER_VALUE[key]] = getFilterByValue(query[key]);
