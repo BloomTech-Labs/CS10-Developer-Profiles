@@ -23,10 +23,18 @@ const FILTER_BOOLEAN = {
   education: 'education',
 };
 
+const FILTER_ARRAY = {
+  places: 'placesInterested',
+  topSkills: 'topSkills',
+  addSkills: 'additionalSkills',
+  familiar: 'familiarWith',
+};
+
 module.exports = {
   PAGINATION_LIMIT,
   SEEKERS_API_PATH,
   SORT_OPTIONS,
   FILTER_VALUE,
   FILTER_BOOLEAN,
+  FILTER_ARRAY,
 };
