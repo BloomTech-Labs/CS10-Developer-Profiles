@@ -13,9 +13,9 @@ const {
   SEEKERS_API_PATH,
 } = require('../utils/constants');
 
-const getNextPage = (currentPage, totalPages) => {
+const getNextPage = (currentPage, totalPages, totalResults) => {
+  if (totalResults < PAGINATION_LIMIT || currentPage === totalPages) return null;
   if (!currentPage || currentPage === 1) return 2;
-  if (currentPage === totalPages) return null;
   return currentPage + 1;
 };
 
@@ -73,67 +73,53 @@ const getFilters = (query) => {
 };
 
 const getSeekers = (model, req, res) => {
-  const {
-    page,
-    desiredTitle,
-    location,
-    github,
-    linkedin,
-    portfolio,
-    resume,
-    acclaim,
-    places,
-    skills,
-    projects,
-    experience,
-    education,
-  } = req.query;
+  const { page } = req.query;
   const sort = req.query.sort || 'default';
+  const filters = getFilters({
+    desiredTitle: req.query.desiredTitle,
+    location: req.query.location,
+    github: req.query.github,
+    linkedin: req.query.linkedin,
+    portfolio: req.query.portfolio,
+    resume: req.query.resume,
+    acclaim: req.query.acclaim,
+    places: req.query.places,
+    topSkills: req.query.topSkills,
+    addSkills: req.query.addSkills,
+    familiar: req.query.familiar,
+    projects: req.query.projects,
+    experience: req.query.experience,
+    education: req.query.education,
+  });
 
-  Seeker.estimatedDocumentCount()
-    .then((count) => {
-      const pages = Math.ceil(count / PAGINATION_LIMIT);
+  Seeker.where(filters).countDocuments((err, count) => {
+    if (err) return sendErr(res, err, 'The list of seekers could not be retrieved.');
+    if (count === 0) return sendErr(res, '404', 'No results. Please broaden your search queries.');
 
-      if (page > pages) return sendErr(res, '404', 'Page number is invalid.');
+    const pages = Math.ceil(count / PAGINATION_LIMIT);
 
-      Seeker.find(
-        getFilters({
-          desiredTitle,
-          location,
-          github,
-          linkedin,
-          portfolio,
-          resume,
-          acclaim,
-          places,
-          skills,
-          projects,
-          experience,
-          education,
-        }),
-        null,
-        {
-          sort: getSortOptions(sort),
-          skip: getSkipAmount(+page),
-          limit: PAGINATION_LIMIT,
-        },
-      )
-        .then((seekers) => {
-          const nextPage = getNextPage(+page, pages);
-          const prevPage = getPrevPage(+page);
+    if (page > pages) return sendErr(res, '404', 'Page number is invalid.');
 
-          sendRes(res, '200', {
-            count,
-            next: nextPage ? `${SEEKERS_API_PATH}?page=${nextPage}` : null,
-            prev: prevPage ? `${SEEKERS_API_PATH}?page=${prevPage}` : null,
-            results: seekers,
-          });
-        })
-        .catch(err => sendErr(res, err, 'The list of seekers could not be retrieved.'));
-
-      return null;
+    Seeker.find(filters, null, {
+      sort: getSortOptions(sort),
+      skip: getSkipAmount(+page),
+      limit: PAGINATION_LIMIT,
     })
-    .catch(err => sendErr(res, err, 'The list of seekers could not be retrieved.'));
+      .then((seekers) => {
+        const nextPage = getNextPage(+page, pages, count);
+        const prevPage = getPrevPage(+page);
+
+        sendRes(res, '200', {
+          count,
+          next: nextPage ? `${SEEKERS_API_PATH}?page=${nextPage}` : null,
+          prev: prevPage ? `${SEEKERS_API_PATH}?page=${prevPage}` : null,
+          results: seekers,
+        });
+      })
+      .catch(findError => sendErr(res, findError, 'The list of seekers could not be retrieved.'));
+
+    return null;
+  });
 };
 
 module.exports = {
