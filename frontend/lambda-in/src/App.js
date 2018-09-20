@@ -8,7 +8,7 @@ import LandingPage from './Components/Landing Page/landing-page';
 import DevProfile from './Components/DevProfile/DevProfile';
 import Browse from './Components/Browse/browse(employer-view)';
 import Billing from './Components/Billing/billing';
-import InputGeolocation from './Components/InputGeolocation/InputGeolocation';
+import SearchGeolocation from './Components/InputGeolocation/InputGeolocation';
 
 import DevList from './Components/DevList/DevList';
 
@@ -29,7 +29,7 @@ class App extends Component {
           {/* For testing purpose */}
           <Route path="/dev-signup" component={DevSignUp} />
           <Route path="/dev-login" component={DevLogin} />
-          <Route path="/geolocation" component={InputGeolocation} />
+          <Route path="/geolocation" component={SearchGeolocation} />
         </Switch>
       </div>
     );
