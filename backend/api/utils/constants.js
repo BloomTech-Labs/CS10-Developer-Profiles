@@ -4,10 +4,15 @@ const SORT_OPTIONS = {
   name: 'lastName',
   location: 'currentLocation',
 };
+const FILTER_VALUE = {
+  desiredTitle: 'desiredTitle',
+  location: 'currentLocation',
+};
 const SEEKERS_API_PATH = '/api/seekers';
 
 module.exports = {
   PAGINATION_LIMIT,
   SEEKERS_API_PATH,
   SORT_OPTIONS,
+  FILTER_VALUE,
 };
