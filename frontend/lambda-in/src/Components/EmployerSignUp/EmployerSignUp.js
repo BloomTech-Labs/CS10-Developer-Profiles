@@ -88,7 +88,7 @@ export default class EmployerSignUp extends Component {
           <div class="employerContainer">
             <Paper>
               <Typography variant="headline" component="h3">
-                Company Profile
+                Employer Signup
               </Typography>
 
               <TextField
@@ -117,6 +117,15 @@ export default class EmployerSignUp extends Component {
                 onChange={this.handleChange("password")}
                 margin="normal"
               />
+
+              <TextField
+                id="confirmPassword"
+                type="password"
+                label="Confirm Password"
+                value={this.state.confirmPassword}
+                onChange={this.handleChange("confirmPassword")}
+                margin="normal"
+              />
               {/* 
               <TextField
                 id="hiringManagerFirstName"
@@ -142,16 +151,8 @@ export default class EmployerSignUp extends Component {
                 margin="normal"
               />
 
-              <TextField
-                id="confirmPassword"
-                type="password"
-                label="Confirm Password"
-                value={this.state.confirmPassword}
-                onChange={this.handleChange("confirmPassword")}
-                margin="normal"
-              />
              */}
-
+             <br />
               <Button
                 variant="contained"
                 color="primary"
