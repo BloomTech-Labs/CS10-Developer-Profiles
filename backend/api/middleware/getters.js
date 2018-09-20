@@ -7,6 +7,7 @@ const {
   PAGINATION_LIMIT,
   SORT_OPTIONS,
   FILTER_VALUE,
+  FILTER_BOOLEAN,
   SEEKERS_API_PATH,
 } = require('../utils/constants');
 
@@ -47,6 +48,9 @@ const getFilterByValue = (val) => {
   const regex = new RegExp(val.replace(/\+/g, ' '), 'i');
   return regex;
 };
+const getFilterByBoolean = (val) => {
+  return { $exists: val };
+};
 
 const getFilters = (query) => {
   const filters = {};
@@ -54,6 +58,7 @@ const getFilters = (query) => {
   Object.keys(query).forEach((key) => {
     if (query[key]) {
       if (FILTER_VALUE[key]) filters[FILTER_VALUE[key]] = getFilterByValue(query[key]);
+      if (FILTER_BOOLEAN[key]) filters[FILTER_BOOLEAN[key]] = getFilterByBoolean(+query[key]);
     }
   });
 
