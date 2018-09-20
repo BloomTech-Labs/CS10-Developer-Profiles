@@ -49,29 +49,28 @@ export default class DevSignUp extends Component {
       .then(response => {
         console.log(response);
         localStorage.setItem('token', response.data.jwt);
-        this.setState({
-          uid: response.data.uid,
-        });
+        localStorage.setItem('_id', response.data.newUser._id);
         //this.loginHandler('Logged In')
         // document.window.sessionStorage.accessToken = response.body.access_token;
         console.log(localStorage.getItem('token'));
+        console.log(response.data.newUser._id)
       })
       .catch(err => {
         console.log(err);
       });
 
     this.setState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
+      firstName: 'bat',
+      lastName: 'man',
+      email: 'bat@man.com',
+      password: '123456789$Ab',
       summary: 'boo',
     });
   };
 
   render() {
     return (
-      <div className="App">
+      <div className="signupContainer">
         <div className="formConatiner">
           <Paper className="paper">
           

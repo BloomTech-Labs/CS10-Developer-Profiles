@@ -1,29 +1,3 @@
-.App {
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  .navBar {
-    width: 100vw;
-    height: 5vh;
-    display: flex;
-    justify-content: space-evenly;
-  }
-  
-  .leftNavBar {
-    width:50vw;
-    height: 5vh;
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .rightNavBar {
-    width:50vw;
-    height: 5vh;
-    display: flex;
-    justify-content: flex-end;
-  }
-
 .mainBar {
     width: 100vw;
     height: 100vh;
