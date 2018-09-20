@@ -40,7 +40,6 @@ const seekerSchema = new Schema({
   },
   desiredTitle: {
     type: String,
-    required: [true, 'Desired title is required'],
   },
   currentLocation: {
     type: String,
