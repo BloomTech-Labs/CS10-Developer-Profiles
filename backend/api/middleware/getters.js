@@ -8,6 +8,7 @@ const {
   SORT_OPTIONS,
   FILTER_VALUE,
   FILTER_BOOLEAN,
+  FILTER_ARRAY,
   SEEKERS_API_PATH,
 } = require('../utils/constants');
 
@@ -33,7 +34,7 @@ const getSortField = (sortOption) => {
 };
 
 const getSortOptions = (sortQuery) => {
-  const query = sortQuery.split(',');
+  const query = sortQuery.split('|');
   const sortOptions = {};
 
   query.forEach((option) => {
@@ -48,17 +49,23 @@ const getFilterByValue = (val) => {
   const regex = new RegExp(val.replace(/\+/g, ' '), 'i');
   return regex;
 };
-const getFilterByBoolean = (val) => {
-  return { $exists: val };
+
+const getFilterByBoolean = val => ({ $exists: val });
+
+const getFilterByArrayValue = (val) => {
+  const values = val.split('|').map(v => v.replace(',', ', '));
+  return { $in: values };
 };
 
 const getFilters = (query) => {
   const filters = {};
 
+
   Object.keys(query).forEach((key) => {
     if (query[key]) {
       if (FILTER_VALUE[key]) filters[FILTER_VALUE[key]] = getFilterByValue(query[key]);
       if (FILTER_BOOLEAN[key]) filters[FILTER_BOOLEAN[key]] = getFilterByBoolean(+query[key]);
+      if (FILTER_ARRAY[key]) filters[FILTER_ARRAY[key]] = getFilterByArrayValue(query[key]);
     }
   });
 
