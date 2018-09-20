@@ -64,16 +64,16 @@ export default class EmployerSignUp extends Component {
     };
 
     axios
-      .post(`${process.env.REACT_APP_API}register/employers`, newEmp)
+      .post(`/api/register/employers`, newEmp)
       .then(response => {
         console.log(response);
         localStorage.setItem("token", response.data.jwt);
-        localStorage.setItem("_id", response.data.newEmp._id);
+        // localStorage.setItem("_id", response.data.newEmp._id);
         this.setState({
           isSignedIn: true
         });
         console.log(localStorage.getItem("token"));
-        console.log(response.data.newEmp._id);
+        // console.log(response.data.newEmp._id);
       })
       .catch(err => {
         console.log(err);
