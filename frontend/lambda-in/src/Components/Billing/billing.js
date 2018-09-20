@@ -10,23 +10,23 @@ class Billing extends React.Component {
             <div>
                 <NavBar />
                 <div className='checkout'>
-                    <div>
+                    <div className='text'>
                         <p>1 month - $9.99</p>
                         <p>3 months - $19.99</p>
                         <p>6 months - $29.99</p>
                     </div>
                     <div className='buttons'>
-                        <Checkout 
+                        <Checkout className='option'
                         name={'Subscription Fee'}
                         description={'1 month'}
                         amount={9.99}
                         />
-                        <Checkout 
+                        <Checkout className='option'
                         name={'Subscription Fee'}
                         description={'3 months'}
                         amount={19.99}
                         />
-                        <Checkout 
+                        <Checkout className='option'
                         name={'Subscription Fee'}
                         description={'6 months'}
                         amount={29.99}
