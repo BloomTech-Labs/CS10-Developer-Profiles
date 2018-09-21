@@ -21,15 +21,47 @@ import DevProfileCard from './DevProfileCard'
 import '../DevList/DevList.css'
 
 export default class DevList extends Component {
-    state = {
-        gilad: true,
-        jason: false,
-        antoine: false,
-      };
+    constructor(props) {
+        super(props);
+        this.state = {
+          email: 'abc@xyz.com',
+          firstName: 'daat',
+          lastName: 'man',
+          desiredTitle: 'BOSS',
+          currentLocation: 'mars',
+          github: 'github.com/kkkk',
+          linkedin: 'linkedin.com/batman',
+          portfolio: 'batman.com',
+          acclaimBadge: 'lambda Batch',
+          placesInterested: ' earh etc',
+          password: '12345678Aa$',
+          confirmPassword: '',
+          isSignedIn: false,
+          summary: 'wubba lubba dub dub',
+          topskill: 'Baller',
+          projects: 'Dev profiles',
+          experience: 'mars inc.',
+          education: 'Lambda School',
+        };
+    }
     
     handleChange = name => event => {
         this.setState({ [name]: event.target.checked });
     };
+
+    handleAuth = () => {
+        if(localStorage.getItem('token') !== null){
+            this.setState({
+                isSignedIn: true
+            })
+        }
+        else{
+            this.setState({
+                isSignedIn: false
+            })
+        }
+    }
+    
     render() {
         return (
             <div >
