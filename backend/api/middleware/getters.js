@@ -91,7 +91,7 @@ const getSkipAmount = (current) => {
  * Given a string, return the corresponding model field to sort by. If the string cannot be mapped
  * to a field, return the default sort field.
  *
- * @param var {String} Sort value.
+ * @param sortOption {String} Sort value.
  * @return {String} Model data field name.
  */
 const getSortField = (sortOption) => {
@@ -103,7 +103,7 @@ const getSortField = (sortOption) => {
  * Given a raw sort query string, parse it to determine the sort fields and sort order of each and
  * return the data as an object
  *
- * @param sortQuery {String} Raw sort query sting. Ex. location|name
+ * @param sortQuery {String} Raw sort query string. Ex. location|name
  * @return {Object} Mongo sort options. Ex. { currentLocation: 1, lastName: 1 }
  */
 const getSortOptions = (sortQuery) => {
@@ -118,22 +118,48 @@ const getSortOptions = (sortQuery) => {
   return sortOptions;
 };
 
+/**
+ * Given a string fragment, return it as a regular expression with all '+' replaced with ' '.
+ *
+ * @param val {String} Raw filter string. Ex. Front+End+Engineer
+ * @return {RegExp} Filter value as a regular expression. Ex. /Front End Engineer/
+ */
 const getFilterByValue = (val) => {
   const regex = new RegExp(val.replace(/\+/g, ' '));
   return regex;
 };
 
+/**
+ * Given a boolean, return an object with the Mongo operator $exists set to the boolean.
+ *
+ * @param val {Boolean} 0 or 1.
+ * @return {Object} Mongo object with $exists set. Ex. { '$exists': 1 }
+ */
 const getFilterByBoolean = val => ({ $exists: val });
 
+/**
+ * Given a string fragment, parse it for individual values and return an object with the Mongo
+ * operator $all set to an array of regular expressions representing each filter value.
+ *
+ * @param val {String} Raw filter string. Ex. CA|FL
+ * @return {Object} An object with $all set to an array of RegEx. Ex. { '$all': [ /CA/, /FL/ ] }
+ */
 const getFilterByArrayValue = (val) => {
   const values = val.split('|').map((v) => {
     const regex = new RegExp(v.replace(/,/g, ', '));
     return regex;
   });
-
+  console.log({ $all: values });
   return { $all: values };
 };
 
+/**
+ * Iterate through an object of raw filter parameters and if set, parse the data and return the
+ * filter parameters in an object. Returns an empty object if no fields are set.
+ *
+ * @param query {Object} Raw filter parameters set to either a string, boolean or undefined.
+ * @return {Object} Mongo find options. Ex. { placesInterested: { '$all': [ /Miami, FL/ ] } }
+ */
 const getFilters = (query) => {
   const filters = {};
 
