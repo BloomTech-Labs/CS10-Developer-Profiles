@@ -24,6 +24,16 @@ const getPrevPage = (currentPage) => {
   return currentPage - 1;
 };
 
+const getUrl = (page, query) => {
+  const queryStr = [`page=${page}`];
+
+  Object.keys(query).forEach((key) => {
+    if (key !== 'page') queryStr.push(`${key}=${query[key]}`);
+  });
+
+  return `${SEEKERS_API_PATH}?${queryStr.join('&')}`;
+};
+
 const getSkipAmount = (currentPage) => {
   const page = currentPage || 1;
   return (page - 1) * PAGINATION_LIMIT;
@@ -111,8 +121,8 @@ const getSeekers = (model, req, res) => {
 
         sendRes(res, '200', {
           count,
-          next: nextPage ? `${SEEKERS_API_PATH}?page=${nextPage}` : null,
-          prev: prevPage ? `${SEEKERS_API_PATH}?page=${prevPage}` : null,
+          next: nextPage ? getUrl(nextPage, req.query) : null,
+          prev: prevPage ? getUrl(prevPage, req.query) : null,
           results: seekers,
         });
       })
