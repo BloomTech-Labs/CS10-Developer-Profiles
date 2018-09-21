@@ -14,6 +14,25 @@ const {
 } = require('../utils/constants');
 
 /**
+ * Given the current page determine if it is the first page. Return true or false.
+ *
+ * @param current {integer} Current page number.
+ * @return {boolean} True/False if current page is first page.
+ */
+const isFirstPage = current => !current || current === 1;
+
+/**
+ * Given the current page, total number of pages and number of documents, determine if the next
+ * page is null. Return true or false
+ *
+ * @param current {integer} Current page number.
+ * @param total {integer} Total number of pages.
+ * @param count {integer} Number of documents in query.
+ * @return {boolean} True/False if next page is null.
+ */
+const isNextPageNull = (current, total, count) => count < PAGINATION_LIMIT || current === total;
+
+/**
  * Given the current page, total number of pages and number of documents, return the next page.
  * Returns null if number of documents is less than pagaination limit or current page equals total
  * number of pages
@@ -24,15 +43,11 @@ const {
  * @return {null || integer} Next page index.
  */
 const getNextPage = (current, total, count) => {
-  if (count < PAGINATION_LIMIT || current === total) return null;
-  if (!current || current === 1) return 2;
-  return current + 1;
+  if (isNextPageNull(current, total, count)) return null;
+  return isFirstPage(current) ? 2 : current + 1;
 };
 
-const getPrevPage = (current) => {
-  if (!current || current === 1) return null;
-  return current - 1;
-};
+const getPrevPage = current => (isFirstPage(current) ? null : current - 1);
 
 const getUrl = (page, query) => {
   const queryStr = [`page=${page}`];
