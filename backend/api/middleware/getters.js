@@ -40,7 +40,7 @@ const isNextPageNull = (current, total, count) => count < PAGINATION_LIMIT || cu
  * @param current {Integer} Current page number.
  * @param total {Integer} Total number of pages.
  * @param count {Integer} Number of documents in query.
- * @return {Null || Integer} Next page index.
+ * @return {(Null|Integer)} Next page index.
  */
 const getNextPage = (current, total, count) => {
   if (isNextPageNull(current, total, count)) return null;
@@ -51,7 +51,7 @@ const getNextPage = (current, total, count) => {
  * Given the current page, return the previous page
  *
  * @param current {Integer} Current page number.
- * @return {Null || Integer} Prev page index.
+ * @return {(Null|Integer)}} Prev page index.
  */
 const getPrevPage = current => (isFirstPage(current) ? null : current - 1);
 
@@ -174,6 +174,22 @@ const getFilters = (query) => {
   return filters;
 };
 
+/**
+ * Middleware to circumvent the Router Factory's default GET behaviour. Applies pagination,
+ * sorting and filtering to the GET Seeker results. Builds an object holding the filter options
+ * and then runs a where().countDocuments() to determine how many documents match the filters to
+ * be applied. The count is used with the PAGINATION_LIMIT to setup the page options. Finally a
+ * find() is run with the filter, sort and page options. Page metadata is added to the results
+ * which are sent back with a 200 status code.
+ *
+ * If the pagination errors, an error is sent back.
+ *
+ * If an invalid page is passed in, an error is sent back.
+ *
+ * @param model {Model} A Mongoose model.
+ * @param req {Object} HTTP request object.
+ * @param res {Object} HTTP response object.
+ */
 const getSeekers = (model, req, res) => {
   const { page } = req.query;
   const sort = req.query.sort || 'default';
