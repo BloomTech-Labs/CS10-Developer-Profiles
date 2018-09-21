@@ -13,15 +13,25 @@ const {
   SEEKERS_API_PATH,
 } = require('../utils/constants');
 
-const getNextPage = (currentPage, totalPages, totalResults) => {
-  if (totalResults < PAGINATION_LIMIT || currentPage === totalPages) return null;
-  if (!currentPage || currentPage === 1) return 2;
-  return currentPage + 1;
+/**
+ * Given the current page, total number of pages and number of documents, return the next page.
+ * Returns null if number of documents is less than pagaination limit or current page equals total
+ * number of pages
+ *
+ * @param current {integer} Current page number.
+ * @param total {integer} Total number of pages.
+ * @param count {integer} Number of documents in query.
+ * @return {null || integer} Next page index.
+ */
+const getNextPage = (current, total, count) => {
+  if (count < PAGINATION_LIMIT || current === total) return null;
+  if (!current || current === 1) return 2;
+  return current + 1;
 };
 
-const getPrevPage = (currentPage) => {
-  if (!currentPage || currentPage === 1) return null;
-  return currentPage - 1;
+const getPrevPage = (current) => {
+  if (!current || current === 1) return null;
+  return current - 1;
 };
 
 const getUrl = (page, query) => {
@@ -34,8 +44,8 @@ const getUrl = (page, query) => {
   return `${SEEKERS_API_PATH}?${queryStr.join('&')}`;
 };
 
-const getSkipAmount = (currentPage) => {
-  const page = currentPage || 1;
+const getSkipAmount = (current) => {
+  const page = current || 1;
   return (page - 1) * PAGINATION_LIMIT;
 };
 
