@@ -60,8 +60,12 @@ const getPrevPage = current => (isFirstPage(current) ? null : current - 1);
  * parameters.
  *
  * @param page {Integer} Page number.
- * @param query {Object} Active query parameters. Ex. { page: '18', sort: 'location|name' }
- * @return {String} /api/seekers?page=17&desiredTitle=Front+End&sort=location|name
+ * @param query {Object} Active query parameters.
+ * @example
+ *  { page: '18', sort: 'location|name' }
+ * @return {String} Url string.
+ * @example
+ *  /api/seekers?page=17&desiredTitle=Front+End&sort=location|name
  */
 const getUrl = (page, query) => {
   const queryStr = [`page=${page}`];
@@ -103,8 +107,12 @@ const getSortField = (sortOption) => {
  * Given a raw sort query string, parse it to determine the sort fields and sort order of each and
  * return the data as an object
  *
- * @param sortQuery {String} Raw sort query string. Ex. location|name
- * @return {Object} Mongo sort options. Ex. { currentLocation: 1, lastName: 1 }
+ * @param sortQuery {String} Raw sort query string.
+ * @example
+ *  location|name
+ * @return {Object} Mongo sort options.
+ * @example
+ *  { currentLocation: 1, lastName: 1 }
  */
 const getSortOptions = (sortQuery) => {
   const query = sortQuery.split('|');
@@ -121,8 +129,12 @@ const getSortOptions = (sortQuery) => {
 /**
  * Given a string fragment, return it as a regular expression with all '+' replaced with ' '.
  *
- * @param val {String} Raw filter string. Ex. Front+End+Engineer
- * @return {RegExp} Filter value as a regular expression. Ex. /Front End Engineer/
+ * @param val {String} Raw filter string.
+ * @example
+ *  Front+End+Engineer
+ * @return {RegExp} Filter value as a regular expression.
+ * @example
+ *  /Front End Engineer/
  */
 const getFilterByValue = (val) => {
   const regex = new RegExp(val.replace(/\+/g, ' '));
@@ -133,7 +145,9 @@ const getFilterByValue = (val) => {
  * Given a boolean, return an object with the Mongo operator $exists set to the boolean.
  *
  * @param val {Boolean} 0 or 1.
- * @return {Object} Mongo object with $exists set. Ex. { '$exists': 1 }
+ * @return {Object} Mongo object with $exists set.
+ * @example
+ *  { '$exists': 1 }
  */
 const getFilterByBoolean = val => ({ $exists: val });
 
@@ -141,8 +155,12 @@ const getFilterByBoolean = val => ({ $exists: val });
  * Given a string fragment, parse it for individual values and return an object with the Mongo
  * operator $all set to an array of regular expressions representing each filter value.
  *
- * @param val {String} Raw filter string. Ex. CA|FL
- * @return {Object} An object with $all set to an array of RegEx. Ex. { '$all': [ /CA/, /FL/ ] }
+ * @param val {String} Raw filter string.
+ * @example
+ *  CA|FL
+ * @return {Object} An object with $all set to an array of RegEx.
+ * @example
+ *  { '$all': [ /CA/, /FL/ ] }
  */
 const getFilterByArrayValue = (val) => {
   const values = val.split('|').map((v) => {
@@ -158,7 +176,9 @@ const getFilterByArrayValue = (val) => {
  * filter parameters in an object. Returns an empty object if no fields are set.
  *
  * @param query {Object} Raw filter parameters set to either a string, boolean or undefined.
- * @return {Object} Mongo find options. Ex. { placesInterested: { '$all': [ /Miami, FL/ ] } }
+ * @return {Object} Mongo find options.
+ * @example
+ *  { placesInterested: { '$all': [ /Miami, FL/ ] } }
  */
 const getFilters = (query) => {
   const filters = {};
