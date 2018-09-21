@@ -47,6 +47,12 @@ const getNextPage = (current, total, count) => {
   return isFirstPage(current) ? 2 : current + 1;
 };
 
+/**
+ * Given the current page, return the previous page
+ *
+ * @param current {integer} Current page number.
+ * @return {null || integer} Prev page index.
+ */
 const getPrevPage = current => (isFirstPage(current) ? null : current - 1);
 
 const getUrl = (page, query) => {
