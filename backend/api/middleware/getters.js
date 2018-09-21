@@ -1,5 +1,5 @@
 /**
- * Implement pagination, sorting and filtering for Seekers
+ * @file Implement pagination, sorting and filtering for Seekers
  */
 
 const Seeker = require('../models/Seeker/Seeker.model');
@@ -167,7 +167,7 @@ const getFilterByArrayValue = (val) => {
     const regex = new RegExp(v.replace(/,/g, ', '));
     return regex;
   });
-  console.log({ $all: values });
+
   return { $all: values };
 };
 
