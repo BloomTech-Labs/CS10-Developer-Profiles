@@ -61,7 +61,7 @@ const getPrevPage = current => (isFirstPage(current) ? null : current - 1);
  *
  * @param page {Integer} Page number.
  * @param query {Object} Active query parameters. Ex. { page: '18', sort: 'location|name' }
- * @return {String} /api/seekers?page=17&desiredTitle=Front End&sort=location|name.
+ * @return {String} /api/seekers?page=17&desiredTitle=Front+End&sort=location|name
  */
 const getUrl = (page, query) => {
   const queryStr = [`page=${page}`];
@@ -75,6 +75,13 @@ const getUrl = (page, query) => {
   return `${SEEKERS_API_PATH}?${queryStr.join('&')}`;
 };
 
+/**
+ * Given the current page, determine how many documents should be skipped to only show the next set
+ * of documents as determined by the PAGINATION_LIMIT
+ *
+ * @param current {Integer} Current page number.
+ * @return {Integer} Number of documents to skip.
+ */
 const getSkipAmount = (current) => {
   const page = current || 1;
   return (page - 1) * PAGINATION_LIMIT;
