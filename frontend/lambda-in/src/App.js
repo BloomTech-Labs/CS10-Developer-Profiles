@@ -8,6 +8,8 @@ import LandingPage from './Components/Landing Page/landing-page';
 import DevProfile from './Components/DevProfile/DevProfile';
 import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz'
 import Billing from './Components/Billing/billing';
+import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
+import EmpList from './Components/EmployerList/EmpOPList';
 
 import DevList from './Components/DevList/DevList';
 
@@ -27,6 +29,8 @@ class App extends Component {
             <Route path="/dev-profiles" component={DevProfile} />
             <Route path="/billing" component={Billing} />
             <Route path="/dev-list" component={DevList} />
+            <Route path="/emp-signup" component={EmpSignUp} />
+            <Route path="/emp-list" component={EmpList} />
             <Route path="/dev-info-edit" component={DevInfoEditz} />
             {/* For testing purpose */}
             <Route path="/dev-signup" component={DevSignUp} />
