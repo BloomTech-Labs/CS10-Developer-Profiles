@@ -3,8 +3,9 @@ import NavBar from '../../Components/Navbar/navbar';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
 import './DevProfile.css';
+
+
 
 class DevProfile extends React.Component {
   constructor(props) {
