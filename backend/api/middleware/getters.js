@@ -16,8 +16,8 @@ const {
 /**
  * Given the current page determine if it is the first page. Return true or false.
  *
- * @param current {integer} Current page number.
- * @return {boolean} True/False if current page is first page.
+ * @param current {Integer} Current page number.
+ * @return {Boolean} True/False if current page is first page.
  */
 const isFirstPage = current => !current || current === 1;
 
@@ -25,10 +25,10 @@ const isFirstPage = current => !current || current === 1;
  * Given the current page, total number of pages and number of documents, determine if the next
  * page is null. Return true or false
  *
- * @param current {integer} Current page number.
- * @param total {integer} Total number of pages.
- * @param count {integer} Number of documents in query.
- * @return {boolean} True/False if next page is null.
+ * @param current {Integer} Current page number.
+ * @param total {Integer} Total number of pages.
+ * @param count {Integer} Number of documents in query.
+ * @return {Boolean} True/False if next page is null.
  */
 const isNextPageNull = (current, total, count) => count < PAGINATION_LIMIT || current === total;
 
@@ -37,10 +37,10 @@ const isNextPageNull = (current, total, count) => count < PAGINATION_LIMIT || cu
  * Returns null if number of documents is less than pagaination limit or current page equals total
  * number of pages
  *
- * @param current {integer} Current page number.
- * @param total {integer} Total number of pages.
- * @param count {integer} Number of documents in query.
- * @return {null || integer} Next page index.
+ * @param current {Integer} Current page number.
+ * @param total {Integer} Total number of pages.
+ * @param count {Integer} Number of documents in query.
+ * @return {Null || Integer} Next page index.
  */
 const getNextPage = (current, total, count) => {
   if (isNextPageNull(current, total, count)) return null;
@@ -50,16 +50,26 @@ const getNextPage = (current, total, count) => {
 /**
  * Given the current page, return the previous page
  *
- * @param current {integer} Current page number.
- * @return {null || integer} Prev page index.
+ * @param current {Integer} Current page number.
+ * @return {Null || Integer} Prev page index.
  */
 const getPrevPage = current => (isFirstPage(current) ? null : current - 1);
 
+/**
+ * Given a page number, build and return the correct url string, including any current query
+ * parameters.
+ *
+ * @param page {Integer} Page number.
+ * @param query {Object} Active query parameters. Ex. { page: '18', sort: 'location|name' }
+ * @return {String} /api/seekers?page=17&desiredTitle=Front End&sort=location|name.
+ */
 const getUrl = (page, query) => {
   const queryStr = [`page=${page}`];
 
   Object.keys(query).forEach((key) => {
-    if (key !== 'page') queryStr.push(`${key}=${query[key]}`);
+    if (key !== 'page') {
+      queryStr.push(`${key}=${query[key].replace(/ /g, '+')}`);
+    }
   });
 
   return `${SEEKERS_API_PATH}?${queryStr.join('&')}`;
