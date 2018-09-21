@@ -57,7 +57,7 @@ const getSortOptions = (sortQuery) => {
 };
 
 const getFilterByValue = (val) => {
-  const regex = new RegExp(val.replace(/\+/g, ' '), 'i');
+  const regex = new RegExp(val.replace(/\+/g, ' '));
   return regex;
 };
 
