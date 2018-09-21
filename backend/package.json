@@ -6,6 +6,8 @@
   "scripts": {
     "client": "cd ../frontend/lambda-in && yarn start",
     "dev": "cross-env NODE_ENV=development concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
+    "seed": "yarn seed-seekers",
+    "seed-seekers": "mongoimport --db developer-profiles --collection seekers --file ./api/data/Seekers.json",
     "server": "cross-env NODE_ENV=development nodemon index",
     "start": "node index",
     "test": "cross-env NODE_ENV=test jest --watch --verbose",
