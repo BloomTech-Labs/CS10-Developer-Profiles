@@ -238,11 +238,15 @@ const getSeekers = (model, req, res) => {
 
     if (page > pages) return sendErr(res, '404', 'Page number is invalid.');
 
-    Seeker.find(filters, null, {
-      sort: getSortOptions(sort),
-      skip: getSkipAmount(+page),
-      limit: PAGINATION_LIMIT,
-    })
+    Seeker.find(
+      filters,
+      { password: 0, __v: 0 },
+      {
+        sort: getSortOptions(sort),
+        skip: getSkipAmount(+page),
+        limit: PAGINATION_LIMIT,
+      },
+    )
       .then((seekers) => {
         const nextPage = getNextPage(+page, pages, count);
         const prevPage = getPrevPage(+page);
