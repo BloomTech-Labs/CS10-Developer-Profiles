@@ -87,11 +87,25 @@ const getSkipAmount = (current) => {
   return (page - 1) * PAGINATION_LIMIT;
 };
 
+/**
+ * Given a string, return the corresponding model field to sort by. If the string cannot be mapped
+ * to a field, return the default sort field.
+ *
+ * @param var {String} Sort value.
+ * @return {String} Model data field name.
+ */
 const getSortField = (sortOption) => {
   const field = sortOption.startsWith('-') ? sortOption.substring(1) : sortOption;
   return SORT_OPTIONS[field] ? SORT_OPTIONS[field] : SORT_OPTIONS.default;
 };
 
+/**
+ * Given a raw sort query string, parse it to determine the sort fields and sort order of each and
+ * return the data as an object
+ *
+ * @param sortQuery {String} Raw sort query sting. Ex. location|name
+ * @return {Object} Mongo sort options. Ex. { currentLocation: 1, lastName: 1 }
+ */
 const getSortOptions = (sortQuery) => {
   const query = sortQuery.split('|');
   const sortOptions = {};
