@@ -77,9 +77,7 @@ class InputGeolocation extends Component {
             {suggestions.length > 0 && (
               <div className="Demo__autocomplete-container">
                 {suggestions.map(suggestion => {
-                  const className = classnames('Demo__suggestion-item', {
-                    'Demo__suggestion-item--active': suggestion.active,
-                  });
+                  const className = {};
 
                   return (
                     /* eslint-disable react/jsx-key */
@@ -108,26 +106,3 @@ class InputGeolocation extends Component {
 }
 
 export default InputGeolocation;
-
-const isObject = val => {
-  return typeof val === 'object' && val !== null;
-};
-
-const classnames = (...args) => {
-  const classes = [];
-  args.forEach(arg => {
-    if (typeof arg === 'string') {
-      classes.push(arg);
-    } else if (isObject(arg)) {
-      Object.keys(arg).forEach(key => {
-        if (arg[key]) {
-          classes.push(key);
-        }
-      });
-    } else {
-      throw new Error('`classnames` only accepts string or object as arguments');
-    }
-  });
-
-  return classes.join(' ');
-};
