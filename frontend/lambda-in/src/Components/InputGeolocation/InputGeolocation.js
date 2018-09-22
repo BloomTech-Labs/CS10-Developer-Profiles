@@ -10,7 +10,7 @@ import './InputGeolocation.css';
 /**
  * An Input component connected to `Google Maps API`.
  *
- * @description Populates APP state with a suggested places from Google Maps API and its coordinates.
+ * @description A component that populates the APP's global state with suggested places, and its coordinates, from the Google Maps API.
  * @class A class component constructor
  * @prop {Function} handleGlobalState - A function which sets the Global state with the geolocation data.
  * @prop {object} textFieldProps - Contains all props needed to be passed to <TextField /> component.
@@ -135,8 +135,8 @@ class InputGeolocation extends Component {
   render() {
     return (
       <PlacesAutocomplete
-        onChange={this.handleChange}
         value={this.state.place}
+        onChange={this.handleChange}
         onSelect={this.handleSelect}
         onError={this.handleError}
       >
