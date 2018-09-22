@@ -19,16 +19,12 @@ class InputGeolocation extends Component {
   }
 
   /**
-   * Define the string containing all the classes needed for a 'className' prop.
+   * Returns a string ahich holds all the class names needed for the 'className' prop.
    *
-   * @param type {String} Copmponen name (input or listItem)
-   * @param active {Boolean} Define wheter the ListItem Element is active or not
-   * @param ...classNames {Array} Array of strings holding all passed strings which define the class names
-   * @example
-   *  For setClassName('class-name--1', '...' , 'class-name--n')
-   *  ...classNames = ['class-name--1', '...' , 'class-name--n']
+   * @param {String} type - Copmponent's role (input or listItem)
+   * @param {Boolean} [active = false] - Define wheter the ListItem Element is active or not
    * @return {String} The string definig all class names passed
-   * @example
+   * @example return
    *  'class-name--1 ... class-name--n'
    */
   setClassName = (type, active = false) => {
@@ -36,15 +32,18 @@ class InputGeolocation extends Component {
 
     const baseClass = {
       input: 'input-geolocation',
-      suggestion: 'list-item',
+      listItem: active ? 'list-item list-item--active' : 'list-item',
     }[type];
 
     const propsClass = {
-      input: textFieldOptions && textFieldOptions.className ? textFieldOptions.className : '',
-      suggestion: listOptions && listOptions.className ? listOptions : '',
-    };
+      input: textFieldOptions && textFieldOptions.className ? textFieldOptions.className : null,
+      listItem: listOptions && listOptions.className ? listOptions.className : null,
+    }[type];
 
-    return `${baseClass} ${propsClass}`;
+    console.log({ propsClass });
+    console.log(typeof propsClass);
+    console.log({ CLASSNAME: `${baseClass} ${propsClass}` });
+    return propsClass ? `${baseClass} ${propsClass}` : baseClass;
   };
 
   // Set geolocation data in the Global state
@@ -86,6 +85,8 @@ class InputGeolocation extends Component {
   };
 
   render() {
+    const { listOptions } = this.props;
+
     return (
       <PlacesAutocomplete
         onChange={this.handleChange}
@@ -95,7 +96,7 @@ class InputGeolocation extends Component {
       >
         {/* This is a fucntion that render the Input Node and the 'suggestion-list' */}
         {({ getInputProps, getSuggestionItemProps, loading, suggestions }) => (
-          <Fragment>
+          <div className="geolocation-container">
             <TextField
               {...getInputProps({
                 label: 'Search locations',
@@ -106,15 +107,18 @@ class InputGeolocation extends Component {
             {suggestions.length > 0 && (
               <List dense={true} className="suggestion-list">
                 {suggestions.map(suggestion => {
-                  const { mainText, secondaryText } = suggestion.formattedSuggestion;
                   const active = suggestion.active;
+                  const { mainText, secondaryText } = suggestion.formattedSuggestion;
 
                   return (
                     /* eslint-disable react/jsx-key */
                     <ListItem
                       key={`${mainText}${secondaryText}`}
                       dense
-                      {...getSuggestionItemProps(suggestion, this.props.listOptions)}
+                      {...getSuggestionItemProps(suggestion, {
+                        ...this.props.listOptions,
+                        className: this.setClassName('listItem', active),
+                      })}
                     >
                       <ListItemText primary={mainText} secondary={secondaryText ? secondaryText : null} />
                     </ListItem>
@@ -123,7 +127,7 @@ class InputGeolocation extends Component {
                 })}
               </List>
             )}
-          </Fragment>
+          </div>
         )}
       </PlacesAutocomplete>
     );
