@@ -5,6 +5,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import './InputGeolocation.css';
+
 class InputGeolocation extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,35 @@ class InputGeolocation extends Component {
       isFetchingCoordinates: false,
     };
   }
+
+  /**
+   * Define the string containing all the classes needed for a 'className' prop.
+   *
+   * @param type {String} Copmponen name (input or listItem)
+   * @param active {Boolean} Define wheter the ListItem Element is active or not
+   * @param ...classNames {Array} Array of strings holding all passed strings which define the class names
+   * @example
+   *  For setClassName('class-name--1', '...' , 'class-name--n')
+   *  ...classNames = ['class-name--1', '...' , 'class-name--n']
+   * @return {String} The string definig all class names passed
+   * @example
+   *  'class-name--1 ... class-name--n'
+   */
+  setClassName = (type, active = false) => {
+    const { textFieldOptions, listOptions } = this.props;
+
+    const baseClass = {
+      input: 'input-geolocation',
+      suggestion: 'list-item',
+    }[type];
+
+    const propsClass = {
+      input: textFieldOptions && textFieldOptions.className ? textFieldOptions.className : '',
+      suggestion: listOptions && listOptions.className ? listOptions : '',
+    };
+
+    return `${baseClass} ${propsClass}`;
+  };
 
   // Set geolocation data in the Global state
   setGlobalState = () => {};
@@ -49,14 +80,12 @@ class InputGeolocation extends Component {
     // this.setGlobalState();
   };
 
-  handleError = (error, clearSugesstions) => {
+  handleError = (error, clearSuggestions) => {
     console.log('Error with Google API', error);
-    clearSugesstions(); // this is built-in handler within <PlacesAutocomplete>
+    clearSuggestions(); // this is built-in handler within <PlacesAutocomplete>
   };
 
   render() {
-    const { places, lat, lng, isFetchingCoordinates } = this.state;
-
     return (
       <PlacesAutocomplete
         onChange={this.handleChange}
@@ -70,14 +99,16 @@ class InputGeolocation extends Component {
             <TextField
               {...getInputProps({
                 label: 'Search locations',
-                className: 'input-geolocation',
-                ...this.props.testFieldOptions,
+                ...this.props.textFieldOptions,
+                className: this.setClassName('input', false),
               })}
             />
             {suggestions.length > 0 && (
               <List dense={true} className="suggestion-list">
                 {suggestions.map(suggestion => {
                   const { mainText, secondaryText } = suggestion.formattedSuggestion;
+                  const active = suggestion.active;
+
                   return (
                     /* eslint-disable react/jsx-key */
                     <ListItem
