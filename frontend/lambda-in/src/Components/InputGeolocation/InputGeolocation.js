@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
@@ -66,7 +66,7 @@ class InputGeolocation extends Component {
       >
         {/* This is a fucntion that render the Input Node and the 'suggestion-list' */}
         {({ getInputProps, getSuggestionItemProps, loading, suggestions }) => (
-          <div className="search-geolocation">
+          <Fragment>
             <TextField
               {...getInputProps({
                 label: 'Search locations',
@@ -98,7 +98,7 @@ class InputGeolocation extends Component {
                 </div>
               </div>
             )}
-          </div>
+          </Fragment>
         )}
       </PlacesAutocomplete>
     );
