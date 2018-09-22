@@ -75,28 +75,22 @@ class InputGeolocation extends Component {
               })}
             />
             {suggestions.length > 0 && (
-              <div className="Demo__autocomplete-container">
+              <List dense={true} className="suggestion-list">
                 {suggestions.map(suggestion => {
-                  const className = {};
-
+                  const { mainText, secondaryText } = suggestion.formattedSuggestion;
                   return (
                     /* eslint-disable react/jsx-key */
-                    <div {...getSuggestionItemProps(suggestion, { className })}>
-                      <strong>{suggestion.formattedSuggestion.mainText}</strong>{' '}
-                      <small>{suggestion.formattedSuggestion.secondaryText}</small>
-                    </div>
+                    <ListItem
+                      key={`${mainText}${secondaryText}`}
+                      dense
+                      {...getSuggestionItemProps(suggestion, this.props.listOptions)}
+                    >
+                      <ListItemText primary={mainText} secondary={secondaryText ? secondaryText : null} />
+                    </ListItem>
                   );
                   /* eslint-enable react/jsx-key */
                 })}
-                <div className="Demo__dropdown-footer">
-                  <div>
-                    {/* <img
-                          src={require('../images/powered_by_google_default.png')}
-                          className="Demo__dropdown-footer-image"
-                        /> */}
-                  </div>
-                </div>
-              </div>
+              </List>
             )}
           </Fragment>
         )}
