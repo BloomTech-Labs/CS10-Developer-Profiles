@@ -20,12 +20,11 @@ A class component constructor
     * [.handleChange](#InputGeolocation+handleChange) ⇒ <code>void</code>
     * [.handleSelect](#InputGeolocation+handleSelect) ⇒ <code>void</code>
     * [.handleError](#InputGeolocation+handleError) ⇒ <code>void</code>
-    * [.render()](#InputGeolocation+render)
 
 <a name="new_InputGeolocation_new"></a>
 
 ### new InputGeolocation()
-Populates APP state with a suggested places from Google Maps API and its coordinates.
+A component that populates the APP's global state with suggested places, and its coordinates, from the Google Maps API.
 
 **Example**  
 ```js
@@ -94,9 +93,3 @@ Set local and global state with 'latitude' and 'longitud' after selecting a 'pla
 Console.log error with Google API and reset geo-coordinates
 
 **Kind**: instance property of [<code>InputGeolocation</code>](#InputGeolocation)  
-<a name="InputGeolocation+render"></a>
-
-### inputGeolocation.render()
-Return a <TextField /> and a <List /> components
-
-**Kind**: instance method of [<code>InputGeolocation</code>](#InputGeolocation)  
