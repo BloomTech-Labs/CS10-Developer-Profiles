@@ -69,9 +69,6 @@ class InputGeolocation extends Component {
       listItem: listItemProps && listItemProps.className ? listItemProps.className : null,
     }[type];
 
-    console.log({ propsClass });
-    console.log(typeof propsClass);
-    console.log({ CLASSNAME: `${baseClass} ${propsClass}` });
     return propsClass ? `${baseClass} ${propsClass}` : baseClass;
   };
 
@@ -81,7 +78,21 @@ class InputGeolocation extends Component {
    * @return {void}
    */
   setGlobalState = () => {
-    // this.props.handleGlobalState();
+    try {
+      this.props.handleGlobalState();
+    } catch (e) {
+      e instanceof TypeError
+        ? console.log({
+            Component: 'InputGeolocation',
+            Error: "APP's global state was not set",
+            message: e.message,
+            Requirement: 'this.props.handleGlobalState is needed',
+          })
+        : console.log({
+            Component: 'InputGeolocation',
+            Error: e.message,
+          });
+    }
   };
 
   /**
