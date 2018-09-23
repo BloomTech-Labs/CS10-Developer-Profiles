@@ -2,20 +2,20 @@ import React from 'react';
 import InputGeolocation from './InputGeolocation';
 
 const SearchGeolocation = () => {
+  /**
+   * The following are no required
+   * DO NOT PASS `value` => Is not neccesary, Will break this.setState() functionality in InputGeolocation component.
+   *
+   * value: this.state.fieldValue
+   */
   const textFieldProps = {
     id: 'sampleTextField',
     label: 'Desired Locations',
     fullWidth: true,
     margin: 'normal',
     className: 'textField-class--name another-class--name',
-    //   variant: 'outlined',
-
-    /**
-     * The following are no required
-     *
-     * value: this.state.fieldValue
-     * onChange: {this.handleChange( ... )}
-     */
+    style: {},
+    variant: 'outlined',
   };
   const listItemProps = {
     className: 'list-suggestion--options',
