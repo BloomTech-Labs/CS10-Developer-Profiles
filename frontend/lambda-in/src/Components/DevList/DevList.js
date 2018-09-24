@@ -18,6 +18,7 @@ export default class DevList extends Component {
     antoine: false,
 
     count: 0,
+    pages: 0,
     next: null,
     prev: null,
     seekers: []
@@ -39,6 +40,7 @@ export default class DevList extends Component {
       .then(response => {
         this.setState({
           count: response.data.count,
+          pages: response.data.pages,
           next: response.data.next,
           prev: response.data.prev,
           seekers: response.data.results
