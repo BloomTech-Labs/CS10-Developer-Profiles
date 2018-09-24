@@ -22,20 +22,20 @@ export default class DevProfileCard extends Component {
                 <Typography variant="title">Samar vir</Typography>
                 <Typography variant="subheading">Delhi, India</Typography>
                 <Divider />
-                <Typography variant="paragraph">
+                <Typography variant="caption">
                   cool boi 101 cool boi 1cool boi 101
                 </Typography>
               </div>
             </div>
             <Divider />
             <div className="midCard">
-              <Typography variant="Headline" component="h4">
+              <Typography variant="headline" component="h4">
                 Full stack engineer
               </Typography>
             </div>
             <Divider />
             <div className="bottomCard">
-              <Typography variant="paragraph">
+              <Typography variant="caption">
                 python js python js python js python js python js python js
                 python js python js
               </Typography>
