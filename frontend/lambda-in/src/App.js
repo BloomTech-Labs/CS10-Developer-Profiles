@@ -11,7 +11,6 @@ import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpList from './Components/EmployerList/EmpOPList';
 import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
-import InputGeolocation from './Components/InputGeolocation/InputGeolocation';
 
 import DevList from './Components/DevList/DevList';
 
