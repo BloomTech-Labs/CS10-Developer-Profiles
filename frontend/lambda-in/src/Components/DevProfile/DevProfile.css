@@ -1,77 +1,47 @@
-h1, h2 {
-    font-family: Palatino;
-    margin: 0.2em 0;
-}
-
-h3 {
-    margin: 0;
-}
-
-.navBar {
-    width: 100vw;
-    height: 5vh;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.leftNavBar {
-    width:50vw;
-    height: 5vh;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.rightNavBar {
-    width:50vw;
-    height: 5vh;
-    display: flex;
-    justify-content: flex-end;
-}
-
 .container {
     color: #4A4A4A;
     max-width: 50vw;
     border: solid 2px;
-    margin: 3vw auto;
-    padding: 2vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .topCard {
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 45vw;
+    margin-bottom: 3px;
 }
 
 .topCardLeft {
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 43vw;
     justify-content: flex-start;
 }
 
 .nameCard {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 43vw;
 }
 
 .photo {
     display: flex;
-    max-width: 20%;
-    justify-content: flex-start;
+    max-width: 12vw;
+    justify-content: flex-end;
 }
 
 .pic {
-    width: 90%;
-    height: 90%;
+    width: 12vw;
+    justify-content: flex-end;
 }
-
 
 .basicInfo {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 34vw;
 }
 
 .name {
@@ -84,7 +54,7 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 10%;
+    /* width: 10vw; */
 }
 
 .currentLocation {
@@ -114,6 +84,7 @@ h3 {
 }
 
 .tagCloud {
+    display: flex;
     width: 100%;
     border-top: solid #4A4A4A 2px;
 }
