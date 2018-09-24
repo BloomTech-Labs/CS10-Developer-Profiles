@@ -3,6 +3,7 @@ const setupGlobalMiddleware = require('./middleware').globals;
 const setupPublicRoutes = require('./routes').public;
 const setupAuthMiddleware = require('./middleware').auth;
 const setupPrivateRoutes = require('./routes').private;
+const setupPaymentStripe = require('./routes').payments.stripe;
 
 /**
  * Public: endpoints
@@ -23,6 +24,7 @@ setupAuthMiddleware(server);
 
 // Private access endpoints
 setupPrivateRoutes(server);
+setupPaymentStripe(server);
 
 module.exports = {
   server,
