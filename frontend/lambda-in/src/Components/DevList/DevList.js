@@ -16,6 +16,7 @@ import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
 import { Link } from 'react-router-dom';
 
+import NavBar from '../Navbar/navbar' 
 import DevProfileCard from './DevProfileCard'
 import '../DevList/DevList.css'
 

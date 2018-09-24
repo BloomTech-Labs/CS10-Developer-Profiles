@@ -8,7 +8,7 @@ const { MONGODB_URI_TEST } = process.env;
 
 describe('Seeker Model', () => {
   describe('*** Validation ***', () => {
-    it('should require firstName, lastName, password, email, desiredTitle', (done) => {
+    it('should require firstName, lastName, password, email', (done) => {
       const seeker = new Seeker();
 
       seeker.validate((err) => {
@@ -16,7 +16,6 @@ describe('Seeker Model', () => {
         expect(err.errors).toHaveProperty('lastName');
         expect(err.errors).toHaveProperty('password');
         expect(err.errors).toHaveProperty('email');
-        expect(err.errors).toHaveProperty('desiredTitle');
         done();
       });
     });

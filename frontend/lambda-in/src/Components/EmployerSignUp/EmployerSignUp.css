@@ -1,28 +1,15 @@
 .App {
   width: 100vw;
-  height: 100vh;
 }
 
 .navBar {
-  width: 100vw;
-  height: 5vh;
-  display: flex;
-  justify-content: space-evenly;
   margin-bottom:4vw;
 }
 
-.leftNavBar {
-  width:50vw;
-  height: 5vh;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.rightNavBar {
-  width:50vw;
-  height: 5vh;
-  display: flex;
-  justify-content: flex-end;
+.container {
+  width: 50vw;
+  margin: auto;
+  border: none;
 }
 
 .headline{
@@ -30,5 +17,8 @@
 }
 
 .employerContainer {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 3vw;
 }
+
