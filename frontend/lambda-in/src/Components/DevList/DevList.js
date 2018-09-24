@@ -20,7 +20,7 @@ export default class DevList extends Component {
     count: 0,
     next: null,
     prev: null,
-    seekers: null,
+    seekers: []
   };
 
   handleChange = name => event => {
@@ -167,10 +167,9 @@ export default class DevList extends Component {
             </FormControl>
           </div>
           <div className="cardBar">
-            <DevProfileCard />
-            <DevProfileCard />
-            <DevProfileCard />
-            <DevProfileCard />
+            {this.state.seekers.map(seeker => (
+              <DevProfileCard key={seeker._id} seeker={seeker} />
+            ))}
           </div>
         </div>
       </div>
