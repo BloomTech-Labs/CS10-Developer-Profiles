@@ -2,14 +2,17 @@ import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
-const CURRENCY = 'USD';
-const PAYMENT_SERVER_URL = process.env.NODE_ENV === 'production' ? '/payments/stripe/' : '/payments/stripe/';
+const {
+  REACT_APP_STRIPE_CURRENCY,
+  REACT_APP_STRIPE_PUBLIC_KEY_TEST,
+  REACT_APP_STRIPE_PUBLIC_KEY_PRODUCTION,
+} = process.env;
+
+const PAYMENT_SERVER_URL = '/payments/stripe/';
 const STRIPE_PUBLISHABLE =
-  process.env.NODE_ENV === 'production' ? 'pk_test_TrhkR0IYq5UE3tsvU5NON1r5' : 'pk_test_TrhkR0IYq5UE3tsvU5NON1r5';
+  process.env.NODE_ENV === 'production' ? REACT_APP_STRIPE_PUBLIC_KEY_PRODUCTION : REACT_APP_STRIPE_PUBLIC_KEY_TEST;
 
-console.log({ PAYMENT_SERVER_URL });
-
-const fromDollarToCent = amount => Math.floor(amount * 100);
+const fromRawAmountToCent = amount => Math.floor(amount * 100);
 
 const successPayment = data => {
   alert('Payment Successful');
@@ -26,8 +29,8 @@ const onToken = (amount, description) => token =>
       {
         description,
         source: token.id,
-        currency: CURRENCY,
-        amount: fromDollarToCent(amount),
+        currency: REACT_APP_STRIPE_CURRENCY,
+        amount: fromRawAmountToCent(amount),
       },
       {
         headers: {
@@ -42,9 +45,9 @@ const Checkout = ({ name, description, amount }) => (
   <StripeCheckout
     name={name}
     description={description}
-    amount={fromDollarToCent(amount)}
+    amount={fromRawAmountToCent(amount)}
     token={onToken(amount, description)}
-    currency={CURRENCY}
+    currency={REACT_APP_STRIPE_CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
   />
 );
