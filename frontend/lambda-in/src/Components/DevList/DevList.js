@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Typography from '@material-ui/core/Typography';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
@@ -14,12 +15,42 @@ export default class DevList extends Component {
   state = {
     gilad: true,
     jason: false,
-    antoine: false
+    antoine: false,
+
+    count: 0,
+    next: null,
+    prev: null,
+    seekers: null,
   };
 
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
   };
+
+  componentDidMount() {
+    const config = {
+      headers: {
+        Authorization: localStorage.token
+      }
+    };
+
+    axios
+      .get('/api/seekers', config)
+      .then(response => {
+        this.setState({
+          count: response.data.count,
+          next: response.data.next,
+          prev: response.data.prev,
+          seekers: response.data.results
+        });
+      })
+      .catch(err => {
+        /**
+         * @todo On redirect to sign in page display message telling user they must log in before accessing content
+         */
+        this.props.history.push('/dev-login');
+      });
+  }
 
   render() {
     return (
