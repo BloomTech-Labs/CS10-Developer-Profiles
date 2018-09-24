@@ -1,105 +1,125 @@
 .container {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     color: #4A4A4A;
     max-width: 50vw;
-    border: solid 2px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .topCard {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 45vw;
-    margin-bottom: 3px;
+    width: 49vw;
+    min-height: 22vw;
+    margin-top: 0.5vw;
+    margin-left: 0.5vw;
 }
 
 .topCardLeft {
     display: flex;
     flex-direction: column;
     width: 43vw;
-    justify-content: flex-start;
 }
 
 .nameCard {
     display: flex;
     flex-direction: row;
-    width: 43vw;
+    width: 42vw;
+    min-height: 20vw;
 }
 
 .photo {
     display: flex;
-    max-width: 12vw;
-    justify-content: flex-end;
+    width: 10vw;
+    height: 15vw;
 }
 
 .pic {
-    width: 12vw;
-    justify-content: flex-end;
+    width: 10vw;
+    height: 15vw;
 }
 
 .basicInfo {
     display: flex;
     flex-direction: column;
-    width: 34vw;
+    width: 35vw;
+    min-height:15vw;
+    margin-left: 1vw;
 }
 
 .name {
+    display: flex;
     font-family: Palatino;
-    padding: 0;
-    margin: 0;
+    width: 30vw;
+}
+
+.currentLoacation {
+    display: flex;
+    width: 30vw;
+}
+
+.summary {
+    display: flex;
+    width: 30vw;
+    flex-wrap: wrap;
+}
+
+.desiredTitle {
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    min-height: 2vw;
+    border-top: solid #4A4A4A 2px;
+}
+
+.tagCloud {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30vw;
+    min-height: 6vw;
+    border-top: solid #4A4A4A 2px;
 }
 
 .topCardRight {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* width: 10vw; */
+    width: 5vw;
+    min-height: 23vw;
 }
 
-.currentLocation {
-    padding:0;
-    margin:0;
+.downCard {
+    display:flex;
+    flex-direction: column;
+    width: 49vw;
+    margin-left: 0.5vw;
 }
 
-.summary {
-    padding:0;
-    margin:1vw 0 1vw 0;
-}
-
-.desiredTitle {
+.projects {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-top: solid #4A4A4A 2px;
-    padding: 0;
-}
-.title1 {
-    margin: 0;
-    padding: 0;
-}
-.title2 {
-    margin: 0 0 0 1vw;
-    padding: 0;
-}
-
-.tagCloud {
-    display: flex;
-    width: 100%;
+    width: 49vw;
+    min-height: 4vw;
     border-top: solid #4A4A4A 2px;
 }
 
 .experience {
-    width: 100%;
+    display: flex;
+    width: 49vw;
+    min-height: 4vw;
     border-top: solid #4A4A4A 2px;
 }
 
 .education {
-    width: 100%;
+    display: flex;
+    width: 49vw;
+    min-height: 4vw;
     border-top: solid #4A4A4A 2px;
 }
 
 .placesInterested {
-    width: 100%;
+    display: flex;
+    width: 49vw;
+    min-height: 4vw;
     border-top: solid #4A4A4A 2px;
 }
+
