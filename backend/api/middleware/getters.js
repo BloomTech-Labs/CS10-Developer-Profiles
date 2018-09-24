@@ -253,6 +253,7 @@ const getSeekers = (model, req, res) => {
 
         sendRes(res, '200', {
           count,
+          pages,
           next: nextPage ? getUrl(nextPage, req.query) : null,
           prev: prevPage ? getUrl(prevPage, req.query) : null,
           results: seekers,
