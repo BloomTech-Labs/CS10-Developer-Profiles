@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
@@ -8,7 +9,7 @@ import testimage from '../../static/images/testimage.png';
 
 import './DevProfileCard.css';
 
-export default class DevProfileCard extends Component {
+class DevProfileCard extends Component {
   render() {
     return (
       <div>
@@ -46,4 +47,26 @@ export default class DevProfileCard extends Component {
       </div>
     );
   }
-}
+};
+
+DevProfileCard.PropTypes = {
+  seeker: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    avatar: PropTypes.string,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    currentLocation: PropTypes.string,
+    summary: PropTypes.string,
+    desiredTitle: PropTypes.string,
+    topSkills: PropTypes.array,
+    additionalSkills: PropTypes.array,
+    familiarWith: PropTypes.array,
+    github: PropTypes.string,
+    linkedIn: PropTypes.string,
+    portfolio: PropTypes.string,
+    resume: PropTypes.string,
+    acclaim: PropTypes.string
+  }),
+};
+
+export default DevProfileCard;
