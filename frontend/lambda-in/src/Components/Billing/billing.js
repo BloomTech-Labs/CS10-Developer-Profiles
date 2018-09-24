@@ -1,6 +1,5 @@
 import React from 'react';
 import Checkout from './Stripe/stripe';
-import NavBar from '../../Components/Navbar/navbar';
 //import RadioButtonsGroup from './Radio Buttons/radio-buttons'
 import './billing.css';
 
@@ -8,9 +7,8 @@ class Billing extends React.Component {
     render() {
         return (
             <div>
-                <NavBar />
                 <div className='checkout'>
-                    <div>
+                    <div className='text'>
                         <p>1 month - $9.99</p>
                         <p>3 months - $19.99</p>
                         <p>6 months - $29.99</p>

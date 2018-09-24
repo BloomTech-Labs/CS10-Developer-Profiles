@@ -4,6 +4,7 @@ import { Route, Switch, Link, Redirect, withRouter } from 'react-router-dom';
 import './navbar.css';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import SimpleMenu from '../SignUp Menu/sign-up';
 
 class NavBar extends React.Component {
   render() {
@@ -23,16 +24,14 @@ class NavBar extends React.Component {
             </Link>
 
             {/* START - Just for test purpose */}
-            <Link to="/dev-signup">
-              <Button>Signup</Button>
-            </Link>
-            {/* END - Just for test purpose */}
-          </div>
-          <div className="rightNavBar">
             {/* <Link to="/billing"> */}
             <Link to="/billing">
               <Button>Billing</Button>
             </Link>
+            {/* END - Just for test purpose */}
+          </div>
+          <div className="rightNavBar">
+            <SimpleMenu />
             <Link to="/dev-login">
               <Button>Log-in</Button>
             </Link>
