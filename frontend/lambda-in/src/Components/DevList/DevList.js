@@ -195,12 +195,13 @@ export default class DevList extends Component {
             {this.state.seekers.map(seeker => (
               <DevProfileCard key={seeker._id} seeker={seeker} />
             ))}
-            <Pagination
-              count={this.state.count}
-              pages={this.state.pages}
-              currentPage={this.state.currentPage}
-              pageLimit={10}
-            />
+            {this.state.seekers.length !== 0 && (
+              <Pagination
+                count={this.state.count}
+                pages={this.state.pages}
+                currentPage={this.state.currentPage}
+              />
+            )}
           </div>
         </div>
       </div>
