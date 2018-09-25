@@ -23,6 +23,17 @@ class App extends Component {
     };
   }
 
+  /**
+   * Set APP's global state
+   *
+   * @function setGlobalState
+   * @param {object} properties - Properties to be set.
+   * @return {void}
+   */
+  setGlobalState = properties => {
+    this.setState(properties);
+  };
+
   render() {
     return (
       <div>
