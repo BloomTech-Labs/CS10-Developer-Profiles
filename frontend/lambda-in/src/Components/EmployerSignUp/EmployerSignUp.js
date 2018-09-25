@@ -9,12 +9,6 @@ import Grid from "@material-ui/core/Grid";
 import NavBar from "../../Components/Navbar/navbar";
 import "../EmployerSignUp/EmployerSignUp.css";
 
-const styles = theme => ({
-  paper: {
-    padding: theme.spacing.unit * 2
-  }
-});
-
 export default class EmployerSignUp extends Component {
   constructor(props) {
     super(props);
@@ -61,6 +55,7 @@ export default class EmployerSignUp extends Component {
       //   skills: this.state.skills,
       //   minSalrary: this.state.minSalrary,
       //   maxSalary: this.state.maxSalary
+      // }
     };
 
     axios
@@ -68,12 +63,12 @@ export default class EmployerSignUp extends Component {
       .then(response => {
         console.log(response);
         localStorage.setItem("token", response.data.jwt);
-        // localStorage.setItem("_id", response.data.newEmp._id);
+        localStorage.setItem("_id", response.data.newEmp._id);
         this.setState({
           isSignedIn: true
         });
         console.log(localStorage.getItem("token"));
-        // console.log(response.data.newEmp._id);
+        console.log(response.data.newEmp._id);
       })
       .catch(err => {
         console.log(err);
@@ -82,51 +77,56 @@ export default class EmployerSignUp extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar />
-        <div class="container">
-          <div class="employerContainer">
-            <Paper>
-              <Typography variant="headline" component="h3">
-                Employer Signup
-              </Typography>
+        <div class="signupContainer">
+          <div class="formContainer">
+            <Paper class="paper">
+              <div className="form2">
+                <div>
+                  <Typography variant="display1" gutterBottom align="center">
+                    Employer
+                  </Typography>
 
-              <TextField
-                id="companyName"
-                label="Company Name"
-                value={this.state.companyName}
-                onChange={this.handleChange("companyName")}
-                margin="normal"
-                fullWidth="true"
-              />
+                  <Typography variant="headline" gutterBottom align="center">
+                    Sign Up
+                  </Typography>
+                </div>
 
-              <TextField
-                id="companyEmail"
-                label="Company Email"
-                value={this.state.email}
-                onChange={this.handleChange("email")}
-                margin="normal"
-                fullWidth="true"
-              />
+                <TextField
+                  id="companyName"
+                  label="Company Name"
+                  value={this.state.companyName}
+                  onChange={this.handleChange("companyName")}
+                  margin="normal"
+                  fullWidth="true"
+                />
 
-              <TextField
-                id="password"
-                type="password"
-                label="Password"
-                value={this.state.password}
-                onChange={this.handleChange("password")}
-                margin="normal"
-              />
+                <TextField
+                  id="companyEmail"
+                  label="Company Email"
+                  value={this.state.email}
+                  onChange={this.handleChange("email")}
+                  margin="normal"
+                  fullWidth="true"
+                />
 
-              <TextField
-                id="confirmPassword"
-                type="password"
-                label="Confirm Password"
-                value={this.state.confirmPassword}
-                onChange={this.handleChange("confirmPassword")}
-                margin="normal"
-              />
-              {/* 
+                <TextField
+                  id="password"
+                  type="password"
+                  label="Password"
+                  value={this.state.password}
+                  onChange={this.handleChange("password")}
+                  margin="normal"
+                />
+
+                <TextField
+                  id="confirmPassword"
+                  type="password"
+                  label="Confirm Password"
+                  value={this.state.confirmPassword}
+                  onChange={this.handleChange("confirmPassword")}
+                  margin="normal"
+                />
+                {/* 
               <TextField
                 id="hiringManagerFirstName"
                 label="Hiring Manager's FirstName"
@@ -150,16 +150,23 @@ export default class EmployerSignUp extends Component {
                 onChange={this.handleChange("hiringManagerEmail")}
                 margin="normal"
               />
-
-             */}
-             <br />
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={this.handleNewEmp}
-              >
-                Save Profile
-              </Button>
+*/}
+                <br />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleNewEmp}
+                >
+                  Save Profile
+                </Button>
+              </div>
+              <div className="login">
+                {/* <Link to="/emp-login"> */}
+                  <Typography variant="caption" gutterBottom align="center">
+                    already have an account? Login here!
+                  </Typography>
+                {/* </Link> */}
+              </div>
             </Paper>
           </div>
           {/* 
@@ -233,7 +240,6 @@ export default class EmployerSignUp extends Component {
             </div>
           </Paper>*/}
         </div>
-      </div>
     );
   }
 }

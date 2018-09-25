@@ -32,8 +32,8 @@ class App extends Component {
               <Route path="/dev-profiles" component={DevProfile} />
               <Route path="/billing" component={Billing} />
               <Route path="/dev-list" component={DevList} />
-              <Route path="/emp-signup" component={EmpSignUp} />
-              <Route path="/emp-list" component={EmpList} />
+              <Route path="/employer-signup" component={EmpSignUp} />
+              <Route path="/employer-list" component={EmpList} />
               <Route path="/dev-info-edit" component={DevInfoEditz} />
               {/* For testing purpose */}
               <Route path="/dev-signup" component={DevSignUp} />
