@@ -13,19 +13,24 @@ import Pagination from '../Pagination/Pagination';
 import '../DevList/DevList.css';
 
 export default class DevList extends Component {
-  state = {
-    gilad: true,
-    jason: false,
-    antoine: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      gilad: true,
+      jason: false,
+      antoine: false,
 
-    query: '',
-    count: 0,
-    pages: 0,
-    next: null,
-    prev: null,
-    currentPage: 1,
-    seekers: []
-  };
+      query: '',
+      count: 0,
+      pages: 0,
+      next: null,
+      prev: null,
+      currentPage: 1,
+      seekers: []
+    };
+
+    this.getSeekers();
+  }
 
   getQuery = () => {
     const search = window.location.search;
@@ -81,10 +86,6 @@ export default class DevList extends Component {
   handlePageChange = page => {
     this.getSeekers(page);
   };
-
-  componentDidMount() {
-    this.getSeekers();
-  }
 
   render() {
     return (
