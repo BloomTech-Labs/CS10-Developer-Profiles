@@ -43,18 +43,15 @@ export default class DevList extends Component {
     return 1;
   };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
-
-  componentDidMount() {
+  getSeekers = (page = null) => {
     const query = this.getQuery();
-    const page = this.getCurrentPage(query);
     const config = {
       headers: {
         Authorization: localStorage.token
       }
     };
+
+    page = page || this.getCurrentPage(query);
 
     axios
       .get(`/api/seekers?page=${page}`, config)
@@ -66,7 +63,7 @@ export default class DevList extends Component {
           next: response.data.next,
           prev: response.data.prev,
           seekers: response.data.results,
-          currentPage: page
+          currentPage: +page
         });
       })
       .catch(err => {
@@ -75,6 +72,18 @@ export default class DevList extends Component {
          */
         this.props.history.push('/dev-login');
       });
+  };
+
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.checked });
+  };
+
+  handlePageChange = page => {
+    this.getSeekers(page);
+  };
+
+  componentDidMount() {
+    this.getSeekers();
   }
 
   render() {
@@ -200,6 +209,7 @@ export default class DevList extends Component {
                 count={this.state.count}
                 pages={this.state.pages}
                 currentPage={this.state.currentPage}
+                onPageChange={this.handlePageChange}
               />
             )}
           </div>
