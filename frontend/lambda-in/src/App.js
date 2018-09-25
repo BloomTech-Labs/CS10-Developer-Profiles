@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Route, Switch, Link, Redirect, withRouter } from 'react-router-dom';
 import './App.css';
 import NavBar from './Components/Navbar/navbar';
@@ -41,21 +41,21 @@ class App extends Component {
    * Get APP's global state.
    *
    * @method getGlobalState
-   * @param {void}
+   * @param {string} property - the property of which we want to know its value.
    * @return {object} App's global state.
    *
    * @example Pass as a prop to component.
    * <Component getGS={this.getGlobalState} />
    */
-  getGlobalState = () => {
+  getGlobalState = property => {
     const self = this;
-    return self.state;
+    return property ? self.state[property] : self.state;
   };
 
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar getGS={this.getGlobalState} />
         <div className="TopContainer">
           <Switch>
             <Route exact path="/" component={LandingPage} />
