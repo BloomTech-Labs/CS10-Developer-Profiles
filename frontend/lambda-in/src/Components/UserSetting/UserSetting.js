@@ -11,7 +11,8 @@ export default class UserSetting extends Component {
     super(props);
     this.state = {
       email: 'abc@xyz.com',
-      password: ''
+      password: '',
+      confirmPassword: ''
     };
   }
 
@@ -23,6 +24,13 @@ export default class UserSetting extends Component {
 
   // axios 1 argument is URL and 2 argument is data 3 argument is options
   updatePassword = () => {
+    if(this.state.password !== this.state.confirmPassword){
+      alert("Your passwors don't match. Please try again!")
+      this.setState({
+        password: '',
+        confirmPassword: ''
+      })
+    }
     const _id = localStorage.getItem('_id');
     if (_id) {
       console.log(_id);
@@ -77,7 +85,7 @@ export default class UserSetting extends Component {
       console.log('updating without ID');
     }
   };
-  
+
   render() {
     return (
       <div className="UserContainer">
@@ -125,6 +133,18 @@ export default class UserSetting extends Component {
                         fullWidth
                         value={this.state.password}
                         onChange={this.handleChange('password')}
+                        margin="normal"
+                        variant="outlined"
+                      />
+                  </div>
+                  <div className="inputField">
+                      <TextField
+                        id="confirmPassword"
+                        label="confirm password"
+                        type="password"
+                        fullWidth
+                        value={this.state.confirmPassword}
+                        onChange={this.handleChange('confirmPassword')}
                         margin="normal"
                         variant="outlined"
                       />
