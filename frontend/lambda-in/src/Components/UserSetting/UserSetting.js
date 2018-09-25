@@ -68,10 +68,13 @@ export default class UserSetting extends Component {
   };
   render() {
     return (
-      <div className="EditContainer">
-        <Paper className="paperContainer" elevation={1}>
+      <div className="UserContainer">
+        <Paper className="userPaperContainer" elevation={1}>
           <Typography variant="display1" gutterBottom align="left">
             Settings
+          </Typography>
+          <Typography variant="Subheading" gutterBottom align="left">
+            Update your info!
           </Typography>
           <br />
           <form>
@@ -118,6 +121,7 @@ export default class UserSetting extends Component {
                     <TextField
                       id="password"
                       label="password"
+                      type="password"
                       fullWidth
                       value={this.state.password}
                       onChange={this.handleChange('password')}
@@ -127,12 +131,9 @@ export default class UserSetting extends Component {
                   </div>
                 </div>
 
-                <div className="imageContainer">
-                  <img className="displayPic" src={`https://robohash.org/1${this.state.firstName}`} alt="Italian " />
-                </div>
               </div>
 
-
+                <br />
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
                   update

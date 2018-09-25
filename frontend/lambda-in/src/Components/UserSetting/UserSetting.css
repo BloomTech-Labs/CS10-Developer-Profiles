@@ -1,15 +1,15 @@
-.EditContainer{
+.UserContainer{
     width: 100vw;
-    height: 160vh;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     margin-top: 50px;
     justify-content: center;
 }
 
-.paperContainer{
-    width: 70vw;
-    height: 160vh;
+.userPaperContainer{
+    width: 30vw;
+    height: 70vh;
     margin:20 px;
     padding: 20px;
     display: flex;
