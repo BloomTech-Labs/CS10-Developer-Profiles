@@ -1,6 +1,7 @@
 module.exports = {
   /**
    * Process in Stripe API Frontend payments
+   *
    * @param {object} res - HTTP request response object.
    * @return {callback} Function handling the HTTP request acordingly with the Stripe API response
    */
