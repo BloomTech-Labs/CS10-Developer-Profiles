@@ -12,23 +12,7 @@ export default class UserSetting extends Component {
     super(props);
     this.state = {
       email: 'abc@xyz.com',
-      firstName: 'daat',
-      lastName: 'man',
-      desiredTitle: 'BOSS',
-      currentLocation: 'mars',
-      github: 'github.com/kkkk',
-      linkedin: 'linkedin.com/batman',
-      portfolio: 'batman.com',
-      acclaimBadge: 'lambda Batch',
-      placesInterested: ' earh etc',
-      password: '12345678Aa$',
-      confirmPassword: '',
-      isSignedIn: false,
-      summary: 'wubba lubba dub dub',
-      topskill: 'Baller',
-      projects: 'Dev profiles',
-      experience: 'mars inc.',
-      education: 'Lambda School',
+      password: ''
     };
   }
 
@@ -70,54 +54,46 @@ export default class UserSetting extends Component {
     return (
       <div className="UserContainer">
         <Paper className="userPaperContainer" elevation={1}>
-          <Typography variant="display1" gutterBottom align="left">
+          <Typography variant="display2" gutterBottom align="left">
             Settings
           </Typography>
-          <Typography variant="Subheading" gutterBottom align="left">
+          <Typography variant="display1" gutterBottom align="left">
             Update your info!
           </Typography>
           <br />
+          
           <form>
             <div className="inputRow">
               <div className="smallInputContainer">
                 <div>
-                  <div className="inputField">
+                 
+                <Typography variant="caption" gutterBottom align="left">
+                    change your email here
+                </Typography>
+                <div className="inputField">
                     <TextField
-                      id="firstName"
-                      label="First Name"
-                      fullWidth
-                      value={this.state.firstName}
-                      onChange={this.handleChange('firstName')}
-                      margin="normal"
-                      variant="outlined"
+                        id="email"
+                        label="email"
+                        fullWidth
+                        value={this.state.email}
+                        onChange={this.handleChange('email')}
+                        margin="normal"
+                        variant="outlined"
                     />
-                  </div>
+                </div>
 
-                  <div className="inputField">
-                    <TextField
-                      id="outlined-name"
-                      label="Last Name"
-                      fullWidth
-                      value={this.state.lastName}
-                      onChange={this.handleChange('lastName')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
+                <br /> 
+                <div>
+                    <Button variant="outlined" color="primary" align="center" onClick={this.update}>
+                        Update Email
+                    </Button>
+                </div>
 
-                  <div className="inputField">
-                    <TextField
-                      id="email"
-                      label="email"
-                      fullWidth
-                      value={this.state.email}
-                      onChange={this.handleChange('email')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
-
-                  <div className="inputField">
+                <br /> 
+                <Typography variant="caption" gutterBottom align="left">
+                    update your password here
+                </Typography>
+                <div className="inputField">
                     <TextField
                       id="password"
                       label="password"
@@ -128,17 +104,21 @@ export default class UserSetting extends Component {
                       margin="normal"
                       variant="outlined"
                     />
-                  </div>
+                </div>
+
+                <div>
+                    <Button variant="outlined" color="primary" align="center" onClick={this.update}>
+                        Update Password
+                    </Button>
+                </div>
+
+                  
                 </div>
 
               </div>
 
                 <br />
-              <div>
-                <Button variant="outlined" color="primary" align="center" onClick={this.update}>
-                  update
-                </Button>
-              </div>
+              
             </div>
           </form>
         </Paper>
