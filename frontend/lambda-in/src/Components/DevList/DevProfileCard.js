@@ -8,7 +8,9 @@ import DevSocial from '../DevSocial/DevSocial';
 import './DevProfileCard.css';
 
 const styles = {
-
+  devProfileCard: {
+    display: 'flex',
+  }
 };
 
 const DevProfileCard = props => {
@@ -50,7 +52,7 @@ DevProfileCard.propTypes = {
     linkedIn: PropTypes.string,
     portfolio: PropTypes.string,
     resume: PropTypes.string,
-    acclaim: PropTypes.string,
+    acclaim: PropTypes.string
   })
 };
 
