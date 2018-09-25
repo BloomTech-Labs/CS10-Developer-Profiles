@@ -13,16 +13,28 @@ const styles = {
 
 const DevProfileCard = props => {
   const { classes } = props;
+  const name = `${props.seeker.firstName} ${props.seeker.lastName}`;
+  const firstInitial = props.seeker.firstName.slice(0, 1);
+  const lastInitial = props.seeker.lastName.slice(0, 1);
+  const initials = firstInitial + lastInitial;
 
   return (
     <Card className={classes.devProfileCard}>
-      <DevSnapshot />
+      <DevSnapshot
+        _id={props.seeker._id}
+        name={name}
+        initials={initials}
+        img={props.seeker.img}
+        location={props.seeker.currentLocation}
+        summary={props.seeker.summary}
+        title={props.seeker.desiredTitle}
+      />
       <DevSocial />
     </Card>
   );
 };
 
-DevProfileCard.PropTypes = {
+DevProfileCard.propTypes = {
   seeker: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     img: PropTypes.string,
