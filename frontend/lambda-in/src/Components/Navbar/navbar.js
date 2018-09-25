@@ -10,9 +10,10 @@ import SimpleMenu from '../SignUp Menu/sign-up';
  * Functional component responsible of Navigation links
  *
  * @prop {function} getGS - Return from APP's global state properties and its values.
+ * @prop {function} logOut - Logout user && Remove JWT.
  * @return {React Component}
  */
-export default ({ getGS }) => {
+export default ({ getGS, logOut }) => {
   const isSignedIn = getGS('isSignedIn');
   const userType = getGS('userType');
 
@@ -33,7 +34,7 @@ export default ({ getGS }) => {
         </Link>
       </Fragment>
     ),
-    rightNavBar: <Button>Log out</Button>,
+    rightNavBar: <Button onClick={logOut}>Log out</Button>,
   };
 
   /**
