@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 
@@ -7,13 +7,12 @@ const styles = {};
 
 const ImageAvatar = props => {
   const { classes } = props;
-  return (
-    <Avatar
-      className={classNames(classes.avatar)}
-      alt={props.name}
-      src={props.img}
-    />
-  );
+  return <Avatar className={classes.imageAvatar} alt={props.name} src={props.img} />;
+};
+
+ImageAvatar.propTypes = {
+  name: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(ImageAvatar);
