@@ -15,21 +15,82 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 import NavBar from '../Navbar/navbar' 
 import DevProfileCard from './DevProfileCard'
 import '../DevList/DevList.css'
 
 export default class DevList extends Component {
-    state = {
-        gilad: true,
-        jason: false,
-        antoine: false,
-      };
+    constructor(props) {
+        super(props);
+        this.state = {
+          email: 'abc@xyz.com',
+          firstName: 'daat',
+          lastName: 'man',
+          desiredTitle: 'BOSS',
+          currentLocation: 'mars',
+          github: 'github.com/kkkk',
+          linkedin: 'linkedin.com/batman',
+          portfolio: 'batman.com',
+          acclaimBadge: 'lambda Batch',
+          placesInterested: ' earh etc',
+          password: '12345678Aa$',
+          confirmPassword: '',
+          isSignedIn: false,
+          summary: 'wubba lubba dub dub',
+          topskill: 'Baller',
+          projects: 'Dev profiles',
+          experience: 'mars inc.',
+          education: 'Lambda School',
+        };
+    }
     
     handleChange = name => event => {
         this.setState({ [name]: event.target.checked });
     };
+
+    handleAuth = () => {
+        if(localStorage.getItem('token') !== null){
+            this.setState({
+                isSignedIn: true
+            })
+        }
+        else{
+            this.setState({
+                isSignedIn: false
+            })
+        }
+    }
+
+    handleGetAll = () => {
+        if(this.state.isSignedIn){
+            axios
+                .get(
+                `/api/seekers/`,
+            
+                {
+                    headers: {
+                        Authorization: localStorage.getItem('token'),
+                    },
+                }
+                )
+                .then(response => {
+                    console.log(response.data);
+
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+
+        }
+    } 
+
+
+    componentDidMount(){
+        this.handleAuth();
+        this.handleGetAll();
+    }
+
     render() {
         return (
             <div className="App">
