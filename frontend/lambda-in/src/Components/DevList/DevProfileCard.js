@@ -30,6 +30,9 @@ const DevProfileCard = props => {
         location={props.seeker.currentLocation}
         summary={props.seeker.summary}
         title={props.seeker.desiredTitle}
+        topSkills={props.seeker.topSkills}
+        addSkills={props.seeker.additionalSkills}
+        familiar={props.seeker.familiarWith}
       />
       <DevSocial />
     </Card>
