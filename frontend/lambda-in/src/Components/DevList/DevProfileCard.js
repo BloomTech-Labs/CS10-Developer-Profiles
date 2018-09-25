@@ -5,8 +5,6 @@ import Card from '@material-ui/core/Card';
 import DevSnapshot from '../DevSnapshot/DevSnapshot';
 import DevSocial from '../DevSocial/DevSocial';
 
-import './DevProfileCard.css';
-
 const styles = {
   devProfileCard: {
     display: 'flex',
