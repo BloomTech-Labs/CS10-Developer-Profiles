@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
 import axios from 'axios';
 import './UserSetting.css';
 
@@ -23,7 +22,7 @@ export default class UserSetting extends Component {
   };
 
   // axios 1 argument is URL and 2 argument is data 3 argument is options
-  update = () => {
+  updatePassword = () => {
     const _id = localStorage.getItem('_id');
     if (_id) {
       console.log(_id);
@@ -32,7 +31,7 @@ export default class UserSetting extends Component {
         .put(
           `/api/seekers/${_id}`,
           {
-            linkedin: this.state.linkedin,
+            password: this.state.password,
           },
           {
             headers: {
@@ -50,6 +49,35 @@ export default class UserSetting extends Component {
       console.log('updating without ID');
     }
   };
+
+  updateEmail = () => {
+    const _id = localStorage.getItem('_id');
+    if (_id) {
+      console.log(_id);
+      console.log(localStorage.getItem('token'));
+      axios
+        .put(
+          `/api/seekers/${_id}`,
+          {
+            email: this.state.email,
+          },
+          {
+            headers: {
+              Authorization: localStorage.getItem('token'),
+            },
+          }
+        )
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      console.log('updating without ID');
+    }
+  };
+  
   render() {
     return (
       <div className="UserContainer">
@@ -61,64 +89,55 @@ export default class UserSetting extends Component {
             Update your info!
           </Typography>
           <br />
-          
           <form>
             <div className="inputRow">
               <div className="smallInputContainer">
                 <div>
-                 
-                <Typography variant="caption" gutterBottom align="left">
-                    change your email here
-                </Typography>
-                <div className="inputField">
-                    <TextField
-                        id="email"
-                        label="email"
+                  <Typography variant="caption" gutterBottom align="left">
+                      change your email here
+                  </Typography>
+                  <div className="inputField">
+                      <TextField
+                          id="email"
+                          label="email"
+                          fullWidth
+                          value={this.state.email}
+                          onChange={this.handleChange('email')}
+                          margin="normal"
+                          variant="outlined"
+                      />
+                  </div>
+                  <br /> 
+                  <div>
+                      <Button variant="outlined" color="primary" align="center" onClick={this.updateEmail}>
+                          Update Email
+                      </Button>
+                  </div>
+                  <br /> 
+                  <Typography variant="caption" gutterBottom align="left">
+                      update your password here
+                  </Typography>
+                  <div className="inputField">
+                      <TextField
+                        id="password"
+                        label="password"
+                        type="password"
                         fullWidth
-                        value={this.state.email}
-                        onChange={this.handleChange('email')}
+                        value={this.state.password}
+                        onChange={this.handleChange('password')}
                         margin="normal"
                         variant="outlined"
-                    />
+                      />
+                  </div>
+                  <br />
+                  <div>
+                      <Button variant="outlined" color="primary" align="center" onClick={this.updatePassword}>
+                          Update Password
+                      </Button>
+                  </div>
                 </div>
-
-                <br /> 
-                <div>
-                    <Button variant="outlined" color="primary" align="center" onClick={this.update}>
-                        Update Email
-                    </Button>
-                </div>
-
-                <br /> 
-                <Typography variant="caption" gutterBottom align="left">
-                    update your password here
-                </Typography>
-                <div className="inputField">
-                    <TextField
-                      id="password"
-                      label="password"
-                      type="password"
-                      fullWidth
-                      value={this.state.password}
-                      onChange={this.handleChange('password')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                </div>
-
-                <div>
-                    <Button variant="outlined" color="primary" align="center" onClick={this.update}>
-                        Update Password
-                    </Button>
-                </div>
-
-                  
-                </div>
-
               </div>
-
-                <br />
-              
+              <br />
             </div>
           </form>
         </Paper>
