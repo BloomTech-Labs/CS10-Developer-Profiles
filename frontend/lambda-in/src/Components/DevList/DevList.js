@@ -29,15 +29,15 @@ export default class DevList extends Component {
 
   getQuery = () => {
     const search = window.location.search;
-    return search === '' ? search : search.substring(1); 
+    return search === '' ? search : search.substring(1);
   };
 
-  getCurrentPage = (query) => {
+  getCurrentPage = query => {
     const queryArr = query.split('&');
 
-    for (let i = 0; i < queryArr.length; i++){
+    for (let i = 0; i < queryArr.length; i++) {
       const param = queryArr[i].split('=');
-      if(param[0] === 'page') return param[1];
+      if (param[0] === 'page') return param[1];
     }
 
     return 1;
@@ -195,6 +195,12 @@ export default class DevList extends Component {
             {this.state.seekers.map(seeker => (
               <DevProfileCard key={seeker._id} seeker={seeker} />
             ))}
+            <Pagination
+              count={this.state.count}
+              pages={this.state.pages}
+              currentPage={this.state.currentPage}
+              pageLimit={10}
+            />
           </div>
         </div>
       </div>
