@@ -14,7 +14,7 @@ class DevProfile extends React.Component {
       lastName: "Picard",
       currentLocation: "USS Stargazer",
       summary:
-        "Space, the final frontier. These are the voyages of starship Stargazer. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id ex bibendum, tincidunt tellus a, dignissim ligula. Nunc vitae sollicitudin orci. Duis consequat porttitor lacus. Aliquam erat volutpat. Donec egestas urna in lacinia venenatis. Nullam euismod est imperdiet viverra molestie.",
+        "Space, the final frontier. These are the voyages of starship Stargazer. It's continuing mission. To seek out new worlds and new civilizations.",
       desiredTitle: "Captain",
       acclaimBadge: "Lambda Badge",
       socialNetwork: "facebook.com",
@@ -60,11 +60,8 @@ class DevProfile extends React.Component {
     const AS = this.state.additionalSkills;
     const SS = this.state.skills;
     const allSkills = TS.concat(AS, SS);
-    const skillList = allSkills.map((skill, index) => (
-      <div key={index}>
-        {skill}
-        {"  "}
-      </div>
+    const skillList = allSkills.map((skill) => (
+      <li>{skill}{` `}</li>
     ));
 
     return (
@@ -101,7 +98,7 @@ class DevProfile extends React.Component {
                   <div className="desiredTitle">
                   Desired Title: {this.state.desiredTitle}
                 </div>
-                <div className="tagCloud">{skillList}</div>
+                <div className="tagCloud"><ul>{skillList}</ul></div>
                 </div>
               </div>
               <div className="nameCardDown">
