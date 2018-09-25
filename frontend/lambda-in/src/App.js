@@ -14,10 +14,15 @@ import EmpList from './Components/EmployerList/EmpOPList';
 import DevList from './Components/DevList/DevList';
 
 class App extends Component {
-  state = {
-    isSignedIn: false,
-    userInfo: {},
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSignedIn: false,
+      userInfo: {}, // To be populated after an HTTP request from other components.
+      userType: '', // 'seeker' || 'employer'
+    };
+  }
+
   render() {
     return (
       <div>
