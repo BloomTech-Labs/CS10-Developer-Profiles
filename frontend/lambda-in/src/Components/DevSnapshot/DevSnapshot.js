@@ -38,7 +38,11 @@ const DevSnapshot = props => {
       </div>
       {props.title && <Typography variant="title">{props.title}</Typography>}
       <Divider />
-      <SkillCloud />
+      <SkillCloud
+        topSkills={props.topSkills}
+        addSkills={props.addSkills}
+        familiar={props.familiar}
+      />
     </CardContent>
   );
 };
@@ -50,7 +54,10 @@ DevSnapshot.propTypes = {
   initials: PropTypes.string.isRequired,
   location: PropTypes.string,
   summary: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  topSkills: PropTypes.array,
+  addSkills: PropTypes.array,
+  familiar: PropTypes.array,
 };
 
 export default withStyles(styles)(DevSnapshot);
