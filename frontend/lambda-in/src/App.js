@@ -24,14 +24,32 @@ class App extends Component {
   }
 
   /**
-   * Set APP's global state
+   * Set APP's global state.
    *
-   * @function setGlobalState
+   * @method setGlobalState
    * @param {object} properties - Properties to be set.
    * @return {void}
+   *
+   * @example Pass as a prop to component.
+   * <Component setGS={this.setGlobalState} />
    */
   setGlobalState = properties => {
     this.setState(properties);
+  };
+
+  /**
+   * Get APP's global state.
+   *
+   * @method getGlobalState
+   * @param {void}
+   * @return {object} App's global state.
+   *
+   * @example Pass as a prop to component.
+   * <Component getGS={this.getGlobalState} />
+   */
+  getGlobalState = () => {
+    const self = this;
+    return self.state;
   };
 
   render() {
