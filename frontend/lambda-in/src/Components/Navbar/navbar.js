@@ -10,6 +10,7 @@ import SimpleMenu from '../SignUp Menu/sign-up';
  * Functional component responsible of Navigation links
  *
  * @prop {function} getGS - Return from APP's global state properties and its values.
+ * @return {React Component}
  */
 export default ({ getGS }) => {
   const isSignedIn = getGS('isSignedIn');
