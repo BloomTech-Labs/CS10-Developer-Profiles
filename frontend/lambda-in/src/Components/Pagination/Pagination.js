@@ -78,6 +78,10 @@ class Pagination extends Component {
   };
 
   handleClick = (event, page) => {
+    /**
+     * @todo Replace with smooth scroll
+     */
+    window.scrollTo(0, 0);
     this.props.onPageChange(page);
   };
 
@@ -87,7 +91,6 @@ class Pagination extends Component {
 
     /**
      * @todo Make href's dynamic
-     *
      */
     return (
       <ul className={classes.pagination}>
