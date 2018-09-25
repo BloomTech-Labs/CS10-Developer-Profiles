@@ -32,12 +32,7 @@ export default class DevList extends Component {
     };
     render() {
         return (
-            <div >
-                <div>
-                    <NavBar />
-                </div>
-                
-
+            <div className="App">
                 <div className="mainBar" >
                     <div className="sideBar">
                         <Typography variant="headline" component="h3">

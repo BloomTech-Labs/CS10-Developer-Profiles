@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import NavBar from "../../Components/Navbar/navbar";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -28,13 +27,8 @@ class DevProfile extends React.Component {
 
       topSkills: [
         "Leardership",
-        "Archaeology",
-        "Literature",
-        "tlhIngan Hol",
-        "Mythology",
         "Tactical Strategies",
-        "Navigation",
-        "Engineering",
+
         "Diplomacy"
       ],
       additionalSkills: [
@@ -44,7 +38,13 @@ class DevProfile extends React.Component {
         "Shakespear"
       ],
 
-      skills: ["Leadership", "Tactical Strategy", "Diplomacy"]
+      skills: [
+        "Archaeology",
+        "Literature",
+        "tlhIngan Hol",
+        "Mythology",
+        "Navigation",
+        "Engineering"]
     };
   }
 
@@ -66,8 +66,6 @@ class DevProfile extends React.Component {
 
     return (
       <div>
-        <NavBar />
-
         <div className="container">
         <Paper>
           <div className="topCard">
