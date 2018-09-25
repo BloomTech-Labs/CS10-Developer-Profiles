@@ -25,8 +25,8 @@ const DevProfileCard = props => {
 
 DevProfileCard.PropTypes = {
   seeker: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    avatar: PropTypes.string,
+    _id: PropTypes.string.isRequired,
+    img: PropTypes.string,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     currentLocation: PropTypes.string,
