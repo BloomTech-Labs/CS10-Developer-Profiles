@@ -8,6 +8,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Divider from '@material-ui/core/Divider';
 import DevProfileCard from './DevProfileCard';
+import Pagination from '../Pagination/Pagination';
 
 import '../DevList/DevList.css';
 
@@ -17,11 +18,29 @@ export default class DevList extends Component {
     jason: false,
     antoine: false,
 
+    query: '',
     count: 0,
     pages: 0,
     next: null,
     prev: null,
+    currentPage: 1,
     seekers: []
+  };
+
+  getQuery = () => {
+    const search = window.location.search;
+    return search === '' ? search : search.substring(1); 
+  };
+
+  getCurrentPage = (query) => {
+    const queryArr = query.split('&');
+
+    for (let i = 0; i < queryArr.length; i++){
+      const param = queryArr[i].split('=');
+      if(param[0] === 'page') return param[1];
+    }
+
+    return 1;
   };
 
   handleChange = name => event => {
@@ -29,6 +48,8 @@ export default class DevList extends Component {
   };
 
   componentDidMount() {
+    const query = this.getQuery();
+    const page = this.getCurrentPage(query);
     const config = {
       headers: {
         Authorization: localStorage.token
@@ -36,14 +57,16 @@ export default class DevList extends Component {
     };
 
     axios
-      .get('/api/seekers', config)
+      .get(`/api/seekers?page=${page}`, config)
       .then(response => {
         this.setState({
+          query: query,
           count: response.data.count,
           pages: response.data.pages,
           next: response.data.next,
           prev: response.data.prev,
-          seekers: response.data.results
+          seekers: response.data.results,
+          currentPage: page
         });
       })
       .catch(err => {
