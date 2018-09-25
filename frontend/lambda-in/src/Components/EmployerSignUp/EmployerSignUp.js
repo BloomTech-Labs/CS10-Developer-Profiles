@@ -77,8 +77,6 @@ export default class EmployerSignUp extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar />
         <div class="signupContainer">
           <div class="formContainer">
             <Paper class="paper">
@@ -242,7 +240,6 @@ export default class EmployerSignUp extends Component {
             </div>
           </Paper>*/}
         </div>
-      </div>
     );
   }
 }
