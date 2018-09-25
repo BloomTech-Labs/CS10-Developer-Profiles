@@ -15,7 +15,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 import NavBar from '../Navbar/navbar' 
 import DevProfileCard from './DevProfileCard'
 import '../DevList/DevList.css'
@@ -61,7 +61,36 @@ export default class DevList extends Component {
             })
         }
     }
-    
+
+    handleGetAll = () => {
+        if(this.state.isSignedIn){
+            axios
+                .get(
+                `/api/seekers/`,
+            
+                {
+                    headers: {
+                        Authorization: localStorage.getItem('token'),
+                    },
+                }
+                )
+                .then(response => {
+                    console.log(response.data);
+
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+
+        }
+    } 
+
+
+    componentDidMount(){
+        this.handleAuth();
+        this.handleGetAll();
+    }
+
     render() {
         return (
             <div >
