@@ -9,7 +9,14 @@ import ImageAvatar from '../Avatar/ImageAvatar';
 import LetterAvatar from '../Avatar/LetterAvatar';
 import SkillCloud from '../SkillCloud/SkillCloud';
 
-const styles = {};
+const styles = {
+  devSnapshot: {
+    width: '100%',
+  },
+  devSnapshotHeader: {
+    display: 'flex',
+  }
+};
 
 const DevSnapshot = props => {
   const { classes } = props;
@@ -21,13 +28,15 @@ const DevSnapshot = props => {
         ) : (
           <LetterAvatar content={props.initials} />
         )}
-        <Typography>
-          <Link to={`/dev-profile/${props._id}`}>{props.name}</Link>
-        </Typography>
-        {props.location && <Typography>{props.location}</Typography>}
-        {props.summary && <Typography>{props.summary}</Typography>}
+        <CardContent className={classes.devIntro}>
+          <Typography variant="headline">
+            <Link to={`/dev-profile/${props._id}`}>{props.name}</Link>
+          </Typography>
+          {props.location && <Typography>{props.location}</Typography>}
+          {props.summary && <Typography>{props.summary}</Typography>}
+        </CardContent>
       </div>
-      {props.title && <Typography>{props.title}</Typography>}
+      {props.title && <Typography variant="title">{props.title}</Typography>}
       <Divider />
       <SkillCloud />
     </CardContent>
