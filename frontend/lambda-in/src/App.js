@@ -11,6 +11,7 @@ import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpList from './Components/EmployerList/EmpOPList';
 import DevList from './Components/DevList/DevList';
+import Page404 from './Components/Page404/Page404';
 
 class App extends Component {
   constructor(props) {
@@ -108,6 +109,8 @@ class App extends Component {
             <Route path="/dev-profile" render={() => (isSignedIn ? <DevProfile /> : <Redirect to="/" />)} />
             <Route path="/employer-signup" render={() => (isSignedIn ? <EmpSignUp /> : <Redirect to="/" />)} />
             <Route path="/dev-info-edit" render={() => (isSignedIn ? <DevInfoEditz /> : <Redirect to="/" />)} />
+
+            <Route component={Page404} />
           </Switch>
         </div>
       </div>
