@@ -11,20 +11,6 @@ class EmplyoerOpenPositionList extends React.Component {
   render() {
     return (
       <div class="container">
-        <Paper>
-          <div class="navBar">
-            <div class="leftNavBar">
-              <Button>find Devlopers</Button>
-              <Button>Browse</Button>
-              <Button>profile</Button>
-            </div>
-            <div class="rightNavBar">
-              <Button>Billing</Button>
-              <Button>Setting</Button>
-            </div>
-          </div>
-        </Paper>
-
         <div class="body">
             <Paper>
           <Typography variant="headline">
