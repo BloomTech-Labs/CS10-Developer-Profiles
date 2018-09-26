@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MapList from '../MapList/MapList';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -10,9 +11,9 @@ import './DevProfile.css';
 export default ({ getGS }) => {
   const userInfo = getGS('userInfo');
 
-  const TS = getGS('userInfo').topSkills;
-  const AS = getGS('userInfo').additionalSkills;
-  const SS = getGS('userInfo').skills;
+  const TS = userInfo.topSkills;
+  const AS = userInfo.additionalSkills;
+  const SS = userInfo.skills;
   const allSkills = TS.concat(AS, SS);
   const skillList = allSkills.map(skill => (
     <li>
@@ -21,11 +22,9 @@ export default ({ getGS }) => {
     </li>
   ));
 
-  console.log({ TEST_GETGS: getGS('userInfo') });
-  console.log({ TEST_GETGS: getGS('userInfo').email });
-  console.log({ ...userInfo });
   /**
-   * PENDING FIELDS: `familiarWith`
+   * PENDING FIELDS TO IMPLEMENT: "familiarWith", "projects", "experience", "education", "placesInterested"
+   * All them are Arrays of objects.
    */
   return (
     <div>
@@ -53,7 +52,7 @@ export default ({ getGS }) => {
                   </div>
                   <div className="desiredTitle">Desired Title: {userInfo.desiredTitle}</div>
                   <div className="tagCloud">
-                    <ul>{skillList}</ul>
+                    <MapList array={allSkills} />
                   </div>
                 </div>
               </div>
@@ -89,18 +88,22 @@ export default ({ getGS }) => {
             <div className="projects">
               <div>Projects: </div>
               {/* {userInfo.projects} */}
+              TODO: "projects" needs a specific implementation
             </div>
             <div className="experience">
               <div>Experience: </div>
               {/* {userInfo.experience} */}
+              TODO: "experience" needs a specific implementation
             </div>
             <div className="education">
               <div>Education: </div>
               {/* {userInfo.education} */}
+              TODO: "education" needs a specific implementation
             </div>
             <div className="placesInterested">
               <div>Locations Interested: </div>
               {/* {userInfo.placesInterested} */}
+              TODO: "placesInterested" needs a specific implementation
             </div>
           </div>
         </Paper>
