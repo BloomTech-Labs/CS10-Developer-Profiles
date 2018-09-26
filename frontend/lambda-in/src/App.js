@@ -10,7 +10,6 @@ import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
 import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpList from './Components/EmployerList/EmpOPList';
-
 import DevList from './Components/DevList/DevList';
 
 class App extends Component {
@@ -83,6 +82,7 @@ class App extends Component {
   };
 
   render() {
+    const { isSignedIn } = this.state;
     const redirectToUserProfile =
       this.state.userType === 'seeker' ? <Redirect to="/dev-profile" /> : <Redirect to="/emp-profile" />;
 
@@ -99,21 +99,15 @@ class App extends Component {
             {/* Redirect to user Profile after login */}
             <Route
               path="/dev-login"
-              render={() => (this.state.isSignedIn ? redirectToUserProfile : <DevLogin setGS={this.setGlobalState} />)}
+              render={() => (isSignedIn ? redirectToUserProfile : <DevLogin setGS={this.setGlobalState} />)}
             />
 
             {/* Only allow access to protected components if 'user' is authenticated */}
             {/* If user is not Authenticated 'Redirect' to home page */}
-            {this.state.isSignedIn ? (
-              <Fragment>
-                <Route path="/billing" component={Billing} />
-                <Route path="/dev-profile" component={DevProfile} />
-                <Route path="/employer-signup" component={EmpSignUp} />
-                <Route path="/dev-info-edit" component={DevInfoEditz} />
-              </Fragment>
-            ) : (
-              <Redirect to="/" />
-            )}
+            <Route path="/billing" render={() => (isSignedIn ? <Billing /> : <Redirect to="/" />)} />
+            <Route path="/dev-profile" render={() => (isSignedIn ? <DevProfile /> : <Redirect to="/" />)} />
+            <Route path="/employer-signup" render={() => (isSignedIn ? <EmpSignUp /> : <Redirect to="/" />)} />
+            <Route path="/dev-info-edit" render={() => (isSignedIn ? <DevInfoEditz /> : <Redirect to="/" />)} />
           </Switch>
         </div>
       </div>
