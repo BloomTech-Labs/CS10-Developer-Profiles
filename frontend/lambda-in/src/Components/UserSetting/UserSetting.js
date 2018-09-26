@@ -12,7 +12,7 @@ export default class UserSetting extends Component {
     this.state = {
       email: 'abc@xyz.com',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
     };
   }
 
