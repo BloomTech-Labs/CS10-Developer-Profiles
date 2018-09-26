@@ -83,6 +83,9 @@ class App extends Component {
   };
 
   render() {
+    const redirectToUserProfile =
+      this.state.userType === 'seeker' ? <Redirect to="/dev-profile" /> : <Redirect to="/emp-profile" />;
+
     return (
       <div>
         <NavBar getGS={this.getGlobalState} logOut={this.handleLogout} />
@@ -92,7 +95,12 @@ class App extends Component {
             <Route path="/dev-signup" component={DevSignUp} />
             <Route path="/meetdev" component={DevList} />
             <Route path="/meetposition" component={EmpList} />
-            <Route path="/dev-login" component={() => <DevLogin setGS={this.setGlobalState} />} />
+
+            {/* Redirect to user Profile after login */}
+            <Route
+              path="/dev-login"
+              render={() => (this.state.isSignedIn ? redirectToUserProfile : <DevLogin setGS={this.setGlobalState} />)}
+            />
 
             {/* Only allow access to protected components if 'user' is authenticated */}
             {/* If user is not Authenticated 'Redirect' to home page */}
