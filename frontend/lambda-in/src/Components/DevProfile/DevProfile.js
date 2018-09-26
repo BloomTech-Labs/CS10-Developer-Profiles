@@ -3,6 +3,10 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import "./DevProfile.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 class DevProfile extends React.Component {
   constructor(props) {
@@ -66,7 +70,7 @@ class DevProfile extends React.Component {
 
     return (
       <div>
-        <div className="container">
+        <div data-aos="fade-up" className="container">
         <Paper>
           <div className="topCard">
             <div className="topCardLeft">
@@ -106,7 +110,7 @@ class DevProfile extends React.Component {
 
             <div className="topCardRight">
               <a href={this.state.acclaimBadge}>
-                <img
+                <img className="lambda-badge"
                   src={require("./img/lambdaColor.png")}
                   width="50"
                   height="50"
@@ -115,7 +119,7 @@ class DevProfile extends React.Component {
                 />
               </a>
               <a href={this.state.socialNetwork}>
-                <img
+                <img className="social-network"
                   src={require("./img/sns.png")}
                   width="50"
                   height="50"
@@ -124,7 +128,7 @@ class DevProfile extends React.Component {
                 />
               </a>
               <a href={this.state.github}>
-                <img
+                <img className="github"
                   src={require("./img/GitHub.png")}
                   width="50"
                   height="50"
@@ -133,7 +137,7 @@ class DevProfile extends React.Component {
                 />
               </a>
               <a href={this.state.linkedin}>
-                <img
+                <img className="linkedin"
                   src={require("./img/linkedin.jpg")}
                   width="50"
                   height="50"
@@ -142,7 +146,7 @@ class DevProfile extends React.Component {
                 />
               </a>
               <a href={this.state.portfolio}>
-                <img
+                <img className="portfolio"
                   src={require("./img/portfolio.png")}
                   width="50"
                   height="50"

@@ -115,7 +115,7 @@ export default class DevList extends Component {
                             />
                         </FormControl>
                     </div>
-                    <div data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" className="cardBar">
+                    <div className="cardBar">
                         <DevProfileCard />  
                         <DevProfileCard />  
                         <DevProfileCard />  
