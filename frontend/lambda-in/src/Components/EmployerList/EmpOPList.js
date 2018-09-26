@@ -6,18 +6,23 @@ import Button from "@material-ui/core/Button";
 
 import "./EmpOPList.css";
 import { Typography } from "@material-ui/core";
+import EmployerOpenPositionForm from "./EmpOPForm";
 
 class EmplyoerOpenPositionList extends React.Component {
   render() {
     return (
       <div class="container">
         <div class="body">
-            <Paper>
-          <Typography variant="headline">
-            Current Job Opening List
-          </Typography>
+          <Paper>
+            <Typography variant="display1" gutterBottom align="center">
+              Open Positions
+            </Typography>
 
-          <EmployerOpenPositionCard />
+            <Typography variant="headline" gutterBottom align="center">
+              Manage Current Open Positions
+            </Typography>
+            <EmployerOpenPositionForm />
+            <EmployerOpenPositionCard />
           </Paper>
         </div>
       </div>
