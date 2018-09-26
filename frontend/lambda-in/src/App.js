@@ -10,10 +10,22 @@ import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
 import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpList from './Components/EmployerList/EmpOPList';
+import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
 
 import DevList from './Components/DevList/DevList';
 
 class App extends Component {
+<<<<<<< HEAD
+  state = {
+    isSignedIn: false,
+    userInfo: {},
+||||||| merged common ancestors
+  state = {
+    isSignedIn: false,
+    userInfo: {
+      
+    }
+=======
   constructor(props) {
     super(props);
     this.state = {
@@ -35,6 +47,7 @@ class App extends Component {
    */
   setGlobalState = properties => {
     this.setState(properties);
+>>>>>>> 562c398410aa5dd6c658d4a28a0627906b0fcc5d
   };
 
   /**
@@ -53,6 +66,45 @@ class App extends Component {
   };
 
   render() {
+<<<<<<< HEAD
+    return (
+      <div className="TopContainer">
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/dev-profiles" component={DevProfile} />
+          <Route path="/billing" component={Billing} />
+          <Route path="/dev-list" component={DevList} />
+          <Route path="/emp-signup" component={EmpSignUp} />
+          <Route path="/emp-list" component={EmpList} />
+          <Route path="/dev-info-edit" component={DevInfoEditz} />
+          {/* For testing purpose */}
+          <Route path="/dev-signup" component={DevSignUp} />
+          <Route path="/dev-login" component={DevLogin} />
+          <Route path="/geolocation-test" component={SearchGeolocation} />
+        </Switch>
+      </div>
+    );
+  }
+||||||| merged common ancestors
+      return (
+        <div className="TopContainer">
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/dev-profiles" component={DevProfile} />
+            <Route path="/billing" component={Billing} />
+            <Route path="/dev-list" component={DevList} />
+            <Route path="/emp-signup" component={EmpSignUp} />
+            <Route path="/emp-list" component={EmpList} />
+            <Route path="/dev-info-edit" component={DevInfoEditz} />
+            {/* For testing purpose */}
+            <Route path="/dev-signup" component={DevSignUp} />
+            <Route path="/dev-login" component={DevLogin} />
+          </Switch>
+        </div>
+      );
+    }
+  
+=======
     return (
       <div>
         <NavBar />
@@ -73,6 +125,7 @@ class App extends Component {
       </div>
     );
   }
+>>>>>>> 562c398410aa5dd6c658d4a28a0627906b0fcc5d
 }
 
 export default App;

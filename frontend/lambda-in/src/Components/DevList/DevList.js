@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -16,9 +16,9 @@ import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
 import { Link } from 'react-router-dom';
 
-import NavBar from '../Navbar/navbar' 
-import DevProfileCard from './DevProfileCard'
-import '../DevList/DevList.css'
+import NavBar from '../Navbar/navbar';
+import DevProfileCard from './DevProfileCard';
+import '../DevList/DevList.css';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -26,73 +26,36 @@ import 'aos/dist/aos.css';
 AOS.init();
 
 export default class DevList extends Component {
-    state = {
-        gilad: true,
-        jason: false,
-        antoine: false,
-      };
-    
-    handleChange = name => event => {
-        this.setState({ [name]: event.target.checked });
-    };
-    render() {
-        return (
-            <div className="App">
-                <div className="mainBar" >
-                    <div className="sideBar">
-                        <Typography variant="headline" component="h3">
-                            Filters
-                        </Typography>
-                        <FormControl>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox checked={this.state.gilad} defaultChecked color="default" onChange={this.handleChange('gilad')} value="gilad" />
-                                }
-                                label="Full Stack Web"
-                                />
+  state = {
+    gilad: true,
+    jason: false,
+    antoine: false,
+  };
 
-                            <FormControlLabel
-                                control={
-                                    <Checkbox checked={this.state.gilad} defaultChecked color="default"  onChange={this.handleChange('gilad')} value="gilad" />
-                                }
-                                label="iOS"
-                                />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox checked={this.state.gilad} defaultChecked color="default"  onChange={this.handleChange('gilad')} value="gilad" />
-                                }
-                                label="Android"
-                                />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox checked={this.state.gilad} defaultChecked color="default"  onChange={this.handleChange('gilad')} value="gilad" />
-                                }
-                                label="UI/UX"
-                                />
-                        </FormControl>
-                        <Divider />
-                        <FormControl>
-                            <FormControlLabel
-                                    control={
-                                        <Checkbox checked={this.state.gilad} defaultChecked color="default" onChange={this.handleChange('gilad')} value="gilad" />
-                                    }
-                                    label="Lambda Badge"
-                                    />
-                        </FormControl>
-                        <Divider />
-                        <br/>
-                        <FormControl>
-                        <Typography variant="headline" component="h3" >
-                            Located
-                        </Typography>
-                            <FormControlLabel
-                                    control={
-                                        <Checkbox checked={this.state.gilad} defaultChecked color="default" onChange={this.handleChange('gilad')} value="gilad" />
-                                    }
-                                    label="with in 100 mile"
-                                    />
-                        </FormControl>
-
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.checked });
+  };
+  render() {
+    return (
+      <div className="App">
+        <div className="mainBar">
+          <div className="sideBar">
+            <Typography variant="headline" component="h3">
+              Filters
+            </Typography>
+            <FormControl>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={this.state.gilad}
+                    defaultChecked
+                    color="default"
+                    onChange={this.handleChange('gilad')}
+                    value="gilad"
+                  />
+                }
+                label="Full Stack Web"
+              />
                         <FormControl >
                             <InputLabel htmlFor="input-with-icon-adornment">search cities</InputLabel>
                             
