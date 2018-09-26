@@ -2,7 +2,11 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import landingImage from '../../../static/images/landingImage.png';
 import './image-container.css';
-import GSAP from 'react-gsap-enhancer';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 const backgroundImage = {
   backgroundImage: `url(${landingImage})`,
@@ -11,7 +15,10 @@ const backgroundImage = {
 class ImageContainer extends React.Component {
   render() {
     return (
-      <div style={backgroundImage} className="image-container">
+      <div data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-back"
+      data-aos-duration="1500"
+      data-aos-offset="0" style={backgroundImage} className="image-container">
         <h1 className="cta-1">
           Your business is your quest,
           <br /> We can help you find the perfect
@@ -37,4 +44,4 @@ class ImageContainer extends React.Component {
   }
 }
 
-export default GSAP()(ImageContainer);
+export default ImageContainer;
