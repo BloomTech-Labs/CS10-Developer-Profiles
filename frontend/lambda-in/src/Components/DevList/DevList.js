@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
-import Switch from '@material-ui/core/Switch';
 import DevProfileCard from './DevProfileCard';
+import FilterToggle from './FilterToggle';
 import Pagination from '../Pagination/Pagination';
 
 const ENABLE = 'Enable';
 const DISABLE = 'Disable';
 const FILTERS = {
-  acclaim: { filter: 'lambdaBadge', filterToggle: 'lambdaBadgeSwitch' }
+  acclaim: { label: 'Lambda Badge', name: 'lambdaBadge', toggleName: 'lambdaBadgeSwitch' },
+  github: { label: 'GitHub', name: 'github', toggleName: 'githubSwitch' },
+  linkedIn: { label: 'LinkedIn', name: 'linkedIn', toggleName: 'linkedInSwitch' },
+  portfolio: { label: 'Portfolio', name: 'portfolio', toggleName: 'portfolioSwitch' },
+  resume: { label: 'Resume', name: 'resume', toggleName: 'resumeSwitch' },
+  projects: { label: 'Has Projects', name: 'projects', toggleName: 'projectsSwitch' },
+  experience: { label: 'Has Experience', name: 'experience', toggleName: 'experienceSwitch' },
+  education: { label: 'Has Education', name: 'education', toggleName: 'educationSwitch' }
 };
 
 const styles = {
@@ -33,7 +37,21 @@ class DevList extends Component {
       currentPage: this.getCurrentPage(),
       seekers: [],
       lambdaBadge: true,
-      lambdaBadgeSwitch: false
+      lambdaBadgeSwitch: false,
+      github: true,
+      githubSwitch: false,
+      linkedIn: true,
+      linkedInSwitch: false,
+      portfolio: true,
+      portfolioSwitch: false,
+      resume: true,
+      resumeSwitch: false,
+      projects: true,
+      projectsSwitch: false,
+      experience: true,
+      experienceSwitch: false,
+      education: true,
+      educationSwitch: false
     };
 
     this.getSeekers(this.state.query);
@@ -93,8 +111,8 @@ class DevList extends Component {
     activeFilters.forEach(activeFilter => {
       const filter = activeFilter.split('=');
       if (filterNames.includes(filter[0])) {
-        updateState[FILTERS[filter[0]].filterToggle] = true;
-        updateState[FILTERS[filter[0]].filter] = +filter[1] ? true : false;
+        updateState[FILTERS[filter[0]].toggleName] = true;
+        updateState[FILTERS[filter[0]].name] = +filter[1] ? true : false;
       }
     });
 
@@ -129,27 +147,13 @@ class DevList extends Component {
       <React.Fragment>
         <Grid container className={classes.mainContainer} spacing={24}>
           <Grid item className={classes.sideBar} xs={3}>
-            <FormGroup row>
-              <FormControlLabel
-                control={
-                  <Switch
-                    name="lambdaBadge"
-                    checked={this.state.lambdaBadge}
-                    color="primary"
-                    onChange={this.handleSwitch}
-                  />
-                }
-                label="Lambda Badge"
-                disabled={!this.state.lambdaBadgeSwitch}
-              />
-              <Button
-                name="lambdaBadgeSwitch"
-                size="small"
-                onClick={this.handleSwitchEnable}
-              >
-                {this.state.lambdaBadgeSwitch ? DISABLE : ENABLE}
-              </Button>
-            </FormGroup>
+            <FilterToggle
+              filter={FILTERS.acclaim}
+              checked={this.state.lambdaBadge}
+              enable={this.state.lambdaBadgeSwitch}
+              onCheck={this.handleSwitch}
+              onEnable={this.handleSwitchEnable}
+            />
           </Grid>
           <Grid item className={classes.cardBar} xs={9}>
             {this.state.seekers.map(seeker => (
