@@ -6,9 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import TextField from "@material-ui/core/TextField";
 
 import "./EmpOPForm.css";
-
 
 class EmployerOpenPositionForm extends Component {
   constructor(props) {
@@ -25,8 +25,8 @@ class EmployerOpenPositionForm extends Component {
     };
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleChange = name => e => {
+    this.setState({ [name]: e.target.value });
   };
 
   addNewPosition = event => {
@@ -52,6 +52,68 @@ class EmployerOpenPositionForm extends Component {
           <Paper class="paper">
             <div className="form2">
               <div>
+                <TextField
+                  id="projectNname"
+                  label="Project Nname"
+                  value={this.state.projectNname}
+                  onChange={this.handleChange("projectNname")}
+                  margin="normal"
+                  fullWidth="true"
+                />
+
+                <TextField
+                  id="description"
+                  label="Description"
+                  value={this.state.description}
+                  onChange={this.handleChange("description")}
+                  margin="normal"
+                  fullWidth="true"
+                />
+
+                <TextField
+                  id="jobTitle"
+                  label="Job Title"
+                  value={this.state.jobTitle}
+                  onChange={this.handleChange("jobTitle")}
+                  margin="normal"
+                  fullWidth="true"
+                />
+
+                <TextField
+                  id="techStack"
+                  label="Tech Stack"
+                  value={this.state.techStack}
+                  onChange={this.handleChange("techStack")}
+                  margin="normal"
+                  fullWidth="true"
+                />
+
+                <TextField
+                  id="skills"
+                  label="Skills"
+                  value={this.state.skills}
+                  onChange={this.handleChange("skills")}
+                  margin="normal"
+                  fullWidth="true"
+                />
+
+                <TextField
+                  id="minSalrary"
+                  label="minSalrary"
+                  value={this.state.minSalrary}
+                  onChange={this.handleChange("minSalrary")}
+                  margin="normal"
+                  fullWidth="true"
+                />
+
+                <TextField
+                  id="maxSalary"
+                  label="maxSalary"
+                  value={this.state.maxSalary}
+                  onChange={this.handleChange("maxSalary")}
+                  margin="normal"
+                  fullWidth="true"
+                />
 
               </div>
             </div>
