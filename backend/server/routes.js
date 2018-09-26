@@ -3,6 +3,7 @@ const seekersRouter = require('../api/routes/Seeker.router');
 const employerRouter = require('../api/routes/Employer.router');
 const loginRouter = require('../api/routes/login.router');
 const registerRouter = require('../api/routes/register.router');
+const stripeRouter = require('../payments/routes/stripe.router');
 
 // prettier-ignore
 module.exports = {
@@ -22,10 +23,18 @@ module.exports = {
     }
   },
   private: (server) => {
-    // This serve the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
+    // This serves the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
     server.use('/api/seekers', seekersRouter);
 
-    // This serve the Employers DB. It allows GET, POST, PUT and DELETE
+    // This serves the Employers DB. It allows GET, POST, PUT and DELETE
     server.use('/api/employers', employerRouter);
+  },
+  payments: {
+    /**
+     * Define an endpoint to process Stripe payment requests
+     */
+    stripe: (server) => {
+      server.use('/payments/stripe', stripeRouter);
+    },
   },
 };

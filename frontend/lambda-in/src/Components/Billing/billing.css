@@ -4,4 +4,13 @@
 .buttons {
     display: flex;
     flex-direction: column;
+    padding: 20px;
+}
+.text {
+    display: flex;
+    flex-direction: column;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-weight: bold;
+    padding: 10px;
+    justify-content: space-evenly;
 }

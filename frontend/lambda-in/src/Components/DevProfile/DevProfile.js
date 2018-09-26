@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../../Components/Navbar/navbar';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -13,7 +12,8 @@ class DevProfile extends React.Component {
       firstName: 'Jean Luc',
       lastName: 'Picard',
       currentLocation: 'USS Stargazer',
-      summary: 'Space, the final frontier. These are the voyages of starship Stargazer.',
+      summary:
+        "Space, the final frontier. These are the voyages of starship Stargazer. It's continuing mission. To seek out new worlds and new civilizations.",
       desiredTitle: 'Captain',
       acclaimBadge: 'Lambda Badge',
       socialNetwork: 'facebook.com',
@@ -25,20 +25,10 @@ class DevProfile extends React.Component {
       education: 'Star Fleet Academy',
       placesInterested: 'USS Enterprise',
 
-      topSkills: [
-        'Leardership',
-        'Archaeology',
-        'Literature',
-        'tlhIngan Hol',
-        'Mythology',
-        'Tactical Strategies',
-        'Navigation',
-        'Engineering',
-        'Diplomacy',
-      ],
+      topSkills: ['Leardership', 'Tactical Strategies', 'Diplomacy'],
       additionalSkills: ['Close Combat', 'Knife Combat', 'Phaser', 'Shakespear'],
 
-      skills: ['Leadership', 'Tactical Strategy', 'Diplomacy'],
+      skills: ['Archaeology', 'Literature', 'tlhIngan Hol', 'Mythology', 'Navigation', 'Engineering'],
     };
   }
 
@@ -50,10 +40,19 @@ class DevProfile extends React.Component {
   // }
 
   render() {
+    const TS = this.state.topSkills;
+    const AS = this.state.additionalSkills;
+    const SS = this.state.skills;
+    const allSkills = TS.concat(AS, SS);
+    const skillList = allSkills.map(skill => (
+      <li>
+        {skill}
+        {` `}
+      </li>
+    ));
+
     return (
       <div>
-        <NavBar />
-
         <div className="container">
           <Paper>
             <div className="topCard">
@@ -64,25 +63,27 @@ class DevProfile extends React.Component {
                   </div>
                   <div className="basicInfo">
                     <div className="name">
-                      <h1>
+                      <Typography variant="headline" component="h3">
                         {this.state.firstName} {this.state.lastName}
-                      </h1>
+                      </Typography>
                     </div>
-                    <h3 className="currentLocation">{this.state.currentLocation}</h3>
-                    <p className="summary">{this.state.summary}</p>
+                    <div className="currentLocation">
+                      <Typography variant="headline" component="h3">
+                        {this.state.currentLocation}
+                      </Typography>
+                    </div>
+                    <div className="summary">
+                      <Typography>{this.state.summary}</Typography>
+                    </div>
+                    <div className="desiredTitle">Desired Title: {this.state.desiredTitle}</div>
+                    <div className="tagCloud">
+                      <ul>{skillList}</ul>
+                    </div>
                   </div>
                 </div>
-                <div className="desiredTitle">
-                  <div className="title1">
-                    <h2>Desired Title:</h2>
-                  </div>
-                  <div className="title2">
-                    <h3>{this.state.desiredTitle}</h3>
-                  </div>
-                </div>
-                {/* insert tag cloud here */}
-                <div className="tagCloud" />
+                <div className="nameCardDown" />
               </div>
+
               <div className="topCardRight">
                 <a href={this.state.acclaimBadge}>
                   <img
@@ -107,22 +108,23 @@ class DevProfile extends React.Component {
                 </a>
               </div>
             </div>
-            <div className="profileBody">
+
+            <div className="downCard">
               <div className="projects">
-                <h2>Projects</h2>
-                <p>{this.state.projects}</p>
+                <div>Projects: </div>
+                {this.state.projects}
               </div>
               <div className="experience">
-                <h2>Experience</h2>
-                <p>{this.state.experience}</p>
+                <div>Experience: </div>
+                {this.state.experience}
               </div>
               <div className="education">
-                <h2>Education</h2>
-                <p>{this.state.education}</p>
+                <div>Education: </div>
+                {this.state.education}
               </div>
               <div className="placesInterested">
-                <h2>Locations Interested</h2>
-                <p>{this.state.placesInterested}</p>
+                <div>Locations Interested: </div>
+                {this.state.placesInterested}
               </div>
             </div>
           </Paper>
