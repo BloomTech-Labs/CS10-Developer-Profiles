@@ -26,7 +26,7 @@ export default ({ getGS, logOut }) => {
      */
     leftNavBar: (
       <Fragment>
-        <Link to={userType === 'seeker' ? '/dev-profiles' : '/emp-profile'}>
+        <Link to={userType === 'seeker' ? '/dev-profile' : '/emp-profile'}>
           <Button>profile</Button>
         </Link>
         <Link to="/billing">
@@ -59,7 +59,7 @@ export default ({ getGS, logOut }) => {
           <Link to="/">
             <Button>meetdev</Button>
           </Link>
-          <Link to={userType === 'seeker' ? '/meetdev' : '/meetpositions'}>
+          <Link to={userType === 'seeker' ? '/meetdev' : '/meetposition'}>
             <Button>Browse</Button>
           </Link>
           {isSignedIn ? withToken.leftNavBar : withNotToken.leftNavBar}
