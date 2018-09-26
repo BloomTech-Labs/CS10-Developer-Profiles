@@ -87,8 +87,12 @@ class DevList extends Component {
     this.setState({ [name]: event.target.checked });
   };
 
-  handlePageChange = page => {
-    this.getSeekers(page);
+  componentDidUpdate(prevProps, prevState){
+    const newQuery = this.getQuery();
+
+    if(newQuery !== this.state.query){
+      this.getSeekers(newQuery);
+    }
   };
 
   render() {
@@ -212,7 +216,6 @@ class DevList extends Component {
                 count={this.state.count}
                 pages={this.state.pages}
                 currentPage={this.state.currentPage}
-                onPageChange={this.handlePageChange}
               />
             )}
           </Grid>
