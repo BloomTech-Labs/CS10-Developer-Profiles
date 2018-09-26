@@ -9,14 +9,38 @@ import Pagination from '../Pagination/Pagination';
 const ENABLE = 'Enable';
 const DISABLE = 'Disable';
 const FILTERS = {
-  acclaim: { label: 'Lambda Badge', name: 'lambdaBadge', toggleName: 'lambdaBadgeSwitch' },
+  acclaim: {
+    label: 'Lambda Badge',
+    name: 'acclaim',
+    toggleName: 'acclaimSwitch'
+  },
   github: { label: 'GitHub', name: 'github', toggleName: 'githubSwitch' },
-  linkedIn: { label: 'LinkedIn', name: 'linkedIn', toggleName: 'linkedInSwitch' },
-  portfolio: { label: 'Portfolio', name: 'portfolio', toggleName: 'portfolioSwitch' },
+  linkedIn: {
+    label: 'LinkedIn',
+    name: 'linkedIn',
+    toggleName: 'linkedInSwitch'
+  },
+  portfolio: {
+    label: 'Portfolio',
+    name: 'portfolio',
+    toggleName: 'portfolioSwitch'
+  },
   resume: { label: 'Resume', name: 'resume', toggleName: 'resumeSwitch' },
-  projects: { label: 'Has Projects', name: 'projects', toggleName: 'projectsSwitch' },
-  experience: { label: 'Has Experience', name: 'experience', toggleName: 'experienceSwitch' },
-  education: { label: 'Has Education', name: 'education', toggleName: 'educationSwitch' }
+  projects: {
+    label: 'Has Projects',
+    name: 'projects',
+    toggleName: 'projectsSwitch'
+  },
+  experience: {
+    label: 'Has Experience',
+    name: 'experience',
+    toggleName: 'experienceSwitch'
+  },
+  education: {
+    label: 'Has Education',
+    name: 'education',
+    toggleName: 'educationSwitch'
+  }
 };
 
 const styles = {
@@ -29,6 +53,7 @@ class DevList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      pathname: this.getPathname(),
       query: this.getQuery(),
       count: 0,
       pages: 0,
@@ -36,8 +61,8 @@ class DevList extends Component {
       prev: null,
       currentPage: this.getCurrentPage(),
       seekers: [],
-      lambdaBadge: true,
-      lambdaBadgeSwitch: false,
+      acclaim: true,
+      acclaimSwitch: false,
       github: true,
       githubSwitch: false,
       linkedIn: true,
@@ -56,6 +81,10 @@ class DevList extends Component {
 
     this.getSeekers(this.state.query);
   }
+
+  getPathname = () => {
+    return window.location.pathname;
+  };
 
   getQuery = () => {
     const search = window.location.search;
@@ -103,6 +132,12 @@ class DevList extends Component {
       });
   };
 
+  cleanQuery = substr => {
+    const regEx = new RegExp(`^${substr}=[0,1]&?|&${substr}=[0,1]`, 'i');
+    const cleanQuery = this.state.query.replace(regEx, '');
+    return cleanQuery === '' ? 'page=1' : cleanQuery;
+  };
+
   setActiveFilters = () => {
     const activeFilters = this.state.query.split('&');
     const filterNames = Object.keys(FILTERS);
@@ -119,12 +154,30 @@ class DevList extends Component {
     this.setState(updateState);
   };
 
+  setQuery = query => {
+    this.props.history.push({
+      pathname: this.state.pathname,
+      search: query
+    });
+  };
+
   handleSwitch = event => {
-    this.setState({ [event.target.name]: event.target.checked });
+    const name = event.target.name;
+    const checked = event.target.checked;
+    const newQuery = `${this.cleanQuery(name)}&${name}=${checked ? 1 : 0}`;
+
+    this.setQuery(newQuery);
+    this.setState({ [name]: checked });
   };
 
   handleSwitchEnable = event => {
     const enable = event.target.innerHTML === ENABLE;
+    const name = event.currentTarget.dataset.filterName;
+    const newQuery = enable
+      ? `${this.cleanQuery(name)}&${name}=${this.state[FILTERS[name].name] ? 1 : 0}`
+      : `${this.cleanQuery(name)}`;
+
+    this.setQuery(newQuery);
     event.target.innerHTML = enable ? DISABLE : ENABLE;
     this.setState({ [event.currentTarget.name]: enable });
   };
@@ -149,8 +202,8 @@ class DevList extends Component {
           <Grid item className={classes.sideBar} xs={3}>
             <FilterToggle
               filter={FILTERS.acclaim}
-              checked={this.state.lambdaBadge}
-              enable={this.state.lambdaBadgeSwitch}
+              checked={this.state.acclaim}
+              enable={this.state.acclaimSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
@@ -164,7 +217,7 @@ class DevList extends Component {
                 count={this.state.count}
                 pages={this.state.pages}
                 currentPage={this.state.currentPage}
-                pathname={window.location.pathname}
+                pathname={this.state.pathname}
                 query={this.state.query}
               />
             )}
