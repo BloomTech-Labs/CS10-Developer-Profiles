@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const locationSchema = require('../Location.Schema/Location.embeddedModel');
 
 const { Schema } = mongoose;
 
@@ -11,11 +12,7 @@ const experienceSchema = new Schema({
     type: String,
     required: [true, 'Company is required'],
   },
-  location: {
-    type: String,
-    required: [true, 'Job location is required'],
-    // PENDING Validate
-  },
+  location: locationSchema,
   headline: {
     type: String,
   },

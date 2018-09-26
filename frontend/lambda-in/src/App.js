@@ -11,6 +11,7 @@ import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpList from './Components/EmployerList/EmpOPList';
 import UserSetting from './Components/UserSetting/UserSetting';
+import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
 
 import DevList from './Components/DevList/DevList';
 
@@ -54,7 +55,6 @@ class App extends Component {
   };
 
   render() {
-
     return (
       <div>
         <NavBar />
@@ -70,12 +70,14 @@ class App extends Component {
             {/* For testing purpose */}
             <Route path="/dev-signup" component={DevSignUp} />
             <Route path="/dev-login" component={DevLogin} />
+            <Route path="/geolocation-test" component={SearchGeolocation} />
           </Switch>
 
         </div>
       </div>
     );
   }
+
 }
 
 export default App;
