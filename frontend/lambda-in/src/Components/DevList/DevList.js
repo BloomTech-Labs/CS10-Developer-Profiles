@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import Divider from '@material-ui/core/Divider';
+import FormGroup from '@material-ui/core/FormGroup';
+import Grid from '@material-ui/core/Grid';
+import Switch from '@material-ui/core/Switch';
 import DevProfileCard from './DevProfileCard';
 import Pagination from '../Pagination/Pagination';
+
+const ENABLE = 'Enable';
+const DISABLE = 'Disable';
 
 const styles = {
   mainContainer: {
@@ -22,17 +22,15 @@ class DevList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gilad: true,
-      jason: false,
-      antoine: false,
-
       query: this.getQuery(),
       count: 0,
       pages: 0,
       next: null,
       prev: null,
       currentPage: this.getCurrentPage(),
-      seekers: []
+      seekers: [],
+      lambdaBadge: true,
+      lambdaBadgeSwitch: false
     };
 
     this.getSeekers(this.state.query);
@@ -84,8 +82,14 @@ class DevList extends Component {
       });
   };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
+  handleSwitch = event => {
+    this.setState({ [event.target.name]: event.target.checked });
+  };
+
+  handleSwitchEnable = event => {
+    const enable = event.target.innerHTML === ENABLE;
+    event.target.innerHTML = enable ? DISABLE : ENABLE;
+    this.setState({ [event.currentTarget.name]: enable });
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -102,111 +106,27 @@ class DevList extends Component {
       <React.Fragment>
         <Grid container className={classes.mainContainer} spacing={24}>
           <Grid item className={classes.sideBar} xs={3}>
-            <Typography variant="headline" component="h3">
-              Filters
-            </Typography>
-            <FormControl>
+            <FormGroup row>
               <FormControlLabel
                 control={
-                  <Checkbox
-                    checked={this.state.gilad}
-                    defaultChecked
-                    color="default"
-                    onChange={this.handleChange('gilad')}
-                    value="gilad"
-                  />
-                }
-                label="Full Stack Web"
-              />
-
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={this.state.gilad}
-                    defaultChecked
-                    color="default"
-                    onChange={this.handleChange('gilad')}
-                    value="gilad"
-                  />
-                }
-                label="iOS"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={this.state.gilad}
-                    defaultChecked
-                    color="default"
-                    onChange={this.handleChange('gilad')}
-                    value="gilad"
-                  />
-                }
-                label="Android"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={this.state.gilad}
-                    defaultChecked
-                    color="default"
-                    onChange={this.handleChange('gilad')}
-                    value="gilad"
-                  />
-                }
-                label="UI/UX"
-              />
-            </FormControl>
-            <Divider />
-            <FormControl>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={this.state.gilad}
-                    defaultChecked
-                    color="default"
-                    onChange={this.handleChange('gilad')}
-                    value="gilad"
+                  <Switch
+                    name="lambdaBadge"
+                    checked={this.state.lambdaBadge}
+                    color="primary"
+                    onChange={this.handleSwitch}
                   />
                 }
                 label="Lambda Badge"
+                disabled={!this.state.lambdaBadgeSwitch}
               />
-            </FormControl>
-            <Divider />
-            <br />
-            <FormControl>
-              <Typography variant="headline" component="h3">
-                Located
-              </Typography>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={this.state.gilad}
-                    defaultChecked
-                    color="default"
-                    onChange={this.handleChange('gilad')}
-                    value="gilad"
-                  />
-                }
-                label="with in 100 mile"
-              />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                search cities
-              </InputLabel>
-
-              <Input id="input-with-icon-adornment" type="search" />
-            </FormControl>
-            <br />
-            <Typography variant="headline" component="h3">
-              Will Relocate
-            </Typography>
-            <FormControl>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                search cities
-              </InputLabel>
-              <Input id="input-with-icon-adornment" type="search" />
-            </FormControl>
+              <Button
+                name="lambdaBadgeSwitch"
+                size="small"
+                onClick={this.handleSwitchEnable}
+              >
+                Enable
+              </Button>
+            </FormGroup>
           </Grid>
           <Grid item className={classes.cardBar} xs={9}>
             {this.state.seekers.map(seeker => (
