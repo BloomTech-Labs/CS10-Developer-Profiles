@@ -28,7 +28,7 @@ export default class UserSetting extends Component {
       alert("Your passwors don't match. Please try again!")
       this.setState({
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
       })
       return;
     }
