@@ -27,7 +27,8 @@
 }
 
 .smallInputContainer{
-    width: 53VW;
+    width: 53vw;
+    margin:10px;
     display: flex;
     flex-direction: row;
 }
