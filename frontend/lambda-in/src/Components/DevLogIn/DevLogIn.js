@@ -88,9 +88,11 @@ export default class DevLogin extends Component {
               <Button variant="contained" color="primary" onClick={this.handleLogin}>
                 Submit
               </Button>
-             
+             <br />
+              <Button variant="outlined" color="primary" onClick={this.props.handleOauth}>
+                Signin with Github
+              </Button>
               
-                
             </div>
 
             <div className="login">
@@ -100,7 +102,7 @@ export default class DevLogin extends Component {
                 </Typography>
               </Link>
               <br />
-              <Typography variant="caption" gutterBottom align="center">
+              <Typography variant="caption" gutterBottom align="center" onClick= {() => alert("contact jean@jean.com")}>
                    forgot password?
               </Typography>
             </div>

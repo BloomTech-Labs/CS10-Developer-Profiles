@@ -22,6 +22,38 @@ class App extends Component {
       
     }
   };
+  componentDidMount () {
+    const oauthScript = document.createElement("script");
+    oauthScript.src = "https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js";
+
+    document.body.appendChild(oauthScript);
+  }
+
+  handleOauth = (e) => {
+    // Prevents page reload
+    e.preventDefault();
+    console.log("boo")
+    // Initializes OAuth.io with API key
+    // Sign-up an account to get one
+    window.OAuth.initialize('fnPnyGWcUzhJ7NqGVQTgU0ux4f8');
+
+    // Popup Github and ask for authorization
+    window.OAuth.popup('github').then((provider) => {
+
+      // Prompts 'welcome' message with User's name on successful login
+      // Check console logs for additional User info
+      provider.me().then((data) => {
+        console.log("data: ", data);
+        alert("Welcome " + data.name + "!");
+      });
+
+      // You can also call Github's API using .get()
+      provider.get('/user').then((data) => {
+         console.log('self data:', data);
+      });
+
+    });
+  }
   render() {
       return (
         <div>
@@ -37,7 +69,8 @@ class App extends Component {
               <Route path="/dev-info-edit" component={DevInfoEditz} />
               {/* For testing purpose */}
               <Route path="/dev-signup" component={DevSignUp} />
-              <Route path="/dev-login" component={DevLogin} />
+              {/* <Route path="/dev-login" component={DevLogin}  /> */}
+              <Route path="/dev-login" render={ (props) =>  <DevLogin {...props} handleOauth={this.handleOauth} /> } />
             </Switch>
           </div>
         </div>
