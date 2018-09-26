@@ -39,7 +39,7 @@ export default class DevList extends Component {
         return (
             <div className="App">
                 <div className="mainBar" >
-                    <div className="sideBar">
+                    <div data-aos="fade-right" className="sideBar">
                         <Typography variant="headline" component="h3">
                             Filters
                         </Typography>

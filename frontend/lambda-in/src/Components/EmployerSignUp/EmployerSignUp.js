@@ -9,6 +9,11 @@ import Grid from "@material-ui/core/Grid";
 import NavBar from "../../Components/Navbar/navbar";
 import "../EmployerSignUp/EmployerSignUp.css";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
 export default class EmployerSignUp extends Component {
   constructor(props) {
     super(props);
@@ -77,7 +82,7 @@ export default class EmployerSignUp extends Component {
 
   render() {
     return (
-        <div class="signupContainer">
+        <div data-aos="zoom-in-down" class="signupContainer">
           <div class="formContainer">
             <Paper class="paper">
               <div className="form2">
