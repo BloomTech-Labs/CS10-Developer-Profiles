@@ -33,7 +33,7 @@ class App extends Component {
    * Set APP's global state.
    *
    * @method setGlobalState
-   * @param {object} properties - Properties to be set.
+   * @param {object} properties - Properties to be set. { property_name: property_value }
    * @return {void}
    *
    * @example Pass as a prop to component.
@@ -50,8 +50,6 @@ class App extends Component {
    * @param {string} property - the property of which we want to know its value.
    * @return {object} App's global state.
    *
-   * @example Pass as a prop to component.
-   * <Component getGS={this.getGlobalState} />
    * @example Pass as a prop to component.
    * <Component getGS={this.getGlobalState} />
    */
@@ -92,23 +90,41 @@ class App extends Component {
         <NavBar getGS={this.getGlobalState} logOut={this.handleLogout} />
         <div className="TopContainer">
           <Switch>
+            {/* LANDINGPAGE */}
             <Route exact path="/" component={LandingPage} />
-            <Route path="/dev-signup" component={DevSignUp} />
+
+            {/* BROWSE */}
             <Route path="/meetdev" component={DevList} />
             <Route path="/meetposition" component={EmpList} />
 
-            {/* Redirect to user Profile after login */}
+            {/* BILLING: If user is not Authenticated 'Redirect' to home page */}
+            <Route path="/billing" render={() => (isSignedIn ? <Billing /> : <Redirect to="/" />)} />
+
+            {/* DEVELOPER START */}
+            {/* LOGIN: Redirect to user Profile after login */}
             <Route
               path="/dev-login"
               render={() => (isSignedIn ? redirectToUserProfile : <DevLogin setGS={this.setGlobalState} />)}
             />
-
-            {/* Only allow access to protected components if 'user' is authenticated */}
-            {/* If user is not Authenticated 'Redirect' to home page */}
-            <Route path="/billing" render={() => (isSignedIn ? <Billing /> : <Redirect to="/" />)} />
+            {/* SIGNUP: Redirect to user Profile after signup */}
+            <Route
+              path="/dev-signup"
+              render={() => (isSignedIn ? redirectToUserProfile : <DevSignUp setGS={this.setGlobalState} />)}
+            />
+            {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
             <Route path="/dev-profile" render={() => (isSignedIn ? <DevProfile /> : <Redirect to="/" />)} />
-            <Route path="/employer-signup" render={() => (isSignedIn ? <EmpSignUp /> : <Redirect to="/" />)} />
+            {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route path="/dev-info-edit" render={() => (isSignedIn ? <DevInfoEditz /> : <Redirect to="/" />)} />
+            {/* DEVELOPER END */}
+
+            {/* EMPLOYER START */}
+            {/* LOGIN: Redirect to user Profile after login */}
+            {/* SIGNUP: Redirect to user Profile after signup */}
+            <Route path="/employer-signup" render={() => (isSignedIn ? redirectToUserProfile : <EmpSignUp />)} />
+            {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
+            {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
+
+            {/* EMPLOYER END */}
 
             <Route component={Page404} />
           </Switch>
