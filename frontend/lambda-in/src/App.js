@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Route, Switch, Link, Redirect, withRouter } from 'react-router-dom';
 import './App.css';
 import NavBar from './Components/Navbar/navbar';
@@ -89,15 +89,23 @@ class App extends Component {
         <div className="TopContainer">
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/meetdev" component={DevProfile} />
-            <Route path="/billing" component={Billing} />
-            <Route path="/dev-list" component={DevList} />
-            <Route path="/employer-signup" component={EmpSignUp} />
-            <Route path="/employer-list" component={EmpList} />
-            <Route path="/dev-info-edit" component={DevInfoEditz} />
-            {/* For testing purpose */}
             <Route path="/dev-signup" component={DevSignUp} />
+            <Route path="/meetdev" component={DevList} />
+            <Route path="/meetposition" component={EmpList} />
             <Route path="/dev-login" component={() => <DevLogin setGS={this.setGlobalState} />} />
+
+            {/* Only allow access to protected components if 'user' is authenticated */}
+            {/* If user is not Authenticated 'Redirect' to home page */}
+            {this.state.isSignedIn ? (
+              <Fragment>
+                <Route path="/billing" component={Billing} />
+                <Route path="/dev-profile" component={DevProfile} />
+                <Route path="/employer-signup" component={EmpSignUp} />
+                <Route path="/dev-info-edit" component={DevInfoEditz} />
+              </Fragment>
+            ) : (
+              <Redirect to="/" />
+            )}
           </Switch>
         </div>
       </div>
