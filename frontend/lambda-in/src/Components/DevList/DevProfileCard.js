@@ -12,10 +12,15 @@ import testimage from '../../static/images/testimage.png'
 
 import './DevProfileCard.css'
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
 export default class DevProfileCard extends Component {
   render() {
     return (
-      <div>
+      <div data-aos="flip-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
         <Card className = "cardContainer">
             <div className = "personalInfo">
                 <div className="topCard">

@@ -20,6 +20,11 @@ import NavBar from '../Navbar/navbar'
 import DevProfileCard from './DevProfileCard'
 import '../DevList/DevList.css'
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
 export default class DevList extends Component {
     state = {
         gilad: true,
@@ -110,7 +115,13 @@ export default class DevList extends Component {
                             />
                         </FormControl>
                     </div>
-                    <div className="cardBar">
+                    <div data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" className="cardBar">
+                        <DevProfileCard />  
+                        <DevProfileCard />  
+                        <DevProfileCard />  
+                        <DevProfileCard />  
+                        <DevProfileCard />  
+                        <DevProfileCard />  
                         <DevProfileCard />  
                         <DevProfileCard />  
                         <DevProfileCard />  
