@@ -189,35 +189,84 @@ export default class DevInfoEdit extends Component {
                     </ExpansionPanelDetails>
                   </ExpansionPanel>
                 </div>
-              
+                          
+                <div className="panelMargin">
+                  <ExpansionPanel >
+                      <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
+                        <Typography>tell us something about yourself!</Typography>
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails>
+                        <div className="expansionPanel">
+                          <div className="inputFieldLargeMultiline">
+                            <TextField
+                              id="summary"
+                              label="Your Bio"
+                              fullWidth
+                              multiline
+                              rowsMax="4"
+                              value={this.state.summary}
+                              onChange={this.handleChange('summary')}
+                              margin="normal"
+                              variant="outlined"
+                            />
+                          </div>
 
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="summary"
-                  label="Your Bio"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.summary}
-                  onChange={this.handleChange('summary')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
+                          <div className="inputFieldLargeMultiline">
+                            <TextField
+                              id="topSkills"
+                              label="Top skills"
+                              fullWidth
+                              multiline
+                              rowsMax="4"
+                              value={this.state.topskill}
+                              onChange={this.handleChange('topskill')}
+                              margin="normal"
+                              variant="outlined"
+                            />
+                          </div>
+                        </div>
+                      </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                </div>
+            
+                <div className="panelMargin">
+                  <ExpansionPanel >
+                      <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
+                        <Typography>tell us something about your best project!</Typography>
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails>
+                        <div className="expansionPanel">
+                          <div className="inputFieldLargeMultiline">
+                            <TextField
+                              id="summary"
+                              label="Your Bio"
+                              fullWidth
+                              multiline
+                              rowsMax="4"
+                              value={this.state.summary}
+                              onChange={this.handleChange('summary')}
+                              margin="normal"
+                              variant="outlined"
+                            />
+                          </div>
 
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="topSkills"
-                  label="Top skills"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.topskill}
-                  onChange={this.handleChange('topskill')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
+                          <div className="inputFieldLargeMultiline">
+                            <TextField
+                              id="topSkills"
+                              label="Top skills"
+                              fullWidth
+                              multiline
+                              rowsMax="4"
+                              value={this.state.topskill}
+                              onChange={this.handleChange('topskill')}
+                              margin="normal"
+                              variant="outlined"
+                            />
+                          </div>
+                        </div>
+                      </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                </div>
 
               <div className="inputFieldLargeMultiline">
                 <TextField
