@@ -55,6 +55,7 @@ class DevList extends Component {
   };
 
   getSeekers = (query = '') => {
+    const url = query === '' ? '/api/seekers' : `/api/seekers?${query}`;
     const config = {
       headers: {
         Authorization: localStorage.token
@@ -62,7 +63,7 @@ class DevList extends Component {
     };
 
     axios
-      .get(`/api/seekers?${query}`, config)
+      .get(url, config)
       .then(response => {
         this.setState({
           query: query,
@@ -87,19 +88,19 @@ class DevList extends Component {
     this.setState({ [name]: event.target.checked });
   };
 
-  componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(prevProps, prevState) {
     const newQuery = this.getQuery();
 
-    if(newQuery !== this.state.query){
+    if (newQuery !== this.state.query) {
       this.getSeekers(newQuery);
     }
-  };
+  }
 
   render() {
     const { classes } = this.props;
     return (
       <React.Fragment>
-        <Grid container className={classes.mainContainer} spacing="24">
+        <Grid container className={classes.mainContainer} spacing={24}>
           <Grid item className={classes.sideBar} xs={3}>
             <Typography variant="headline" component="h3">
               Filters
@@ -216,6 +217,8 @@ class DevList extends Component {
                 count={this.state.count}
                 pages={this.state.pages}
                 currentPage={this.state.currentPage}
+                pathname={window.location.pathname}
+                query={this.state.query}
               />
             )}
           </Grid>
