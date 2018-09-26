@@ -27,11 +27,15 @@ export default class DevLogin extends Component {
       })
       .then(response => {
         localStorage.setItem('token', response.data.jwt);
+        /**
+         * SET GLOBAL STATE
+         */
         this.props.setGS({
-          userInfo: { ...response.data.user },
+          userInfo: { ...response.data.user }, // Set user data.
           isSignedIn: true,
           userType: 'seeker',
         });
+        // RESET local state
         this.setState({
           username: '',
           password: '',
@@ -40,6 +44,7 @@ export default class DevLogin extends Component {
         console.log(response);
       })
       .catch(err => {
+        // If Error maintaing Local State -> Thus user do not have to type it again
         console.log(err);
       });
   };
