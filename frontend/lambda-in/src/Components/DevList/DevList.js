@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,7 +14,13 @@ import Pagination from '../Pagination/Pagination';
 
 import '../DevList/DevList.css';
 
-export default class DevList extends Component {
+const styles = {
+  mainContainer: {
+    padding: '0 30px'
+  }
+};
+
+class DevList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,10 +96,11 @@ export default class DevList extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
-      <div className="App">
-        <div className="mainBar">
-          <div className="sideBar">
+      <React.Fragment>
+        <Grid container className={classes.mainContainer} spacing="24">
+          <Grid item className={classes.sideBar} xs={3}>
             <Typography variant="headline" component="h3">
               Filters
             </Typography>
@@ -180,7 +189,6 @@ export default class DevList extends Component {
                 label="with in 100 mile"
               />
             </FormControl>
-
             <FormControl>
               <InputLabel htmlFor="input-with-icon-adornment">
                 search cities
@@ -192,16 +200,14 @@ export default class DevList extends Component {
             <Typography variant="headline" component="h3">
               Will Relocate
             </Typography>
-
             <FormControl>
               <InputLabel htmlFor="input-with-icon-adornment">
                 search cities
               </InputLabel>
-
               <Input id="input-with-icon-adornment" type="search" />
             </FormControl>
-          </div>
-          <div className="cardBar">
+          </Grid>
+          <Grid item className={classes.cardBar} xs={9}>
             {this.state.seekers.map(seeker => (
               <DevProfileCard key={seeker._id} seeker={seeker} />
             ))}
@@ -213,9 +219,11 @@ export default class DevList extends Component {
                 onPageChange={this.handlePageChange}
               />
             )}
-          </div>
-        </div>
-      </div>
+          </Grid>
+        </Grid>
+      </React.Fragment>
     );
   }
 }
+
+export default withStyles(styles)(DevList);
