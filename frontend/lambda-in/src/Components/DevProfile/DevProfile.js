@@ -4,10 +4,15 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import './DevProfile.css';
 
-export default () => {
-  const TS = this.state.topSkills;
-  const AS = this.state.additionalSkills;
-  const SS = this.state.skills;
+/**
+ *
+ */
+export default ({ getGS }) => {
+  const userInfo = getGS('userInfo');
+
+  const TS = getGS('userInfo').topSkills;
+  const AS = getGS('userInfo').additionalSkills;
+  const SS = getGS('userInfo').skills;
   const allSkills = TS.concat(AS, SS);
   const skillList = allSkills.map(skill => (
     <li>
@@ -16,6 +21,12 @@ export default () => {
     </li>
   ));
 
+  console.log({ TEST_GETGS: getGS('userInfo') });
+  console.log({ TEST_GETGS: getGS('userInfo').email });
+  console.log({ ...userInfo });
+  /**
+   * PENDING FIELDS: `familiarWith`
+   */
   return (
     <div>
       <div className="container">
@@ -29,18 +40,18 @@ export default () => {
                 <div className="basicInfo">
                   <div className="name">
                     <Typography variant="headline" component="h3">
-                      {this.state.firstName} {this.state.lastName}
+                      {userInfo.firstName} {userInfo.lastName}
                     </Typography>
                   </div>
                   <div className="currentLocation">
                     <Typography variant="headline" component="h3">
-                      {this.state.currentLocation}
+                      {userInfo.currentLocation}
                     </Typography>
                   </div>
                   <div className="summary">
-                    <Typography>{this.state.summary}</Typography>
+                    <Typography>{userInfo.summary}</Typography>
                   </div>
-                  <div className="desiredTitle">Desired Title: {this.state.desiredTitle}</div>
+                  <div className="desiredTitle">Desired Title: {userInfo.desiredTitle}</div>
                   <div className="tagCloud">
                     <ul>{skillList}</ul>
                   </div>
@@ -50,7 +61,7 @@ export default () => {
             </div>
 
             <div className="topCardRight">
-              <a href={this.state.acclaimBadge}>
+              <a href={userInfo.acclaimBadge}>
                 <img
                   src={require('./img/lambdaColor.png')}
                   width="50"
@@ -59,16 +70,16 @@ export default () => {
                   alt="Badge"
                 />
               </a>
-              <a href={this.state.socialNetwork}>
+              <a href={userInfo.socialNetwork}>
                 <img src={require('./img/sns.png')} width="50" height="50" title="SNS" alt="SNS" />
               </a>
-              <a href={this.state.github}>
+              <a href={userInfo.github}>
                 <img src={require('./img/GitHub.png')} width="50" height="50" title="Github" alt="Github Repo" />
               </a>
-              <a href={this.state.linkedin}>
+              <a href={userInfo.linkedin}>
                 <img src={require('./img/linkedin.jpg')} width="50" height="50" title="Linkedin" alt="Linkedin" />
               </a>
-              <a href={this.state.portfolio}>
+              <a href={userInfo.portfolio}>
                 <img src={require('./img/portfolio.png')} width="50" height="50" title="Portfolio" alt="Portfolio" />
               </a>
             </div>
@@ -77,19 +88,19 @@ export default () => {
           <div className="downCard">
             <div className="projects">
               <div>Projects: </div>
-              {this.state.projects}
+              {/* {userInfo.projects} */}
             </div>
             <div className="experience">
               <div>Experience: </div>
-              {this.state.experience}
+              {/* {userInfo.experience} */}
             </div>
             <div className="education">
               <div>Education: </div>
-              {this.state.education}
+              {/* {userInfo.education} */}
             </div>
             <div className="placesInterested">
               <div>Locations Interested: </div>
-              {this.state.placesInterested}
+              {/* {userInfo.placesInterested} */}
             </div>
           </div>
         </Paper>
