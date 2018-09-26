@@ -11,6 +11,9 @@ import Pagination from '../Pagination/Pagination';
 
 const ENABLE = 'Enable';
 const DISABLE = 'Disable';
+const FILTERS = {
+  acclaim: { filter: 'lambdaBadge', filterToggle: 'lambdaBadgeSwitch' }
+};
 
 const styles = {
   mainContainer: {
@@ -82,6 +85,22 @@ class DevList extends Component {
       });
   };
 
+  setActiveFilters = () => {
+    const activeFilters = this.state.query.split('&');
+    const filterNames = Object.keys(FILTERS);
+    const updateState = {};
+
+    activeFilters.forEach(activeFilter => {
+      const filter = activeFilter.split('=');
+      if (filterNames.includes(filter[0])) {
+        updateState[FILTERS[filter[0]].filterToggle] = true;
+        updateState[FILTERS[filter[0]].filter] = +filter[1] ? true : false;
+      }
+    });
+
+    this.setState(updateState);
+  };
+
   handleSwitch = event => {
     this.setState({ [event.target.name]: event.target.checked });
   };
@@ -98,6 +117,10 @@ class DevList extends Component {
     if (newQuery !== this.state.query) {
       this.getSeekers(newQuery);
     }
+  }
+
+  componentDidMount() {
+    this.setActiveFilters();
   }
 
   render() {
@@ -124,7 +147,7 @@ class DevList extends Component {
                 size="small"
                 onClick={this.handleSwitchEnable}
               >
-                Enable
+                {this.state.lambdaBadgeSwitch ? DISABLE : ENABLE}
               </Button>
             </FormGroup>
           </Grid>
