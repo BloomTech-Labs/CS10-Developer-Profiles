@@ -18,9 +18,14 @@ class Pagination extends Component {
       lowLimit: PAGINATION_SETTINGS.maxPageLinks - 1,
       highLimit: this.props.pages - PAGINATION_SETTINGS.maxPageLinks + 2,
       pageLinks: [],
-      query: '/dev-list'
+      cleanQuery: this.cleanQuery(this.props.query)
     };
   }
+
+  cleanQuery = query => {
+    const cleanQuery = query.replace(/^page=[0-9]+&?|&page=[0-9]+/i, '');
+    return cleanQuery === '' ? cleanQuery : `&${cleanQuery}`;
+  };
 
   getAllPageLinks = () => {
     const pageLinks = [];
@@ -88,15 +93,12 @@ class Pagination extends Component {
     const { classes } = this.props;
     const pageLinks = this.getPageLinks();
 
-    /**
-     * @todo Make href's dynamic
-     */
     return (
       <ul className={classes.pagination}>
         {pageLinks.map(page => (
           <li key={page} className={classes.pageItem}>
             <Link
-              to={`${this.state.query}?page=${page}`}
+              to={`${this.props.pathname}?page=${page}${this.state.cleanQuery}`}
               onClick={event => this.handleClick(event, page)}
             >
               {page}
@@ -111,7 +113,9 @@ class Pagination extends Component {
 Pagination.propTypes = {
   count: PropTypes.number.isRequired,
   pages: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired
+  currentPage: PropTypes.number.isRequired,
+  pathname: PropTypes.string.isRequired,
+  query: PropTypes.string
 };
 
 export default withStyles(styles)(Pagination);
