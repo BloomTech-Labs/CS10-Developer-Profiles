@@ -3,7 +3,10 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from 'axios';
 import './DevInfoEditz.css';
 
@@ -78,53 +81,65 @@ export default class DevInfoEdit extends Component {
             <div className="inputRow">
               <div className="smallInputContainer">
                 <div>
-                  <div className="inputField">
-                    <TextField
-                      id="firstName"
-                      label="First Name"
-                      fullWidth
-                      value={this.state.firstName}
-                      onChange={this.handleChange('firstName')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
+                <ExpansionPanel >
+                  <ExpansionPanelSummary>
+                    <Typography>Personal Info</Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <div className="expansionPanel">
+                        <div className="inputField">
+                          <TextField
+                            id="firstName"
+                            label="First Name"
+                            fullWidth
+                            value={this.state.firstName}
+                            onChange={this.handleChange('firstName')}
+                            margin="normal"
+                            variant="outlined"
+                          />
+                        </div>
 
-                  <div className="inputField">
-                    <TextField
-                      id="outlined-name"
-                      label="Last Name"
-                      fullWidth
-                      value={this.state.lastName}
-                      onChange={this.handleChange('lastName')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
+                        <div className="inputField">
+                        <TextField
+                          id="outlined-name"
+                          label="Last Name"
+                          fullWidth
+                          value={this.state.lastName}
+                          onChange={this.handleChange('lastName')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
 
-                  <div className="inputField">
-                    <TextField
-                      id="desiredTitle"
-                      label="Desired Title"
-                      fullWidth
-                      value={this.state.desiredTitle}
-                      onChange={this.handleChange('desiredTitle')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
+                      <div className="inputField">
+                        <TextField
+                          id="desiredTitle"
+                          label="Desired Title"
+                          fullWidth
+                          value={this.state.desiredTitle}
+                          onChange={this.handleChange('desiredTitle')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
 
-                  <div className="inputField">
-                    <TextField
-                      id="currentLocation"
-                      label="Current Location"
-                      fullWidth
-                      value={this.state.currentLocation}
-                      onChange={this.handleChange('currentLocation')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
+                      <div className="inputField">
+                        <TextField
+                          id="currentLocation"
+                          label="Current Location"
+                          fullWidth
+                          value={this.state.currentLocation}
+                          onChange={this.handleChange('currentLocation')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
+                    </div>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+                  
+
+                  
                 </div>
 
                 <div className="imageContainer">

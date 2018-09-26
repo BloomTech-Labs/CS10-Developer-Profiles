@@ -16,6 +16,11 @@
     flex-direction: column;
 }
 
+.expansionPanel{
+    width:28vw;
+    display: flex;
+    flex-direction: column;
+}
 
 .inputRow{
     height: 10vh; 
