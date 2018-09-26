@@ -21,14 +21,6 @@ export default class EmployerSignUp extends Component {
       hiringManagerFirstName: "Alynna",
       hiringManagerLastName: "Nechayev",
       hiringManagerEmail: "nechayev@starfleet.ufp",
-      projectName: "Enterprise-D",
-      description:
-        "We are watching for the captain of the Federation Flagship.",
-      jobTitle: "Captain",
-      techStack: "full stack",
-      skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
-      minSalrary: 1000000,
-      maxSalary: 2000000
     };
   }
   handleChange = name => e => {
