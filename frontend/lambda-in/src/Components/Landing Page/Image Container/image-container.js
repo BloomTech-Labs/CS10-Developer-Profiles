@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import landingImage from '../../../static/images/landingImage.png';
 import './image-container.css';
+import GSAP from 'react-gsap-enhancer';
 
 const backgroundImage = {
   backgroundImage: `url(${landingImage})`,
@@ -36,4 +37,4 @@ class ImageContainer extends React.Component {
   }
 }
 
-export default ImageContainer;
+export default GSAP()(ImageContainer);

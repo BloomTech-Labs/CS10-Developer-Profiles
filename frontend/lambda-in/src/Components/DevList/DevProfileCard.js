@@ -12,19 +12,34 @@ import testimage from '../../static/images/testimage.png';
 
 import './DevProfileCard.css';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
 export default class DevProfileCard extends Component {
   render() {
     return (
-      <div>
-        <Card className="cardContainer">
-          <div className="personalInfo">
-            <div className="topCard">
-              <div className="imageInfo">
-                <Avatar alt="Remy Sharp" src={testimage} />
-              </div>
-              <div className="nameInfo">
-                <Typography variant="title">Name Lastname</Typography>
-                <Typography variant="subheading">Somewhere, Around</Typography>
+      <div data-aos="flip-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
+        <Card className = "cardContainer">
+            <div className = "personalInfo">
+                <div className="topCard">
+                    <div className="imageInfo">
+                        <Avatar alt="Remy Sharp" src={testimage} />
+                    </div>
+                    <div className="nameInfo">
+                        <Typography variant="title" >
+                            Samar vir
+                        </Typography>
+                        <Typography variant="subheading">
+                            Delhi, India
+                        </Typography>
+                        <Divider />
+                        <Typography variant="paragraph">
+                            cool boi 101 cool boi 1cool boi 101
+                        </Typography>
+                    </div>
+                </div>
                 <Divider />
                 <Typography variant="paragraph">cool boi 101 cool boi 1cool boi 101</Typography>
               </div>
