@@ -30,6 +30,7 @@ const FilterToggle = props => {
         name={props.filter.toggleName}
         size="small"
         onClick={props.onEnable}
+        data-filter-name={props.filter.name}
       >
         {props.enable ? DISABLE : ENABLE}
       </Button>
