@@ -82,7 +82,6 @@ class Pagination extends Component {
      * @todo Replace with smooth scroll
      */
     window.scrollTo(0, 0);
-    this.props.onPageChange(page);
   };
 
   render() {
@@ -112,8 +111,7 @@ class Pagination extends Component {
 Pagination.propTypes = {
   count: PropTypes.number.isRequired,
   pages: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired
+  currentPage: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(Pagination);
