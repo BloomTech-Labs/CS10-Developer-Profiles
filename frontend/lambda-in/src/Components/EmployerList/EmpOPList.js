@@ -13,7 +13,7 @@ class EmplyoerOpenPositionList extends React.Component {
     return (
       <div class="container">
         <div class="body">
-          <Paper>
+          <Paper class="paper">
             <Typography variant="display1" gutterBottom align="center">
               Open Positions
             </Typography>
@@ -21,8 +21,12 @@ class EmplyoerOpenPositionList extends React.Component {
             <Typography variant="headline" gutterBottom align="center">
               Manage Current Open Positions
             </Typography>
-            <EmployerOpenPositionForm />
-            <EmployerOpenPositionCard />
+            <div class="form">
+              <EmployerOpenPositionForm />
+            </div>
+            <div class="card">
+              <EmployerOpenPositionCard />
+            </div>
           </Paper>
         </div>
       </div>

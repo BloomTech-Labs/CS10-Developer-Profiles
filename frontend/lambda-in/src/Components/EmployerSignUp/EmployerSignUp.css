@@ -8,12 +8,11 @@
   padding:16px;
 }
 .formContainer {
-  align-self: center;
-  width: 100vw;
-  display: flex;
-  padding: 16px;
   display: flex;
   flex-direction: column;
+  align-self: center;
+  width: 100vw;
+  padding: 16px;
 }
 
 .paper {

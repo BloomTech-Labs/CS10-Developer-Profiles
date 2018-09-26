@@ -53,10 +53,10 @@ class EmployerOpenPositionForm extends Component {
             <div className="form2">
               <div>
                 <TextField
-                  id="projectNname"
-                  label="Project Nname"
-                  value={this.state.projectNname}
-                  onChange={this.handleChange("projectNname")}
+                  id="projectName"
+                  label="Project Name"
+                  value={this.state.projectName}
+                  onChange={this.handleChange("projectName")}
                   margin="normal"
                   fullWidth="true"
                 />
