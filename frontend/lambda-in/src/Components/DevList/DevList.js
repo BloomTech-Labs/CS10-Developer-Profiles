@@ -12,8 +12,6 @@ import Divider from '@material-ui/core/Divider';
 import DevProfileCard from './DevProfileCard';
 import Pagination from '../Pagination/Pagination';
 
-import '../DevList/DevList.css';
-
 const styles = {
   mainContainer: {
     padding: '0 30px'
