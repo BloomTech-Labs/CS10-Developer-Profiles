@@ -30,6 +30,7 @@ export default class UserSetting extends Component {
         password: '',
         confirmPassword: ''
       })
+      return;
     }
     const _id = localStorage.getItem('_id');
     if (_id) {
