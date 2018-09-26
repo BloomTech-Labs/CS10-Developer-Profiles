@@ -26,16 +26,16 @@ class DevList extends Component {
       jason: false,
       antoine: false,
 
-      query: '',
+      query: this.getQuery(),
       count: 0,
       pages: 0,
       next: null,
       prev: null,
-      currentPage: 1,
+      currentPage: this.getCurrentPage(),
       seekers: []
     };
 
-    this.getSeekers();
+    this.getSeekers(this.state.query);
   }
 
   getQuery = () => {
@@ -43,29 +43,26 @@ class DevList extends Component {
     return search === '' ? search : search.substring(1);
   };
 
-  getCurrentPage = query => {
-    const queryArr = query.split('&');
+  getCurrentPage = () => {
+    const queryArr = this.getQuery().split('&');
 
     for (let i = 0; i < queryArr.length; i++) {
       const param = queryArr[i].split('=');
-      if (param[0] === 'page') return param[1];
+      if (param[0] === 'page') return +param[1];
     }
 
     return 1;
   };
 
-  getSeekers = (page = null) => {
-    const query = this.getQuery();
+  getSeekers = (query = '') => {
     const config = {
       headers: {
         Authorization: localStorage.token
       }
     };
 
-    page = page || this.getCurrentPage(query);
-
     axios
-      .get(`/api/seekers?page=${page}`, config)
+      .get(`/api/seekers?${query}`, config)
       .then(response => {
         this.setState({
           query: query,
@@ -74,12 +71,13 @@ class DevList extends Component {
           next: response.data.next,
           prev: response.data.prev,
           seekers: response.data.results,
-          currentPage: +page
+          currentPage: response.data.current
         });
       })
       .catch(err => {
         /**
-         * @todo On redirect to sign in page display message telling user they must log in before accessing content
+         * @todo On invalid credentials, redirect to sign in page with message
+         * @todo On 404 error, display message on dev list
          */
         this.props.history.push('/dev-login');
       });
