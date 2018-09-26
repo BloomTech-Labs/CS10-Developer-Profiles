@@ -30,6 +30,9 @@ export default class DevInfoEdit extends Component {
       summary: 'wubba lubba dub dub',
       topskill: 'Baller',
       projects: 'Dev profiles',
+      projectTitle: 'Dev Profile',
+      projectLink: 'Devproject.com',
+      projectRepo: 'github.com/project',
       experience: 'mars inc.',
       education: 'Lambda School',
     };
@@ -80,70 +83,61 @@ export default class DevInfoEdit extends Component {
           <form>
             <div className="inputRow">
               <div className="smallInputContainer">
-                <div>
-                  <ExpansionPanel >
-                    <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
-                      <Typography>Your Personal Info</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                      <div className="expansionPanel">
-                          <div className="inputField">
-                            <TextField
-                              id="firstName"
-                              label="First Name"
-                              fullWidth
-                              value={this.state.firstName}
-                              onChange={this.handleChange('firstName')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </div>
+                <div className="expansionPanel">
+                    <div className="inputField">
+                      <TextField
+                        id="firstName"
+                        label="First Name"
+                        fullWidth
+                        value={this.state.firstName}
+                        onChange={this.handleChange('firstName')}
+                        margin="normal"
+                        variant="outlined"
+                      />
+                    </div>
 
-                          <div className="inputField">
-                          <TextField
-                            id="outlined-name"
-                            label="Last Name"
-                            fullWidth
-                            value={this.state.lastName}
-                            onChange={this.handleChange('lastName')}
-                            margin="normal"
-                            variant="outlined"
-                          />
-                        </div>
+                    <div className="inputField">
+                    <TextField
+                      id="outlined-name"
+                      label="Last Name"
+                      fullWidth
+                      value={this.state.lastName}
+                      onChange={this.handleChange('lastName')}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </div>
 
-                        <div className="inputField">
-                          <TextField
-                            id="desiredTitle"
-                            label="Desired Title"
-                            fullWidth
-                            value={this.state.desiredTitle}
-                            onChange={this.handleChange('desiredTitle')}
-                            margin="normal"
-                            variant="outlined"
-                          />
-                        </div>
+                  <div className="inputField">
+                    <TextField
+                      id="desiredTitle"
+                      label="Desired Title"
+                      fullWidth
+                      value={this.state.desiredTitle}
+                      onChange={this.handleChange('desiredTitle')}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </div>
 
-                        <div className="inputField">
-                          <TextField
-                            id="currentLocation"
-                            label="Current Location"
-                            fullWidth
-                            value={this.state.currentLocation}
-                            onChange={this.handleChange('currentLocation')}
-                            margin="normal"
-                            variant="outlined"
-                          />
-                        </div>
-                      </div>
-                    </ExpansionPanelDetails>
-                  </ExpansionPanel>
+                  <div className="inputField">
+                    <TextField
+                      id="currentLocation"
+                      label="Current Location"
+                      fullWidth
+                      value={this.state.currentLocation}
+                      onChange={this.handleChange('currentLocation')}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </div>
                 </div>
-                {/* <div className="imageContainer">
+                <div className="imageContainer">
                   <img className="displayPic" src={`https://robohash.org/1${this.state.firstName}`} alt="Italian " />
-                </div> */}
+                </div>
               </div>
 
-              <div className="smallInputContainer">
+              <div className="panelMargin">
                   <ExpansionPanel >
                     <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
                       <Typography>Your Social links</Typography>
@@ -232,19 +226,19 @@ export default class DevInfoEdit extends Component {
                 <div className="panelMargin">
                   <ExpansionPanel >
                       <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
-                        <Typography>tell us something about your best project!</Typography>
+                        <Typography>Add your best project!</Typography>
                       </ExpansionPanelSummary>
                       <ExpansionPanelDetails>
                         <div className="expansionPanel">
                           <div className="inputFieldLargeMultiline">
                             <TextField
-                              id="summary"
-                              label="Your Bio"
+                              id="projectTitle"
+                              label="Project Title"
                               fullWidth
                               multiline
                               rowsMax="4"
-                              value={this.state.summary}
-                              onChange={this.handleChange('summary')}
+                              value={this.state.projectTitle}
+                              onChange={this.handleChange('projectTitle')}
                               margin="normal"
                               variant="outlined"
                             />
@@ -252,13 +246,27 @@ export default class DevInfoEdit extends Component {
 
                           <div className="inputFieldLargeMultiline">
                             <TextField
-                              id="topSkills"
-                              label="Top skills"
+                              id="projectLink"
+                              label="Project Link"
                               fullWidth
                               multiline
                               rowsMax="4"
-                              value={this.state.topskill}
-                              onChange={this.handleChange('topskill')}
+                              value={this.state.projectLink}
+                              onChange={this.handleChange('projectLink')}
+                              margin="normal"
+                              variant="outlined"
+                            />
+                          </div>
+
+                          <div className="inputFieldLargeMultiline">
+                            <TextField
+                              id="projectRepo"
+                              label="Project Repo"
+                              fullWidth
+                              multiline
+                              rowsMax="4"
+                              value={this.state.projectRepo}
+                              onChange={this.handleChange('projectRepo')}
                               margin="normal"
                               variant="outlined"
                             />
@@ -268,47 +276,58 @@ export default class DevInfoEdit extends Component {
                   </ExpansionPanel>
                 </div>
 
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="project"
-                  label="Projects"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.projects}
-                  onChange={this.handleChange('projects')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
+                <div className="panelMargin">
+                  <ExpansionPanel >
+                      <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
+                        <Typography>Add your Education back ground</Typography>
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails>
+                        <div className="expansionPanel">
+                          <div className="inputFieldLargeMultiline">
+                            <TextField
+                              id="projectTitle"
+                              label="Project Title"
+                              fullWidth
+                              multiline
+                              rowsMax="4"
+                              value={this.state.projectTitle}
+                              onChange={this.handleChange('projectTitle')}
+                              margin="normal"
+                              variant="outlined"
+                            />
+                          </div>
 
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="experience"
-                  label="Experience"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.experience}
-                  onChange={this.handleChange('experience')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
+                          <div className="inputFieldLargeMultiline">
+                            <TextField
+                              id="projectLink"
+                              label="Project Link"
+                              fullWidth
+                              multiline
+                              rowsMax="4"
+                              value={this.state.projectLink}
+                              onChange={this.handleChange('projectLink')}
+                              margin="normal"
+                              variant="outlined"
+                            />
+                          </div>
 
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="education"
-                  label="Education"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.education}
-                  onChange={this.handleChange('education')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
+                          <div className="inputFieldLargeMultiline">
+                            <TextField
+                              id="projectRepo"
+                              label="Project Repo"
+                              fullWidth
+                              multiline
+                              rowsMax="4"
+                              value={this.state.projectRepo}
+                              onChange={this.handleChange('projectRepo')}
+                              margin="normal"
+                              variant="outlined"
+                            />
+                          </div>
+                        </div>
+                      </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                </div>
 
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
