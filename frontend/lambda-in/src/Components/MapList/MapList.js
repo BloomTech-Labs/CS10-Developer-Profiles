@@ -4,10 +4,10 @@ import React from 'react';
  * Render an unordered list.
  *
  * @function
- * @param {array} array - Array of Strings.
+ * @param {String[]} array - Array of Strings.
  * @return {object} A React component
  */
-const MapList = ({ array }) => {
+export default ({ array }) => {
   return (
     <ul>
       {array.map(dataUnit => (
@@ -16,5 +16,3 @@ const MapList = ({ array }) => {
     </ul>
   );
 };
-
-export default MapList;

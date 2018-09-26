@@ -8,5 +8,5 @@ Render an unordered list.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| array | <code>array</code> | Array of Strings. |
+| array | <code>Array.&lt;String&gt;</code> | Array of Strings. |
 
