@@ -74,6 +74,10 @@ export default class DevSignUp extends Component {
         console.log(localStorage.getItem('token'));
       })
       .catch(err => {
+        this.setState({
+          password: '',
+          confirmPassword: '',
+        });
         console.log(err);
       });
   };
