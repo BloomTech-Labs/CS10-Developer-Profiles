@@ -19,9 +19,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSignedIn: true,
+      isSignedIn: false,
       userInfo: {}, // To be populated after an HTTP request from other components.
       userType: '', // 'seeker' || 'employer'
+      updateState: '', // 'updating' || 'updated' || 'error'
+      deleteState: '', // 'deleting' || 'deleted' || 'error'
     };
   }
 
@@ -36,6 +38,7 @@ class App extends Component {
    * <Component setGS={this.setGlobalState} />
    */
   setGlobalState = properties => {
+    console.log({ setGS: properties });
     this.setState(properties);
   };
 
@@ -56,6 +59,8 @@ class App extends Component {
 
   render() {
     const { isSignedIn } = this.state;
+    const redirectToUserProfile =
+      this.state.userType === 'seeker' ? <Redirect to="/dev-profile" /> : <Redirect to="/emp-profile" />;
 
     return (
       <div>
@@ -73,17 +78,20 @@ class App extends Component {
               path="/dev-info-edit"
               render={props =>
                 isSignedIn ? (
-                  <PassProps {...props} setGS={this.setGlobalState} getGS={this.getGlobalState} />
+                  <DevInfoEditz {...props} setGS={this.setGlobalState} getGS={this.getGlobalState} />
                 ) : (
                   <Redirect to="/" />
                 )
               }
-            >
-              <DevInfoEditz />
-            </Route>
+            />
             {/* For testing purpose */}
             <Route path="/dev-signup" component={DevSignUp} />
-            <Route path="/dev-login" component={DevLogin} />
+            <Route
+              path="/dev-login"
+              render={props =>
+                isSignedIn ? redirectToUserProfile : <DevLogin {...props} setGS={this.setGlobalState} />
+              }
+            />
           </Switch>
         </div>
       </div>
