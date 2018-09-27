@@ -9,8 +9,9 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
 import './DevInfoEditz.css';
-import BioSkills from './BioSkills';
-import Projects from './Projects';
+import BioSkills from '../utilityComponents/SeekerUtils/BioSkills';
+import Projects from '../utilityComponents/SeekerUtils/Projects';
+import Education from '../utilityComponents/SeekerUtils/Education';
 
 export default class DevInfoEdit extends Component {
   handleChange = event => {
@@ -197,55 +198,8 @@ export default class DevInfoEdit extends Component {
               <Projects userInfo={userInfo} />
 
               {/* EDUCATION */}
-              <div className="panelMargin">
-                <ExpansionPanel>
-                  <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
-                    <Typography>Add your Education back ground</Typography>
-                  </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
-                    <div className="expansionPanel">
-                      <div className="inputFieldLargeMultiline">
-                        <TextField
-                          id="projectTitle"
-                          label="Project Title"
-                          fullWidth
-                          multiline
-                          rowsMax="4"
-                          value={userInfo.projectTitle}
-                          margin="normal"
-                          variant="outlined"
-                        />
-                      </div>
+              <Education userInfo={userInfo} />
 
-                      <div className="inputFieldLargeMultiline">
-                        <TextField
-                          id="projectLink"
-                          label="Project Link"
-                          fullWidth
-                          multiline
-                          rowsMax="4"
-                          value={userInfo.projectLink}
-                          margin="normal"
-                          variant="outlined"
-                        />
-                      </div>
-
-                      <div className="inputFieldLargeMultiline">
-                        <TextField
-                          id="projectRepo"
-                          label="Project Repo"
-                          fullWidth
-                          multiline
-                          rowsMax="4"
-                          value={userInfo.projectRepo}
-                          margin="normal"
-                          variant="outlined"
-                        />
-                      </div>
-                    </div>
-                  </ExpansionPanelDetails>
-                </ExpansionPanel>
-              </div>
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
                   {' '}
