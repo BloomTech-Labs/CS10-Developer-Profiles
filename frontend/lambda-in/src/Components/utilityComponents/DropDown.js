@@ -12,6 +12,9 @@ import TextField from '@material-ui/core/TextField';
  * @description A wrapper for a Dropdown, which accepts any children.
  * @class A class component constructor.
  * @prop {string} header - Text ot be displayed when the Dropdown is collapsed.
+ *
+ * @example How to use it
+ * <DropDown header="Heder text to display here">
  */
 class DropDown extends Component {
   render() {
