@@ -9,13 +9,15 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
 import './DevInfoEditz.css';
+import DropDown from '../utilityComponents/DropDown';
 
 export default class DevInfoEdit extends Component {
-  handleChange = name => event => {
+  handleChange = event => {
+    console.log({ onChange: event.target.id });
     /**
      * Wire APP's global state with input field.
      */
-    this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [name]: event.target.value } });
+    this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [event.target.id]: event.target.value } });
   };
 
   update = () => {
@@ -90,8 +92,9 @@ export default class DevInfoEdit extends Component {
             Lambda Network
           </Typography>
           <br />
-          <form>
+          <form onChange={this.handleChange}>
             <div className="inputRow">
+              {/* User basic info: name, desired title, current location */}
               <div className="smallInputContainer">
                 <div className="expansionPanel">
                   <div className="inputField">
@@ -100,7 +103,6 @@ export default class DevInfoEdit extends Component {
                       label="First Name"
                       fullWidth
                       value={userInfo.firstName}
-                      onChange={this.handleChange('firstName')}
                       margin="normal"
                       variant="outlined"
                     />
@@ -112,7 +114,6 @@ export default class DevInfoEdit extends Component {
                       label="Last Name"
                       fullWidth
                       value={userInfo.lastName}
-                      onChange={this.handleChange('lastName')}
                       margin="normal"
                       variant="outlined"
                     />
@@ -124,7 +125,6 @@ export default class DevInfoEdit extends Component {
                       label="Desired Title"
                       fullWidth
                       value={userInfo.desiredTitle}
-                      onChange={this.handleChange('desiredTitle')}
                       margin="normal"
                       variant="outlined"
                     />
@@ -136,7 +136,6 @@ export default class DevInfoEdit extends Component {
                       label="Current Location"
                       fullWidth
                       value={userInfo.currentLocation}
-                      onChange={this.handleChange('currentLocation')}
                       margin="normal"
                       variant="outlined"
                     />
@@ -161,7 +160,6 @@ export default class DevInfoEdit extends Component {
                           label="github"
                           fullWidth
                           value={userInfo.github}
-                          onChange={this.handleChange('github')}
                           margin="normal"
                           variant="outlined"
                         />
@@ -173,7 +171,6 @@ export default class DevInfoEdit extends Component {
                           label="Linkedin"
                           fullWidth
                           value={userInfo.linkedin}
-                          onChange={this.handleChange('linkedin')}
                           margin="normal"
                           variant="outlined"
                         />
@@ -185,7 +182,6 @@ export default class DevInfoEdit extends Component {
                           label="Portfolio Website"
                           fullWidth
                           value={userInfo.portfolio}
-                          onChange={this.handleChange('portfolio')}
                           margin="normal"
                           variant="outlined"
                         />
@@ -196,10 +192,11 @@ export default class DevInfoEdit extends Component {
               </div>
 
               {/* BIO - TOP SKILLS */}
+
               <div className="panelMargin">
                 <ExpansionPanel>
                   <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
-                    <Typography>tell us something about yourself!</Typography>
+                    <Typography>tell us something about yourself!</Typography> // *
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
                     <div className="expansionPanel">
@@ -211,12 +208,10 @@ export default class DevInfoEdit extends Component {
                           multiline
                           rowsMax="4"
                           value={userInfo.summary}
-                          onChange={this.handleChange('summary')}
                           margin="normal"
                           variant="outlined"
                         />
                       </div>
-
                       <div className="inputFieldLargeMultiline">
                         <TextField
                           id="topSkills"
@@ -225,7 +220,6 @@ export default class DevInfoEdit extends Component {
                           multiline
                           rowsMax="4"
                           value={userInfo.topskill}
-                          onChange={this.handleChange('topskill')}
                           margin="normal"
                           variant="outlined"
                         />
@@ -251,7 +245,6 @@ export default class DevInfoEdit extends Component {
                           multiline
                           rowsMax="4"
                           value={userInfo.projectTitle}
-                          onChange={this.handleChange('projectTitle')}
                           margin="normal"
                           variant="outlined"
                         />
@@ -265,7 +258,6 @@ export default class DevInfoEdit extends Component {
                           multiline
                           rowsMax="4"
                           value={userInfo.projectLink}
-                          onChange={this.handleChange('projectLink')}
                           margin="normal"
                           variant="outlined"
                         />
@@ -279,7 +271,6 @@ export default class DevInfoEdit extends Component {
                           multiline
                           rowsMax="4"
                           value={userInfo.projectRepo}
-                          onChange={this.handleChange('projectRepo')}
                           margin="normal"
                           variant="outlined"
                         />
@@ -305,7 +296,6 @@ export default class DevInfoEdit extends Component {
                           multiline
                           rowsMax="4"
                           value={userInfo.projectTitle}
-                          onChange={this.handleChange('projectTitle')}
                           margin="normal"
                           variant="outlined"
                         />
@@ -319,7 +309,6 @@ export default class DevInfoEdit extends Component {
                           multiline
                           rowsMax="4"
                           value={userInfo.projectLink}
-                          onChange={this.handleChange('projectLink')}
                           margin="normal"
                           variant="outlined"
                         />
@@ -333,7 +322,6 @@ export default class DevInfoEdit extends Component {
                           multiline
                           rowsMax="4"
                           value={userInfo.projectRepo}
-                          onChange={this.handleChange('projectRepo')}
                           margin="normal"
                           variant="outlined"
                         />
