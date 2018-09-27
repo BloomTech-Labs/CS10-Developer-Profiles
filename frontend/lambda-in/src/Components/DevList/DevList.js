@@ -9,6 +9,7 @@ import FilterToggle from './FilterToggle';
 import Pagination from '../Pagination/Pagination';
 
 import jobTitles from './jobTitles';
+import techSkills from './skills';
 
 const ENABLE = 'Enable';
 const DISABLE = 'Disable';
@@ -17,6 +18,21 @@ const FILTERS = {
     type: 'select',
     name: 'desiredTitle',
     placeholder: 'Select Job Title...'
+  },
+  topSkills: {
+    type: 'select',
+    name: 'topSkills',
+    placeholder: 'Proficient With...'
+  },
+  addSkills: {
+    type: 'select',
+    name: 'addSkills',
+    placeholder: 'Knowledgeable With...'
+  },
+  familiar: {
+    type: 'select',
+    name: 'familiar',
+    placeholder: 'Familiar With...'
   },
   acclaim: {
     type: 'toggle',
@@ -73,6 +89,11 @@ const desiredTitle = jobTitles.map(title => ({
   label: title
 }));
 
+const skills = techSkills.map(title => ({
+  value: title.replace(/ /g, '+'),
+  label: title
+}));
+
 const styles = {
   mainContainer: {
     padding: '0 30px'
@@ -95,6 +116,9 @@ class DevList extends Component {
       currentPage: this.getCurrentPage(),
       seekers: [],
       desiredTitle: [],
+      topSkills: [],
+      addSkills: [],
+      familiar: [],
       acclaim: true,
       acclaimSwitch: false,
       github: true,
@@ -181,7 +205,7 @@ class DevList extends Component {
 
   cleanQuery = substr => {
     const regEx = new RegExp(
-      `^${substr}=[0,1]&?|&${substr}=[0,1]|^${substr}=[A-z|+]+|&${substr}=[A-z|+]+`,
+      `^${substr}=[0,1]&?|&${substr}=[0,1]|^${substr}=[A-z|+.]+|&${substr}=[A-z|+.]+`,
       'i'
     );
     const cleanQuery = this.state.query.replace(regEx, '');
@@ -229,7 +253,7 @@ class DevList extends Component {
     }`;
 
     this.setQuery(newQuery);
-    this.setState({ [name]: value});
+    this.setState({ [name]: value });
   };
 
   handleSwitch = event => {
@@ -282,6 +306,42 @@ class DevList extends Component {
               components={makeAnimated()}
               onChange={value =>
                 this.handleSelect(value, FILTERS.desiredTitle.name)
+              }
+              isMulti
+            />
+            <Select
+              placeholder={FILTERS.topSkills.placeholder}
+              value={this.state.topSkills}
+              className={classes.select}
+              options={skills}
+              closeMenuOnSelect={false}
+              components={makeAnimated()}
+              onChange={value =>
+                this.handleSelect(value, FILTERS.topSkills.name)
+              }
+              isMulti
+            />
+            <Select
+              placeholder={FILTERS.addSkills.placeholder}
+              value={this.state.addSkills}
+              className={classes.select}
+              options={skills}
+              closeMenuOnSelect={false}
+              components={makeAnimated()}
+              onChange={value =>
+                this.handleSelect(value, FILTERS.addSkills.name)
+              }
+              isMulti
+            />
+            <Select
+              placeholder={FILTERS.familiar.placeholder}
+              value={this.state.familiar}
+              className={classes.select}
+              options={skills}
+              closeMenuOnSelect={false}
+              components={makeAnimated()}
+              onChange={value =>
+                this.handleSelect(value, FILTERS.familiar.name)
               }
               isMulti
             />
