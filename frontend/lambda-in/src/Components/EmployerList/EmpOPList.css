@@ -1,5 +1,5 @@
 .container {
-    width: 100vw;
+    width: 50vw;
     display:flex;
     flex-direction: column;
 }
@@ -9,7 +9,7 @@
     flex-direction: column;
     display: flex;
     margin: 20px auto 0;
-    width: 65vw;
+    width: 50vw;
     align-self: center;
 }
 

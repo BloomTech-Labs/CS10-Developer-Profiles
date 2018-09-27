@@ -36,14 +36,11 @@ class EmplyoerOpenPositionList extends React.Component {
             </div>
             <div class="card">
               <ul>
-                <EmployerOpenPositionCard
-                  projecName={this.state.projectName}
-                  jobTitle={this.state.jobTitle}
-                  techStack={this.state.techStack}
-                  skills={this.state.skills}
-                  minSalary={this.state.minSalary}
-                  maxSalary={this.state.maxSalary}
-                />
+                {this.state.map(EmployerOpenPositionCard => {
+                  return (
+                    <EmployerOpenPositionCard/>
+                   );
+                })}
               </ul>
             </div>
           </Paper>

@@ -9,9 +9,17 @@ import { Link } from 'react-router-dom'
 import NavBar from "../../Components/Navbar/navbar";
 import "../EmployerSignUp/EmployerSignUp.css";
 
+function passwordMatch(props) {
+  if (props.password === props.confirmPassword) {
+    return <p>password confirmed</p>;
+  }
+  return <p>password does NOT match</p>;
+}
+
 export default class EmployerSignUp extends Component {
   constructor(props) {
     super(props);
+    this.handlePasswordMatch = this.handlePasswordMatch.bind(this);
 
     this.state = {
       companyName: "Star Fleet",
@@ -27,7 +35,11 @@ export default class EmployerSignUp extends Component {
     this.setState({ [name]: e.target.value });
   };
 
-  handleNewEmp = event => {
+  handlePasswordMatch(e) {
+    this.setState({confirmPassword:e.target.value});
+  }
+
+  handleNewEmp(event) {
     event.preventDefault();
 
     const newEmp = {
@@ -118,6 +130,8 @@ export default class EmployerSignUp extends Component {
                   onChange={this.handleChange("confirmPassword")}
                   margin="normal"
                 />
+                <passwordMatch 
+                  match = {this.state.confirmPassword}/>
                 {/* 
               <TextField
                 id="hiringManagerFirstName"

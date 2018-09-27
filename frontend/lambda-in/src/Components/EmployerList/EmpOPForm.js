@@ -47,10 +47,6 @@ class EmployerOpenPositionForm extends Component {
       })
       .then(response => {
         console.log(response);
-        localStorage.setItem("token", response.data.jwt);
-        localStorage.setItem("_id", response.data.newUser._id);
-        console.log(localStorage.getItem("token"));
-        console.log(response.data.newUser._id);
       })
       .catch(err => {
         console.log(err);

@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import axios from "axios";
 
 import "./EmpOPCard.css";
 
@@ -16,38 +17,77 @@ class EmployerOpenPositionCard extends React.Component {
     jobTitle: "Captain",
     techStack: "full stack",
     skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
-    minSalrary: 1000000,
+    minSalary: 1000000,
     maxSalary: 2000000
   };
 
+  handleDelete(e) {
+    const id = e.target.dataset.id;
+    axios.delete(`/api/register/employers/${id}`).then(() => {
+      window.location.reload();
+    });
+  }
 
   render() {
     return (
-      <div class="container">
-        <Card class="cardContainer">
-          <CardContent>
-            <Typography variant="body1">
-              <br />
-              Project Name: {this.props.projectName}
-              <br />
-              description: {this.props.description}
-              <br />
-              Job Title: {this.props.jobTitle}
-              <br />
-              Tech Stack: {this.props.techStack}
-              <br />
-              Required Skills: {this.props.skills}
-              <br />
-              Salary range: {this.props.minSalary} - {this.props.maxSalary}
-              <br />
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button>Delete</Button>
-            <Button>Edit</Button>
-          </CardActions>
-          <Divider />
-        </Card>
+      <div class="cardPaperContainer">
+        <Paper class="cardPaper">
+          <div class="cardContainer">
+
+            <div>
+              <Typography variant="caption">Project Name</Typography>
+              <Typography variant="subheading">
+                {this.props.projectName}
+              </Typography>
+            </div>
+
+            <br />
+            <div class="disc">
+              <Typography variant="caption">description</Typography>
+              <Typography variant="subheading">
+                {this.props.description}
+              </Typography>
+            </div>
+
+            <br />
+            <div>
+              <Typography variant="caption">Job Title</Typography>
+              <Typography variant="subheading">
+                {this.props.jobTitle}
+              </Typography>
+            </div>
+
+            <br />
+            <div>
+              <Typography variant="caption">Tech Stack:</Typography>
+              <Typography variant="subheading">
+                {this.props.techStack}
+              </Typography>
+            </div>
+
+            <br />
+            <div>
+              <Typography variant="caption">Required Skills</Typography>
+              <Typography variant="subheading">{this.props.skills}</Typography>
+            </div>
+
+            <br />
+            <div>
+              <Typography variant="caption">Salary range</Typography>
+              <Typography variant="subheading">
+                {this.props.minSalary} - {this.props.maxSalary}
+              </Typography>
+            </div>
+
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.handleDelete}
+            >
+              delete
+            </Button>
+          </div>
+        </Paper>
       </div>
     );
   }
