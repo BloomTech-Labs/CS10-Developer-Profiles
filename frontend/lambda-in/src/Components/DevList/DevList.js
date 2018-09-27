@@ -35,10 +35,14 @@ const sort = sortOptions.map(option => ({
 const styles = {
   mainContainer: {
     padding: '0 30px'
-  },
-  select: {
-    zIndex: 2
   }
+};
+
+const selectCustomStyles = {
+  menu: (base, state) => ({
+    ...base,
+    zIndex: 2
+  })
 };
 
 class DevList extends Component {
@@ -240,6 +244,7 @@ class DevList extends Component {
               options={desiredTitle}
               closeMenuOnSelect={false}
               components={makeAnimated()}
+              styles={selectCustomStyles}
               onChange={value =>
                 this.handleSelect(value, FILTERS.desiredTitle.name)
               }
@@ -252,6 +257,7 @@ class DevList extends Component {
               options={skills}
               closeMenuOnSelect={false}
               components={makeAnimated()}
+              styles={selectCustomStyles}
               onChange={value =>
                 this.handleSelect(value, FILTERS.topSkills.name)
               }
@@ -264,6 +270,7 @@ class DevList extends Component {
               options={skills}
               closeMenuOnSelect={false}
               components={makeAnimated()}
+              styles={selectCustomStyles}
               onChange={value =>
                 this.handleSelect(value, FILTERS.addSkills.name)
               }
@@ -276,6 +283,7 @@ class DevList extends Component {
               options={skills}
               closeMenuOnSelect={false}
               components={makeAnimated()}
+              styles={selectCustomStyles}
               onChange={value =>
                 this.handleSelect(value, FILTERS.familiar.name)
               }
