@@ -12,7 +12,7 @@ import "./EmpOPCard.css";
 class EmployerOpenPositionCard extends React.Component {
   state = {
     projectName: "Enterprise-D",
-    description: "We are watching for the captain of the Federation Flagship.",
+    description: "We are looking for the captain of the Federation Flagship.",
     jobTitle: "Captain",
     techStack: "full stack",
     skills: ["Diplomacy", "Leadership", "Tactical Strategy"],

@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
-import Grid from "@material-ui/core/Grid";
+import { Link } from 'react-router-dom'
 
 import NavBar from "../../Components/Navbar/navbar";
 import "../EmployerSignUp/EmployerSignUp.css";
@@ -153,11 +153,11 @@ export default class EmployerSignUp extends Component {
                 </Button>
               </div>
               <div className="login">
-                {/* <Link to="/emp-login"> */}
+                <Link to="/dev-login">
                   <Typography variant="caption" gutterBottom align="center">
                     already have an account? Login here!
                   </Typography>
-                {/* </Link> */}
+                </Link>
               </div>
             </Paper>
           </div>

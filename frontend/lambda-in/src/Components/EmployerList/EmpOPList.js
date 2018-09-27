@@ -25,7 +25,16 @@ class EmplyoerOpenPositionList extends React.Component {
               <EmployerOpenPositionForm />
             </div>
             <div class="card">
-              <EmployerOpenPositionCard />
+              <ul>
+                <EmployerOpenPositionCard
+                  projecName={this.props.projectName}
+                  jobTitle={this.props.jobTitle}
+                  techStack={this.props.techStack}
+                  skills={this.props.skills}
+                  minSalary={this.props.minSalary}
+                  maxSalary={this.props.maxSalary}
+                />
+              </ul>
             </div>
           </Paper>
         </div>
