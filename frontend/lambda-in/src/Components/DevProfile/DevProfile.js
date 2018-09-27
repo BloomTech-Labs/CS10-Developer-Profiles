@@ -30,7 +30,7 @@ export default ({ getGS }) => {
   return (
     <div>
       <div className="container">
-        <Paper className="paper">
+        <Paper>
           <div className="topCard">
             <div className="topCardLeft">
               <div className="nameCard">

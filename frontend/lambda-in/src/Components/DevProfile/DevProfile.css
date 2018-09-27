@@ -9,17 +9,13 @@
     margin-top: 4em;
 }
 
-.paper{
-    width:60vw;
-}
+
 
 .topCard {
     width: 49vw;
     min-height: 20em;
     margin-top: 0.5vw;
     margin-left: 0.5vw;
-    margin: 2vw;
-    padding: 2vw;
 }
 
 .topCardLeft {
@@ -27,13 +23,9 @@
     flex-direction: column;
     width: 43vw;
     min-height: 20em;
-    
 }
 
-.topCardRight{
-    margin: 2vw;
-    padding: 2vw;
-}
+
 .nameCard {
     display: flex;
     flex-direction: row;

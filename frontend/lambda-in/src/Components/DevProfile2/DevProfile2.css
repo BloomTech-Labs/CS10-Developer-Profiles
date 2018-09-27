@@ -45,5 +45,11 @@
 .profileBottomCard{
     width: 50vw;
     height: 50vh;
-    border: 2px solid black;
+
+}
+
+.profileProjects{
+    width: 50vw;
+    height: 10vh;
+    padding: 20px;
 }

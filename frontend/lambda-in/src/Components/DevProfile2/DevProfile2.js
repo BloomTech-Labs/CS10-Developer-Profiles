@@ -67,7 +67,20 @@ export default ({ getGS }) => {
             </div>
           </div>
           <div className="profileBottomCard">
-
+          <Paper>
+            <div className="profileProjects">
+              <div>Projects: </div>
+            </div>
+            <div className="profileProjects">
+              <div>Education: </div>
+            </div>
+            <div className="profileProjects">
+              <div>Experience: </div>
+            </div>
+            <div className="profileProjects">
+              <div>Locations Interested: </div>
+            </div>
+            </Paper>
           </div>
         </Paper>
       </div>

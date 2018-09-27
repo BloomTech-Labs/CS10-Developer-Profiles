@@ -6,6 +6,7 @@ import DevSignUp from './Components/DevSignUp/DevSignUp';
 import DevLogin from './Components/DevLogIn/DevLogIn';
 import LandingPage from './Components/Landing Page/landing-page';
 import DevProfile from './Components/DevProfile/DevProfile';
+import DevProfile2 from './Components/DevProfile2/DevProfile2';
 import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
 import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
@@ -114,7 +115,7 @@ class App extends Component {
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/dev-profile"
-              render={() => (isSignedIn ? <DevProfile getGS={this.getGlobalState} /> : <Redirect to="/" />)}
+              render={() => (isSignedIn ? <DevProfile2 getGS={this.getGlobalState} /> : <Redirect to="/" />)}
             />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route path="/dev-info-edit" render={() => (isSignedIn ? <DevInfoEditz /> : <Redirect to="/" />)} />
@@ -127,8 +128,8 @@ class App extends Component {
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             {/* EMPLOYER END */}
-
             <Route component={Page404} />
+            
           </Switch>
         </div>
       </div>
