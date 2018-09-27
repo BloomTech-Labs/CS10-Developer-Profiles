@@ -126,9 +126,22 @@ class DevList extends Component {
       .catch(err => {
         /**
          * @todo On invalid credentials, redirect to sign in page with message
+         * @todo Fix status code for invalid credentials
          * @todo On 404 error, display message on dev list
          */
-        this.props.history.push('/dev-login');
+        if (err.response.status === 500) this.props.history.push('/dev-login');
+        if (err.response.status === 404) {
+          console.log(err.response.data);
+          this.setState({
+            query: query,
+            count: 0,
+            pages: 0,
+            next: null,
+            prev: null,
+            seekers: [],
+            currentPage: 1
+          })
+        }
       });
   };
 
