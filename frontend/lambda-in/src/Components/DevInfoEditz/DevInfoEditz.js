@@ -12,6 +12,7 @@ import './DevInfoEditz.css';
 import BioSkills from '../utilityComponents/SeekerUtils/BioSkills';
 import Projects from '../utilityComponents/SeekerUtils/Projects';
 import Education from '../utilityComponents/SeekerUtils/Education';
+import Experience from '../utilityComponents/SeekerUtils/Experience';
 
 export default class DevInfoEdit extends Component {
   handleChange = event => {
@@ -196,6 +197,9 @@ export default class DevInfoEdit extends Component {
 
               {/* PROJECTS */}
               <Projects userInfo={userInfo} />
+
+              {/* EXPERIENCES */}
+              <Experience userInfo={userInfo} />
 
               {/* EDUCATION */}
               <Education userInfo={userInfo} />
