@@ -1,7 +1,6 @@
 .profileContainer{
     width:100vw;
     height: 100vh;
-    border: 2px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,5 +9,41 @@
 
 .profilePaper{
     width: 50vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.profileTopCard{
+    width: 50vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.profileImage{
+    width:15vw;
+    height:20vh;
+}
+
+.profileLinks{
+    width:5vw;
+    height:20vh;
+    padding-top: 10px;
+}
+.profileLinksIcon{
+    width:4vw;
+    height:4vh;
+}
+
+.profileBio{
+    width:30vw;
+    height:20vh;
+    padding-top: 10px;
+}
+.profileBottomCard{
+    width: 50vw;
     height: 50vh;
+    border: 2px solid black;
 }
