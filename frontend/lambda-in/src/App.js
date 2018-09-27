@@ -11,6 +11,9 @@ import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
 import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpList from './Components/EmployerList/EmpOPList';
+import UserSetting from './Components/UserSetting/UserSetting';
+import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
+
 import DevList from './Components/DevList/DevList';
 import Page404 from './Components/Page404/Page404';
 
@@ -129,7 +132,6 @@ class App extends Component {
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             {/* EMPLOYER END */}
             <Route component={Page404} />
-            
           </Switch>
         </div>
       </div>

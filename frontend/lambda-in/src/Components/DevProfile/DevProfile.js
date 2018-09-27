@@ -4,6 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import './DevProfile.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 /**
  *
@@ -29,7 +33,7 @@ export default ({ getGS }) => {
    */
   return (
     <div>
-      <div className="container">
+      <div data-aos="fade-up" className="container">
         <Paper>
           <div className="topCard">
             <div className="topCardLeft">
@@ -56,13 +60,36 @@ export default ({ getGS }) => {
                     <MapList array={allSkills} />
                   </div>
                 </div>
+                <div className="nameCardDown" />
               </div>
-              <div className="nameCardDown" />
+              <div className="topCardRight">
+                <a href={this.state.acclaimBadge}>
+                  <img
+                    src={require('./img/lambdaColor.png')}
+                    width="50"
+                    height="50"
+                    title="Acclaimed Badge"
+                    alt="Badge"
+                  />
+                </a>
+                <a href={this.state.socialNetwork}>
+                  <img src={require('./img/sns.png')} width="50" height="50" title="SNS" alt="SNS" />
+                </a>
+                <a href={this.state.github}>
+                  <img src={require('./img/GitHub.png')} width="50" height="50" title="Github" alt="Github Repo" />
+                </a>
+                <a href={this.state.linkedin}>
+                  <img src={require('./img/linkedin.jpg')} width="50" height="50" title="Linkedin" alt="Linkedin" />
+                </a>
+                <a href={this.state.portfolio}>
+                  <img src={require('./img/portfolio.png')} width="50" height="50" title="Portfolio" alt="Portfolio" />
+                </a>
+              </div>
             </div>
-
             <div className="topCardRight">
               <a href={userInfo.acclaimBadge}>
                 <img
+                  className="lambda-badge"
                   src={require('./img/lambdaColor.png')}
                   width="50"
                   height="50"
@@ -71,16 +98,44 @@ export default ({ getGS }) => {
                 />
               </a>
               <a href={userInfo.socialNetwork}>
-                <img src={require('./img/sns.png')} width="50" height="50" title="SNS" alt="SNS" />
+                <img
+                  className="social-network"
+                  src={require('./img/sns.png')}
+                  width="50"
+                  height="50"
+                  title="SNS"
+                  alt="SNS"
+                />
               </a>
               <a href={userInfo.github}>
-                <img src={require('./img/GitHub.png')} width="50" height="50" title="Github" alt="Github Repo" />
+                <img
+                  className="github"
+                  src={require('./img/GitHub.png')}
+                  width="50"
+                  height="50"
+                  title="Github"
+                  alt="Github Repo"
+                />
               </a>
               <a href={userInfo.linkedin}>
-                <img src={require('./img/linkedin.jpg')} width="50" height="50" title="Linkedin" alt="Linkedin" />
+                <img
+                  className="linkedin"
+                  src={require('./img/linkedin.jpg')}
+                  width="50"
+                  height="50"
+                  title="Linkedin"
+                  alt="Linkedin"
+                />
               </a>
               <a href={userInfo.portfolio}>
-                <img src={require('./img/portfolio.png')} width="50" height="50" title="Portfolio" alt="Portfolio" />
+                <img
+                  className="portfolio"
+                  src={require('./img/portfolio.png')}
+                  width="50"
+                  height="50"
+                  title="Portfolio"
+                  alt="Portfolio"
+                />
               </a>
             </div>
           </div>
