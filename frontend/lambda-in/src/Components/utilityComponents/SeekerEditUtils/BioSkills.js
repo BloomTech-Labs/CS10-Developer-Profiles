@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import DropDown from '../DropDown';
+import DropDown from '../DropDown/DropDown';
 import TextField from '@material-ui/core/TextField';
 
 const BioSkills = props => {
@@ -32,6 +32,8 @@ const BioSkills = props => {
             variant="outlined"
           />
         </div>
+
+        {/* TODO: Add summary - enable uploading a file */}
       </DropDown>
     </Fragment>
   );
