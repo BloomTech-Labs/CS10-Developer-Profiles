@@ -8,11 +8,32 @@ import DevProfileCard from './DevProfileCard';
 import FilterToggle from './FilterToggle';
 import Pagination from '../Pagination/Pagination';
 
+// Mock API data calls
 import jobTitles from './jobTitles';
 import techSkills from './skills';
+import sortOptions from './sortOptions';
+
+const desiredTitle = jobTitles.map(title => ({
+  value: title.replace(/ /g, '+'),
+  label: title
+}));
+
+const skills = techSkills.map(title => ({
+  value: title.replace(/ /g, '+'),
+  label: title
+}));
+
+const sort = sortOptions.map(option => ({
+  value: option.dir === 'dsc' ? '-' : '' + option.type.toLowerCase(),
+  label: `${option.type} ${SORT[option.dir]}`
+}));
 
 const ENABLE = 'Enable';
 const DISABLE = 'Disable';
+const SORT = {
+  asc: 'A-Z',
+  dsc: 'Z-A'
+};
 const FILTERS = {
   desiredTitle: {
     type: 'select',
@@ -83,16 +104,6 @@ const FILTERS = {
     toggleName: 'educationSwitch'
   }
 };
-
-const desiredTitle = jobTitles.map(title => ({
-  value: title.replace(/ /g, '+'),
-  label: title
-}));
-
-const skills = techSkills.map(title => ({
-  value: title.replace(/ /g, '+'),
-  label: title
-}));
 
 const styles = {
   mainContainer: {
@@ -293,6 +304,7 @@ class DevList extends Component {
 
   render() {
     const { classes } = this.props;
+
     return (
       <React.Fragment>
         <Grid container className={classes.mainContainer} spacing={24}>
