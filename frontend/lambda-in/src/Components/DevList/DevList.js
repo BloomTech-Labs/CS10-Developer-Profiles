@@ -28,7 +28,7 @@ const skills = techSkills.map(title => ({
 }));
 
 const sort = sortOptions.map(option => ({
-  value: option.dir === 'dsc' ? '-' : '' + option.type.toLowerCase(),
+  value: (option.dir === 'dsc' ? '-' : '') + option.type.toLowerCase(),
   label: `${option.type} ${SORT[option.dir]}`
 }));
 
@@ -140,7 +140,7 @@ class DevList extends Component {
 
   cleanQuery = substr => {
     const regEx = new RegExp(
-      `^${substr}=[0,1]&?|&${substr}=[0,1]|^${substr}=[A-z|+.]+|&${substr}=[A-z|+.]+`,
+      `^${substr}=[0,1]&?|&${substr}=[0,1]|^${substr}=[A-z|+.-]+|&${substr}=[A-z|+.-]+`,
       'i'
     );
     const cleanQuery = this.state.query.replace(regEx, '');
@@ -346,9 +346,7 @@ class DevList extends Component {
               options={sort}
               closeMenuOnSelect={false}
               components={makeAnimated()}
-              onChange={value =>
-                this.handleSelect(value, FILTERS.sort.name)
-              }
+              onChange={value => this.handleSelect(value, FILTERS.sort.name)}
               isMulti
             />
             {this.state.seekers.map(seeker => (
