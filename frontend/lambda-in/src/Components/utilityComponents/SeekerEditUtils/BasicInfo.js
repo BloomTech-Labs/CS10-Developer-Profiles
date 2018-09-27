@@ -40,6 +40,7 @@ const BasicInfo = props => {
           />
         </div>
 
+        {/* TODO : WIRE InputGeolocation component here */}
         <div className="inputField">
           <TextField
             id="currentLocation"
