@@ -9,10 +9,10 @@
 
 .title {
     font-size: 1.75vw;
-    font-weight: bold;
-    color: #f50057;
     margin-top: 20px;
     margin-left: 375px;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: underline;
 }
 
 .checkout {
