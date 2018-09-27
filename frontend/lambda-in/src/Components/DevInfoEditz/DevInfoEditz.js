@@ -13,6 +13,7 @@ import BioSkills from '../utilityComponents/SeekerUtils/BioSkills';
 import Projects from '../utilityComponents/SeekerUtils/Projects';
 import Education from '../utilityComponents/SeekerUtils/Education';
 import Experience from '../utilityComponents/SeekerUtils/Experience';
+import SocialLinks from '../utilityComponents/SeekerUtils/SocialLinks';
 
 export default class DevInfoEdit extends Component {
   handleChange = event => {
@@ -147,50 +148,9 @@ export default class DevInfoEdit extends Component {
                   <img className="displayPic" src={`https://robohash.org/1${userInfo.firstName}`} alt="Italian " />
                 </div>
               </div>
-              {/* Your Social links */}
-              <div className="panelMargin">
-                <ExpansionPanel>
-                  <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
-                    <Typography>Your Social links</Typography>
-                  </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
-                    <div className="expansionPanel">
-                      <div className="inputField">
-                        <TextField
-                          id="github"
-                          label="github"
-                          fullWidth
-                          value={userInfo.github}
-                          margin="normal"
-                          variant="outlined"
-                        />
-                      </div>
 
-                      <div className="inputField">
-                        <TextField
-                          id="linkedin"
-                          label="Linkedin"
-                          fullWidth
-                          value={userInfo.linkedin}
-                          margin="normal"
-                          variant="outlined"
-                        />
-                      </div>
-
-                      <div className="inputField">
-                        <TextField
-                          id="portfolio"
-                          label="Portfolio Website"
-                          fullWidth
-                          value={userInfo.portfolio}
-                          margin="normal"
-                          variant="outlined"
-                        />
-                      </div>
-                    </div>
-                  </ExpansionPanelDetails>
-                </ExpansionPanel>
-              </div>
+              {/* SOCIAL LINKS */}
+              <SocialLinks userInfo={userInfo} />
 
               {/* BIO - TOP SKILLS */}
               <BioSkills userInfo={userInfo} />
