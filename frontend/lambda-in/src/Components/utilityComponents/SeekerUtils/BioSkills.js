@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import DropDown from '../utilityComponents/DropDown';
+import DropDown from '../DropDown';
 import TextField from '@material-ui/core/TextField';
 
 const BioSkills = props => {
