@@ -42,20 +42,41 @@ export default class DevInfoEdit extends Component {
     this.setState({
       [name]: event.target.value,
     });
+    /**
+     * Wire APP's global state with input field.
+     */
     this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [name]: event.target.value } });
   };
 
-  // axios 1 argument is URL and 2 argument is data 3 argument is options
   update = () => {
-    const _id = localStorage.getItem('_id');
+    const userInfo = this.props.getGS('userInfo');
+    const _id = userInfo._id;
+
     if (_id) {
       console.log(_id);
       console.log(localStorage.getItem('token'));
+
+      /**
+       * Set in GS 'updateState': 'updateState' = 'updating'
+       */
+      this.props.setGS({ updateState: 'updating' });
+
+      /**
+       * axios.put: Make an HTTP PUT request
+       *
+       * @description update the 'seekers' model.
+       * @param {string} endpoint - API endppoint
+       * @param {objetc} userInfo - Data to be updated
+       * @param {object} httpHeaders - HTTP request Authorization header.
+       * @return {promise}
+       * @example axios.put( endpoint, userInfo, httpHeaders )
+       */
       axios
+        // axios 1 argument is URL and 2 argument is data 3 argument is options
         .put(
           `/api/seekers/${_id}`,
           {
-            linkedin: this.state.linkedin,
+            ...userInfo, // UPDATE current userInfo's state. TODO: pass only updated fields.
           },
           {
             headers: {
@@ -65,15 +86,33 @@ export default class DevInfoEdit extends Component {
         )
         .then(response => {
           console.log(response.data);
+          /**
+           * Set in GS 'updateState': 'updateState' = 'updated'
+           */
+          this.props.setGS({ updateState: 'updated' });
         })
         .catch(error => {
           console.log(error);
+          /**
+           * Set in GS 'updateState': 'updateState' = 'error'
+           */
+          this.props.setGS({ updateState: 'error' });
         });
     } else {
       console.log('updating without ID');
+      /**
+       * Set in GS 'updateState': 'updateState' = 'error'
+       */
+      this.props.setGS({ updateState: 'error' });
+      alert('An error occurred updating your information, please resubmit the form'); // TODO: improve UX
     }
   };
   render() {
+    /**
+     * Get a reference to APP's global state.
+     */
+    const userInfo = this.props.getGS('userInfo');
+
     return (
       <div className="EditContainer">
         <Paper className="paperContainer" elevation={1}>
