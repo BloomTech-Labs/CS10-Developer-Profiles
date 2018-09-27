@@ -1,14 +1,24 @@
 import React, { Component } from "react";
-import EmployerOpenPositionCard from "./EmpOPCard";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-// import NavBar from '../../Components/Navbar/navbar';
+import { Typography } from "@material-ui/core";
+
+import EmployerOpenPositionForm from "./EmpOPForm";
+import EmployerOpenPositionCard from "./EmpOPCard";
 
 import "./EmpOPList.css";
-import { Typography } from "@material-ui/core";
-import EmployerOpenPositionForm from "./EmpOPForm";
 
 class EmplyoerOpenPositionList extends React.Component {
+  state = {
+    projectName: "Enterprise-D",
+    description: "We are looking for the captain of the Federation Flagship.",
+    jobTitle: "Captain",
+    techStack: "full stack",
+    skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
+    minSalary: 1000000,
+    maxSalary: 2000000
+  };
+
   render() {
     return (
       <div class="container">
@@ -27,12 +37,12 @@ class EmplyoerOpenPositionList extends React.Component {
             <div class="card">
               <ul>
                 <EmployerOpenPositionCard
-                  projecName={this.props.projectName}
-                  jobTitle={this.props.jobTitle}
-                  techStack={this.props.techStack}
-                  skills={this.props.skills}
-                  minSalary={this.props.minSalary}
-                  maxSalary={this.props.maxSalary}
+                  projecName={this.state.projectName}
+                  jobTitle={this.state.jobTitle}
+                  techStack={this.state.techStack}
+                  skills={this.state.skills}
+                  minSalary={this.state.minSalary}
+                  maxSalary={this.state.maxSalary}
                 />
               </ul>
             </div>

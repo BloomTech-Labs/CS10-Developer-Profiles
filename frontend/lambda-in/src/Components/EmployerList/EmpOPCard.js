@@ -10,15 +10,16 @@ import CardContent from "@material-ui/core/CardContent";
 import "./EmpOPCard.css";
 
 class EmployerOpenPositionCard extends React.Component {
-  state = {
+  static defaultProps = {
     projectName: "Enterprise-D",
-    description: "We are looking for the captain of the Federation Flagship.",
+    description: "We are watching for the captain of the Federation Flagship.",
     jobTitle: "Captain",
     techStack: "full stack",
     skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
-    minSalary: 1000000,
+    minSalrary: 1000000,
     maxSalary: 2000000
   };
+
 
   render() {
     return (
@@ -27,15 +28,17 @@ class EmployerOpenPositionCard extends React.Component {
           <CardContent>
             <Typography variant="body1">
               <br />
-              Project Name: {this.state.projectName}
+              Project Name: {this.props.projectName}
               <br />
-              Job Title: {this.state.jobTitle}
+              description: {this.props.description}
               <br />
-              Tech Stack: {this.state.techStack}
+              Job Title: {this.props.jobTitle}
               <br />
-              Required Skills: {this.state.skills}
+              Tech Stack: {this.props.techStack}
               <br />
-              Salary range: {this.state.minSalary} - {this.state.maxSalary}
+              Required Skills: {this.props.skills}
+              <br />
+              Salary range: {this.props.minSalary} - {this.props.maxSalary}
               <br />
             </Typography>
           </CardContent>

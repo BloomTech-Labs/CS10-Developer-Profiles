@@ -7,33 +7,36 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 
 import "./EmpOPForm.css";
+import "./EmpOPList";
 
 class EmployerOpenPositionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projectName: "Enterprise-D",
-      description:
-        "We are watching for the captain of the Federation Flagship.",
-      jobTitle: "Captain",
-      techStack: "full stack",
-      skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
-      minSalrary: 1000000,
-      maxSalary: 2000000
+      projectName: "",
+      description: "",
+      jobTitle: "",
+      techStack: "",
+      skills: [],
+      minSalrary: null,
+      maxSalrary: null
     };
   }
 
-  handleChange = name => e => {
-    this.setState({ [name]: e.target.value });
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value
+    });
   };
 
   addNewPosition = event => {
     event.preventDefault();
 
-    const newPosition = {
-      openPositions: {
+    axios
+      .post("/api/register/employers", {
         projectName: this.state.projectName,
         description: this.state.description,
         jobTitle: this.state.jobTitle,
@@ -41,8 +44,27 @@ class EmployerOpenPositionForm extends Component {
         skills: this.state.skills,
         minSalrary: this.state.minSalrary,
         maxSalary: this.state.maxSalary
-      }
-    };
+      })
+      .then(response => {
+        console.log(response);
+        localStorage.setItem("token", response.data.jwt);
+        localStorage.setItem("_id", response.data.newUser._id);
+        console.log(localStorage.getItem("token"));
+        console.log(response.data.newUser._id);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+    this.setState({
+      projectName: "",
+      description: "",
+      jobTitle: "",
+      techStack: "",
+      skills: [],
+      minSalrary: null,
+      maxSalrary: null
+    });
   };
 
   render() {
@@ -114,7 +136,15 @@ class EmployerOpenPositionForm extends Component {
                   margin="normal"
                   fullWidth="true"
                 />
-
+              <div class="buttons">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.addNewPosition}
+                >
+                  Submit
+                </Button>
+              </div>
               </div>
             </div>
           </Paper>
