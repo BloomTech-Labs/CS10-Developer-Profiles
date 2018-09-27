@@ -14,6 +14,7 @@ import Projects from '../utilityComponents/SeekerUtils/Projects';
 import Education from '../utilityComponents/SeekerUtils/Education';
 import Experience from '../utilityComponents/SeekerUtils/Experience';
 import SocialLinks from '../utilityComponents/SeekerUtils/SocialLinks';
+import BasicInfo from '../utilityComponents/SeekerEditUtils/BasicInfo';
 
 export default class DevInfoEdit extends Component {
   handleChange = event => {
@@ -98,56 +99,7 @@ export default class DevInfoEdit extends Component {
           <form onChange={this.handleChange}>
             <div className="inputRow">
               {/* User basic info: name, desired title, current location */}
-              <div className="smallInputContainer">
-                <div className="expansionPanel">
-                  <div className="inputField">
-                    <TextField
-                      id="firstName"
-                      label="First Name"
-                      fullWidth
-                      value={userInfo.firstName}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
-
-                  <div className="inputField">
-                    <TextField
-                      id="outlined-name"
-                      label="Last Name"
-                      fullWidth
-                      value={userInfo.lastName}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
-
-                  <div className="inputField">
-                    <TextField
-                      id="desiredTitle"
-                      label="Desired Title"
-                      fullWidth
-                      value={userInfo.desiredTitle}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
-
-                  <div className="inputField">
-                    <TextField
-                      id="currentLocation"
-                      label="Current Location"
-                      fullWidth
-                      value={userInfo.currentLocation}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
-                </div>
-                <div className="imageContainer">
-                  <img className="displayPic" src={`https://robohash.org/1${userInfo.firstName}`} alt="Italian " />
-                </div>
-              </div>
+              <BasicInfo userInfo={userInfo} />
 
               {/* SOCIAL LINKS */}
               <SocialLinks userInfo={userInfo} />
