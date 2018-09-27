@@ -9,7 +9,10 @@ import FilterToggle from './FilterToggle';
 import Pagination from '../Pagination/Pagination';
 import { ENABLE, DISABLE, SORT, FILTERS } from '../constants';
 
-// Mock API data calls
+/**
+ * Mock API data calls
+ * @todo Add data to db and create API routes to replace these imports
+ */
 import jobTitles from './jobTitles';
 import techSkills from './skills';
 import sortOptions from './sortOptions';
