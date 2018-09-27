@@ -339,6 +339,18 @@ class DevList extends Component {
             />
           </Grid>
           <Grid item className={classes.cardBar} xs={9}>
+            <Select
+              placeholder={FILTERS.sort.placeholder}
+              value={this.state.sort}
+              className={classes.select}
+              options={sort}
+              closeMenuOnSelect={false}
+              components={makeAnimated()}
+              onChange={value =>
+                this.handleSelect(value, FILTERS.sort.name)
+              }
+              isMulti
+            />
             {this.state.seekers.map(seeker => (
               <DevProfileCard key={seeker._id} seeker={seeker} />
             ))}
