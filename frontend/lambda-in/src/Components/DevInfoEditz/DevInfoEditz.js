@@ -9,13 +9,12 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
 import './DevInfoEditz.css';
-import DropDown from '../utilityComponents/DropDown';
+import BioSkills from './BioSkills';
 
 export default class DevInfoEdit extends Component {
   handleChange = event => {
-    console.log({ onChange: event.target.id });
     /**
-     * Wire APP's global state with input field.
+     * Updates APP's global state with input field.
      */
     this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [event.target.id]: event.target.value } });
   };
@@ -39,7 +38,7 @@ export default class DevInfoEdit extends Component {
        * @description update the 'seekers' model.
        * @param {string} endpoint - API endppoint
        * @param {objetc} userInfo - Data to be updated
-       * @param {object} httpHeaders - HTTP request Authorization header.
+       * @param {object} httpHeaders - Add Authorization header.
        * @return {promise}
        * @example axios.put( endpoint, userInfo, httpHeaders )
        */
@@ -145,7 +144,6 @@ export default class DevInfoEdit extends Component {
                   <img className="displayPic" src={`https://robohash.org/1${userInfo.firstName}`} alt="Italian " />
                 </div>
               </div>
-
               {/* Your Social links */}
               <div className="panelMargin">
                 <ExpansionPanel>
@@ -191,44 +189,10 @@ export default class DevInfoEdit extends Component {
                 </ExpansionPanel>
               </div>
 
+              {/* NEW COMPONENTS */}
+              <BioSkills userInfo={userInfo} />
+
               {/* BIO - TOP SKILLS */}
-
-              <div className="panelMargin">
-                <ExpansionPanel>
-                  <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
-                    <Typography>tell us something about yourself!</Typography> // *
-                  </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
-                    <div className="expansionPanel">
-                      <div className="inputFieldLargeMultiline">
-                        <TextField
-                          id="summary"
-                          label="Your Bio"
-                          fullWidth
-                          multiline
-                          rowsMax="4"
-                          value={userInfo.summary}
-                          margin="normal"
-                          variant="outlined"
-                        />
-                      </div>
-                      <div className="inputFieldLargeMultiline">
-                        <TextField
-                          id="topSkills"
-                          label="Top skills"
-                          fullWidth
-                          multiline
-                          rowsMax="4"
-                          value={userInfo.topskill}
-                          margin="normal"
-                          variant="outlined"
-                        />
-                      </div>
-                    </div>
-                  </ExpansionPanelDetails>
-                </ExpansionPanel>
-              </div>
-
               {/* PROJECTS */}
               <div className="panelMargin">
                 <ExpansionPanel>
@@ -279,7 +243,6 @@ export default class DevInfoEdit extends Component {
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
               </div>
-
               {/* EDUCATION */}
               <div className="panelMargin">
                 <ExpansionPanel>
@@ -330,7 +293,6 @@ export default class DevInfoEdit extends Component {
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
               </div>
-
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
                   {' '}
