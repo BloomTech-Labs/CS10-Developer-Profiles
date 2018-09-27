@@ -23,6 +23,11 @@ class NavBar extends React.Component {
               <Button>profile</Button>
             </Link>
 
+            {/* ONLY FOR TESTING PURPOSE */}
+            <Link to="/dev-info-edit">
+              <Button>update profile</Button>
+            </Link>
+
             {/* START - Just for test purpose */}
             {/* <Link to="/billing"> */}
             <Link to="/billing">
