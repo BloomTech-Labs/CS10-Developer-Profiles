@@ -3,8 +3,10 @@ import Button from '@material-ui/core/Button';
 import MapList from '../MapList/MapList';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
+import {Link} from 'react-router-dom';
 import './DevProfile2.css'
-export default ({ getGS }) => {
+export default ({ getGS, setGS }) => {
   const userInfo = getGS('userInfo');
 
   const TS = userInfo.topSkills;
@@ -17,6 +19,15 @@ export default ({ getGS }) => {
       {` `}
     </li>
   ));
+  
+  // let handleOpen = () => {
+  //   setGS({ DevProfileModal: true });
+  // };
+
+  // let handleClose = () => {
+  //   setGS({ DevProfileModal: false });
+  // };
+
 
     return (
       <div className="profileContainer">
@@ -80,6 +91,13 @@ export default ({ getGS }) => {
             <div className="profileProjects">
               <div>Locations Interested: </div>
             </div>
+            <div className="profileButtons">
+              <Link to="/dev-info-edit">
+                <Button variant="outlined" color="primary"> edit</Button>
+              </Link>
+              <Button variant="outlined" color="secondary" > Delete</Button>
+            </div>
+           
             </Paper>
           </div>
         </Paper>
