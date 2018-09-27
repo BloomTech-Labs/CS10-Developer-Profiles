@@ -1,15 +1,19 @@
-
-import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import "./DevProfile.css";
+import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import AOS from 'aos';
+import './DevProfile.css';
 import 'aos/dist/aos.css';
+import githubImage from './img/GitHub.png';
+import lambdaColorImage from './img/lambdaColor.png';
+import linkedInImage from './img/linkedin.jpg';
+import picardImage from './img/picard.jpg';
+import portfolioImage from './img/portfolio.png';
+import snsImage from './img/sns.png';
 
 AOS.init();
 
-class DevProfile extends React.Component {
+class DevProfile extends Component {
   constructor(props) {
     super(props);
 
@@ -33,7 +37,14 @@ class DevProfile extends React.Component {
       topSkills: ['Leardership', 'Tactical Strategies', 'Diplomacy'],
       additionalSkills: ['Close Combat', 'Knife Combat', 'Phaser', 'Shakespear'],
 
-      skills: ['Archaeology', 'Literature', 'tlhIngan Hol', 'Mythology', 'Navigation', 'Engineering'],
+      skills: [
+        'Archaeology',
+        'Literature',
+        'tlhIngan Hol',
+        'Mythology',
+        'Navigation',
+        'Engineering',
+      ],
     };
   }
 
@@ -45,156 +56,192 @@ class DevProfile extends React.Component {
   // }
 
   render() {
-    const TS = this.state.topSkills;
-    const AS = this.state.additionalSkills;
-    const SS = this.state.skills;
-    const allSkills = TS.concat(AS, SS);
+    const {
+      topSkills,
+      additionalSkills,
+      skills,
+      firstName,
+      lastName,
+      currentLocation,
+      desiredTitle,
+      summary,
+      acclaimBadge,
+      socialNetwork,
+      github,
+      linkedin,
+      portfolio,
+      projects,
+      education,
+      experience,
+      placesInterested,
+    } = this.state;
+    const allSkills = topSkills.concat(additionalSkills, skills);
     const skillList = allSkills.map(skill => (
       <li>
         {skill}
-        {` `}
+        {' '}
       </li>
     ));
 
     return (
       <div>
-
         <div data-aos="fade-up" className="container">
-        <Paper>
-          <div className="topCard">
-            <div className="topCardLeft">
-              <div className="nameCard">
-                <div className="photo">
-                  <img
-                    className="pic"
-                    src={require("./img/picard.jpg")}
-                    title="Profile Photo"
-                    alt="Photo"
-                  />
-                </div>
-                <div className="basicInfo">
-                  <div className="name">
-                    <Typography variant="headline" component="h3">
-                      {this.state.firstName} {this.state.lastName}
-                    </Typography>
-                  </div>
-                  <div className="currentLocation">
-                    <Typography variant="headline" component="h3">
-                      {this.state.currentLocation}
-                    </Typography>
+          <Paper>
+            <div className="topCard">
+              <div className="topCardLeft">
+                <div className="nameCard">
+                  <div className="photo">
+                    <img
+                      className="pic"
+                      src={picardImage}
+                      title="Profile Photo"
+                      alt="Profile Avatar"
+                    />
                   </div>
                   <div className="basicInfo">
                     <div className="name">
                       <Typography variant="headline" component="h3">
-                        {this.state.firstName} {this.state.lastName}
+                        {firstName}
+                        {' '}
+                        {lastName}
                       </Typography>
                     </div>
                     <div className="currentLocation">
                       <Typography variant="headline" component="h3">
-                        {this.state.currentLocation}
+                        {currentLocation}
                       </Typography>
                     </div>
                     <div className="summary">
-                      <Typography>{this.state.summary}</Typography>
+                      <Typography>{summary}</Typography>
                     </div>
-                    <div className="desiredTitle">Desired Title: {this.state.desiredTitle}</div>
+                    <div className="desiredTitle">
+                      Desired Title:
+                      {desiredTitle}
+                    </div>
                     <div className="tagCloud">
                       <ul>{skillList}</ul>
                     </div>
                   </div>
+                  <div className="nameCardDown" />
                 </div>
-                <div className="nameCardDown" />
+                <div className="topCardRight">
+                  <a href={acclaimBadge}>
+                    <img
+                      src={lambdaColorImage}
+                      width="50"
+                      height="50"
+                      title="Acclaimed Badge"
+                      alt="Badge"
+                    />
+                  </a>
+                  <a href={socialNetwork}>
+                    <img
+                      src={snsImage}
+                      width="50"
+                      height="50"
+                      title="SNS"
+                      alt="SNS"
+                    />
+                  </a>
+                  <a href={github}>
+                    <img
+                      src={githubImage}
+                      width="50"
+                      height="50"
+                      title="Github"
+                      alt="Github Repo"
+                    />
+                  </a>
+                  <a href={linkedin}>
+                    <img
+                      src={linkedInImage}
+                      width="50"
+                      height="50"
+                      title="Linkedin"
+                      alt="Linkedin"
+                    />
+                  </a>
+                  <a href={portfolio}>
+                    <img
+                      src={portfolioImage}
+                      width="50"
+                      height="50"
+                      title="Portfolio"
+                      alt="Portfolio"
+                    />
+                  </a>
+                </div>
               </div>
-
               <div className="topCardRight">
-                <a href={this.state.acclaimBadge}>
+                <a href={acclaimBadge}>
                   <img
-                    src={require('./img/lambdaColor.png')}
+                    className="lambda-badge"
+                    src={lambdaColorImage}
                     width="50"
                     height="50"
                     title="Acclaimed Badge"
                     alt="Badge"
                   />
                 </a>
-                <a href={this.state.socialNetwork}>
-                  <img src={require('./img/sns.png')} width="50" height="50" title="SNS" alt="SNS" />
+                <a href={socialNetwork}>
+                  <img
+                    className="social-network"
+                    src={snsImage}
+                    width="50"
+                    height="50"
+                    title="SNS"
+                    alt="SNS"
+                  />
                 </a>
-                <a href={this.state.github}>
-                  <img src={require('./img/GitHub.png')} width="50" height="50" title="Github" alt="Github Repo" />
+                <a href={github}>
+                  <img
+                    className="github"
+                    src={githubImage}
+                    width="50"
+                    height="50"
+                    title="Github"
+                    alt="Github Repo"
+                  />
                 </a>
-                <a href={this.state.linkedin}>
-                  <img src={require('./img/linkedin.jpg')} width="50" height="50" title="Linkedin" alt="Linkedin" />
+                <a href={linkedin}>
+                  <img
+                    className="linkedin"
+                    src={linkedInImage}
+                    width="50"
+                    height="50"
+                    title="Linkedin"
+                    alt="Linkedin"
+                  />
                 </a>
-                <a href={this.state.portfolio}>
-                  <img src={require('./img/portfolio.png')} width="50" height="50" title="Portfolio" alt="Portfolio" />
+                <a href={portfolio}>
+                  <img
+                    className="portfolio"
+                    src={portfolioImage}
+                    width="50"
+                    height="50"
+                    title="Portfolio"
+                    alt="Portfolio"
+                  />
                 </a>
               </div>
             </div>
-            <div className="topCardRight">
-              <a href={this.state.acclaimBadge}>
-                <img className="lambda-badge"
-                  src={require("./img/lambdaColor.png")}
-                  width="50"
-                  height="50"
-                  title="Acclaimed Badge"
-                  alt="Badge"
-                />
-              </a>
-              <a href={this.state.socialNetwork}>
-                <img className="social-network"
-                  src={require("./img/sns.png")}
-                  width="50"
-                  height="50"
-                  title="SNS"
-                  alt="SNS"
-                />
-              </a>
-              <a href={this.state.github}>
-                <img className="github"
-                  src={require("./img/GitHub.png")}
-                  width="50"
-                  height="50"
-                  title="Github"
-                  alt="Github Repo"
-                />
-              </a>
-              <a href={this.state.linkedin}>
-                <img className="linkedin"
-                  src={require("./img/linkedin.jpg")}
-                  width="50"
-                  height="50"
-                  title="Linkedin"
-                  alt="Linkedin"
-                />
-              </a>
-              <a href={this.state.portfolio}>
-                <img className="portfolio"
-                  src={require("./img/portfolio.png")}
-                  width="50"
-                  height="50"
-                  title="Portfolio"
-                  alt="Portfolio"
-                />
-              </a>
-            </div>
-          </div>
-
-          <div className="downCard">
-            <div className="projects">
-              <div>Projects: </div>
-              {this.state.projects}
-            </div>
-            <div className="experience">
-              <div>Experience: </div>
-              {this.state.experience}
-            </div>
-            <div className="education">
-              <div>Education: </div>
-              {this.state.education}
-            </div>
-            <div className="placesInterested">
-              <div>Locations Interested: </div>
-              {this.state.placesInterested}
+            <div className="downCard">
+              <div className="projects">
+                <div>Projects: </div>
+                {projects}
+              </div>
+              <div className="experience">
+                <div>Experience: </div>
+                {experience}
+              </div>
+              <div className="education">
+                <div>Education: </div>
+                {education}
+              </div>
+              <div className="placesInterested">
+                <div>Locations Interested: </div>
+                {placesInterested}
+              </div>
             </div>
           </Paper>
         </div>
