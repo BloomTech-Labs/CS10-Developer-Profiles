@@ -27,17 +27,17 @@ const FILTERS = {
   },
   resume: { label: 'Resume', name: 'resume', toggleName: 'resumeSwitch' },
   projects: {
-    label: 'Has Projects',
+    label: 'Projects',
     name: 'projects',
     toggleName: 'projectsSwitch'
   },
   experience: {
-    label: 'Has Experience',
+    label: 'Experience',
     name: 'experience',
     toggleName: 'experienceSwitch'
   },
   education: {
-    label: 'Has Education',
+    label: 'Education',
     name: 'education',
     toggleName: 'educationSwitch'
   }
@@ -174,7 +174,9 @@ class DevList extends Component {
     const enable = event.target.innerHTML === ENABLE;
     const name = event.currentTarget.dataset.filterName;
     const newQuery = enable
-      ? `${this.cleanQuery(name)}&${name}=${this.state[FILTERS[name].name] ? 1 : 0}`
+      ? `${this.cleanQuery(name)}&${name}=${
+          this.state[FILTERS[name].name] ? 1 : 0
+        }`
       : `${this.cleanQuery(name)}`;
 
     this.setQuery(newQuery);
@@ -204,6 +206,55 @@ class DevList extends Component {
               filter={FILTERS.acclaim}
               checked={this.state.acclaim}
               enable={this.state.acclaimSwitch}
+              onCheck={this.handleSwitch}
+              onEnable={this.handleSwitchEnable}
+            />
+            <FilterToggle
+              filter={FILTERS.projects}
+              checked={this.state.projects}
+              enable={this.state.projectsSwitch}
+              onCheck={this.handleSwitch}
+              onEnable={this.handleSwitchEnable}
+            />
+            <FilterToggle
+              filter={FILTERS.experience}
+              checked={this.state.experience}
+              enable={this.state.experienceSwitch}
+              onCheck={this.handleSwitch}
+              onEnable={this.handleSwitchEnable}
+            />
+            <FilterToggle
+              filter={FILTERS.education}
+              checked={this.state.education}
+              enable={this.state.educationSwitch}
+              onCheck={this.handleSwitch}
+              onEnable={this.handleSwitchEnable}
+            />
+            <FilterToggle
+              filter={FILTERS.github}
+              checked={this.state.github}
+              enable={this.state.githubSwitch}
+              onCheck={this.handleSwitch}
+              onEnable={this.handleSwitchEnable}
+            />
+            <FilterToggle
+              filter={FILTERS.portfolio}
+              checked={this.state.portfolio}
+              enable={this.state.portfolioSwitch}
+              onCheck={this.handleSwitch}
+              onEnable={this.handleSwitchEnable}
+            />
+            <FilterToggle
+              filter={FILTERS.linkedIn}
+              checked={this.state.linkedIn}
+              enable={this.state.linkedInSwitch}
+              onCheck={this.handleSwitch}
+              onEnable={this.handleSwitchEnable}
+            />
+            <FilterToggle
+              filter={FILTERS.resume}
+              checked={this.state.resume}
+              enable={this.state.resumeSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
