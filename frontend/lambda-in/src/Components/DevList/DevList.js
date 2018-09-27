@@ -2,50 +2,83 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Select from 'react-select';
+import makeAnimated from 'react-select/lib/animated';
 import DevProfileCard from './DevProfileCard';
 import FilterToggle from './FilterToggle';
 import Pagination from '../Pagination/Pagination';
 
+import jobTitles from './jobTitles';
+
 const ENABLE = 'Enable';
 const DISABLE = 'Disable';
 const FILTERS = {
+  desiredTitle: {
+    type: 'select',
+    name: 'desiredTitle',
+    placeholder: 'Select Job Title...'
+  },
   acclaim: {
+    type: 'toggle',
     label: 'Lambda Badge',
     name: 'acclaim',
     toggleName: 'acclaimSwitch'
   },
-  github: { label: 'GitHub', name: 'github', toggleName: 'githubSwitch' },
+  github: {
+    type: 'toggle',
+    label: 'GitHub',
+    name: 'github',
+    toggleName: 'githubSwitch'
+  },
   linkedIn: {
+    type: 'toggle',
     label: 'LinkedIn',
     name: 'linkedIn',
     toggleName: 'linkedInSwitch'
   },
   portfolio: {
+    type: 'toggle',
     label: 'Portfolio',
     name: 'portfolio',
     toggleName: 'portfolioSwitch'
   },
-  resume: { label: 'Resume', name: 'resume', toggleName: 'resumeSwitch' },
+  resume: {
+    type: 'toggle',
+    label: 'Resume',
+    name: 'resume',
+    toggleName: 'resumeSwitch'
+  },
   projects: {
+    type: 'toggle',
     label: 'Projects',
     name: 'projects',
     toggleName: 'projectsSwitch'
   },
   experience: {
+    type: 'toggle',
     label: 'Experience',
     name: 'experience',
     toggleName: 'experienceSwitch'
   },
   education: {
+    type: 'toggle',
     label: 'Education',
     name: 'education',
     toggleName: 'educationSwitch'
   }
 };
 
+const desiredTitle = jobTitles.map(title => ({
+  value: title.replace(/ /g, '+'),
+  label: title
+}));
+
 const styles = {
   mainContainer: {
     padding: '0 30px'
+  },
+  select: {
+    zIndex: 2
   }
 };
 
@@ -61,6 +94,7 @@ class DevList extends Component {
       prev: null,
       currentPage: this.getCurrentPage(),
       seekers: [],
+      desiredTitle: [],
       acclaim: true,
       acclaimSwitch: false,
       github: true,
@@ -140,13 +174,16 @@ class DevList extends Component {
             prev: null,
             seekers: [],
             currentPage: 1
-          })
+          });
         }
       });
   };
 
   cleanQuery = substr => {
-    const regEx = new RegExp(`^${substr}=[0,1]&?|&${substr}=[0,1]`, 'i');
+    const regEx = new RegExp(
+      `^${substr}=[0,1]&?|&${substr}=[0,1]|^${substr}=[A-z|+]+|&${substr}=[A-z|+]+`,
+      'i'
+    );
     const cleanQuery = this.state.query.replace(regEx, '');
     return cleanQuery === '' ? 'page=1' : cleanQuery;
   };
@@ -159,8 +196,19 @@ class DevList extends Component {
     activeFilters.forEach(activeFilter => {
       const filter = activeFilter.split('=');
       if (filterNames.includes(filter[0])) {
-        updateState[FILTERS[filter[0]].toggleName] = true;
-        updateState[FILTERS[filter[0]].name] = +filter[1] ? true : false;
+        switch (FILTERS[filter[0]].type) {
+          case 'toggle':
+            updateState[FILTERS[filter[0]].toggleName] = true;
+            updateState[FILTERS[filter[0]].name] = +filter[1] ? true : false;
+            break;
+          case 'select':
+            const values = filter[1].split('|').map(value => ({
+              value: value,
+              label: value.replace(/\+/g, ' ')
+            }));
+            updateState[FILTERS[filter[0]].name] = values;
+            break;
+        }
       }
     });
 
@@ -172,6 +220,16 @@ class DevList extends Component {
       pathname: this.state.pathname,
       search: query
     });
+  };
+
+  handleSelect = (value, name) => {
+    const valStr = `&${name}=${value.map(val => val.value).join('|')}`;
+    const newQuery = `${this.cleanQuery(name)}${
+      value.length !== 0 ? valStr : ''
+    }`;
+
+    this.setQuery(newQuery);
+    this.setState({ [name]: value});
   };
 
   handleSwitch = event => {
@@ -215,6 +273,18 @@ class DevList extends Component {
       <React.Fragment>
         <Grid container className={classes.mainContainer} spacing={24}>
           <Grid item className={classes.sideBar} xs={3}>
+            <Select
+              placeholder={FILTERS.desiredTitle.placeholder}
+              value={this.state.desiredTitle}
+              className={classes.select}
+              options={desiredTitle}
+              closeMenuOnSelect={false}
+              components={makeAnimated()}
+              onChange={value =>
+                this.handleSelect(value, FILTERS.desiredTitle.name)
+              }
+              isMulti
+            />
             <FilterToggle
               filter={FILTERS.acclaim}
               checked={this.state.acclaim}
