@@ -9,11 +9,11 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
 import './DevInfoEditz.css';
-import BioSkills from '../utilityComponents/SeekerUtils/BioSkills';
-import Projects from '../utilityComponents/SeekerUtils/Projects';
-import Education from '../utilityComponents/SeekerUtils/Education';
-import Experience from '../utilityComponents/SeekerUtils/Experience';
-import SocialLinks from '../utilityComponents/SeekerUtils/SocialLinks';
+import BioSkills from '../utilityComponents/SeekerEditUtils/BioSkills';
+import Projects from '../utilityComponents/SeekerEditUtils/Projects';
+import Education from '../utilityComponents/SeekerEditUtils/Education';
+import Experience from '../utilityComponents/SeekerEditUtils/Experience';
+import SocialLinks from '../utilityComponents/SeekerEditUtils/SocialLinks';
 import BasicInfo from '../utilityComponents/SeekerEditUtils/BasicInfo';
 
 export default class DevInfoEdit extends Component {
