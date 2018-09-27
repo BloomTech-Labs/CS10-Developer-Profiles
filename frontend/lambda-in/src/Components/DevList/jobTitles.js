@@ -1,0 +1,3 @@
+const jobTitles = ['Front End Developer', 'Back End Developer', 'Full Stack Web Developer', 'Junior Front End Developer', 'Junior Back End Developer', 'Junior Full Stack Web Developer', 'Software Engineer', 'Junior Software Engineer', 'Software Developer', 'Junior Software Developer', 'Web Developer', 'UX Designer', 'UI Designer', 'Front End Designer', 'Mobile Developer', 'Full Stack Engineer', 'DevOps Engineer', 'Data Engineer', 'Data Scientist', 'UI Developer', 'Front End Engineer', 'Back End Engineer', 'Data Analyst', 'iOS Developer', 'Android Developer', 'Web Designer', 'UI / UX Designer', 'Product Designer', 'Product Manager'];
+
+export default jobTitles;
