@@ -11,13 +11,15 @@ import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpList from './Components/EmployerList/EmpOPList';
 
+import PassProps from './Components/DevInfoEditz/DevInfoEditz';
+
 import DevList from './Components/DevList/DevList';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSignedIn: false,
+      isSignedIn: true,
       userInfo: {}, // To be populated after an HTTP request from other components.
       userType: '', // 'seeker' || 'employer'
     };
@@ -41,18 +43,20 @@ class App extends Component {
    * Get APP's global state.
    *
    * @method getGlobalState
-   * @param {void}
+   * @param {string} property - the property of which we want to know its value.
    * @return {object} App's global state.
    *
    * @example Pass as a prop to component.
    * <Component getGS={this.getGlobalState} />
    */
-  getGlobalState = () => {
+  getGlobalState = property => {
     const self = this;
-    return self.state;
+    return property ? self.state[property] : self.state;
   };
 
   render() {
+    const { isSignedIn } = this.state;
+
     return (
       <div>
         <NavBar />
@@ -64,7 +68,19 @@ class App extends Component {
             <Route path="/dev-list" component={DevList} />
             <Route path="/employer-signup" component={EmpSignUp} />
             <Route path="/employer-list" component={EmpList} />
-            <Route path="/dev-info-edit" component={DevInfoEditz} />
+            {/* render={props => <DevInfoEditz {...props} setGS={this.setGlobalState} getGS={this.getGlobalState} />} */}
+            <Route
+              path="/dev-info-edit"
+              render={props =>
+                isSignedIn ? (
+                  <PassProps {...props} setGS={this.setGlobalState} getGS={this.getGlobalState} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            >
+              <DevInfoEditz />
+            </Route>
             {/* For testing purpose */}
             <Route path="/dev-signup" component={DevSignUp} />
             <Route path="/dev-login" component={DevLogin} />
