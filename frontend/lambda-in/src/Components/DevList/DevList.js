@@ -40,13 +40,14 @@ class DevList extends Component {
               <FormControlLabel
                 control={(
                   <Checkbox
+                    name="gilad"
                     checked={gilad}
                     defaultChecked
                     color="default"
-                    onChange={this.handleChange('gilad')}
+                    onChange={this.handleChange}
                     value="gilad"
                   />
-)}
+                )}
                 label="Full Stack Web"
               />
             </FormControl>
