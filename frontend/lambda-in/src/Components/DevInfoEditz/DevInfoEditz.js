@@ -11,37 +11,7 @@ import axios from 'axios';
 import './DevInfoEditz.css';
 
 export default class DevInfoEdit extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: 'abc@xyz.com',
-      firstName: 'daat',
-      lastName: 'man',
-      desiredTitle: 'BOSS',
-      currentLocation: 'mars',
-      github: 'github.com/kkkk',
-      linkedin: 'linkedin.com/batman',
-      portfolio: 'batman.com',
-      acclaimBadge: 'lambda Batch',
-      placesInterested: ' earh etc',
-      password: '12345678Aa$',
-      confirmPassword: '',
-      isSignedIn: false,
-      summary: 'wubba lubba dub dub',
-      topskill: 'Baller',
-      projects: 'Dev profiles',
-      projectTitle: 'Dev Profile',
-      projectLink: 'Devproject.com',
-      projectRepo: 'github.com/project',
-      experience: 'mars inc.',
-      education: 'Lambda School',
-    };
-  }
-
   handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
     /**
      * Wire APP's global state with input field.
      */
@@ -129,7 +99,7 @@ export default class DevInfoEdit extends Component {
                       id="firstName"
                       label="First Name"
                       fullWidth
-                      value={this.state.firstName}
+                      value={userInfo.firstName}
                       onChange={this.handleChange('firstName')}
                       margin="normal"
                       variant="outlined"
@@ -141,7 +111,7 @@ export default class DevInfoEdit extends Component {
                       id="outlined-name"
                       label="Last Name"
                       fullWidth
-                      value={this.state.lastName}
+                      value={userInfo.lastName}
                       onChange={this.handleChange('lastName')}
                       margin="normal"
                       variant="outlined"
@@ -153,7 +123,7 @@ export default class DevInfoEdit extends Component {
                       id="desiredTitle"
                       label="Desired Title"
                       fullWidth
-                      value={this.state.desiredTitle}
+                      value={userInfo.desiredTitle}
                       onChange={this.handleChange('desiredTitle')}
                       margin="normal"
                       variant="outlined"
@@ -165,7 +135,7 @@ export default class DevInfoEdit extends Component {
                       id="currentLocation"
                       label="Current Location"
                       fullWidth
-                      value={this.state.currentLocation}
+                      value={userInfo.currentLocation}
                       onChange={this.handleChange('currentLocation')}
                       margin="normal"
                       variant="outlined"
@@ -173,7 +143,7 @@ export default class DevInfoEdit extends Component {
                   </div>
                 </div>
                 <div className="imageContainer">
-                  <img className="displayPic" src={`https://robohash.org/1${this.state.firstName}`} alt="Italian " />
+                  <img className="displayPic" src={`https://robohash.org/1${userInfo.firstName}`} alt="Italian " />
                 </div>
               </div>
 
@@ -190,7 +160,7 @@ export default class DevInfoEdit extends Component {
                           id="github"
                           label="github"
                           fullWidth
-                          value={this.state.github}
+                          value={userInfo.github}
                           onChange={this.handleChange('github')}
                           margin="normal"
                           variant="outlined"
@@ -202,7 +172,7 @@ export default class DevInfoEdit extends Component {
                           id="linkedin"
                           label="Linkedin"
                           fullWidth
-                          value={this.state.linkedin}
+                          value={userInfo.linkedin}
                           onChange={this.handleChange('linkedin')}
                           margin="normal"
                           variant="outlined"
@@ -214,7 +184,7 @@ export default class DevInfoEdit extends Component {
                           id="portfolio"
                           label="Portfolio Website"
                           fullWidth
-                          value={this.state.portfolio}
+                          value={userInfo.portfolio}
                           onChange={this.handleChange('portfolio')}
                           margin="normal"
                           variant="outlined"
@@ -240,7 +210,7 @@ export default class DevInfoEdit extends Component {
                           fullWidth
                           multiline
                           rowsMax="4"
-                          value={this.state.summary}
+                          value={userInfo.summary}
                           onChange={this.handleChange('summary')}
                           margin="normal"
                           variant="outlined"
@@ -254,7 +224,7 @@ export default class DevInfoEdit extends Component {
                           fullWidth
                           multiline
                           rowsMax="4"
-                          value={this.state.topskill}
+                          value={userInfo.topskill}
                           onChange={this.handleChange('topskill')}
                           margin="normal"
                           variant="outlined"
@@ -280,7 +250,7 @@ export default class DevInfoEdit extends Component {
                           fullWidth
                           multiline
                           rowsMax="4"
-                          value={this.state.projectTitle}
+                          value={userInfo.projectTitle}
                           onChange={this.handleChange('projectTitle')}
                           margin="normal"
                           variant="outlined"
@@ -294,7 +264,7 @@ export default class DevInfoEdit extends Component {
                           fullWidth
                           multiline
                           rowsMax="4"
-                          value={this.state.projectLink}
+                          value={userInfo.projectLink}
                           onChange={this.handleChange('projectLink')}
                           margin="normal"
                           variant="outlined"
@@ -308,7 +278,7 @@ export default class DevInfoEdit extends Component {
                           fullWidth
                           multiline
                           rowsMax="4"
-                          value={this.state.projectRepo}
+                          value={userInfo.projectRepo}
                           onChange={this.handleChange('projectRepo')}
                           margin="normal"
                           variant="outlined"
@@ -334,7 +304,7 @@ export default class DevInfoEdit extends Component {
                           fullWidth
                           multiline
                           rowsMax="4"
-                          value={this.state.projectTitle}
+                          value={userInfo.projectTitle}
                           onChange={this.handleChange('projectTitle')}
                           margin="normal"
                           variant="outlined"
@@ -348,7 +318,7 @@ export default class DevInfoEdit extends Component {
                           fullWidth
                           multiline
                           rowsMax="4"
-                          value={this.state.projectLink}
+                          value={userInfo.projectLink}
                           onChange={this.handleChange('projectLink')}
                           margin="normal"
                           variant="outlined"
@@ -362,7 +332,7 @@ export default class DevInfoEdit extends Component {
                           fullWidth
                           multiline
                           rowsMax="4"
-                          value={this.state.projectRepo}
+                          value={userInfo.projectRepo}
                           onChange={this.handleChange('projectRepo')}
                           margin="normal"
                           variant="outlined"
