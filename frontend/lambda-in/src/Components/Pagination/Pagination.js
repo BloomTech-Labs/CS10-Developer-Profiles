@@ -17,8 +17,7 @@ class Pagination extends Component {
       maxPageLinks: PAGINATION_SETTINGS.maxPageLinks,
       lowLimit: PAGINATION_SETTINGS.maxPageLinks - 1,
       highLimit: this.props.pages - PAGINATION_SETTINGS.maxPageLinks + 2,
-      pageLinks: [],
-      cleanQuery: this.cleanQuery(this.props.query)
+      pageLinks: []
     };
   }
 
@@ -92,13 +91,14 @@ class Pagination extends Component {
   render() {
     const { classes } = this.props;
     const pageLinks = this.getPageLinks();
+    const cleanQuery = this.cleanQuery(this.props.query);
 
     return (
       <ul className={classes.pagination}>
         {pageLinks.map(page => (
           <li key={page} className={classes.pageItem}>
             <Link
-              to={`${this.props.pathname}?page=${page}${this.state.cleanQuery}`}
+              to={`${this.props.pathname}?page=${page}${cleanQuery}`}
               onClick={event => this.handleClick(event, page)}
             >
               {page}
