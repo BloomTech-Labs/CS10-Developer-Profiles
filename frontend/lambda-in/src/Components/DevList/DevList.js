@@ -41,7 +41,7 @@ const styles = {
 class DevList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = Object.assign({}, this.getFilterState(), {
       pathname: this.getPathname(),
       query: this.getQuery(),
       count: 0,
@@ -49,31 +49,28 @@ class DevList extends Component {
       next: null,
       prev: null,
       currentPage: this.getCurrentPage(),
-      seekers: [],
-      desiredTitle: [],
-      topSkills: [],
-      addSkills: [],
-      familiar: [],
-      acclaim: true,
-      acclaimSwitch: false,
-      github: true,
-      githubSwitch: false,
-      linkedIn: true,
-      linkedInSwitch: false,
-      portfolio: true,
-      portfolioSwitch: false,
-      resume: true,
-      resumeSwitch: false,
-      projects: true,
-      projectsSwitch: false,
-      experience: true,
-      experienceSwitch: false,
-      education: true,
-      educationSwitch: false
-    };
+      seekers: []
+    });
 
     this.getSeekers(this.state.query);
   }
+
+  getFilterState = () => {
+    const state = {};
+
+    Object.keys(FILTERS).forEach(filter => {
+      if (FILTERS[filter].type === 'select') {
+        state[FILTERS[filter].name] = [];
+      }
+
+      if (FILTERS[filter].type === 'toggle') {
+        state[FILTERS[filter].name] = true;
+        state[FILTERS[filter].toggleName] = false;
+      }
+    });
+
+    return state;
+  };
 
   getPathname = () => {
     return window.location.pathname;
