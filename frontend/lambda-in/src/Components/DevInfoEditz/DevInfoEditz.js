@@ -29,9 +29,6 @@ export default class DevInfoEdit extends Component {
     const _id = userInfo._id;
 
     if (_id) {
-      console.log(_id);
-      console.log(localStorage.getItem('token'));
-
       /**
        * Set in GS 'updateState': 'updateState' = 'updating'
        */
@@ -61,7 +58,7 @@ export default class DevInfoEdit extends Component {
           }
         )
         .then(response => {
-          console.log(response.data);
+          console.log('UPDATE USER', { status: response.status });
           /**
            * Set in GS 'updateState': 'updateState' = 'updated'
            */
