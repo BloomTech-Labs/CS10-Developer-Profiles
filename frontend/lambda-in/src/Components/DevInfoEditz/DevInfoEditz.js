@@ -17,14 +17,14 @@ import SocialLinks from '../utilityComponents/SeekerEditUtils/SocialLinks';
 import BasicInfo from '../utilityComponents/SeekerEditUtils/BasicInfo';
 
 export default class DevInfoEdit extends Component {
+  /**
+   * Sync APP's global state with input field.
+   */
   handleChange = event => {
-    /**
-     * Updates APP's global state with input field.
-     */
     this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [event.target.id]: event.target.value } });
   };
 
-  update = () => {
+  update = e => {
     const userInfo = this.props.getGS('userInfo');
     const _id = userInfo._id;
 
@@ -102,7 +102,7 @@ export default class DevInfoEdit extends Component {
               <SocialLinks userInfo={userInfo} />
 
               {/* BIO - TOP SKILLS */}
-              <BioSkills userInfo={userInfo} />
+              <BioSkills setGS={this.props.setGS} getGS={this.props.getGS} userInfo={userInfo} />
 
               {/* PROJECTS */}
               <Projects userInfo={userInfo} />
@@ -116,7 +116,7 @@ export default class DevInfoEdit extends Component {
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
                   {' '}
-                  Save{' '}
+                  Update profile{' '}
                 </Button>
               </div>
             </div>
