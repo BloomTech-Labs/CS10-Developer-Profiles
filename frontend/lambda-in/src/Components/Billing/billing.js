@@ -6,10 +6,17 @@ import Typography from '@material-ui/core/Typography';
 //import RadioButtonsGroup from './Radio Buttons/radio-buttons'
 import './billing.css';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
 class Billing extends React.Component {
     render() {
         return (
             <div>
+                <h1 className='title'>Join our guild of talented developers and reputable employers!</h1>
+                <div data-aos='fade-up' className='container'>
                 <Card className='checkout'>
                 <CardContent>
                     <Typography variant="headline" component="h1">
@@ -28,7 +35,7 @@ class Billing extends React.Component {
                 <Card className='checkout'>
                 <CardContent>
                     <Typography variant="headline" component="h1">
-                        Employer 1 month Subscription
+                        Employer 1 month Sub
                     </Typography>
                     <Typography>
                         $3.99
@@ -43,7 +50,7 @@ class Billing extends React.Component {
                 <Card className='checkout'>
                 <CardContent>
                     <Typography variant="headline" component="h1">
-                        Employer 6 month Subscription
+                        Employer 6 month Sub
                     </Typography>
                     <Typography>
                         $9.99 - Save $2.32/month
@@ -58,7 +65,7 @@ class Billing extends React.Component {
                 <Card className='checkout'>
                 <CardContent>
                     <Typography variant="headline" component="h1">
-                        Employer 1 Year Subscription
+                        Employer 1 Year Sub
                     </Typography>
                     <Typography>
                         $15.99 - Save $2.62/month
@@ -94,6 +101,7 @@ class Billing extends React.Component {
                         />
                     </div>
         </div>*/}
+            </div>
         </div>
         )
     }

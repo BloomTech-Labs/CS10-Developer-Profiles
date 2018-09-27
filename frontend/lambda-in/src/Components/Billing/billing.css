@@ -1,16 +1,23 @@
-.checkout {
+.container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0em;
 }
-.buttons {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
-.text {
-    display: flex;
-    flex-direction: column;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+
+.title {
+    font-size: 1.75vw;
     font-weight: bold;
-    padding: 10px;
-    justify-content: space-evenly;
+    color: #f50057;
+    margin-top: 20px;
+    margin-left: 375px;
+}
+
+.checkout {
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
