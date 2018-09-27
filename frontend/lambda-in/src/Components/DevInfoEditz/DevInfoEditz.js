@@ -42,6 +42,7 @@ export default class DevInfoEdit extends Component {
     this.setState({
       [name]: event.target.value,
     });
+    this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [name]: event.target.value } });
   };
 
   // axios 1 argument is URL and 2 argument is data 3 argument is options
@@ -84,19 +85,19 @@ export default class DevInfoEdit extends Component {
             <div className="inputRow">
               <div className="smallInputContainer">
                 <div className="expansionPanel">
-                    <div className="inputField">
-                      <TextField
-                        id="firstName"
-                        label="First Name"
-                        fullWidth
-                        value={this.state.firstName}
-                        onChange={this.handleChange('firstName')}
-                        margin="normal"
-                        variant="outlined"
-                      />
-                    </div>
+                  <div className="inputField">
+                    <TextField
+                      id="firstName"
+                      label="First Name"
+                      fullWidth
+                      value={this.state.firstName}
+                      onChange={this.handleChange('firstName')}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </div>
 
-                    <div className="inputField">
+                  <div className="inputField">
                     <TextField
                       id="outlined-name"
                       label="Last Name"
@@ -137,197 +138,201 @@ export default class DevInfoEdit extends Component {
                 </div>
               </div>
 
+              {/* Your Social links */}
               <div className="panelMargin">
-                  <ExpansionPanel >
-                    <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
-                      <Typography>Your Social links</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                      <div className="expansionPanel">
-                        <div className="inputField">
-                          <TextField
-                            id="github"
-                            label="github"
-                            fullWidth
-                            value={this.state.github}
-                            onChange={this.handleChange('github')}
-                            margin="normal"
-                            variant="outlined"
-                          />
-                        </div>
-
-                        <div className="inputField">
-                          <TextField
-                            id="linkedin"
-                            label="Linkedin"
-                            fullWidth
-                            value={this.state.linkedin}
-                            onChange={this.handleChange('linkedin')}
-                            margin="normal"
-                            variant="outlined"
-                          />
-                        </div>
-
-                        <div className="inputField">
-                          <TextField
-                            id="portfolio"
-                            label="Portfolio Website"
-                            fullWidth
-                            value={this.state.portfolio}
-                            onChange={this.handleChange('portfolio')}
-                            margin="normal"
-                            variant="outlined"
-                          />
-                        </div>
+                <ExpansionPanel>
+                  <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
+                    <Typography>Your Social links</Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <div className="expansionPanel">
+                      <div className="inputField">
+                        <TextField
+                          id="github"
+                          label="github"
+                          fullWidth
+                          value={this.state.github}
+                          onChange={this.handleChange('github')}
+                          margin="normal"
+                          variant="outlined"
+                        />
                       </div>
-                    </ExpansionPanelDetails>
-                  </ExpansionPanel>
-                </div>
-                          
-                <div className="panelMargin">
-                  <ExpansionPanel >
-                      <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
-                        <Typography>tell us something about yourself!</Typography>
-                      </ExpansionPanelSummary>
-                      <ExpansionPanelDetails>
-                        <div className="expansionPanel">
-                          <div className="inputFieldLargeMultiline">
-                            <TextField
-                              id="summary"
-                              label="Your Bio"
-                              fullWidth
-                              multiline
-                              rowsMax="4"
-                              value={this.state.summary}
-                              onChange={this.handleChange('summary')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </div>
 
-                          <div className="inputFieldLargeMultiline">
-                            <TextField
-                              id="topSkills"
-                              label="Top skills"
-                              fullWidth
-                              multiline
-                              rowsMax="4"
-                              value={this.state.topskill}
-                              onChange={this.handleChange('topskill')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </div>
-                        </div>
-                      </ExpansionPanelDetails>
-                  </ExpansionPanel>
-                </div>
-            
-                <div className="panelMargin">
-                  <ExpansionPanel >
-                      <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
-                        <Typography>Add your best project!</Typography>
-                      </ExpansionPanelSummary>
-                      <ExpansionPanelDetails>
-                        <div className="expansionPanel">
-                          <div className="inputFieldLargeMultiline">
-                            <TextField
-                              id="projectTitle"
-                              label="Project Title"
-                              fullWidth
-                              multiline
-                              rowsMax="4"
-                              value={this.state.projectTitle}
-                              onChange={this.handleChange('projectTitle')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </div>
+                      <div className="inputField">
+                        <TextField
+                          id="linkedin"
+                          label="Linkedin"
+                          fullWidth
+                          value={this.state.linkedin}
+                          onChange={this.handleChange('linkedin')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
 
-                          <div className="inputFieldLargeMultiline">
-                            <TextField
-                              id="projectLink"
-                              label="Project Link"
-                              fullWidth
-                              multiline
-                              rowsMax="4"
-                              value={this.state.projectLink}
-                              onChange={this.handleChange('projectLink')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </div>
+                      <div className="inputField">
+                        <TextField
+                          id="portfolio"
+                          label="Portfolio Website"
+                          fullWidth
+                          value={this.state.portfolio}
+                          onChange={this.handleChange('portfolio')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
+                    </div>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </div>
 
-                          <div className="inputFieldLargeMultiline">
-                            <TextField
-                              id="projectRepo"
-                              label="Project Repo"
-                              fullWidth
-                              multiline
-                              rowsMax="4"
-                              value={this.state.projectRepo}
-                              onChange={this.handleChange('projectRepo')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </div>
-                        </div>
-                      </ExpansionPanelDetails>
-                  </ExpansionPanel>
-                </div>
+              {/* BIO - TOP SKILLS */}
+              <div className="panelMargin">
+                <ExpansionPanel>
+                  <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
+                    <Typography>tell us something about yourself!</Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <div className="expansionPanel">
+                      <div className="inputFieldLargeMultiline">
+                        <TextField
+                          id="summary"
+                          label="Your Bio"
+                          fullWidth
+                          multiline
+                          rowsMax="4"
+                          value={this.state.summary}
+                          onChange={this.handleChange('summary')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
 
-                <div className="panelMargin">
-                  <ExpansionPanel >
-                      <ExpansionPanelSummary expandIcon={<Icon >add_circle</Icon>}>
-                        <Typography>Add your Education back ground</Typography>
-                      </ExpansionPanelSummary>
-                      <ExpansionPanelDetails>
-                        <div className="expansionPanel">
-                          <div className="inputFieldLargeMultiline">
-                            <TextField
-                              id="projectTitle"
-                              label="Project Title"
-                              fullWidth
-                              multiline
-                              rowsMax="4"
-                              value={this.state.projectTitle}
-                              onChange={this.handleChange('projectTitle')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </div>
+                      <div className="inputFieldLargeMultiline">
+                        <TextField
+                          id="topSkills"
+                          label="Top skills"
+                          fullWidth
+                          multiline
+                          rowsMax="4"
+                          value={this.state.topskill}
+                          onChange={this.handleChange('topskill')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
+                    </div>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </div>
 
-                          <div className="inputFieldLargeMultiline">
-                            <TextField
-                              id="projectLink"
-                              label="Project Link"
-                              fullWidth
-                              multiline
-                              rowsMax="4"
-                              value={this.state.projectLink}
-                              onChange={this.handleChange('projectLink')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </div>
+              {/* PROJECTS */}
+              <div className="panelMargin">
+                <ExpansionPanel>
+                  <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
+                    <Typography>Add your best project!</Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <div className="expansionPanel">
+                      <div className="inputFieldLargeMultiline">
+                        <TextField
+                          id="projectTitle"
+                          label="Project Title"
+                          fullWidth
+                          multiline
+                          rowsMax="4"
+                          value={this.state.projectTitle}
+                          onChange={this.handleChange('projectTitle')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
 
-                          <div className="inputFieldLargeMultiline">
-                            <TextField
-                              id="projectRepo"
-                              label="Project Repo"
-                              fullWidth
-                              multiline
-                              rowsMax="4"
-                              value={this.state.projectRepo}
-                              onChange={this.handleChange('projectRepo')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </div>
-                        </div>
-                      </ExpansionPanelDetails>
-                  </ExpansionPanel>
-                </div>
+                      <div className="inputFieldLargeMultiline">
+                        <TextField
+                          id="projectLink"
+                          label="Project Link"
+                          fullWidth
+                          multiline
+                          rowsMax="4"
+                          value={this.state.projectLink}
+                          onChange={this.handleChange('projectLink')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
+
+                      <div className="inputFieldLargeMultiline">
+                        <TextField
+                          id="projectRepo"
+                          label="Project Repo"
+                          fullWidth
+                          multiline
+                          rowsMax="4"
+                          value={this.state.projectRepo}
+                          onChange={this.handleChange('projectRepo')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
+                    </div>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </div>
+
+              {/* EDUCATION */}
+              <div className="panelMargin">
+                <ExpansionPanel>
+                  <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
+                    <Typography>Add your Education back ground</Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <div className="expansionPanel">
+                      <div className="inputFieldLargeMultiline">
+                        <TextField
+                          id="projectTitle"
+                          label="Project Title"
+                          fullWidth
+                          multiline
+                          rowsMax="4"
+                          value={this.state.projectTitle}
+                          onChange={this.handleChange('projectTitle')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
+
+                      <div className="inputFieldLargeMultiline">
+                        <TextField
+                          id="projectLink"
+                          label="Project Link"
+                          fullWidth
+                          multiline
+                          rowsMax="4"
+                          value={this.state.projectLink}
+                          onChange={this.handleChange('projectLink')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
+
+                      <div className="inputFieldLargeMultiline">
+                        <TextField
+                          id="projectRepo"
+                          label="Project Repo"
+                          fullWidth
+                          multiline
+                          rowsMax="4"
+                          value={this.state.projectRepo}
+                          onChange={this.handleChange('projectRepo')}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                      </div>
+                    </div>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </div>
 
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
