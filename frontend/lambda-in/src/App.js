@@ -4,7 +4,7 @@ import './App.css';
 import NavBar from './Components/Navbar/navbar';
 import DevSignUp from './Components/DevSignUp/DevSignUp';
 import DevLogin from './Components/DevLogIn/DevLogIn';
-import LandingPage from './Components/Landing Page/landing-page';
+import LandingPage from './Components/LandingPage/landing-page';
 import DevProfile from './Components/DevProfile/DevProfile';
 import DevProfile2 from './Components/DevProfile2/DevProfile2';
 import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
@@ -120,6 +120,7 @@ class App extends Component {
               path="/dev-profile"
               render={() => (isSignedIn ? <DevProfile2 getGS={this.getGlobalState} /> : <Redirect to="/" />)}
             />
+            <Route path="/dev-profile2" render={() => <DevProfile getGS={this.getGlobalState} />} />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route path="/dev-info-edit" render={() => (isSignedIn ? <DevInfoEditz /> : <Redirect to="/" />)} />
             {/* DEVELOPER END */}

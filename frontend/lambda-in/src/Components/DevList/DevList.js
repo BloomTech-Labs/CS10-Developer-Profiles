@@ -1,41 +1,34 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+import AOS from 'aos';
 import Typography from '@material-ui/core/Typography';
 import Checkbox from '@material-ui/core/Checkbox';
-import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Divider from '@material-ui/core/Divider';
-import Icon from '@material-ui/core/Icon';
-import { Link } from 'react-router-dom';
-
-import NavBar from '../Navbar/navbar';
 import DevProfileCard from './DevProfileCard';
-import '../DevList/DevList.css';
 
-import AOS from 'aos';
+import './DevList.css';
 import 'aos/dist/aos.css';
 
 AOS.init();
 
-export default class DevList extends Component {
-  state = {
-    gilad: true,
-    jason: false,
-    antoine: false,
-  };
+class DevList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gilad: true,
+    };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.checked });
+  }
+
   render() {
+    const { gilad } = this.state;
     return (
       <div className="App">
         <div className="mainBar">
@@ -47,10 +40,11 @@ export default class DevList extends Component {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={this.state.gilad}
+                    name="gilad"
+                    checked={gilad}
                     defaultChecked
                     color="default"
-                    onChange={this.handleChange('gilad')}
+                    onChange={this.handleChange}
                     value="gilad"
                   />
                 }
@@ -59,17 +53,14 @@ export default class DevList extends Component {
             </FormControl>
             <FormControl>
               <InputLabel htmlFor="input-with-icon-adornment">search cities</InputLabel>
-
               <Input id="input-with-icon-adornment" type="search" />
             </FormControl>
             <br />
             <Typography variant="headline" component="h3">
               Will Relocate
             </Typography>
-
             <FormControl>
               <InputLabel htmlFor="input-with-icon-adornment">search cities</InputLabel>
-
               <Input id="input-with-icon-adornment" type="search" />
             </FormControl>
           </div>
@@ -90,3 +81,5 @@ export default class DevList extends Component {
     );
   }
 }
+
+export default DevList;
