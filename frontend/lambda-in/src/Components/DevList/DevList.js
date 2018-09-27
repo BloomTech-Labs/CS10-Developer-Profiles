@@ -7,6 +7,7 @@ import makeAnimated from 'react-select/lib/animated';
 import DevProfileCard from './DevProfileCard';
 import FilterToggle from './FilterToggle';
 import Pagination from '../Pagination/Pagination';
+import { ENABLE, DISABLE, SORT, FILTERS } from '../constants';
 
 // Mock API data calls
 import jobTitles from './jobTitles';
@@ -27,83 +28,6 @@ const sort = sortOptions.map(option => ({
   value: option.dir === 'dsc' ? '-' : '' + option.type.toLowerCase(),
   label: `${option.type} ${SORT[option.dir]}`
 }));
-
-const ENABLE = 'Enable';
-const DISABLE = 'Disable';
-const SORT = {
-  asc: 'A-Z',
-  dsc: 'Z-A'
-};
-const FILTERS = {
-  desiredTitle: {
-    type: 'select',
-    name: 'desiredTitle',
-    placeholder: 'Select Job Title...'
-  },
-  topSkills: {
-    type: 'select',
-    name: 'topSkills',
-    placeholder: 'Proficient With...'
-  },
-  addSkills: {
-    type: 'select',
-    name: 'addSkills',
-    placeholder: 'Knowledgeable With...'
-  },
-  familiar: {
-    type: 'select',
-    name: 'familiar',
-    placeholder: 'Familiar With...'
-  },
-  acclaim: {
-    type: 'toggle',
-    label: 'Lambda Badge',
-    name: 'acclaim',
-    toggleName: 'acclaimSwitch'
-  },
-  github: {
-    type: 'toggle',
-    label: 'GitHub',
-    name: 'github',
-    toggleName: 'githubSwitch'
-  },
-  linkedIn: {
-    type: 'toggle',
-    label: 'LinkedIn',
-    name: 'linkedIn',
-    toggleName: 'linkedInSwitch'
-  },
-  portfolio: {
-    type: 'toggle',
-    label: 'Portfolio',
-    name: 'portfolio',
-    toggleName: 'portfolioSwitch'
-  },
-  resume: {
-    type: 'toggle',
-    label: 'Resume',
-    name: 'resume',
-    toggleName: 'resumeSwitch'
-  },
-  projects: {
-    type: 'toggle',
-    label: 'Projects',
-    name: 'projects',
-    toggleName: 'projectsSwitch'
-  },
-  experience: {
-    type: 'toggle',
-    label: 'Experience',
-    name: 'experience',
-    toggleName: 'experienceSwitch'
-  },
-  education: {
-    type: 'toggle',
-    label: 'Education',
-    name: 'education',
-    toggleName: 'educationSwitch'
-  }
-};
 
 const styles = {
   mainContainer: {
