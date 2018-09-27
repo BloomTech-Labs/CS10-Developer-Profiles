@@ -81,3 +81,8 @@ export const FILTERS = {
     toggleName: 'educationSwitch'
   }
 };
+
+export const PAGINATION_SETTINGS = {
+  maxPageLinks: 7,
+  pageLimit: 10
+};
