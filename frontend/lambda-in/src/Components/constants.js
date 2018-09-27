@@ -7,6 +7,11 @@ export const SORT = {
 };
 
 export const FILTERS = {
+  sort: {
+    type: 'select',
+    name: 'sort',
+    placeholder: 'Sort By...'
+  },
   desiredTitle: {
     type: 'select',
     name: 'desiredTitle',
