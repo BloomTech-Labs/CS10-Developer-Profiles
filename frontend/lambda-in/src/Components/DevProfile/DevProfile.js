@@ -23,13 +23,14 @@ export default ({ getGS }) => {
   ));
 
   /**
+   * This one.
    * PENDING FIELDS TO IMPLEMENT: "familiarWith", "projects", "experience", "education", "placesInterested"
    * All them are Arrays of objects.
    */
   return (
     <div>
       <div className="container">
-        <Paper>
+        <Paper className="paper">
           <div className="topCard">
             <div className="topCardLeft">
               <div className="nameCard">
