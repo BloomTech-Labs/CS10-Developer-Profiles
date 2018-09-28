@@ -13,6 +13,21 @@ import {
 
 const styles = {};
 
+/**
+ * Given a Github, LinkedIn, Portfolio and/or Acclaim link, return a Material UI List component containing
+ * a Material UI ListItem component and FontAwesomeIcon component for each link.
+ *
+ * @param {Object} props - Component properties.
+ * @param {String} props.github - A github profile link.
+ * @param {String} props.linkedIn - A linkedIn profile link.
+ * @param {String} props.portfolio - A link to an extrenal portfolio.
+ * @param {String} props.acclaim - An acclaim badge id.
+ * @return {Component} Material UI List component.
+ *
+ * @see {@link https://material-ui.com/api/list/ } for the List API.
+ * @see {@link https://material-ui.com/api/list-item/ } for the ListItem API.
+ * @see {@link https://fontawesome.com/how-to-use/on-the-web/using-with/react } for the Font Awesome React component docs.
+ */
 const DevSocial = props => {
   const { classes } = props;
 
