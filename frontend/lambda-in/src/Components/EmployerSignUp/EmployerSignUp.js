@@ -4,22 +4,21 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import NavBar from "../../Components/Navbar/navbar";
 import "../EmployerSignUp/EmployerSignUp.css";
 
-function passwordMatch(props) {
-  if (props.password === props.confirmPassword) {
-    return <p>password confirmed</p>;
-  }
-  return <p>password does NOT match</p>;
-}
+// function passwordMatch(props) {
+//   if (props.password === props.confirmPassword) {
+//     return <p>password confirmed</p>;
+//   }
+//   return <p>password does NOT match</p>;
+// }
 
 export default class EmployerSignUp extends Component {
   constructor(props) {
     super(props);
-    this.handlePasswordMatch = this.handlePasswordMatch.bind(this);
+    // this.handlePasswordMatch = this.handlePasswordMatch.bind(this);
 
     this.state = {
       companyName: "Star Fleet",
@@ -35,9 +34,9 @@ export default class EmployerSignUp extends Component {
     this.setState({ [name]: e.target.value });
   };
 
-  handlePasswordMatch(e) {
-    this.setState({confirmPassword:e.target.value});
-  }
+  // handlePasswordMatch(e) {
+  //   this.setState({confirmPassword:e.target.value});
+  // }
 
   handleNewEmp(event) {
     event.preventDefault();
@@ -130,8 +129,8 @@ export default class EmployerSignUp extends Component {
                   onChange={this.handleChange("confirmPassword")}
                   margin="normal"
                 />
-                <passwordMatch 
-                  match = {this.state.confirmPassword}/>
+                {/* <passwordMatch 
+                  match = {this.state.confirmPassword}/> */}
                 {/* 
               <TextField
                 id="hiringManagerFirstName"
@@ -175,76 +174,6 @@ export default class EmployerSignUp extends Component {
               </div>
             </Paper>
           </div>
-          {/* 
-          <Paper>
-            <div class="addJobFormContainer">
-              <div class="headline">
-                <Typography variant="headline" component="h3">
-                  Add Job Opening
-                </Typography>
-              </div>
-
-              <TextField
-                id="projectName"
-                label="Project Name"
-                value={this.state.projectName}
-                onChange={this.handleChange("projectName")}
-                margin="normal"
-              />
-
-              <TextField
-                id="description"
-                label="description"
-                value={this.state.description}
-                onChange={this.handleChange("description")}
-                margin="normal"
-              />
-
-              <TextField
-                id="jobTitle"
-                label="Job Title"
-                value={this.state.jobTitle}
-                onChange={this.handleChange("jobTitle")}
-                margin="normal"
-              />
-
-              <TextField
-                id="techStack"
-                label="Tech Stack"
-                value={this.state.techStack}
-                onChange={this.handleChange("techStack")}
-                margin="normal"
-              />
-
-              <TextField
-                id="skills"
-                label="Skills"
-                value={this.state.skills}
-                onChange={this.handleChange("skills")}
-                margin="normal"
-              />
-
-              <TextField
-                id="minSalrary"
-                label="Minimum Salrary Range"
-                value={this.state.jobTitle}
-                onChange={this.handleChange("minSalrary")}
-                margin="normal"
-              />
-
-              <TextField
-                id="maxSalary"
-                label="Maximum Salary Range"
-                value={this.state.maxSalary}
-                onChange={this.handleChange("maxSalary")}
-                margin="normal"
-              />
-
-              <Button variant="contained" color="primary">
-                Submit
-              </Button> 
-            </div>
-          </Paper>*/}
         </div>
     );
   }

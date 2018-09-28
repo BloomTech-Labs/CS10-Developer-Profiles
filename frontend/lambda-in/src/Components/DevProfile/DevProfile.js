@@ -156,7 +156,7 @@ class DevProfile extends Component {
                   </div>
                   <div className="nameCardDown" />
                 </div>
-                <div className="topCardRight">
+                {/* <div className="topCardRight">
                   <a href={acclaimBadge}>
                     <img
                       src={lambdaColorImage}
@@ -202,7 +202,7 @@ class DevProfile extends Component {
                       alt="Portfolio"
                     />
                   </a>
-                </div>
+                </div> */}
                 <div className="nameCardDown" />
               </div>
               <div className="topCardRight">
