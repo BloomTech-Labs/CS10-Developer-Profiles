@@ -48,10 +48,10 @@ class Pagination extends Component {
   /**
    * Given a url search query, return the query string with the page parameter removed.
    *
-   * @param {String} query- A url search query.
+   * @param {String} query - A url search query.
    * @example
    *  'page=2&desiredTitle=Front+End|Back+End'
-   * @return {Array} Array with page range.
+   * @return {String} Query string with page parameter removed.
    */
   cleanQuery = query => {
     const cleanQuery = query.replace(/^page=[0-9]+&?|&page=[0-9]+/i, '');
