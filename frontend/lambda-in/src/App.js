@@ -128,8 +128,12 @@ class App extends Component {
             {/* EMPLOYER START */}
             {/* LOGIN: Redirect to user Profile after login */}
             {/* SIGNUP: Redirect to user Profile after signup */}
-            <Route path="/employer-signup" render={() => (isSignedIn ? redirectToUserProfile : <EmpSignUp />)} />
+            <Route
+              path="/employer-signup"
+              render={() => (isSignedIn ? redirectToUserProfile : <EmpSignUp setGS={this.setGlobalState} />)}
+            />
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
+            <Route path="/emp-profile" render={() => (isSignedIn ? null : <Redirect to="/" />)} />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             {/* EMPLOYER END */}
             <Route component={Page404} />
