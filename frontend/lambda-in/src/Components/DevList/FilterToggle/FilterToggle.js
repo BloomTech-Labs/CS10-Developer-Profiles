@@ -18,8 +18,8 @@ const styles = {};
  * @param {String} props.fiter.displayName - Display name for filter toggle.
  * @param {String} props.filter.eleName - Name assigned to Switch component for event targetting.
  * @param {String} props.filter.toggleName - Name assigned to Button component for event targetting.
- * @param {Boolean} props.checked - True/False if Switch component is checked.
- * @param {Boolean} props.enable - True/False if Filter Toggle is enabled.
+ * @param {Boolean} props.isChecked - True/False if Switch component is checked.
+ * @param {Boolean} props.isEnabled - True/False if Filter Toggle is enabled.
  * @param {Function} props.onCheck - Switch component on change event handler.
  * @param {Function} props.onEnable - Button component on click event handler.
  * @return {Component} Material UI Avatar component.
@@ -38,13 +38,13 @@ const FilterToggle = props => {
         control={
           <Switch
             name={props.filter.eleName}
-            checked={props.checked}
+            checked={props.isChecked}
             color="primary"
             onChange={props.onCheck}
           />
         }
         label={props.filter.displayName}
-        disabled={!props.enable}
+        disabled={!props.isEnabled}
       />
       <Button
         name={props.filter.toggleName}
@@ -52,7 +52,7 @@ const FilterToggle = props => {
         onClick={props.onEnable}
         data-filter-name={props.filter.eleName}
       >
-        {props.enable ? DISABLE : ENABLE}
+        {props.isEnabled ? DISABLE : ENABLE}
       </Button>
     </FormGroup>
   );
@@ -64,8 +64,8 @@ FilterToggle.propTypes = {
     eleName: PropTypes.string.isRequired,
     toggleName: PropTypes.string.isRequired
   }).isRequired,
-  checked: PropTypes.bool.isRequired,
-  enable: PropTypes.bool.isRequired,
+  isChecked: PropTypes.bool.isRequired,
+  isEnabled: PropTypes.bool.isRequired,
   onCheck: PropTypes.func.isRequired,
   onEnable: PropTypes.func.isRequired
 };
