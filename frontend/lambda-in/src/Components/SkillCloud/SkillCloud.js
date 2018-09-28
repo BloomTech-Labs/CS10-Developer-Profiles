@@ -77,7 +77,7 @@ class SkillCloud extends Component {
    * Using the skills array stored on state, map over each skill and render a link to the /dev-list,
    * filtered by the selected skill.
    *
-   * @return {Array} Array of objects holding top skills, additional skills and skills familiar with.
+   * @return {HTML} A div holding skill links.
    */
   render() {
     const { classes } = this.props;

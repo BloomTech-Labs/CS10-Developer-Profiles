@@ -49,4 +49,4 @@ filtered by the selected skill.
 
 **Kind**: instance method of [<code>SkillCloud</code>](#SkillCloud)
 
-**Returns**: <code>Array</code> - Array of objects holding top skills, additional skills and skills familiar with.
+**Returns**: <code>HTML</code> - A div holding skill links.
