@@ -14,38 +14,57 @@ export default class DevLogin extends Component {
     this.state = {
       email: 'reg@c14.com',
       password: '12345678Aa$',
+      user: '',
     };
   }
 
-  handleLogin = event => {
+  handleAxios(httpResponse, userType) {
+    localStorage.setItem('token', httpResponse.data.jwt);
+    // RESET local state
+    this.setState({
+      username: '',
+      password: '',
+    });
+    /**
+     * SET GLOBAL STATE
+     */
+    this.props.setGS({
+      userInfo: { ...httpResponse.data.user }, // Set user data.
+      isSignedIn: true,
+      userType,
+    });
+  }
+
+  handleLogin = async event => {
     event.preventDefault();
 
-    axios
-      .post('/api/login/seekers', {
-        email: this.state.email,
-        password: this.state.password,
-      })
-      .then(response => {
-        localStorage.setItem('token', response.data.jwt);
-        // RESET local state
-        this.setState({
-          username: '',
-          password: '',
-        });
-        /**
-         * SET GLOBAL STATE
-         */
-        this.props.setGS({
-          userInfo: { ...response.data.user }, // Set user data.
-          isSignedIn: true,
-          userType: 'seeker',
-        });
-        console.log(response);
-      })
-      .catch(err => {
-        // If Error maintaing Local State -> Thus user do not have to type it again
-        console.log(err);
-      });
+    const loginData = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+
+    const seekersResponse = await axios.post('/api/login/seekers', loginData);
+
+    // If success loginin 'seeker' process response and 'return'
+    if (seekersResponse.status === 200) {
+      this.handleAxios(seekersResponse, 'seeker');
+      return;
+    }
+
+    const employersResponse = await axios.post('/api/login/employers', loginData);
+
+    // If success loginin 'employer' process response and 'return'
+    if (employersResponse.status === 200) {
+      this.handleAxios(employersResponse, 'employer');
+      return;
+    }
+
+    // If any Error reset password field
+    this.setState({ password: '' });
+    alert('Error with your credential'); // TODO: Improve UX
+
+    console.log({ 'HTTP login seekersResponse status': seekersResponse.status });
+    console.log({ 'HTTP login employersResponse status': employersResponse.status });
   };
 
   handleChange = event => {
