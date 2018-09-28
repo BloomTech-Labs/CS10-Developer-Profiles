@@ -3,8 +3,10 @@
 ## LetterAvatar(props) ⇒ <code>Component</code>
 Given a string, return a Material UI Avatar component formatted with simple characters.
 
-**Kind**: global function
+**Kind**: A React functional component
+
 **Returns**: <code>Component</code> - Material UI Avatar component.
+
 **See**
 
 - {@link https://material-ui.com/demos/avatars/#letter-avatars } for a demo of the Letter Avatar component.

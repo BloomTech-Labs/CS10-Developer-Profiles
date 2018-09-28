@@ -3,8 +3,10 @@
 ## ImageAvatar(props) ⇒ <code>Component</code>
 Given a name and an image, return a Material UI Avatar component formatted as an image.
 
-**Kind**: global function
+**Kind**: A React functional component
+
 **Returns**: <code>Component</code> - Material UI Avatar component.
+
 **See**
 
 - {@link https://material-ui.com/demos/avatars/ } for a demo of the Avatar component.
