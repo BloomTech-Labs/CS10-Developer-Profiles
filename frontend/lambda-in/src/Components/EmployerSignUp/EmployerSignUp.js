@@ -38,6 +38,13 @@ export default class EmployerSignUp extends Component {
       .then(response => {
         localStorage.setItem('token', response.data.jwt);
         localStorage.setItem('_id', response.data.newUser._id);
+        // RESET local state
+        this.setState({
+          companyName: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        });
         /**
          * SET GLOBAL STATE
          */
@@ -45,13 +52,6 @@ export default class EmployerSignUp extends Component {
           userInfo: { ...response.data.newUser }, // Set user data.
           isSignedIn: true,
           userType: 'employer',
-        });
-        // RESET local state
-        this.setState({
-          companyName: '',
-          email: '',
-          password: '',
-          confirmPassword: '',
         });
 
         console.log(response);
@@ -67,9 +67,9 @@ export default class EmployerSignUp extends Component {
 
   render() {
     return (
-      <div class="signupContainer">
-        <div class="formContainer">
-          <Paper onChange={this.handleChange} class="paper">
+      <div className="signupContainer">
+        <div className="formContainer">
+          <Paper onChange={this.handleChange} className="paper">
             <div className="form2">
               <div>
                 <Typography variant="display1" gutterBottom align="center">

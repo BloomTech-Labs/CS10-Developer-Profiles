@@ -27,6 +27,11 @@ export default class DevLogin extends Component {
       })
       .then(response => {
         localStorage.setItem('token', response.data.jwt);
+        // RESET local state
+        this.setState({
+          username: '',
+          password: '',
+        });
         /**
          * SET GLOBAL STATE
          */
@@ -35,12 +40,6 @@ export default class DevLogin extends Component {
           isSignedIn: true,
           userType: 'seeker',
         });
-        // RESET local state
-        this.setState({
-          username: '',
-          password: '',
-        });
-        console.log(localStorage.getItem('token'));
         console.log(response);
       })
       .catch(err => {

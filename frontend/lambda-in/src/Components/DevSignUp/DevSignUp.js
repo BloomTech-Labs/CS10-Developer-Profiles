@@ -48,11 +48,17 @@ export default class DevSignUp extends Component {
         lastName: this.state.lastName,
         email: this.state.email,
         password: this.state.password,
-        summary: ' boo',
       })
       .then(response => {
         localStorage.setItem('token', response.data.jwt);
         localStorage.setItem('_id', response.data.newUser._id);
+        // RESET local state
+        this.setState({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+        });
         /**
          * SET GLOBAL STATE
          */
@@ -61,17 +67,8 @@ export default class DevSignUp extends Component {
           isSignedIn: true,
           userType: 'seeker',
         });
-        // RESET local state
-        this.setState({
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-          summary: '',
-        });
 
-        console.log(response);
-        console.log(localStorage.getItem('token'));
+        console.log('POST_EMPLOYER', { status: response.status });
       })
       .catch(err => {
         this.setState({
