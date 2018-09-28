@@ -67,11 +67,11 @@ class DevList extends Component {
 
     Object.keys(FILTERS).forEach(filter => {
       if (FILTERS[filter].type === 'select') {
-        state[FILTERS[filter].name] = [];
+        state[FILTERS[filter].eleName] = [];
       }
 
       if (FILTERS[filter].type === 'toggle') {
-        state[FILTERS[filter].name] = true;
+        state[FILTERS[filter].eleName] = true;
         state[FILTERS[filter].toggleName] = false;
       }
     });
@@ -162,14 +162,14 @@ class DevList extends Component {
         switch (FILTERS[filter[0]].type) {
           case 'toggle':
             updateState[FILTERS[filter[0]].toggleName] = true;
-            updateState[FILTERS[filter[0]].name] = +filter[1] ? true : false;
+            updateState[FILTERS[filter[0]].eleName] = +filter[1] ? true : false;
             break;
           case 'select':
             const values = filter[1].split('|').map(value => ({
               value: value,
               label: value.replace(/\+/g, ' ')
             }));
-            updateState[FILTERS[filter[0]].name] = values;
+            updateState[FILTERS[filter[0]].eleName] = values;
             break;
         }
       }
@@ -291,57 +291,57 @@ class DevList extends Component {
             />
             <FilterToggle
               filter={FILTERS.acclaim}
-              checked={this.state.acclaim}
-              enable={this.state.acclaimSwitch}
+              isChecked={this.state.acclaim}
+              isEnabled={this.state.acclaimSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.projects}
-              checked={this.state.projects}
-              enable={this.state.projectsSwitch}
+              isChecked={this.state.projects}
+              isEnabled={this.state.projectsSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.experience}
-              checked={this.state.experience}
-              enable={this.state.experienceSwitch}
+              isChecked={this.state.experience}
+              isEnabled={this.state.experienceSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.education}
-              checked={this.state.education}
-              enable={this.state.educationSwitch}
+              isChecked={this.state.education}
+              isEnabled={this.state.educationSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.github}
-              checked={this.state.github}
-              enable={this.state.githubSwitch}
+              isChecked={this.state.github}
+              isEnabled={this.state.githubSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.portfolio}
-              checked={this.state.portfolio}
-              enable={this.state.portfolioSwitch}
+              isChecked={this.state.portfolio}
+              isEnabled={this.state.portfolioSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.linkedIn}
-              checked={this.state.linkedIn}
-              enable={this.state.linkedInSwitch}
+              isChecked={this.state.linkedIn}
+              isEnabled={this.state.linkedInSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.resume}
-              checked={this.state.resume}
-              enable={this.state.resumeSwitch}
+              isChecked={this.state.resume}
+              isEnabled={this.state.resumeSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
