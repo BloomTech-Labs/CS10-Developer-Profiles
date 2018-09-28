@@ -59,7 +59,7 @@ export default ({ getGS, logOut }) => {
           <Link to="/">
             <Button>meetdev</Button>
           </Link>
-          <Link to={userType === 'seeker' ? '/meetdev' : '/meetposition'}>
+          <Link to={userType === 'seeker' ? '/meetposition' : '/meetdev'}>
             <Button>Browse</Button>
           </Link>
           {isSignedIn ? withToken.leftNavBar : withNotToken.leftNavBar}
