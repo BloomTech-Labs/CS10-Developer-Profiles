@@ -45,11 +45,24 @@ class Pagination extends Component {
     };
   }
 
+  /**
+   * Given a url search query, return the query string with the page parameter removed.
+   *
+   * @param {String} query- A url search query.
+   * @example
+   *  'page=2&desiredTitle=Front+End|Back+End'
+   * @return {Array} Array with page range.
+   */
   cleanQuery = query => {
     const cleanQuery = query.replace(/^page=[0-9]+&?|&page=[0-9]+/i, '');
     return cleanQuery === '' ? cleanQuery : `&${cleanQuery}`;
   };
 
+  /**
+   * Generate a range from 1 to the total number of pages and return the list in an array.
+   *
+   * @return {Array} Array with page range.
+   */
   getAllPageLinks = () => {
     const pageLinks = [];
 
@@ -60,6 +73,11 @@ class Pagination extends Component {
     return pageLinks;
   };
 
+  /**
+   * Generate a range from 1 to the lowLimit and return the list in an array.
+   *
+   * @return {Array} Array with page range.
+   */
   getLowRangePageLinks = () => {
     const pageLinks = [];
 
@@ -70,6 +88,11 @@ class Pagination extends Component {
     return pageLinks;
   };
 
+  /**
+   * Generate a range from the highLimit to the total number of pages and return the list in an array.
+   *
+   * @return {Array} Array with page range.
+   */
   getHighRangePageLinks = () => {
     const pageLinks = [];
 
@@ -80,6 +103,12 @@ class Pagination extends Component {
     return pageLinks;
   };
 
+  /**
+   * Determine the start point for the page range and generate a range from the start to the max number
+   * of page linkes and return list in an array.
+   *
+   * @return {Array} Array with page range.
+   */
   getMidRangePageLinks = () => {
     const pageLinks = [];
     const start =
@@ -92,6 +121,13 @@ class Pagination extends Component {
     return pageLinks;
   };
 
+  /**
+   * Using the passed in props pages and currentPage and the maxPageLinks, lowLimit and highLimit on the
+   * state, determine which method to call to generate the appropriate page range. Return the page range as
+   * an array of integers.
+   *
+   * @return {Array} Array with page range
+   */
   getPageLinks = () => {
     if (this.props.pages <= this.state.maxPageLinks)
       return this.getAllPageLinks();
@@ -105,13 +141,23 @@ class Pagination extends Component {
     return this.getMidRangePageLinks();
   };
 
-  handleClick = (event, page) => {
+  /**
+   * Click event handler
+   * When called, scroll the window up to the top of the page.
+   */
+  handleClick = () => {
     /**
      * @todo Replace with smooth scroll
      */
     window.scrollTo(0, 0);
   };
 
+  /**
+   * Render method.
+   * Get the range of page links and a clean query string and return HTML for the page links.
+   *
+   * @return {HTML} HTML unordered list of page links
+   */
   render() {
     const { classes } = this.props;
     const pageLinks = this.getPageLinks();
