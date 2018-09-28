@@ -21,6 +21,20 @@ const styles = {};
  * @prop {Array} pageLinks - Range of page links to generate.
  */
 class Pagination extends Component {
+  /**
+   * Create a Pagination component
+   *
+   * @param {Object} props - Component properties.
+   * @param {Integer} props.count - The total number of records being displayed.
+   * @param {Integer} props.pages - The total number of pages that should exist.
+   * @param {Integer} props.currentPage - The current page number.
+   * @param {String} props.pathName - The current page url pathname.
+   * @example
+   *  '/dev-list'
+   * @param {String} props.query - The current page url search query.
+   * @example
+   *  'page=2&desiredTitle=Front+End|Back+End'
+   */
   constructor(props) {
     super(props);
     this.state = {
