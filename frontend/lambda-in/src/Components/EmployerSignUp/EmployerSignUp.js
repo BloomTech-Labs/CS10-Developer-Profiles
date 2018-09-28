@@ -4,9 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
-import Grid from '@material-ui/core/Grid';
 
-import NavBar from '../../Components/Navbar/navbar';
 import '../EmployerSignUp/EmployerSignUp.css';
 
 export default class EmployerSignUp extends Component {
@@ -15,7 +13,7 @@ export default class EmployerSignUp extends Component {
 
     this.state = {
       companyName: 'Star Fleet',
-      email: 'starfleetcommand@starfleet.ufp',
+      email: 'emp@c2.com',
       password: '!Nechayev7alpha',
       confirmPassword: '!Nechayev7alpha',
     };
@@ -38,16 +36,31 @@ export default class EmployerSignUp extends Component {
     axios
       .post(`/api/register/employers`, newEmp)
       .then(response => {
-        console.log(response);
         localStorage.setItem('token', response.data.jwt);
-        localStorage.setItem('_id', response.data.newEmp._id);
-        this.setState({
+        localStorage.setItem('_id', response.data.newUser._id);
+        /**
+         * SET GLOBAL STATE
+         */
+        this.props.setGS({
+          userInfo: { ...response.data.newUser }, // Set user data.
           isSignedIn: true,
+          userType: 'employer',
         });
-        console.log(localStorage.getItem('token'));
-        console.log(response.data.newEmp._id);
+        // RESET local state
+        this.setState({
+          companyName: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        });
+
+        console.log(response);
       })
       .catch(err => {
+        this.setState({
+          password: '',
+          confirmPassword: '',
+        });
         console.log(err);
       });
   };
