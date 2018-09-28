@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Select from 'react-select';
 import makeAnimated from 'react-select/lib/animated';
-import DevProfileCard from './DevProfileCard';
+import DevProfileCard from './DevProfileCard/DevProfileCard';
 import FilterToggle from './FilterToggle/FilterToggle';
 import Pagination from '../Pagination/Pagination';
 import { ENABLE, DISABLE, SORT, FILTERS } from '../constants';
