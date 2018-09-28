@@ -135,4 +135,29 @@
     min-height: 4vw;
     border-top: solid #4A4A4A 2px;
 }
-
+.lambda-badge:hover {
+    z-index: 2;
+  height: 7vw;
+  width: 7vw;
+}
+.social-network:hover {
+    z-index: 3;
+  height: 7vw;
+  width: 7vw;
+  src: "./img/lambdaColor.png";
+}
+.github:hover {
+    z-index: 3;
+  height: 7vw;
+  width: 7vw;
+}
+.linkedin:hover {
+    z-index: 3;
+  height: 7vw;
+  width: 7vw;
+}
+.portfolio:hover {
+    z-index: 3;
+  height: 7vw;
+  width: 7vw;
+}

@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const educationSchema = require('./Education.embeddedModel');
 const experienceSchema = require('./Experience.embeddedModel');
 const projectSchema = require('./Project.embeddedModel');
+const locationSchema = require('../Location.Schema/Location.embeddedModel');
 
 const { Schema } = mongoose;
 
@@ -45,10 +46,7 @@ const seekerSchema = new Schema({
   desiredTitle: {
     type: String,
   },
-  currentLocation: {
-    type: String,
-    // PENDING: Implement validation.
-  },
+  currentLocation: locationSchema,
   summary: {
     type: String,
     maxlength: [128, 'Summary can not exceed 128 characters'],
@@ -74,10 +72,7 @@ const seekerSchema = new Schema({
     // PENDING: Validate via API
     // TODO: Validate the URL
   },
-  placesInterested: {
-    type: Array,
-    // TODO: Validate city's names
-  },
+  placesInterested: [locationSchema],
   topSkills: {
     type: Array,
   },

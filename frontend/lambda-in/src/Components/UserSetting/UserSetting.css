@@ -1,0 +1,62 @@
+.UserContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.userPaperContainer{
+    width: 30vw;
+    height: 70vh;
+    margin:20 px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.inputRow{
+    height: 10vh; 
+}
+
+.smallInputContainer{
+    width: 53VW;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.imageContainer{
+    width: 28VW;
+    
+}
+
+.displayPic{
+    height: 30vh;
+}
+.inputField {
+    width:25vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.inputFieldLargeMultiline {
+    width:50vw;
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge{
+    width: 53vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}

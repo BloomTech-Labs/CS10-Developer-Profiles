@@ -4,12 +4,14 @@ import './App.css';
 import NavBar from './Components/Navbar/navbar';
 import DevSignUp from './Components/DevSignUp/DevSignUp';
 import DevLogin from './Components/DevLogIn/DevLogIn';
-import LandingPage from './Components/Landing Page/landing-page';
+import LandingPage from './Components/LandingPage/landing-page';
 import DevProfile from './Components/DevProfile/DevProfile';
 import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
 import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpList from './Components/EmployerList/EmpOPList';
+import UserSetting from './Components/UserSetting/UserSetting';
+import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
 
 import PassProps from './Components/DevInfoEditz/DevInfoEditz';
 
@@ -92,6 +94,7 @@ class App extends Component {
                 isSignedIn ? redirectToUserProfile : <DevLogin {...props} setGS={this.setGlobalState} />
               }
             />
+            <Route path="/geolocation-test" component={SearchGeolocation} />
           </Switch>
         </div>
       </div>
