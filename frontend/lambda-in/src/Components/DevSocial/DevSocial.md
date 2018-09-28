@@ -4,7 +4,7 @@
 Given a Github, LinkedIn, Portfolio and/or Acclaim link, return a Material UI List component containing
 a Material UI ListItem component and FontAwesomeIcon component for each link.
 
-**Kind**: global function
+**Kind**: A React functional component
 
 **Returns**: <code>Component</code> - Material UI List component.
 
