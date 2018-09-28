@@ -21,7 +21,24 @@ const styles = {
   }
 };
 
+/**
+ * Skill Cloud component
+ *
+ * @description A component that generates a skill cloud using arrays of top skills, additional skills
+ * and skills familiar with.
+ * @class A React class component
+ * @prop {Array} skills - An array of objects holding all skills passed in.
+ */
 class SkillCloud extends Component {
+  /**
+   * Create a Skill Cloud component
+   *
+   * @param {Object} props - Component properties.
+   * @param {Array} props.topSkills - List of seeker's top skills to be displayed in large text.
+   * @param {Array} props.addSkills - List of seeker's additional skills to be displayed in medium text.
+   * @param {Array} props.familiar - List of skills the seeker is familiar with to be displayed in small
+   * text.
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -29,6 +46,13 @@ class SkillCloud extends Component {
     };
   }
 
+  /**
+   * Using the passed in props topSkills, addSkills and familiar, combine the skills into an array of
+   * objects. Each object contains the skill type, a class associated with the skill type and the skill.
+   * Return the single skills array.
+   *
+   * @return {Array} Array of objects holding top skills, additional skills and skills familiar with.
+   */
   combineSkills = () => {
     const { classes } = this.props;
     const skills = [];
@@ -48,6 +72,13 @@ class SkillCloud extends Component {
     return skills;
   };
 
+  /**
+   * Render method.
+   * Using the skills array stored on state, map over each skill and render a link to the /dev-list,
+   * filtered by the selected skill.
+   *
+   * @return {Array} Array of objects holding top skills, additional skills and skills familiar with.
+   */
   render() {
     const { classes } = this.props;
     const { skills } = this.state;
