@@ -24,7 +24,7 @@ const DevSnapshot = props => {
     <CardContent className={classes.devSnapshot}>
       <div className={classes.devSnapshotHeader}>
         {props.img ? (
-          <ImageAvatar name={props.name} img={props.img} />
+          <ImageAvatar avatarName={props.avatarName} img={props.img} />
         ) : (
           <LetterAvatar content={props.initials} />
         )}
