@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import MapList from '../MapList/MapList';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
-import { Link } from 'react-router-dom';
+import MapList from '../MapList/MapList';
 import './DevProfile2.css';
+import lambdaColorImg from './img/lambdaColor.png';
+import GitHubImg from './img/GitHub.png';
+import linkedinImg from './img/linkedin.jpg';
+import portfolioImg from './img/portfolio.png';
+
 export default ({ getGS, setGS }) => {
   const userInfo = getGS('userInfo');
 
@@ -13,12 +18,12 @@ export default ({ getGS, setGS }) => {
   const AS = userInfo.additionalSkills;
   const SS = userInfo.skills;
   const allSkills = TS.concat(AS, SS);
-  const skillList = allSkills.map(skill => (
-    <li>
-      {skill}
-      {` `}
-    </li>
-  ));
+  // const skillList = allSkills.map(skill => (
+  //   <li>
+  //     {skill}
+  //     {` `}
+  //   </li>
+  // ));
 
   // let handleOpen = () => {
   //   setGS({ DevProfileModal: true });
@@ -33,13 +38,14 @@ export default ({ getGS, setGS }) => {
       <Paper className="profilePaper">
         <div className="profileTopCard">
           <div className="profileImage">
-            <img className="profileImage" src={`https://robohash.org/tony`} alt="Italian " />
+            <img className="profileImage" src="https://robohash.org/tony" alt="Italian " />
           </div>
           <div className="profileBio">
             <div className="basicInfo">
               <div className="name">
                 <Typography variant="headline" component="h3">
-                  {userInfo.firstName} {userInfo.lastName}
+                  {userInfo.firstName}
+                  {userInfo.lastName}
                 </Typography>
               </div>
               <div className="currentLocation">
@@ -50,7 +56,10 @@ export default ({ getGS, setGS }) => {
               <div className="summary">
                 <Typography>{userInfo.summary}</Typography>
               </div>
-              <div className="desiredTitle">Desired Title: {userInfo.desiredTitle}</div>
+              <div className="desiredTitle">
+                Desired Title:
+                {userInfo.desiredTitle}
+              </div>
               <div className="tagCloud">
                 <MapList array={allSkills} />
               </div>
@@ -58,26 +67,16 @@ export default ({ getGS, setGS }) => {
           </div>
           <div className="profileLinks">
             <a href={userInfo.acclaimBadge}>
-              <img
-                src={require('./img/lambdaColor.png')}
-                className="profileLinksIcon"
-                title="Acclaimed Badge"
-                alt="Badge"
-              />
+              <img src={lambdaColorImg} className="profileLinksIcon" title="Acclaimed Badge" alt="Badge" />
             </a>
             <a href={userInfo.github}>
-              <img src={require('./img/GitHub.png')} className="profileLinksIcon" title="Github" alt="Github Repo" />
+              <img src={GitHubImg} className="profileLinksIcon" title="Github" alt="Github Repo" />
             </a>
             <a href={userInfo.linkedin}>
-              <img src={require('./img/linkedin.jpg')} className="profileLinksIcon" title="Linkedin" alt="Linkedin" />
+              <img src={linkedinImg} className="profileLinksIcon" title="Linkedin" alt="Linkedin" />
             </a>
             <a href={userInfo.portfolio}>
-              <img
-                src={require('./img/portfolio.png')}
-                className="profileLinksIcon"
-                title="Portfolio"
-                alt="Portfolio"
-              />
+              <img src={portfolioImg} className="profileLinksIcon" title="Portfolio" alt="Portfolio" />
             </a>
           </div>
         </div>
