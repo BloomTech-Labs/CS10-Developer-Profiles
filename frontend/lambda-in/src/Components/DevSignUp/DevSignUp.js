@@ -14,15 +14,15 @@ export default class DevSignUp extends Component {
     this.state = {
       firstName: 'bat',
       lastName: 'man',
-      email: 'abc@xyz.com',
+      email: 'reg@c15.com',
       password: '12345678Aa$',
-      confirmPassword: '',
+      confirmPassword: '12345678Aa$',
     };
   }
 
-  handleChange = name => event => {
+  handleChange = event => {
     this.setState({
-      [name]: event.target.value,
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -86,7 +86,7 @@ export default class DevSignUp extends Component {
     return (
       <div className="signupContainer">
         <div className="formConatiner">
-          <Paper className="paper">
+          <Paper className="paper" onChange={this.handleChange}>
             <div className="form2">
               <div>
                 <Typography variant="display1" gutterBottom align="center">
@@ -98,45 +98,19 @@ export default class DevSignUp extends Component {
                 </Typography>
               </div>
               {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
-              <TextField
-                id="firstName"
-                label="First Name"
-                value={this.state.firstName}
-                onChange={this.handleChange('firstName')}
-                margin="normal"
-              />
+              <TextField id="firstName" label="First Name" value={this.state.firstName} margin="normal" />
 
-              <TextField
-                id="lastName"
-                label="Last Name"
-                value={this.state.lastName}
-                onChange={this.handleChange('lastName')}
-                margin="normal"
-              />
+              <TextField id="lastName" label="Last Name" value={this.state.lastName} margin="normal" />
 
-              <TextField
-                id="email"
-                label="Email"
-                value={this.state.email}
-                onChange={this.handleChange('email')}
-                margin="normal"
-              />
+              <TextField id="email" label="Email" value={this.state.email} margin="normal" />
 
-              <TextField
-                id="password"
-                type="password"
-                label="Password"
-                value={this.state.password}
-                onChange={this.handleChange('password')}
-                margin="normal"
-              />
+              <TextField id="password" type="password" label="Password" value={this.state.password} margin="normal" />
 
               <TextField
                 id="confirmPassword"
                 type="password"
                 label="Confirm Password"
                 value={this.state.confirmPassword}
-                onChange={this.handleChange('confirmPassword')}
                 margin="normal"
               />
               <br />
