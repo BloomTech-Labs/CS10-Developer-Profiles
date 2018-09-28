@@ -6,6 +6,20 @@ import { PAGINATION_SETTINGS } from '../constants';
 
 const styles = {};
 
+/**
+ * Pagination component
+ *
+ * @description A component that generates links to navigate through a list of pages.
+ * @class A React class component
+ * @prop {Integer} maxPageLinks - The maximum number of page links to generate.
+ * @prop {Integer} lowLimit - Tha max point the current page can be at to generate a low page range.
+ * @example
+ *  Ex: If current page is less than low limit, the page range will always be 1,2,3,4,5,6
+ * @prop {Integer} highLimit - The min point the current page can be at to generate a high page range.
+ * @example
+ *  Ex: If current page is more than high limit, the page range will always be 34,35,36,37,38,39
+ * @prop {Array} pageLinks - Range of page links to generate.
+ */
 class Pagination extends Component {
   constructor(props) {
     super(props);
