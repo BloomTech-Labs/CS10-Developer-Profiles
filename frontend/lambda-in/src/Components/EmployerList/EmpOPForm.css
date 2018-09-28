@@ -1,0 +1,8 @@
+.formContainer{
+    display: flex;
+    align-self: center;
+}
+
+.submitButton{
+    display: flex;
+}

@@ -4,14 +4,21 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
-import Grid from "@material-ui/core/Grid";
+import { Link } from 'react-router-dom';
 
-import NavBar from "../../Components/Navbar/navbar";
 import "../EmployerSignUp/EmployerSignUp.css";
+
+// function passwordMatch(props) {
+//   if (props.password === props.confirmPassword) {
+//     return <p>password confirmed</p>;
+//   }
+//   return <p>password does NOT match</p>;
+// }
 
 export default class EmployerSignUp extends Component {
   constructor(props) {
     super(props);
+    // this.handlePasswordMatch = this.handlePasswordMatch.bind(this);
 
     this.state = {
       companyName: "Star Fleet",
@@ -21,21 +28,17 @@ export default class EmployerSignUp extends Component {
       hiringManagerFirstName: "Alynna",
       hiringManagerLastName: "Nechayev",
       hiringManagerEmail: "nechayev@starfleet.ufp",
-      projectName: "Enterprise-D",
-      description:
-        "We are watching for the captain of the Federation Flagship.",
-      jobTitle: "Captain",
-      techStack: "full stack",
-      skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
-      minSalrary: 1000000,
-      maxSalary: 2000000
     };
   }
   handleChange = name => e => {
     this.setState({ [name]: e.target.value });
   };
 
-  handleNewEmp = event => {
+  // handlePasswordMatch(e) {
+  //   this.setState({confirmPassword:e.target.value});
+  // }
+
+  handleNewEmp(event) {
     event.preventDefault();
 
     const newEmp = {
@@ -126,6 +129,8 @@ export default class EmployerSignUp extends Component {
                   onChange={this.handleChange("confirmPassword")}
                   margin="normal"
                 />
+                {/* <passwordMatch 
+                  match = {this.state.confirmPassword}/> */}
                 {/* 
               <TextField
                 id="hiringManagerFirstName"
@@ -161,84 +166,14 @@ export default class EmployerSignUp extends Component {
                 </Button>
               </div>
               <div className="login">
-                {/* <Link to="/emp-login"> */}
+                <Link to="/dev-login">
                   <Typography variant="caption" gutterBottom align="center">
                     already have an account? Login here!
                   </Typography>
-                {/* </Link> */}
+                </Link>
               </div>
             </Paper>
           </div>
-          {/* 
-          <Paper>
-            <div class="addJobFormContainer">
-              <div class="headline">
-                <Typography variant="headline" component="h3">
-                  Add Job Opening
-                </Typography>
-              </div>
-
-              <TextField
-                id="projectName"
-                label="Project Name"
-                value={this.state.projectName}
-                onChange={this.handleChange("projectName")}
-                margin="normal"
-              />
-
-              <TextField
-                id="description"
-                label="description"
-                value={this.state.description}
-                onChange={this.handleChange("description")}
-                margin="normal"
-              />
-
-              <TextField
-                id="jobTitle"
-                label="Job Title"
-                value={this.state.jobTitle}
-                onChange={this.handleChange("jobTitle")}
-                margin="normal"
-              />
-
-              <TextField
-                id="techStack"
-                label="Tech Stack"
-                value={this.state.techStack}
-                onChange={this.handleChange("techStack")}
-                margin="normal"
-              />
-
-              <TextField
-                id="skills"
-                label="Skills"
-                value={this.state.skills}
-                onChange={this.handleChange("skills")}
-                margin="normal"
-              />
-
-              <TextField
-                id="minSalrary"
-                label="Minimum Salrary Range"
-                value={this.state.jobTitle}
-                onChange={this.handleChange("minSalrary")}
-                margin="normal"
-              />
-
-              <TextField
-                id="maxSalary"
-                label="Maximum Salary Range"
-                value={this.state.maxSalary}
-                onChange={this.handleChange("maxSalary")}
-                margin="normal"
-              />
-
-              <Button variant="contained" color="primary">
-                Submit
-              </Button> 
-            </div>
-          </Paper>*/}
         </div>
     );
   }

@@ -10,6 +10,7 @@ import linkedInImage from './img/linkedin.jpg';
 import picardImage from './img/picard.jpg';
 import portfolioImage from './img/portfolio.png';
 import snsImage from './img/sns.png';
+import axios from 'axios';
 
 AOS.init();
 
@@ -48,12 +49,43 @@ class DevProfile extends Component {
     };
   }
 
-  // componentDidMount() {
-  //     fetch(this.state)
-  //     skillCloudHighlighter(state) {
+  handleAuth = () => {
+    if (localStorage.getItem("token") !== null) {
+      this.setState({
+        isSignedIn: true
+      });
+    } else {
+      this.setState({
+        isSignedIn: false
+      });
+    }
+  };
 
-  //     }
-  // }
+  handleGetAll = () => {
+    if (this.state.isSignedIn) {
+      axios
+        .get(
+          `/api/employers/`,
+
+          {
+            headers: {
+              Authorization: localStorage.getItem("token")
+            }
+          }
+        )
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  };
+
+  componentDidMount(){
+    this.handleAuth();
+    this.handleGetAll();
+}
 
   render() {
     const {
@@ -124,7 +156,7 @@ class DevProfile extends Component {
                   </div>
                   <div className="nameCardDown" />
                 </div>
-                <div className="topCardRight">
+                {/* <div className="topCardRight">
                   <a href={acclaimBadge}>
                     <img
                       src={lambdaColorImage}
@@ -170,7 +202,8 @@ class DevProfile extends Component {
                       alt="Portfolio"
                     />
                   </a>
-                </div>
+                </div> */}
+                <div className="nameCardDown" />
               </div>
               <div className="topCardRight">
                 <a href={acclaimBadge}>

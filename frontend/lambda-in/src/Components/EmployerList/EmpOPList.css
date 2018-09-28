@@ -1,29 +1,24 @@
-.navBar {
-    width: 100vw;
-    height: 5vh;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.leftNavBar {
-    width:50vw;
-    height: 5vh;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.rightNavBar {
-    width:50vw;
-    height: 5vh;
-    display: flex;
-    justify-content: flex-end;
-}
-
 .container {
-    width: 100vw;
+    width: 50vw;
+    display:flex;
+    flex-direction: column;
 }
 
 .body {
+    display:flex;
+    flex-direction: column;
+    display: flex;
     margin: 20px auto 0;
-    width: 65vw;
+    width: 50vw;
+    align-self: center;
+}
+
+.paper {
+    align-self: center;
+}
+
+.form {
+    align-self: center;
+    justify-content: center;
+    margin: auto;
 }
