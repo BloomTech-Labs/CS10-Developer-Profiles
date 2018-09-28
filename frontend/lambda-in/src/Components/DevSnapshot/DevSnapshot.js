@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
-import ImageAvatar from '../Avatar/ImageAvatar';
-import LetterAvatar from '../Avatar/LetterAvatar';
+import ImageAvatar from '../Avatar/ImageAvatar/ImageAvatar';
+import LetterAvatar from '../Avatar/LetterAvatar/LetterAvatar';
 import SkillCloud from '../SkillCloud/SkillCloud';
 
 const styles = {
