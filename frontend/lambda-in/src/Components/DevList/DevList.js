@@ -13,9 +13,9 @@ import { ENABLE, DISABLE, SORT, FILTERS } from '../constants';
  * Mock API data calls
  * @todo Add data to db and create API routes to replace these imports
  */
-import jobTitles from './jobTitles';
-import techSkills from './skills';
-import sortOptions from './sortOptions';
+import jobTitles from './data/jobTitles';
+import techSkills from './data/skills';
+import sortOptions from './data/sortOptions';
 
 const desiredTitle = jobTitles.map(title => ({
   value: title.replace(/ /g, '+'),
