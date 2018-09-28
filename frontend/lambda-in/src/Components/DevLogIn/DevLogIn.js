@@ -27,6 +27,11 @@ export default class DevLogin extends Component {
       })
       .then(response => {
         localStorage.setItem('token', response.data.jwt);
+        // RESET local state
+        this.setState({
+          username: '',
+          password: '',
+        });
         /**
          * SET GLOBAL STATE
          */
@@ -35,12 +40,6 @@ export default class DevLogin extends Component {
           isSignedIn: true,
           userType: 'seeker',
         });
-        // RESET local state
-        this.setState({
-          username: '',
-          password: '',
-        });
-        console.log(localStorage.getItem('token'));
         console.log(response);
       })
       .catch(err => {
@@ -49,9 +48,9 @@ export default class DevLogin extends Component {
       });
   };
 
-  handleChange = name => event => {
+  handleChange = event => {
     this.setState({
-      [name]: event.target.value,
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -59,7 +58,7 @@ export default class DevLogin extends Component {
     return (
       <div className="loginContainer">
         <div className="formConatiner">
-          <Paper className="paper">
+          <Paper onChange={this.handleChange} className="paper">
             <div className="form2">
               <div>
                 <Typography variant="display1" gutterBottom align="center">
@@ -70,22 +69,9 @@ export default class DevLogin extends Component {
                   Login
                 </Typography>
               </div>
-              <TextField
-                id="email"
-                label="Email"
-                value={this.state.email}
-                onChange={this.handleChange('email')}
-                margin="normal"
-              />
+              <TextField id="email" label="Email" value={this.state.email} margin="normal" />
 
-              <TextField
-                id="password"
-                type="password"
-                label="password"
-                value={this.state.password}
-                onChange={this.handleChange('password')}
-                margin="normal"
-              />
+              <TextField id="password" type="password" label="password" value={this.state.password} margin="normal" />
 
               <br />
               <Button variant="contained" color="primary" onClick={this.handleLogin}>

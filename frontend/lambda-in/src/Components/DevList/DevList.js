@@ -38,7 +38,7 @@ class DevList extends Component {
             </Typography>
             <FormControl>
               <FormControlLabel
-                control={(
+                control={
                   <Checkbox
                     name="gilad"
                     checked={gilad}
@@ -47,7 +47,7 @@ class DevList extends Component {
                     onChange={this.handleChange}
                     value="gilad"
                   />
-                )}
+                }
                 label="Full Stack Web"
               />
             </FormControl>
