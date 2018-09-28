@@ -14,6 +14,8 @@ import EmpList from './Components/EmployerList/EmpOPList';
 import UserSetting from './Components/UserSetting/UserSetting';
 import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
 
+import PassProps from './Components/DevInfoEditz/DevInfoEditz';
+
 import DevList from './Components/DevList/DevList';
 import Page404 from './Components/Page404/Page404';
 
@@ -24,6 +26,8 @@ class App extends Component {
       isSignedIn: false,
       userInfo: '', // To be populated after 'login' || 'register' from other components.
       userType: '', // 'seeker' || 'employer'
+      updateState: '', // 'updating' || 'updated' || 'error'
+      deleteState: '', // 'deleting' || 'deleted' || 'error'
     };
   }
 
@@ -44,6 +48,7 @@ class App extends Component {
    * <Component setGS={this.setGlobalState} />
    */
   setGlobalState = properties => {
+    console.log({ setGS: properties });
     this.setState(properties);
   };
 
@@ -122,7 +127,16 @@ class App extends Component {
             />
             <Route path="/dev-profile2" render={() => <DevProfile getGS={this.getGlobalState} />} />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
-            <Route path="/dev-info-edit" render={() => (isSignedIn ? <DevInfoEditz /> : <Redirect to="/" />)} />
+            <Route
+              path="/dev-info-edit"
+              render={props =>
+                isSignedIn ? (
+                  <DevInfoEditz {...props} setGS={this.setGlobalState} getGS={this.getGlobalState} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
             {/* DEVELOPER END */}
 
             {/* EMPLOYER START */}

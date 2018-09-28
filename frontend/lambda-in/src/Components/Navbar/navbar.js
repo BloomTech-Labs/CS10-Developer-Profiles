@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import { Route, Switch, Link, Redirect, withRouter } from 'react-router-dom';
-//import { Navbar, NavItem, NavDropdown, Nav, MenuItem } from 'react-bootstrap';
-import './navbar.css';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import SimpleMenu from '../SignUp Menu/sign-up';
+
+import './navbar.css';
 
 /**
  * Functional component responsible of Navigation links
