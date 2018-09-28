@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
-import { Route, Switch, Link, Redirect, withRouter } from 'react-router-dom';
-//import { Navbar, NavItem, NavDropdown, Nav, MenuItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './navbar.css';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -26,12 +25,12 @@ export default ({ getGS, logOut }) => {
      */
     leftNavBar: (
       <Fragment>
-        <Link to={userType === 'seeker' ? '/dev-profile' : '/emp-profile'}>
-          <Button>profile</Button>
-        </Link>
-        <Link to="/billing">
-          <Button>Billing</Button>
-        </Link>
+        <Button component={Link} to={userType === 'seeker' ? '/dev-profile' : '/emp-profile'}>
+          profile
+        </Button>
+        <Button component={Link} to="/billing">
+          Billing
+        </Button>
       </Fragment>
     ),
     rightNavBar: <Button onClick={logOut}>Log out</Button>,
@@ -45,9 +44,9 @@ export default ({ getGS, logOut }) => {
     rightNavBar: (
       <Fragment>
         <SimpleMenu />
-        <Link to="/dev-login">
-          <Button>Log-in</Button>
-        </Link>
+        <Button component={Link} to="/dev-login">
+          Log-in
+        </Button>
       </Fragment>
     ),
   };
@@ -56,12 +55,12 @@ export default ({ getGS, logOut }) => {
     <Paper>
       <div className="navBar">
         <div className="leftNavBar">
-          <Link to="/">
-            <Button>meetdev</Button>
-          </Link>
-          <Link to={userType === 'seeker' ? '/meetposition' : '/meetdev'}>
-            <Button>Browse</Button>
-          </Link>
+          <Button component={Link} to="/">
+            meetdev
+          </Button>
+          <Button component={Link} to={userType === 'seeker' ? '/meetposition' : '/meetdev'}>
+            Browse
+          </Button>
           {isSignedIn ? withToken.leftNavBar : withNotToken.leftNavBar}
         </div>
         <div className="rightNavBar">{isSignedIn ? withToken.rightNavBar : withNotToken.rightNavBar}</div>
