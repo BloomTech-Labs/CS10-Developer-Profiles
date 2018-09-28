@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import SimpleMenu from '../SignUp Menu/sign-up';
+
+import './navbar.css';
 
 /**
  * Functional component responsible of Navigation links
@@ -43,7 +43,6 @@ export default ({ getGS, logOut }) => {
     leftNavBar: <Fragment />, // There are no Links to display
     rightNavBar: (
       <Fragment>
-        <SimpleMenu />
         <Button component={Link} to="/dev-login">
           Log-in
         </Button>
