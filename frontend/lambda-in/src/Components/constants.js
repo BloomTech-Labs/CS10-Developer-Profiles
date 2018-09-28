@@ -1,11 +1,32 @@
+/**
+ * @file Settings for Developer Profiles Frontend
+ */
+
+/**
+ * @constant
+ * @type {String}
+ */
 export const ENABLE = 'Enable';
+
+/**
+ * @constant
+ * @type {String}
+ */
 export const DISABLE = 'Disable';
 
+/**
+ * @constant
+ * @type {Object}
+ */
 export const SORT = {
   asc: 'A-Z',
   dsc: 'Z-A'
 };
 
+/**
+ * @constant
+ * @type {Object}
+ */
 export const FILTERS = {
   sort: {
     type: 'select',
@@ -82,6 +103,10 @@ export const FILTERS = {
   }
 };
 
+/**
+ * @constant
+ * @type {Object}
+ */
 export const PAGINATION_SETTINGS = {
   maxPageLinks: 7,
   pageLimit: 10
