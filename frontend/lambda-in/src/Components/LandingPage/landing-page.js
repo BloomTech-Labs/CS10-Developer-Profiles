@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../Navbar/navbar';
-import ImageContainer from './Image Container/image-container';
+import ImageContainer from './ImageContainer/image-container';
 import Footer from './Footer/footer';
 
 class LandingPage extends React.Component {
