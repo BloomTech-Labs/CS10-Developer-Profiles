@@ -55,50 +55,50 @@ export const FILTERS = {
   },
   acclaim: {
     type: 'toggle',
-    label: 'Lambda Badge',
-    name: 'acclaim',
+    displayName: 'Lambda Badge',
+    eleName: 'acclaim',
     toggleName: 'acclaimSwitch'
   },
   github: {
     type: 'toggle',
-    label: 'GitHub',
-    name: 'github',
+    displayName: 'GitHub',
+    eleName: 'github',
     toggleName: 'githubSwitch'
   },
   linkedIn: {
     type: 'toggle',
-    label: 'LinkedIn',
-    name: 'linkedIn',
+    displayName: 'LinkedIn',
+    eleName: 'linkedIn',
     toggleName: 'linkedInSwitch'
   },
   portfolio: {
     type: 'toggle',
-    label: 'Portfolio',
-    name: 'portfolio',
+    displayName: 'Portfolio',
+    eleName: 'portfolio',
     toggleName: 'portfolioSwitch'
   },
   resume: {
     type: 'toggle',
-    label: 'Resume',
-    name: 'resume',
+    displayName: 'Resume',
+    eleName: 'resume',
     toggleName: 'resumeSwitch'
   },
   projects: {
     type: 'toggle',
-    label: 'Projects',
-    name: 'projects',
+    displayName: 'Projects',
+    eleName: 'projects',
     toggleName: 'projectsSwitch'
   },
   experience: {
     type: 'toggle',
-    label: 'Experience',
-    name: 'experience',
+    displayName: 'Experience',
+    eleName: 'experience',
     toggleName: 'experienceSwitch'
   },
   education: {
     type: 'toggle',
-    label: 'Education',
-    name: 'education',
+    displayName: 'Education',
+    eleName: 'education',
     toggleName: 'educationSwitch'
   }
 };
