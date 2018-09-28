@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Switch from '@material-ui/core/Switch';
-import { ENABLE, DISABLE } from '../constants';
+import { ENABLE, DISABLE } from '../../constants';
 
 const styles = {};
 
