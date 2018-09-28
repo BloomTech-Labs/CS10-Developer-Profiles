@@ -120,7 +120,7 @@ class App extends Component {
               path="/dev-profile"
               render={() => (isSignedIn ? <DevProfile2 getGS={this.getGlobalState} /> : <Redirect to="/" />)}
             />
-            <Route path="/dev-profile2" render={() => <DevProfile getGS={this.getGlobalState} />} />
+            {/* <Route path="/dev-profile2" render={() => <DevProfile getGS={this.getGlobalState} />} /> */}
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route path="/dev-info-edit" render={() => (isSignedIn ? <DevInfoEditz /> : <Redirect to="/" />)} />
             {/* DEVELOPER END */}
@@ -133,7 +133,7 @@ class App extends Component {
               render={() => (isSignedIn ? redirectToUserProfile : <EmpSignUp setGS={this.setGlobalState} />)}
             />
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
-            <Route path="/emp-profile" render={() => (isSignedIn ? null : <Redirect to="/" />)} />
+            <Route path="/emp-profile" render={() => (isSignedIn ? <EmpList/> : <Redirect to="/" />)} />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             {/* EMPLOYER END */}
             <Route component={Page404} />

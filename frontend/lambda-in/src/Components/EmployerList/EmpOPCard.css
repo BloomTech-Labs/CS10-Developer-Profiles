@@ -1,7 +1,9 @@
-.container {
-    width: 65vw;
+
+.button {
+    width: 70%;
 }
 
-.cardContainer {
-    width: 65vw;
+.cardPaperContainer {
+    width: 30vw;
+    align-self: center;
 }

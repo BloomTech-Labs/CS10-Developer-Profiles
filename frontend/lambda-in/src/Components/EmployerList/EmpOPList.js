@@ -1,37 +1,48 @@
 import React, { Component } from "react";
-import EmployerOpenPositionCard from "./EmpOPCard";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-// import NavBar from '../../Components/Navbar/navbar';
-
-import "./EmpOPList.css";
 import { Typography } from "@material-ui/core";
 
+import EmployerOpenPositionForm from "./EmpOPForm";
+import EmployerOpenPositionCard from "./EmpOPCard";
+
+import "./EmpOPList.css";
+
 class EmplyoerOpenPositionList extends React.Component {
+  state = {
+    projectName: "Enterprise-D",
+    description: "We are looking for the captain of the Federation Flagship.",
+    jobTitle: "Captain",
+    techStack: "full stack",
+    skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
+    minSalary: 1000000,
+    maxSalary: 2000000
+  };
+
   render() {
     return (
       <div class="container">
-        <Paper>
-          <div class="navBar">
-            <div class="leftNavBar">
-              <Button>find Devlopers</Button>
-              <Button>Browse</Button>
-              <Button>profile</Button>
-            </div>
-            <div class="rightNavBar">
-              <Button>Billing</Button>
-              <Button>Setting</Button>
-            </div>
-          </div>
-        </Paper>
-
         <div class="body">
-            <Paper>
-          <Typography variant="headline">
-            Current Job Opening List
-          </Typography>
+          <Paper class="paper">
+            <Typography variant="display1" gutterBottom align="center">
+              Open Positions
+            </Typography>
 
-          <EmployerOpenPositionCard />
+            <Typography variant="headline" gutterBottom align="center">
+              Manage Current Open Positions
+            </Typography>
+            <div class="form">
+              <EmployerOpenPositionForm />
+            </div>
+            <div class="card">
+              <ul>
+                {/* {this.state.map(EmployerOpenPositionCard => {
+                  return ( */}
+                    <EmployerOpenPositionCard/>
+                   {/* );
+                })} */}
+              </ul>
+            </div>
           </Paper>
         </div>
       </div>

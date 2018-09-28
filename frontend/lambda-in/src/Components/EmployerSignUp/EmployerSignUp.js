@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import '../EmployerSignUp/EmployerSignUp.css';
@@ -10,9 +11,8 @@ import '../EmployerSignUp/EmployerSignUp.css';
 export default class EmployerSignUp extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      companyName: 'Star Fleet',
+      companyName: 'Employer',
       email: 'emp@c2.com',
       password: '!Nechayev7alpha',
       confirmPassword: '!Nechayev7alpha',
@@ -27,11 +27,25 @@ export default class EmployerSignUp extends Component {
   handleNewEmp = event => {
     event.preventDefault();
 
+    /**
+     * VALIDATE password input.
+     * @description Validate that `password` and `confirmPassword` fields match.
+     */
+    if (this.state.password !== this.state.confirmPassword) {
+      alert("Your passwors don't match. Please try again!");
+      this.setState({
+        password: '',
+        confirmPassword: '',
+      });
+      return;
+    }
+
     const newEmp = {
       companyName: this.state.companyName,
       email: this.state.email,
       password: this.state.password,
     };
+
 
     axios
       .post(`/api/register/employers`, newEmp)
@@ -106,11 +120,11 @@ export default class EmployerSignUp extends Component {
               </Button>
             </div>
             <div className="login">
-              {/* <Link to="/emp-login"> */}
+              <Link to="/emp-login">
               <Typography variant="caption" gutterBottom align="center">
                 already have an account? Login here!
               </Typography>
-              {/* </Link> */}
+              </Link>
             </div>
           </Paper>
         </div>

@@ -18,20 +18,20 @@ export default ({ getGS, setGS }) => {
   const AS = userInfo.additionalSkills;
   const SS = userInfo.skills;
   const allSkills = TS.concat(AS, SS);
-  // const skillList = allSkills.map(skill => (
-  //   <li>
-  //     {skill}
-  //     {` `}
-  //   </li>
-  // ));
+  const skillList = allSkills.map(skill => (
+    <li>
+      {skill}
+      {` `}
+    </li>
+  ));
 
-  // let handleOpen = () => {
-  //   setGS({ DevProfileModal: true });
-  // };
+  let handleOpen = () => {
+    setGS({ DevProfileModal: true });
+  };
 
-  // let handleClose = () => {
-  //   setGS({ DevProfileModal: false });
-  // };
+  let handleClose = () => {
+    setGS({ DevProfileModal: false });
+  };
 
   return (
     <div className="profileContainer">
