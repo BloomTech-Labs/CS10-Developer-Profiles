@@ -2,9 +2,10 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: space-around;
     align-items: center;
     margin-top: 0em;
+    padding: 20px;
+
 }
 
 .title {
@@ -18,6 +19,5 @@
 .checkout {
     width: 25vw;
     display: flex;
-    flex-direction: column;
     justify-content: center;
 }

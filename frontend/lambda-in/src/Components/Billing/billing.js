@@ -16,23 +16,8 @@ class Billing extends React.Component {
         return (
             <div>
                 <h1 className='title'>Join our guild of talented developers and reputable employers!</h1>
-                <div data-aos='fade-up' className='container'>
-                <Card className='checkout'>
-                <CardContent>
-                    <Typography variant="headline" component="h1">
-                        Developer Sign-Up Fee
-                    </Typography>
-                    <Typography>
-                        $4.99 One time fee
-                    </Typography>
-                    <Checkout 
-                        name={'Developer Sign-up Fee'}
-                        description={'Developer Sign-up Fee'}
-                        amount={4.99}
-                        />
-                </CardContent>
-                </Card>
-                <Card className='checkout'>
+                <div className='container'>
+                <Card data-aos='flip-up' className='checkout'>
                 <CardContent>
                     <Typography variant="headline" component="h1">
                         Employer 1 month Sub
@@ -47,7 +32,7 @@ class Billing extends React.Component {
                         />
                 </CardContent>
                 </Card>
-                <Card className='checkout'>
+                <Card data-aos='flip-down' className='checkout'>
                 <CardContent>
                     <Typography variant="headline" component="h1">
                         Employer 6 month Sub
@@ -62,7 +47,7 @@ class Billing extends React.Component {
                         />
                 </CardContent>
                 </Card>
-                <Card className='checkout'>
+                <Card data-aos='flip-up' className='checkout'>
                 <CardContent>
                     <Typography variant="headline" component="h1">
                         Employer 1 Year Sub

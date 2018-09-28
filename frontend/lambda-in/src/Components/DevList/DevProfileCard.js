@@ -29,14 +29,14 @@ export default class DevProfileCard extends Component {
                     </div>
                     <div className="nameInfo">
                         <Typography variant="title" >
-                            Samar vir
+                            John Smith
                         </Typography>
                         <Typography variant="subheading">
-                            Delhi, India
+                            Smalltown, USA
                         </Typography>
                         <Divider />
                         <Typography variant="paragraph">
-                            cool boi 101 cool boi 1cool boi 101
+                            Some information about the developer
                         </Typography>
                     </div>
                 </div>
