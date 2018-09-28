@@ -10,19 +10,19 @@ import { ENABLE, DISABLE } from '../../constants';
 const styles = {};
 
 /**
- * Given filter data and event handlers for onClick and onChange, return a togglable filter comporised
+ * Given filter data and event handlers for onClick and onChange, return a togglable filter comprised
  * of a Material UI FormGroup component containing a Material UI Button and Switch component.
  *
  * @param {Object} props - Component properties.
  * @param {Object} props.filter - Filter data.
- * @param {String} props.fiter.displayName - Display name for filter toggle.
+ * @param {String} props.filter.displayName - Display name for filter toggle.
  * @param {String} props.filter.eleName - Name assigned to Switch component for event targetting.
  * @param {String} props.filter.toggleName - Name assigned to Button component for event targetting.
  * @param {Boolean} props.isChecked - True/False if Switch component is checked.
  * @param {Boolean} props.isEnabled - True/False if Filter Toggle is enabled.
  * @param {Function} props.onCheck - Switch component on change event handler.
  * @param {Function} props.onEnable - Button component on click event handler.
- * @return {Component} Material UI Avatar component.
+ * @return {Component} Material UI FormGroup component holding a toggleable filter.
  *
  * @see {@link https://material-ui.com/api/button/ } for the Button API.
  * @see {@link https://material-ui.com/api/form-control-label/ } for the FromControlLabel API.
