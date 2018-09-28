@@ -15,8 +15,8 @@ const styles = {};
  *
  * @param {Object} props - Component properties.
  * @param {Object} props.filter - Filter data.
- * @param {String} props.fiter.label - Display name for filter toggle.
- * @param {String} props.filter.name - Name assigned to Switch component for event targetting.
+ * @param {String} props.fiter.displayName - Display name for filter toggle.
+ * @param {String} props.filter.eleName - Name assigned to Switch component for event targetting.
  * @param {String} props.filter.toggleName - Name assigned to Button component for event targetting.
  * @param {Boolean} props.checked - True/False if Switch component is checked.
  * @param {Boolean} props.enable - True/False if Filter Toggle is enabled.
@@ -37,20 +37,20 @@ const FilterToggle = props => {
       <FormControlLabel
         control={
           <Switch
-            name={props.filter.name}
+            name={props.filter.eleName}
             checked={props.checked}
             color="primary"
             onChange={props.onCheck}
           />
         }
-        label={props.filter.label}
+        label={props.filter.displayName}
         disabled={!props.enable}
       />
       <Button
         name={props.filter.toggleName}
         size="small"
         onClick={props.onEnable}
-        data-filter-name={props.filter.name}
+        data-filter-name={props.filter.eleName}
       >
         {props.enable ? DISABLE : ENABLE}
       </Button>
@@ -60,8 +60,8 @@ const FilterToggle = props => {
 
 FilterToggle.propTypes = {
   filter: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
+    eleName: PropTypes.string.isRequired,
     toggleName: PropTypes.string.isRequired
   }).isRequired,
   checked: PropTypes.bool.isRequired,
