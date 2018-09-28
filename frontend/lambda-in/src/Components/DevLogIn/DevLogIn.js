@@ -154,23 +154,25 @@ export default class DevLogin extends Component {
           Submit
         </Button>
       ) : (
-        <Grid>
+        <div>
           <Typography variant="caption" gutterBottom align="center">
             Continue as:
           </Typography>
-          <Chip
-            onClick={this.resolveUserConflic.bind(this, 'seeker')}
-            label="Developer"
-            color="primary"
-            variant="outlined"
-          />
-          <Chip
-            onClick={this.resolveUserConflic.bind(this, 'employer')}
-            label="Employer"
-            color="primary"
-            variant="outlined"
-          />
-        </Grid>
+          <div className="resolve-conflict">
+            <Chip
+              onClick={this.resolveUserConflic.bind(this, 'seeker')}
+              label="Developer"
+              color="primary"
+              variant="outlined"
+            />
+            <Chip
+              onClick={this.resolveUserConflic.bind(this, 'employer')}
+              label="Employer"
+              color="primary"
+              variant="outlined"
+            />
+          </div>
+        </div>
       );
 
     return (
