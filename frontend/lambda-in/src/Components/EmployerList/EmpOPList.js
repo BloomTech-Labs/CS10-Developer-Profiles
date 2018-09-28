@@ -36,11 +36,11 @@ class EmplyoerOpenPositionList extends React.Component {
             </div>
             <div class="card">
               <ul>
-                {this.state.map(EmployerOpenPositionCard => {
-                  return (
+                {/* {this.state.map(EmployerOpenPositionCard => {
+                  return ( */}
                     <EmployerOpenPositionCard/>
-                   );
-                })}
+                   {/* );
+                })} */}
               </ul>
             </div>
           </Paper>
