@@ -11,13 +11,31 @@ import SkillCloud from '../SkillCloud/SkillCloud';
 
 const styles = {
   devSnapshot: {
-    width: '100%',
+    width: '100%'
   },
   devSnapshotHeader: {
-    display: 'flex',
+    display: 'flex'
   }
 };
 
+/**
+ * Given a Github, LinkedIn, Portfolio and/or Acclaim link, return a Material UI List component containing
+ * a Material UI ListItem component and FontAwesomeIcon component for each link.
+ *
+ * @param {Object} props - Component properties.
+ * @param {String} props.github - A github profile link.
+ * @param {String} props.linkedIn - A linkedIn profile link.
+ * @param {String} props.portfolio - A link to an extrenal portfolio.
+ * @param {String} props.acclaim - An acclaim badge id.
+ * @return {Component} Material UI List component.
+ *
+ * @see {@link https://material-ui.com/api/card-content/ } for the CardContent API.
+ * @see {@link https://material-ui.com/api/divider/ } for the Divider API.
+ * @see {@link https://material-ui.com/api/typography/ } for the Typography API.
+ * @see {@link ../Avatar/ImageAvatar/ImageAvatar.md } for the ImageAvater API.
+ * @see {@link ../Avatar/ImageAvatar/LetterAvatar.md  } for the LetterAvatar API.
+ * @see {@link ../SkillCloud/SkillCloud.md  } for the SkillCloud API.
+ */
 const DevSnapshot = props => {
   const { classes } = props;
   return (
@@ -57,7 +75,7 @@ DevSnapshot.propTypes = {
   title: PropTypes.string,
   topSkills: PropTypes.array,
   addSkills: PropTypes.array,
-  familiar: PropTypes.array,
+  familiar: PropTypes.array
 };
 
 export default withStyles(styles)(DevSnapshot);
