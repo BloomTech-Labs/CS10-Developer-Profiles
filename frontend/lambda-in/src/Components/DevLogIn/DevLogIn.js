@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Chip from '@material-ui/core/Chip';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -14,11 +16,14 @@ export default class DevLogin extends Component {
     this.state = {
       email: 'reg@c14.com',
       password: '12345678Aa$',
-      user: '',
+      userType: '',
+      seekerResponse: '',
+      employerResponse: '',
     };
   }
 
   handleAxios(httpResponse, userType) {
+    console.log(httpResponse, userType);
     localStorage.setItem('token', httpResponse.data.jwt);
     // RESET local state
     this.setState({
@@ -44,16 +49,28 @@ export default class DevLogin extends Component {
     };
 
     const seekersResponse = await axios.post('/api/login/seekers', loginData);
+    const employersResponse = await axios.post('/api/login/employers', loginData);
 
-    // If success loginin 'seeker' process response and 'return'
+    // If both users are in the DB set set local state 'user' to 'conflic'
+    // 'conflict' will display a UI feature to resolve the conflict.
+    if (seekersResponse.status === 200 && employersResponse.status === 200) {
+      console.log('CONFLICT');
+      this.setState({
+        userType: 'conflic',
+        seekerResponse: seekersResponse,
+        employerResponse: employersResponse,
+      });
+      this.props.setGS({ login: 'conflic' });
+      return;
+    }
+
+    // If success only loginin 'seeker' process response and 'return'
     if (seekersResponse.status === 200) {
       this.handleAxios(seekersResponse, 'seeker');
       return;
     }
 
-    const employersResponse = await axios.post('/api/login/employers', loginData);
-
-    // If success loginin 'employer' process response and 'return'
+    // If success only loginin 'employer' process response and 'return'
     if (employersResponse.status === 200) {
       this.handleAxios(employersResponse, 'employer');
       return;
@@ -73,7 +90,52 @@ export default class DevLogin extends Component {
     });
   };
 
+  resolveUserConflic = userType => {
+    console.log();
+    if (userType === 'seeker') {
+      this.handleAxios(this.state.seekerResponse, userType);
+    } else {
+      this.handleAxios(this.state.employerResponse, userType);
+    }
+
+    // Reset local-state
+    this.setState({
+      email: 'reg@c14.com',
+      password: '12345678Aa$',
+      userType: '',
+      seekerResponse: '',
+      employerResponse: '',
+    });
+  };
+
   render() {
+    const { userType } = this.setState;
+
+    const buttonConflic =
+      this.props.getGS('login') !== 'conflic' ? (
+        <Button variant="contained" color="primary" onClick={this.handleLogin}>
+          Submit
+        </Button>
+      ) : (
+        <Grid>
+          <Typography variant="caption" gutterBottom align="center">
+            Continue as:
+          </Typography>
+          <Chip
+            onClick={this.resolveUserConflic.bind(this, 'seeker')}
+            label="Developer"
+            color="primary"
+            variant="outlined"
+          />
+          <Chip
+            onClick={this.resolveUserConflic.bind(this, 'employer')}
+            label="Employer"
+            color="primary"
+            variant="outlined"
+          />
+        </Grid>
+      );
+
     return (
       <div className="loginContainer">
         <div className="formConatiner">
@@ -93,9 +155,7 @@ export default class DevLogin extends Component {
               <TextField id="password" type="password" label="password" value={this.state.password} margin="normal" />
 
               <br />
-              <Button variant="contained" color="primary" onClick={this.handleLogin}>
-                Submit
-              </Button>
+              {buttonConflic}
             </div>
 
             <div className="login">

@@ -24,14 +24,15 @@ class App extends Component {
       isSignedIn: false,
       userInfo: '', // To be populated after 'login' || 'register' from other components.
       userType: '', // 'seeker' || 'employer'
+      login: false, // false || conflic
+    };
+    this.resetState = {
+      isSignedIn: false,
+      userInfo: '',
+      userType: '',
+      login: false,
     };
   }
-
-  resetState = {
-    isSignedIn: false,
-    userInfo: '',
-    userType: '',
-  };
 
   /**
    * Set APP's global state.
@@ -108,7 +109,13 @@ class App extends Component {
             {/* LOGIN: Redirect to user Profile after login */}
             <Route
               path="/dev-login"
-              render={() => (isSignedIn ? redirectToUserProfile : <DevLogin setGS={this.setGlobalState} />)}
+              render={() =>
+                isSignedIn ? (
+                  redirectToUserProfile
+                ) : (
+                  <DevLogin getGS={this.getGlobalState} setGS={this.setGlobalState} />
+                )
+              }
             />
             {/* SIGNUP: Redirect to user Profile after signup */}
             <Route
