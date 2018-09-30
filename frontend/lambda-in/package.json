@@ -7,6 +7,7 @@
     "aos": "^3.0.0-beta.5",
     "axios": "^0.18.0",
     "dotenv": "^6.0.0",
+    "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-form": "^3.5.6",
