@@ -1,7 +1,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-const BasicInfo = props => {
+// prettier-ignore
+const BasicInfo = (props) => {
   const { userInfo } = props;
 
   return (
