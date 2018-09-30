@@ -2,37 +2,52 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
 import './DevInfoEditz.css';
 import BioSkills from '../utilityComponents/SeekerEditUtils/BioSkills';
-import Projects from '../utilityComponents/SeekerEditUtils/Projects';
-import Education from '../utilityComponents/SeekerEditUtils/Education';
-import Experience from '../utilityComponents/SeekerEditUtils/Experience';
-import SocialLinks from '../utilityComponents/SeekerEditUtils/SocialLinks';
-import BasicInfo from '../utilityComponents/SeekerEditUtils/BasicInfo';
 
+/**
+ * Form handling user profile updates
+ *
+ * @description This component handle in a local-state all data modification.
+ * The global state is updeated only when the PUT request response with status 200
+ */
 export default class DevInfoEdit extends Component {
-  /**
-   * Sync APP's global state with input field.
-   */
-  handleChange = event => {
-    this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [event.target.id]: event.target.value } });
-  };
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.handleChange = this.handleChange.bind(this);
+    this.update = this.update.bind(this);
+  }
 
-  update = e => {
-    const userInfo = this.props.getGS('userInfo');
-    const _id = userInfo._id;
+  /**
+   * Get a copy of user's data to keep global state inmutable.
+   */
+  componentDidMount() {
+    // eslint-disable-next-line react/prop-types
+    const { getGS } = this.props;
+    const userInfo = getGS('userInfo');
+    this.setState({ ...userInfo });
+  }
+
+  /**
+   * Sync local state with input field.
+   */
+  handleChange(event) {
+    this.setState({ [event.target.id]: event.target.value });
+  }
+
+  update() {
+    // eslint-disable-next-line react/prop-types
+    const { getGS, setGS } = this.props;
+    const userInfo = getGS('userInfo');
+    const { _id } = userInfo;
 
     if (_id) {
       /**
        * Set in GS 'updateState': 'updateState' = 'updating'
        */
-      this.props.setGS({ updateState: 'updating' });
+      setGS({ updateState: 'updating' });
 
       /**
        * axios.put: Make an HTTP PUT request
@@ -44,6 +59,7 @@ export default class DevInfoEdit extends Component {
        * @return {promise}
        * @example axios.put( endpoint, userInfo, httpHeaders )
        */
+      // prettier-ignore
       axios
         // axios 1 argument is URL and 2 argument is data 3 argument is options
         .put(
@@ -55,36 +71,42 @@ export default class DevInfoEdit extends Component {
             headers: {
               Authorization: localStorage.getItem('token'),
             },
-          }
+          },
         )
-        .then(response => {
+        .then((response) => {
+          // eslint-disable-next-line no-console
           console.log('UPDATE USER', { status: response.status });
           /**
            * Set in GS 'updateState': 'updateState' = 'updated'
            */
-          this.props.setGS({ updateState: 'updated' });
+          setGS({ updateState: 'updated' });
         })
-        .catch(error => {
+        .catch((error) => {
+          // eslint-disable-next-line no-console
           console.log(error);
           /**
            * Set in GS 'updateState': 'updateState' = 'error'
            */
-          this.props.setGS({ updateState: 'error' });
+          setGS({ updateState: 'error' });
         });
     } else {
+      // eslint-disable-next-line no-console
       console.log('updating without ID');
       /**
        * Set in GS 'updateState': 'updateState' = 'error'
        */
-      this.props.setGS({ updateState: 'error' });
+      setGS({ updateState: 'error' });
+      // eslint-disable-next-line no-alert, no-undef
       alert('An error occurred updating your information, please resubmit the form'); // TODO: improve UX
     }
-  };
+  }
+
   render() {
     /**
      * Get a reference to APP's global state.
      */
-    const userInfo = this.props.getGS('userInfo');
+    const userInfo = this.state;
+    const { setGS, getGS } = this.props;
 
     return (
       <div className="EditContainer">
@@ -96,27 +118,27 @@ export default class DevInfoEdit extends Component {
           <form onChange={this.handleChange}>
             <div className="inputRow">
               {/* User basic info: name, desired title, current location */}
-              <BasicInfo userInfo={userInfo} />
+              {/* <BasicInfo userInfo={userInfo} /> */}
 
               {/* SOCIAL LINKS */}
-              <SocialLinks userInfo={userInfo} />
+              {/* <SocialLinks userInfo={userInfo} /> */}
 
               {/* BIO - TOP SKILLS */}
-              <BioSkills setGS={this.props.setGS} getGS={this.props.getGS} userInfo={userInfo} />
+              <BioSkills setGS={setGS} getGS={getGS} userInfo={userInfo} />
 
               {/* PROJECTS */}
-              <Projects userInfo={userInfo} />
+              {/* <Projects userInfo={userInfo} /> */}
 
               {/* EXPERIENCES */}
-              <Experience userInfo={userInfo} />
+              {/* <Experience userInfo={userInfo} /> */}
 
               {/* EDUCATION */}
-              <Education userInfo={userInfo} />
+              {/* <Education userInfo={userInfo} /> */}
 
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
                   {' '}
-                  Update profile{' '}
+                  Update profile
                 </Button>
               </div>
             </div>
