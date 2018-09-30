@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
-import DropDown from '../DropDown/DropDown';
 import TextField from '@material-ui/core/TextField';
+import DropDown from '../DropDown/DropDown';
 
+// eslint-disable-next-line arrow-parens
 const SocialLinks = props => {
+  // eslint-disable-next-line react/prop-types
   const { userInfo } = props;
 
   return (
