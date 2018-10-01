@@ -8,14 +8,14 @@ import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import {
   faCertificate,
   faFile,
-  faShareAlt
+  faShareAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
 const styles = {};
 
 /**
- * Given a Github, LinkedIn, Portfolio and/or Acclaim link, return a Material UI List component containing
- * a Material UI ListItem component and FontAwesomeIcon component for each link.
+ * Given a Github, LinkedIn, Portfolio and/or Acclaim link, return a Material UI List component
+ * containing a Material UI ListItem component and FontAwesomeIcon component for each link.
  *
  * @param {Object} props - Component properties.
  * @param {String} props.github - A github profile link.
@@ -28,9 +28,12 @@ const styles = {};
  * @see {@link https://material-ui.com/api/list-item/ } for the ListItem API.
  * @see {@link https://fontawesome.com/how-to-use/on-the-web/using-with/react } for the Font Awesome React component docs.
  */
-const DevSocial = props => {
+const DevSocial = (props) => {
   const { classes } = props;
 
+  /**
+   * @todo Include links that exists
+   */
   return (
     <div className={classes.devSocial}>
       <List component="ul">
@@ -55,10 +58,18 @@ const DevSocial = props => {
 };
 
 DevSocial.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
   github: PropTypes.string,
   linkedIn: PropTypes.string,
   portfolio: PropTypes.string,
-  acclaim: PropTypes.string
+  acclaim: PropTypes.string,
+};
+
+DevSocial.defaultProps = {
+  github: '',
+  linkedIn: '',
+  portfolio: '',
+  acclaim: '',
 };
 
 export default withStyles(styles)(DevSocial);
