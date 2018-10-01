@@ -61,13 +61,16 @@ class DevInfoEdit extends Component {
 
   update() {
     // eslint-disable-next-line react/prop-types
-    const { getGS, setGS } = this.props;
-    const userInfo = getGS('userInfo');
+    const { setGS } = this.props;
+
+    // Prepare data to be updated
+    const userInfo = { ...this.state };
+    delete userInfo.ready;
     const { _id } = userInfo;
 
     if (_id) {
       /**
-       * Set in GS 'updateState': 'updateState' = 'updating'
+       * Set 'updateState' in GS : 'updateState' = 'updating'
        */
       setGS({ updateState: 'updating' });
 
@@ -96,12 +99,14 @@ class DevInfoEdit extends Component {
           },
         )
         .then((response) => {
+          const updatedDate = response.data['Document(s) modified'];
+          
           // eslint-disable-next-line no-console
-          console.log('UPDATE USER', { status: response.status });
+          console.log('UPDATE USER', { response, status: response.status });
           /**
-           * Set in GS 'updateState': 'updateState' = 'updated'
+           * Update GS
            */
-          setGS({ updateState: 'updated' });
+          setGS({ updateState: 'updated', userInfo: updatedDate });
         })
         .catch((error) => {
           // eslint-disable-next-line no-console
