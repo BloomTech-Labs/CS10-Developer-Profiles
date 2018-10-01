@@ -123,10 +123,24 @@ class DevList extends Component {
     return state;
   };
 
+  /**
+   * Return the pathname of the current page.
+   *
+   * @return {String} Current page pathname.
+   * @example
+   *  '/dev-list'
+   */
   getPathname = () => {
     return window.location.pathname;
   };
 
+  /**
+   * Return the search query for the current page.
+   *
+   * @return {String} Current page search query.
+   * @example
+   *  'page=2&desiredTitle=Front+End|Back+End'
+   */
   getQuery = () => {
     const search = window.location.search;
     return search === '' ? search : search.substring(1);
@@ -186,9 +200,17 @@ class DevList extends Component {
       });
   };
 
-  cleanQuery = substr => {
+  /**
+   * Given a parameter, return the query on state with the parameter removed.
+   *
+   * @param {String} param - A url search query parameter.
+   * @return {String} Query string with parameter removed.
+   * @example
+   *  'page=2&desiredTitle=Front+End|Back+End'
+   */
+  cleanQuery = param => {
     const regEx = new RegExp(
-      `^${substr}=[0,1]&?|&${substr}=[0,1]|^${substr}=[A-z|+.-]+|&${substr}=[A-z|+.-]+`,
+      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[A-z|+.-]+|&${param}=[A-z|+.-]+`,
       'i'
     );
     const cleanQuery = this.state.query.replace(regEx, '');
@@ -222,6 +244,13 @@ class DevList extends Component {
     this.setState(updateState);
   };
 
+  /**
+   * Update the current page url with the given query.
+   *
+   * @param {String} query - A URL search query.
+   * @example
+   *  'page=2&desiredTitle=Front+End|Back+End'
+   */
   setQuery = query => {
     this.props.history.push({
       pathname: this.state.pathname,
