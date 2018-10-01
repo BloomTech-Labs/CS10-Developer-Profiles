@@ -32,7 +32,6 @@ class EmployerOpenPositionCard extends React.Component {
     return (
       <div class="cardPaperContainer">
         <Paper class="cardPaper">
-          <div class="cardContainer">
 
             <div>
               <Typography variant="caption">Project Name</Typography>
@@ -86,7 +85,6 @@ class EmployerOpenPositionCard extends React.Component {
             >
               delete
             </Button>
-          </div>
         </Paper>
       </div>
     );

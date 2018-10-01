@@ -38,7 +38,7 @@ class EmplyoerOpenPositionList extends React.Component {
               <ul>
                 {/* {this.state.map(EmployerOpenPositionCard => {
                   return ( */}
-                    <EmployerOpenPositionCard/>
+                    <EmployerOpenPositionCard class="OPCardInList"/>
                    {/* );
                 })} */}
               </ul>

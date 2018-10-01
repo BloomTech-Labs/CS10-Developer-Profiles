@@ -21,10 +21,10 @@ const DevProfileCard = () => (
             <Avatar alt="Remy Sharp" src={testimage} />
           </div>
           <div className="nameInfo">
-            <Typography variant="title">Samar vir</Typography>
-            <Typography variant="subheading">Delhi, India</Typography>
+            <Typography variant="title">Jean Luc Picard</Typography>
+            <Typography variant="subheading">USS Stargazer</Typography>
             <Divider />
-            <Typography variant="paragraph">cool boi 101 cool boi 1cool boi 101</Typography>
+            <Typography variant="paragraph">Leadership, Combat Mastery, Virtue</Typography>
           </div>
         </div>
         <Divider />
