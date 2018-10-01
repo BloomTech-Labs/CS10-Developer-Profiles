@@ -85,6 +85,11 @@ const selectCustomStyles = {
  * @prop {Boolean} educationSwitch - True/False if Education toggle filter is enabled.
  */
 class DevList extends Component {
+  /**
+   * Create a Dev List component
+   *
+   * @param {Object} props - Component properties.
+   */
   constructor(props) {
     super(props);
     this.state = Object.assign({}, this.getFilterState(), {
@@ -257,6 +262,10 @@ class DevList extends Component {
     this.setState({ [event.currentTarget.name]: enable });
   };
 
+  /**
+   * Component Did Update
+   * On each component update, if a new search query exists, get a new list of seekers with new search query.
+   */
   componentDidUpdate(prevProps, prevState) {
     const newQuery = this.getQuery();
 
@@ -265,10 +274,21 @@ class DevList extends Component {
     }
   }
 
+  /**
+   * Component Did Mount
+   * On initial component mount, set any filters that exist in the url.
+   */
   componentDidMount() {
     this.setActiveFilters();
   }
 
+  /**
+   * Render method.
+   * Build the Developer List/Browse page including filter/sort/pagination controls and a list of seekers.
+   *
+   * @return {HTML} A responsive grid with filters in the left column and sort, pagination links and the
+   * list of seekers in the right column.
+   */
   render() {
     const { classes } = this.props;
 
