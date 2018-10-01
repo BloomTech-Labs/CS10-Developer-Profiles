@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const locationSchema = require('../Location.Schema/Location.embeddedModel');
 const { STACK, SKILLS } = require('../../utils/skillsAndLanguagesList');
 
 const { Schema } = mongoose;
@@ -34,6 +35,7 @@ const openPositionSchema = new Schema({
     type: Number,
     min: [30000, 'Min Salary can not be less than 30.000 monetary units'],
   },
+  location: locationSchema,
 });
 
 module.exports = openPositionSchema;

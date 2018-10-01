@@ -1,0 +1,26 @@
+.geolocation-container {
+  position: relative;
+}
+
+.input-geolocation {
+  background: white;
+}
+
+
+.suggestion-list {
+  /*
+  !important -> is neccesary in order to overwrite the default @material-ui styles.
+    
+  Without `!important` this Element will displace all Elements defined below.
+  */
+  position: absolute !important;
+  z-index: 1000 !important;
+}
+
+.list-item {
+  background-color: white;
+}
+
+.list-item.list-item--active {
+  background-color: whitesmoke;
+}

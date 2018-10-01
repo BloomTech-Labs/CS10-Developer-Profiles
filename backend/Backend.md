@@ -12,10 +12,13 @@ Please contact us for any needed details missing here.
 At the `/backend` root folder, create a `.env` file with the following:
 
 ```
+  NODE_ENV=development
   PORT=5000
-  MONGODB_URI='mongodb://localhost/developer-profiles'
+  MONGODB_URI='mongodb://localhost/developer-profiles5'
   MONGODB_URI_TEST='mongodb://localhost/testdb'
   JWT_SECRET="your personal secret goes here"
+  STRIPE_BACKEND_SECRET_KEY_TEST=sk_test_key_goes_here
+  STRIPE_BACKEND_SECRET_KEY_PRODUCTION=sk_production_key_goes_here
 ```
 
 Also, at the `/backend` root folder, create a `.eslintrc` file with the following:
@@ -24,7 +27,7 @@ Also, at the `/backend` root folder, create a `.eslintrc` file with the followin
   {
     "extends": "airbnb-base",
     "env": {
-      "jasmine": true
+      "jest": true
   }
 }
 ```

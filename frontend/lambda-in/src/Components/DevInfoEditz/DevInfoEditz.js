@@ -3,52 +3,53 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
 import './DevInfoEditz.css';
+import BioSkills from '../utilityComponents/SeekerEditUtils/BioSkills';
+import Projects from '../utilityComponents/SeekerEditUtils/Projects';
+import Education from '../utilityComponents/SeekerEditUtils/Education';
+import Experience from '../utilityComponents/SeekerEditUtils/Experience';
+import SocialLinks from '../utilityComponents/SeekerEditUtils/SocialLinks';
+import BasicInfo from '../utilityComponents/SeekerEditUtils/BasicInfo';
 
 export default class DevInfoEdit extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: 'abc@xyz.com',
-      firstName: 'daat',
-      lastName: 'man',
-      desiredTitle: 'BOSS',
-      currentLocation: 'mars',
-      github: 'github.com/kkkk',
-      linkedin: 'linkedin.com/batman',
-      portfolio: 'batman.com',
-      acclaimBadge: 'lambda Batch',
-      placesInterested: ' earh etc',
-      password: '12345678Aa$',
-      confirmPassword: '',
-      isSignedIn: false,
-      summary: 'wubba lubba dub dub',
-      topskill: 'Baller',
-      projects: 'Dev profiles',
-      experience: 'mars inc.',
-      education: 'Lambda School',
-    };
-  }
-
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
+  /**
+   * Sync APP's global state with input field.
+   */
+  handleChange = event => {
+    this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [event.target.id]: event.target.value } });
   };
 
-  // axios 1 argument is URL and 2 argument is data 3 argument is options
-  update = () => {
-    const _id = localStorage.getItem('_id');
+  update = e => {
+    const userInfo = this.props.getGS('userInfo');
+    const _id = userInfo._id;
+
     if (_id) {
-      console.log(_id);
-      console.log(localStorage.getItem('token'));
+      /**
+       * Set in GS 'updateState': 'updateState' = 'updating'
+       */
+      this.props.setGS({ updateState: 'updating' });
+
+      /**
+       * axios.put: Make an HTTP PUT request
+       *
+       * @description update the 'seekers' model.
+       * @param {string} endpoint - API endppoint
+       * @param {objetc} userInfo - Data to be updated
+       * @param {object} httpHeaders - Add Authorization header.
+       * @return {promise}
+       * @example axios.put( endpoint, userInfo, httpHeaders )
+       */
       axios
+        // axios 1 argument is URL and 2 argument is data 3 argument is options
         .put(
           `/api/seekers/${_id}`,
           {
-            linkedin: this.state.linkedin,
+            ...userInfo, // UPDATE current userInfo's state. TODO: pass only updated fields.
           },
           {
             headers: {
@@ -57,16 +58,34 @@ export default class DevInfoEdit extends Component {
           }
         )
         .then(response => {
-          console.log(response.data);
+          console.log('UPDATE USER', { status: response.status });
+          /**
+           * Set in GS 'updateState': 'updateState' = 'updated'
+           */
+          this.props.setGS({ updateState: 'updated' });
         })
         .catch(error => {
           console.log(error);
+          /**
+           * Set in GS 'updateState': 'updateState' = 'error'
+           */
+          this.props.setGS({ updateState: 'error' });
         });
     } else {
       console.log('updating without ID');
+      /**
+       * Set in GS 'updateState': 'updateState' = 'error'
+       */
+      this.props.setGS({ updateState: 'error' });
+      alert('An error occurred updating your information, please resubmit the form'); // TODO: improve UX
     }
   };
   render() {
+    /**
+     * Get a reference to APP's global state.
+     */
+    const userInfo = this.props.getGS('userInfo');
+
     return (
       <div className="EditContainer">
         <Paper className="paperContainer" elevation={1}>
@@ -74,174 +93,30 @@ export default class DevInfoEdit extends Component {
             Lambda Network
           </Typography>
           <br />
-          <form>
+          <form onChange={this.handleChange}>
             <div className="inputRow">
-              <div className="smallInputContainer">
-                <div>
-                  <div className="inputField">
-                    <TextField
-                      id="firstName"
-                      label="First Name"
-                      fullWidth
-                      value={this.state.firstName}
-                      onChange={this.handleChange('firstName')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
+              {/* User basic info: name, desired title, current location */}
+              <BasicInfo userInfo={userInfo} />
 
-                  <div className="inputField">
-                    <TextField
-                      id="outlined-name"
-                      label="Last Name"
-                      fullWidth
-                      value={this.state.lastName}
-                      onChange={this.handleChange('lastName')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
+              {/* SOCIAL LINKS */}
+              <SocialLinks userInfo={userInfo} />
 
-                  <div className="inputField">
-                    <TextField
-                      id="desiredTitle"
-                      label="Desired Title"
-                      fullWidth
-                      value={this.state.desiredTitle}
-                      onChange={this.handleChange('desiredTitle')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
+              {/* BIO - TOP SKILLS */}
+              <BioSkills setGS={this.props.setGS} getGS={this.props.getGS} userInfo={userInfo} />
 
-                  <div className="inputField">
-                    <TextField
-                      id="currentLocation"
-                      label="Current Location"
-                      fullWidth
-                      value={this.state.currentLocation}
-                      onChange={this.handleChange('currentLocation')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </div>
-                </div>
+              {/* PROJECTS */}
+              <Projects userInfo={userInfo} />
 
-                <div className="imageContainer">
-                  <img className="displayPic" src={`https://robohash.org/1${this.state.firstName}`} alt="Italian " />
-                </div>
-              </div>
+              {/* EXPERIENCES */}
+              <Experience userInfo={userInfo} />
 
-              <div className="inputFieldLarge">
-                <TextField
-                  id="github"
-                  label="github"
-                  fullWidth
-                  value={this.state.github}
-                  onChange={this.handleChange('github')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
-
-              <div className="inputFieldLarge">
-                <TextField
-                  id="linkedin"
-                  label="Linkedin"
-                  fullWidth
-                  value={this.state.linkedin}
-                  onChange={this.handleChange('linkedin')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
-
-              <div className="inputFieldLarge">
-                <TextField
-                  id="portfolio"
-                  label="Portfolio Website"
-                  fullWidth
-                  value={this.state.portfolio}
-                  onChange={this.handleChange('portfolio')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
-
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="summary"
-                  label="Your Bio"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.summary}
-                  onChange={this.handleChange('summary')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
-
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="topSkills"
-                  label="Top skills"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.topskill}
-                  onChange={this.handleChange('topskill')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
-
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="project"
-                  label="Projects"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.projects}
-                  onChange={this.handleChange('projects')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
-
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="experience"
-                  label="Experience"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.experience}
-                  onChange={this.handleChange('experience')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
-
-              <div className="inputFieldLargeMultiline">
-                <TextField
-                  id="education"
-                  label="Education"
-                  fullWidth
-                  multiline
-                  rowsMax="4"
-                  value={this.state.education}
-                  onChange={this.handleChange('education')}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </div>
+              {/* EDUCATION */}
+              <Education userInfo={userInfo} />
 
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
                   {' '}
-                  Save{' '}
+                  Update profile{' '}
                 </Button>
               </div>
             </div>
