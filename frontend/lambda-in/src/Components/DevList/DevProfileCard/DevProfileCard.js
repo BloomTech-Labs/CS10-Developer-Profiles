@@ -7,10 +7,40 @@ import DevSocial from '../../DevSocial/DevSocial';
 
 const styles = {
   devProfileCard: {
-    display: 'flex',
+    display: 'flex'
   }
 };
 
+/**
+ * Given an object containing a seeker's name, image, location, summary, desired title, skills, portfolio,
+ * resume and social links, return a Material UI Card component with a DevSnapshot and DevSocial component.
+ *
+ * @param {Object} props - Component properties.
+ * @param {Object} props.seeker - Seeker data.
+ * @param {String} props.seeker._id - MongoDB Object Id.
+ * @param {String} props.seeker.img - URL to Seeker's profile image.
+ * @param {String} props.seeker.firstName - Seeker's first name.
+ * @param {String} props.seeker.lastName - Seeker's last name.
+ * @param {String} props.seeker.currentLocation - Seeker's current location.
+ * @param {String} props.seeker.summary - A 128 character description about the Seeker.
+ * @param {String} props.seeker.desiredTitle - Job title the Seeker is looking for.
+ * @param {Array} props.seeker.topSkills - Seeker's top skills which get displayed in large text.
+ * @param {Array} props.seeker.additionalSkills - Seeker's additional skills which get displayed in medium
+ * text.
+ * @param {Array} props.seeker.familiarWith - Skills the Seeker is familiar with which get displayed in small
+ * text.
+ * @param {String} props.seeker.github - URL to Seeker's GitHub profile.
+ * @param {String} props.seeker.linkedIn - URL to Seeker's LinkedIn profile.
+ * @param {String} props.seeker.portfolio - URL to Seeker's portfolio.
+ * @param {String} props.seeker.resume - URL to Seeker's resume.
+ * @param {String} props.seeker.acclaim - Id for Lambda Badge, if issued.
+ * @return {Component} Material UI Card component containing a DevSnapshot and DevSocial component.
+ *
+ * @see {@link https://material-ui.com/api/card/ } for the Card API.
+ * @see {@link https://material-ui.com/demos/cards/ } for a demo of the Card Component.
+ * @see {@link ../../DevSnapshot/DevSnapshot.md } for the DevSnapshot API.
+ * @see {@link ../../DevSocial/DevSocial.md } for the DevSocial API.
+ */
 const DevProfileCard = props => {
   const { classes } = props;
   const name = `${props.seeker.firstName} ${props.seeker.lastName}`;
