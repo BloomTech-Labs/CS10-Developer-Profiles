@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +8,9 @@ import makeAnimated from 'react-select/lib/animated';
 import DevProfileCard from './DevProfileCard/DevProfileCard';
 import FilterToggle from './FilterToggle/FilterToggle';
 import Pagination from '../Pagination/Pagination';
-import { ENABLE, DISABLE, SORT, FILTERS } from '../constants';
+import {
+  ENABLE, DISABLE, SORT, FILTERS,
+} from '../constants';
 
 /**
  * Mock API data calls
@@ -17,32 +20,32 @@ import jobTitles from './data/jobTitles';
 import techSkills from './data/skills';
 import sortOptions from './data/sortOptions';
 
-const desiredTitle = jobTitles.map(title => ({
+const jobTitleSelectOptions = jobTitles.map(title => ({
   value: title.replace(/ /g, '+'),
-  label: title
+  label: title,
 }));
 
-const skills = techSkills.map(title => ({
+const techSkillsSelectOptions = techSkills.map(title => ({
   value: title.replace(/ /g, '+'),
-  label: title
+  label: title,
 }));
 
-const sort = sortOptions.map(option => ({
+const sortSelectOptions = sortOptions.map(option => ({
   value: (option.dir === 'dsc' ? '-' : '') + option.type.toLowerCase(),
-  label: `${option.type} ${SORT[option.dir]}`
+  label: `${option.type} ${SORT[option.dir]}`,
 }));
 
 const styles = {
   mainContainer: {
-    padding: '0 30px'
-  }
+    padding: '0 30px',
+  },
 };
 
 const selectCustomStyles = {
-  menu: (base, state) => ({
+  menu: base => ({
     ...base,
-    zIndex: 2
-  })
+    zIndex: 2,
+  }),
 };
 
 /**
@@ -98,18 +101,20 @@ class DevList extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, this.getFilterState(), {
-      pathname: this.getPathname(),
-      query: this.getQuery(),
+    const query = DevList.getQuery();
+
+    this.state = Object.assign({}, DevList.getFilterState(), {
+      query,
+      pathname: DevList.getPathname(),
       count: 0,
       pages: 0,
       next: null,
       prev: null,
-      currentPage: this.getCurrentPage(),
-      seekers: []
+      currentPage: DevList.getCurrentPage(),
+      seekers: [],
     });
 
-    this.getSeekers(this.state.query);
+    this.getSeekers(query);
   }
 
   /**
@@ -123,10 +128,10 @@ class DevList extends Component {
    *    sort: []
    *  }
    */
-  getFilterState = () => {
+  static getFilterState() {
     const state = {};
 
-    Object.keys(FILTERS).forEach(filter => {
+    Object.keys(FILTERS).forEach((filter) => {
       if (FILTERS[filter].type === 'select') {
         state[FILTERS[filter].eleName] = [];
       }
@@ -138,7 +143,7 @@ class DevList extends Component {
     });
 
     return state;
-  };
+  }
 
   /**
    * Return the pathname of the current page.
@@ -147,9 +152,9 @@ class DevList extends Component {
    * @example
    *  '/meetdev'
    */
-  getPathname = () => {
+  static getPathname() {
     return window.location.pathname;
-  };
+  }
 
   /**
    * Return the search query for the current page.
@@ -158,10 +163,10 @@ class DevList extends Component {
    * @example
    *  'page=2&desiredTitle=Front+End|Back+End'
    */
-  getQuery = () => {
-    const search = window.location.search;
+  static getQuery() {
+    const { search } = window.location;
     return search === '' ? search : search.substring(1);
-  };
+  }
 
   /**
    * Determine the current page using the URL query and return it. If no page is set
@@ -169,192 +174,15 @@ class DevList extends Component {
    *
    * @return {Integer} Current page number.
    */
-  getCurrentPage = () => {
-    const queryArr = this.getQuery().split('&');
+  static getCurrentPage() {
+    const queryArr = DevList.getQuery().split('&');
 
-    for (let i = 0; i < queryArr.length; i++) {
+    for (let i = 0; i < queryArr.length; i += 1) {
       const param = queryArr[i].split('=');
       if (param[0] === 'page') return +param[1];
     }
 
     return 1;
-  };
-
-  /**
-   * Use the given search query, concatenated with the API seekers route, to perform a GET request for
-   * seekers. On success, save results to state. On error redirect unauthorized users or clear the list
-   * of seekers on state.
-   *
-   * @param {String} query - A URL search query.
-   * @example
-   *  'page=2&desiredTitle=Front+End|Back+End'
-   */
-  getSeekers = (query = '') => {
-    const url = query === '' ? '/api/seekers' : `/api/seekers?${query}`;
-    const config = {
-      headers: {
-        Authorization: localStorage.token
-      }
-    };
-
-    axios
-      .get(url, config)
-      .then(response => {
-        this.setState({
-          query: query,
-          count: response.data.count,
-          pages: response.data.pages,
-          next: response.data.next,
-          prev: response.data.prev,
-          seekers: response.data.results,
-          currentPage: response.data.current
-        });
-      })
-      .catch(err => {
-        /**
-         * @todo On invalid credentials, redirect to sign in page with message
-         * @todo Fix status code for invalid credentials
-         * @todo On 404 error, display message on dev list
-         */
-        if (err.response.status === 500) this.props.history.push('/dev-login');
-        if (err.response.status === 404) {
-          console.log(err.response.data);
-          this.setState({
-            query: query,
-            count: 0,
-            pages: 0,
-            next: null,
-            prev: null,
-            seekers: [],
-            currentPage: 1
-          });
-        }
-      });
-  };
-
-  /**
-   * Given a parameter, return the query on state with the parameter removed.
-   *
-   * @param {String} param - A url search query parameter.
-   * @return {String} Query string with parameter removed.
-   * @example
-   *  'page=2&desiredTitle=Front+End|Back+End'
-   */
-  cleanQuery = param => {
-    const regEx = new RegExp(
-      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[A-z|+.-]+|&${param}=[A-z|+.-]+`,
-      'i'
-    );
-    const cleanQuery = this.state.query.replace(regEx, '');
-    return cleanQuery === '' ? 'page=1' : cleanQuery;
-  };
-
-  /**
-   * Set the state for any filters currently set on URL.
-   */
-  setActiveFilters = () => {
-    const activeFilters = this.state.query.split('&');
-    const filterNames = Object.keys(FILTERS);
-    const updateState = {};
-
-    activeFilters.forEach(activeFilter => {
-      const filter = activeFilter.split('=');
-      if (filterNames.includes(filter[0])) {
-        switch (FILTERS[filter[0]].type) {
-          case 'toggle':
-            updateState[FILTERS[filter[0]].toggleName] = true;
-            updateState[FILTERS[filter[0]].eleName] = +filter[1] ? true : false;
-            break;
-          case 'select':
-            const values = filter[1].split('|').map(value => ({
-              value: value,
-              label: value.replace(/\+/g, ' ')
-            }));
-            updateState[FILTERS[filter[0]].eleName] = values;
-            break;
-        }
-      }
-    });
-
-    this.setState(updateState);
-  };
-
-  /**
-   * Update the current page url with the given query.
-   *
-   * @param {String} query - A URL search query.
-   * @example
-   *  'page=2&desiredTitle=Front+End|Back+End'
-   */
-  setQuery = query => {
-    this.props.history.push({
-      pathname: this.state.pathname,
-      search: query
-    });
-  };
-
-  /**
-   * On Change event handler for select style filters. Given the select element name and value,
-   * create a new query to update the page URL and update the state with the new value.
-   *
-   * @param {String} value - Select element value.
-   * @param {String} name - Select element name.
-   */
-  handleSelect = (value, name) => {
-    const valStr = `&${name}=${value.map(val => val.value).join('|')}`;
-    const newQuery = `${this.cleanQuery(name)}${
-      value.length !== 0 ? valStr : ''
-      }`;
-
-    this.setQuery(newQuery);
-    this.setState({ [name]: value });
-  };
-
-  /**
-   * On Change event handler for toggle style filters. Given the name and checked field from the
-   * event target, create a new query to update the page URL and update the state with the new value.
-   *
-   * @param {Event} event - Event object for change event.
-   */
-  handleSwitch = event => {
-    const name = event.target.name;
-    const checked = event.target.checked;
-    const newQuery = `${this.cleanQuery(name)}&${name}=${checked ? 1 : 0}`;
-
-    this.setQuery(newQuery);
-    this.setState({ [name]: checked });
-  };
-
-  /**
-   * On Click event handler for toggle filters enable/disable button. Given the name and the inner HTML
-   * of the event target, create a new query to update the page URL and update the state with the new value.
-   *
-   * @param {Event} event - Event object for change event.
-   */
-  handleSwitchEnable = event => {
-    const enable = event.target.innerHTML === ENABLE;
-    const name = event.currentTarget.dataset.filterName;
-    const newQuery = enable
-      ? `${this.cleanQuery(name)}&${name}=${
-      this.state[FILTERS[name].name] ? 1 : 0
-      }`
-      : `${this.cleanQuery(name)}`;
-
-    this.setQuery(newQuery);
-    event.target.innerHTML = enable ? DISABLE : ENABLE;
-    this.setState({ [event.currentTarget.name]: enable });
-  };
-
-  /**
-   * Component Did Update method.
-   * On each component update, if a new search query exists, get a new list of seekers with new search query.
-   */
-  componentDidUpdate(prevProps, prevState) {
-    const newQuery = this.getQuery();
-
-    if (newQuery !== this.state.query) {
-      this.getSeekers(newQuery);
-    }
   }
 
   /**
@@ -366,13 +194,231 @@ class DevList extends Component {
   }
 
   /**
-   * Render method.
-   * Build the Developer List/Browse page including filter/sort/pagination controls and a list of seekers.
+   * Component Did Update method.
+   * On each component update, if a new search query exists, get a new list of seekers with new
+   * search query.
+   */
+  componentDidUpdate() {
+    const { query } = this.state;
+    const newQuery = DevList.getQuery();
+
+    if (newQuery !== query) {
+      this.getSeekers(newQuery);
+    }
+  }
+
+  /**
+   * Use the given search query, concatenated with the API seekers route, to perform a GET request
+   * for seekers. On success, save results to state. On error redirect unauthorized users or clear
+   * the list of seekers on state.
    *
-   * @return {HTML} A responsive grid with filters in the left column and sort, pagination links and the
-   * list of seekers in the right column.
+   * @param {String} query - A URL search query.
+   * @example
+   *  'page=2&desiredTitle=Front+End|Back+End'
+   */
+  getSeekers(query = '') {
+    const { history } = this.props;
+    const url = query === '' ? '/api/seekers' : `/api/seekers?${query}`;
+    const config = {
+      headers: {
+        Authorization: localStorage.token,
+      },
+    };
+
+    axios
+      .get(url, config)
+      .then((response) => {
+        this.setState({
+          query,
+          count: response.data.count,
+          pages: response.data.pages,
+          next: response.data.next,
+          prev: response.data.prev,
+          seekers: response.data.results,
+          currentPage: response.data.current,
+        });
+      })
+      .catch((err) => {
+        /**
+         * @todo On invalid credentials, redirect to sign in page with message
+         * @todo Fix status code for invalid credentials
+         * @todo On 404 error, display message on dev list
+         */
+        if (err.response.status === 500) history.push('/dev-login');
+        if (err.response.status === 404) {
+          this.setState({
+            query,
+            count: 0,
+            pages: 0,
+            next: null,
+            prev: null,
+            seekers: [],
+            currentPage: 1,
+          });
+        }
+      });
+  }
+
+  /**
+   * Set the state for any filters currently set on URL.
+   */
+  setActiveFilters() {
+    const { query } = this.state;
+    const activeFilters = query.split('&');
+    const filterNames = Object.keys(FILTERS);
+    const updateState = {};
+
+    activeFilters.forEach((activeFilter) => {
+      const filter = activeFilter.split('=');
+      if (filterNames.includes(filter[0])) {
+        switch (FILTERS[filter[0]].type) {
+          case 'toggle':
+            updateState[FILTERS[filter[0]].toggleName] = true;
+            updateState[FILTERS[filter[0]].eleName] = !!+filter[1];
+            break;
+          case 'select': {
+            const values = filter[1].split('|').map(value => ({
+              value,
+              label: value.replace(/\+/g, ' '),
+            }));
+            updateState[FILTERS[filter[0]].eleName] = values;
+            break;
+          }
+          default:
+            break;
+        }
+      }
+    });
+
+    this.setState(updateState);
+  }
+
+  /**
+   * Update the current page url with the given query.
+   *
+   * @param {String} query - A URL search query.
+   * @example
+   *  'page=2&desiredTitle=Front+End|Back+End'
+   */
+  setQuery(query) {
+    const { history } = this.props;
+    const { pathname } = this.state;
+    history.push({
+      pathname,
+      search: query,
+    });
+  }
+
+  /**
+   * Given a parameter, return the query on state with the parameter removed.
+   *
+   * @param {String} param - A url search query parameter.
+   * @return {String} Query string with parameter removed.
+   * @example
+   *  'page=2&desiredTitle=Front+End|Back+End'
+   */
+  cleanQuery(param) {
+    const { query } = this.state;
+    const regEx = new RegExp(
+      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[A-z|+.-]+|&${param}=[A-z|+.-]+`,
+      'i',
+    );
+    const cleanQuery = query.replace(regEx, '');
+    return cleanQuery === '' ? 'page=1' : cleanQuery;
+  }
+
+  /**
+   * On Change event handler for select style filters. Given the select element name and value,
+   * create a new query to update the page URL and update the state with the new value.
+   *
+   * @param {String} value - Select element value.
+   * @param {String} name - Select element name.
+   */
+  handleSelect(value, name) {
+    const valStr = `&${name}=${value.map(val => val.value).join('|')}`;
+    const newQuery = `${this.cleanQuery(name)}${value.length !== 0 ? valStr : ''}`;
+
+    this.setQuery(newQuery);
+    this.setState({ [name]: value });
+  }
+
+  /**
+   * On Change event handler for toggle style filters. Given the name and checked field from
+   * the event target, create a new query to update the page URL and update the state with
+   * the new value.
+   *
+   * @param {Event} event - Event object for change event.
+   */
+  handleSwitch(event) {
+    const { name, checked } = event.target;
+    const newQuery = `${this.cleanQuery(name)}&${name}=${checked ? 1 : 0}`;
+
+    this.setQuery(newQuery);
+    this.setState({ [name]: checked });
+  }
+
+  /**
+   * On Click event handler for toggle filters enable/disable button. Given the name and the
+   * inner HTML of the event target, create a new query to update the page URL and update the
+   * state with the new value.
+   *
+   * @param {Event} event - Event object for change event.
+   */
+  handleSwitchEnable(event) {
+    let { innerHTML } = event.target;
+    let newQuery = '';
+    const name = event.currentTarget.dataset.filterName;
+    const enable = innerHTML === ENABLE;
+
+    if (enable) {
+      // eslint-disable-next-line react/destructuring-assignment
+      newQuery = `${this.cleanQuery(name)}&${name}=${this.state[FILTERS[name].name] ? 1 : 0}`;
+    } else {
+      newQuery = `${this.cleanQuery(name)}`;
+    }
+
+    innerHTML = enable ? DISABLE : ENABLE;
+    this.setQuery(newQuery);
+    this.setState({ [event.currentTarget.name]: enable });
+  }
+
+  /**
+   * Render method.
+   * Build the Developer List/Browse page including filter/sort/pagination controls and a list
+   * of seekers.
+   *
+   * @return {HTML} A responsive grid with filters in the left column and sort, pagination links
+   * and the list of seekers in the right column.
    */
   render() {
+    const {
+      desiredTitle,
+      topSkills,
+      addSkills,
+      familiar,
+      acclaim,
+      acclaimSwitch,
+      github,
+      githubSwitch,
+      linkedIn,
+      linkedInSwitch,
+      portfolio,
+      portfolioSwitch,
+      resume,
+      resumeSwitch,
+      projects,
+      projectsSwitch,
+      experience,
+      experienceSwitch,
+      education,
+      educationSwitch,
+      sort,
+      seekers,
+      pages,
+      currentPage,
+      pathname,
+      query,
+    } = this.state;
     const { classes } = this.props;
 
     return (
@@ -381,109 +427,101 @@ class DevList extends Component {
           <Grid item className={classes.sideBar} xs={3}>
             <Select
               placeholder={FILTERS.desiredTitle.placeholder}
-              value={this.state.desiredTitle}
+              value={desiredTitle}
               className={classes.select}
-              options={desiredTitle}
+              options={jobTitleSelectOptions}
               closeMenuOnSelect={false}
               components={makeAnimated()}
               styles={selectCustomStyles}
-              onChange={value =>
-                this.handleSelect(value, FILTERS.desiredTitle.eleName)
-              }
+              onChange={value => this.handleSelect(value, FILTERS.desiredTitle.eleName)}
               isMulti
             />
             <Select
               placeholder={FILTERS.topSkills.placeholder}
-              value={this.state.topSkills}
+              value={topSkills}
               className={classes.select}
-              options={skills}
+              options={techSkillsSelectOptions}
               closeMenuOnSelect={false}
               components={makeAnimated()}
               styles={selectCustomStyles}
-              onChange={value =>
-                this.handleSelect(value, FILTERS.topSkills.eleName)
-              }
+              onChange={value => this.handleSelect(value, FILTERS.topSkills.eleName)}
               isMulti
             />
             <Select
               placeholder={FILTERS.addSkills.placeholder}
-              value={this.state.addSkills}
+              value={addSkills}
               className={classes.select}
-              options={skills}
+              options={techSkillsSelectOptions}
               closeMenuOnSelect={false}
               components={makeAnimated()}
               styles={selectCustomStyles}
-              onChange={value =>
-                this.handleSelect(value, FILTERS.addSkills.eleName)
-              }
+              onChange={value => this.handleSelect(value, FILTERS.addSkills.eleName)}
               isMulti
             />
             <Select
               placeholder={FILTERS.familiar.placeholder}
-              value={this.state.familiar}
+              value={familiar}
               className={classes.select}
-              options={skills}
+              options={techSkillsSelectOptions}
               closeMenuOnSelect={false}
               components={makeAnimated()}
               styles={selectCustomStyles}
-              onChange={value =>
-                this.handleSelect(value, FILTERS.familiar.eleName)
-              }
+              onChange={value => this.handleSelect(value, FILTERS.familiar.eleName)}
               isMulti
             />
             <FilterToggle
               filter={FILTERS.acclaim}
-              isChecked={this.state.acclaim}
-              isEnabled={this.state.acclaimSwitch}
+              isChecked={acclaim}
+              isEnabled={acclaimSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.projects}
-              isChecked={this.state.projects}
-              isEnabled={this.state.projectsSwitch}
+              isChecked={projects}
+              isEnabled={projectsSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.experience}
-              isChecked={this.state.experience}
-              isEnabled={this.state.experienceSwitch}
+              isChecked={experience}
+              isEnabled={experienceSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.education}
-              isChecked={this.state.education}
-              isEnabled={this.state.educationSwitch}
+              isChecked={education}
+              isEnabled={educationSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.github}
-              isChecked={this.state.github}
-              isEnabled={this.state.githubSwitch}
+              isChecked={github}
+              isEnabled={githubSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.portfolio}
-              isChecked={this.state.portfolio}
-              isEnabled={this.state.portfolioSwitch}
+              isChecked={portfolio}
+              isEnabled={portfolioSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.linkedIn}
-              isChecked={this.state.linkedIn}
-              isEnabled={this.state.linkedInSwitch}
+              isChecked={linkedIn}
+              isEnabled={linkedInSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
             <FilterToggle
               filter={FILTERS.resume}
-              isChecked={this.state.resume}
-              isEnabled={this.state.resumeSwitch}
+              isChecked={resume}
+              isEnabled={resumeSwitch}
               onCheck={this.handleSwitch}
               onEnable={this.handleSwitchEnable}
             />
@@ -491,24 +529,24 @@ class DevList extends Component {
           <Grid item className={classes.cardBar} xs={9}>
             <Select
               placeholder={FILTERS.sort.placeholder}
-              value={this.state.sort}
+              value={sort}
               className={classes.select}
-              options={sort}
+              options={sortSelectOptions}
               closeMenuOnSelect={false}
               components={makeAnimated()}
               onChange={value => this.handleSelect(value, FILTERS.sort.eleName)}
               isMulti
             />
-            {this.state.seekers.map(seeker => (
+            {seekers.map(seeker => (
+              // eslint-disable-next-line no-underscore-dangle
               <DevProfileCard key={seeker._id} seeker={seeker} />
             ))}
-            {this.state.seekers.length !== 0 && (
+            {seekers.length !== 0 && (
               <Pagination
-                count={this.state.count}
-                pages={this.state.pages}
-                currentPage={this.state.currentPage}
-                pathname={this.state.pathname}
-                query={this.state.query}
+                pages={pages}
+                currentPage={currentPage}
+                pathname={pathname}
+                query={query}
               />
             )}
           </Grid>
@@ -517,5 +555,10 @@ class DevList extends Component {
     );
   }
 }
+
+DevList.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired,
+};
 
 export default withStyles(styles)(DevList);
