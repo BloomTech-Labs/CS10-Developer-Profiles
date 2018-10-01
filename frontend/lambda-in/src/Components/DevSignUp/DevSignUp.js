@@ -8,6 +8,12 @@ import axios from 'axios';
 
 import '../DevSignUp/DevSignUp.css';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
+
 export default class DevSignUp extends Component {
   constructor(props) {
     super(props);
@@ -81,7 +87,7 @@ export default class DevSignUp extends Component {
 
   render() {
     return (
-      <div className="signupContainer">
+      <div data-aos="zoom-in-down" className="signupContainer">
         <div className="formConatiner">
           <Paper className="paper" onChange={this.handleChange}>
             <div className="form2">

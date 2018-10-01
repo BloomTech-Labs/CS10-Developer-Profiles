@@ -7,6 +7,11 @@ import axios from 'axios';
 
 import '../EmployerSignUp/EmployerSignUp.css';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
 export default class EmployerSignUp extends Component {
   constructor(props) {
     super(props);
@@ -67,14 +72,71 @@ export default class EmployerSignUp extends Component {
 
   render() {
     return (
-      <div className="signupContainer">
-        <div className="formContainer">
-          <Paper onChange={this.handleChange} className="paper">
-            <div className="form2">
-              <div>
-                <Typography variant="display1" gutterBottom align="center">
-                  Employer
-                </Typography>
+        <div data-aos="zoom-in-down" class="signupContainer">
+          <div class="formContainer">
+            <Paper class="paper">
+              <div className="form2">
+                <div>
+                  <Typography variant="display1" gutterBottom align="center">
+                    Employer
+                  </Typography>
+
+                  <Typography variant="headline" gutterBottom align="center">
+                    Sign Up
+                  </Typography>
+                </div>
+
+                <TextField
+                  id="companyName"
+                  label="Company Name"
+                  value={this.state.companyName}
+                  onChange={this.handleChange("companyName")}
+                  margin="normal"
+                  fullWidth="true"
+                />
+
+                <TextField
+                  id="companyEmail"
+                  label="Company Email"
+                  value={this.state.email}
+                  onChange={this.handleChange("email")}
+                  margin="normal"
+                  fullWidth="true"
+                />
+
+                <TextField
+                  id="password"
+                  type="password"
+                  label="Password"
+                  value={this.state.password}
+                  onChange={this.handleChange("password")}
+                  margin="normal"
+                />
+
+                <TextField
+                  id="confirmPassword"
+                  type="password"
+                  label="Confirm Password"
+                  value={this.state.confirmPassword}
+                  onChange={this.handleChange("confirmPassword")}
+                  margin="normal"
+                />
+                {/* 
+              <TextField
+                id="hiringManagerFirstName"
+                label="Hiring Manager's FirstName"
+                value={this.state.hiringManagerFirstName}
+                onChange={this.handleChange("hiringManagerFirstName")}
+                margin="normal"
+              />
+
+              <TextField
+                id="hiringManagerLastName"
+                label="Hiring Manager's Last Name"
+                value={this.state.hiringManagerLastName}
+                onChange={this.handleChange("hiringManagerLastName")}
+                margin="normal"
+              />
 
                 <Typography variant="headline" gutterBottom align="center">
                   Sign Up

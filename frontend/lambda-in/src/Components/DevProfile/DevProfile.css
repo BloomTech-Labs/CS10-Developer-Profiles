@@ -143,28 +143,28 @@
     border-top: solid #4A4A4A 2px;
 }
 .lambda-badge:hover {
-    z-index: 2;
-  height: 7vw;
-  width: 7vw;
+    z-index: 3;
+  height: 5vw;
+  width: 5vw;
 }
 .social-network:hover {
     z-index: 3;
-  height: 7vw;
-  width: 7vw;
+  height: 5vw;
+  width: 5vw;
   src: "./img/lambdaColor.png";
 }
 .github:hover {
     z-index: 3;
-  height: 7vw;
-  width: 7vw;
+  height: 5vw;
+  width: 5vw;
 }
 .linkedin:hover {
     z-index: 3;
-  height: 7vw;
-  width: 7vw;
+  height: 5vw;
+  width: 5vw;
 }
 .portfolio:hover {
     z-index: 3;
-  height: 7vw;
-  width: 7vw;
+  height: 5vw;
+  width: 5vw;
 }
