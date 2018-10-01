@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import MapUnorderedList from './MapUnorderedList';
 
 class ArrayController extends Component {
   constructor(props) {
@@ -122,7 +120,7 @@ class ArrayController extends Component {
 
   render() {
     // eslint-disable-next-line react/prop-types
-    const { arr, title } = this.props;
+    const { arr, title, children } = this.props;
     const { newItem, ready } = this.state;
 
     const toRender = ready ? (
@@ -130,19 +128,11 @@ class ArrayController extends Component {
         <Button variant="outlined" color="primary" align="center" onClick={this.updateFormState}>
           {`Add new ${title}`}
         </Button>
-        <div className="inputFieldLargeMultiline" onChange={this.handleArrayControllerState}>
-          <TextField
-            id="newItem"
-            label="Top skills"
-            fullWidth
-            multiline
-            rowsMax="4"
-            value={newItem}
-            margin="normal"
-            variant="outlined"
-          />
-        </div>
-        <MapUnorderedList array={arr} />
+        {children({
+          handleArrayControllerState: this.handleArrayControllerState,
+          newItem,
+          arr,
+        })}
       </div>
     ) : null;
 
