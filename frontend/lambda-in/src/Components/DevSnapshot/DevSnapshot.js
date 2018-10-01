@@ -42,7 +42,7 @@ const DevSnapshot = props => {
     <CardContent className={classes.devSnapshot}>
       <div className={classes.devSnapshotHeader}>
         {props.img ? (
-          <ImageAvatar avatarName={props.avatarName} img={props.img} />
+          <ImageAvatar avatarName={props.fullName} img={props.img} />
         ) : (
           <LetterAvatar content={props.initials} />
         )}
@@ -68,7 +68,7 @@ const DevSnapshot = props => {
 DevSnapshot.propTypes = {
   _id: PropTypes.string.isRequired,
   img: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  fullName: PropTypes.string.isRequired,
   initials: PropTypes.string.isRequired,
   location: PropTypes.string,
   summary: PropTypes.string,
