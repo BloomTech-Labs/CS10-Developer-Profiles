@@ -27,12 +27,14 @@ class App extends Component {
       userInfo: '', // To be populated after 'login' || 'register' from other components.
       userType: '', // 'seeker' || 'employer'
       login: false, // false || conflic
+      updateState: '', // 'updating' || 'updated' || 'error'
+      deleteState: '', // 'deleting' || 'deleted' || 'error'
     };
     this.resetState = {
       isSignedIn: false,
       userInfo: '',
       userType: '',
-      login: false,
+      login: false, // false || conflict
       updateState: '', // 'updating' || 'updated' || 'error'
       deleteState: '', // 'deleting' || 'deleted' || 'error'
     };
@@ -93,7 +95,11 @@ class App extends Component {
   render() {
     const { isSignedIn } = this.state;
     const redirectToUserProfile =
-      this.state.userType === 'seeker' ? <Redirect to="/dev-profile" /> : <Redirect to="/emp-profile" />;
+      this.state.userType === 'seeker' ? (
+        <Redirect to="/dev-profile" />
+      ) : (
+        <Redirect to="/emp-profile" />
+      );
 
     return (
       <div>
@@ -108,7 +114,10 @@ class App extends Component {
             <Route path="/meetposition" component={EmpList} />
 
             {/* BILLING: If user is not Authenticated 'Redirect' to home page */}
-            <Route path="/billing" render={() => (isSignedIn ? <Billing /> : <Redirect to="/" />)} />
+            <Route
+              path="/billing"
+              render={() => (isSignedIn ? <Billing /> : <Redirect to="/" />)}
+            />
 
             {/* DEVELOPER START */}
             {/* LOGIN: Redirect to user Profile after login */}
@@ -118,27 +127,49 @@ class App extends Component {
                 isSignedIn ? (
                   redirectToUserProfile
                 ) : (
-                  <DevLogin getGS={this.getGlobalState} setGS={this.setGlobalState} />
+                  <DevLogin
+                    getGS={this.getGlobalState}
+                    setGS={this.setGlobalState}
+                  />
                 )
               }
             />
             {/* SIGNUP: Redirect to user Profile after signup */}
             <Route
               path="/dev-signup"
-              render={() => (isSignedIn ? redirectToUserProfile : <DevSignUp setGS={this.setGlobalState} />)}
+              render={() =>
+                isSignedIn ? (
+                  redirectToUserProfile
+                ) : (
+                  <DevSignUp setGS={this.setGlobalState} />
+                )
+              }
             />
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/dev-profile"
-              render={() => (isSignedIn ? <DevProfile2 getGS={this.getGlobalState} /> : <Redirect to="/" />)}
+              render={() =>
+                isSignedIn ? (
+                  <DevProfile2 getGS={this.getGlobalState} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
             />
-            <Route path="/dev-profile2" render={() => <DevProfile getGS={this.getGlobalState} />} />
+            <Route
+              path="/dev-profile2"
+              render={() => <DevProfile getGS={this.getGlobalState} />}
+            />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/dev-info-edit"
               render={props =>
                 isSignedIn ? (
-                  <DevInfoEditz {...props} setGS={this.setGlobalState} getGS={this.getGlobalState} />
+                  <DevInfoEditz
+                    {...props}
+                    setGS={this.setGlobalState}
+                    getGS={this.getGlobalState}
+                  />
                 ) : (
                   <Redirect to="/" />
                 )
@@ -151,10 +182,19 @@ class App extends Component {
             {/* SIGNUP: Redirect to user Profile after signup */}
             <Route
               path="/employer-signup"
-              render={() => (isSignedIn ? redirectToUserProfile : <EmpSignUp setGS={this.setGlobalState} />)}
+              render={() =>
+                isSignedIn ? (
+                  redirectToUserProfile
+                ) : (
+                  <EmpSignUp setGS={this.setGlobalState} />
+                )
+              }
             />
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
-            <Route path="/emp-profile" render={() => (isSignedIn ? null : <Redirect to="/" />)} />
+            <Route
+              path="/emp-profile"
+              render={() => (isSignedIn ? null : <Redirect to="/" />)}
+            />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             {/* EMPLOYER END */}
             <Route component={Page404} />
