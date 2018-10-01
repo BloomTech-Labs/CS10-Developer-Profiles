@@ -11,16 +11,16 @@ import SkillCloud from '../SkillCloud/SkillCloud';
 
 const styles = {
   devSnapshot: {
-    width: '100%'
+    width: '100%',
   },
   devSnapshotHeader: {
-    display: 'flex'
-  }
+    display: 'flex',
+  },
 };
 
 /**
- * Given an object containing a seeker's name, image, location, summary, desired title, skills, return a
- * Material UI CardContent component containing a snapshot/preview of the seeker's profile.
+ * Given an object containing a seeker's name, image, location, summary, desired title, skills,
+ * return a Material UI CardContent component containing a snapshot/preview of the seeker's profile.
  *
  * @param {Object} props - Component properties.
  * @param {String} props._id - MongoDB Object Id.
@@ -32,7 +32,8 @@ const styles = {
  * @param {String} props.title - Job title the Seeker is looking for.
  * @param {Array} props.topSkills - Seeker's top skills which get displayed in large text.
  * @param {Array} props.addSkills - Seeker's additional skills which get displayed in medium text.
- * @param {Array} props.familiar - Skills the Seeker is familiar with which get displayed in small text.
+ * @param {Array} props.familiar - Skills the Seeker is familiar with which get displayed in small
+ * text.
  * @return {Component} Material UI CardContent component with a preview of the Seeker's profile.
  *
  * @see {@link https://material-ui.com/api/card-content/ } for the CardContent API.
@@ -43,36 +44,46 @@ const styles = {
  * @see {@link ../Avatar/ImageAvatar/LetterAvatar.md  } for the LetterAvatar API.
  * @see {@link ../SkillCloud/SkillCloud.md  } for the SkillCloud API.
  */
-const DevSnapshot = props => {
-  const { classes } = props;
+const DevSnapshot = (props) => {
+  const {
+    classes,
+    _id,
+    fullName,
+    initials,
+    img,
+    location,
+    summary,
+    title,
+    topSkills,
+    addSkills,
+    familiar,
+  } = props;
+
   return (
     <CardContent className={classes.devSnapshot}>
       <div className={classes.devSnapshotHeader}>
-        {props.img ? (
-          <ImageAvatar avatarName={props.fullName} img={props.img} />
+        {img ? (
+          <ImageAvatar avatarName={fullName} img={img} />
         ) : (
-          <LetterAvatar content={props.initials} />
+          <LetterAvatar content={initials} />
         )}
         <CardContent className={classes.devIntro}>
           <Typography variant="headline">
-            <Link to={`/dev-profile/${props._id}`}>{props.fullName}</Link>
+            <Link to={`/dev-profile/${_id}`}>{fullName}</Link>
           </Typography>
-          {props.location && <Typography>{props.location}</Typography>}
-          {props.summary && <Typography>{props.summary}</Typography>}
+          {location && <Typography>{location}</Typography>}
+          {summary && <Typography>{summary}</Typography>}
         </CardContent>
       </div>
-      {props.title && <Typography variant="title">{props.title}</Typography>}
+      {title && <Typography variant="title">{title}</Typography>}
       <Divider />
-      <SkillCloud
-        topSkills={props.topSkills}
-        addSkills={props.addSkills}
-        familiar={props.familiar}
-      />
+      <SkillCloud topSkills={topSkills} addSkills={addSkills} familiar={familiar} />
     </CardContent>
   );
 };
 
 DevSnapshot.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
   _id: PropTypes.string.isRequired,
   img: PropTypes.string,
   fullName: PropTypes.string.isRequired,
@@ -80,9 +91,19 @@ DevSnapshot.propTypes = {
   location: PropTypes.string,
   summary: PropTypes.string,
   title: PropTypes.string,
-  topSkills: PropTypes.array,
-  addSkills: PropTypes.array,
-  familiar: PropTypes.array
+  topSkills: PropTypes.arrayOf(PropTypes.string),
+  addSkills: PropTypes.arrayOf(PropTypes.string),
+  familiar: PropTypes.arrayOf(PropTypes.string),
+};
+
+DevSnapshot.defaultProps = {
+  img: '',
+  summary: '',
+  location: '',
+  title: '',
+  topSkills: [],
+  addSkills: [],
+  familiar: [],
 };
 
 export default withStyles(styles)(DevSnapshot);
