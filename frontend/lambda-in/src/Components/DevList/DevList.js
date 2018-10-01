@@ -62,6 +62,27 @@ const selectCustomStyles = {
  * @prop {(Null|String)} prev - Link to the previous page in the GET request.
  * @prop {Integer} currentPage - The current page number.
  * @prop {Array} seekers - A list of seeker's based on the current search query.
+ * @prop {Array} sort - Current sorting behavior.
+ * @prop {Array} desiredTitle - Current job titles to filter by.
+ * @prop {Array} topSkills - Current top skills to filter by.
+ * @prop {Array} addSkills - Current additional skills to filter by.
+ * @prop {Array} familiar - Current familiar skills to filter by.
+ * @prop {Boolean} acclaim - True/False for Lambda Badge filter toggle.
+ * @prop {Boolean} acclaimSwitch - True/False if Lambda Badge toggle filter is enabled.
+ * @prop {Boolean} github - True/False for GitHub filter toggle.
+ * @prop {Boolean} githubSwitch - True/False if GitHub toggle filter is enabled.
+ * @prop {Boolean} linkedIn - True/False for LinkedIn filter toggle.
+ * @prop {Boolean} linkedInSwitch - True/False if LinkedIn toggle filter is enabled.
+ * @prop {Boolean} portfolio - True/False for Portfolio filter toggle.
+ * @prop {Boolean} portfolioSwitch - True/False if Portfolio toggle filter is enabled.
+ * @prop {Boolean} resume - True/False for Resume filter toggle.
+ * @prop {Boolean} resumeSwitch - True/False if Resume toggle filter is enabled.
+ * @prop {Boolean} projects - True/False for Project filter toggle.
+ * @prop {Boolean} projectsSwitch - True/False if Projects toggle filter is enabled.
+ * @prop {Boolean} experience - True/False for Experience filter toggle.
+ * @prop {Boolean} experienceSwitch - True/False if Experience toggle filter is enabled.
+ * @prop {Boolean} education - True/False for Education filter toggle.
+ * @prop {Boolean} educationSwitch - True/False if Education toggle filter is enabled.
  */
 class DevList extends Component {
   constructor(props) {
