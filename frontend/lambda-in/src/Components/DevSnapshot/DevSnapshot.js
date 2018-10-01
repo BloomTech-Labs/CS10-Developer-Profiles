@@ -54,7 +54,7 @@ const DevSnapshot = props => {
         )}
         <CardContent className={classes.devIntro}>
           <Typography variant="headline">
-            <Link to={`/dev-profile/${props._id}`}>{props.name}</Link>
+            <Link to={`/dev-profile/${props._id}`}>{props.fullName}</Link>
           </Typography>
           {props.location && <Typography>{props.location}</Typography>}
           {props.summary && <Typography>{props.summary}</Typography>}
