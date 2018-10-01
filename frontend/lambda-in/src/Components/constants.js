@@ -30,27 +30,27 @@ export const SORT = {
 export const FILTERS = {
   sort: {
     type: 'select',
-    name: 'sort',
+    eleName: 'sort',
     placeholder: 'Sort By...'
   },
   desiredTitle: {
     type: 'select',
-    name: 'desiredTitle',
+    eleName: 'desiredTitle',
     placeholder: 'Select Job Title...'
   },
   topSkills: {
     type: 'select',
-    name: 'topSkills',
+    eleName: 'topSkills',
     placeholder: 'Proficient With...'
   },
   addSkills: {
     type: 'select',
-    name: 'addSkills',
+    eleName: 'addSkills',
     placeholder: 'Knowledgeable With...'
   },
   familiar: {
     type: 'select',
-    name: 'familiar',
+    eleName: 'familiar',
     placeholder: 'Familiar With...'
   },
   acclaim: {
