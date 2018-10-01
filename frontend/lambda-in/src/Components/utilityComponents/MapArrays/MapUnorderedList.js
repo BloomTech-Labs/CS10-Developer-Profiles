@@ -8,11 +8,14 @@ import React from 'react';
  * @return {object} A React component
  */
 export default ({ array }) => {
-  return (
+  // console.log('Map unordered List Array: ', array);
+  return array ? (
     <ul>
-      {array.map(dataUnit => (
-        <li>{dataUnit}</li>
+      {array.map((value, index) => (
+        <li key={`${index}-${value}`}>{value}</li>
       ))}
     </ul>
+  ) : (
+    <div>Map Unordered List. Array = null</div>
   );
 };
