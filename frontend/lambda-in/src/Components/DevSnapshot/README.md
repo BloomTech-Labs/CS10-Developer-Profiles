@@ -13,9 +13,9 @@ a Material UI ListItem component and FontAwesomeIcon component for each link.
 - {@link https://material-ui.com/api/card-content/ } for the CardContent API.
 - {@link https://material-ui.com/api/divider/ } for the Divider API.
 - {@link https://material-ui.com/api/typography/ } for the Typography API.
-- {@link [../Avatar/ImageAvatar/ImageAvatar.md](../Avatar/ImageAvatar/ImageAvatar.md) } for the ImageAvater API.
-- {@link [../Avatar/LetterAvatar.md](../Avatar/LetterAvatar.md) } for the LetterAvatar API.
-- {@link [../SkillCloud/SkillCloud.md](../SkillCloud/SkillCloud.md) } for the SkillCloud API.
+- {@link [../Avatar/ImageAvatar/README.md](../Avatar/ImageAvatar/README.md) } for the ImageAvater API.
+- {@link [../Avatar/LetterAvatar/README.md](../Avatar/LetterAvatar/README.md) } for the LetterAvatar API.
+- {@link [../SkillCloud/README.md](../SkillCloud/README.md) } for the SkillCloud API.
 
 
 | Param | Type | Description |
