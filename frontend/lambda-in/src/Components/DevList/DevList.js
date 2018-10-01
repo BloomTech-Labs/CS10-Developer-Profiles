@@ -157,6 +157,12 @@ class DevList extends Component {
     return search === '' ? search : search.substring(1);
   };
 
+  /**
+   * Determine the current page using the URL query and return it. If no page is set
+   * on the URL, return 1.
+   *
+   * @return {Integer} Current page number.
+   */
   getCurrentPage = () => {
     const queryArr = this.getQuery().split('&');
 
@@ -168,6 +174,15 @@ class DevList extends Component {
     return 1;
   };
 
+  /**
+   * Use the given search query, concatenated with the API seekers route, to perform a GET request for
+   * seekers. On success, save results to state. On error redirect unauthorized users or clear the list
+   * of seekers on state.
+   *
+   * @param {String} query - A URL search query.
+   * @example
+   *  'page=2&desiredTitle=Front+End|Back+End'
+   */
   getSeekers = (query = '') => {
     const url = query === '' ? '/api/seekers' : `/api/seekers?${query}`;
     const config = {
