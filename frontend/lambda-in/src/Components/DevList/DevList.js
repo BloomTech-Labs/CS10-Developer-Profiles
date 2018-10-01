@@ -287,6 +287,13 @@ class DevList extends Component {
     });
   };
 
+  /**
+   * On Change event handler for select style filters. Given the select element name and value,
+   * create a new query to update the page URL and update the state with the new value.
+   *
+   * @param {String} value - Select element value.
+   * @param {String} name - Select element name.
+   */
   handleSelect = (value, name) => {
     const valStr = `&${name}=${value.map(val => val.value).join('|')}`;
     const newQuery = `${this.cleanQuery(name)}${
@@ -297,6 +304,12 @@ class DevList extends Component {
     this.setState({ [name]: value });
   };
 
+  /**
+   * On Change event handler for toggle style filters. Given the name and checked field from the
+   * event target, create a new query to update the page URL and update the state with the new value.
+   *
+   * @param {Event} event - Event object for change event.
+   */
   handleSwitch = event => {
     const name = event.target.name;
     const checked = event.target.checked;
@@ -306,6 +319,12 @@ class DevList extends Component {
     this.setState({ [name]: checked });
   };
 
+  /**
+   * On Click event handler for toggle filters enable/disable button. Given the name and the inner HTML
+   * of the event target, create a new query to update the page URL and update the state with the new value.
+   *
+   * @param {Event} event - Event object for change event.
+   */
   handleSwitchEnable = event => {
     const enable = event.target.innerHTML === ENABLE;
     const name = event.currentTarget.dataset.filterName;
