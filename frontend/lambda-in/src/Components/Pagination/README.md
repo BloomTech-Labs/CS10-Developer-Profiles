@@ -26,7 +26,6 @@
     * [.getHighRangePageLinks()](#Pagination+getHighRangePageLinks) ⇒ <code>Array</code>
     * [.getMidRangePageLinks()](#Pagination+getMidRangePageLinks) ⇒ <code>Array</code>
     * [.getPageLinks()](#Pagination+getPageLinks) ⇒ <code>Array</code>
-    * [.handleClick()](#Pagination+handleClick)
     * [.render()](#Pagination+render) ⇒ <code>HTML</code>
 
 <a name="new_Pagination_new"></a>
@@ -38,7 +37,6 @@ A component that generates links to navigate through a list of pages.
 | Param | Type | Description |
 | --- | --- | --- |
 | props | <code>Object</code> | Component properties. |
-| props.count | <code>Integer</code> | The total number of records being displayed. |
 | props.pages | <code>Integer</code> | The total number of pages that should exist. |
 | props.currentPage | <code>Integer</code> | The current page number. |
 | props.pathName | <code>String</code> | The current page url pathname. |
@@ -112,13 +110,7 @@ an array of integers.
 **Kind**: instance method of [<code>Pagination</code>](#Pagination)
 
 **Returns**: <code>Array</code> - Array with page range
-<a name="Pagination+handleClick"></a>
 
-### pagination.handleClick()
-Click event handler
-When called, scroll the window up to the top of the page.
-
-**Kind**: instance method of [<code>Pagination</code>](#Pagination)
 <a name="Pagination+render"></a>
 
 ### pagination.render() ⇒ <code>HTML</code>
