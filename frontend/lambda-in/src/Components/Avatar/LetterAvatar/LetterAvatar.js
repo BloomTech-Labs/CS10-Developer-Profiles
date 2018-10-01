@@ -5,8 +5,8 @@ import Avatar from '@material-ui/core/Avatar';
 
 const styles = {
   letterAvatar: {
-    backgroundColor: '#a0021e'
-  }
+    backgroundColor: '#a0021e',
+  },
 };
 
 /**
@@ -19,13 +19,14 @@ const styles = {
  * @see {@link https://material-ui.com/demos/avatars/#letter-avatars } for a demo of the Letter Avatar component.
  * @see {@link https://material-ui.com/api/avatar/ } for the Avatar API.
  */
-const LetterAvatar = props => {
-  const { classes } = props;
-  return <Avatar className={classes.letterAvatar}>{props.content}</Avatar>;
+const LetterAvatar = (props) => {
+  const { classes, content } = props;
+  return <Avatar className={classes.letterAvatar}>{content}</Avatar>;
 };
 
 LetterAvatar.propTypes = {
-  content: PropTypes.string.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  content: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(LetterAvatar);
