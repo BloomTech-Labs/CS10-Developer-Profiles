@@ -11,6 +11,7 @@ class ArrayController extends Component {
     };
     this.handleArrayControllerState = this.handleArrayControllerState.bind(this);
     this.updateFormState = this.updateFormState.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   componentDidMount() {
@@ -74,12 +75,10 @@ class ArrayController extends Component {
      * Stop event propagation.
      * @description Stop this event to be listened and handled in parent Nodes.
      */
-    // ev.stopPropagation();
+    ev.stopPropagation();
 
     this.setState({ [ev.target.id]: ev.target.value });
   }
-
-  // handleDelete() {}
 
   /**
    * Update parent Form-state.
@@ -118,6 +117,31 @@ class ArrayController extends Component {
     this.setLocalState();
   }
 
+  /**
+   * Remove an item form the Array
+   */
+  removeItem(index) {
+    const { arr, field, setFS } = this.props;
+    return function remove(e) {
+      /**
+       * Stop event propagation.
+       * @description Stop this event to be listened and handled in parent Nodes.
+       */
+      e.stopPropagation();
+
+      console.log('REMOVE ITEM', { index, E: e.target });
+
+      // Make a cooy of the original Array
+      const toUpdate = [...arr];
+
+      // Remove the item
+      toUpdate.splice(index, 1);
+
+      // Update Form state
+      setFS({ [field]: toUpdate });
+    };
+  }
+
   render() {
     // eslint-disable-next-line react/prop-types
     const { arr, title, children } = this.props;
@@ -130,6 +154,7 @@ class ArrayController extends Component {
         </Button>
         {children({
           handleArrayControllerState: this.handleArrayControllerState,
+          removeItem: this.removeItem,
           newItem,
           arr,
         })}
