@@ -1,61 +1,38 @@
-.EditContainer{
+.UserContainer{
     width: 100vw;
-    height: 160vh;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     margin-top: 50px;
     justify-content: center;
 }
 
-.paperContainer{
-    width: 70vw;
-    height: 160vh;
+.userPaperContainer{
+    width: 30vw;
+    height: 70vh;
     margin:20 px;
     padding: 20px;
     display: flex;
     flex-direction: column;
 }
 
-.expansionPanel{
-    width:28vw;
-    display: flex;
-    flex-direction: column;
-}
 
 .inputRow{
     height: 10vh; 
 }
 
 .smallInputContainer{
-    width: 53vw;
-    margin:10px;
+    width: 53VW;
     display: flex;
     flex-direction: row;
 }
 
-.largeInputContainer{
-    width: 100vw;
-    margin:10px;
-    display: flex;
-    flex-direction: row;
-}
 
-.expansionPanelLarge{
-    width:50vw;
-    display: flex;
-    flex-direction: column;
-}
-
-.panelMargin{
-    margin:10px;
-    width: 57vw;
-}
 
 .imageContainer{
     width: 28VW;
     
 }
-
 
 .displayPic{
     height: 30vh;
