@@ -1,40 +1,66 @@
 import React, { Fragment } from 'react';
-import DropDown from '../DropDown/DropDown';
 import TextField from '@material-ui/core/TextField';
+import DropDown from '../DropDown/DropDown';
 import MapChips from '../MapArrays/MapChips';
+import ArrayController from '../MapArrays/ArrayController';
 
+/**
+ * Render the Developer's 'summary' and 'topSkills' fields.Fragment
+ *
+ * @function
+ * @return {object} A React component.
+ */
+// eslint-disable-next-line arrow-parens
 const BioSkills = props => {
-  const { userInfo } = props;
+  // eslint-disable-next-line react/prop-types
+  const { userInfo, setFS } = props;
 
   return (
     <Fragment>
-      <DropDown header="tell us something about yourself!">
+      <DropDown header="Biio and Skills">
         <div className="inputFieldLargeMultiline">
           <TextField
             id="summary"
+            index="an index"
             label="Your Bio"
             fullWidth
             multiline
-            rowsMax="4"
+            rowsMax="20"
             value={userInfo.summary}
             margin="normal"
             variant="outlined"
           />
         </div>
         {/* TODO */}
-        <div className="inputFieldLargeMultiline">
-          <TextField
-            id="topSkills"
-            label="Top skills"
-            fullWidth
-            multiline
-            rowsMax="4"
-            value={userInfo.topSkills}
-            margin="normal"
-            variant="outlined"
-          />
-        </div>
-        {/* <MapChips getGS={props.getGS} setGS={props.setGS} field="topSkills" array={userInfo.topSkills} /> */}
+        <ArrayController
+          title="Top Skills"
+          field="topSkills"
+          setFS={setFS}
+          arr={userInfo.topSkills}
+        >
+          {/* eslint-disable-next-line object-curly-newline */}
+          {({ handleArrayControllerState, removeItem, newItem, arr }) => (
+            <Fragment>
+              <div
+                className="inputFieldLargeMultiline"
+                onChange={handleArrayControllerState}
+              >
+                <TextField
+                  id="newItem"
+                  label="Top skills"
+                  fullWidth
+                  multiline
+                  rowsMax="4"
+                  value={newItem}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </div>
+              {/* <MapUnorderedList array={arr} /> */}
+              <MapChips field="topSkills" array={arr} removeItem={removeItem} />
+            </Fragment>
+          )}
+        </ArrayController>
 
         {/* TODO: Add summary - enable uploading a file */}
       </DropDown>
