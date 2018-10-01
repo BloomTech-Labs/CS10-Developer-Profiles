@@ -160,7 +160,7 @@ export default class DevLogin extends Component {
           </Typography>
           <div className="resolve-conflict">
             <Chip
-              onClick={this.resolveUserConflic.bind(this, 'seeker')}
+              onClick={this.resolveUserConflict.bind(this, 'seeker')}
               label="Developer"
               color="primary"
               variant="outlined"
