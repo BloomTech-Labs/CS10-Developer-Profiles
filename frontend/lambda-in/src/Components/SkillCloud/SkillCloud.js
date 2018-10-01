@@ -65,10 +65,37 @@ class SkillCloud extends Component {
       classes, topSkills, addSkills, familiar,
     } = this.props;
     const skills = [];
+    let id = 1;
 
-    topSkills.forEach(skill => skills.push({ skill, type: 'topSkills', class: classes.top }));
-    addSkills.forEach(skill => skills.push({ skill, type: 'addSkills', class: classes.additional }));
-    familiar.forEach(skill => skills.push({ skill, type: 'familiar', class: classes.familiar }));
+    topSkills.forEach((skill) => {
+      skills.push({
+        id,
+        skill,
+        type: 'topSkills',
+        class: classes.top,
+      });
+      id += 1;
+    });
+
+    addSkills.forEach((skill) => {
+      skills.push({
+        id,
+        skill,
+        type: 'addSkills',
+        class: classes.additional,
+      });
+      id += 1;
+    });
+
+    familiar.forEach((skill) => {
+      skills.push({
+        id,
+        skill,
+        type: 'familiar',
+        class: classes.familiar,
+      });
+      id += 1;
+    });
 
     return skills;
   }
@@ -87,7 +114,10 @@ class SkillCloud extends Component {
     return (
       <div className="skill-cloud">
         {skills.map(skill => (
-          <Typography key={skill} className={classnames(classes.skill, skill.class)}>
+          <Typography
+            key={skill.id}
+            className={classnames(classes.skill, skill.class)}
+          >
             <Link to={`/meetdev?${skill.type}=${skill.skill.replace(/ /g, '+')}`}>
               {skill.skill}
             </Link>
