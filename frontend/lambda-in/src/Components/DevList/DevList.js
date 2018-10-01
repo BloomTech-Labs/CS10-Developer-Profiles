@@ -32,7 +32,7 @@ class DevList extends Component {
     return (
       <div className="App">
         <div className="mainBar">
-          <div className="sideBar">
+          <div className="sideBar" data-aos="fade-right">
             <Typography variant="headline" component="h3">
               Filters
             </Typography>
