@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import './DevInfoEditz.css';
 import BioSkills from '../utilityComponents/SeekerEditUtils/BioSkills';
+import BasicInfo from '../utilityComponents/SeekerEditUtils/BasicInfo';
+import SocialLinks from '../utilityComponents/SeekerEditUtils/SocialLinks';
 
 /**
  * Form handling user profile updates
@@ -12,7 +14,7 @@ import BioSkills from '../utilityComponents/SeekerEditUtils/BioSkills';
  * @description This component handle in a local-state all data modification.
  * The global state is updeated only when the PUT request response with status 200
  */
-export default class DevInfoEdit extends Component {
+class DevInfoEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,7 +31,7 @@ export default class DevInfoEdit extends Component {
   componentDidMount() {
     // eslint-disable-next-line react/prop-types
     const { getGS } = this.props;
-    console.log('FORM', this.props);
+    // console.log('FORM', this.props);
     this.setState({ ...getGS('userInfo'), ready: true });
   }
 
@@ -44,7 +46,7 @@ export default class DevInfoEdit extends Component {
    * <Component setLS={this.setFormState} />
    */
   setFormState(properties) {
-    console.log({ setGS: properties });
+    // console.log({ setGS: properties });
     this.setState(properties);
   }
 
@@ -52,8 +54,8 @@ export default class DevInfoEdit extends Component {
    * Sync local state with input field.
    */
   handleChange(event) {
-    console.log('Form Dev update');
-    // event.stopPropagation();
+    // console.log('Form Dev update');
+    event.stopPropagation();
     this.setState({ [event.target.id]: event.target.value });
   }
 
@@ -117,7 +119,10 @@ export default class DevInfoEdit extends Component {
        */
       setGS({ updateState: 'error' });
       // eslint-disable-next-line no-alert, no-undef
-      alert('An error occurred updating your information, please resubmit the form'); // TODO: improve UX
+      alert(
+        // eslint-disable-next-line comma-dangle
+        'An error occurred updating your information, please resubmit the form'
+      ); // TODO: improve UX
     }
   }
 
@@ -127,7 +132,6 @@ export default class DevInfoEdit extends Component {
      */
     const { ready } = this.state;
     const userInfo = this.state;
-    const { setGS, getGS } = this.props;
 
     /**
      * If component is mount -> Render nested children
@@ -137,10 +141,10 @@ export default class DevInfoEdit extends Component {
     const toRender = ready ? (
       <Fragment>
         {/* User basic info: name, desired title, current location */}
-        {/* <BasicInfo userInfo={userInfo} /> */}
+        <BasicInfo userInfo={userInfo} />
 
         {/* SOCIAL LINKS */}
-        {/* <SocialLinks userInfo={userInfo} /> */}
+        <SocialLinks userInfo={userInfo} />
 
         {/* BIO - TOP SKILLS */}
         <BioSkills setFS={this.setFormState} userInfo={userInfo} />
@@ -167,7 +171,12 @@ export default class DevInfoEdit extends Component {
             <div className="inputRow">
               {toRender}
               <div>
-                <Button variant="outlined" color="primary" align="center" onClick={this.update}>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  align="center"
+                  onClick={this.update}
+                >
                   {' '}
                   Update profile
                 </Button>
@@ -179,3 +188,5 @@ export default class DevInfoEdit extends Component {
     );
   }
 }
+
+export default DevInfoEdit;
