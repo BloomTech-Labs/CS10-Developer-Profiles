@@ -9,7 +9,10 @@ class ArrayController extends Component {
       ready: false,
       itemType: '',
     };
-    this.handleArrayControllerState = this.handleArrayControllerState.bind(this);
+    // prettier-ignore
+    this.handleArrayControllerState = (
+      this.handleArrayControllerState.bind(this)
+    );
     this.updateFormState = this.updateFormState.bind(this);
     this.removeItem = this.removeItem.bind(this);
   }
@@ -59,7 +62,11 @@ class ArrayController extends Component {
 
     switch (itemType) {
       case '[object Object]':
-        this.setState({ ...mapAndResetKeysValues(item), itemType: 'object', ready: true });
+        this.setState({
+          ...mapAndResetKeysValues(item),
+          itemType: 'object',
+          ready: true,
+        });
         break;
       case '[object Array]':
         // TODO: handle nested Arrays
@@ -129,7 +136,7 @@ class ArrayController extends Component {
        */
       e.stopPropagation();
 
-      console.log('REMOVE ITEM', { index, E: e.target });
+      // console.log('REMOVE ITEM', { index, E: e.target });
 
       // Make a cooy of the original Array
       const toUpdate = [...arr];
@@ -149,7 +156,12 @@ class ArrayController extends Component {
 
     const toRender = ready ? (
       <div className="array-controller">
-        <Button variant="outlined" color="primary" align="center" onClick={this.updateFormState}>
+        <Button
+          variant="outlined"
+          color="primary"
+          align="center"
+          onClick={this.updateFormState}
+        >
           {`Add new ${title}`}
         </Button>
         {children({
