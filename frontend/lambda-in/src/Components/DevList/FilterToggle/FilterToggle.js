@@ -10,8 +10,9 @@ import { ENABLE, DISABLE } from '../../constants';
 const styles = {};
 
 /**
- * Given filter data and event handlers for onClick and onChange, return a togglable filter comprised
- * of a Material UI FormGroup component containing a Material UI Button and Switch component.
+ * Given filter data and event handlers for onClick and onChange, return a togglable filter
+ * comprised of a Material UI FormGroup component containing a Material UI Button and Switch
+ * component.
  *
  * @param {Object} props - Component properties.
  * @param {Object} props.filter - Filter data.
@@ -31,28 +32,27 @@ const styles = {};
  * @see {@link https://material-ui.com/demos/selection-controls/#switches-with-formcontrollabel } for a
  * demo of the Switch Component.
  */
-const FilterToggle = props => {
+const FilterToggle = (props) => {
+  const {
+    filter, isChecked, isEnabled, onCheck, onEnable,
+  } = props;
+
   return (
     <FormGroup row>
       <FormControlLabel
         control={
-          <Switch
-            name={props.filter.eleName}
-            checked={props.isChecked}
-            color="primary"
-            onChange={props.onCheck}
-          />
+          <Switch name={filter.eleName} checked={isChecked} color="primary" onChange={onCheck} />
         }
-        label={props.filter.displayName}
-        disabled={!props.isEnabled}
+        label={filter.displayName}
+        disabled={!isEnabled}
       />
       <Button
-        name={props.filter.toggleName}
+        name={filter.toggleName}
         size="small"
-        onClick={props.onEnable}
-        data-filter-name={props.filter.eleName}
+        onClick={onEnable}
+        data-filter-name={filter.eleName}
       >
-        {props.isEnabled ? DISABLE : ENABLE}
+        {isEnabled ? DISABLE : ENABLE}
       </Button>
     </FormGroup>
   );
@@ -62,12 +62,12 @@ FilterToggle.propTypes = {
   filter: PropTypes.shape({
     displayName: PropTypes.string.isRequired,
     eleName: PropTypes.string.isRequired,
-    toggleName: PropTypes.string.isRequired
+    toggleName: PropTypes.string.isRequired,
   }).isRequired,
   isChecked: PropTypes.bool.isRequired,
   isEnabled: PropTypes.bool.isRequired,
   onCheck: PropTypes.func.isRequired,
-  onEnable: PropTypes.func.isRequired
+  onEnable: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(FilterToggle);
