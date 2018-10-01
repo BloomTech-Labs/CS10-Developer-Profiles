@@ -38,8 +38,8 @@ const styles = {
  *
  * @see {@link https://material-ui.com/api/card/ } for the Card API.
  * @see {@link https://material-ui.com/demos/cards/ } for a demo of the Card Component.
- * @see {@link ../../DevSnapshot/DevSnapshot.md } for the DevSnapshot API.
- * @see {@link ../../DevSocial/DevSocial.md } for the DevSocial API.
+ * @see {@link ../../DevSnapshot/README.md } for the DevSnapshot API.
+ * @see {@link ../../DevSocial/README.md } for the DevSocial API.
  */
 const DevProfileCard = props => {
   const { classes } = props;
