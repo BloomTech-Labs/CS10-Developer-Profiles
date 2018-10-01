@@ -106,6 +106,17 @@ class DevList extends Component {
     this.getSeekers(this.state.query);
   }
 
+  /**
+   * Return an additional state object for all filters saved on FILTERS constant.
+   *
+   * @return {Object} Additional filter state.
+   * @example
+   *  {
+   *    acclaim: true,
+   *    acclaimSwitch: false,
+   *    sort: []
+   *  }
+   */
   getFilterState = () => {
     const state = {};
 
@@ -217,6 +228,9 @@ class DevList extends Component {
     return cleanQuery === '' ? 'page=1' : cleanQuery;
   };
 
+  /**
+   * Set the state for any filters currently set on URL.
+   */
   setActiveFilters = () => {
     const activeFilters = this.state.query.split('&');
     const filterNames = Object.keys(FILTERS);
