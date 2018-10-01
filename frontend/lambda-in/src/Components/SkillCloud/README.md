@@ -4,6 +4,12 @@
 
 **Kind**: A React class component
 
+**See**
+
+- {@link https://reacttraining.com/react-router/web/api/Link } for the Link API.
+- {@link https://material-ui.com/api/typography/ } for the Typography API.
+- {@link https://material-ui.com/style/typography/ } for a demo of the Typography component.
+
 **State**
 
 | Name | Type | Description |

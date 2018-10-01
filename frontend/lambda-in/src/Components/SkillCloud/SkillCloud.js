@@ -38,6 +38,10 @@ class SkillCloud extends Component {
    * @param {Array} props.addSkills - List of seeker's additional skills to be displayed in medium text.
    * @param {Array} props.familiar - List of skills the seeker is familiar with to be displayed in small
    * text.
+   *
+   * @see {@link https://reacttraining.com/react-router/web/api/Link } for the Link API.
+   * @see {@link https://material-ui.com/api/typography/ } for the Typography API.
+   * @see {@link https://material-ui.com/style/typography/ } for a demo of the Typography component.
    */
   constructor(props) {
     super(props);
