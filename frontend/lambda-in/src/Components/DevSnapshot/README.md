@@ -13,6 +13,7 @@ Material UI CardContent component containing a snapshot/preview of the seeker's 
 - {@link https://material-ui.com/api/card-content/ } for the CardContent API.
 - {@link https://material-ui.com/api/divider/ } for the Divider API.
 - {@link https://material-ui.com/api/typography/ } for the Typography API.
+- {@link https://material-ui.com/style/typography/ } for a demo of the Typography component.
 - {@link [../Avatar/ImageAvatar/README.md](../Avatar/ImageAvatar/README.md) } for the ImageAvater API.
 - {@link [../Avatar/LetterAvatar/README.md](../Avatar/LetterAvatar/README.md) } for the LetterAvatar API.
 - {@link [../SkillCloud/README.md](../SkillCloud/README.md) } for the SkillCloud API.

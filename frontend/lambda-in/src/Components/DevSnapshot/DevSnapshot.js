@@ -38,6 +38,7 @@ const styles = {
  * @see {@link https://material-ui.com/api/card-content/ } for the CardContent API.
  * @see {@link https://material-ui.com/api/divider/ } for the Divider API.
  * @see {@link https://material-ui.com/api/typography/ } for the Typography API.
+ * @see {@link https://material-ui.com/style/typography/ } for a demo of the Typography component.
  * @see {@link ../Avatar/ImageAvatar/ImageAvatar.md } for the ImageAvater API.
  * @see {@link ../Avatar/ImageAvatar/LetterAvatar.md  } for the LetterAvatar API.
  * @see {@link ../SkillCloud/SkillCloud.md  } for the SkillCloud API.
