@@ -19,14 +19,20 @@ const styles = {
 };
 
 /**
- * Given a Github, LinkedIn, Portfolio and/or Acclaim link, return a Material UI List component containing
- * a Material UI ListItem component and FontAwesomeIcon component for each link.
+ * Given an object containing a seeker's name, image, location, summary, desired title, skills, return a
+ * Material UI CardContent component containing a snapshot/preview of the seeker's profile.
  *
  * @param {Object} props - Component properties.
- * @param {String} props.github - A github profile link.
- * @param {String} props.linkedIn - A linkedIn profile link.
- * @param {String} props.portfolio - A link to an extrenal portfolio.
- * @param {String} props.acclaim - An acclaim badge id.
+ * @param {String} props._id - MongoDB Object Id.
+ * @param {String} props.img - URL to seeker's profile image.
+ * @param {String} props.fullName - Seeker's full name.
+ * @param {String} props.initials - Seeker's initials using first character of first and last name.
+ * @param {String} props.location - Seeker's current location.
+ * @param {String} props.summry - A 128 character description about the Seeker.
+ * @param {String} props.title - Job title the Seeker is looking for.
+ * @param {Array} props.topSkills - Seeker's top skills which get displayed in large text.
+ * @param {Array} props.addSkills - Seeker's additional skills which get displayed in medium text.
+ * @param {Array} props.familiar - Skills the Seeker is familiar with which get displayed in small text.
  * @return {Component} Material UI List component.
  *
  * @see {@link https://material-ui.com/api/card-content/ } for the CardContent API.
