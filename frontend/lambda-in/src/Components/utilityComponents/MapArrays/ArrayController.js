@@ -150,7 +150,7 @@ class ArrayController extends Component {
   }
 }
 
-ArrayController.prototype = {
+ArrayController.propTypes = {
   arr: PropTypes.arrayOf(PropTypes.any).isRequired,
   title: PropTypes.string.isRequired,
   field: PropTypes.string.isRequired,
