@@ -52,7 +52,7 @@ const DevProfileCard = props => {
     <Card className={classes.devProfileCard}>
       <DevSnapshot
         _id={props.seeker._id}
-        name={name}
+        fullName={name}
         initials={initials}
         img={props.seeker.img}
         location={props.seeker.currentLocation}
