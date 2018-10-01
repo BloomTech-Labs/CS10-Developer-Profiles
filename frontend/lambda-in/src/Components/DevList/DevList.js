@@ -304,7 +304,7 @@ class DevList extends Component {
     const valStr = `&${name}=${value.map(val => val.value).join('|')}`;
     const newQuery = `${this.cleanQuery(name)}${
       value.length !== 0 ? valStr : ''
-    }`;
+      }`;
 
     this.setQuery(newQuery);
     this.setState({ [name]: value });
@@ -336,8 +336,8 @@ class DevList extends Component {
     const name = event.currentTarget.dataset.filterName;
     const newQuery = enable
       ? `${this.cleanQuery(name)}&${name}=${
-          this.state[FILTERS[name].name] ? 1 : 0
-        }`
+      this.state[FILTERS[name].name] ? 1 : 0
+      }`
       : `${this.cleanQuery(name)}`;
 
     this.setQuery(newQuery);

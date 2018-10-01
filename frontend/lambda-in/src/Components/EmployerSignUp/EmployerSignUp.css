@@ -1,24 +1,33 @@
-.App {
+.signupContainer {
   width: 100vw;
+  height: 100vh;
+  display: flex;
 }
-
-.navBar {
-  margin-bottom:4vw;
-}
-
-.container {
-  width: 50vw;
-  margin: auto;
-  border: none;
-}
-
+  
 .headline{
   padding:16px;
 }
-
-.employerContainer {
+.formContainer {
+  align-self: center;
+  width: 100vw;
+  display: flex;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 3vw;
 }
 
+.paper {
+  align-self: center;
+}
+
+.form2{
+  width: 30vw;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.login{
+  margin: 16px;
+}
