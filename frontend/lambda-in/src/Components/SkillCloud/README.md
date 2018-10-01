@@ -50,7 +50,7 @@ Return the single skills array.
 
 ### skillCloud.render() ⇒ <code>Array</code>
 Render method.
-Using the skills array stored on state, map over each skill and render a link to the /dev-list,
+Using the skills array stored on state, map over each skill and render a link to the /meetdev,
 filtered by the selected skill.
 
 **Kind**: instance method of [<code>SkillCloud</code>](#SkillCloud)

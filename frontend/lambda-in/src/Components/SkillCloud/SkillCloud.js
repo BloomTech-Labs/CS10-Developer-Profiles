@@ -78,7 +78,7 @@ class SkillCloud extends Component {
 
   /**
    * Render method.
-   * Using the skills array stored on state, map over each skill and render a link to the /dev-list,
+   * Using the skills array stored on state, map over each skill and render a link to the /meetdev,
    * filtered by the selected skill.
    *
    * @return {HTML} A div holding skill links.
@@ -95,7 +95,7 @@ class SkillCloud extends Component {
             className={classnames(classes.skill, skill.class)}
           >
             <Link
-              to={`/dev-list?${skill.type}=${skill.skill.replace(/ /g, '+')}`}
+              to={`/meetdev?${skill.type}=${skill.skill.replace(/ /g, '+')}`}
             >
               {skill.skill}
             </Link>

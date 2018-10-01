@@ -32,7 +32,7 @@ class Pagination extends Component {
    * @param {Integer} props.currentPage - The current page number.
    * @param {String} props.pathName - The current page url pathname.
    * @example
-   *  '/dev-list'
+   *  '/meetdev'
    * @param {String} props.query - The current page url search query.
    * @example
    *  'page=2&desiredTitle=Front+End|Back+End'
@@ -43,7 +43,7 @@ class Pagination extends Component {
       maxPageLinks: PAGINATION_SETTINGS.maxPageLinks,
       lowLimit: PAGINATION_SETTINGS.maxPageLinks - 1,
       highLimit: this.props.pages - PAGINATION_SETTINGS.maxPageLinks + 2,
-      pageLinks: []
+      pageLinks: [],
     };
   }
 
@@ -113,8 +113,7 @@ class Pagination extends Component {
    */
   getMidRangePageLinks = () => {
     const pageLinks = [];
-    const start =
-      this.props.currentPage - Math.floor((this.state.maxPageLinks - 1) / 2);
+    const start = this.props.currentPage - Math.floor((this.state.maxPageLinks - 1) / 2);
 
     for (let i = start; i < start + this.state.maxPageLinks; i++) {
       pageLinks.push(i);
@@ -131,14 +130,11 @@ class Pagination extends Component {
    * @return {Array} Array with page range
    */
   getPageLinks = () => {
-    if (this.props.pages <= this.state.maxPageLinks)
-      return this.getAllPageLinks();
+    if (this.props.pages <= this.state.maxPageLinks) return this.getAllPageLinks();
 
-    if (this.props.currentPage < this.state.lowLimit)
-      return this.getLowRangePageLinks();
+    if (this.props.currentPage < this.state.lowLimit) return this.getLowRangePageLinks();
 
-    if (this.props.currentPage > this.state.highLimit)
-      return this.getHighRangePageLinks();
+    if (this.props.currentPage > this.state.highLimit) return this.getHighRangePageLinks();
 
     return this.getMidRangePageLinks();
   };
@@ -187,7 +183,7 @@ Pagination.propTypes = {
   pages: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
   pathname: PropTypes.string.isRequired,
-  query: PropTypes.string
+  query: PropTypes.string,
 };
 
 export default withStyles(styles)(Pagination);

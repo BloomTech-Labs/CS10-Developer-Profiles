@@ -52,7 +52,7 @@ const selectCustomStyles = {
  * @class A React class component
  * @prop {String} pathname - The current page url pathname.
  * @example
- *  /dev-list'
+ *  /meetdev'
  * @prop {String} query - The current page url search query.
  * @example
  *  'page=2&desiredTitle=Front+End|Back+End'
@@ -145,7 +145,7 @@ class DevList extends Component {
    *
    * @return {String} Current page pathname.
    * @example
-   *  '/dev-list'
+   *  '/meetdev'
    */
   getPathname = () => {
     return window.location.pathname;

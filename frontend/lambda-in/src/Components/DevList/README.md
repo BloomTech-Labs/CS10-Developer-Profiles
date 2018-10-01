@@ -103,7 +103,7 @@ Return the pathname of the current page.
 
 **Example**
 ```js
-'/dev-list'
+'/meetdev'
 ```
 <a name="DevList+getQuery"></a>
 
