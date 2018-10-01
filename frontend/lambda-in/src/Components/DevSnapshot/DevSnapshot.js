@@ -33,7 +33,7 @@ const styles = {
  * @param {Array} props.topSkills - Seeker's top skills which get displayed in large text.
  * @param {Array} props.addSkills - Seeker's additional skills which get displayed in medium text.
  * @param {Array} props.familiar - Skills the Seeker is familiar with which get displayed in small text.
- * @return {Component} Material UI List component.
+ * @return {Component} Material UI CardContent component with a preview of the Seeker's profile.
  *
  * @see {@link https://material-ui.com/api/card-content/ } for the CardContent API.
  * @see {@link https://material-ui.com/api/divider/ } for the Divider API.
