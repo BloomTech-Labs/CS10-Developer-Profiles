@@ -25,7 +25,10 @@ export default ({ getGS, logOut }) => {
      */
     leftNavBar: (
       <Fragment>
-        <Button component={Link} to={userType === 'seeker' ? '/dev-profile' : '/emp-profile'}>
+        <Button
+          component={Link}
+          to={userType === 'seeker' ? '/dev-profile' : '/emp-profile'}
+        >
           profile
         </Button>
         <Button component={Link} to="/billing">
@@ -43,6 +46,9 @@ export default ({ getGS, logOut }) => {
     leftNavBar: <Fragment />, // There are no Links to display
     rightNavBar: (
       <Fragment>
+        <Button component={Link} to="/dev-signup">
+          Signup
+        </Button>
         <Button component={Link} to="/dev-login">
           Log-in
         </Button>
@@ -57,12 +63,17 @@ export default ({ getGS, logOut }) => {
           <Button component={Link} to="/">
             meetdev
           </Button>
-          <Button component={Link} to={userType === 'seeker' ? '/meetposition' : '/meetdev'}>
+          <Button
+            component={Link}
+            to={userType === 'seeker' ? '/meetposition' : '/meetdev'}
+          >
             Browse
           </Button>
           {isSignedIn ? withToken.leftNavBar : withNotToken.leftNavBar}
         </div>
-        <div className="rightNavBar">{isSignedIn ? withToken.rightNavBar : withNotToken.rightNavBar}</div>
+        <div className="rightNavBar">
+          {isSignedIn ? withToken.rightNavBar : withNotToken.rightNavBar}
+        </div>
       </div>
     </Paper>
   );
