@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -15,9 +15,12 @@ import BioSkills from '../utilityComponents/SeekerEditUtils/BioSkills';
 export default class DevInfoEdit extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      ready: false,
+    };
     this.handleChange = this.handleChange.bind(this);
     this.update = this.update.bind(this);
+    this.setFormState = this.setFormState.bind(this);
   }
 
   /**
@@ -26,14 +29,31 @@ export default class DevInfoEdit extends Component {
   componentDidMount() {
     // eslint-disable-next-line react/prop-types
     const { getGS } = this.props;
-    const userInfo = getGS('userInfo');
-    this.setState({ ...userInfo });
+    console.log('FORM', this.props);
+    this.setState({ ...getGS('userInfo'), ready: true });
+  }
+
+  /**
+   * Set local state.
+   *
+   * @method setFormState
+   * @param {object} properties - Properties to be set. { property: value }
+   * @return {void}
+   *
+   * @example Pass as a prop to component.
+   * <Component setLS={this.setFormState} />
+   */
+  setFormState(properties) {
+    console.log({ setGS: properties });
+    this.setState(properties);
   }
 
   /**
    * Sync local state with input field.
    */
   handleChange(event) {
+    console.log('Form Dev update');
+    // event.stopPropagation();
     this.setState({ [event.target.id]: event.target.value });
   }
 
@@ -105,8 +125,36 @@ export default class DevInfoEdit extends Component {
     /**
      * Get a reference to APP's global state.
      */
+    const { ready } = this.state;
     const userInfo = this.state;
     const { setGS, getGS } = this.props;
+
+    /**
+     * If component is mount -> Render nested children
+     * That ensure that before each children renders, each children receives 'props'
+     * and not an 'undefined' prop.
+     */
+    const toRender = ready ? (
+      <Fragment>
+        {/* User basic info: name, desired title, current location */}
+        {/* <BasicInfo userInfo={userInfo} /> */}
+
+        {/* SOCIAL LINKS */}
+        {/* <SocialLinks userInfo={userInfo} /> */}
+
+        {/* BIO - TOP SKILLS */}
+        <BioSkills setFS={this.setFormState} userInfo={userInfo} />
+
+        {/* PROJECTS */}
+        {/* <Projects userInfo={userInfo} /> */}
+
+        {/* EXPERIENCES */}
+        {/* <Experience userInfo={userInfo} /> */}
+
+        {/* EDUCATION */}
+        {/* <Education userInfo={userInfo} /> */}
+      </Fragment>
+    ) : null;
 
     return (
       <div className="EditContainer">
@@ -117,24 +165,7 @@ export default class DevInfoEdit extends Component {
           <br />
           <form onChange={this.handleChange}>
             <div className="inputRow">
-              {/* User basic info: name, desired title, current location */}
-              {/* <BasicInfo userInfo={userInfo} /> */}
-
-              {/* SOCIAL LINKS */}
-              {/* <SocialLinks userInfo={userInfo} /> */}
-
-              {/* BIO - TOP SKILLS */}
-              <BioSkills setGS={setGS} getGS={getGS} userInfo={userInfo} />
-
-              {/* PROJECTS */}
-              {/* <Projects userInfo={userInfo} /> */}
-
-              {/* EXPERIENCES */}
-              {/* <Experience userInfo={userInfo} /> */}
-
-              {/* EDUCATION */}
-              {/* <Education userInfo={userInfo} /> */}
-
+              {toRender}
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
                   {' '}
