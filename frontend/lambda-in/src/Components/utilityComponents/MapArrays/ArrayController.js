@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import MapUnorderedList from './MapUnorderedList';
@@ -148,5 +149,12 @@ class ArrayController extends Component {
     return toRender;
   }
 }
+
+ArrayController.prototype = {
+  arr: PropTypes.arrayOf(PropTypes.any).isRequired,
+  title: PropTypes.string.isRequired,
+  field: PropTypes.string.isRequired,
+  setFS: PropTypes.func.isRequired,
+};
 
 export default ArrayController;
