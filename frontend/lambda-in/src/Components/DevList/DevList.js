@@ -83,6 +83,12 @@ const selectCustomStyles = {
  * @prop {Boolean} experienceSwitch - True/False if Experience toggle filter is enabled.
  * @prop {Boolean} education - True/False for Education filter toggle.
  * @prop {Boolean} educationSwitch - True/False if Education toggle filter is enabled.
+ *
+ * @see {@link https://material-ui.com/api/grid/ } for the Grid API.
+ * @see {@link https://material-ui.com/layout/grid/ } for a demo of the Grid component.
+ * @see {@link https://react-select.com/home } for the React Select API.
+ * @see {@link ./FilterToggle/README.md } for the FilterToggle API.
+ * @see {@link ../Pagination/README.md } for the Pagination API.
  */
 class DevList extends Component {
   /**
