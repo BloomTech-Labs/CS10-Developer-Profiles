@@ -37,6 +37,38 @@ class App extends Component {
     userType: '',
   };
 
+  componentDidMount () {
+    const oauthScript = document.createElement("script");
+    oauthScript.src = "https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js";
+
+    document.body.appendChild(oauthScript);
+  }
+
+  handleOauth = (e) => {
+    // Prevents page reload
+    e.preventDefault();
+    console.log("boo")
+    // Initializes OAuth.io with API key
+    // Sign-up an account to get one
+    window.OAuth.initialize('fnPnyGWcUzhJ7NqGVQTgU0ux4f8');
+
+    // Popup Github and ask for authorization
+    window.OAuth.popup('github').then((provider) => {
+
+      // Prompts 'welcome' message with User's name on successful login
+      // Check console logs for additional User info
+      provider.me().then((data) => {
+        console.log("data: ", data);
+        alert("Welcome " + data.name + "!");
+      });
+
+      // You can also call Github's API using .get()
+      provider.get('/user').then((data) => {
+         console.log('self data:', data);
+      });
+
+    });
+  }
   /**
    * Set APP's global state.
    *
@@ -113,7 +145,7 @@ class App extends Component {
             {/* LOGIN: Redirect to user Profile after login */}
             <Route
               path="/dev-login"
-              render={() => (isSignedIn ? redirectToUserProfile : <DevLogin setGS={this.setGlobalState} />)}
+              render={() => (isSignedIn ? redirectToUserProfile : <DevLogin setGS={this.setGlobalState} handleOauth={this.handleOauth}/>)}
             />
             {/* SIGNUP: Redirect to user Profile after signup */}
             <Route
@@ -152,6 +184,7 @@ class App extends Component {
             {/* EMPLOYER END */}
             <Route component={Page404} />
           </Switch>
+
         </div>
       </div>
     );
