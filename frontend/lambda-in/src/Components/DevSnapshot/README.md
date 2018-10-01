@@ -1,12 +1,12 @@
 <a name="DevSnapshot"></a>
 
 ## DevSnapshot(props) ⇒ <code>Component</code>
-Given a Github, LinkedIn, Portfolio and/or Acclaim link, return a Material UI List component containing
-a Material UI ListItem component and FontAwesomeIcon component for each link.
+Given an object containing a seeker's name, image, location, summary, desired title, skills, return a
+Material UI CardContent component containing a snapshot/preview of the seeker's profile.
 
 **Kind**: A React functional component
 
-**Returns**: <code>Component</code> - Material UI List component.
+**Returns**: <code>Component</code> - Material UI CardContent component with a preview of the Seeker's profile.
 
 **See**
 
@@ -21,7 +21,13 @@ a Material UI ListItem component and FontAwesomeIcon component for each link.
 | Param | Type | Description |
 | --- | --- | --- |
 | props | <code>Object</code> | Component properties. |
-| props.github | <code>String</code> | A github profile link. |
-| props.linkedIn | <code>String</code> | A linkedIn profile link. |
-| props.portfolio | <code>String</code> | A link to an extrenal portfolio. |
-| props.acclaim | <code>String</code> | An acclaim badge id. |
+| props._id | <code>String</code> | MongoDB Object Id. |
+| props.img | <code>String</code> | URL to seeker's profile image. |
+| props.fullName | <code>String</code> | Seeker's full name. |
+| props.initials | <code>String</code> | Seeker's initials using first character of first and last name. |
+| props.location | <code>String</code> | Seeker's current location. |
+| props.summry | <code>String</code> | A 128 character description about the Seeker. |
+| props.title | <code>String</code> | Job title the Seeker is looking for. |
+| props.topSkills | <code>Array</code> | Seeker's top skills which get displayed in large text. |
+| props.addSkills | <code>Array</code> | Seeker's additional skills which get displayed in medium text. |
+| props.familiar | <code>Array</code> | Skills the Seeker is familiar with which get displayed in small text. |
