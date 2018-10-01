@@ -4,6 +4,10 @@
 
 **Kind**: A React class component
 
+**See**
+
+- {@link https://reacttraining.com/react-router/web/api/Link } for the Link API.
+
 **Properties**
 
 | Name | Type | Description |

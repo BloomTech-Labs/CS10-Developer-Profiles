@@ -19,6 +19,8 @@ const styles = {};
  * @example
  *  Ex: If current page is more than high limit, the page range will always be 34,35,36,37,38,39
  * @prop {Array} pageLinks - Range of page links to generate.
+ *
+ * @see {@link https://reacttraining.com/react-router/web/api/Link } for the Link API.
  */
 class Pagination extends Component {
   /**
