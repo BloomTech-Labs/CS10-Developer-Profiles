@@ -346,7 +346,7 @@ class DevList extends Component {
   };
 
   /**
-   * Component Did Update
+   * Component Did Update method.
    * On each component update, if a new search query exists, get a new list of seekers with new search query.
    */
   componentDidUpdate(prevProps, prevState) {
@@ -358,7 +358,7 @@ class DevList extends Component {
   }
 
   /**
-   * Component Did Mount
+   * Component Did Mount method.
    * On initial component mount, set any filters that exist in the url.
    */
   componentDidMount() {
