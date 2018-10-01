@@ -21,7 +21,7 @@ class ImageContainer extends React.Component {
           !
         </h1>
         <span className="search">
-          <input placeholder="What are you looking for?" />
+          <input className="inputSearch" type="text" placeholder="What are you looking for?" />
         </span>
         <span className="search-button">
           <Button variant="contained" color="secondary">
