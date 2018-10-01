@@ -45,6 +45,24 @@ const selectCustomStyles = {
   })
 };
 
+/**
+ * Dev List component
+ *
+ * @description A component that generates the Developer List/Browse page for the application.
+ * @class A React class component
+ * @prop {String} pathname - The current page url pathname.
+ * @example
+ *  /dev-list'
+ * @prop {String} query - The current page url search query.
+ * @example
+ *  'page=2&desiredTitle=Front+End|Back+End'
+ * @prop {Integer} count - The total number of records being displayed.
+ * @prop {Integer} pages - The total number of pages that should exist.
+ * @prop {(Null|String)} next - Link to the next page in the GET request.
+ * @prop {(Null|String)} prev - Link to the previous page in the GET request.
+ * @prop {Integer} currentPage - The current page number.
+ * @prop {Array} seekers - A list of seeker's based on the current search query.
+ */
 class DevList extends Component {
   constructor(props) {
     super(props);
@@ -246,7 +264,7 @@ class DevList extends Component {
               components={makeAnimated()}
               styles={selectCustomStyles}
               onChange={value =>
-                this.handleSelect(value, FILTERS.desiredTitle.name)
+                this.handleSelect(value, FILTERS.desiredTitle.eleName)
               }
               isMulti
             />
@@ -259,7 +277,7 @@ class DevList extends Component {
               components={makeAnimated()}
               styles={selectCustomStyles}
               onChange={value =>
-                this.handleSelect(value, FILTERS.topSkills.name)
+                this.handleSelect(value, FILTERS.topSkills.eleName)
               }
               isMulti
             />
@@ -272,7 +290,7 @@ class DevList extends Component {
               components={makeAnimated()}
               styles={selectCustomStyles}
               onChange={value =>
-                this.handleSelect(value, FILTERS.addSkills.name)
+                this.handleSelect(value, FILTERS.addSkills.eleName)
               }
               isMulti
             />
@@ -285,7 +303,7 @@ class DevList extends Component {
               components={makeAnimated()}
               styles={selectCustomStyles}
               onChange={value =>
-                this.handleSelect(value, FILTERS.familiar.name)
+                this.handleSelect(value, FILTERS.familiar.eleName)
               }
               isMulti
             />
@@ -354,7 +372,7 @@ class DevList extends Component {
               options={sort}
               closeMenuOnSelect={false}
               components={makeAnimated()}
-              onChange={value => this.handleSelect(value, FILTERS.sort.name)}
+              onChange={value => this.handleSelect(value, FILTERS.sort.eleName)}
               isMulti
             />
             {this.state.seekers.map(seeker => (
