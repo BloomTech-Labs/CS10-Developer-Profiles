@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -132,11 +133,11 @@ class EmployerSignUp extends Component {
                 Save Profile
               </Button>
               <div className="login">
-                {/* <Link to="/emp-login"> */}
-                <Typography variant="caption" gutterBottom align="center">
-                  already have an account? Login here!
-                </Typography>
-                {/* </Link> */}
+                <Link to="/dev-login">
+                  <Typography variant="caption" gutterBottom align="center">
+                    already have an account? Login here!
+                  </Typography>
+                </Link>
               </div>
             </div>
           </Paper>
