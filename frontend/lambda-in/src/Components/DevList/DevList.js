@@ -234,35 +234,35 @@ class DevList extends Component {
       },
     };
 
-    axios
-      .get(url, config)
-      .then((response) => {
-        this.setState({
-          query,
-          count: response.data.count,
-          pages: response.data.pages,
-          next: response.data.next,
-          prev: response.data.prev,
-          seekers: response.data.results,
-          currentPage: response.data.current,
-        });
-      })
-      .catch((err) => {
-        /**
-         * @todo On invalid credentials, redirect to sign in page with message
-         * @todo Fix status code for invalid credentials
-         * @todo On 404 error, display message on dev list
-         */
-        this.setState({
-          query,
-          count: 0,
-          pages: 0,
-          next: null,
-          prev: null,
-          seekers: [],
-          currentPage: 1,
-        });
-      });
+    // axios
+    //   .get(url, config)
+    //   .then((response) => {
+    //     this.setState({
+    //       query,
+    //       count: response.data.count,
+    //       pages: response.data.pages,
+    //       next: response.data.next,
+    //       prev: response.data.prev,
+    //       seekers: response.data.results,
+    //       currentPage: response.data.current,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     /**
+    //      * @todo On invalid credentials, redirect to sign in page with message
+    //      * @todo Fix status code for invalid credentials
+    //      * @todo On 404 error, display message on dev list
+    //      */
+    //     this.setState({
+    //       query,
+    //       count: 0,
+    //       pages: 0,
+    //       next: null,
+    //       prev: null,
+    //       seekers: [],
+    //       currentPage: 1,
+    //     });
+    //   });
   }
 
   /**
