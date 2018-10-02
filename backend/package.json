@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/Lambda-School-Labs/CS10-Developer-Profiles#readme",
   "dependencies": {
+    "async": "^2.6.1",
     "bcrypt": "^3.0.0",
     "cors": "^2.8.4",
     "cross-env": "^5.2.0",
@@ -36,6 +37,8 @@
     "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.14",
+    "nodemailer": "^4.6.8",
+    "passport": "^0.4.0",
     "stripe": "^6.12.1"
   },
   "devDependencies": {
