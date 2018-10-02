@@ -545,7 +545,7 @@ class DevList extends Component {
               onChange={value => this.handleSelect(value, FILTERS.sort.eleName)}
               isMulti
             />
-            {seekers.map(seeker => (
+            {seekers.length !== 0 && seekers.map(seeker => (
               // eslint-disable-next-line no-underscore-dangle
               <DevProfileCard key={seeker._id} seeker={seeker} />
             ))}
