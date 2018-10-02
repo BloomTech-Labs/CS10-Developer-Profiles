@@ -157,7 +157,7 @@ class App extends Component {
             <Route path="/emp-profile" render={() => (isSignedIn ? null : <Redirect to="/" />)} />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             {/* EMPLOYER END */}
-            {/* <Route component={Page404} /> */}
+            <Route component={Page404} />
           </Switch>
         </div>
       </div>
