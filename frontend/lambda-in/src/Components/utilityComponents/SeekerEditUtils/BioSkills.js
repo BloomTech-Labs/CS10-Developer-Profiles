@@ -42,7 +42,7 @@ const BioSkills = props => {
         >
           {/* eslint-disable-next-line object-curly-newline */}
           {({
-            handleArrayControllerState,
+            handleChange,
             updateFormState,
             removeItem,
             state,
@@ -50,10 +50,7 @@ const BioSkills = props => {
             title,
           }) => (
             <Fragment>
-              <div
-                className="inputFieldLargeMultiline"
-                onChange={handleArrayControllerState}
-              >
+              <div className="inputFieldLargeMultiline" onChange={handleChange}>
                 <TextField
                   id="newItem"
                   label="Top skills"
