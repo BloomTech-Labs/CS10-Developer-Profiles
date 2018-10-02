@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AOS from 'aos';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import DevSnapshot from '../../DevSnapshot/DevSnapshot';
 import DevSocial from '../../DevSocial/DevSocial';
+
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 const styles = {
   devProfileCard: {
@@ -50,7 +55,12 @@ const DevProfileCard = (props) => {
   const initials = firstInitial + lastInitial;
 
   return (
-    <Card className={classes.devProfileCard}>
+    <Card
+      className={classes.devProfileCard}
+      data-aos="flip-up"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+    >
       <DevSnapshot
         _id={seeker._id} // eslint-disable-line no-underscore-dangle
         fullName={name}
