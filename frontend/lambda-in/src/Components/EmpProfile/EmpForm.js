@@ -150,4 +150,4 @@ class EmployerPositionForm extends Component {
   }
 }
 
-export default EmployerOpenPositionForm;
+export default EmployerPositionForm;

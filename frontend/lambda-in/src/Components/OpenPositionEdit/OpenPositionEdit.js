@@ -12,7 +12,7 @@ import './OpenPositionEdit.css';
 import ProjectName from '../utilityComponents/EmpEditUtils/ProjectName';
 import Description from '../utilityComponents/EmpEditUtils/Description';
 import JobTitle from '../utilityComponents/EmpEditUtils/JobTitle';
-import TeckStack from '../utilityComponents/EmpEditUtils/TechStack';
+import TechStack from '../utilityComponents/EmpEditUtils/TechStack';
 import Skills from '../utilityComponents/EmpEditUtils/Skills';
 import MinSalary from '../utilityComponents/EmpEditUtils/MinSalary';
 import MaxSalary from '../utilityComponents/EmpEditUtils/MaxSalary';

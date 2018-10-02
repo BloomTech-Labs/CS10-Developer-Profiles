@@ -98,4 +98,4 @@ class EmployerPositionCard extends React.Component {
     );
   }
 }
-export default EmployerOpenPositionCard;
+export default EmployerPositionCard;

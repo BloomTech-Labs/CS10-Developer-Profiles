@@ -3,8 +3,8 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";
 
-import EmployerOpenPositionForm from "./EmpForm";
-import EmployerOpenPositionCard from "./EmpCard";
+import EmployerPositionForm from "./EmpForm";
+import EmployerPositionCard from "./EmpCard";
 
 import "./EmpProfile.css";
 
@@ -50,4 +50,4 @@ class EmployerProfile extends React.Component {
   }
 }
 
-export default EmplyoerOpenPositionList;
+export default EmployerProfile;

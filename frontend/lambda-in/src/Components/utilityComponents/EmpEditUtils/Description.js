@@ -3,33 +3,20 @@ import DropDown from '../DropDown/DropDown';
 import TextField from '@material-ui/core/TextField';
 import MapChips from '../MapArrays/MapChips';
 
-const BioSkills = props => {
+const Description = props => {
   const { userInfo } = props;
 
   return (
     <Fragment>
-      <DropDown header="tell us something about yourself!">
+      <DropDown header="Description of the project">
         <div className="inputFieldLargeMultiline">
           <TextField
-            id="summary"
-            label="Your Bio"
+            id="description"
+            label="description"
             fullWidth
             multiline
             rowsMax="4"
-            value={userInfo.summary}
-            margin="normal"
-            variant="outlined"
-          />
-        </div>
-        {/* TODO */}
-        <div className="inputFieldLargeMultiline">
-          <TextField
-            id="topSkills"
-            label="Top skills"
-            fullWidth
-            multiline
-            rowsMax="4"
-            value={userInfo.topSkills}
+            value={userInfo.description}
             margin="normal"
             variant="outlined"
           />
@@ -42,4 +29,4 @@ const BioSkills = props => {
   );
 };
 
-export default BioSkills;
+export default Description;
