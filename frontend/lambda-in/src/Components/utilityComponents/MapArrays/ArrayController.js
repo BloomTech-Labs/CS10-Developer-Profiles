@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 
 /**
  * Handle Array-type properties
@@ -10,7 +9,7 @@ import Button from '@material-ui/core/Button';
  * @prop {string|object|array} itemSchema - Which type of data the array contains.
  * @prop {} title - A label to be displayed
  * @prop {} field - The global-state field holding the array.
- * @prop {} setFS - Handler to set the parent-form state.
+ * @prop {} setPFS - Handler to set the parent-form state.
  */
 class ArrayController extends Component {
   constructor(props) {
@@ -23,16 +22,31 @@ class ArrayController extends Component {
     this.handleArrayControllerState = (
       this.handleArrayControllerState.bind(this)
     );
+    this.setArrayControllerState = this.setArrayControllerState.bind(this);
     this.updateFormState = this.updateFormState.bind(this);
     this.removeItem = this.removeItem.bind(this);
   }
 
   componentDidMount() {
-    this.setLocalState();
+    this.initializeLocalState();
   }
 
   /**
-   * Populate local-state with array-items's property(ies)
+   * Update local state and parent ArrayController state.
+   *
+   * @method setArrayControllerState
+   * @param {object} properties - Properties to be set. { property: value }
+   * @return {void}
+   *
+   * @example Pass as a prop to component.
+   * <Component setPFS={this.setArrayControllerState} />
+   */
+  setArrayControllerState(properties) {
+    this.setState(properties);
+  }
+
+  /**
+   * Initialize local-state with array-items's property(ies)
    *
    * @method
    * @description If Array's items are object: populate the local state with the object-keys,
@@ -44,7 +58,7 @@ class ArrayController extends Component {
    * @example this.props.arr = [ { name: name-1, email: email-1}, { name: name-2, email: email-2} ]
    * Set local state: this.setState( { name: '', email: '' } )
    */
-  setLocalState() {
+  initializeLocalState() {
     // eslint-disable-next-line react/prop-types
     const { itemSchema } = this.props;
 
@@ -90,7 +104,7 @@ class ArrayController extends Component {
    */
   updateFormState() {
     // eslint-disable-next-line react/prop-types
-    const { arr, field, setFS } = this.props;
+    const { arr, field, setPFS } = this.props;
 
     /**
      * Create an new Object with the properties to be pushed to the array.
@@ -98,6 +112,7 @@ class ArrayController extends Component {
     const toUpdate = { ...this.state };
     delete toUpdate.ready;
     delete toUpdate.itemType;
+    console.log({ toUpdate });
 
     // Get the item type
     const { itemType } = this.state;
@@ -107,25 +122,26 @@ class ArrayController extends Component {
      */
     switch (itemType) {
       case 'object':
-        setFS({ [field]: [...arr, toUpdate] });
+        console.log('TYPE OBJ', field, toUpdate);
+        setPFS({ [field]: [...arr, toUpdate] });
         break;
       case 'array':
         // TODO: handle nested Arrays
         break;
       default:
         // '[object String]' || '[object Number]' || // '[object Boolean]'
-        setFS({ [field]: [...arr, toUpdate.newItem] });
+        setPFS({ [field]: [...arr, toUpdate.newItem] });
     }
 
-    // ResetLocalState
-    this.setLocalState();
+    // Re-initialize Local State
+    this.initializeLocalState();
   }
 
   /**
    * Remove an item form the Array
    */
   removeItem(index) {
-    const { arr, field, setFS } = this.props;
+    const { arr, field, setPFS } = this.props;
     return function remove(e) {
       /**
        * Stop event propagation.
@@ -142,7 +158,7 @@ class ArrayController extends Component {
       toUpdate.splice(index, 1);
 
       // Update Form state
-      setFS({ [field]: toUpdate });
+      setPFS({ [field]: toUpdate });
     };
   }
 
@@ -155,6 +171,7 @@ class ArrayController extends Component {
       <div className="array-controller">
         {children({
           handleArrayControllerState: this.handleArrayControllerState,
+          setArrayControllerState: this.setArrayControllerState,
           updateFormState: this.updateFormState,
           removeItem: this.removeItem,
           state,
@@ -172,7 +189,7 @@ ArrayController.propTypes = {
   arr: PropTypes.arrayOf(PropTypes.any).isRequired,
   title: PropTypes.string.isRequired,
   field: PropTypes.string.isRequired,
-  setFS: PropTypes.func.isRequired,
+  setPFS: PropTypes.func.isRequired,
 };
 
 export default ArrayController;
