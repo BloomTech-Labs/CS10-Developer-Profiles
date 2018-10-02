@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
+/**
+ * Handle Array-type properties
+ *
+ * @description Handle in a local-state new date to be added to a global-state array-field.
+ * @prop {} arr - The array to handle.
+ * @prop {string|object|array} itemSchema - Which type of data the array contains.
+ * @prop {} title - A label to be displayed
+ * @prop {} field - The global-state field holding the array.
+ * @prop {} setFS - Handler to set the parent-form state.
+ */
 class ArrayController extends Component {
   constructor(props) {
     super(props);
@@ -35,42 +45,30 @@ class ArrayController extends Component {
    * Set local state: this.setState( { name: '', email: '' } )
    */
   setLocalState() {
-    /**
-     * Return a copy of the passed object's keys set to an empty string
-     *
-     * @param {object} object - The original object
-     * @return {object} A copy with all the original-object's keys set to an empty string
-     * @example
-     * : mapAndResetKeysValues({ 1:1, 2:2, 3:3, 4:4 })
-     * : will return -> {1: "", 2: "", 3: "", 4: ""}
-     */
-    // prettier-ignore
-    const mapAndResetKeysValues = object => Object.keys(object).reduce((resetKeys, key) => {
-      // eslint-disable-next-line no-param-reassign
-      resetKeys[key] = '';
-      return resetKeys;
-    }, {});
-
     // eslint-disable-next-line react/prop-types
-    const { arr } = this.props;
-    // console.log('AC arr', { arr });
-    // return;
-    const item = arr[0];
+    const { itemSchema } = this.props;
+
+    // const item = arr[0];
 
     // Get the item type
-    const itemType = Object.prototype.toString.call(item);
+    const itemType = Object.prototype.toString.call(itemSchema);
 
     switch (itemType) {
       case '[object Object]':
         this.setState({
-          ...mapAndResetKeysValues(item),
+          ...itemSchema,
           itemType: 'object',
           ready: true,
         });
         break;
       case '[object Array]':
-        // TODO: handle nested Arrays
+        this.setState({
+          // TODO: handle nested Arrays
+          itemType: 'array',
+          ready: true,
+        });
         break;
+      // If itemSchema='singleItem'
       default:
         // '[object String]' || '[object Number]' || // '[object Boolean]'
         this.setState({ newItem: '', itemType: 'singleItem', ready: true });
@@ -101,18 +99,17 @@ class ArrayController extends Component {
     delete toUpdate.ready;
     delete toUpdate.itemType;
 
-    const item = arr[0];
     // Get the item type
-    const itemType = Object.prototype.toString.call(item);
+    const { itemType } = this.state;
 
     /**
      * Update Form-state
      */
     switch (itemType) {
-      case '[object Object]':
+      case 'object':
         setFS({ [field]: [...arr, toUpdate] });
         break;
-      case '[object Array]':
+      case 'array':
         // TODO: handle nested Arrays
         break;
       default:
@@ -152,23 +149,17 @@ class ArrayController extends Component {
   render() {
     // eslint-disable-next-line react/prop-types
     const { arr, title, children } = this.props;
-    const { newItem, ready } = this.state;
+    const { ...state } = this.state;
 
-    const toRender = ready ? (
+    const toRender = state.ready ? (
       <div className="array-controller">
-        <Button
-          variant="outlined"
-          color="primary"
-          align="center"
-          onClick={this.updateFormState}
-        >
-          {`Add new ${title}`}
-        </Button>
         {children({
           handleArrayControllerState: this.handleArrayControllerState,
+          updateFormState: this.updateFormState,
           removeItem: this.removeItem,
-          newItem,
+          state,
           arr,
+          title,
         })}
       </div>
     ) : null;
