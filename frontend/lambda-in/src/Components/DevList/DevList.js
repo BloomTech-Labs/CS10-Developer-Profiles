@@ -253,17 +253,15 @@ class DevList extends Component {
          * @todo Fix status code for invalid credentials
          * @todo On 404 error, display message on dev list
          */
-        if (err.response.status === 404) {
-          this.setState({
-            query,
-            count: 0,
-            pages: 0,
-            next: null,
-            prev: null,
-            seekers: [],
-            currentPage: 1,
-          });
-        }
+        this.setState({
+          query,
+          count: 0,
+          pages: 0,
+          next: null,
+          prev: null,
+          seekers: [],
+          currentPage: 1,
+        });
       });
   }
 
