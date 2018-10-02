@@ -115,6 +115,9 @@ class DevList extends Component {
     });
 
     this.getSeekers(query);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.handleSwitch = this.handleSwitch.bind(this);
+    this.handleSwitchEnable = this.handleSwitchEnable.bind(this);
   }
 
   /**
@@ -369,10 +372,10 @@ class DevList extends Component {
     let newQuery = '';
     const name = event.currentTarget.dataset.filterName;
     const enable = innerHTML === ENABLE;
-  
+
     if (enable) {
       // eslint-disable-next-line react/destructuring-assignment
-      newQuery = `${this.cleanQuery(name)}&${name}=${this.state[FILTERS[name].name] ? 1 : 0}`;
+      newQuery = `${this.cleanQuery(name)}&${name}=${this.state[FILTERS[name].eleName] ? 1 : 0}`;
     } else {
       newQuery = `${this.cleanQuery(name)}`;
     }
