@@ -19,8 +19,8 @@ class ArrayController extends Component {
       itemType: '',
     };
     // prettier-ignore
-    this.handleArrayControllerState = (
-      this.handleArrayControllerState.bind(this)
+    this.handleChange = (
+      this.handleChange.bind(this)
     );
     this.setArrayControllerState = this.setArrayControllerState.bind(this);
     this.updateFormState = this.updateFormState.bind(this);
@@ -89,14 +89,41 @@ class ArrayController extends Component {
     }
   }
 
-  handleArrayControllerState(ev) {
+  handleChange(ev) {
     /**
      * Stop event propagation.
      * @description Stop this event to be listened and handled in parent Nodes.
      */
     ev.stopPropagation();
+    console.log('AC onChange', { id: ev.target.id, value: ev.target.value });
+    // Get the item type
+    const { itemType } = this.state;
 
-    this.setState({ [ev.target.id]: ev.target.value });
+    const { id } = ev.target;
+    const details = id.split('-');
+
+    if (details[0] === 'edit') {
+      const { arr, field, setPFS } = this.props;
+      // Get index and field to update
+      const index = details[1];
+      const itemProperty = details[2];
+
+      // Make a copy of the array-field
+      const toUpdate = [...arr];
+      // Update array-item
+      toUpdate[index][itemProperty] = ev.target.value;
+
+      console.log('TYPE', itemType, field, itemProperty, toUpdate);
+
+      /**
+       * Set parent-form state
+       */
+      setPFS({ [field]: [...toUpdate] });
+    } else {
+      // Handle change in local-state
+      // '[object String]' || '[object Number]' || // '[object Boolean]'
+      this.setState({ [ev.target.id]: ev.target.value });
+    }
   }
 
   /**
@@ -170,9 +197,9 @@ class ArrayController extends Component {
     const toRender = state.ready ? (
       <div className="array-controller">
         {children({
-          handleArrayControllerState: this.handleArrayControllerState,
           setArrayControllerState: this.setArrayControllerState,
           updateFormState: this.updateFormState,
+          handleChange: this.handleChange,
           removeItem: this.removeItem,
           state,
           arr,
