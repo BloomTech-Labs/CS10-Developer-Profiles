@@ -119,10 +119,12 @@ class DevList extends Component {
       seekers: [],
     });
 
-    this.getSeekers(query);
+    this.getSeekers = this.getSeekers.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
     this.handleSwitchEnable = this.handleSwitchEnable.bind(this);
+
+    this.getSeekers(query);
   }
 
   /**
