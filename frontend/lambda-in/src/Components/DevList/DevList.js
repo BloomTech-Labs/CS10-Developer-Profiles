@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import AOS from 'aos';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Select from 'react-select';
@@ -12,6 +13,8 @@ import {
   ENABLE, DISABLE, SORT, FILTERS,
 } from '../constants';
 
+import 'aos/dist/aos.css';
+
 /**
  * Mock API data calls
  * @todo Add data to db and create API routes to replace these imports
@@ -19,6 +22,8 @@ import {
 import jobTitles from './data/jobTitles';
 import techSkills from './data/skills';
 import sortOptions from './data/sortOptions';
+
+AOS.init();
 
 const jobTitleSelectOptions = jobTitles.map(title => ({
   value: title.replace(/ /g, '+'),
@@ -427,7 +432,7 @@ class DevList extends Component {
     return (
       <React.Fragment>
         <Grid container className={classes.mainContainer} spacing={24}>
-          <Grid item className={classes.sideBar} xs={3}>
+          <Grid item className={classes.sideBar} xs={3} data-aos="fade-right">
             <Select
               placeholder={FILTERS.desiredTitle.placeholder}
               value={desiredTitle}
