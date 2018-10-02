@@ -122,6 +122,11 @@ export default class DevSignUp extends Component {
               </Button>
             </div>
             <div className="login">
+              <Link to="/employer-signup">
+                <Typography variant="caption" gutterBottom align="center">
+                  are you an employer? Sign up here!
+                </Typography>
+              </Link>
               <Link to="/dev-login">
                 <Typography variant="caption" gutterBottom align="center">
                   already have an account? Login here!
