@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import '../EmployerSignUp/EmployerSignUp.css';
+import './EmployerSignUp.css';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';

@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import { Link } from 'react-router-dom';
 import axios from "axios";
-
+import AOS from "aos";
 import "./EmpCard.css";
+import "aos/dist/aos.css";
+
+AOS.init();
+
 
 class EmployerPositionCard extends React.Component {
   static defaultProps = {
@@ -27,70 +33,71 @@ class EmployerPositionCard extends React.Component {
 
   render() {
     return (
-      <div class="cardPaperContainer">
-        <Paper class="cardPaper">
+      <div
+        class="cardContainer"
+        data-aos="flip-up"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+      >
+        <Card class="cardPaper">
+        <div>
+          <div>
+            <Typography variant="caption">Project Name</Typography>
+            <Typography variant="subheading">
+              {this.props.projectName}
+            </Typography>
+          </div>
 
-            <div>
-              <Typography variant="caption">Project Name</Typography>
-              <Typography variant="subheading">
-                {this.props.projectName}
-              </Typography>
-            </div>
+          <div class="disc">
+            <Typography variant="caption">description</Typography>
+            <Typography variant="subheading">
+              {this.props.description}
+            </Typography>
+          </div>
 
-            <br />
-            <div class="disc">
-              <Typography variant="caption">description</Typography>
-              <Typography variant="subheading">
-                {this.props.description}
-              </Typography>
-            </div>
+          <div>
+            <Typography variant="caption">Job Title</Typography>
+            <Typography variant="subheading">{this.props.jobTitle}</Typography>
+          </div>
 
-            <br />
-            <div>
-              <Typography variant="caption">Job Title</Typography>
-              <Typography variant="subheading">
-                {this.props.jobTitle}
-              </Typography>
-            </div>
+          <div>
+            <Typography variant="caption">Tech Stack:</Typography>
+            <Typography variant="subheading">{this.props.techStack}</Typography>
+          </div>
 
-            <br />
-            <div>
-              <Typography variant="caption">Tech Stack:</Typography>
-              <Typography variant="subheading">
-                {this.props.techStack}
-              </Typography>
-            </div>
+          <div>
+            <Typography variant="caption">Required Skills</Typography>
+            <Typography variant="subheading">{this.props.skills}</Typography>
+          </div>
 
-            <br />
-            <div>
-              <Typography variant="caption">Required Skills</Typography>
-              <Typography variant="subheading">{this.props.skills}</Typography>
-            </div>
+          <div>
+            <Typography variant="caption">Salary range</Typography>
+            <Typography variant="subheading">
+              {this.props.minSalary} - {this.props.maxSalary}
+            </Typography>
+          </div>
 
-            <br />
-            <div>
-              <Typography variant="caption">Salary range</Typography>
-              <Typography variant="subheading">
-                {this.props.minSalary} - {this.props.maxSalary}
-              </Typography>
-            </div>
-
+          <div className="buttons">
             <Button
+              className="button"
+              component={Link} to="/emp-pos-edit"
               variant="contained"
               color="secondary"
-              onClick={this.handleDelete}
             >
               Edit
             </Button>
 
             <Button
+              className="button"
               variant="contained"
               color="secondary"
               onClick={this.handleDelete}
             >
               Delete
             </Button>
-        </Paper>
+          </div>
+          </div>
+        </Card>
       </div>
     );
   }

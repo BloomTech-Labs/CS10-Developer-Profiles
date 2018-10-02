@@ -31,23 +31,29 @@ class EmployerProfile extends React.Component {
             <Typography variant="headline" gutterBottom align="center">
               Manage Current Open Positions
             </Typography>
-            <div>
+            <div className="buttonContainer">
                 <Button
                   className = "addButton"
                   component={Link} to="/emp-pos-add"
                   variant="contained"
                   color="primary"
-                  align="center"
                 >
                   {" "}
                   Add More Position
                 </Button>
               </div>
-            <div class="card">
+            <div class="cards">
               <ul>
                 {/* {this.state.map(EmployerOpenPositionCard => {
                   return ( */}
-                    <EmployerPositionCard class="OPCardInList"/>
+                    <EmployerPositionCard />
+                    <EmployerPositionCard />
+                    <EmployerPositionCard />
+                    <EmployerPositionCard />
+                    <EmployerPositionCard />
+                    <EmployerPositionCard />
+                    <EmployerPositionCard />
+                    <EmployerPositionCard />
                    {/* );
                 })} */}
               </ul>

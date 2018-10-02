@@ -1,0 +1,16 @@
+.cardContainer {
+    margin-top: 20px;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.buttons {
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button {
+    margin: 5px;
+}

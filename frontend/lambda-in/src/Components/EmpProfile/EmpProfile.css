@@ -2,21 +2,18 @@
     width: 50vw;
     display:flex;
     flex-direction: column;
-}
-
-.body {
-    display:flex;
-    flex-direction: column;
-    margin: 20px auto 0;
-    width: 50vw;
-}
-
-.paper {
     align-self: center;
 }
 
-.card {
+.buttonContainer {
+    justify-content: center;
+}
+
+.addButton {
+    width: 45vw;
+}
+
+.cards {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
 }
