@@ -136,7 +136,7 @@ table {
 
 .image-container {
     display: block;
-    height: 500px;
+    height: 50vw;
     background-position: center;
     /* Center the image */
     background-repeat: no-repeat;
@@ -158,10 +158,18 @@ table {
     color: #f50057;
 }
 
+.inputSearch{
+    width: 12vw;
+    height:3vh;
+    border-radius: 25px;
+    border: 2px solid #609;
+}
+
 .search {
     position: absolute;
     top: 250px;
     left: 450px;
+    
 }
 
 .search-button {
