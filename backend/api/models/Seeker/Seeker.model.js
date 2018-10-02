@@ -30,6 +30,10 @@ const seekerSchema = new Schema({
         'Password must contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character: !, @, #, $, %, &',
     },
   },
+  passwordReset: {
+    type: String,
+    select: false,
+  },
   email: {
     type: String,
     unique: true,
