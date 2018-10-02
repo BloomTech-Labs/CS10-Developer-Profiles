@@ -105,7 +105,7 @@ class EmployerSignUp extends Component {
                 fullWidth
               />
               <TextField
-                name="companyEmail"
+                name="email"
                 label="Company Email"
                 value={email}
                 onChange={this.handleChange}
