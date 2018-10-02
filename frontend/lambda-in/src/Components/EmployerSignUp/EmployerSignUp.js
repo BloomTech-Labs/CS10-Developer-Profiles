@@ -21,6 +21,9 @@ export default class EmployerSignUp extends Component {
       password: '!Nechayev7alpha',
       confirmPassword: '!Nechayev7alpha',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleNewEmp = this.handleNewEmp.bind(this);
   }
 
   handleChange(event) {
