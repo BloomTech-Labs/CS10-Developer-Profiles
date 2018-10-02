@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import DropDown from '../DropDown/DropDown';
 import MapChips from '../MapArrays/MapChips';
 import ArrayController from '../MapArrays/ArrayController';
@@ -33,13 +34,21 @@ const BioSkills = props => {
         </div>
         {/* TODO */}
         <ArrayController
+          itemSchema="singleItem"
           title="Top Skills"
           field="topSkills"
           setFS={setFS}
           arr={userInfo.topSkills}
         >
           {/* eslint-disable-next-line object-curly-newline */}
-          {({ handleArrayControllerState, removeItem, newItem, arr }) => (
+          {({
+            handleArrayControllerState,
+            updateFormState,
+            removeItem,
+            state,
+            arr,
+            title,
+          }) => (
             <Fragment>
               <div
                 className="inputFieldLargeMultiline"
@@ -51,13 +60,21 @@ const BioSkills = props => {
                   fullWidth
                   multiline
                   rowsMax="4"
-                  value={newItem}
+                  value={state.newItem}
                   margin="normal"
                   variant="outlined"
                 />
               </div>
               {/* <MapUnorderedList array={arr} /> */}
               <MapChips field="topSkills" array={arr} removeItem={removeItem} />
+              <Button
+                variant="outlined"
+                color="primary"
+                align="center"
+                onClick={updateFormState}
+              >
+                {`Add new ${title}`}
+              </Button>
             </Fragment>
           )}
         </ArrayController>
