@@ -8,7 +8,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
-import './EmpInfoEdit.css';
+import './OpenPositionEdit.css';
 import ProjectName from '../utilityComponents/EmpEditUtils/ProjectName';
 import Description from '../utilityComponents/EmpEditUtils/Description';
 import JobTitle from '../utilityComponents/EmpEditUtils/JobTitle';
@@ -17,7 +17,7 @@ import Skills from '../utilityComponents/EmpEditUtils/Skills';
 import MinSalary from '../utilityComponents/EmpEditUtils/MinSalary';
 import MaxSalary from '../utilityComponents/EmpEditUtils/MaxSalary';
 
-export default class EmpInfoEdit extends Component {
+export default class OpenPositionEdit extends Component {
   /**
    * Sync APP's global state with input field.
    */
@@ -91,33 +91,36 @@ export default class EmpInfoEdit extends Component {
       <div className="EditContainer">
         <Paper className="paperContainer" elevation={1}>
           <Typography variant="display1" gutterBottom align="center">
-            Lambda Network
+            Edit Open Position
           </Typography>
           <br />
           <form onChange={this.handleChange}>
             <div className="inputRow">
-              {/* User basic info: name, desired title, current location */}
-              <BasicInfo userInfo={userInfo} />
+              {/* PROJECT NAME */}
+              <ProjectName userInfo={userInfo} />
 
-              {/* SOCIAL LINKS */}
-              <SocialLinks userInfo={userInfo} />
+              {/* DESCRIPTION */}
+              <Description userInfo={userInfo} />
 
-              {/* BIO - TOP SKILLS */}
-              <BioSkills setGS={this.props.setGS} getGS={this.props.getGS} userInfo={userInfo} />
+              {/* Job Title */}
+              <JobTitle setGS={this.props.setGS} getGS={this.props.getGS} userInfo={userInfo} />
 
-              {/* PROJECTS */}
-              <Projects userInfo={userInfo} />
+              {/* Tech Stack */}
+              <TechStack userInfo={userInfo} />
 
-              {/* EXPERIENCES */}
-              <Experience userInfo={userInfo} />
+              {/* Skills */}
+              <Skills userInfo={userInfo} />
 
-              {/* EDUCATION */}
-              <Education userInfo={userInfo} />
+              {/* Minimum Salary */}
+              <MinSalary userInfo={userInfo} />
+
+              {/* Max Salary */}
+              <MaxSalary userInfo={userInfo} />
 
               <div>
                 <Button variant="outlined" color="primary" align="center" onClick={this.update}>
                   {' '}
-                  Update profile{' '}
+                  Update Position{' '}
                 </Button>
               </div>
             </div>

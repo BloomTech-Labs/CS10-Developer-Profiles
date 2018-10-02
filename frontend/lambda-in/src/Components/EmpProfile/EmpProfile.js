@@ -3,12 +3,12 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";
 
-import EmployerOpenPositionForm from "./EmpOPForm";
-import EmployerOpenPositionCard from "./EmpOPCard";
+import EmployerOpenPositionForm from "./EmpForm";
+import EmployerOpenPositionCard from "./EmpCard";
 
-import "./EmpOPList.css";
+import "./EmpProfile.css";
 
-class EmplyoerOpenPositionList extends React.Component {
+class EmployerProfile extends React.Component {
   state = {
     projectName: "Enterprise-D",
     description: "We are looking for the captain of the Federation Flagship.",
@@ -32,13 +32,13 @@ class EmplyoerOpenPositionList extends React.Component {
               Manage Current Open Positions
             </Typography>
             <div class="form">
-              <EmployerOpenPositionForm />
+              <EmployerPositionForm />
             </div>
             <div class="card">
               <ul>
                 {/* {this.state.map(EmployerOpenPositionCard => {
                   return ( */}
-                    <EmployerOpenPositionCard class="OPCardInList"/>
+                    <EmployerPositionCard class="OPCardInList"/>
                    {/* );
                 })} */}
               </ul>

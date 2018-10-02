@@ -8,9 +8,9 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import axios from "axios";
 
-import "./EmpOPCard.css";
+import "./EmpCard.css";
 
-class EmployerOpenPositionCard extends React.Component {
+class EmployerPositionCard extends React.Component {
   static defaultProps = {
     projectName: "Enterprise-D",
     description: "We are watching for the captain of the Federation Flagship.",
@@ -83,7 +83,15 @@ class EmployerOpenPositionCard extends React.Component {
               color="secondary"
               onClick={this.handleDelete}
             >
-              delete
+              Edit
+            </Button>
+
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.handleDelete}
+            >
+              Delete
             </Button>
         </Paper>
       </div>

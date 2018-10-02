@@ -9,10 +9,10 @@ import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 
-import "./EmpOPForm.css";
-import "./EmpOPList";
+import "./EmpForm.css";
+import "./EmpProfile";
 
-class EmployerOpenPositionForm extends Component {
+class EmployerPositionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {

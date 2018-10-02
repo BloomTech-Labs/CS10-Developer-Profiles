@@ -177,6 +177,7 @@ export default class EmployerSignUp extends Component {
                 margin="normal"
               />
               <br />
+                */}
               <Button variant="contained" color="primary" onClick={this.handleNewEmp}>
                 Save Profile
               </Button>
