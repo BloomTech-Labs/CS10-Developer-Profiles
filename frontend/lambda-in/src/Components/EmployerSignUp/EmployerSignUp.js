@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -12,7 +13,7 @@ import 'aos/dist/aos.css';
 
 AOS.init();
 
-export default class EmployerSignUp extends Component {
+class EmployerSignUp extends Component {
   constructor(props) {
     super(props);
 
@@ -144,3 +145,9 @@ export default class EmployerSignUp extends Component {
     );
   }
 }
+
+EmployerSignUp.propTypes = {
+  setGS: PropTypes.func.isRequired,
+};
+
+export default EmployerSignUp;
