@@ -24,27 +24,27 @@ const MapDropDown = ({ array, classes, removeItem }) => array.map((item, index) 
 
       <TextField
         id={`edit-${index}-description`}
-        label="password"
+        label="Description"
         value={item.description}
         margin="normal"
       />
       <TextField
         id={`edit-${index}-img`}
-        label="Email"
+        label="Image"
         value={item.img}
         margin="normal"
       />
 
       <TextField
         id={`edit-${index}-link`}
-        label="password"
+        label="Link"
         value={item.link}
         margin="normal"
       />
 
       <TextField
         id={`edit-${index}-repo`}
-        label="password"
+        label="Repository"
         value={item.repo}
         margin="normal"
       />
