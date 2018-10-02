@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -94,7 +95,6 @@ export default class EmployerSignUp extends Component {
                   Sign Up
                 </Typography>
               </div>
-
               <TextField
                 name="companyName"
                 label="Company Name"
@@ -103,7 +103,6 @@ export default class EmployerSignUp extends Component {
                 margin="normal"
                 fullWidth="true"
               />
-
               <TextField
                 name="companyEmail"
                 label="Company Email"
@@ -112,7 +111,6 @@ export default class EmployerSignUp extends Component {
                 margin="normal"
                 fullWidth="true"
               />
-
               <TextField
                 name="password"
                 type="password"
@@ -121,7 +119,6 @@ export default class EmployerSignUp extends Component {
                 onChange={this.handleChange}
                 margin="normal"
               />
-
               <TextField
                 name="confirmPassword"
                 type="password"
@@ -130,64 +127,16 @@ export default class EmployerSignUp extends Component {
                 onChange={this.handleChange}
                 margin="normal"
               />
-              {/*
-              <TextField
-                id="hiringManagerFirstName"
-                label="Hiring Manager's FirstName"
-                value={this.state.hiringManagerFirstName}
-                onChange={this.handleChange("hiringManagerFirstName")}
-                margin="normal"
-              />
-              <TextField
-                id="hiringManagerLastName"
-                label="Hiring Manager's Last Name"
-                value={this.state.hiringManagerLastName}
-                onChange={this.handleChange("hiringManagerLastName")}
-                margin="normal"
-              />
-                <Typography variant="headline" gutterBottom align="center">
-                  Sign Up
-                </Typography>
-              </div>
-              <TextField
-                id="companyName"
-                label="Company Name"
-                value={this.state.companyName}
-                margin="normal"
-                fullWidth="true"
-              />
-              <TextField
-                id="email"
-                label="Company Email"
-                value={this.state.email}
-                margin="normal"
-                fullWidth="true"
-              />
-              <TextField
-                id="password"
-                type="password"
-                label="Password"
-                value={this.state.password}
-                margin="normal"
-              />
-              <TextField
-                id="confirmPassword"
-                type="password"
-                label="Confirm Password"
-                value={this.state.confirmPassword}
-                margin="normal"
-              />
-              <br />
               <Button variant="contained" color="primary" onClick={this.handleNewEmp}>
                 Save Profile
               </Button>
-            </div>
-            <div className="login">
-              {/* <Link to="/emp-login"> */}
-              <Typography variant="caption" gutterBottom align="center">
-                already have an account? Login here!
-              </Typography>
-              {/* </Link> */}
+              <div className="login">
+                {/* <Link to="/emp-login"> */}
+                <Typography variant="caption" gutterBottom align="center">
+                  already have an account? Login here!
+                </Typography>
+                {/* </Link> */}
+              </div>
             </div>
           </Paper>
         </div>
