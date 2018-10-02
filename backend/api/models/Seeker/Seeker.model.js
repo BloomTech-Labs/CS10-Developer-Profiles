@@ -34,6 +34,12 @@ const seekerSchema = new Schema({
     type: String,
     select: false,
   },
+  resetPasswordToken: {
+    type: String,
+  },
+  resetPasswordExpires: {
+    type: String,
+  },
   email: {
     type: String,
     unique: true,
