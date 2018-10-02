@@ -225,7 +225,6 @@ class DevList extends Component {
    *  'page=2&desiredTitle=Front+End|Back+End'
    */
   getSeekers(query = '') {
-    const { history } = this.props;
     const url = query === '' ? '/api/seekers' : `/api/seekers?${query}`;
     const config = {
       headers: {
@@ -252,7 +251,6 @@ class DevList extends Component {
          * @todo Fix status code for invalid credentials
          * @todo On 404 error, display message on dev list
          */
-        if (err.response.status === 500) history.push('/dev-login');
         if (err.response.status === 404) {
           this.setState({
             query,
