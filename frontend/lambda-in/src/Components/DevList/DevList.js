@@ -543,11 +543,11 @@ class DevList extends Component {
               onChange={value => this.handleSelect(value, FILTERS.sort.eleName)}
               isMulti
             />
-            {seekers.length !== 0 && seekers.map(seeker => (
+            {this.state.seekers.length !== 0 && this.state.seekers.map(seeker => (
               // eslint-disable-next-line no-underscore-dangle
               <DevProfileCard key={seeker._id} seeker={seeker} />
             ))}
-            {seekers.length !== 0 && (
+            {this.state.seekers.length !== 0 && (
               <Pagination
                 pages={pages}
                 currentPage={currentPage}
