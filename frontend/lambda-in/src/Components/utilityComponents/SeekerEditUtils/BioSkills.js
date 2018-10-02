@@ -37,7 +37,7 @@ const BioSkills = props => {
           itemSchema="singleItem"
           title="Top Skills"
           field="topSkills"
-          setFS={setFS}
+          setPFS={setFS}
           arr={userInfo.topSkills}
         >
           {/* eslint-disable-next-line object-curly-newline */}
@@ -66,7 +66,7 @@ const BioSkills = props => {
                 />
               </div>
               {/* <MapUnorderedList array={arr} /> */}
-              <MapChips field="topSkills" array={arr} removeItem={removeItem} />
+              <MapChips array={arr} removeItem={removeItem} />
               <Button
                 variant="outlined"
                 color="primary"
