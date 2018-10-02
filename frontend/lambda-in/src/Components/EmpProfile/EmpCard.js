@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import { Link } from 'react-router-dom';
 import axios from "axios";
@@ -77,18 +76,18 @@ class EmployerPositionCard extends React.Component {
             </Typography>
           </div>
 
-          <div className="buttons">
+          <div className="cardButtons">
             <Button
-              className="button"
+              className="cardButton"
               component={Link} to="/emp-pos-edit"
               variant="contained"
-              color="secondary"
+              color="primary"
             >
               Edit
             </Button>
 
             <Button
-              className="button"
+              className="cardButton"
               variant="contained"
               color="secondary"
               onClick={this.handleDelete}

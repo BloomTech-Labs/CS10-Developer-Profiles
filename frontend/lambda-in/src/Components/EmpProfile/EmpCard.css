@@ -6,11 +6,12 @@
     padding: 5px;
 }
 
-.buttons {
+.cardButtons {
     justify-content: center;
     align-items: center;
+    align-self: center;
 }
 
-.buttons button {
+.cardButtons cardButton {
     margin: 5px;
 }
