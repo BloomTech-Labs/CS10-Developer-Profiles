@@ -31,8 +31,9 @@ class EmployerProfile extends React.Component {
             <Typography variant="headline" gutterBottom align="center">
               Manage Current Open Positions
             </Typography>
-            <div class="buttons">
+            <div>
                 <Button
+                  className = "addButton"
                   component={Link} to="/emp-pos-add"
                   variant="contained"
                   color="primary"
