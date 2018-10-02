@@ -323,8 +323,8 @@ class DevList extends Component {
       `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[A-z|+.-]+|&${param}=[A-z|+.-]+`,
       'i',
     );
-    const cleanQuery = query.replace(regEx, '');
-    return cleanQuery === '' ? 'page=1' : cleanQuery;
+    const cleanedQuery = query.replace(regEx, '');
+    return cleanedQuery === '' ? 'page=1' : cleanedQuery;
   }
 
   /**
@@ -369,7 +369,7 @@ class DevList extends Component {
     let newQuery = '';
     const name = event.currentTarget.dataset.filterName;
     const enable = innerHTML === ENABLE;
-
+  
     if (enable) {
       // eslint-disable-next-line react/destructuring-assignment
       newQuery = `${this.cleanQuery(name)}&${name}=${this.state[FILTERS[name].name] ? 1 : 0}`;
