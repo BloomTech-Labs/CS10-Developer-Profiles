@@ -543,18 +543,18 @@ class DevList extends Component {
               onChange={value => this.handleSelect(value, FILTERS.sort.eleName)}
               isMulti
             />
-            {this.state.seekers.length !== 0 && this.state.seekers.map(seeker => (
+            {/* {seekers.length !== 0 && seekers.map(seeker => (
               // eslint-disable-next-line no-underscore-dangle
               <DevProfileCard key={seeker._id} seeker={seeker} />
             ))}
-            {this.state.seekers.length !== 0 && (
+            {seekers.length !== 0 && (
               <Pagination
                 pages={pages}
                 currentPage={currentPage}
                 pathname={pathname}
                 query={query}
               />
-            )}
+            )} */}
           </Grid>
         </Grid>
       </React.Fragment>
