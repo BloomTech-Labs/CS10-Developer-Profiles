@@ -1,39 +1,33 @@
-import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Icon from '@material-ui/core/Icon';
-import axios from 'axios';
-import './OpenPositionEdit.css';
-import ProjectName from '../utilityComponents/EmpEditUtils/ProjectName';
-import Description from '../utilityComponents/EmpEditUtils/Description';
-import JobTitle from '../utilityComponents/EmpEditUtils/JobTitle';
-import TechStack from '../utilityComponents/EmpEditUtils/TechStack';
-import Skills from '../utilityComponents/EmpEditUtils/Skills';
-import MinSalary from '../utilityComponents/EmpEditUtils/MinSalary';
-import MaxSalary from '../utilityComponents/EmpEditUtils/MaxSalary';
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import axios from "axios";
+import "./OpenPositionEdit.css";
 
 export default class OpenPositionEdit extends Component {
   /**
    * Sync APP's global state with input field.
    */
   handleChange = event => {
-    this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [event.target.id]: event.target.value } });
+    this.props.setGS({
+      userInfo: {
+        ...this.props.getGS("userInfo"),
+        [event.target.id]: event.target.value
+      }
+    });
   };
 
   update = e => {
-    const userInfo = this.props.getGS('userInfo');
+    const userInfo = this.props.getGS("userInfo");
     const _id = userInfo._id;
 
     if (_id) {
       /**
        * Set in GS 'updateState': 'updateState' = 'updating'
        */
-      this.props.setGS({ updateState: 'updating' });
+      this.props.setGS({ updateState: "updating" });
 
       /**
        * axios.put: Make an HTTP PUT request
@@ -50,42 +44,44 @@ export default class OpenPositionEdit extends Component {
         .put(
           `/api/employers/${_id}`,
           {
-            ...userInfo, // UPDATE current userInfo's state. TODO: pass only updated fields.
+            ...userInfo // UPDATE current userInfo's state. TODO: pass only updated fields.
           },
           {
             headers: {
-              Authorization: localStorage.getItem('token'),
-            },
+              Authorization: localStorage.getItem("token")
+            }
           }
         )
         .then(response => {
-          console.log('UPDATE USER', { status: response.status });
+          console.log("UPDATE USER", { status: response.status });
           /**
            * Set in GS 'updateState': 'updateState' = 'updated'
            */
-          this.props.setGS({ updateState: 'updated' });
+          this.props.setGS({ updateState: "updated" });
         })
         .catch(error => {
           console.log(error);
           /**
            * Set in GS 'updateState': 'updateState' = 'error'
            */
-          this.props.setGS({ updateState: 'error' });
+          this.props.setGS({ updateState: "error" });
         });
     } else {
-      console.log('updating without ID');
+      console.log("updating without ID");
       /**
        * Set in GS 'updateState': 'updateState' = 'error'
        */
-      this.props.setGS({ updateState: 'error' });
-      alert('An error occurred updating your information, please resubmit the form'); // TODO: improve UX
+      this.props.setGS({ updateState: "error" });
+      alert(
+        "An error occurred updating your information, please resubmit the form"
+      ); // TODO: improve UX
     }
   };
   render() {
     /**
      * Get a reference to APP's global state.
      */
-    const userInfo = this.props.getGS('userInfo');
+    const userInfo = this.props.getGS("userInfo");
 
     return (
       <div className="EditContainer">
@@ -96,31 +92,77 @@ export default class OpenPositionEdit extends Component {
           <br />
           <form onChange={this.handleChange}>
             <div className="inputRow">
-              {/* PROJECT NAME */}
-              <ProjectName userInfo={userInfo} />
+              <TextField
+                id="projectName"
+                label="Project Name"
+                value={this.state.projectName}
+                onChange={this.handleChange("projectName")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* DESCRIPTION */}
-              <Description userInfo={userInfo} />
+              <TextField
+                id="description"
+                label="Description"
+                value={this.state.description}
+                onChange={this.handleChange("description")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Job Title */}
-              <JobTitle setGS={this.props.setGS} getGS={this.props.getGS} userInfo={userInfo} />
+              <TextField
+                id="jobTitle"
+                label="Job Title"
+                value={this.state.jobTitle}
+                onChange={this.handleChange("jobTitle")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Tech Stack */}
-              <TechStack userInfo={userInfo} />
+              <TextField
+                id="techStack"
+                label="Tech Stack"
+                value={this.state.techStack}
+                onChange={this.handleChange("techStack")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Skills */}
-              <Skills userInfo={userInfo} />
+              <TextField
+                id="skills"
+                label="Skills"
+                value={this.state.skills}
+                onChange={this.handleChange("skills")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Minimum Salary */}
-              <MinSalary userInfo={userInfo} />
+              <TextField
+                id="minSalrary"
+                label="minSalrary"
+                value={this.state.minSalrary}
+                onChange={this.handleChange("minSalrary")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Max Salary */}
-              <MaxSalary userInfo={userInfo} />
-
-              <div>
-                <Button variant="outlined" color="primary" align="center" onClick={this.update}>
-                  {' '}
-                  Update Position{' '}
+              <TextField
+                id="maxSalary"
+                label="maxSalary"
+                value={this.state.maxSalary}
+                onChange={this.handleChange("maxSalary")}
+                margin="normal"
+                fullWidth="true"
+              />
+              <div class="buttons">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  align="center"
+                  onClick={this.EditPosition}
+                >
+                  {" "}
+                  Submit
                 </Button>
               </div>
             </div>

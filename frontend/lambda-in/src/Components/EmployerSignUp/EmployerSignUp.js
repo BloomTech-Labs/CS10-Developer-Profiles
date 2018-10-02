@@ -19,8 +19,8 @@ export default class EmployerSignUp extends Component {
     this.state = {
       companyName: 'Employer',
       email: 'emp@c2.com',
-      password: '!Nechayev7alpha',
-      confirmPassword: '!Nechayev7alpha',
+      password: '!1234Qqwer',
+      confirmPassword: '!1234Qqwer',
     };
   }
   handleChange = event => {
@@ -183,7 +183,7 @@ export default class EmployerSignUp extends Component {
               </Button>
             </div>
             <div className="login">
-              <Link to="/emp-login">
+              <Link to="/dev-login">
               <Typography variant="caption" gutterBottom align="center">
                 already have an account? Login here!
               </Typography>

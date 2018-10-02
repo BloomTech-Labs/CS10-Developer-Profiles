@@ -3,19 +3,8 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
 import './OpenPositionAdd.css';
-import ProjectName from '../utilityComponents/EmpEditUtils/ProjectName';
-import Description from '../utilityComponents/EmpEditUtils/Description';
-import JobTitle from '../utilityComponents/EmpEditUtils/JobTitle';
-import TechStack from '../utilityComponents/EmpEditUtils/TechStack';
-import Skills from '../utilityComponents/EmpEditUtils/Skills';
-import MinSalary from '../utilityComponents/EmpEditUtils/MinSalary';
-import MaxSalary from '../utilityComponents/EmpEditUtils/MaxSalary';
 
 export default class OpenPositionAdd extends Component {
   /**
@@ -88,39 +77,85 @@ export default class OpenPositionAdd extends Component {
     const userInfo = this.props.getGS('userInfo');
 
     return (
-      <div className="EditContainer">
+      <div className="AddContainer">
         <Paper className="paperContainer" elevation={1}>
           <Typography variant="display1" gutterBottom align="center">
-            Add Open Position
+            Edit Open Position
           </Typography>
           <br />
           <form onChange={this.handleChange}>
             <div className="inputRow">
-              {/* PROJECT NAME */}
-              <ProjectName userInfo={userInfo} />
+              <TextField
+                id="projectName"
+                label="Project Name"
+                value={this.state.projectName}
+                onChange={this.handleChange("projectName")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* DESCRIPTION */}
-              <Description userInfo={userInfo} />
+              <TextField
+                id="description"
+                label="Description"
+                value={this.state.description}
+                onChange={this.handleChange("description")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Job Title */}
-              <JobTitle setGS={this.props.setGS} getGS={this.props.getGS} userInfo={userInfo} />
+              <TextField
+                id="jobTitle"
+                label="Job Title"
+                value={this.state.jobTitle}
+                onChange={this.handleChange("jobTitle")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Tech Stack */}
-              <TechStack userInfo={userInfo} />
+              <TextField
+                id="techStack"
+                label="Tech Stack"
+                value={this.state.techStack}
+                onChange={this.handleChange("techStack")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Skills */}
-              <Skills userInfo={userInfo} />
+              <TextField
+                id="skills"
+                label="Skills"
+                value={this.state.skills}
+                onChange={this.handleChange("skills")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Minimum Salary */}
-              <MinSalary userInfo={userInfo} />
+              <TextField
+                id="minSalrary"
+                label="minSalrary"
+                value={this.state.minSalrary}
+                onChange={this.handleChange("minSalrary")}
+                margin="normal"
+                fullWidth="true"
+              />
 
-              {/* Max Salary */}
-              <MaxSalary userInfo={userInfo} />
-
-              <div>
-                <Button variant="outlined" color="primary" align="center" onClick={this.update}>
-                  {' '}
-                  Add Position{' '}
+              <TextField
+                id="maxSalary"
+                label="maxSalary"
+                value={this.state.maxSalary}
+                onChange={this.handleChange("maxSalary")}
+                margin="normal"
+                fullWidth="true"
+              />
+              <div class="buttons">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  align="center"
+                  onClick={this.EditPosition}
+                >
+                  {" "}
+                  Submit
                 </Button>
               </div>
             </div>

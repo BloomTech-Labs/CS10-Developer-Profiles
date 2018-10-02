@@ -3,9 +3,6 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import axios from "axios";
 
 import "./EmpCard.css";

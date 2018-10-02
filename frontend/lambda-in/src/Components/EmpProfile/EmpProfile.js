@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
-import EmployerPositionForm from "./EmpForm";
 import EmployerPositionCard from "./EmpCard";
 
 import "./EmpProfile.css";
@@ -31,9 +31,17 @@ class EmployerProfile extends React.Component {
             <Typography variant="headline" gutterBottom align="center">
               Manage Current Open Positions
             </Typography>
-            <div class="form">
-              <EmployerPositionForm />
-            </div>
+            <div class="buttons">
+                <Button
+                  component={Link} to="/emp-pos-add"
+                  variant="contained"
+                  color="primary"
+                  align="center"
+                >
+                  {" "}
+                  Add More Position
+                </Button>
+              </div>
             <div class="card">
               <ul>
                 {/* {this.state.map(EmployerOpenPositionCard => {
