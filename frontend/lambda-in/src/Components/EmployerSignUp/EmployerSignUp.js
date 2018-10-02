@@ -18,10 +18,10 @@ class EmployerSignUp extends Component {
     super(props);
 
     this.state = {
-      companyName: 'Star Fleet',
-      email: 'emp@c2.com',
-      password: '!Nechayev7alpha',
-      confirmPassword: '!Nechayev7alpha',
+      companyName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
