@@ -28,7 +28,7 @@ export default class EmployerSignUp extends Component {
 
   handleChange(event) {
     this.setState({
-      [event.target.id]: event.target.value,
+      [event.target.name]: event.target.value,
     });
   }
 
@@ -96,38 +96,38 @@ export default class EmployerSignUp extends Component {
               </div>
 
               <TextField
-                id="companyName"
+                name="companyName"
                 label="Company Name"
                 value={companyName}
-                onChange={this.handleChange('companyName')}
+                onChange={this.handleChange}
                 margin="normal"
                 fullWidth="true"
               />
 
               <TextField
-                id="companyEmail"
+                name="companyEmail"
                 label="Company Email"
                 value={email}
-                onChange={this.handleChange('email')}
+                onChange={this.handleChange}
                 margin="normal"
                 fullWidth="true"
               />
 
               <TextField
-                id="password"
+                name="password"
                 type="password"
                 label="Password"
                 value={password}
-                onChange={this.handleChange('password')}
+                onChange={this.handleChange}
                 margin="normal"
               />
 
               <TextField
-                id="confirmPassword"
+                name="confirmPassword"
                 type="password"
                 label="Confirm Password"
                 value={confirmPassword}
-                onChange={this.handleChange('confirmPassword')}
+                onChange={this.handleChange}
                 margin="normal"
               />
               {/*
