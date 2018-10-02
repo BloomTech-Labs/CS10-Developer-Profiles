@@ -84,7 +84,7 @@ export default class EmployerSignUp extends Component {
     return (
       <div data-aos="zoom-in-down" className="signupContainer">
         <div className="formContainer">
-          <Paper class="paper">
+          <Paper className="paper">
             <div className="form2">
               <div>
                 <Typography variant="display1" gutterBottom align="center">
@@ -101,7 +101,7 @@ export default class EmployerSignUp extends Component {
                 value={companyName}
                 onChange={this.handleChange}
                 margin="normal"
-                fullWidth="true"
+                fullWidth
               />
               <TextField
                 name="companyEmail"
@@ -109,7 +109,7 @@ export default class EmployerSignUp extends Component {
                 value={email}
                 onChange={this.handleChange}
                 margin="normal"
-                fullWidth="true"
+                fullWidth
               />
               <TextField
                 name="password"
