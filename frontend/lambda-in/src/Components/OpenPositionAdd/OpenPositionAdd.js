@@ -97,7 +97,7 @@ export default class OpenPositionAdd extends Component {
       <div className="addContainer">
         <Paper className="paperContainer" elevation={1}>
           <Typography variant="display1" gutterBottom align="center">
-            Edit Open Position
+            Add Open Position
           </Typography>
           <br />
           <form onChange={this.handleChange}>
@@ -168,7 +168,6 @@ export default class OpenPositionAdd extends Component {
                 <Button
                   variant="contained"
                   color="primary"
-                  align="center"
                   onClick={this.EditPosition}
                 >
                   {" "}
