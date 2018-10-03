@@ -119,7 +119,6 @@ class DevList extends Component {
       seekers: [],
     });
 
-    this.getSeekers = this.getSeekers.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
     this.handleSwitchEnable = this.handleSwitchEnable.bind(this);
@@ -234,35 +233,35 @@ class DevList extends Component {
       },
     };
 
-    // axios
-    //   .get(url, config)
-    //   .then((response) => {
-    //     this.setState({
-    //       query,
-    //       count: response.data.count,
-    //       pages: response.data.pages,
-    //       next: response.data.next,
-    //       prev: response.data.prev,
-    //       seekers: response.data.results,
-    //       currentPage: response.data.current,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     /**
-    //      * @todo On invalid credentials, redirect to sign in page with message
-    //      * @todo Fix status code for invalid credentials
-    //      * @todo On 404 error, display message on dev list
-    //      */
-    //     this.setState({
-    //       query,
-    //       count: 0,
-    //       pages: 0,
-    //       next: null,
-    //       prev: null,
-    //       seekers: [],
-    //       currentPage: 1,
-    //     });
-    //   });
+    axios
+      .get(url, config)
+      .then((response) => {
+        this.setState({
+          query,
+          count: response.data.count,
+          pages: response.data.pages,
+          next: response.data.next,
+          prev: response.data.prev,
+          seekers: response.data.results,
+          currentPage: response.data.current,
+        });
+      })
+      .catch(() => {
+        /**
+         * @todo On invalid credentials, redirect to sign in page with message
+         * @todo Fix status code for invalid credentials
+         * @todo On 404 error, display message on dev list
+         */
+        this.setState({
+          query,
+          count: 0,
+          pages: 0,
+          next: null,
+          prev: null,
+          seekers: [],
+          currentPage: 1,
+        });
+      });
   }
 
   /**
@@ -543,7 +542,7 @@ class DevList extends Component {
               onChange={value => this.handleSelect(value, FILTERS.sort.eleName)}
               isMulti
             />
-            {/* {seekers.length !== 0 && seekers.map(seeker => (
+            {seekers.length !== 0 && seekers.map(seeker => (
               // eslint-disable-next-line no-underscore-dangle
               <DevProfileCard key={seeker._id} seeker={seeker} />
             ))}
@@ -554,7 +553,7 @@ class DevList extends Component {
                 pathname={pathname}
                 query={query}
               />
-            )} */}
+            )}
           </Grid>
         </Grid>
       </React.Fragment>
