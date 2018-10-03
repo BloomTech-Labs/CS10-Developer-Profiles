@@ -6,20 +6,25 @@ import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import "./OpenPositionAdd.css";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
+
 export default class OpenPositionAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projectName: '',
-      description: '',
-      jobTitle: '',
-      techStack: '',
-      skills: '',
-      minSalrary: '',
-      maxSalary: '',
+      projectName: "",
+      description: "",
+      jobTitle: "",
+      techStack: "",
+      skills: "",
+      minSalrary: "",
+      maxSalary: ""
     };
     this.handleChange = this.handleChange.bind(this);
-    this.newPosition = this.newPosition.bind(this);
+    this.handleNewPos = this.handleNewPos.bind(this);
   }
 
   handleChange = event => {
@@ -28,7 +33,7 @@ export default class OpenPositionAdd extends Component {
     });
   };
 
-  newPosition = event => {
+  handleNewPos = event => {
     const {
       projectName,
       description,
@@ -60,20 +65,19 @@ export default class OpenPositionAdd extends Component {
         localStorage.setItem("_id", response.data.newPosition._id);
 
         this.setStage({
-          projectName: '',
-          description: '',
-          jobTitle: '',
-          techStack: '',
-          skills: '',
-          minSalrary: '',
-          maxSalary: ''
+          projectName: "",
+          description: "",
+          jobTitle: "",
+          techStack: "",
+          skills: "",
+          minSalrary: "",
+          maxSalary: ""
         });
         setGS({
-          userInfo: { ...response.data.newPosition },
+          // userInfo: { ...response.data.newPosition },
           isSignedIn: true,
           userType: "employer"
         });
-
         console.log(response);
       })
       .catch(error => {
@@ -94,88 +98,86 @@ export default class OpenPositionAdd extends Component {
     } = this.state;
 
     return (
-      <div className="addContainer">
+      <div data-aos="zoom-in-down" className="addContainer">
         <Paper className="paperContainer" elevation={1}>
           <Typography variant="display1" gutterBottom align="center">
             Add Open Position
           </Typography>
           <br />
-          <form onChange={this.handleChange}>
-            <div className="inputRow">
-              <TextField
-                id="projectName"
-                label="Project Name"
-                value={projectName}
-                onChange={this.handleChange}
-                margin="normal"
-                fullWidth="true"
-              />
+          <div className="inputRow">
+            <TextField
+              name="projectName"
+              label="Project Name"
+              value={projectName}
+              onChange={this.handleChange}
+              margin="normal"
+              fullWidth="true"
+            />
 
-              <TextField
-                id="description"
-                label="Description"
-                value={description}
-                onChange={this.handleChange}
-                margin="normal"
-                fullWidth="true"
-              />
+            <TextField
+              name="description"
+              label="Description"
+              value={description}
+              onChange={this.handleChange}
+              margin="normal"
+              fullWidth="true"
+            />
 
-              <TextField
-                id="jobTitle"
-                label="Job Title"
-                value={jobTitle}
-                onChange={this.handleChange}
-                margin="normal"
-                fullWidth="true"
-              />
+            <TextField
+              name="jobTitle"
+              label="Job Title"
+              value={jobTitle}
+              onChange={this.handleChange}
+              margin="normal"
+              fullWidth="true"
+            />
 
-              <TextField
-                id="techStack"
-                label="Tech Stack"
-                value={techStack}
-                onChange={this.handleChange}
-                margin="normal"
-                fullWidth="true"
-              />
+            <TextField
+              name="techStack"
+              label="Tech Stack"
+              value={techStack}
+              onChange={this.handleChange}
+              margin="normal"
+              fullWidth="true"
+            />
 
-              <TextField
-                id="skills"
-                label="Skills"
-                value={skills}
-                onChange={this.handleChange}
-                margin="normal"
-                fullWidth="true"
-              />
+            <TextField
+              name="skills"
+              label="Skills"
+              value={skills}
+              onChange={this.handleChange}
+              margin="normal"
+              fullWidth="true"
+            />
 
-              <TextField
-                id="minSalrary"
-                label="minSalrary"
-                value={minSalrary}
-                onChange={this.handleChange}
-                margin="normal"
-                fullWidth="true"
-              />
+            <TextField
+              name="minSalrary"
+              label="minSalrary"
+              value={minSalrary}
+              onChange={this.handleChange}
+              margin="normal"
+              fullWidth="true"
+            />
 
-              <TextField
-                id="maxSalary"
-                label="maxSalary"
-                value={maxSalary}
-                onChange={this.handleChange}
-                margin="normal"
-                fullWidth="true"
-              />
-              <div class="buttons">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={this.EditPosition}
-                >
-                  {" "}
-                  Submit
-                </Button>
-              </div>
+            <TextField
+              name="maxSalary"
+              label="maxSalary"
+              value={maxSalary}
+              onChange={this.handleChange}
+              margin="normal"
+              fullWidth="true"
+            />
+            <div class="buttons">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.handleNewPos}
+              >
+                {" "}
+                Submit
+              </Button>
             </div>
-          </form>
+          </div>
         </Paper>
       </div>
     );
