@@ -41,7 +41,12 @@ const login = (model, req, res) => {
           .isValidPassword(password)
           .then((validPassword) => {
             if (!validPassword) return sendErr(res, '401', 'Invalid credentials');
-            return sendRes(res, '200', { user: _id, jwt: createToken({ _id, email }) });
+
+            const userData = { ...user._doc }; // eslint-disable-line no-underscore-dangle
+            const token = createToken({ _id, email });
+            delete userData.password;
+
+            return sendRes(res, '200', { user: userData, jwt: token });
           })
           .catch(err => sendErr(res, '500', err));
       } else {
@@ -58,7 +63,11 @@ const register = (model, req, res) => {
     .create(req.body)
     .then((newUser) => {
       const { _id, email } = newUser;
-      return sendRes(res, '201', { newUser: _id, jwt: createToken({ _id, email }) });
+      const userData = { ...newUser._doc }; // eslint-disable-line no-underscore-dangle
+      const token = createToken({ _id, email });
+      delete userData.password;
+
+      return sendRes(res, '201', { newUser: userData, jwt: token });
     })
     .catch(err => sendErr(res, '500', err));
 };
