@@ -43,22 +43,29 @@ const login = (model, req, res) => {
             if (!validPassword) return sendErr(res, '401', 'Invalid credentials');
             return sendRes(res, '200', { user: _id, jwt: createToken({ _id, email }) });
           })
-          .catch((e) => {
-            sendErr(res, '500', e);
-          });
+          .catch(err => sendErr(res, '500', err));
       } else {
         return sendErr(res, '401', 'Invalid credentials');
       }
 
       return null;
     })
-    .catch((e) => {
-      sendErr(res, '500', e);
-    });
+    .catch(err => sendErr(res, '500', err));
+};
+
+const register = (model, req, res) => {
+  model
+    .create(req.body)
+    .then((newUser) => {
+      const { _id, email } = newUser;
+      return sendRes(res, '201', { newUser: _id, jwt: createToken({ _id, email }) });
+    })
+    .catch(err => sendErr(res, '500', err));
 };
 
 module.exports = {
   createToken,
   userHasToken,
   login,
+  register,
 };
