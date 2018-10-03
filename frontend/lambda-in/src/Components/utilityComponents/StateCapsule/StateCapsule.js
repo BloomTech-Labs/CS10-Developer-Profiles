@@ -13,6 +13,7 @@ class StateCapsule extends Component {
       ready: false,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.mapAndResetKeysValues = object =>
       // eslint-disable-next-line implicit-arrow-linebreak
       Object.keys(object).reduce((resetKeys, key) => {
@@ -23,6 +24,8 @@ class StateCapsule extends Component {
           case '[object Array]':
             // eslint-disable-next-line no-param-reassign
             resetKeys[key] = [];
+            // eslint-disable-next-line no-param-reassign
+            resetKeys[`${key}_edit`] = '';
             break;
           default:
             // eslint-disable-next-line no-param-reassign
@@ -63,6 +66,31 @@ class StateCapsule extends Component {
     this.setState({ [field]: value });
   }
 
+  handleKeyPress(e) {
+    e.stopPropagation();
+    // console.log(e.key, e.target.value);
+
+    if (e.key === 'Enter') {
+      e.preventDefault();
+
+      const details = e.target.id.split('-');
+
+      const { field } = e.target.dataset;
+      const { value } = e.target;
+      // eslint-disable-next-line react/destructuring-assignment
+      this.setState((prevState, props) => {
+        const toUpdate = prevState[field];
+        // console.log({
+        //   [field]: toUpdate,
+        //   prevState,
+        //   'prevState[field]': prevState[field],
+        // });
+        toUpdate.push(value);
+        return { [field]: toUpdate, [details[1]]: '' };
+      });
+    }
+  }
+
   render() {
     const { ready } = this.state;
 
@@ -72,7 +100,10 @@ class StateCapsule extends Component {
     const { updateParent, children } = this.props;
 
     return ready ? (
-      <div onChange={this.handleChange}>{children({ stateCapsule })}</div>
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+      <div onChange={this.handleChange} onKeyPress={this.handleKeyPress}>
+        {children({ stateCapsule })}
+      </div>
     ) : null;
   }
 }
