@@ -1,4 +1,4 @@
-const utils = require('../utils/authUtils');
+const { createToken } = require('../middleware/authentication');
 
 module.exports = {
   login: function loginUser(model, req, res) {
@@ -32,7 +32,7 @@ module.exports = {
               return;
             }
 
-            const jwt = utils.createToken({ _id, email });
+            const jwt = createToken({ _id, email });
 
             // eslint-disable-next-line no-underscore-dangle, no-param-reassign
             user._doc.password = undefined; // Remove password form 'user'.
@@ -55,7 +55,7 @@ module.exports = {
       .then((newUser) => {
         const { _id, email } = newUser;
         // console.log({ name, username, password });
-        const jwt = utils.createToken({ _id, email });
+        const jwt = createToken({ _id, email });
         res.status(201).json({ newUser, jwt });
       })
       .catch(err => res.status(500).json({ ERROR: err.message }));
