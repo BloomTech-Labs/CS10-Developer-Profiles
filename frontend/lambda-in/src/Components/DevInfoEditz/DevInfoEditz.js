@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -21,10 +22,11 @@ class DevInfoEdit extends Component {
     this.state = {
       ready: false,
     };
+    this.handleOnDeleteItem = this.handleOnDeleteItem.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.update = this.update.bind(this);
     this.setFormState = this.setFormState.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
+    this.update = this.update.bind(this);
   }
 
   /**
@@ -36,6 +38,21 @@ class DevInfoEdit extends Component {
     // console.log('FORM', this.props);
     this.userStateCopy = { ...getGS('userInfo') };
     this.setState({ ready: true });
+
+    /**
+     * Listen for MapChip's custom event emmited when a item is deleted.
+     */
+    // eslint-disable-next-line react/no-find-dom-node
+    ReactDOM.findDOMNode(this).addEventListener(
+      'onDeleteItem',
+      // prettier-ignore
+      this.handleOnDeleteItem
+    );
+  }
+
+  componentWillUnmount() {
+    // eslint-disable-next-line react/no-find-dom-node
+    ReactDOM.findDOMNode(this).removeEventListener('onDeleteItem', () => null);
   }
 
   /**
@@ -115,32 +132,49 @@ class DevInfoEdit extends Component {
   /**
    * Update local copy of user state
    */
-  handleOnBlur(e, property, index, item1, key, item2) {
-    console.log('FORM handleOnBlur', e.target);
-    // eslint-disable-next-line arrow-parens
-    const typeOfProp = Object.prototype.toString.call(
-      // eslint-disable-next-line comma-dangle
-      this.userStateCopy[property]
-    );
+  handleOnBlur(e) {
+    console.log('FORM handleOnBlur', {
+      e: e.target,
+      DATASET: { ...e.target.dataset },
+    });
 
     const { id } = e.target;
-    const details = id.split('-');
-    const field = details[1];
-    const { value } = e.target;
+    const details = id.split('-'); // id-format: 'new-email' || 'edit-email
+    const field = e.target.dataset.field || details[1];
 
-    switch (typeOfProp) {
-      case '[object Object]':
-        this.updateObj(property, item1, item2);
-        break;
-      case '[object Array]':
-        this.updateArray(property, index, item1, key, item2);
-        break;
-      // If itemSchema='singleItem'
-      default:
-        // '[object String]' || '[object Number]' || // '[object Boolean]'
-        this.userStateCopy[field] = value;
+    if (field) {
+      const value = e.target.dataset.value || e.target.value;
+
+      const typeOfProp = Object.prototype.toString.call(
+        // eslint-disable-next-line comma-dangle
+        this.userStateCopy[field]
+      );
+
+      switch (typeOfProp) {
+        case '[object Object]':
+          // this.updateObj(e);
+          break;
+        case '[object Array]':
+          // this.updateArray(e);
+          console.log('FORM handleOnBlur [Array]', { field, value });
+          this.userStateCopy[field] = value.split('-');
+          break;
+        // If itemSchema='singleItem'
+        default:
+          // '[object String]' || '[object Number]' || // '[object Boolean]'
+          console.log('FORM handleOnBlur [String]', { field, value });
+          this.userStateCopy[field] = value;
+      }
+
+      console.log('FORM handleOnBlur: new userStateCopy', this.userStateCopy);
+    } else {
+      console.log('FORM handleOnBlur: Nothing to handle');
     }
-    console.log('FORM handleOnBlur', { userStateCopy: this.userStateCopy });
+  }
+
+  handleOnDeleteItem(e) {
+    console.log('handleOnDeleteItem', e.detail, this.userStateCopy);
+    return this;
   }
 
   update() {
@@ -235,10 +269,10 @@ class DevInfoEdit extends Component {
         <BasicInfo userInfo={userInfo} />
 
         {/* SOCIAL LINKS */}
-        {/* <SocialLinks userInfo={userInfo} /> */}
+        <SocialLinks userInfo={userInfo} />
 
         {/* BIO - TOP SKILLS */}
-        {/* <BioSkills setFS={this.setFormState} userInfo={userInfo} /> */}
+        <BioSkills setFS={this.setFormState} userInfo={userInfo} />
 
         {/* PROJECTS */}
         {/* <Projects
@@ -272,8 +306,7 @@ class DevInfoEdit extends Component {
                   align="center"
                   onClick={this.update}
                 >
-                  {' '}
-                  Update profile
+                  Confirm changes
                 </Button>
               </div>
             </div>
