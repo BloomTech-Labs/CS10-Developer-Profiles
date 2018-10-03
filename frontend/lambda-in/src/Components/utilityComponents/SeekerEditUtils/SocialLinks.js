@@ -1,42 +1,58 @@
 import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
 import DropDown from '../DropDown/DropDown';
+import StateCapsule from '../StateCapsule/StateCapsule';
 
 // eslint-disable-next-line arrow-parens
 const SocialLinks = props => {
   // eslint-disable-next-line react/prop-types
   const { userInfo } = props;
 
+  const schema = {
+    github: userInfo.github,
+    linkedin: userInfo.linkedin,
+    portfolio: userInfo.portfolio,
+  };
+
   return (
-    <Fragment>
-      <DropDown header="Social links">
-        <div className="inputField">
-          <TextField id="github" label="github" fullWidth value={userInfo.github} margin="normal" variant="outlined" />
-        </div>
+    <StateCapsule schema={schema} object={schema}>
+      {({ stateCapsule }) => (
+        <DropDown header="Social links">
+          <div className="inputField">
+            <TextField
+              id="new-github"
+              label="github"
+              fullWidth
+              value={stateCapsule.github}
+              margin="normal"
+              variant="outlined"
+            />
+          </div>
 
-        <div className="inputField">
-          <TextField
-            id="linkedin"
-            label="Linkedin"
-            fullWidth
-            value={userInfo.linkedin}
-            margin="normal"
-            variant="outlined"
-          />
-        </div>
+          <div className="inputField">
+            <TextField
+              id="new-linkedin"
+              label="Linkedin"
+              fullWidth
+              value={stateCapsule.linkedin}
+              margin="normal"
+              variant="outlined"
+            />
+          </div>
 
-        <div className="inputField">
-          <TextField
-            id="portfolio"
-            label="Portfolio Website"
-            fullWidth
-            value={userInfo.portfolio}
-            margin="normal"
-            variant="outlined"
-          />
-        </div>
-      </DropDown>
-    </Fragment>
+          <div className="inputField">
+            <TextField
+              id="new-portfolio"
+              label="Portfolio Website"
+              fullWidth
+              value={stateCapsule.portfolio}
+              margin="normal"
+              variant="outlined"
+            />
+          </div>
+        </DropDown>
+      )}
+    </StateCapsule>
   );
 };
 
