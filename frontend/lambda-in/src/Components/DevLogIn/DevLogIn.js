@@ -61,7 +61,6 @@ export default class DevLogin extends Component {
    *
    * @param {event} event - Even object
    */
-  /* eslint-disable */
   handleLogin = async event => {
     event.preventDefault();
 
@@ -118,7 +117,6 @@ export default class DevLogin extends Component {
     console.log({ 'HTTP login seekersResponse status': seekersResponse.status });
     console.log({ 'HTTP login employersResponse status': employersResponse.status });
   };
-  /* eslint-enable */
 
   handleChange = event => {
     this.setState({
@@ -158,7 +156,7 @@ export default class DevLogin extends Component {
         <React.Fragment>
           <input id="input-submit-button" className="input-submit" type="submit" />
           <label htmlFor="input-submit-button">
-            <Button variant="contained" color="primary" onClick={this.handleLogin}>
+            <Button className="submit-button" variant="contained" color="primary" onClick={this.handleLogin}>
               Submit
             </Button>
           </label>
