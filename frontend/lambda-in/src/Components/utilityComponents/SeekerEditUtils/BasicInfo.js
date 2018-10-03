@@ -1,62 +1,80 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
+import StateCapsule from '../StateCapsule/StateCapsule';
 
-// prettier-ignore
-const BasicInfo = (props) => {
+// eslint-disable-next-line arrow-parens
+const BasicInfo = props => {
   const { userInfo } = props;
 
+  const schema = {
+    firstName: userInfo.firstName,
+    lastName: userInfo.lastName,
+    desiredTitle: userInfo.desiredTitle,
+    currentLocation: userInfo.currentLocation,
+  };
+
   return (
-    <div className="smallInputContainer">
-      <div className="expansionPanel">
-        <div className="inputField">
-          <TextField
-            id="firstName"
-            label="First Name"
-            fullWidth
-            value={userInfo.firstName}
-            margin="normal"
-            variant="outlined"
-          />
-        </div>
+    <Fragment>
+      <StateCapsule schema={schema} object={schema}>
+        {({ stateCapsule }) => (
+          <div className="smallInputContainer">
+            <div className="expansionPanel">
+              <div className="inputField">
+                <TextField
+                  id="new-firstName"
+                  label="First Name"
+                  fullWidth
+                  value={stateCapsule.firstName}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </div>
 
-        <div className="inputField">
-          <TextField
-            id="lastName"
-            label="Last Name"
-            fullWidth
-            value={userInfo.lastName}
-            margin="normal"
-            variant="outlined"
-          />
-        </div>
+              <div className="inputField">
+                <TextField
+                  id="new-lastName"
+                  label="Last Name"
+                  fullWidth
+                  value={stateCapsule.lastName}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </div>
 
-        <div className="inputField">
-          <TextField
-            id="desiredTitle"
-            label="Desired Title"
-            fullWidth
-            value={userInfo.desiredTitle}
-            margin="normal"
-            variant="outlined"
-          />
-        </div>
+              <div className="inputField">
+                <TextField
+                  id="new-desiredTitle"
+                  label="Desired Title"
+                  fullWidth
+                  value={stateCapsule.desiredTitle}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </div>
 
-        {/* TODO : WIRE InputGeolocation component here */}
-        <div className="inputField">
-          <TextField
-            id="currentLocation"
-            label="Current Location"
-            fullWidth
-            value={userInfo.currentLocation}
-            margin="normal"
-            variant="outlined"
-          />
-        </div>
-      </div>
-      <div className="imageContainer">
-        <img className="displayPic" src={`https://robohash.org/1${userInfo.firstName}`} alt="Italian " />
-      </div>
-    </div>
+              {/* TODO : WIRE InputGeolocation component here */}
+              <div className="inputField">
+                <TextField
+                  id="new-currentLocation"
+                  label="Current Location"
+                  fullWidth
+                  value={stateCapsule.currentLocation}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </div>
+            </div>
+            <div className="imageContainer">
+              <img
+                className="displayPic"
+                src={`https://robohash.org/1${stateCapsule.firstName}`}
+                alt="Italian "
+              />
+            </div>
+          </div>
+        )}
+      </StateCapsule>
+    </Fragment>
   );
 };
 
