@@ -21,6 +21,8 @@ import PassProps from "./Components/DevInfoEditz/DevInfoEditz";
 
 import DevList from "./Components/DevList/DevList";
 import Page404 from "./Components/Page404/Page404";
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
+import SendPasswordToEmail from './Components/ForgotPassword/SendPasswordToEmail'
 
 class App extends Component {
   constructor(props) {
@@ -243,6 +245,14 @@ class App extends Component {
               }
             />
 
+              <Route
+              path="/api/saveresethash/reset/:id"
+              component={ForgotPassword}
+            />
+            <Route
+              path="/reset-password-email"
+              component={SendPasswordToEmail}
+            />
 
             {/* EMPLOYER END */}
             <Route component={Page404} />

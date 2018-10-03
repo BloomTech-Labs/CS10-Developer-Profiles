@@ -4,6 +4,7 @@ const employerRouter = require('../api/routes/Employer.router');
 const loginRouter = require('../api/routes/login.router');
 const registerRouter = require('../api/routes/register.router');
 const stripeRouter = require('../payments/routes/stripe.router');
+const forgotPasswordRouter = require('../api/routes/ForgotPassword.router');
 
 // prettier-ignore
 module.exports = {
@@ -15,6 +16,8 @@ module.exports = {
       res.send('{"message":"Developer Profiles API"}');
     });
 
+    server.use('/api/saveresethash', forgotPasswordRouter);
+
     // In production build all other requests are handled by the frontend
     if (process.env.NODE_ENV === 'production') {
       server.get('*', (req, res) => {
@@ -25,9 +28,10 @@ module.exports = {
   private: (server) => {
     // This serves the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
     server.use('/api/seekers', seekersRouter);
-
+    
     // This serves the Employers DB. It allows GET, POST, PUT and DELETE
     server.use('/api/employers', employerRouter);
+    // server.use('/api/resetPassword', forgotPasswordRouter);
   },
   payments: {
     /**
