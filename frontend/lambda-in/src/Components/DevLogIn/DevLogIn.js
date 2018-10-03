@@ -24,6 +24,10 @@ export default class DevLogin extends Component {
       seekerResponse: '',
       employerResponse: '',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.resolveUserConflic = this.resolveUserConflic.bind(this);
   }
 
   /**
@@ -175,13 +179,13 @@ export default class DevLogin extends Component {
         </Typography>
         <div className="resolve-conflict">
           <Chip
-            onClick={this.resolveUserConflic.bind(this, 'seeker')}
+            onClick={() => this.resolveUserConflic('seeker')}
             label="Developer"
             color="primary"
             variant="outlined"
           />
           <Chip
-            onClick={this.resolveUserConflic.bind(this, 'employer')}
+            onClick={() => this.resolveUserConflic('employer')}
             label="Employer"
             color="primary"
             variant="outlined"
