@@ -12,6 +12,7 @@ class StateCapsule extends Component {
     this.state = {
       ready: false,
     };
+    this.removeItem = this.removeItem.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.mapAndResetKeysValues = object =>
@@ -91,18 +92,35 @@ class StateCapsule extends Component {
     }
   }
 
+  removeItem(field, index) {
+    console.log('SC removeItem', { field, index });
+
+    // eslint-disable-next-line arrow-parens
+    return e => {
+      e.stopPropagation();
+      this.setState((prevState, props) => {
+        const toUpdate = prevState[field];
+        toUpdate.splice(index, 1);
+        return { [field]: toUpdate };
+      });
+    };
+  }
+
   render() {
     const { ready } = this.state;
 
     const stateCapsule = { ...this.state };
     delete stateCapsule.ready;
 
-    const { updateParent, children } = this.props;
+    const { children } = this.props;
 
     return ready ? (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div onChange={this.handleChange} onKeyPress={this.handleKeyPress}>
-        {children({ stateCapsule })}
+        {children({
+          stateCapsule,
+          removeItem: this.removeItem,
+        })}
       </div>
     ) : null;
   }
