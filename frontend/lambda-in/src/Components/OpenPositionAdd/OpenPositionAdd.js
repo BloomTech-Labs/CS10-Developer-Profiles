@@ -1,83 +1,100 @@
-import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import axios from 'axios';
-import './OpenPositionAdd.css';
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import axios from "axios";
+import "./OpenPositionAdd.css";
 
 export default class OpenPositionAdd extends Component {
-  /**
-   * Sync APP's global state with input field.
-   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      projectName: '',
+      description: '',
+      jobTitle: '',
+      techStack: '',
+      skills: '',
+      minSalrary: '',
+      maxSalary: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.newPosition = this.newPosition.bind(this);
+  }
+
   handleChange = event => {
-    this.props.setGS({ userInfo: { ...this.props.getGS('userInfo'), [event.target.id]: event.target.value } });
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
-  update = e => {
-    const userInfo = this.props.getGS('userInfo');
-    const _id = userInfo._id;
+  newPosition = event => {
+    const {
+      projectName,
+      description,
+      jobTitle,
+      techStack,
+      skills,
+      minSalrary,
+      maxSalary
+    } = this.state;
 
-    if (_id) {
-      /**
-       * Set in GS 'updateState': 'updateState' = 'updating'
-       */
-      this.props.setGS({ updateState: 'updating' });
+    const { setGS } = this.props;
 
-      /**
-       * axios.put: Make an HTTP PUT request
-       *
-       * @description update the 'employers' model.
-       * @param {string} endpoint - API endppoint
-       * @param {objetc} userInfo - Data to be updated
-       * @param {object} httpHeaders - Add Authorization header.
-       * @return {promise}
-       * @example axios.put( endpoint, userInfo, httpHeaders )
-       */
-      axios
-        // axios 1 argument is URL and 2 argument is data 3 argument is options
-        .post(
-          `/api/employers/${_id}`,
-          {
-            ...userInfo, // UPDATE current userInfo's state. TODO: pass only updated fields.
-          },
-          {
-            headers: {
-              Authorization: localStorage.getItem('token'),
-            },
-          }
-        )
-        .then(response => {
-          console.log('UPDATE USER', { status: response.status });
-          /**
-           * Set in GS 'updateState': 'updateState' = 'updated'
-           */
-          this.props.setGS({ updateState: 'updated' });
-        })
-        .catch(error => {
-          console.log(error);
-          /**
-           * Set in GS 'updateState': 'updateState' = 'error'
-           */
-          this.props.setGS({ updateState: 'error' });
+    const newPosition = {
+      projectName,
+      description,
+      jobTitle,
+      techStack,
+      skills,
+      minSalrary,
+      maxSalary
+    };
+
+    event.preventDefault();
+
+    axios
+      .post("/api/employers/", newPosition)
+      .then(response => {
+        localStorage.setItem("token", response.data.jwt);
+        localStorage.setItem("_id", response.data.newPosition._id);
+
+        this.setStage({
+          projectName: '',
+          description: '',
+          jobTitle: '',
+          techStack: '',
+          skills: '',
+          minSalrary: '',
+          maxSalary: ''
         });
-    } else {
-      console.log('updating without ID');
-      /**
-       * Set in GS 'updateState': 'updateState' = 'error'
-       */
-      this.props.setGS({ updateState: 'error' });
-      alert('An error occurred updating your information, please resubmit the form'); // TODO: improve UX
-    }
+        setGS({
+          userInfo: { ...response.data.newPosition },
+          isSignedIn: true,
+          userType: "employer"
+        });
+
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+        this.props.setGS({ updateState: "error" });
+      });
   };
+
   render() {
-    /**
-     * Get a reference to APP's global state.
-     */
-    const userInfo = this.props.getGS('userInfo');
+    const {
+      projectName,
+      description,
+      jobTitle,
+      techStack,
+      skills,
+      minSalrary,
+      maxSalary
+    } = this.state;
 
     return (
-      <div className="AddContainer">
+      <div className="addContainer">
         <Paper className="paperContainer" elevation={1}>
           <Typography variant="display1" gutterBottom align="center">
             Edit Open Position
@@ -88,8 +105,8 @@ export default class OpenPositionAdd extends Component {
               <TextField
                 id="projectName"
                 label="Project Name"
-                value={this.state.projectName}
-                onChange={this.handleChange("projectName")}
+                value={projectName}
+                onChange={this.handleChange}
                 margin="normal"
                 fullWidth="true"
               />
@@ -97,8 +114,8 @@ export default class OpenPositionAdd extends Component {
               <TextField
                 id="description"
                 label="Description"
-                value={this.state.description}
-                onChange={this.handleChange("description")}
+                value={description}
+                onChange={this.handleChange}
                 margin="normal"
                 fullWidth="true"
               />
@@ -106,8 +123,8 @@ export default class OpenPositionAdd extends Component {
               <TextField
                 id="jobTitle"
                 label="Job Title"
-                value={this.state.jobTitle}
-                onChange={this.handleChange("jobTitle")}
+                value={jobTitle}
+                onChange={this.handleChange}
                 margin="normal"
                 fullWidth="true"
               />
@@ -115,8 +132,8 @@ export default class OpenPositionAdd extends Component {
               <TextField
                 id="techStack"
                 label="Tech Stack"
-                value={this.state.techStack}
-                onChange={this.handleChange("techStack")}
+                value={techStack}
+                onChange={this.handleChange}
                 margin="normal"
                 fullWidth="true"
               />
@@ -124,8 +141,8 @@ export default class OpenPositionAdd extends Component {
               <TextField
                 id="skills"
                 label="Skills"
-                value={this.state.skills}
-                onChange={this.handleChange("skills")}
+                value={skills}
+                onChange={this.handleChange}
                 margin="normal"
                 fullWidth="true"
               />
@@ -133,8 +150,8 @@ export default class OpenPositionAdd extends Component {
               <TextField
                 id="minSalrary"
                 label="minSalrary"
-                value={this.state.minSalrary}
-                onChange={this.handleChange("minSalrary")}
+                value={minSalrary}
+                onChange={this.handleChange}
                 margin="normal"
                 fullWidth="true"
               />
@@ -142,8 +159,8 @@ export default class OpenPositionAdd extends Component {
               <TextField
                 id="maxSalary"
                 label="maxSalary"
-                value={this.state.maxSalary}
-                onChange={this.handleChange("maxSalary")}
+                value={maxSalary}
+                onChange={this.handleChange}
                 margin="normal"
                 fullWidth="true"
               />
