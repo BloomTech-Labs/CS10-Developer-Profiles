@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import DropDown from '../DropDown/DropDown';
 import MapChips from '../MapArrays/MapChips';
 import ArrayController from '../MapArrays/ArrayController';
@@ -25,7 +24,7 @@ const BioSkills = props => {
 
   return (
     <StateCapsule schema={schema} object={schema}>
-      {({ stateCapsule }) => (
+      {({ stateCapsule, removeItem }) => (
         <DropDown header="Biio and Skills">
           <div className="inputFieldLargeMultiline">
             <TextField
@@ -49,44 +48,27 @@ const BioSkills = props => {
             arr={stateCapsule.topSkills}
           >
             {/* eslint-disable-next-line object-curly-newline */}
-            {({
-              handleChange,
-              updateFormState,
-              removeItem,
-              state,
-              arr,
-              title,
-            }) => (
+            {({ arr }) => (
               <Fragment>
-                <div
-                  className="inputFieldLargeMultiline"
-                  onChange={handleChange}
-                >
+                <div className="inputFieldLargeMultiline">
                   <TextField
-                    id="newItem"
-                    label="Add skills"
+                    id="new-topSkills_edit"
+                    label="Add skills - press enter"
                     fullWidth
                     multiline
                     rowsMax="4"
-                    value={state.newItem}
+                    value={stateCapsule.topSkills_edit}
                     margin="normal"
                     variant="outlined"
                     inputProps={{
-                      'data-value': state.newItem,
+                      // info for the DevInfoEditz's onBlur handler.
                       'data-field': field,
+                      'data-value': stateCapsule.topSkills.join('-'),
                     }}
                   />
                 </div>
                 {/* <MapUnorderedList array={arr} /> */}
-                <MapChips array={arr} removeItem={removeItem} />
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  align="center"
-                  onClick={updateFormState}
-                >
-                  {`Add new ${title}`}
-                </Button>
+                <MapChips field={field} array={arr} removeItem={removeItem} />
               </Fragment>
             )}
           </ArrayController>
