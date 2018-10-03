@@ -18,11 +18,11 @@ export default class DevSignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: 'bat',
-      lastName: 'man',
-      email: 'reg@c15.com',
-      password: '12345678Aa$',
-      confirmPassword: '12345678Aa$',
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     };
   }
 
