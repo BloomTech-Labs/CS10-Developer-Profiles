@@ -184,25 +184,27 @@ export default class DevLogin extends Component {
       <div data-aos="zoom-in-down" className="loginContainer">
         <div className="formConatiner">
           <Paper onChange={this.handleChange} className="paper">
-            <div className="form2">
+            <form className="form2" onSubmit={this.handleLogin}>
               <div>
                 <Typography variant="display1" gutterBottom align="center">
                   Lambda Network
                 </Typography>
-
                 <Typography variant="headline" gutterBottom align="center">
                   Login
                 </Typography>
               </div>
               <TextField id="email" label="Email" value={this.state.email} margin="normal" />
-
-              <TextField id="password" type="password" label="password" value={this.state.password} margin="normal" />
-
+              <TextField
+                id="password"
+                type="password"
+                label="password"
+                value={this.state.password}
+                margin="normal"
+              />
               <br />
               {buttonConflic}
-            </div>
-
-            <div className="login">
+            </form>
+            <div className="signup">
               <Link to="/dev-signup">
                 <Typography variant="caption" gutterBottom align="center">
                   Not Registered? Signup here!
@@ -210,7 +212,7 @@ export default class DevLogin extends Component {
               </Link>
               <br />
               <Typography variant="caption" gutterBottom align="center">
-                forgot password?
+                Forgot Password?
               </Typography>
             </div>
           </Paper>
