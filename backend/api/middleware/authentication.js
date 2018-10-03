@@ -13,7 +13,7 @@ module.exports = {
     const payload = { ...data };
     return jwt.sign(payload, jwtSecret, options);
   },
-  userHasToken: function hasToken(model, req, res, next) {
+  userHasToken: function hasToken(req, res, next) {
     const token = req.headers.authorization;
 
     if (!token) return sendErr(res, '401', 'You must register or login to continue.');
