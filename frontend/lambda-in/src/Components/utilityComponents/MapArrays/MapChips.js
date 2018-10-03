@@ -19,7 +19,7 @@ import Chip from '@material-ui/core/Chip';
 
 // prettier-ignore
 const MapChips = (props) => {
-  const { classes, array, removeItem } = props;
+  const { field, classes, array, removeItem } = props;
 
   return (
     <Grid
@@ -36,10 +36,10 @@ const MapChips = (props) => {
           key={`${value}${Math.random()}`}
           id={`${index}$${value}`}
           icon={null}
-          label={value}
+          label={`${value}`}
           className={classes.item}
           deleteIcon={DoneIcon}
-          onDelete={removeItem(index)}
+          onDelete={removeItem(field, index)}
         />
       ))}
     </Grid>
