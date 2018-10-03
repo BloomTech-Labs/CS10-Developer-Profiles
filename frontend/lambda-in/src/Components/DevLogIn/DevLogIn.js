@@ -155,9 +155,14 @@ export default class DevLogin extends Component {
 
     const buttonConflic =
       this.props.getGS('login') !== 'conflic' ? (
-        <Button variant="contained" color="primary" onClick={this.handleLogin}>
-          Submit
-        </Button>
+        <React.Fragment>
+          <input id="input-submit-button" className="input-submit" type="submit" />
+          <label htmlFor="input-submit-button">
+            <Button variant="contained" color="primary" onClick={this.handleLogin}>
+              Submit
+            </Button>
+          </label>
+        </React.Fragment>
       ) : (
         <div>
           <Typography variant="caption" gutterBottom align="center">
