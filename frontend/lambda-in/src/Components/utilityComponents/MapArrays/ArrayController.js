@@ -129,9 +129,18 @@ class ArrayController extends Component {
   /**
    * Update parent Form-state.
    */
-  updateFormState() {
+  updateFormState(e, obj) {
+    console.log('AC: updateFormState');
     // eslint-disable-next-line react/prop-types
     const { arr, field, setPFS } = this.props;
+
+    if (obj) {
+      // prettier-ignore
+      return (event) => {
+        console.log('AC: STATE CAPSULE UPDATE', event.target, e, obj);
+        setPFS({});
+      };
+    }
 
     /**
      * Create an new Object with the properties to be pushed to the array.
@@ -162,6 +171,8 @@ class ArrayController extends Component {
 
     // Re-initialize Local State
     this.initializeLocalState();
+
+    return null; // this fix eslint consistent-return warning
   }
 
   /**
