@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
+const { sendErr } = require('../utils/apiResponses');
 
 const jwtSecret = process.env.JWT_SECRET;
 
@@ -12,13 +13,14 @@ module.exports = {
     const payload = { ...data };
     return jwt.sign(payload, jwtSecret, options);
   },
-  // eslint-disable-next-line consistent-return
-  userHasToken: function hasToken(req, res, next) {
+  userHasToken: function hasToken(model, req, res, next) {
     const token = req.headers.authorization;
-    if (!token) return res.status(401).json('You must be registered/logged in before go on');
-    jwt.verify(token, jwtSecret, (err, tokenDecoded) => {
+
+    if (!token) return sendErr(res, '401', 'You must register or login to continue.');
+
+    return jwt.verify(token, jwtSecret, (err, tokenDecoded) => {
       if (err) {
-        res.status(500).json({ Error: 'Oh ohh, We can not validate your credentials, try again!' });
+        sendErr(res, '401', 'Oh ohh. We can not validate your credentials, try again!');
       } else {
         req.token = token;
         req.decodedToken = tokenDecoded;
