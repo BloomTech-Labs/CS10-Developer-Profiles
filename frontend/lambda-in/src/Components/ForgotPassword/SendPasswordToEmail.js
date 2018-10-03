@@ -30,7 +30,7 @@ export default class SendPasswordToEmail extends Component {
          */
     
         axios
-          .post('/api/saveresethash', {
+          .post('/api/saveresethash/', {
             email: this.state.email,
           })
           .then(response => {
