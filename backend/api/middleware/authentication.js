@@ -1,31 +1,64 @@
 require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
-const { sendErr } = require('../utils/apiResponses');
+const { sendErr, sendRes } = require('../utils/apiResponses');
 
-const jwtSecret = process.env.JWT_SECRET;
+const createToken = (data) => {
+  const payload = { ...data };
+  const options = {
+    expiresIn: '1h',
+  };
+  return jwt.sign(payload, process.env.JWT_SECRET, options);
+};
+
+const userHasToken = (req, res, next) => {
+  const { authorization } = req.headers;
+
+  if (!authorization) return sendErr(res, '401', 'You must register or login to continue.');
+
+  return jwt.verify(authorization, process.env.JWT_SECRET, (err, tokenDecoded) => {
+    if (err) {
+      sendErr(res, '401', 'Oh ohh. We can not validate your credentials, try again!');
+    } else {
+      req.token = authorization;
+      req.decodedToken = tokenDecoded;
+      next();
+    }
+  });
+};
+
+const login = (model, req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) return sendErr(res, 'ValidationError', 'Email and password are required.');
+
+  return model
+    .findOne({ email }, { __v: 0 })
+    .then((user) => {
+      if (user) {
+        const { _id } = user;
+        user
+          .isValidPassword(password)
+          .then((validPassword) => {
+            if (!validPassword) return sendErr(res, '401', 'Invalid credentials');
+            return sendRes(res, '200', { user: _id, jwt: createToken({ _id, email }) });
+          })
+          .catch((e) => {
+            sendErr(res, '500', e);
+          });
+      } else {
+        return sendErr(res, '401', 'Invalid credentials');
+      }
+
+      return null;
+    })
+    .catch((e) => {
+      sendErr(res, '500', e);
+    });
+};
 
 module.exports = {
-  createToken: function createToken(data) {
-    const options = {
-      expiresIn: '1h',
-    };
-    const payload = { ...data };
-    return jwt.sign(payload, jwtSecret, options);
-  },
-  userHasToken: function hasToken(req, res, next) {
-    const token = req.headers.authorization;
-
-    if (!token) return sendErr(res, '401', 'You must register or login to continue.');
-
-    return jwt.verify(token, jwtSecret, (err, tokenDecoded) => {
-      if (err) {
-        sendErr(res, '401', 'Oh ohh. We can not validate your credentials, try again!');
-      } else {
-        req.token = token;
-        req.decodedToken = tokenDecoded;
-        next();
-      }
-    });
-  },
+  createToken,
+  userHasToken,
+  login,
 };
