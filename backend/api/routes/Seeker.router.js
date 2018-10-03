@@ -14,7 +14,10 @@ const Seekers = require('../models/Seeker/Seeker.model');
 const router = express.Router();
 const seekersRF = new RouterFactory(router, Seekers);
 
+// Set projections
 seekersRF.setProjection({ password: 0, __v: 0 });
+
+// Create all CRUD endpoints.
 seekersRF.POST('/', userHasToken.bind(this), 'handlePOST');
 seekersRF.GET('/', userHasToken.bind(this), getSeekers.bind(this, Seekers));
 seekersRF.GET_id('/:id', userHasToken.bind(this), 'handleGET');
