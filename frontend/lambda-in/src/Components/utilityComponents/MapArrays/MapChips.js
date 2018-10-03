@@ -9,11 +9,12 @@ import Chip from '@material-ui/core/Chip';
  *
  * @function
  * @callback removeItem
- * @prop {String[]|Number[]} props.array - Array of Strings.
+ * @prop {String[]|Number[]} props - Array of Strings.
  * @prop {object} props.classes - Object defining the classes needed.
  * @prop {object} props.classes.container - Class for the 'container' Node.
  * @prop {object} props.classes.item - Class for each 'item' Node.
  * @prop {removeItem} props.removeItem - Handler to delete and item.
+ * @prop {string} props.field - The user property to handle.
  * @return {object} A React component
  */
 
@@ -53,6 +54,7 @@ MapChips.propTypes = {
     PropTypes.oneOf([PropTypes.string, PropTypes.number])
   ).isRequired,
   removeItem: PropTypes.func.isRequired,
+  field: PropTypes.string.isRequired,
 };
 
 MapChips.defaultProps = {
