@@ -1,14 +1,13 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import '../DevLogIn/DevLogin.css';
+import './DevLogin.css';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -34,17 +33,20 @@ export default class DevLogin extends Component {
    * @param {string} userType - Type of user
    */
   handleAxios(httpResponse, userType) {
-    console.log(httpResponse, userType);
+    const { setGS } = this.props;
+
     localStorage.setItem('token', httpResponse.data.jwt);
+
     // RESET local state
     this.setState({
       username: '',
       password: '',
     });
+
     /**
      * SET GLOBAL STATE
      */
-    this.props.setGS({
+    setGS({
       userInfo: { ...httpResponse.data.user }, // Set user data.
       isSignedIn: true,
       userType,
@@ -61,13 +63,12 @@ export default class DevLogin extends Component {
    *
    * @param {event} event - Even object
    */
-  handleLogin = async event => {
+  async handleLogin(event) {
     event.preventDefault();
 
-    const loginData = {
-      email: this.state.email,
-      password: this.state.password,
-    };
+    const { email, password } = this.state;
+    const { setGS } = this.props;
+    const loginData = { email, password };
 
     /**
      * Validate credential in both endpoints ('seeker' and 'employers')
@@ -82,13 +83,14 @@ export default class DevLogin extends Component {
      * 'login' === 'conflict' will display a UI feature to resolve the conflict.
      */
     if (seekersResponse.status === 200 && employersResponse.status === 200) {
-      console.log('CONFLICT');
       this.setState({
         userType: 'conflic',
         seekerResponse: seekersResponse,
         employerResponse: employersResponse,
       });
-      this.props.setGS({ login: 'conflic' });
+
+      setGS({ login: 'conflic' });
+
       return;
     }
 
@@ -110,19 +112,18 @@ export default class DevLogin extends Component {
 
     /**
      * If any Error reset password field
+     *
+     * @todo: Improve UX
      */
     this.setState({ password: '' });
-    alert('Error with your credential'); // TODO: Improve UX
+    alert('Error with your credential'); // eslint-disable-line no-alert
+  }
 
-    console.log({ 'HTTP login seekersResponse status': seekersResponse.status });
-    console.log({ 'HTTP login employersResponse status': employersResponse.status });
-  };
-
-  handleChange = event => {
+  handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
     });
-  };
+  }
 
   /**
    * Set APP's global state according to user choise
@@ -130,12 +131,13 @@ export default class DevLogin extends Component {
    * @param {string} userType - The type of profile to login.
    * @return {void}
    */
-  resolveUserConflic = userType => {
-    console.log();
+  resolveUserConflic(userType) {
+    const { seekerResponse, employerResponse } = this.state;
+
     if (userType === 'seeker') {
-      this.handleAxios(this.state.seekerResponse, userType);
+      this.handleAxios(seekerResponse, userType);
     } else {
-      this.handleAxios(this.state.employerResponse, userType);
+      this.handleAxios(employerResponse, userType);
     }
 
     // Reset local-state
@@ -146,42 +148,47 @@ export default class DevLogin extends Component {
       seekerResponse: '',
       employerResponse: '',
     });
-  };
+  }
 
   render() {
-    const { userType } = this.setState;
+    const { email, password } = this.state;
+    const { getGS } = this.props;
 
-    const buttonConflic =
-      this.props.getGS('login') !== 'conflic' ? (
-        <React.Fragment>
-          <input id="input-submit-button" className="input-submit" type="submit" />
-          <label htmlFor="input-submit-button">
-            <Button className="submit-button" variant="contained" color="primary" onClick={this.handleLogin}>
+    const buttonConflic = getGS('login') !== 'conflic' ? (
+      <React.Fragment>
+        <input id="input-submit-button" className="input-submit" type="submit" />
+        <label htmlFor="input-submit-button">
+          <Button
+            className="submit-button"
+            variant="contained"
+            color="primary"
+            onClick={this.handleLogin}
+          >
               Submit
-            </Button>
-          </label>
-        </React.Fragment>
-      ) : (
-        <div>
-          <Typography variant="caption" gutterBottom align="center">
+          </Button>
+        </label>
+      </React.Fragment>
+    ) : (
+      <div>
+        <Typography variant="caption" gutterBottom align="center">
             Continue as:
-          </Typography>
-          <div className="resolve-conflict">
-            <Chip
-              onClick={this.resolveUserConflic.bind(this, 'seeker')}
-              label="Developer"
-              color="primary"
-              variant="outlined"
-            />
-            <Chip
-              onClick={this.resolveUserConflic.bind(this, 'employer')}
-              label="Employer"
-              color="primary"
-              variant="outlined"
-            />
-          </div>
+        </Typography>
+        <div className="resolve-conflict">
+          <Chip
+            onClick={this.resolveUserConflic.bind(this, 'seeker')}
+            label="Developer"
+            color="primary"
+            variant="outlined"
+          />
+          <Chip
+            onClick={this.resolveUserConflic.bind(this, 'employer')}
+            label="Employer"
+            color="primary"
+            variant="outlined"
+          />
         </div>
-      );
+      </div>
+    );
 
     return (
       <div data-aos="zoom-in-down" className="loginContainer">
@@ -196,12 +203,12 @@ export default class DevLogin extends Component {
                   Login
                 </Typography>
               </div>
-              <TextField id="email" label="Email" value={this.state.email} margin="normal" />
+              <TextField id="email" label="Email" value={email} margin="normal" />
               <TextField
                 id="password"
                 type="password"
                 label="password"
-                value={this.state.password}
+                value={password}
                 margin="normal"
               />
               <br />
