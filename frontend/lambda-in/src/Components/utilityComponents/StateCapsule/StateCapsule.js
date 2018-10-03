@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import EventEmitter
 import PropTypes from 'prop-types';
 
 /**
@@ -93,11 +94,19 @@ class StateCapsule extends Component {
   }
 
   removeItem(field, index) {
-    console.log('SC removeItem', { field, index });
+    const removeEvent = new CustomEvent('onDeleteItem', {
+      bubbles: true,
+      detail: { field, index },
+    });
 
     // eslint-disable-next-line arrow-parens
     return e => {
+      console.log('SC removeItem', { field, index });
       e.stopPropagation();
+
+      //
+      e.target.dispatchEvent(removeEvent);
+
       this.setState((prevState, props) => {
         const toUpdate = prevState[field];
         toUpdate.splice(index, 1);
@@ -116,7 +125,11 @@ class StateCapsule extends Component {
 
     return ready ? (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-      <div onChange={this.handleChange} onKeyPress={this.handleKeyPress}>
+      <div
+        className="state-capsule"
+        onChange={this.handleChange}
+        onKeyPress={this.handleKeyPress}
+      >
         {children({
           stateCapsule,
           removeItem: this.removeItem,
@@ -125,5 +138,7 @@ class StateCapsule extends Component {
     ) : null;
   }
 }
+
+StateCapsule.propTypes = {};
 
 export default StateCapsule;
