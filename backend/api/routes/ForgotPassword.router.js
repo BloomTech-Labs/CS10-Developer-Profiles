@@ -7,6 +7,7 @@ const passport = require("passport");
 const async = require("async");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
@@ -52,7 +53,7 @@ router.post('/', function(req, res, next) {
         subject: 'Meet Dev Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+          'http://' + req.headers.host + '/api/saveresethash' + '/reset/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
@@ -66,20 +67,42 @@ router.post('/', function(req, res, next) {
   ], function(err) {
     if (err) return next(err);
     res
-      .status(200)
+      .status(400)
       .json({ 'error': 'something went horribly wrong! we are working get things back up!'});
   });
 });
 
-router.get('/reset/:token', function(req, res) {
-  Seekers.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, Seekers) {
-    if (!Seekers) {
-      req.flash('error', 'Password reset token is invalid or has expired.');
-      return res.redirect('/forgot');
-    }
-    res.render('reset', {token: req.params.token});
-  });
+router.post('/reset/:token', function(req, res) {
+  console.log(req.params.token)
+  Seekers
+    .findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } })
+    .then(item => {
+      console.log('item', item);
+      let hashedPassword;
+      bcrypt.hash(req.body.password, 12, (err, hash) => {
+        console.log("boo");
+        if (err){
+          res.status(500).json({ error: "the password couldn't be changed"})
+        } 
+        Seekers
+          .findByIdAndUpdate(item._id, {password: hash})
+          .then(item2 => {
+            // Seekers.resetPasswordToken = "";
+            // Seekers.resetPasswordExpires = ""; // 1 hour
+            console.log('item2',item2);
+            res.status(200).json({ success: "Your password has been changed successfully!"});
+          })
+          .catch(err => {
+              res.status(500).json({ error: "sorry! password couldn't be modefied"})
+          })
+      });
+      
+    })
+    .catch(err => {
+        res.status(500).json({ error: "the password couldn't be changed"})
+    })
 });
+
 
 
   module.exports = router;
