@@ -20,7 +20,7 @@ export default class OpenPositionAdd extends Component {
       jobTitle: "",
       techStack: "",
       skills: "",
-      minSalrary: "",
+      minSalary: "",
       maxSalary: ""
     };
     this.handleChange = this.handleChange.bind(this);
@@ -40,7 +40,7 @@ export default class OpenPositionAdd extends Component {
       jobTitle,
       techStack,
       skills,
-      minSalrary,
+      minSalary,
       maxSalary
     } = this.state;
 
@@ -52,7 +52,7 @@ export default class OpenPositionAdd extends Component {
       jobTitle,
       techStack,
       skills,
-      minSalrary,
+      minSalary,
       maxSalary
     };
 
@@ -70,7 +70,7 @@ export default class OpenPositionAdd extends Component {
           jobTitle: "",
           techStack: "",
           skills: "",
-          minSalrary: "",
+          minSalary: "",
           maxSalary: ""
         });
         setGS({
@@ -93,7 +93,7 @@ export default class OpenPositionAdd extends Component {
       jobTitle,
       techStack,
       skills,
-      minSalrary,
+      minSalary,
       maxSalary
     } = this.state;
 
@@ -151,9 +151,9 @@ export default class OpenPositionAdd extends Component {
             />
 
             <TextField
-              name="minSalrary"
-              label="minSalrary"
-              value={minSalrary}
+              name="minSalary"
+              label="minSalary"
+              value={minSalary}
               onChange={this.handleChange}
               margin="normal"
               fullWidth="true"
