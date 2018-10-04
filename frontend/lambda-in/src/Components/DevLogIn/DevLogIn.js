@@ -29,6 +29,9 @@ const styles = {
     padding: '5px',
     width: '30vw',
   },
+  paper: {
+    alignSelf: 'center',
+  },
   resolveConflict: {
     display: 'flex',
     flexDirection: 'row',
@@ -223,7 +226,7 @@ class DevLogin extends Component {
 
     return (
       <div data-aos="zoom-in-down" className={classes.loginContainer}>
-        <Paper onChange={this.handleChange} className="paper">
+        <Paper className={classes.paper}>
           <form className={classes.loginForm} onSubmit={this.handleLogin}>
             <div>
               <Typography variant="display1" gutterBottom align="center">
