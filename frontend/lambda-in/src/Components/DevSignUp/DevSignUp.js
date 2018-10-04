@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import AOS from 'aos';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 import './DevSignUp.css';
-
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 AOS.init();
 
-export default class DevSignUp extends Component {
+class DevSignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -148,3 +148,9 @@ export default class DevSignUp extends Component {
     );
   }
 }
+
+DevSignUp.propTypes = {
+  setGS: PropTypes.func.isRequired,
+};
+
+export default DevSignUp;
