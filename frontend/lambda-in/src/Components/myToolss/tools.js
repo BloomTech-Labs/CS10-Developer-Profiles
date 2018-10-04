@@ -17,5 +17,5 @@ export default {
 
     return resetKeys;
   }, {}),
-  typeOf: item => Object.prototype.toString.call(item),
+  typeOf: (item) => Object.prototype.toString.call(item),
 };
