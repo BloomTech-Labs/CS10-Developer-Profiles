@@ -17,7 +17,6 @@ AOS.init();
 class EmployerSignUp extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       companyName: '',
       email: '',
