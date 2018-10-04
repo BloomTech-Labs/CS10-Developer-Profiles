@@ -61,6 +61,8 @@ class InputGeolocation extends Component {
       console.log('Error with Google API', error);
       clearSuggestions(); // this is built-in handler within <PlacesAutocomplete>
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   /**
