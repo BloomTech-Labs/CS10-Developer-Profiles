@@ -9,6 +9,7 @@ import BasicInfo from '../utilityComponents/SeekerEditUtils/BasicInfo';
 import SocialLinks from '../utilityComponents/SeekerEditUtils/SocialLinks';
 import BioSkills from '../utilityComponents/SeekerEditUtils/BioSkills';
 import Projects from '../utilityComponents/SeekerEditUtils/Projects';
+import Experience from '../utilityComponents/SeekerEditUtils/Experience';
 
 /**
  * Form handling user profile updates
@@ -23,6 +24,7 @@ class DevInfoEdit extends Component {
       ready: false,
     };
     this.handleOnDeleteItem = this.handleOnDeleteItem.bind(this);
+    this.handleCreateItem = this.handleCreateItem.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.setFormState = this.setFormState.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
@@ -37,7 +39,7 @@ class DevInfoEdit extends Component {
     const { getGS } = this.props;
     // console.log('FORM', this.props);
     this.userStateCopy = { ...getGS('userInfo') };
-    this.setState({ ready: true });
+    this.setState({ ready: true, ...getGS('userInfo') });
 
     /**
      * Listen for MapChip's custom event emmited when a item is deleted.
@@ -45,14 +47,21 @@ class DevInfoEdit extends Component {
     // eslint-disable-next-line react/no-find-dom-node
     ReactDOM.findDOMNode(this).addEventListener(
       'onDeleteItem',
-      // prettier-ignore
-      this.handleOnDeleteItem
+      this.handleOnDeleteItem,
+    );
+
+    // eslint-disable-next-line react/no-find-dom-node
+    ReactDOM.findDOMNode(this).addEventListener(
+      'onCreateItem',
+      this.handleCreateItem,
     );
   }
 
   componentWillUnmount() {
     // eslint-disable-next-line react/no-find-dom-node
     ReactDOM.findDOMNode(this).removeEventListener('onDeleteItem', () => null);
+    // eslint-disable-next-line react/no-find-dom-node
+    ReactDOM.findDOMNode(this).removeEventListener('onCreateItem', () => null);
   }
 
   /**
@@ -107,25 +116,53 @@ class DevInfoEdit extends Component {
 
   updateArrayOfObjects(array, index, property, index2, value) {}
 
-  updateArray(property, index, item1, key, item2) {
-    const currentArray = { ...this.userStateCopy[property] };
+  updateArray(dataset) {
+    /**
+     * Data attributes expected
+     * {
+     *  'data-field': Main field,
+     *  'data-itemtype': Type of data the array contain,
+     *  'data-index': index,
+     *  'data-property': If 'itemtype' === 'object -> this define the object's 'property',
+     *  'data-value': New value,
+     * }
+     */
+    console.log('FORM updateArray DATASET', dataset);
+    // prettier-ignore
+    const {
+      field,
+      itemtype,
+      index,
+      property,
+      subindex,
+      value,
+    } = dataset;
 
-    const typeOfElement = Object.prototype.toString.call(currentArray[index]);
-
-    switch (typeOfElement) {
-      case '[object Object]':
-        this.updateArrayOfObjects(currentArray, index, item1, key, item2);
+    switch (itemtype) {
+      case 'object':
+        console.log('FORM updateArray [Array][Object]', {
+          index,
+          property,
+          value,
+        });
+        this.userStateCopy[field][index][property] = value;
         break;
-      case '[object Array]':
+      case 'array':
+        console.log('FORM updateArray [Array][Array]', {
+          index,
+          subindex,
+          value,
+        });
         break;
       // If itemSchema='singleItem'
       default:
         // '[object String]' || '[object Number]' || // '[object Boolean]'
-        currentArray.splice(index, 1, item1);
-        this.userStateCopy = {
-          ...this.userStateCopy,
-          [property]: currentArray,
-        };
+        console.log('FORM updateArray [Array][String]', {
+          field,
+          itemtype,
+          value,
+        });
+        this.userStateCopy[field] = value.split('-');
     }
   }
 
@@ -133,48 +170,61 @@ class DevInfoEdit extends Component {
    * Update local copy of user state
    */
   handleOnBlur(e) {
-    console.log('FORM handleOnBlur', {
-      e: e.target,
-      DATASET: { ...e.target.dataset },
-    });
-
     const { id } = e.target;
-    const details = id.split('-'); // id-format: 'new-email' || 'edit-email
+    const details = id.split('-'); // 'id' came in the following format: 'new-email' || 'edit-email'
+
     const field = e.target.dataset.field || details[1];
 
-    if (field) {
-      const value = e.target.dataset.value || e.target.value;
+    if (details[0] !== 'new' && field) {
+      const dataset = { ...e.target.dataset };
+      console.log('FORM handleOnBlur', {
+        // e: e.target,
+        DATASET: dataset,
+      });
+      const { value } = dataset || e.target;
 
-      const typeOfProp = Object.prototype.toString.call(
+      const typeOfField = Object.prototype.toString.call(
         // eslint-disable-next-line comma-dangle
-        this.userStateCopy[field]
+        this.userStateCopy[field],
       );
 
-      switch (typeOfProp) {
+      switch (typeOfField) {
         case '[object Object]':
           // this.updateObj(e);
+          console.log('FORM handleOnBlur [Object]', { field, value });
           break;
         case '[object Array]':
-          // this.updateArray(e);
-          console.log('FORM handleOnBlur [Array]', { field, value });
-          this.userStateCopy[field] = value.split('-');
+          this.updateArray(dataset);
           break;
         // If itemSchema='singleItem'
         default:
-          // '[object String]' || '[object Number]' || // '[object Boolean]'
+          // '[object String]' || '[object Number]' || '[object Boolean]'
           console.log('FORM handleOnBlur [String]', { field, value });
           this.userStateCopy[field] = value;
       }
 
-      console.log('FORM handleOnBlur: new userStateCopy', this.userStateCopy);
+      console.log(
+        'FORM handleOnBlur: current userStateCopy',
+        this.userStateCopy,
+      );
+      // this.setState({ ...this.userStateCopy });
     } else {
       console.log('FORM handleOnBlur: Nothing to handle');
     }
   }
 
   handleOnDeleteItem(e) {
-    console.log('handleOnDeleteItem', e.detail, this.userStateCopy);
-    return this;
+    console.log('handleOnDeleteItem', e.detail);
+    const { field, index } = e.detail;
+    this.userStateCopy[field].splice(index, 1);
+    this.setState({ ...this.userStateCopy });
+  }
+
+  handleCreateItem(e) {
+    console.log('handleCreateItem', e.detail);
+    const { field, newData } = e.detail;
+    this.userStateCopy[field].push(newData);
+    this.setState({ ...this.userStateCopy });
   }
 
   update() {
@@ -246,7 +296,7 @@ class DevInfoEdit extends Component {
       // eslint-disable-next-line no-alert, no-undef
       alert(
         // eslint-disable-next-line comma-dangle
-        'An error occurred updating your information, please resubmit the form'
+        'An error occurred updating your information, please resubmit the form',
       ); // TODO: improve UX
     }
   }
@@ -268,11 +318,12 @@ class DevInfoEdit extends Component {
         {/* User basic info: name, desired title, current location */}
         <BasicInfo userInfo={userInfo} />
 
+        <Experience userInfo={userInfo} />
         {/* SOCIAL LINKS */}
         <SocialLinks userInfo={userInfo} />
 
         {/* BIO - TOP SKILLS */}
-        <BioSkills setFS={this.setFormState} userInfo={userInfo} />
+        <BioSkills userInfo={userInfo} />
 
         {/* PROJECTS */}
         {/* <Projects
@@ -280,9 +331,7 @@ class DevInfoEdit extends Component {
           setFS={this.setFormState}
           userInfo={{ ...userInfo }}
         /> */}
-
         {/* EXPERIENCES */}
-        {/* <Experience userInfo={userInfo} /> */}
 
         {/* EDUCATION */}
         {/* <Education userInfo={userInfo} /> */}
@@ -298,7 +347,6 @@ class DevInfoEdit extends Component {
           <br />
           <form onChange={this.handleChange}>
             <div className="inputRow">
-              {toRender}
               <div>
                 <Button
                   variant="outlined"
@@ -309,6 +357,7 @@ class DevInfoEdit extends Component {
                   Confirm changes
                 </Button>
               </div>
+              {toRender}
             </div>
           </form>
         </Paper>
