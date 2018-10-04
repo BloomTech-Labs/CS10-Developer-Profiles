@@ -14,9 +14,11 @@ class StateCapsule extends Component {
       ready: false,
     };
     this.removeItem = this.removeItem.bind(this);
+    this.createItem = this.createItem.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.mapAndResetKeysValues = object =>
+    // eslint-disable-next-line arrow-parens
+    this.mapAndResetKeysValues = (object) =>
       // eslint-disable-next-line implicit-arrow-linebreak
       Object.keys(object).reduce((resetKeys, key) => {
         // eslint-disable-next-line no-param-reassign
@@ -63,7 +65,7 @@ class StateCapsule extends Component {
     const details = id.split('-');
     const field = details[1];
     const { value } = event.target;
-    console.log('SC handleChange:', this.state, { details, value });
+    // console.log('SC handleChange:', this.state, { details, value });
 
     this.setState({ [field]: value });
   }
@@ -93,6 +95,26 @@ class StateCapsule extends Component {
     }
   }
 
+  createItem(field) {
+    const newData = { ...this.state };
+    delete newData.ready;
+
+    const createEvent = new CustomEvent('onCreateItem', {
+      bubbles: true,
+      detail: {
+        newData,
+        field,
+      },
+    });
+    // eslint-disable-next-line arrow-parens
+    return (e) => {
+      console.log('SC createItem', { field });
+      e.stopPropagation();
+
+      e.target.dispatchEvent(createEvent);
+    };
+  }
+
   removeItem(field, index) {
     const removeEvent = new CustomEvent('onDeleteItem', {
       bubbles: true,
@@ -100,18 +122,27 @@ class StateCapsule extends Component {
     });
 
     // eslint-disable-next-line arrow-parens
-    return e => {
+    return (e) => {
       console.log('SC removeItem', { field, index });
       e.stopPropagation();
 
       //
       e.target.dispatchEvent(removeEvent);
 
-      this.setState((prevState, props) => {
-        const toUpdate = prevState[field];
-        toUpdate.splice(index, 1);
-        return { [field]: toUpdate };
-      });
+      const typeOfField = Object.prototype.toString.call(field);
+
+      if (
+        // prettier-ignore
+        typeOfField === '[object String]'
+        || typeOfField === '[object Number]'
+        || typeOfField === '[object Boolean]'
+      ) {
+        this.setState((prevState, props) => {
+          const toUpdate = prevState[field];
+          toUpdate.splice(index, 1);
+          return { [field]: toUpdate };
+        });
+      }
     };
   }
 
@@ -133,6 +164,7 @@ class StateCapsule extends Component {
         {children({
           stateCapsule,
           removeItem: this.removeItem,
+          createItem: this.createItem,
         })}
       </div>
     ) : null;
