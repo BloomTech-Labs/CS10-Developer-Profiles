@@ -1,57 +1,28 @@
-import React, { Fragment } from 'react';
-import DropDown from '../DropDown/DropDown';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
+import React from 'react';
+import ArraySection from '../ArraySection/ArraySection';
 
-const Education = props => {
+const Education = (props) => {
   const { userInfo } = props;
 
+  const field = 'education';
+  const itemType = 'object';
+  const schema = {
+    school: 'School',
+    degree: 'Degree',
+    fieldOfStudy: 'Field of study',
+    startYear: 'Star year',
+    endYear: 'End year',
+    description: 'Description',
+  };
+
   return (
-    <Fragment>
-      <DropDown header="Education">
-        <Paper className="paperContainer">
-          <DropDown header="School 1">
-            <div className="inputFieldLargeMultiline">
-              <TextField
-                id="education.school"
-                label="School"
-                fullWidth
-                value={userInfo.education.school}
-                margin="normal"
-                variant="outlined"
-              />
-            </div>
-
-            <div className="inputFieldLargeMultiline">
-              <TextField
-                id="projectLink"
-                label="Project Link"
-                fullWidth
-                multiline
-                rowsMax="4"
-                value={userInfo.projectLink}
-                margin="normal"
-                variant="outlined"
-              />
-            </div>
-
-            <div className="inputFieldLargeMultiline">
-              <TextField
-                id="projectRepo"
-                label="Project Repo"
-                fullWidth
-                multiline
-                rowsMax="4"
-                value={userInfo.projectRepo}
-                margin="normal"
-                variant="outlined"
-              />
-            </div>
-          </DropDown>
-        </Paper>
-      </DropDown>
-    </Fragment>
+    <ArraySection
+      header="Education"
+      userInfo={userInfo}
+      field={field}
+      itemType={itemType}
+      schema={schema}
+    />
   );
 };
-
 export default Education;
