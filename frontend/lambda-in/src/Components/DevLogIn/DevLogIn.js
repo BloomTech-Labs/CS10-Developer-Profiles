@@ -109,7 +109,8 @@ class DevLogin extends Component {
     /**
      * Validate credential in both endpoints ('seeker' and 'employers')
      */
-    let seekersResponse, employersResponse;
+    let seekersResponse;
+    let employersResponse;
 
     try {
       seekersResponse = await axios.post('/api/login/seekers', loginData);
@@ -143,7 +144,6 @@ class DevLogin extends Component {
      * If success loginin as a 'seeker', process response and 'return'
      */
     if (seekersResponse.status === 200) {
-      console.log('seeker');
       this.handleAxios(seekersResponse, 'seeker');
       return;
     }
