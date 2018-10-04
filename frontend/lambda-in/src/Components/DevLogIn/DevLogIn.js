@@ -185,7 +185,7 @@ class DevLogin extends Component {
     const { email, password } = this.state;
     const { classes, getGS } = this.props;
 
-    const buttonConflic = getGS('login') !== 'conflic' ? (
+    const buttonConflict = getGS('login') !== 'conflic' ? (
       <React.Fragment>
         <label htmlFor="input-submit-button">
           <input id="input-submit-button" className={classes.submitInput} type="submit" />
@@ -195,7 +195,7 @@ class DevLogin extends Component {
             color="primary"
             onClick={this.handleLogin}
           >
-              Submit
+            Login
           </Button>
         </label>
       </React.Fragment>
@@ -227,7 +227,7 @@ class DevLogin extends Component {
           <form className={classes.loginForm} onSubmit={this.handleLogin}>
             <div>
               <Typography variant="display1" gutterBottom align="center">
-                Lambda Network
+                MeetDev
               </Typography>
               <Typography variant="headline" gutterBottom align="center">
                 Login
@@ -237,12 +237,12 @@ class DevLogin extends Component {
             <TextField
               id="password"
               type="password"
-              label="password"
+              label="Password"
               value={password}
               margin="normal"
             />
             <br />
-            {buttonConflic}
+            {buttonConflict}
           </form>
           <div className={classes.signup}>
             <Link to="/dev-signup">
