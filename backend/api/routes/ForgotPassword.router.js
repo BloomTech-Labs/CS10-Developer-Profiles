@@ -41,10 +41,10 @@ router.post('/', function(req, res, next) {
     },
     function(token, Seekers, done) {
       var smtpTransport = nodemailer.createTransport({
-        service: 'Gmail', 
+        service: 'SendGrid', 
         auth: {
-          user: process.env.EMAIL,
-          pass: process.env.GP
+          user: process.env.SENDGRIDUSER,
+          pass: process.env.SENDGRIDKEY
         }
       });
       var mailOptions = {
