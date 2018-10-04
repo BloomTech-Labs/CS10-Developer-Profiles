@@ -148,13 +148,13 @@ class DevInfoEdit extends Component {
 
     const field = e.target.dataset.field || details[1];
 
-    if (details[0] !== 'new' && field) {
+    if (field || details[0] !== 'new') {
       const dataset = { ...e.target.dataset };
       // console.log('FORM handleOnBlur', {
-      // e: e.target,
+      //   e: e.target,
       //   DATASET: dataset,
       // });
-      const { value } = dataset || e.target;
+      const value = dataset.value || e.target.value;
 
       const typeOfField = Object.prototype.toString.call(
         // eslint-disable-next-line comma-dangle
