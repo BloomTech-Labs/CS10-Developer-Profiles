@@ -101,10 +101,11 @@ class InputGeolocation extends Component {
    *
    * @return {void}
    */
-  setGlobalState() {
+  passStateToParent() {
     try {
-      const { handleGlobalState } = this.props;
-      handleGlobalState();
+      const { talkToParentState } = this.props;
+      const { place, lat, lng } = this.state;
+      talkToParentState(place, lat, lng);
     } catch (e) {
       // prettier-ignore
       // eslint-disable-next-line no-unused-expressions
@@ -153,7 +154,7 @@ class InputGeolocation extends Component {
         });
         // eslint-disable-next-line no-console
         console.log(this.state);
-        this.setGlobalState();
+        this.passStateToParent();
       })
       .catch((er) => {
         this.setState({ isFetchingCoordinates: false });
@@ -166,6 +167,7 @@ class InputGeolocation extends Component {
   render() {
     const { place } = this.state;
     const { textFieldProps, listItemProps } = this.props;
+    const isDense = true;
     return (
       <PlacesAutocomplete
         value={place}
@@ -194,7 +196,7 @@ class InputGeolocation extends Component {
               })}
             />
             {suggestions.length > 0 && (
-              <List dense="true" className="suggestion-list">
+              <List dense={isDense} className="suggestion-list">
                 {suggestions.map((suggestion) => {
                   const { active } = suggestion;
                   const {
