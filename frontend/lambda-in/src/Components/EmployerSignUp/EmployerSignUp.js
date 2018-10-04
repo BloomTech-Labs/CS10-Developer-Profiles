@@ -65,15 +65,12 @@ class EmployerSignUp extends Component {
           isSignedIn: true,
           userType: 'employer',
         });
-
-        console.log(response);
       })
-      .catch((err) => {
+      .catch(() => {
         this.setState({
           password: '',
           confirmPassword: '',
         });
-        console.log(err);
       });
   }
 
@@ -128,7 +125,7 @@ class EmployerSignUp extends Component {
               margin="normal"
             />
             <label htmlFor="input-submit-button">
-              <input id="input-submit-button" type="submit"/>
+              <input id="input-submit-button" type="submit" />
               <Button variant="contained" color="primary" onClick={this.handleNewEmp}>
                 Save Profile
               </Button>
@@ -138,7 +135,7 @@ class EmployerSignUp extends Component {
             <Link to="/dev-login">
               <Typography variant="caption" gutterBottom align="center">
                 already have an account? Login here!
-                </Typography>
+              </Typography>
             </Link>
           </div>
         </Paper>
