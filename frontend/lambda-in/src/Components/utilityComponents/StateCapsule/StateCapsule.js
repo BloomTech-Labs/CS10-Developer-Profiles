@@ -41,17 +41,20 @@ class StateCapsule extends Component {
   }
 
   componentDidMount() {
-    const { schema, object } = this.props;
+    this.resetState();
+  }
 
+  resetState() {
+    const { schema, object } = this.props;
     const newState = {
       ...this.mapAndResetKeysValues(schema),
       ...object,
       ready: true,
     };
-    console.log('SC: cdm', newState);
+    console.log('SC: resetState', newState);
     // Set local state with object-properties and initialize its values.
     this.setState(newState);
-    console.log('SC: cdm', this.state);
+    console.log('SC: resetState', this.state);
   }
 
   /**
@@ -112,6 +115,7 @@ class StateCapsule extends Component {
       e.stopPropagation();
 
       e.target.dispatchEvent(createEvent);
+      this.resetState();
     };
   }
 
