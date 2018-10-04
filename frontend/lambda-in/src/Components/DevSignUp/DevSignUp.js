@@ -8,15 +8,21 @@ import axios from 'axios';
 
 import '../DevSignUp/DevSignUp.css';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
+
 export default class DevSignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: 'bat',
-      lastName: 'man',
-      email: 'reg@c15.com',
-      password: '12345678Aa$',
-      confirmPassword: '12345678Aa$',
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     };
   }
 
@@ -81,7 +87,7 @@ export default class DevSignUp extends Component {
 
   render() {
     return (
-      <div className="signupContainer">
+      <div data-aos="zoom-in-down" className="signupContainer">
         <div className="formConatiner">
           <Paper className="paper" onChange={this.handleChange}>
             <div className="form2">
@@ -141,6 +147,11 @@ export default class DevSignUp extends Component {
               </Button>
             </div>
             <div className="login">
+              <Link to="/employer-signup">
+                <Typography variant="caption" gutterBottom align="center">
+                  are you an employer? Sign up here!
+                </Typography>
+              </Link>
               <Link to="/dev-login">
                 <Typography variant="caption" gutterBottom align="center">
                   already have an account? Login here!

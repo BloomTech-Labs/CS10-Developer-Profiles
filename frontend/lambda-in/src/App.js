@@ -1,23 +1,26 @@
-import React, { Component, Fragment } from 'react';
-import { Route, Switch, Link, Redirect, withRouter } from 'react-router-dom';
-import './App.css';
-import NavBar from './Components/Navbar/navbar';
-import DevSignUp from './Components/DevSignUp/DevSignUp';
-import DevLogin from './Components/DevLogIn/DevLogIn';
-import LandingPage from './Components/LandingPage/landing-page';
-import DevProfile from './Components/DevProfile/DevProfile';
-import DevProfile2 from './Components/DevProfile2/DevProfile2';
-import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
-import Billing from './Components/Billing/billing';
-import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
-import EmpList from './Components/EmployerList/EmpOPList';
-import UserSetting from './Components/UserSetting/UserSetting';
-import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
+import React, { Component, Fragment } from "react";
+import { Route, Switch, Link, Redirect, withRouter } from "react-router-dom";
+import "./App.css";
+import NavBar from "./Components/Navbar/navbar";
+import DevSignUp from "./Components/DevSignUp/DevSignUp";
+import DevLogin from "./Components/DevLogIn/DevLogIn";
+import LandingPage from "./Components/LandingPage/landing-page";
+import DevProfile from "./Components/DevProfile/DevProfile";
+import DevProfile2 from "./Components/DevProfile2/DevProfile2";
+import DevInfoEditz from "./Components/DevInfoEditz/DevInfoEditz";
+import Billing from "./Components/Billing/billing";
+import EmpSignUp from "./Components/EmployerSignUp/EmployerSignUp";
+import EmpProfile from "./Components/EmpProfile/EmpProfile";
+import EmpPositionAdd from "./Components/OpenPositionAdd/OpenPositionAdd";
+import EmpPositionEdit from "./Components/OpenPositionEdit/OpenPositionEdit";
 
-import PassProps from './Components/DevInfoEditz/DevInfoEditz';
+import UserSetting from "./Components/UserSetting/UserSetting";
+import SearchGeolocation from "./Components/InputGeolocation/SearchGeolocation";
 
-import DevList from './Components/DevList/DevList';
-import Page404 from './Components/Page404/Page404';
+import PassProps from "./Components/DevInfoEditz/DevInfoEditz";
+
+import DevList from "./Components/DevList/DevList";
+import Page404 from "./Components/Page404/Page404";
 
 class App extends Component {
   constructor(props) {
@@ -81,10 +84,10 @@ class App extends Component {
    * <Component logOut={this.handleLogout} />
    */
   handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
 
     // Check if token was deleted.
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem("token")) {
       return false;
     } else {
       this.setState(this.resetState);
@@ -95,7 +98,8 @@ class App extends Component {
   render() {
     const { isSignedIn } = this.state;
     const redirectToUserProfile =
-      this.state.userType === 'seeker' ? (
+      this.state.userType === "seeker" ? (
+
         <Redirect to="/dev-profile" />
       ) : (
         <Redirect to="/emp-profile" />
@@ -111,7 +115,7 @@ class App extends Component {
 
             {/* BROWSE */}
             <Route path="/meetdev" component={DevList} />
-            <Route path="/meetposition" component={EmpList} />
+            <Route path="/meetposition" component={EmpProfile} />
 
             {/* BILLING: If user is not Authenticated 'Redirect' to home page */}
             <Route
@@ -156,10 +160,9 @@ class App extends Component {
                 )
               }
             />
-            <Route
-              path="/dev-profile2"
-              render={() => <DevProfile getGS={this.getGlobalState} />}
-            />
+
+            {/* <Route path="/dev-profile2" render={() => <DevProfile2 getGS={this.getGlobalState} />} /> */}
+
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/dev-info-edit"
@@ -179,6 +182,7 @@ class App extends Component {
 
             {/* EMPLOYER START */}
             {/* LOGIN: Redirect to user Profile after login */}
+
             {/* SIGNUP: Redirect to user Profile after signup */}
             <Route
               path="/employer-signup"
@@ -193,9 +197,58 @@ class App extends Component {
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/emp-profile"
-              render={() => (isSignedIn ? null : <Redirect to="/" />)}
+              render={() => (isSignedIn ? <EmpProfile /> : <Redirect to="/" />)}
             />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
+            <Route
+              path="/emp-info-edit"
+              render={props =>
+                isSignedIn ? (
+                  <EmpPositionEdit
+                    {...props}
+                    setGS={this.setGlobalState}
+                    getGS={this.getGlobalState}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+
+            {/* ADD POSITION: If user is not Authenticated 'Redirect' to home page */}
+            <Route
+              path="/emp-pos-add"
+              render={props =>
+                isSignedIn ? (
+                  <EmpPositionAdd
+                    {...props}
+                    setGS={this.setGlobalState}
+                    getGS={this.getGlobalState}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+
+
+            {/* EDIT POSITION: If user is not Authenticated 'Redirect' to home page */}
+            <Route
+              path="/emp-pos-edit"
+              render={props =>
+                isSignedIn ? (
+                  <EmpPositionEdit
+                    {...props}
+                    setGS={this.setGlobalState}
+                    getGS={this.getGlobalState}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+
+
             {/* EMPLOYER END */}
             <Route component={Page404} />
           </Switch>
