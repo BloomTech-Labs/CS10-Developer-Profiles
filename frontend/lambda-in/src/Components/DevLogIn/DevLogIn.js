@@ -209,9 +209,11 @@ export default class DevLogin extends Component {
                 </Typography>
               </Link>
               <br />
-              <Typography variant="caption" gutterBottom align="center">
-                forgot password?
-              </Typography>
+              <Link to="/reset-password-email">
+                <Typography variant="caption" gutterBottom align="center">
+                  forgot password?
+                </Typography>
+              </Link>
             </div>
           </Paper>
         </div>

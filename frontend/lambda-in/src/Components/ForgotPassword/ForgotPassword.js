@@ -27,7 +27,7 @@ export default class ForgotPassword extends Component {
           alert("your passwords don't match. please try again.")
         }
         axios
-          .post(`/api/saveresethash/${this.props.match.params.id}/`, {
+          .post(`/api/saveresethash/reset/${this.props.match.params.id}/`, {
             password: '',
           })
           .then(response => {
