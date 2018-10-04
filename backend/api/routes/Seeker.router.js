@@ -9,7 +9,7 @@ const Seekers = require('../models/Seeker/Seeker.model');
  *
  * Handle POST, GET/:id, PUT and DELETE with Router Factory
  * Handle GET with custom middleware
- * Authenticate all endpoints with userHasToken()
+ * Authenticate POST, PUT and DELETE endpoints with userHasToken()
  */
 const router = express.Router();
 const seekersRF = new RouterFactory(router, Seekers);
@@ -17,11 +17,16 @@ const seekersRF = new RouterFactory(router, Seekers);
 // Set projections
 seekersRF.setProjection({ password: 0, __v: 0 });
 
-// Create all CRUD endpoints.
-seekersRF.POST('/', userHasToken.bind(this), 'handlePOST');
-seekersRF.GET('/', userHasToken.bind(this), getSeekers.bind(this, Seekers));
-seekersRF.GET_id('/:id', userHasToken.bind(this), 'handleGET');
-seekersRF.PUT('/:id', userHasToken.bind(this), 'handlePUT');
-seekersRF.DELETE('/:id', userHasToken.bind(this), 'handleDELETE');
+// Create public seeker endpoints
+seekersRF.GET('/', getSeekers.bind(this, Seekers));
+seekersRF.GET_id();
+
+// Make routes after this point private
+router.use(userHasToken);
+
+// Create POST, GET/:id, PUT and DELETE endpoints
+seekersRF.POST();
+seekersRF.PUT();
+seekersRF.DELETE();
 
 module.exports = router;
