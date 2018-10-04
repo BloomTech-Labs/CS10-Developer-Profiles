@@ -22,6 +22,11 @@ module.exports = {
       server.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../../frontend/lambda-in/build', 'index.html'));
       });
+    } else {
+      server.get('*', (req, res) => {
+        res.set('Content-Type', 'application/json');
+        res.send('{"message":"On production build this action will result in a redirect to the frontend."}');
+      });
     }
   },
 };
