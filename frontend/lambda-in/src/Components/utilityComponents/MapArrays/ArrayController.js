@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /**
+ * TODO: Clean this component code.
+ * There are a lot of code that is not neccesary - jesuarva
+ */
+/**
  * Handle Array-type properties
  *
  * @description Handle in a local-state new date to be added to a global-state array-field.
