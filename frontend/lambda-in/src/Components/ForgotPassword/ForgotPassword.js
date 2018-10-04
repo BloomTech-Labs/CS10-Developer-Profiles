@@ -28,7 +28,7 @@ export default class ForgotPassword extends Component {
         }
         axios
           .post(`/api/saveresethash/reset/${this.props.match.params.id}/`, {
-            password: '',
+            password: this.state.password,
           })
           .then(response => {
             console.log(response)
