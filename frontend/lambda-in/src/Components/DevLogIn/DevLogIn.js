@@ -73,8 +73,8 @@ export default class DevLogin extends Component {
     /**
      * Validate credential in both endpoints ('seeker' and 'employers')
      */
-    const seekersResponse = await axios.post('/api/login/seekers', loginData);
-    const employersResponse = await axios.post('/api/login/employers', loginData);
+    const seekersResponse = await axios.post('/api/login/seekers/', loginData);
+    const employersResponse = await axios.post('/api/login/employers/', loginData);
 
     /**
      * If both users are in the DB set set global's 'login' state to 'conflic'
