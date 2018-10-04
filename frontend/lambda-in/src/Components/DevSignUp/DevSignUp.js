@@ -23,6 +23,9 @@ class DevSignUp extends Component {
       password: '',
       confirmPassword: '',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleNewUser = this.handleNewUser.bind(this);
   }
 
   handleChange(event) {
@@ -31,7 +34,7 @@ class DevSignUp extends Component {
     });
   }
 
-  handNewUser(event) {
+  handleNewUser(event) {
     event.preventDefault();
 
     const { setGS } = this.props;
@@ -97,7 +100,7 @@ class DevSignUp extends Component {
     return (
       <div data-aos="zoom-in-down" className="signupContainer">
         <Paper className="paper" onChange={this.handleChange}>
-          <form className="form2" onSubmit={this.handNewUser}>
+          <form className="form2" onSubmit={this.handleNewUser}>
             <div>
               <Typography variant="display1" gutterBottom align="center">
                 MeetDev
@@ -126,7 +129,7 @@ class DevSignUp extends Component {
             <br />
             <label htmlFor="input-submit-button">
               <input id="input-submit-button" type="submit" />
-              <Button variant="contained" color="primary" onClick={this.handNewUser}>
+              <Button variant="contained" color="primary" onClick={this.handleNewUser}>
                 Sign Up
               </Button>
             </label>
