@@ -4,10 +4,19 @@ const employerRouter = require('../api/routes/Employer.router');
 const loginRouter = require('../api/routes/login.router');
 const registerRouter = require('../api/routes/register.router');
 const stripeRouter = require('../payments/routes/stripe.router');
+const setupAuthMiddleware = require('./middleware').auth;
 
-// prettier-ignore
 module.exports = {
   public: (server) => {
+    // In production build all other requests are handled by the frontend
+    // prettier-ignore
+    if (process.env.NODE_ENV === 'production') {
+      server.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../../frontend/lambda-in/build', 'index.html'));
+      });
+    }
+  },
+  api: (server) => {
     server.use('/api/login', loginRouter);
     server.use('/api/register', registerRouter);
     server.get('/api', (req, res) => {
@@ -15,14 +24,13 @@ module.exports = {
       res.send('{"message":"Developer Profiles API"}');
     });
 
-    // In production build all other requests are handled by the frontend
-    if (process.env.NODE_ENV === 'production') {
-      server.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../../frontend/lambda-in/build', 'index.html'));
-      });
-    }
-  },
-  private: (server) => {
+    /**
+     * Private endpoints
+     * @description Validate credentials user JWT credential.
+     * If credentials are no valid do not allow access to private endpoints
+     */
+    setupAuthMiddleware(server);
+
     // This serves the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
     server.use('/api/seekers', seekersRouter);
 
