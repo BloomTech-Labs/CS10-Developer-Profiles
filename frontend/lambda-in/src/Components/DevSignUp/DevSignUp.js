@@ -14,14 +14,17 @@ import 'aos/dist/aos.css';
 AOS.init();
 
 const styles = {
-  signInContainer: {
+  paper: {
+    alignSelf: 'center',
+  },
+  signUpContainer: {
     display: 'flex',
     flexDirection: 'column',
     height: '100vh',
     padding: '10px 0',
     width: '100vw',
   },
-  signInForm: {
+  signUpForm: {
     display: 'flex',
     flexDirection: 'column',
     margin: '20px',
@@ -125,9 +128,9 @@ class DevSignUp extends Component {
     } = this.state;
 
     return (
-      <div data-aos="zoom-in-down" className={classes.signInContainer}>
-        <Paper className="paper" onChange={this.handleChange}>
-          <form className={classes.signInForm} onSubmit={this.handleNewUser}>
+      <div data-aos="zoom-in-down" className={classes.signUpContainer}>
+        <Paper className={classes.paper}>
+          <form className={classes.signUpForm} onSubmit={this.handleNewUser}>
             <div>
               <Typography variant="display1" gutterBottom align="center">
                 MeetDev
