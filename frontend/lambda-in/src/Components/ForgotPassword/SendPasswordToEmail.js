@@ -34,19 +34,26 @@ export default class SendPasswordToEmail extends Component {
             email: this.state.email,
           })
           .then(response => {
-              alert(response);
+            console.log(response)
+              if(response.data){
+                alert(response.data.success);
+              }
+              else{
+                alert("sorry, we cant't find your email in our database")
+              }
             this.setState({
               email: '',
             });
           })
           .catch(err => {
-            alert(err)
+            console.log(err)
+            alert(" oh oh you broke our site!")
           });
       };
     
   render() {
     return (
-      <div classname="forgotPasswordClass">
+      <div className="forgotPasswordClass">
         <div className="formConatiner">
           <Paper className="paper" onChange={this.handleChange}>
             <div className="form2">

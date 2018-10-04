@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
+import axios from 'axios';
 import './ForgotPassword.css';
 
 export default class ForgotPassword extends Component {
@@ -15,9 +15,43 @@ export default class ForgotPassword extends Component {
           confirmPassword: '',
         };
       }
+      handleChange = event => {
+        this.setState({
+            [event.target.id]: event.target.value,
+        });
+    };
+
+    handNewUser = event => {
+        event.preventDefault();
+        if(this.state.password !== this.state.confirmPassword){
+          alert("your passwords don't match. please try again.")
+        }
+        axios
+          .post(`/api/saveresethash/${this.props.match.params.id}/`, {
+            password: '',
+          })
+          .then(response => {
+            console.log(response)
+              if(response.data){
+                alert(response.data.success);
+              }
+              else{
+                alert("sorry! we weren't able to change your password!")
+              }
+            this.setState({
+              password: '',
+              confirmPassword: '',
+            });
+          })
+          .catch(err => {
+            console.log(err)
+            alert(" oh oh you broke our site!")
+          });
+      };
   render() {
+    // console.log('props',this.props.match.params.id)
     return (
-      <div classname="forgotPasswordClass">
+      <div className="forgotPasswordClass">
         <div className="formConatiner">
           <Paper className="paper" onChange={this.handleChange}>
             <div className="form2">

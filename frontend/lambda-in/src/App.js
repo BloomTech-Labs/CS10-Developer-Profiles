@@ -245,7 +245,7 @@ class App extends Component {
               }
             />
 
-              <Route
+            <Route
               path="/api/saveresethash/reset/:id"
               component={ForgotPassword}
             />
