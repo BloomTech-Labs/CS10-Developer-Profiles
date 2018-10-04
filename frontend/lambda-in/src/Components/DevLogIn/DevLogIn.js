@@ -157,8 +157,8 @@ class DevLogin extends Component {
 
     const buttonConflic = getGS('login') !== 'conflic' ? (
       <React.Fragment>
-        <input id="input-submit-button" className="input-submit" type="submit" />
         <label htmlFor="input-submit-button">
+          <input id="input-submit-button" className="input-submit" type="submit" />
           <Button
             className="submit-button"
             variant="contained"
