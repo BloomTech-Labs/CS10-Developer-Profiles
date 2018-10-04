@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -14,7 +15,7 @@ import 'aos/dist/aos.css';
 
 AOS.init();
 
-export default class DevLogin extends Component {
+class DevLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -235,3 +236,10 @@ export default class DevLogin extends Component {
     );
   }
 }
+
+DevLogin.propTypes = {
+  setGS: PropTypes.func.isRequired,
+  getGS: PropTypes.func.isRequired,
+};
+
+export default DevLogin;
