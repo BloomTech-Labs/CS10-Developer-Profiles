@@ -242,6 +242,9 @@ class App extends Component {
               }
             />
 
+            {/* JUST for testing the InputGeolocation endpoint */}
+            <Route path="/geo-test" component={SearchGeolocation} />
+
             {/* EMPLOYER END */}
             <Route component={Page404} />
           </Switch>
