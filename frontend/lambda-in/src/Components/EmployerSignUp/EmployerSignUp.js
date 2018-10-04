@@ -166,6 +166,11 @@ class EmployerSignUp extends Component {
             </label>
           </form>
           <div className={classes.login}>
+            <Link to="/dev-signup">
+              <Typography variant="caption" gutterBottom align="center">
+                Are You A Developer? Sign Up Here!
+              </Typography>
+            </Link>
             <Link to="/dev-login">
               <Typography variant="caption" gutterBottom align="center">
                 Already Have An Account? Login Here!
