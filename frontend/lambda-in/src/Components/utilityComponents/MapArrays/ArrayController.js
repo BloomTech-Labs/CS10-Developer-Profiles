@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
  * @prop {string|object|array} itemSchema - Which type of data the array contains.
  * @prop {} title - A label to be displayed
  * @prop {} field - The global-state field holding the array.
- * @prop {} setPFS - Handler to set the parent-form state.
+ * @prop {} setPFS - Handler to set the parent-form state. REMOVE
  */
 class ArrayController extends Component {
   constructor(props) {
@@ -25,6 +25,7 @@ class ArrayController extends Component {
     this.setArrayControllerState = this.setArrayControllerState.bind(this);
     this.updateFormState = this.updateFormState.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    // this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
@@ -90,12 +91,13 @@ class ArrayController extends Component {
   }
 
   handleChange(ev) {
+    if (ev.key === 'Enter') ev.preventDefault();
     /**
      * Stop event propagation.
      * @description Stop this event to be listened and handled in parent Nodes.
      */
     ev.stopPropagation();
-    console.log('AC onChange', { id: ev.target.id, value: ev.target.value });
+    // console.log('AC onChange', { id: ev.target.id, value: ev.target.value });
     // Get the item type
     const { itemType } = this.state;
 
@@ -125,6 +127,16 @@ class ArrayController extends Component {
       this.setState({ [ev.target.id]: ev.target.value });
     }
   }
+
+  // handleKeyPress(e) {
+  //   // e.stopPropagation();
+  //   // console.log(e.key, e.target.value);
+
+  //   if (e.key === 'Enter') {
+  //     e.preventDefault();
+  //     this.initializeLocalState();
+  //   }
+  // }
 
   /**
    * Update parent Form-state.
@@ -201,8 +213,12 @@ class ArrayController extends Component {
   }
 
   render() {
-    // eslint-disable-next-line react/prop-types
-    const { arr, title, children } = this.props;
+    const {
+      arr,
+      title,
+      // eslint-disable-next-line react/prop-types
+      children,
+    } = this.props;
     const { ...state } = this.state;
 
     const toRender = state.ready ? (
@@ -210,6 +226,7 @@ class ArrayController extends Component {
         {children({
           setArrayControllerState: this.setArrayControllerState,
           updateFormState: this.updateFormState,
+          handleKeyPress: this.handleKeyPress,
           handleChange: this.handleChange,
           removeItem: this.removeItem,
           state,
