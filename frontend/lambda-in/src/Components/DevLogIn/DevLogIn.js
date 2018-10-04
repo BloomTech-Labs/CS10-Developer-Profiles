@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -8,12 +9,41 @@ import Chip from '@material-ui/core/Chip';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import './DevLogin.css';
-
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 AOS.init();
+
+const styles = {
+  loginContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100vh',
+    padding: '10px 0',
+    width: '100vw',
+  },
+  loginForm: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '20px',
+    padding: '5px',
+    width: '30vw',
+  },
+  resolveConflict: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  signup: {
+    margin: '16px',
+  },
+  submitButton: {
+    width: '100%',
+  },
+  submitInput: {
+    display: 'none',
+  },
+};
 
 class DevLogin extends Component {
   constructor(props) {
@@ -153,14 +183,14 @@ class DevLogin extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { getGS } = this.props;
+    const { classes, getGS } = this.props;
 
     const buttonConflic = getGS('login') !== 'conflic' ? (
       <React.Fragment>
         <label htmlFor="input-submit-button">
-          <input id="input-submit-button" className="input-submit" type="submit" />
+          <input id="input-submit-button" className={classes.submitInput} type="submit" />
           <Button
-            className="submit-button"
+            className={classes.submitButton}
             variant="contained"
             color="primary"
             onClick={this.handleLogin}
@@ -174,7 +204,7 @@ class DevLogin extends Component {
         <Typography variant="caption" gutterBottom align="center">
             Continue as:
         </Typography>
-        <div className="resolve-conflict">
+        <div className={classes.resolveConflict}>
           <Chip
             onClick={() => this.resolveUserConflic('seeker')}
             label="Developer"
@@ -192,50 +222,49 @@ class DevLogin extends Component {
     );
 
     return (
-      <div data-aos="zoom-in-down" className="loginContainer">
-        <div className="formConatiner">
-          <Paper onChange={this.handleChange} className="paper">
-            <form className="form2" onSubmit={this.handleLogin}>
-              <div>
-                <Typography variant="display1" gutterBottom align="center">
-                  Lambda Network
-                </Typography>
-                <Typography variant="headline" gutterBottom align="center">
-                  Login
-                </Typography>
-              </div>
-              <TextField id="email" label="Email" value={email} margin="normal" />
-              <TextField
-                id="password"
-                type="password"
-                label="password"
-                value={password}
-                margin="normal"
-              />
-              <br />
-              {buttonConflic}
-            </form>
-            <div className="signup">
-              <Link to="/dev-signup">
-                <Typography variant="caption" gutterBottom align="center">
-                  Not Registered? Signup here!
-                </Typography>
-              </Link>
-              <br />
-              <Typography variant="caption" gutterBottom align="center">
-                Forgot Password?
+      <div data-aos="zoom-in-down" className={classes.loginContainer}>
+        <Paper onChange={this.handleChange} className="paper">
+          <form className={classes.loginForm} onSubmit={this.handleLogin}>
+            <div>
+              <Typography variant="display1" gutterBottom align="center">
+                Lambda Network
+              </Typography>
+              <Typography variant="headline" gutterBottom align="center">
+                Login
               </Typography>
             </div>
-          </Paper>
-        </div>
+            <TextField id="email" label="Email" value={email} margin="normal" />
+            <TextField
+              id="password"
+              type="password"
+              label="password"
+              value={password}
+              margin="normal"
+            />
+            <br />
+            {buttonConflic}
+          </form>
+          <div className={classes.signup}>
+            <Link to="/dev-signup">
+              <Typography variant="caption" gutterBottom align="center">
+                Not Registered? Signup here!
+              </Typography>
+            </Link>
+            <br />
+            <Typography variant="caption" gutterBottom align="center">
+              Forgot Password?
+            </Typography>
+          </div>
+        </Paper>
       </div>
     );
   }
 }
 
 DevLogin.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
   setGS: PropTypes.func.isRequired,
   getGS: PropTypes.func.isRequired,
 };
 
-export default DevLogin;
+export default withStyles(styles)(DevLogin);
