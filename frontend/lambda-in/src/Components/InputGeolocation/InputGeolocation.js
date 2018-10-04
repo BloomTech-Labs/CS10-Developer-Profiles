@@ -1,5 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import React, { Component } from 'react';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,10 +13,13 @@ import './InputGeolocation.css';
 /**
  * An Input component connected to `Google Maps API`.
  *
- * @description A component that populates the APP's global state with suggested places, and its coordinates, from the Google Maps API.
+ * @description A component that populates the APP's global state
+ * with suggested places, and its coordinates, from the Google Maps API.
  * @class A class component constructor
- * @prop {Function} handleGlobalState - A function which sets the Global state with the geolocation data.
- * @prop {object} textFieldProps - Contains all props needed to be passed to <TextField /> component.
+ * @prop {Function} handleGlobalState - A function which sets the Global
+ * state with the geolocation data.
+ * @prop {object} textFieldProps - Contains all props needed to be passed
+ * to <TextField /> component.
  * @example How to pass textFieldProps
  * <TextField textFieldProps={{
  *    id: 'sampleTextField',
@@ -45,6 +51,16 @@ class InputGeolocation extends Component {
       lng: '',
       isFetchingCoordinates: false,
     };
+
+    /**
+     * Console.log error with Google API and reset geo-coordinates
+     *
+     * @return {void}
+     */
+    this.handleError = (error, clearSuggestions) => {
+      console.log('Error with Google API', error);
+      clearSuggestions(); // this is built-in handler within <PlacesAutocomplete>
+    };
   }
 
   /**
@@ -56,7 +72,7 @@ class InputGeolocation extends Component {
    * @example return
    *  'class-name--1 ... class-name--n'
    */
-  setClassName = (type, active = false) => {
+  setClassName(type, active = false) {
     const { textFieldProps, listItemProps } = this.props;
 
     const baseClass = {
@@ -65,126 +81,146 @@ class InputGeolocation extends Component {
     }[type];
 
     const propsClass = {
-      input: textFieldProps && textFieldProps.className ? textFieldProps.className : null,
-      listItem: listItemProps && listItemProps.className ? listItemProps.className : null,
+      input:
+        textFieldProps && textFieldProps.className
+          ? textFieldProps.className
+          : null,
+      listItem:
+        listItemProps && listItemProps.className
+          ? listItemProps.className
+          : null,
     }[type];
 
     return propsClass ? `${baseClass} ${propsClass}` : baseClass;
-  };
+  }
 
   /**
    * Set global APP state with geolocation
    *
    * @return {void}
    */
-  setGlobalState = () => {
+  setGlobalState() {
     try {
-      this.props.handleGlobalState();
+      const { handleGlobalState } = this.props;
+      handleGlobalState();
     } catch (e) {
+      // prettier-ignore
+      // eslint-disable-next-line no-unused-expressions
       e instanceof TypeError
         ? console.log({
-            Component: 'InputGeolocation',
-            Error: "APP's global state was not set",
-            message: e.message,
-            Requirement: 'this.props.handleGlobalState is needed',
-          })
+          Component: 'InputGeolocation',
+          Error: "APP's global state was not set",
+          message: e.message,
+          Requirement: 'this.props.handleGlobalState is needed',
+        })
         : console.log({
-            Component: 'InputGeolocation',
-            Error: e.message,
-          });
+          Component: 'InputGeolocation',
+          Error: e.message,
+        });
     }
-  };
+  }
 
   /**
    * Set local-scope state with user input
    *
    * @return {void}
    */
-  handleChange = place => {
+  handleChange(place) {
     this.setState({
       place,
       lat: '',
       lng: '',
     });
-  };
+  }
 
   /**
    * Set local and global state with 'latitude' and 'longitud' after selecting a 'place'
    *
    * @return {void}
    */
-  handleSelect = placeSelected => {
+  handleSelect(placeSelected) {
     this.setState({ isFetchingCoordinates: true, place: placeSelected });
+    // prettier-ignore
     geocodeByAddress(placeSelected)
       .then(res => getLatLng(res[0]))
-      .then(latlng => {
+      .then((latlng) => {
         this.setState({
           lat: latlng.lat,
           lng: latlng.lng,
           isFetchingCoordinates: false,
         });
+        // eslint-disable-next-line no-console
         console.log(this.state);
         this.setGlobalState();
       })
-      .catch(er => {
+      .catch((er) => {
         this.setState({ isFetchingCoordinates: false });
+        // eslint-disable-next-line no-console
         console.log({ 'Error Geocoding': er });
       });
-  };
-
-  /**
-   * Console.log error with Google API and reset geo-coordinates
-   *
-   * @return {void}
-   */
-  handleError = (error, clearSuggestions) => {
-    console.log('Error with Google API', error);
-    clearSuggestions(); // this is built-in handler within <PlacesAutocomplete>
-  };
+  }
 
   /** Return a <TextField /> and a <List /> components */
   render() {
+    const { place } = this.state;
+    const { textFieldProps, listItemProps } = this.props;
     return (
       <PlacesAutocomplete
-        value={this.state.place}
+        value={place}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
         onError={this.handleError}
       >
         {/* This function renders the 'input' and the 'suggestion-list' Elements */}
-        {({ getInputProps, getSuggestionItemProps, loading, suggestions }) => (
+        {({
+          getInputProps,
+          getSuggestionItemProps,
+          // loading,
+          suggestions,
+        }) => (
           <div className="geolocation-container">
             {/* function getInputProps -> is a built-in handler within <PlacesAutocomplete> */}
-            {/* function getInputProps -> @return {Object} whit all the props to pass to <TextField> */}
+            {/*
+              function getInputProps ->
+              @return {Object} whit all the props to pass to <TextField>
+            */}
             <TextField
               {...getInputProps({
                 label: 'Search locations',
-                ...this.props.textFieldProps,
+                ...textFieldProps,
                 className: this.setClassName('input', false),
               })}
             />
             {suggestions.length > 0 && (
-              <List dense={true} className="suggestion-list">
-                {suggestions.map(suggestion => {
-                  const active = suggestion.active;
-                  const { mainText, secondaryText } = suggestion.formattedSuggestion;
+              <List dense="true" className="suggestion-list">
+                {suggestions.map((suggestion) => {
+                  const { active } = suggestion;
+                  const {
+                    mainText,
+                    secondaryText,
+                  } = suggestion.formattedSuggestion;
 
-                  {
-                    /* function getSuggestionItemProps -> is a built-in handler within <PlacesAutocomplete> */
-                  }
-                  {
-                    /* function getSuggestionItemProps -> @return {Object} whit all the props to pass to <ListItem> */
-                  }
+                  /**
+                   * function getSuggestionItemProps -> is a built-in
+                   * handler within <PlacesAutocomplete>
+                   */
+                  /**
+                   * function getSuggestionItemProps -> @return {Object}
+                   * whit all the props to pass to <ListItem>
+                   */
                   return (
                     <ListItem
                       key={`${mainText}${secondaryText}`}
                       dense
                       {...getSuggestionItemProps(suggestion, {
-                        ...this.props.listItemProps,
+                        ...listItemProps,
                         className: this.setClassName('listItem', active),
                       })}
                     >
-                      <ListItemText primary={mainText} secondary={secondaryText ? secondaryText : null} />
+                      <ListItemText
+                        primary={mainText}
+                        secondary={secondaryText && secondaryText}
+                      />
                     </ListItem>
                   );
                 })}
