@@ -1,0 +1,19 @@
+.container {
+    width: 50vw;
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.buttonContainer {
+    justify-content: center;
+}
+
+.addButton {
+    width: 45vw;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+}

@@ -10,12 +10,17 @@ import axios from 'axios';
 
 import '../DevLogIn/DevLogin.css';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
 export default class DevLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'reg@c14.com',
-      password: '12345678Aa$',
+      email: '',
+      password: '',
       userType: '',
       seekerResponse: '',
       employerResponse: '',
@@ -137,8 +142,8 @@ export default class DevLogin extends Component {
 
     // Reset local-state
     this.setState({
-      email: 'reg@c14.com',
-      password: '12345678Aa$',
+      email: '',
+      password: '',
       userType: '',
       seekerResponse: '',
       employerResponse: '',
@@ -176,7 +181,7 @@ export default class DevLogin extends Component {
       );
 
     return (
-      <div className="loginContainer">
+      <div data-aos="zoom-in-down" className="loginContainer">
         <div className="formConatiner">
           <Paper onChange={this.handleChange} className="paper">
             <div className="form2">
