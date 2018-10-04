@@ -21,7 +21,6 @@ class DevLogin extends Component {
     this.state = {
       email: '',
       password: '',
-      userType: '',
       seekerResponse: '',
       employerResponse: '',
     };
@@ -44,7 +43,6 @@ class DevLogin extends Component {
 
     // RESET local state
     this.setState({
-      username: '',
       password: '',
     });
 
@@ -89,7 +87,6 @@ class DevLogin extends Component {
      */
     if (seekersResponse.status === 200 && employersResponse.status === 200) {
       this.setState({
-        userType: 'conflic',
         seekerResponse: seekersResponse,
         employerResponse: employersResponse,
       });
@@ -149,7 +146,6 @@ class DevLogin extends Component {
     this.setState({
       email: '',
       password: '',
-      userType: '',
       seekerResponse: '',
       employerResponse: '',
     });
