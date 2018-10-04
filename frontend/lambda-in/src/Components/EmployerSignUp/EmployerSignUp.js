@@ -84,63 +84,64 @@ class EmployerSignUp extends Component {
 
     return (
       <div data-aos="zoom-in-down" className="signupContainer">
-        <div className="formContainer">
-          <Paper className="paper">
-            <div className="form2">
-              <div>
-                <Typography variant="display1" gutterBottom align="center">
-                  Employer
-                </Typography>
+        <Paper className="paper">
+          <form className="form2" onSubmit={this.handleNewEmp}>
+            <div>
+              <Typography variant="display1" gutterBottom align="center">
+                Employer
+              </Typography>
 
-                <Typography variant="headline" gutterBottom align="center">
-                  Sign Up
-                </Typography>
-              </div>
-              <TextField
-                name="companyName"
-                label="Company Name"
-                value={companyName}
-                onChange={this.handleChange}
-                margin="normal"
-                fullWidth
-              />
-              <TextField
-                name="email"
-                label="Company Email"
-                value={email}
-                onChange={this.handleChange}
-                margin="normal"
-                fullWidth
-              />
-              <TextField
-                name="password"
-                type="password"
-                label="Password"
-                value={password}
-                onChange={this.handleChange}
-                margin="normal"
-              />
-              <TextField
-                name="confirmPassword"
-                type="password"
-                label="Confirm Password"
-                value={confirmPassword}
-                onChange={this.handleChange}
-                margin="normal"
-              />
+              <Typography variant="headline" gutterBottom align="center">
+                Sign Up
+              </Typography>
+            </div>
+            <TextField
+              name="companyName"
+              label="Company Name"
+              value={companyName}
+              onChange={this.handleChange}
+              margin="normal"
+              fullWidth
+            />
+            <TextField
+              name="email"
+              label="Company Email"
+              value={email}
+              onChange={this.handleChange}
+              margin="normal"
+              fullWidth
+            />
+            <TextField
+              name="password"
+              type="password"
+              label="Password"
+              value={password}
+              onChange={this.handleChange}
+              margin="normal"
+            />
+            <TextField
+              name="confirmPassword"
+              type="password"
+              label="Confirm Password"
+              value={confirmPassword}
+              onChange={this.handleChange}
+              margin="normal"
+            />
+            <label htmlFor="input-submit-button">
+              <input id="input-submit-button" type="submit"/>
               <Button variant="contained" color="primary" onClick={this.handleNewEmp}>
                 Save Profile
               </Button>
-              <div className="login">
-                <Link to="/dev-login">
-                  <Typography variant="caption" gutterBottom align="center">
-                    already have an account? Login here!
-                  </Typography>
-                </Link>
-              </div>
-            </div>
-          </Paper>
-        </div>
+            </label>
+          </form>
+          <div className="login">
+            <Link to="/dev-login">
+              <Typography variant="caption" gutterBottom align="center">
+                already have an account? Login here!
+                </Typography>
+            </Link>
+          </div>
+        </Paper>
       </div>
     );
   }
