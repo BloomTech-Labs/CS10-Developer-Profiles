@@ -1,14 +1,25 @@
 const express = require('express');
 const stripe = require('../stripe/stripe');
 const { postStripeCharge } = require('../stripe/utils');
-
-const router = express.Router();
-
-router.get('/', (req, res) => res.send({ Message: 'Stripe endpoint', timestamp: new Date().toISOString() }));
+const { userHasToken } = require('../../api/middleware/authentication');
+const { sendRes } = require('../../api/utils/apiResponses');
 
 /**
+ * Stripe Payment endpoint
+ *
  * The endpoint in charge to process Frontend payment through the Stripe API
  */
-router.post('/', (req, res) => stripe.charges.create(req.body, postStripeCharge(res)));
+const router = express.Router();
+
+router
+  .post('/', (req, res) => {
+    stripe.charges.create(req.body, postStripeCharge(res));
+  })
+  .get('/', userHasToken, (req, res) => {
+    sendRes(res, '200', {
+      Message: 'Stripe endpoint',
+      timestamp: new Date().toISOString(),
+    });
+  });
 
 module.exports = router;

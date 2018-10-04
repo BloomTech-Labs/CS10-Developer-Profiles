@@ -109,9 +109,19 @@ class DevLogin extends Component {
     /**
      * Validate credential in both endpoints ('seeker' and 'employers')
      */
-    const seekersResponse = await axios.post('/api/login/seekers', loginData);
-    const employersResponse = await axios.post('/api/login/employers', loginData);
+    let seekersResponse, employersResponse;
 
+    try {
+      seekersResponse = await axios.post('/api/login/seekers', loginData);
+    } catch (err) {
+      seekersResponse = { ...err.response };
+    }
+
+    try {
+      employersResponse = await axios.post('/api/login/employers', loginData);
+    } catch (err) {
+      employersResponse = { ...err.response };
+    }
     /**
      * If both users are in the DB set set global's 'login' state to 'conflic'
      * then save both http response in the local-state
@@ -133,6 +143,7 @@ class DevLogin extends Component {
      * If success loginin as a 'seeker', process response and 'return'
      */
     if (seekersResponse.status === 200) {
+      console.log('seeker');
       this.handleAxios(seekersResponse, 'seeker');
       return;
     }
