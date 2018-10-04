@@ -88,53 +88,54 @@ export default class DevSignUp extends Component {
   render() {
     return (
       <div data-aos="zoom-in-down" className="signupContainer">
-        <div className="formConatiner">
-          <Paper className="paper" onChange={this.handleChange}>
-            <div className="form2">
-              <div>
-                <Typography variant="display1" gutterBottom align="center">
-                  Lambda Network
-                </Typography>
+        <Paper className="paper" onChange={this.handleChange}>
+          <form className="form2" onSubmit={this.handNewUser}>
+            <div>
+              <Typography variant="display1" gutterBottom align="center">
+                Lambda Network
+              </Typography>
 
-                <Typography variant="headline" gutterBottom align="center">
-                  Sign Up
-                </Typography>
-              </div>
-              {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
-              <TextField id="firstName" label="First Name" value={this.state.firstName} margin="normal" />
+              <Typography variant="headline" gutterBottom align="center">
+                Sign Up
+              </Typography>
+            </div>
+            {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
+            <TextField id="firstName" label="First Name" value={this.state.firstName} margin="normal" />
 
-              <TextField id="lastName" label="Last Name" value={this.state.lastName} margin="normal" />
+            <TextField id="lastName" label="Last Name" value={this.state.lastName} margin="normal" />
 
-              <TextField id="email" label="Email" value={this.state.email} margin="normal" />
+            <TextField id="email" label="Email" value={this.state.email} margin="normal" />
 
-              <TextField id="password" type="password" label="Password" value={this.state.password} margin="normal" />
+            <TextField id="password" type="password" label="Password" value={this.state.password} margin="normal" />
 
-              <TextField
-                id="confirmPassword"
-                type="password"
-                label="Confirm Password"
-                value={this.state.confirmPassword}
-                margin="normal"
-              />
-              <br />
+            <TextField
+              id="confirmPassword"
+              type="password"
+              label="Confirm Password"
+              value={this.state.confirmPassword}
+              margin="normal"
+            />
+            <br />
+            <label htmlFor="input-submit-button">
+              <input id="input-submit-button" type="submit"/>
               <Button variant="contained" color="primary" onClick={this.handNewUser}>
                 Submit
               </Button>
-            </div>
-            <div className="login">
-              <Link to="/employer-signup">
-                <Typography variant="caption" gutterBottom align="center">
-                  are you an employer? Sign up here!
-                </Typography>
-              </Link>
-              <Link to="/dev-login">
-                <Typography variant="caption" gutterBottom align="center">
-                  already have an account? Login here!
-                </Typography>
-              </Link>
-            </div>
-          </Paper>
-        </div>
+            </label>
+          </form>
+          <div className="login">
+            <Link to="/employer-signup">
+              <Typography variant="caption" gutterBottom align="center">
+                are you an employer? Sign up here!
+              </Typography>
+            </Link>
+            <Link to="/dev-login">
+              <Typography variant="caption" gutterBottom align="center">
+                already have an account? Login here!
+              </Typography>
+            </Link>
+          </div>
+        </Paper>
       </div>
     );
   }
