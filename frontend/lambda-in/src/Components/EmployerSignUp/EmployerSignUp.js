@@ -85,11 +85,10 @@ class EmployerSignUp extends Component {
           <form className="form2" onSubmit={this.handleNewEmp}>
             <div>
               <Typography variant="display1" gutterBottom align="center">
-                Employer
+                MeetDev
               </Typography>
-
               <Typography variant="headline" gutterBottom align="center">
-                Sign Up
+                Employer Sign Up
               </Typography>
             </div>
             <TextField
@@ -127,14 +126,14 @@ class EmployerSignUp extends Component {
             <label htmlFor="input-submit-button">
               <input id="input-submit-button" type="submit" />
               <Button variant="contained" color="primary" onClick={this.handleNewEmp}>
-                Save Profile
+                Sign Up
               </Button>
             </label>
           </form>
           <div className="login">
             <Link to="/dev-login">
               <Typography variant="caption" gutterBottom align="center">
-                already have an account? Login here!
+                Already Have An Account? Login Here!
               </Typography>
             </Link>
           </div>

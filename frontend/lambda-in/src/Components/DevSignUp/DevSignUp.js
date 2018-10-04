@@ -133,7 +133,7 @@ class DevSignUp extends Component {
                 MeetDev
               </Typography>
               <Typography variant="headline" gutterBottom align="center">
-                Sign Up
+                Developer Sign Up
               </Typography>
             </div>
             <TextField id="firstName" label="First Name" value={firstName} margin="normal" />
