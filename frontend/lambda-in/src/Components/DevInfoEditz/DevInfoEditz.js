@@ -38,7 +38,7 @@ class DevInfoEdit extends Component {
   componentDidMount() {
     // eslint-disable-next-line react/prop-types
     const { getGS } = this.props;
-    // console.log('FORM', this.props);
+    // // console.log('FORM', this.props);
     this.userStateCopy = { ...getGS('userInfo') };
     this.setState({ ready: true, ...getGS('userInfo') });
 
@@ -76,7 +76,7 @@ class DevInfoEdit extends Component {
    * <Component setLS={this.setFormState} />
    */
   setFormState(properties) {
-    // console.log({ setGS: properties });
+    // // console.log({ setGS: properties });
     this.setState(properties);
   }
 
@@ -84,7 +84,7 @@ class DevInfoEdit extends Component {
    * Sync local state with input field.
    */
   handleChange(event) {
-    // console.log('Form Dev update');
+    // // console.log('Form Dev update');
     event.stopPropagation();
     this.setState({ [event.target.id]: event.target.value });
   }
@@ -100,7 +100,7 @@ class DevInfoEdit extends Component {
      *  'data-value': New value,
      * }
      */
-    console.log('FORM updateArray DATASET', dataset);
+    // console.log('FORM updateArray DATASET', dataset);
     // prettier-ignore
     const {
       field,
@@ -113,7 +113,7 @@ class DevInfoEdit extends Component {
 
     switch (itemtype) {
       case 'object':
-        console.log('FORM updateArray [Array][Object]', {
+        // console.log('FORM updateArray [Array][Object]', {
           index,
           property,
           value,
@@ -121,7 +121,7 @@ class DevInfoEdit extends Component {
         this.userStateCopy[field][index][property] = value;
         break;
       case 'array':
-        console.log('FORM updateArray [Array][Array]', {
+        // console.log('FORM updateArray [Array][Array]', {
           index,
           subindex,
           value,
@@ -130,7 +130,7 @@ class DevInfoEdit extends Component {
       // If itemSchema='singleItem'
       default:
         // '[object String]' || '[object Number]' || // '[object Boolean]'
-        console.log('FORM updateArray [Array][String]', {
+        // console.log('FORM updateArray [Array][String]', {
           field,
           itemtype,
           value,
@@ -150,7 +150,7 @@ class DevInfoEdit extends Component {
 
     if (details[0] !== 'new' && field) {
       const dataset = { ...e.target.dataset };
-      console.log('FORM handleOnBlur', {
+      // console.log('FORM handleOnBlur', {
         // e: e.target,
         DATASET: dataset,
       });
@@ -164,7 +164,7 @@ class DevInfoEdit extends Component {
       switch (typeOfField) {
         case '[object Object]':
           // this.updateObj(e);
-          console.log('FORM handleOnBlur [Object]', { field, value });
+          // console.log('FORM handleOnBlur [Object]', { field, value });
           break;
         case '[object Array]':
           this.updateArray(dataset);
@@ -172,29 +172,29 @@ class DevInfoEdit extends Component {
         // If itemSchema='singleItem'
         default:
           // '[object String]' || '[object Number]' || '[object Boolean]'
-          console.log('FORM handleOnBlur [String]', { field, value });
+          // console.log('FORM handleOnBlur [String]', { field, value });
           this.userStateCopy[field] = value;
       }
 
-      console.log(
+      // console.log(
         'FORM handleOnBlur: current userStateCopy',
         this.userStateCopy,
       );
       // this.setState({ ...this.userStateCopy });
     } else {
-      console.log('FORM handleOnBlur: Nothing to handle');
+      // console.log('FORM handleOnBlur: Nothing to handle');
     }
   }
 
   handleOnDeleteItem(e) {
-    console.log('handleOnDeleteItem', e.detail);
+    // console.log('handleOnDeleteItem', e.detail);
     const { field, index } = e.detail;
     this.userStateCopy[field].splice(index, 1);
     this.setState({ ...this.userStateCopy });
   }
 
   handleCreateItem(e) {
-    console.log('handleCreateItem', e.detail);
+    // console.log('handleCreateItem', e.detail);
     const { field, newData } = e.detail;
     this.userStateCopy[field].push(newData);
     this.setState({ ...this.userStateCopy });
@@ -207,7 +207,7 @@ class DevInfoEdit extends Component {
     // Prepare data to be updated
     const userInfo = { ...this.userStateCopy };
     delete userInfo.ready;
-    console.log('MAIN FORM', userInfo);
+    // console.log('MAIN FORM', userInfo);
 
     const { _id } = userInfo;
 
@@ -245,7 +245,7 @@ class DevInfoEdit extends Component {
           const updatedData = response.data['Document(s) modified'];
           
           // eslint-disable-next-line no-console
-          console.log('UPDATE USER', { response, status: response.status });
+          // console.log('UPDATE USER', { response, status: response.status });
           /**
            * Update GS
            */
@@ -253,7 +253,7 @@ class DevInfoEdit extends Component {
         })
         .catch((error) => {
           // eslint-disable-next-line no-console
-          console.log(error);
+          // console.log(error);
           /**
            * Set in GS 'updateState': 'updateState' = 'error'
            */
@@ -261,7 +261,7 @@ class DevInfoEdit extends Component {
         });
     } else {
       // eslint-disable-next-line no-console
-      console.log('updating without ID');
+      // console.log('updating without ID');
       /**
        * Set in GS 'updateState': 'updateState' = 'error'
        */

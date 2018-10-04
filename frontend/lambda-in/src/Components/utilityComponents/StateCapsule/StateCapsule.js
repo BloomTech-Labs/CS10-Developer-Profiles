@@ -51,31 +51,31 @@ class StateCapsule extends Component {
       ...object,
       ready: true,
     };
-    console.log('SC: resetState', newState);
+    // console.log('SC: resetState', newState);
     // Set local state with object-properties and initialize its values.
     this.setState(newState);
-    console.log('SC: resetState', this.state);
+    // console.log('SC: resetState', this.state);
   }
 
   /**
    * Sync local state with input field.
    */
   handleChange(event) {
-    // console.log('Form Dev update');
+    // // console.log('Form Dev update');
     event.stopPropagation();
 
     const { id } = event.target;
     const details = id.split('-');
     const field = details[1];
     const { value } = event.target;
-    // console.log('SC handleChange:', this.state, { details, value });
+    // // console.log('SC handleChange:', this.state, { details, value });
 
     this.setState({ [field]: value });
   }
 
   handleKeyPress(e) {
     e.stopPropagation();
-    // console.log(e.key, e.target.value);
+    // // console.log(e.key, e.target.value);
 
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -87,7 +87,7 @@ class StateCapsule extends Component {
       // eslint-disable-next-line react/destructuring-assignment
       this.setState((prevState, props) => {
         const toUpdate = prevState[field];
-        // console.log({
+        // // console.log({
         //   [field]: toUpdate,
         //   prevState,
         //   'prevState[field]': prevState[field],
@@ -111,7 +111,7 @@ class StateCapsule extends Component {
     });
     // eslint-disable-next-line arrow-parens
     return (e) => {
-      console.log('SC createItem', { field });
+      // console.log('SC createItem', { field });
       e.stopPropagation();
 
       e.target.dispatchEvent(createEvent);
@@ -127,7 +127,7 @@ class StateCapsule extends Component {
 
     // eslint-disable-next-line arrow-parens
     return (e) => {
-      console.log('SC removeItem', { field, index });
+      // console.log('SC removeItem', { field, index });
       e.stopPropagation();
 
       //

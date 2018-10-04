@@ -101,7 +101,7 @@ class ArrayController extends Component {
      * @description Stop this event to be listened and handled in parent Nodes.
      */
     ev.stopPropagation();
-    // console.log('AC onChange', { id: ev.target.id, value: ev.target.value });
+    // // console.log('AC onChange', { id: ev.target.id, value: ev.target.value });
     // Get the item type
     const { itemType } = this.state;
 
@@ -119,7 +119,7 @@ class ArrayController extends Component {
       // Update array-item
       toUpdate[index][itemProperty] = ev.target.value;
 
-      console.log('TYPE', itemType, field, itemProperty, toUpdate);
+      // console.log('TYPE', itemType, field, itemProperty, toUpdate);
 
       /**
        * Set parent-form state
@@ -134,7 +134,7 @@ class ArrayController extends Component {
 
   // handleKeyPress(e) {
   //   // e.stopPropagation();
-  //   // console.log(e.key, e.target.value);
+  //   // // console.log(e.key, e.target.value);
 
   //   if (e.key === 'Enter') {
   //     e.preventDefault();
@@ -146,14 +146,14 @@ class ArrayController extends Component {
    * Update parent Form-state.
    */
   updateFormState(e, obj) {
-    console.log('AC: updateFormState');
+    // console.log('AC: updateFormState');
     // eslint-disable-next-line react/prop-types
     const { arr, field, setPFS } = this.props;
 
     if (obj) {
       // prettier-ignore
       return (event) => {
-        console.log('AC: STATE CAPSULE UPDATE', event.target, e, obj);
+        // console.log('AC: STATE CAPSULE UPDATE', event.target, e, obj);
         setPFS({});
       };
     }
@@ -164,7 +164,7 @@ class ArrayController extends Component {
     const toUpdate = { ...this.state };
     delete toUpdate.ready;
     delete toUpdate.itemType;
-    console.log({ toUpdate });
+    // console.log({ toUpdate });
 
     // Get the item type
     const { itemType } = this.state;
@@ -174,7 +174,7 @@ class ArrayController extends Component {
      */
     switch (itemType) {
       case 'object':
-        console.log('TYPE OBJ', field, toUpdate);
+        // console.log('TYPE OBJ', field, toUpdate);
         setPFS({ [field]: [...arr, toUpdate] });
         break;
       case 'array':
@@ -203,7 +203,7 @@ class ArrayController extends Component {
        */
       e.stopPropagation();
 
-      // console.log('REMOVE ITEM', { index, E: e.target });
+      // // console.log('REMOVE ITEM', { index, E: e.target });
 
       // Make a cooy of the original Array
       const toUpdate = [...arr];
