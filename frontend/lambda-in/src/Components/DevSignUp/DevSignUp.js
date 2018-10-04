@@ -139,15 +139,34 @@ class DevSignUp extends Component {
                 Developer Sign Up
               </Typography>
             </div>
-            <TextField id="firstName" label="First Name" value={firstName} margin="normal" />
-            <TextField id="lastName" label="Last Name" value={lastName} margin="normal" />
-            <TextField id="email" label="Email" value={email} margin="normal" />
+            <TextField
+              id="firstName"
+              label="First Name"
+              value={firstName}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="lastName"
+              label="Last Name"
+              value={lastName}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="email"
+              label="Email"
+              value={email}
+              margin="normal"
+              onChange={this.handleChange}
+            />
             <TextField
               id="password"
               type="password"
               label="Password"
               value={password}
               margin="normal"
+              onChange={this.handleChange}
             />
             <TextField
               id="confirmPassword"
@@ -155,6 +174,7 @@ class DevSignUp extends Component {
               label="Confirm Password"
               value={confirmPassword}
               margin="normal"
+              onChange={this.handleChange}
             />
             <br />
             <label htmlFor="input-submit-button">

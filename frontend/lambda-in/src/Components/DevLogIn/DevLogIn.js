@@ -236,13 +236,20 @@ class DevLogin extends Component {
                 Login
               </Typography>
             </div>
-            <TextField id="email" label="Email" value={email} margin="normal" />
+            <TextField
+              id="email"
+              label="Email"
+              value={email}
+              margin="normal"
+              onChange={this.handleChange}
+            />
             <TextField
               id="password"
               type="password"
               label="Password"
               value={password}
               margin="normal"
+              onChange={this.handleChange}
             />
             <br />
             {buttonConflict}
