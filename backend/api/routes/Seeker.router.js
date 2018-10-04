@@ -12,9 +12,13 @@ const Seekers = require('../models/Seeker/Seeker.model');
 const router = express.Router();
 const seekersRF = new RouterFactory(router, Seekers);
 
+router.route(path).get(handleGET, sendResponseToClient);
+router.use(handleError);
+
+router.use(userHasToken);
+
 seekersRF.setProjection({ password: 0, __v: 0 });
 seekersRF.POST();
-seekersRF.GET('/', getSeekers.bind(this, Seekers));
 seekersRF.GET_id();
 seekersRF.PUT();
 seekersRF.DELETE();

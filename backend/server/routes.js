@@ -5,6 +5,8 @@ const loginRouter = require('../api/routes/login.router');
 const registerRouter = require('../api/routes/register.router');
 const stripeRouter = require('../payments/routes/stripe.router');
 const setupAuthMiddleware = require('./middleware').auth;
+const setUpApiRouter = require('../api/routes/api.router');
+const { userHasToken } = require('../api/utils/authUtils');
 
 module.exports = {
   public: (server) => {
@@ -17,25 +19,7 @@ module.exports = {
     }
   },
   api: (server) => {
-    server.use('/api/login', loginRouter);
-    server.use('/api/register', registerRouter);
-    server.get('/api', (req, res) => {
-      res.set('Content-Type', 'application/json');
-      res.send('{"message":"Developer Profiles API"}');
-    });
-
-    /**
-     * Private endpoints
-     * @description Validate credentials user JWT credential.
-     * If credentials are no valid do not allow access to private endpoints
-     */
-    setupAuthMiddleware(server);
-
-    // This serves the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
-    server.use('/api/seekers', seekersRouter);
-
-    // This serves the Employers DB. It allows GET, POST, PUT and DELETE
-    server.use('/api/employers', employerRouter);
+    server.use('/api', setUpApiRouter(userHasToken));
   },
   payments: {
     /**

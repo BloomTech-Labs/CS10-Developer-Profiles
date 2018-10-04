@@ -1,28 +1,32 @@
 const express = require('express');
-const seekersRouter = require('../api/routes/Seeker.router');
-const employerRouter = require('../api/routes/Employer.router');
-const loginRouter = require('../api/routes/login.router');
-const registerRouter = require('../api/routes/register.router');
-const setupAuthMiddleware = require('./middleware').auth;
+const seekersRouter = require('./Seeker.router');
+const employerRouter = require('./Employer.router');
+const loginRouter = require('./login.router');
+const registerRouter = require('./register.router');
 
 const router = express.Router();
 
-router.get('/api', (req, res) => {
-  res.set('Content-Type', 'application/json');
-  res.send('{"message":"Developer Profiles API"}');
-});
-router.use('/api/login', loginRouter);
-router.use('/api/register', registerRouter);
+module.exports = (userHasToken) => {
+  router.get('/', (req, res) => {
+    res.set('Content-Type', 'application/json');
+    res.send('{"message":"Developer Profiles API"}');
+  });
 
-/**
- * Private endpoints
- * @description Validate credentials user JWT credential.
- * If credentials are no valid do not allow access to private endpoints
- */
-setupAuthMiddleware(server);
+  router.use('/login', loginRouter);
+  router.use('/register', registerRouter);
 
-// This serves the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
-router.use('/api/seekers', seekersRouter);
+  /**
+   * Private endpoints
+   * @description Validate credentials user JWT credential.
+   * If credentials are no valid do not allow access to private endpoints
+   */
+  router.use(userHasToken);
 
-// This serves the Employers DB. It allows GET, POST, PUT and DELETE
-router.use('/api/employers', employerRouter);
+  // This serves the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
+  router.use('/seekers', userHasToken, seekersRouter);
+
+  // This serves the Employers DB. It allows GET, POST, PUT and DELETE
+  router.use('/employers', userHasToken, employerRouter);
+
+  return router;
+};
