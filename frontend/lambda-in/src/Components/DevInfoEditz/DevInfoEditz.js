@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -10,6 +10,7 @@ import SocialLinks from '../utilityComponents/SeekerEditUtils/SocialLinks';
 import BioSkills from '../utilityComponents/SeekerEditUtils/BioSkills';
 import Projects from '../utilityComponents/SeekerEditUtils/Projects';
 import Experience from '../utilityComponents/SeekerEditUtils/Experience';
+import Education from '../utilityComponents/SeekerEditUtils/Education';
 
 /**
  * Form handling user profile updates
@@ -87,34 +88,6 @@ class DevInfoEdit extends Component {
     event.stopPropagation();
     this.setState({ [event.target.id]: event.target.value });
   }
-
-  updateObj(property, item1, item2) {
-    const currentObj = { ...this.userStateCopy[property] };
-
-    const typeOfItem1 = Object.prototype.toString.call(currentObj[item1]);
-
-    switch (typeOfItem1) {
-      case '[object Object]':
-        break;
-      case '[object Array]':
-        break;
-      // If itemSchema='singleItem'
-      default:
-        // '[object String]' || '[object Number]' || // '[object Boolean]'
-
-        // eslint-disable-next-line no-case-declarations
-        const nestedProp = item1;
-        // eslint-disable-next-line no-case-declarations
-        const nestedValue = item2;
-
-        this.userStateCopy = {
-          ...this.userStateCopy,
-          [property]: { ...currentObj, [nestedProp]: nestedValue },
-        };
-    }
-  }
-
-  updateArrayOfObjects(array, index, property, index2, value) {}
 
   updateArray(dataset) {
     /**
@@ -318,7 +291,6 @@ class DevInfoEdit extends Component {
         {/* User basic info: name, desired title, current location */}
         <BasicInfo userInfo={userInfo} />
 
-        <Experience userInfo={userInfo} />
         {/* SOCIAL LINKS */}
         <SocialLinks userInfo={userInfo} />
 
@@ -326,15 +298,13 @@ class DevInfoEdit extends Component {
         <BioSkills userInfo={userInfo} />
 
         {/* PROJECTS */}
-        {/* <Projects
-          handleBlur={this.handleOnBlur}
-          setFS={this.setFormState}
-          userInfo={{ ...userInfo }}
-        /> */}
+        <Projects userInfo={userInfo} />
+
         {/* EXPERIENCES */}
+        <Experience userInfo={userInfo} />
 
         {/* EDUCATION */}
-        {/* <Education userInfo={userInfo} /> */}
+        <Education userInfo={userInfo} />
       </div>
     ) : null;
 
