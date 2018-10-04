@@ -16,8 +16,8 @@ import './InputGeolocation.css';
  * @description A component that populates the APP's global state
  * with suggested places, and its coordinates, from the Google Maps API.
  * @class A class component constructor
- * @prop {Function} handleGlobalState - A function which sets the Global
- * state with the geolocation data.
+ * @prop {Function} talkToParentState - A function to pass InputGeolocation's
+ * state to a parent component.
  * @prop {object} textFieldProps - Contains all props needed to be passed
  * to <TextField /> component.
  * @example How to pass textFieldProps
