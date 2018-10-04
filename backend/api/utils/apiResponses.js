@@ -19,7 +19,7 @@ const sendErr = (res, err, message) => {
   switch (err.name || err) {
     case VALIDATION_ERROR:
       res.status(400);
-      res.json({ error: err.message });
+      res.json({ error: err.message || message });
       return;
     case UNAUTHORIZED:
       res.status(401);
