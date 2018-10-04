@@ -15,11 +15,10 @@ const employerRF = new RouterFactory(router, Employer);
 // Set projections
 employerRF.setProjection({ password: 0, __v: 0 });
 
-// Create all CRUD endpoints.
-employerRF.POST('/', userHasToken.bind(this), 'handlePOST');
-employerRF.GET('/', userHasToken.bind(this), 'handleGET');
-employerRF.GET_id('/:id', userHasToken.bind(this), 'handleGET');
-employerRF.PUT('/:id', userHasToken.bind(this), 'handlePUT');
-employerRF.DELETE('/:id', userHasToken.bind(this), 'handleDELETE');
+// Make routes after this point private
+router.use(userHasToken);
+
+// Create all CRUD endpoints
+employerRF.CRUD();
 
 module.exports = router;
