@@ -114,27 +114,27 @@ class DevInfoEdit extends Component {
     switch (itemtype) {
       case 'object':
         // console.log('FORM updateArray [Array][Object]', {
-          index,
-          property,
-          value,
-        });
+        //   index,
+        //   property,
+        //   value,
+        // });
         this.userStateCopy[field][index][property] = value;
         break;
       case 'array':
         // console.log('FORM updateArray [Array][Array]', {
-          index,
-          subindex,
-          value,
-        });
+        //   index,
+        //   subindex,
+        //   value,
+        // });
         break;
       // If itemSchema='singleItem'
       default:
         // '[object String]' || '[object Number]' || // '[object Boolean]'
         // console.log('FORM updateArray [Array][String]', {
-          field,
-          itemtype,
-          value,
-        });
+        //   field,
+        //   itemtype,
+        //   value,
+        // });
         this.userStateCopy[field] = value.split('-');
     }
   }
@@ -151,9 +151,9 @@ class DevInfoEdit extends Component {
     if (details[0] !== 'new' && field) {
       const dataset = { ...e.target.dataset };
       // console.log('FORM handleOnBlur', {
-        // e: e.target,
-        DATASET: dataset,
-      });
+      // e: e.target,
+      //   DATASET: dataset,
+      // });
       const { value } = dataset || e.target;
 
       const typeOfField = Object.prototype.toString.call(
@@ -177,10 +177,9 @@ class DevInfoEdit extends Component {
       }
 
       // console.log(
-        'FORM handleOnBlur: current userStateCopy',
-        this.userStateCopy,
-      );
-      // this.setState({ ...this.userStateCopy });
+      //   'FORM handleOnBlur: current userStateCopy',
+      //   this.userStateCopy,
+      // );
     } else {
       // console.log('FORM handleOnBlur: Nothing to handle');
     }
