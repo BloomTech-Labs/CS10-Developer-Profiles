@@ -12,9 +12,9 @@ import StateCapsule from '../StateCapsule/StateCapsule';
  * @return {object} A React component.
  */
 // eslint-disable-next-line arrow-parens
-const BioSkills = props => {
+const BioSkills = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { userInfo, setFS } = props;
+  const { userInfo } = props;
 
   const field = 'topSkills';
   const schema = {
@@ -28,8 +28,7 @@ const BioSkills = props => {
         <DropDown header="Biio and Skills">
           <div className="inputFieldLargeMultiline">
             <TextField
-              id="new-summary"
-              index="an index"
+              id="edit-summary"
               label="Your Bio"
               fullWidth
               multiline
@@ -44,7 +43,6 @@ const BioSkills = props => {
             itemSchema="singleItem"
             title="Top Skills"
             field={field}
-            setPFS={setFS}
             arr={stateCapsule.topSkills}
           >
             {/* eslint-disable-next-line object-curly-newline */}
@@ -52,7 +50,7 @@ const BioSkills = props => {
               <Fragment>
                 <div className="inputFieldLargeMultiline">
                   <TextField
-                    id="new-topSkills_edit"
+                    id="edit-topSkills_edit"
                     label="Add skills - press enter"
                     fullWidth
                     multiline
@@ -63,6 +61,7 @@ const BioSkills = props => {
                     inputProps={{
                       // info for the DevInfoEditz's onBlur handler.
                       'data-field': field,
+                      'data-itemType': 'string',
                       'data-value': stateCapsule.topSkills.join('-'),
                     }}
                   />

@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import StateCapsule from '../StateCapsule/StateCapsule';
 
 // eslint-disable-next-line arrow-parens
-const BasicInfo = props => {
+const BasicInfo = (props) => {
   const { userInfo } = props;
 
   const schema = {
@@ -20,7 +20,7 @@ const BasicInfo = props => {
           <div className="expansionPanel">
             <div className="inputField">
               <TextField
-                id="new-firstName"
+                id="edit-firstName"
                 label="First Name"
                 fullWidth
                 value={stateCapsule.firstName}
@@ -31,7 +31,7 @@ const BasicInfo = props => {
 
             <div className="inputField">
               <TextField
-                id="new-lastName"
+                id="edit-lastName"
                 label="Last Name"
                 fullWidth
                 value={stateCapsule.lastName}
@@ -42,7 +42,7 @@ const BasicInfo = props => {
 
             <div className="inputField">
               <TextField
-                id="new-desiredTitle"
+                id="edit-desiredTitle"
                 label="Desired Title"
                 fullWidth
                 value={stateCapsule.desiredTitle}
@@ -54,7 +54,7 @@ const BasicInfo = props => {
             {/* TODO : WIRE InputGeolocation component here */}
             {/* <div className="inputField">
               <TextField
-                id="new-currentLocation"
+                id="edit-currentLocation"
                 label="Current Location"
                 fullWidth
                 value={stateCapsule.currentLocation}
