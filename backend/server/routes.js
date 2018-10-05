@@ -4,6 +4,7 @@ const employerRouter = require('../api/routes/Employer.router');
 const loginRouter = require('../api/routes/login.router');
 const registerRouter = require('../api/routes/register.router');
 const stripeRouter = require('../payments/routes/stripe.router');
+const forgotPasswordRouter = require('../api/routes/ForgotPassword.router');
 
 module.exports = {
   routes: (server) => {
@@ -12,6 +13,7 @@ module.exports = {
     server.use('/api/register', registerRouter);
     server.use('/api/seekers', seekersRouter);
     server.use('/api/employers', employerRouter);
+    server.use('/api/saveresethash', forgotPasswordRouter);
     server.get('/api', (req, res) => {
       res.set('Content-Type', 'application/json');
       res.send('{"message":"Developer Profiles API"}');

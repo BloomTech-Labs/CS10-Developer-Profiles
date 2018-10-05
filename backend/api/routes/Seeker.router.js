@@ -1,3 +1,4 @@
+/* eslint-disable */
 const express = require('express');
 const { RouterFactory } = require('express-router-factory');
 const { userHasToken } = require('../middleware/authentication');
@@ -12,6 +13,8 @@ const Seekers = require('../models/Seeker/Seeker.model');
  * Authenticate POST, PUT and DELETE endpoints with userHasToken()
  */
 const router = express.Router();
+
+
 const seekersRF = new RouterFactory(router, Seekers);
 
 // Set projections

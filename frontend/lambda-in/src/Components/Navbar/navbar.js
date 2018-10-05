@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import SignUpMenu from '../SignUp Menu/sign-up';
 
 import './navbar.css';
 
@@ -25,7 +26,10 @@ export default ({ getGS, logOut }) => {
      */
     leftNavBar: (
       <Fragment>
-        <Button component={Link} to={userType === 'seeker' ? '/dev-profile' : '/emp-profile'}>
+        <Button
+          component={Link}
+          to={userType === 'seeker' ? '/dev-profile' : '/emp-profile'}
+        >
           profile
         </Button>
         <Button component={Link} to="/billing">
@@ -43,6 +47,7 @@ export default ({ getGS, logOut }) => {
     leftNavBar: <Fragment />, // There are no Links to display
     rightNavBar: (
       <Fragment>
+        <SignUpMenu />
         <Button component={Link} to="/dev-login">
           Log-in
         </Button>
@@ -55,14 +60,19 @@ export default ({ getGS, logOut }) => {
       <div className="navBar">
         <div className="leftNavBar">
           <Button component={Link} to="/">
-            meetdev
+            Home
           </Button>
-          <Button component={Link} to={userType === 'seeker' ? '/meetposition' : '/meetdev'}>
+          <Button
+            component={Link}
+            to={userType === 'seeker' ? '/meetposition' : '/meetdev'}
+          >
             Browse
           </Button>
           {isSignedIn ? withToken.leftNavBar : withNotToken.leftNavBar}
         </div>
-        <div className="rightNavBar">{isSignedIn ? withToken.rightNavBar : withNotToken.rightNavBar}</div>
+        <div className="rightNavBar">
+          {isSignedIn ? withToken.rightNavBar : withNotToken.rightNavBar}
+        </div>
       </div>
     </Paper>
   );
