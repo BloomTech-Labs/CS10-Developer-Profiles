@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import SignUpMenu from '../SignUp Menu/sign-up';
 
 import './navbar.css';
 
@@ -46,9 +47,7 @@ export default ({ getGS, logOut }) => {
     leftNavBar: <Fragment />, // There are no Links to display
     rightNavBar: (
       <Fragment>
-        <Button component={Link} to="/dev-signup">
-          Signup
-        </Button>
+        <SignUpMenu />
         <Button component={Link} to="/dev-login">
           Log-in
         </Button>
@@ -61,7 +60,7 @@ export default ({ getGS, logOut }) => {
       <div className="navBar">
         <div className="leftNavBar">
           <Button component={Link} to="/">
-            meetdev
+            Home
           </Button>
           <Button
             component={Link}
