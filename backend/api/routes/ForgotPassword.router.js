@@ -3,7 +3,6 @@ const express = require('express');
 const { RouterFactory } = require('express-router-factory');
 const { getSeekers } = require('../middleware/getters');
 const Seekers = require('../models/Seeker/Seeker.model');
-const passport = require("passport");
 const async = require("async");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
@@ -78,9 +77,9 @@ router.post('/reset/:token', function(req, res) {
     .findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } })
     .then(item => {
       console.log('item', item);
-      let hashedPassword;
+
       bcrypt.hash(req.body.password, 12, (err, hash) => {
-        console.log("boo");
+        // console.log("boo");
         if (err){
           res.status(500).json({ error: "the password couldn't be changed"})
         } 
