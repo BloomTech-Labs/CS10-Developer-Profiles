@@ -30,20 +30,20 @@ class EmployerPositionCard extends React.Component {
     });
   }
 
-  handleEdit(e) {
-    const id = e.target.database.id;
-    axios.put(`/api/register/employers/${id}`,
-    {
-      ...userInfo, // UPDATE current userInfo's state. TODO: pass only updated fields.
-    },
-    {
-      headers: {
-        Authorization: localStorage.getItem('token'),
-      },
-    },).then(() => {
-      window.location.reload();
-    });
-  }
+  // handleEdit(e) {
+  //   const id = e.target.database.id;
+  //   axios.put(`/api/register/employers/${id}`,
+  //   {
+  //     ...userInfo,
+  //   },
+  //   {
+  //     headers: {
+  //       Authorization: localStorage.getItem('token'),
+  //     },
+  //   },).then(() => {
+  //     window.location.reload();
+  //   });
+  // }
 
 
   render() {

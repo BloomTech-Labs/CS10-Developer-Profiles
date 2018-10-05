@@ -11,7 +11,7 @@ import DevInfoEditz from "./Components/DevInfoEditz/DevInfoEditz";
 import Billing from "./Components/Billing/billing";
 import EmpSignUp from "./Components/EmployerSignUp/EmployerSignUp";
 import EmpProfile from "./Components/EmpProfile/EmpProfile";
-import EmpPositionAdd from "./Components/OpenPositionAdd/OpenPositionAdd";
+import OpenPositionAdd from "./Components/OpenPositionAdd/OpenPositionAdd";
 import EmpPositionEdit from "./Components/OpenPositionEdit/OpenPositionEdit";
 
 import UserSetting from "./Components/UserSetting/UserSetting";
@@ -194,7 +194,10 @@ class App extends Component {
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/emp-profile"
-              render={() => (isSignedIn ? <EmpProfile /> : <Redirect to="/" />)}
+              render={(props) => (isSignedIn ? <EmpProfile
+                {...props}
+                setGS={this.setGlobalState}
+                getGS={this.getGlobalState}/> : <Redirect to="/" />)}
             />
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route
@@ -217,7 +220,7 @@ class App extends Component {
               path="/emp-pos-add"
               render={props =>
                 isSignedIn ? (
-                  <EmpPositionAdd
+                  <OpenPositionAdd
                     {...props}
                     setGS={this.setGlobalState}
                     getGS={this.getGlobalState}

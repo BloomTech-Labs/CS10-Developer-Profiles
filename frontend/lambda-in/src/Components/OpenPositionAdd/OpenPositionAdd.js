@@ -34,8 +34,10 @@ export default class OpenPositionAdd extends Component {
   };
 
   handleNewPos = event => {
-    const id = {...this.props.userInfo._id};
-
+    const {getGS} = this.props; 
+    const {setGS} = this.props; 
+    const userInfo = getGS('userInfo'); // getGS('userInfo') comes from App.js
+    
     const {
       projectName,
       description,
@@ -45,18 +47,6 @@ export default class OpenPositionAdd extends Component {
       minSalary,
       maxSalary
     } = this.state;
-
-    const { setGS } = this.props;
-
-    const newPosition = {
-      projectName: this.state.projectName,
-      description: this.state.description,
-      jobTitle: this.state.jobTitle,
-      techStack: this.state.techStack,
-      skills: this.state.skills,
-      minSalary: this.state.minSalary,
-      maxSalary: this.state.maxSalary,
-    };
 
     event.preventDefault();
 

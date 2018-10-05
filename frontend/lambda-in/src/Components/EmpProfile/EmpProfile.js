@@ -9,17 +9,24 @@ import EmployerPositionCard from "./EmpCard";
 import "./EmpProfile.css";
 
 class EmployerProfile extends React.Component {
-  state = {
-    projectName: "Enterprise-D",
-    description: "We are looking for the captain of the Federation Flagship.",
-    jobTitle: "Captain",
-    techStack: "full stack",
-    skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
-    minSalary: 1000000,
-    maxSalary: 2000000
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      projectName: "Enterprise-D",
+      description: "We are looking for the captain of the Federation Flagship.",
+      jobTitle: "Captain",
+      techStack: "full stack",
+      skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
+      minSalary: 1000000,
+      maxSalary: 2000000
+    };
+  }
+
 
   render() {
+    const {getGS} = this.props; 
+    const userInfo = getGS('userInfo'); // getGS('userInfo') comes from App.js
+
     return (
       <div class="container">
         <div class="body">
@@ -46,14 +53,11 @@ class EmployerProfile extends React.Component {
               <ul>
                 {/* {this.state.map(EmployerOpenPositionCard => {
                   return ( */}
-                    <EmployerPositionCard />
-                    <EmployerPositionCard />
-                    <EmployerPositionCard />
-                    <EmployerPositionCard />
-                    <EmployerPositionCard />
-                    <EmployerPositionCard />
-                    <EmployerPositionCard />
-                    <EmployerPositionCard />
+                    <EmployerPositionCard userInfo={userInfo}/>
+                    <EmployerPositionCard userInfo={userInfo}/>
+                    <EmployerPositionCard userInfo={userInfo}/>
+                    <EmployerPositionCard userInfo={userInfo}/>
+                    <EmployerPositionCard userInfo={userInfo}/>
                    {/* );
                 })} */}
               </ul>
