@@ -62,7 +62,7 @@ export default class DevLogin extends Component {
    * @param {event} event - Even object
    */
   /* eslint-disable */
-  handleLogin = async event => {
+  handleLogin = async (event) => {
     event.preventDefault();
 
     const loginData = {
@@ -73,15 +73,7 @@ export default class DevLogin extends Component {
     /**
      * Validate credential in both endpoints ('seeker' and 'employers')
      */
-<<<<<<< HEAD
     let seekersResponse, employersResponse;
-||||||| merged common ancestors
-    const seekersResponse = await axios.post('/api/login/seekers', loginData);
-    const employersResponse = await axios.post('/api/login/employers', loginData);
-=======
-    const seekersResponse = await axios.post('/api/login/seekers/', loginData);
-    const employersResponse = await axios.post('/api/login/employers/', loginData);
->>>>>>> f208695987f92b68ce62ed87a15a7ee39e3dab6a
 
     try {
       seekersResponse = await axios.post('/api/login/seekers', loginData);
@@ -134,12 +126,16 @@ export default class DevLogin extends Component {
     this.setState({ password: '' });
     alert('Error with your credential'); // TODO: Improve UX
 
-    console.log({ 'HTTP login seekersResponse status': seekersResponse.status });
-    console.log({ 'HTTP login employersResponse status': employersResponse.status });
+    console.log({
+      'HTTP login seekersResponse status': seekersResponse.status,
+    });
+    console.log({
+      'HTTP login employersResponse status': employersResponse.status,
+    });
   };
   /* eslint-enable */
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
     });
@@ -151,7 +147,7 @@ export default class DevLogin extends Component {
    * @param {string} userType - The type of profile to login.
    * @return {void}
    */
-  resolveUserConflic = userType => {
+  resolveUserConflic = (userType) => {
     console.log();
     if (userType === 'seeker') {
       this.handleAxios(this.state.seekerResponse, userType);
@@ -213,7 +209,12 @@ export default class DevLogin extends Component {
                   Login
                 </Typography>
               </div>
-              <TextField id="email" label="Email" value={this.state.email} margin="normal" />
+              <TextField
+                id="email"
+                label="Email"
+                value={this.state.email}
+                margin="normal"
+              />
 
               <TextField
                 id="password"
