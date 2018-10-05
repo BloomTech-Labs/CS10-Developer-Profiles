@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AOS from 'aos';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
@@ -138,5 +139,10 @@ class ForgotPassword extends Component {
     );
   }
 }
+
+ForgotPassword.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  match: PropTypes.shape({}).isRequired,
+};
 
 export default withStyles(styles)(ForgotPassword);
