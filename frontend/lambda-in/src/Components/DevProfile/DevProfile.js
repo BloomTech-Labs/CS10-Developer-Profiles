@@ -25,7 +25,7 @@ export default ({ getGS }) => {
   const AS = userInfo.additionalSkills;
   const SS = userInfo.skills;
   const allSkills = TS.concat(AS, SS);
-  const skillList = allSkills.map(skill => (
+  const skillList = allSkills.map((skill) => (
     <li>
       {skill}
       {` `}
@@ -45,7 +45,12 @@ export default ({ getGS }) => {
             <div className="topCardLeft">
               <div className="nameCard">
                 <div className="photo">
-                  <img className="pic" src={picardImage} title="Profile Photo" alt="Photo" />
+                  <img
+                    className="pic"
+                    src={picardImage}
+                    title="Profile Photo"
+                    alt="Photo"
+                  />
                 </div>
                 <div className="basicInfo">
                   <div className="name">
@@ -61,7 +66,9 @@ export default ({ getGS }) => {
                   <div className="summary">
                     <Typography>{userInfo.summary}</Typography>
                   </div>
-                  <div className="desiredTitle">Desired Title: {userInfo.desiredTitle}</div>
+                  <div className="desiredTitle">
+                    Desired Title: {userInfo.desiredTitle}
+                  </div>
                   <div className="tagCloud">
                     <MapList array={allSkills} />
                   </div>
@@ -69,19 +76,49 @@ export default ({ getGS }) => {
                 </div>
                 <div className="topCardRight">
                   <a href={userInfo.acclaimBadge}>
-                    <img src={lambdaColorImage} width="50" height="50" title="Acclaimed Badge" alt="Badge" />
+                    <img
+                      src={lambdaColorImage}
+                      width="50"
+                      height="50"
+                      title="Acclaimed Badge"
+                      alt="Badge"
+                    />
                   </a>
                   <a href={userInfo.socialNetwork}>
-                    <img src={snsImage} width="50" height="50" title="SNS" alt="SNS" />
+                    <img
+                      src={snsImage}
+                      width="50"
+                      height="50"
+                      title="SNS"
+                      alt="SNS"
+                    />
                   </a>
                   <a href={userInfo.github}>
-                    <img src={githubImage} width="50" height="50" title="Github" alt="Github Repo" />
+                    <img
+                      src={githubImage}
+                      width="50"
+                      height="50"
+                      title="Github"
+                      alt="Github Repo"
+                    />
                   </a>
                   <a href={userInfo.linkedin}>
-                    <img src={linkedInImage} width="50" height="50" title="Linkedin" alt="Linkedin" />
+                    <img
+                      src={linkedInImage}
+                      width="50"
+                      height="50"
+                      title="Linkedin"
+                      alt="Linkedin"
+                    />
                   </a>
                   <a href={userInfo.portfolio}>
-                    <img src={portfolioImage} width="50" height="50" title="Portfolio" alt="Portfolio" />
+                    <img
+                      src={portfolioImage}
+                      width="50"
+                      height="50"
+                      title="Portfolio"
+                      alt="Portfolio"
+                    />
                   </a>
                 </div>
               </div>
