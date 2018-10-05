@@ -19,8 +19,8 @@ export default class DevLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'reg@c14.com',
-      password: '12345678Aa$',
+      email: '',
+      password: '',
       userType: '',
       seekerResponse: '',
       employerResponse: '',
