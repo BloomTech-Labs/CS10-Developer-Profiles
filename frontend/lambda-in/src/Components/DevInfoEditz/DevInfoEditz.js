@@ -5,12 +5,12 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import './DevInfoEditz.css';
-import BasicInfo from '../utilityComponents/SeekerEditUtils/BasicInfo';
-import SocialLinks from '../utilityComponents/SeekerEditUtils/SocialLinks';
-import BioSkills from '../utilityComponents/SeekerEditUtils/BioSkills';
-import Projects from '../utilityComponents/SeekerEditUtils/Projects';
-import Experience from '../utilityComponents/SeekerEditUtils/Experience';
-import Education from '../utilityComponents/SeekerEditUtils/Education';
+import BasicInfo from './SeekerEditUtils/BasicInfo';
+import SocialLinks from './SeekerEditUtils/SocialLinks';
+import BioSkills from './SeekerEditUtils/BioSkills';
+import Projects from './SeekerEditUtils/Projects';
+import Experience from './SeekerEditUtils/Experience';
+import Education from './SeekerEditUtils/Education';
 
 /**
  * Form handling user profile updates

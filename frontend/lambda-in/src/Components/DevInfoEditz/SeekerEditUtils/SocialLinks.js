@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import DropDown from '../DropDown/DropDown';
-import StateCapsule from '../StateCapsule/StateCapsule';
+import DropDown from '../../utilityComponents/DropDown/DropDown';
+import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
 // eslint-disable-next-line arrow-parens
 const SocialLinks = (props) => {

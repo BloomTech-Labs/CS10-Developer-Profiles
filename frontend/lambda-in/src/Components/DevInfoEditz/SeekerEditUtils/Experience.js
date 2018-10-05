@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import ArraySection from '../ArraySection/ArraySection';
+import React from 'react';
+import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 
 // eslint-disable-next-line arrow-parens
 const Experience = (props) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import StateCapsule from '../StateCapsule/StateCapsule';
+import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
 // eslint-disable-next-line arrow-parens
 const BasicInfo = (props) => {

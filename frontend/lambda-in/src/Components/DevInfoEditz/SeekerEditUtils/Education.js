@@ -1,5 +1,5 @@
 import React from 'react';
-import ArraySection from '../ArraySection/ArraySection';
+import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 
 const Education = (props) => {
   const { userInfo } = props;

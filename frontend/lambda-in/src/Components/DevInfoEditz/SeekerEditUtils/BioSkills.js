@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
-import DropDown from '../DropDown/DropDown';
-import MapChips from '../MapArrays/MapChips';
-import ArrayController from '../MapArrays/ArrayController';
-import StateCapsule from '../StateCapsule/StateCapsule';
+import DropDown from '../../utilityComponents/DropDown/DropDown';
+import MapChips from '../../utilityComponents/MapArrays/MapChips';
+import ArrayController from '../../utilityComponents/MapArrays/ArrayController';
+import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
 /**
  * Render the Developer's 'summary' and 'topSkills' fields.Fragment
