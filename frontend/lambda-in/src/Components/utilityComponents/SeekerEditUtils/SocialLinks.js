@@ -4,7 +4,7 @@ import DropDown from '../DropDown/DropDown';
 import StateCapsule from '../StateCapsule/StateCapsule';
 
 // eslint-disable-next-line arrow-parens
-const SocialLinks = props => {
+const SocialLinks = (props) => {
   // eslint-disable-next-line react/prop-types
   const { userInfo } = props;
 
@@ -20,7 +20,7 @@ const SocialLinks = props => {
         <DropDown header="Social links">
           <div className="inputField">
             <TextField
-              id="new-github"
+              id="edit-github"
               label="github"
               fullWidth
               value={stateCapsule.github}
@@ -31,7 +31,7 @@ const SocialLinks = props => {
 
           <div className="inputField">
             <TextField
-              id="new-linkedin"
+              id="edit-linkedin"
               label="Linkedin"
               fullWidth
               value={stateCapsule.linkedin}
@@ -42,7 +42,7 @@ const SocialLinks = props => {
 
           <div className="inputField">
             <TextField
-              id="new-portfolio"
+              id="edit-portfolio"
               label="Portfolio Website"
               fullWidth
               value={stateCapsule.portfolio}
