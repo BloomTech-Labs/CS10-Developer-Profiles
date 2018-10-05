@@ -18,7 +18,7 @@ export default ({ getGS, setGS }) => {
   const AS = userInfo.additionalSkills;
   const SS = userInfo.skills;
   const allSkills = TS.concat(AS, SS);
-  const skillList = allSkills.map(skill => (
+  const skillList = allSkills.map((skill) => (
     <li>
       {skill}
       {` `}
@@ -38,7 +38,11 @@ export default ({ getGS, setGS }) => {
       <Paper className="profilePaper">
         <div className="profileTopCard">
           <div className="profileImage">
-            <img className="profileImage" src="https://robohash.org/tony" alt="Italian " />
+            <img
+              className="profileImage"
+              src="https://robohash.org/tony"
+              alt="Italian "
+            />
           </div>
           <div className="profileBio">
             <div className="basicInfo">
@@ -67,16 +71,36 @@ export default ({ getGS, setGS }) => {
           </div>
           <div className="profileLinks">
             <a href={userInfo.acclaimBadge}>
-              <img src={lambdaColorImg} className="profileLinksIcon" title="Acclaimed Badge" alt="Badge" />
+              <img
+                src={lambdaColorImg}
+                className="profileLinksIcon"
+                title="Acclaimed Badge"
+                alt="Badge"
+              />
             </a>
             <a href={userInfo.github}>
-              <img src={GitHubImg} className="profileLinksIcon" title="Github" alt="Github Repo" />
+              <img
+                src={GitHubImg}
+                className="profileLinksIcon"
+                title="Github"
+                alt="Github Repo"
+              />
             </a>
             <a href={userInfo.linkedin}>
-              <img src={linkedinImg} className="profileLinksIcon" title="Linkedin" alt="Linkedin" />
+              <img
+                src={linkedinImg}
+                className="profileLinksIcon"
+                title="Linkedin"
+                alt="Linkedin"
+              />
             </a>
             <a href={userInfo.portfolio}>
-              <img src={portfolioImg} className="profileLinksIcon" title="Portfolio" alt="Portfolio" />
+              <img
+                src={portfolioImg}
+                className="profileLinksIcon"
+                title="Portfolio"
+                alt="Portfolio"
+              />
             </a>
           </div>
         </div>
