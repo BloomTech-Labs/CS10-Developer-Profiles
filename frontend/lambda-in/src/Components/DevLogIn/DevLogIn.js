@@ -87,7 +87,7 @@ export default class DevLogin extends Component {
       employersResponse = { ...err.response };
     }
     /**
-     * If both users are in the DB set set global's 'login' state to 'conflic'
+     * If both users are in the DB set set global's 'login' state to 'conflict'
      * then save both http response in the local-state
      *
      * 'login' === 'conflict' will display a UI feature to resolve the conflict.
@@ -95,11 +95,11 @@ export default class DevLogin extends Component {
     if (seekersResponse.status === 200 && employersResponse.status === 200) {
       console.log('CONFLICT');
       this.setState({
-        userType: 'conflic',
+        userType: 'conflict',
         seekerResponse: seekersResponse,
         employerResponse: employersResponse,
       });
-      this.props.setGS({ login: 'conflic' });
+      this.props.setGS({ login: 'conflict' });
       return;
     }
 
@@ -147,7 +147,7 @@ export default class DevLogin extends Component {
    * @param {string} userType - The type of profile to login.
    * @return {void}
    */
-  resolveUserConflic = (userType) => {
+  resolveUserConflict = (userType) => {
     console.log();
     if (userType === 'seeker') {
       this.handleAxios(this.state.seekerResponse, userType);
@@ -168,8 +168,8 @@ export default class DevLogin extends Component {
   render() {
     const { userType } = this.setState;
 
-    const buttonConflic =
-      this.props.getGS('login') !== 'conflic' ? (
+    const buttonConflict =
+      this.props.getGS('login') !== 'conflict' ? (
         <Button variant="contained" color="primary" onClick={this.handleLogin}>
           Submit
         </Button>
@@ -180,13 +180,13 @@ export default class DevLogin extends Component {
           </Typography>
           <div className="resolve-conflict">
             <Chip
-              onClick={this.resolveUserConflic.bind(this, 'seeker')}
+              onClick={this.resolveUserConflict.bind(this, 'seeker')}
               label="Developer"
               color="primary"
               variant="outlined"
             />
             <Chip
-              onClick={this.resolveUserConflic.bind(this, 'employer')}
+              onClick={this.resolveUserConflict.bind(this, 'employer')}
               label="Employer"
               color="primary"
               variant="outlined"
@@ -225,7 +225,7 @@ export default class DevLogin extends Component {
               />
 
               <br />
-              {buttonConflic}
+              {buttonConflict}
             </div>
 
             <div className="login">

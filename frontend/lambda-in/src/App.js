@@ -32,12 +32,14 @@ class App extends Component {
       userInfo: '', // To be populated after 'login' || 'register' from other components.
       userType: '', // 'seeker' || 'employer'
       login: false, // false || conflic
+      updateState: '', // 'updating' || 'updated' || 'error'
+      deleteState: '', // 'deleting' || 'deleted' || 'error'
     };
     this.resetState = {
       isSignedIn: false,
       userInfo: '',
       userType: '',
-      login: false,
+      login: false, // false || conflict
       updateState: '', // 'updating' || 'updated' || 'error'
       deleteState: '', // 'deleting' || 'deleted' || 'error'
     };
@@ -161,7 +163,9 @@ class App extends Component {
                 )
               }
             />
+
             {/* <Route path="/dev-profile2" render={() => <DevProfile2 getGS={this.getGlobalState} />} /> */}
+
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/dev-info-edit"

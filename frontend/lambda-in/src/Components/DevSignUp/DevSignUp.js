@@ -74,7 +74,7 @@ export default class DevSignUp extends Component {
           userType: 'seeker',
         });
 
-        console.log('POST_EMPLOYER', { status: response.status });
+        console.log('POST_NEW_DEV', { status: response.status });
       })
       .catch(err => {
         this.setState({
@@ -101,13 +101,34 @@ export default class DevSignUp extends Component {
                 </Typography>
               </div>
               {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
-              <TextField id="firstName" label="First Name" value={this.state.firstName} margin="normal" />
+              <TextField
+                id="firstName"
+                label="First Name"
+                value={this.state.firstName}
+                margin="normal"
+              />
 
-              <TextField id="lastName" label="Last Name" value={this.state.lastName} margin="normal" />
+              <TextField
+                id="lastName"
+                label="Last Name"
+                value={this.state.lastName}
+                margin="normal"
+              />
 
-              <TextField id="email" label="Email" value={this.state.email} margin="normal" />
+              <TextField
+                id="email"
+                label="Email"
+                value={this.state.email}
+                margin="normal"
+              />
 
-              <TextField id="password" type="password" label="Password" value={this.state.password} margin="normal" />
+              <TextField
+                id="password"
+                type="password"
+                label="Password"
+                value={this.state.password}
+                margin="normal"
+              />
 
               <TextField
                 id="confirmPassword"
@@ -117,7 +138,11 @@ export default class DevSignUp extends Component {
                 margin="normal"
               />
               <br />
-              <Button variant="contained" color="primary" onClick={this.handNewUser}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.handNewUser}
+              >
                 Submit
               </Button>
             </div>
