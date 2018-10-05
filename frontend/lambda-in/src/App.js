@@ -246,14 +246,9 @@ class App extends Component {
               }
             />
 
-<<<<<<< HEAD
-||||||| merged common ancestors
-
-=======
             {/* JUST for testing the InputGeolocation endpoint */}
             <Route path="/geo-test" component={SearchGeolocation} />
 
->>>>>>> 768ff57b0d7cf5846886afc4fa31c38ba5e69d03
             {/* EMPLOYER END */}
             <Route component={Page404} />
           </Switch>
