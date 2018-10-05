@@ -45,6 +45,9 @@ class ForgotPassword extends Component {
       password: '',
       confirmPassword: '',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handNewUser = this.handNewUser.bind(this);
   }
 
   handleChange(event) {
