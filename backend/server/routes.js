@@ -35,7 +35,6 @@ module.exports = {
   private: (server) => {
     // This serves the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
     server.use('/api/seekers', seekersRouter);
-    
     // This serves the Employers DB. It allows GET, POST, PUT and DELETE
     server.use('/api/employers', employerRouter);
     // server.use('/api/resetPassword', forgotPasswordRouter);
