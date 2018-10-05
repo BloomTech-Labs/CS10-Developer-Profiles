@@ -7,19 +7,32 @@ import axios from "axios";
 import "./OpenPositionEdit.css";
 
 export default class OpenPositionEdit extends Component {
-  /**
-   * Sync APP's global state with input field.
-   */
-  handleChange = event => {
-    this.props.setGS({
-      userInfo: {
-        ...this.props.getGS("userInfo"),
+  constructor(props) {
+    super(props);
+    this.handleDelete = this.handleChange.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.setFormState= this.setFormState.bind(this);
+  }
+
+  componentDidMount() {
+    const { getGS } = this.props;
+
+    this.userStateCopy = { ...getGS('userInfo')};
+    this.setState({...getGS('userInfo')});
+  }
+
+  setFormState(props) {
+    this.setState(props);
+  }
+
+  handleChange(event) {
+    event.stopPropagation();
+    this.setState({
         [event.target.id]: event.target.value
-      }
     });
   };
 
-  update = e => {
+  handleUpdate = e => {
     const userInfo = this.props.getGS("userInfo");
     const _id = userInfo._id;
 
