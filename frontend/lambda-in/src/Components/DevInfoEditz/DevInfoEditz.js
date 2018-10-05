@@ -145,10 +145,11 @@ class DevInfoEdit extends Component {
   handleOnBlur(e) {
     const { id } = e.target;
     const details = id.split('-'); // 'id' came in the following format: 'new-email' || 'edit-email'
+    // console.log('FORM handleOnBlur', { details });
 
     const field = e.target.dataset.field || details[1];
 
-    if (field || details[0] !== 'new') {
+    if (details[0] !== 'new' && field) {
       const dataset = { ...e.target.dataset };
       // console.log('FORM handleOnBlur', {
       //   e: e.target,
@@ -242,7 +243,6 @@ class DevInfoEdit extends Component {
         )
         .then((response) => {
           const updatedData = response.data['Document(s) modified'];
-          
           // eslint-disable-next-line no-console
           // console.log('UPDATE USER', { response, status: response.status });
           /**
