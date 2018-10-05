@@ -147,7 +147,13 @@ export default class DevLogin extends Component {
    * @param {string} userType - The type of profile to login.
    * @return {void}
    */
+<<<<<<< HEAD
   resolveUserConflict = (userType) => {
+||||||| merged common ancestors
+  resolveUserConflic = userType => {
+=======
+  resolveUserConflic = (userType) => {
+>>>>>>> 9e1d16225371340aefafe6094ab9d2ed2fc631c3
     console.log();
     if (userType === 'seeker') {
       this.handleAxios(this.state.seekerResponse, userType);
@@ -235,9 +241,11 @@ export default class DevLogin extends Component {
                 </Typography>
               </Link>
               <br />
-              <Typography variant="caption" gutterBottom align="center">
-                forgot password?
-              </Typography>
+              <Link to="/reset-password-email">
+                <Typography variant="caption" gutterBottom align="center">
+                  forgot password?
+                </Typography>
+              </Link>
             </div>
           </Paper>
         </div>

@@ -19,28 +19,64 @@ import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
 
 import PassProps from './Components/DevInfoEditz/DevInfoEditz';
 
+<<<<<<< HEAD
 import DevList from './Components/DevList/DevList';
 import Page404 from './Components/Page404/Page404';
+||||||| merged common ancestors
+import DevList from "./Components/DevList/DevList";
+import Page404 from "./Components/Page404/Page404";
+=======
+import DevList from './Components/DevList/DevList';
+import Page404 from './Components/Page404/Page404';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
+import SendPasswordToEmail from './Components/ForgotPassword/SendPasswordToEmail';
+>>>>>>> 9e1d16225371340aefafe6094ab9d2ed2fc631c3
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isSignedIn: false,
+<<<<<<< HEAD
       userInfo: '', // To be populated after 'login' || 'register' from other components.
       userType: '', // 'seeker' || 'employer'
       login: false, // false || conflic
       updateState: '', // 'updating' || 'updated' || 'error'
       deleteState: '', // 'deleting' || 'deleted' || 'error'
+||||||| merged common ancestors
+      userInfo: "", // To be populated after 'login' || 'register' from other components.
+      userType: "", // 'seeker' || 'employer'
+      login: false // false || conflic
+=======
+      userInfo: '', // To be populated after 'login' || 'register' from other components.
+      userType: '', // 'seeker' || 'employer'
+      login: false, // false || conflic
+>>>>>>> 9e1d16225371340aefafe6094ab9d2ed2fc631c3
     };
     this.resetState = {
       isSignedIn: false,
+<<<<<<< HEAD
       userInfo: '',
       userType: '',
       login: false, // false || conflict
       updateState: '', // 'updating' || 'updated' || 'error'
       deleteState: '', // 'deleting' || 'deleted' || 'error'
+||||||| merged common ancestors
+      userInfo: "",
+      userType: "",
+      login: false,
+      updateState: "", // 'updating' || 'updated' || 'error'
+      deleteState: "" // 'deleting' || 'deleted' || 'error'
+=======
+      userInfo: '',
+      userType: '',
+      login: false,
+      updateState: '', // 'updating' || 'updated' || 'error'
+      deleteState: '', // 'deleting' || 'deleted' || 'error'
+>>>>>>> 9e1d16225371340aefafe6094ab9d2ed2fc631c3
     };
+    this.setGlobalState = this.setGlobalState.bind(this);
+    this.getGlobalState = this.getGlobalState.bind(this);
   }
 
   /**
@@ -53,25 +89,37 @@ class App extends Component {
    * @example Pass as a prop to component.
    * <Component setGS={this.setGlobalState} />
    */
+<<<<<<< HEAD
   setGlobalState = (properties) => {
+||||||| merged common ancestors
+  setGlobalState = properties => {
+=======
+  setGlobalState(properties) {
+>>>>>>> 9e1d16225371340aefafe6094ab9d2ed2fc631c3
     console.log({ setGS: properties });
     this.setState(properties);
-  };
+  }
 
   /**
    * Get APP's global state.
    *
    * @method getGlobalState
    * @param {string} property - the property of which we want to know its value.
-   * @return {object} App's global state.
+   * @return {object} App'0s global state.
    *
    * @example Pass as a prop to component.
    * <Component getGS={this.getGlobalState} />
    */
+<<<<<<< HEAD
   getGlobalState = (property) => {
+||||||| merged common ancestors
+  getGlobalState = property => {
+=======
+  getGlobalState(property) {
+>>>>>>> 9e1d16225371340aefafe6094ab9d2ed2fc631c3
     const self = this;
     return property ? self.state[property] : self.state;
-  };
+  }
 
   /**
    * Logout user && Remove JWT.
@@ -246,6 +294,22 @@ class App extends Component {
               }
             />
 
+<<<<<<< HEAD
+||||||| merged common ancestors
+
+=======
+            <Route
+              path="/api/saveresethash/reset/:id"
+              component={ForgotPassword}
+            />
+            <Route
+              path="/reset-password-email"
+              component={SendPasswordToEmail}
+            />
+            {/* JUST for testing the InputGeolocation endpoint */}
+            <Route path="/geo-test" component={SearchGeolocation} />
+
+>>>>>>> 9e1d16225371340aefafe6094ab9d2ed2fc631c3
             {/* EMPLOYER END */}
             <Route component={Page404} />
           </Switch>
