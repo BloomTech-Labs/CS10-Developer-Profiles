@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AOS from 'aos';
@@ -50,43 +49,49 @@ class SendPasswordToEmail extends Component {
     this.handNewUser = this.handNewUser.bind(this);
   }
 
-  handleChange = event => {
+  handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
     });
-  };
+  }
 
-  handNewUser = event => {
+  /**
+   * @todo Fix UX for alerts
+   */
+  handNewUser(event) {
     event.preventDefault();
+
+    const { email } = this.state;
 
     /**
      * VALIDATE password input.
      * @description Validate that `password` and `confirmPassword` fields match.
      */
-
     axios
       .post('/api/saveresethash/', {
-        email: this.state.email,
+        email,
       })
-      .then(response => {
-        console.log(response);
+      .then((response) => {
         if (response.data) {
+          // eslint-disable-next-line no-alert
           alert(response.data.success);
         } else {
+          // eslint-disable-next-line no-alert
           alert("sorry, we cant't find your email in our database");
         }
         this.setState({
           email: '',
         });
       })
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
+        // eslint-disable-next-line no-alert
         alert(' oh oh you broke our site!');
       });
-  };
+  }
 
   render() {
     const { classes } = this.props;
+    const { email } = this.state;
 
     return (
       <div data-aos="zoom-in-down" className={classes.forgotPasswordContainer}>
@@ -104,7 +109,7 @@ class SendPasswordToEmail extends Component {
               id="email"
               placeholder="We will send a Password Reset Link Here!"
               label="Email"
-              value={this.state.email}
+              value={email}
               margin="normal"
               onChange={this.handleChange}
             />
@@ -127,6 +132,8 @@ class SendPasswordToEmail extends Component {
   }
 }
 
-SendPasswordToEmail.propTypes = {};
+SendPasswordToEmail.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+};
 
 export default withStyles(styles)(SendPasswordToEmail);
