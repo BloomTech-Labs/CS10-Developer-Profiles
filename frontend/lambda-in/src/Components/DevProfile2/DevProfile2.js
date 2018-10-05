@@ -43,6 +43,23 @@ export default ({ getGS, setGS }) => {
       repo: 'Repository',
       // tech: ['Stack'], // TODO
     },
+    experience: {
+      title: 'Title',
+      company: 'Company',
+      // location: 'Location', // TODO: validate geolocation data
+      headline: 'Head line',
+      description: 'Description',
+      startYear: 'Start year yy/mm/dd',
+      endYear: 'End year yy/mm/dd',
+    },
+    education: {
+      school: 'School',
+      degree: 'Degree',
+      fieldOfStudy: 'Field of study',
+      startYear: 'Star year yy/mm/dd',
+      endYear: 'End year yy/mm/dd',
+      description: 'Description',
+    },
   };
 
   return (
@@ -125,15 +142,20 @@ export default ({ getGS, setGS }) => {
               itemType="object"
               schema={schemas.projects}
             />
-            <div className="profileProjects">
-              <div>Education: </div>
-            </div>
-            <div className="profileProjects">
-              <div>Experience: </div>
-            </div>
-            <div className="profileProjects">
-              <div>Locations Interested: </div>
-            </div>
+            <ArraySectionDisplay
+              header="Experience"
+              userInfo={userInfo}
+              field="experience"
+              itemType="object"
+              schema={schemas.experience}
+            />
+            <ArraySectionDisplay
+              header="Education"
+              userInfo={userInfo}
+              field="education"
+              itemType="object"
+              schema={schemas.education}
+            />
             <div className="profileButtons">
               <Link to="/dev-info-edit">
                 <Button variant="outlined" color="primary">
