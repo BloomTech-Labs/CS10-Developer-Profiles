@@ -1,13 +1,15 @@
 import React from 'react';
+import DropDown from '../DropDown/DropDown';
+import MapDropDownDisplay from '../MapArrays/MapDropDownDisplay';
 
-const ArraySectionDisplay = () => {
+const ArraySectionDisplay = (props) => {
   const { header, userInfo, field, itemType, schema } = props;
 
   const propsAndLabels = Object.entries(schema);
 
   return (
-    <div header={header}>
-      <MapDropDown
+    <DropDown header={header}>
+      <MapDropDownDisplay
         isProfile
         array={userInfo[field]}
         field={field}
@@ -15,5 +17,8 @@ const ArraySectionDisplay = () => {
         schema={schema}
         propsAndLabels={propsAndLabels}
       />
-    </div>
+    </DropDown>
   );
+};
+
+export default ArraySectionDisplay;
