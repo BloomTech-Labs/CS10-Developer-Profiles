@@ -62,7 +62,7 @@ export default class DevLogin extends Component {
    * @param {event} event - Even object
    */
   /* eslint-disable */
-  handleLogin = async event => {
+  handleLogin = async (event) => {
     event.preventDefault();
 
     const loginData = {
@@ -126,12 +126,16 @@ export default class DevLogin extends Component {
     this.setState({ password: '' });
     alert('Error with your credential'); // TODO: Improve UX
 
-    console.log({ 'HTTP login seekersResponse status': seekersResponse.status });
-    console.log({ 'HTTP login employersResponse status': employersResponse.status });
+    console.log({
+      'HTTP login seekersResponse status': seekersResponse.status,
+    });
+    console.log({
+      'HTTP login employersResponse status': employersResponse.status,
+    });
   };
   /* eslint-enable */
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
     });
@@ -143,7 +147,7 @@ export default class DevLogin extends Component {
    * @param {string} userType - The type of profile to login.
    * @return {void}
    */
-  resolveUserConflic = userType => {
+  resolveUserConflic = (userType) => {
     console.log();
     if (userType === 'seeker') {
       this.handleAxios(this.state.seekerResponse, userType);
@@ -205,7 +209,12 @@ export default class DevLogin extends Component {
                   Login
                 </Typography>
               </div>
-              <TextField id="email" label="Email" value={this.state.email} margin="normal" />
+              <TextField
+                id="email"
+                label="Email"
+                value={this.state.email}
+                margin="normal"
+              />
 
               <TextField
                 id="password"
@@ -226,9 +235,11 @@ export default class DevLogin extends Component {
                 </Typography>
               </Link>
               <br />
-              <Typography variant="caption" gutterBottom align="center">
-                forgot password?
-              </Typography>
+              <Link to="/reset-password-email">
+                <Typography variant="caption" gutterBottom align="center">
+                  forgot password?
+                </Typography>
+              </Link>
             </div>
           </Paper>
         </div>

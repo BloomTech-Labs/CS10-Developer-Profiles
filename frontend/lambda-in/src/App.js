@@ -21,6 +21,8 @@ import PassProps from './Components/DevInfoEditz/DevInfoEditz';
 
 import DevList from './Components/DevList/DevList';
 import Page404 from './Components/Page404/Page404';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
+import SendPasswordToEmail from './Components/ForgotPassword/SendPasswordToEmail';
 
 class App extends Component {
   constructor(props) {
@@ -39,6 +41,8 @@ class App extends Component {
       updateState: '', // 'updating' || 'updated' || 'error'
       deleteState: '', // 'deleting' || 'deleted' || 'error'
     };
+    this.setGlobalState = this.setGlobalState.bind(this);
+    this.getGlobalState = this.getGlobalState.bind(this);
   }
 
   /**
@@ -51,25 +55,25 @@ class App extends Component {
    * @example Pass as a prop to component.
    * <Component setGS={this.setGlobalState} />
    */
-  setGlobalState = (properties) => {
+  setGlobalState(properties) {
     console.log({ setGS: properties });
     this.setState(properties);
-  };
+  }
 
   /**
    * Get APP's global state.
    *
    * @method getGlobalState
    * @param {string} property - the property of which we want to know its value.
-   * @return {object} App's global state.
+   * @return {object} App'0s global state.
    *
    * @example Pass as a prop to component.
    * <Component getGS={this.getGlobalState} />
    */
-  getGlobalState = (property) => {
+  getGlobalState(property) {
     const self = this;
     return property ? self.state[property] : self.state;
-  };
+  }
 
   /**
    * Logout user && Remove JWT.
@@ -151,7 +155,7 @@ class App extends Component {
               path="/dev-profile"
               render={() =>
                 isSignedIn ? (
-                  <DevProfile getGS={this.getGlobalState} />
+                  <DevProfile2 getGS={this.getGlobalState} />
                 ) : (
                   <Redirect to="/" />
                 )
@@ -242,6 +246,14 @@ class App extends Component {
               }
             />
 
+            <Route
+              path="/api/saveresethash/reset/:id"
+              component={ForgotPassword}
+            />
+            <Route
+              path="/reset-password-email"
+              component={SendPasswordToEmail}
+            />
             {/* JUST for testing the InputGeolocation endpoint */}
             <Route path="/geo-test" component={SearchGeolocation} />
 
