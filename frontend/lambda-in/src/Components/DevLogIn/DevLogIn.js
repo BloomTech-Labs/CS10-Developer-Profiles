@@ -60,7 +60,7 @@ class DevLogin extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
-    this.resolveUserConflic = this.resolveUserConflic.bind(this);
+    this.resolveUserConflict = this.resolveUserConflict.bind(this);
   }
 
   /**
@@ -124,7 +124,7 @@ class DevLogin extends Component {
       employersResponse = { ...err.response };
     }
     /**
-     * If both users are in the DB set set global's 'login' state to 'conflic'
+     * If both users are in the DB set set global's 'login' state to 'conflict'
      * then save both http response in the local-state
      *
      * 'login' === 'conflict' will display a UI feature to resolve the conflict.
@@ -134,9 +134,7 @@ class DevLogin extends Component {
         seekerResponse: seekersResponse,
         employerResponse: employersResponse,
       });
-
-      setGS({ login: 'conflic' });
-
+      setGS({ login: 'conflict' });
       return;
     }
 
@@ -163,6 +161,13 @@ class DevLogin extends Component {
      */
     this.setState({ password: '' });
     alert('Error with your credential'); // eslint-disable-line no-alert
+
+    console.log({
+      'HTTP login seekersResponse status': seekersResponse.status,
+    });
+    console.log({
+      'HTTP login employersResponse status': employersResponse.status,
+    });
   }
 
   handleChange(event) {
@@ -177,7 +182,7 @@ class DevLogin extends Component {
    * @param {string} userType - The type of profile to login.
    * @return {void}
    */
-  resolveUserConflic(userType) {
+  resolveUserConflict(userType) {
     const { seekerResponse, employerResponse } = this.state;
 
     if (userType === 'seeker') {
@@ -200,7 +205,7 @@ class DevLogin extends Component {
     const { classes, getGS } = this.props;
 
     const buttonConflict =
-      getGS('login') !== 'conflic' ? (
+      getGS('login') !== 'conflict' ? (
         <React.Fragment>
           <label htmlFor="input-submit-button">
             <input
@@ -225,13 +230,13 @@ class DevLogin extends Component {
           </Typography>
           <div className={classes.resolveConflict}>
             <Chip
-              onClick={() => this.resolveUserConflic('seeker')}
+              onClick={() => this.resolveUserConflict('seeker')}
               label="Developer"
               color="primary"
               variant="outlined"
             />
             <Chip
-              onClick={() => this.resolveUserConflic('employer')}
+              onClick={() => this.resolveUserConflict('employer')}
               label="Employer"
               color="primary"
               variant="outlined"
@@ -277,9 +282,11 @@ class DevLogin extends Component {
               </Typography>
             </Link>
             <br />
-            <Typography variant="caption" gutterBottom align="center">
-              Forgot Password?
-            </Typography>
+            <Link to="/reset-password-email">
+              <Typography variant="caption" gutterBottom align="center">
+                Forgot Password?
+              </Typography>
+            </Link>
           </div>
         </Paper>
       </div>

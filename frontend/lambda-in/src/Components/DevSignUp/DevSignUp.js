@@ -116,6 +116,8 @@ class DevSignUp extends Component {
           isSignedIn: true,
           userType: 'seeker',
         });
+
+        console.log('POST_NEW_DEV', { status: response.status });
       })
       .catch(() => {
         this.setState({
