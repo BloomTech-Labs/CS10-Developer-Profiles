@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 import AOS from 'aos';
 import axios from 'axios';
@@ -46,26 +45,36 @@ class ForgotPassword extends Component {
       confirmPassword: '',
     };
   }
-  handleChange = event => {
+
+  handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
     });
-  };
+  }
 
-  handNewUser = event => {
+  /**
+   * @todo Fix UX for alerts
+   */
+  handNewUser(event) {
     event.preventDefault();
-    if (this.state.password !== this.state.confirmPassword) {
+
+    const { password, confirmPassword } = this.state;
+    const { match } = this.props;
+
+    if (password !== confirmPassword) {
+      // eslint-disable-next-line no-alert
       alert("your passwords don't match. please try again.");
     }
     axios
-      .post(`/api/saveresethash/reset/${this.props.match.params.id}/`, {
-        password: this.state.password,
+      .post(`/api/saveresethash/reset/${match.params.id}/`, {
+        password,
       })
-      .then(response => {
-        console.log(response);
+      .then((response) => {
         if (response.data) {
+          // eslint-disable-next-line no-alert
           alert(response.data.success);
         } else {
+          // eslint-disable-next-line no-alert
           alert("sorry! we weren't able to change your password!");
         }
         this.setState({
@@ -73,13 +82,15 @@ class ForgotPassword extends Component {
           confirmPassword: '',
         });
       })
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
+        // eslint-disable-next-line no-alert
         alert(' oh oh you broke our site!');
       });
-  };
+  }
+
   render() {
     const { classes } = this.props;
+    const { password, confirmPassword } = this.state;
 
     return (
       <div data-aos="zoom-in-down" className={classes.forgotPasswordContainer}>
@@ -98,7 +109,7 @@ class ForgotPassword extends Component {
               type="password"
               placeholder="Your new password goes here!"
               label="Password"
-              value={this.state.password}
+              value={password}
               margin="normal"
             />
             <TextField
@@ -106,7 +117,7 @@ class ForgotPassword extends Component {
               type="password"
               placeholder="Confirm your password!"
               label="Confirm Password"
-              value={this.state.confirmPassword}
+              value={confirmPassword}
               margin="normal"
             />
             <br />
