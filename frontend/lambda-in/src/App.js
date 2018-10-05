@@ -1,26 +1,26 @@
-import React, { Component, Fragment } from "react";
-import { Route, Switch, Link, Redirect, withRouter } from "react-router-dom";
-import "./App.css";
-import NavBar from "./Components/Navbar/navbar";
-import DevSignUp from "./Components/DevSignUp/DevSignUp";
-import DevLogin from "./Components/DevLogIn/DevLogIn";
-import LandingPage from "./Components/LandingPage/landing-page";
-import DevProfile from "./Components/DevProfile/DevProfile";
-import DevProfile2 from "./Components/DevProfile2/DevProfile2";
-import DevInfoEditz from "./Components/DevInfoEditz/DevInfoEditz";
-import Billing from "./Components/Billing/billing";
-import EmpSignUp from "./Components/EmployerSignUp/EmployerSignUp";
-import EmpProfile from "./Components/EmpProfile/EmpProfile";
-import EmpPositionAdd from "./Components/OpenPositionAdd/OpenPositionAdd";
-import EmpPositionEdit from "./Components/OpenPositionEdit/OpenPositionEdit";
+import React, { Component, Fragment } from 'react';
+import { Route, Switch, Link, Redirect, withRouter } from 'react-router-dom';
+import './App.css';
+import NavBar from './Components/Navbar/navbar';
+import DevSignUp from './Components/DevSignUp/DevSignUp';
+import DevLogin from './Components/DevLogIn/DevLogIn';
+import LandingPage from './Components/LandingPage/landing-page';
+import DevProfile from './Components/DevProfile/DevProfile';
+import DevProfile2 from './Components/DevProfile2/DevProfile2';
+import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
+import Billing from './Components/Billing/billing';
+import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
+import EmpProfile from './Components/EmpProfile/EmpProfile';
+import EmpPositionAdd from './Components/OpenPositionAdd/OpenPositionAdd';
+import EmpPositionEdit from './Components/OpenPositionEdit/OpenPositionEdit';
 
-import UserSetting from "./Components/UserSetting/UserSetting";
-import SearchGeolocation from "./Components/InputGeolocation/SearchGeolocation";
+import UserSetting from './Components/UserSetting/UserSetting';
+import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
 
-import PassProps from "./Components/DevInfoEditz/DevInfoEditz";
+import PassProps from './Components/DevInfoEditz/DevInfoEditz';
 
-import DevList from "./Components/DevList/DevList";
-import Page404 from "./Components/Page404/Page404";
+import DevList from './Components/DevList/DevList';
+import Page404 from './Components/Page404/Page404';
 
 class App extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class App extends Component {
    * @example Pass as a prop to component.
    * <Component setGS={this.setGlobalState} />
    */
-  setGlobalState = properties => {
+  setGlobalState = (properties) => {
     console.log({ setGS: properties });
     this.setState(properties);
   };
@@ -68,7 +68,7 @@ class App extends Component {
    * @example Pass as a prop to component.
    * <Component getGS={this.getGlobalState} />
    */
-  getGlobalState = property => {
+  getGlobalState = (property) => {
     const self = this;
     return property ? self.state[property] : self.state;
   };
@@ -84,10 +84,10 @@ class App extends Component {
    * <Component logOut={this.handleLogout} />
    */
   handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
 
     // Check if token was deleted.
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem('token')) {
       return false;
     } else {
       this.setState(this.resetState);
@@ -98,9 +98,8 @@ class App extends Component {
   render() {
     const { isSignedIn } = this.state;
     const redirectToUserProfile =
-      this.state.userType === "seeker" ? (
-
-        <Redirect to="/dev-profile" />
+      this.state.userType === 'seeker' ? (
+        <Redirect to="/dev-info-edit" />
       ) : (
         <Redirect to="/emp-profile" />
       );
@@ -166,7 +165,7 @@ class App extends Component {
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/dev-info-edit"
-              render={props =>
+              render={(props) =>
                 isSignedIn ? (
                   <DevInfoEditz
                     {...props}
@@ -202,7 +201,7 @@ class App extends Component {
             {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/emp-info-edit"
-              render={props =>
+              render={(props) =>
                 isSignedIn ? (
                   <EmpPositionEdit
                     {...props}
@@ -218,7 +217,7 @@ class App extends Component {
             {/* ADD POSITION: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/emp-pos-add"
-              render={props =>
+              render={(props) =>
                 isSignedIn ? (
                   <EmpPositionAdd
                     {...props}
@@ -231,11 +230,10 @@ class App extends Component {
               }
             />
 
-
             {/* EDIT POSITION: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/emp-pos-edit"
-              render={props =>
+              render={(props) =>
                 isSignedIn ? (
                   <EmpPositionEdit
                     {...props}
@@ -247,7 +245,6 @@ class App extends Component {
                 )
               }
             />
-
 
             {/* EMPLOYER END */}
             <Route component={Page404} />
