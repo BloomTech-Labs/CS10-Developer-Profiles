@@ -10,6 +10,7 @@ import lambdaColorImg from './img/lambdaColor.png';
 import GitHubImg from './img/GitHub.png';
 import linkedinImg from './img/linkedin.jpg';
 import portfolioImg from './img/portfolio.png';
+import ArraySectionDisplay from '../utilityComponents/ArraySection/ArraySectionDisplay';
 
 export default ({ getGS, setGS }) => {
   const userInfo = getGS('userInfo');
@@ -18,12 +19,7 @@ export default ({ getGS, setGS }) => {
   const AS = userInfo.additionalSkills;
   const SS = userInfo.skills;
   const allSkills = TS.concat(AS, SS);
-  const skillList = allSkills.map((skill) => (
-    <li>
-      {skill}
-      {` `}
-    </li>
-  ));
+  const skillList = allSkills.map((skill) => <li>{skill}</li>);
 
   let handleOpen = () => {
     setGS({ DevProfileModal: true });
@@ -31,6 +27,22 @@ export default ({ getGS, setGS }) => {
 
   let handleClose = () => {
     setGS({ DevProfileModal: false });
+  };
+
+  /**
+   * This one.
+   * PENDING FIELDS TO IMPLEMENT: "familiarWith", "projects", "experience", "education", "placesInterested"
+   * All them are Arrays of objects.
+   */
+  const schemas = {
+    projects: {
+      title: 'Title',
+      description: 'Description',
+      img: 'Image',
+      link: 'Link',
+      repo: 'Repository',
+      // tech: ['Stack'], // TODO
+    },
   };
 
   return (
@@ -106,9 +118,13 @@ export default ({ getGS, setGS }) => {
         </div>
         <div className="profileBottomCard">
           <Paper>
-            <div className="profileProjects">
-              <div>Projects: </div>
-            </div>
+            <ArraySectionDisplay
+              header="Projects"
+              userInfo={userInfo}
+              field="projects"
+              itemType="object"
+              schema={schemas.projects}
+            />
             <div className="profileProjects">
               <div>Education: </div>
             </div>
