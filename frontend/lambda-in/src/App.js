@@ -155,7 +155,7 @@ class App extends Component {
               path="/dev-profile"
               render={() =>
                 isSignedIn ? (
-                  <DevProfile getGS={this.getGlobalState} />
+                  <DevProfile2 getGS={this.getGlobalState} />
                 ) : (
                   <Redirect to="/" />
                 )
