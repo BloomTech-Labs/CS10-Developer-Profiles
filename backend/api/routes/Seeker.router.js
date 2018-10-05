@@ -4,10 +4,7 @@ const { RouterFactory } = require('express-router-factory');
 const { userHasToken } = require('../middleware/authentication');
 const { getSeekers } = require('../middleware/getters');
 const Seekers = require('../models/Seeker/Seeker.model');
-const passport = require("passport");
-const async = require("async");
-const nodemailer = require("nodemailer");
-const crypto = require("crypto");
+
 /**
  * Seekers CRUD endpoints
  *

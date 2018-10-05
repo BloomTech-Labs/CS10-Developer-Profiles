@@ -32,24 +32,6 @@ module.exports = {
       });
     }
   },
-<<<<<<< HEAD
-||||||| merged common ancestors
-  private: (server) => {
-    // This serves the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
-    server.use('/api/seekers', seekersRouter);
-
-    // This serves the Employers DB. It allows GET, POST, PUT and DELETE
-    server.use('/api/employers', employerRouter);
-  },
-  payments: {
-    /**
-     * Define an endpoint to process Stripe payment requests
-     */
-    stripe: (server) => {
-      server.use('/payments/stripe', stripeRouter);
-    },
-  },
-=======
   private: (server) => {
     // This serves the Seekers (Employees) DB. It allows GET, POST, PUT and DELETE
     server.use('/api/seekers', seekersRouter);
@@ -66,5 +48,4 @@ module.exports = {
       server.use('/payments/stripe', stripeRouter);
     },
   },
->>>>>>> f208695987f92b68ce62ed87a15a7ee39e3dab6a
 };
