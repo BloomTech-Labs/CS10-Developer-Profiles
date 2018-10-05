@@ -30,6 +30,22 @@ class EmployerPositionCard extends React.Component {
     });
   }
 
+  handleEdit(e) {
+    const id = e.target.database.id;
+    axios.put(`/api/register/employers/${id}`,
+    {
+      ...userInfo, // UPDATE current userInfo's state. TODO: pass only updated fields.
+    },
+    {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    },).then(() => {
+      window.location.reload();
+    });
+  }
+
+
   render() {
     return (
       <div
@@ -79,9 +95,9 @@ class EmployerPositionCard extends React.Component {
           <div className="cardButtons">
             <Button
               className="cardButton"
-              component={Link} to="/emp-pos-edit"
               variant="contained"
               color="primary"
+              onClick={this.handleDelete}
             >
               Edit
             </Button>
