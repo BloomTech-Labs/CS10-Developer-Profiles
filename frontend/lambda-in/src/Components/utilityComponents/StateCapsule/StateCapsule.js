@@ -74,10 +74,15 @@ class StateCapsule extends Component {
   }
 
   handleKeyPress(e) {
+    // console.log({
+    //   key: e.key,
+    //   value: e.target.value,
+    //   'data-chips': e.target.dataset.chips,
+    // });
     e.stopPropagation();
-    // // console.log(e.key, e.target.value);
+    const { chips } = e.target.dataset;
 
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && chips) {
       e.preventDefault();
 
       const details = e.target.id.split('-');
