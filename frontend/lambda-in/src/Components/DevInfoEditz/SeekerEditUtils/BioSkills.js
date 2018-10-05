@@ -60,6 +60,7 @@ const BioSkills = (props) => {
                     variant="outlined"
                     inputProps={{
                       // info for the DevInfoEditz's onBlur handler.
+                      'data-chips': true,
                       'data-field': field,
                       'data-itemType': 'string',
                       'data-value': stateCapsule.topSkills.join('-'),
