@@ -10,8 +10,8 @@ const Education = (props) => {
     school: 'School',
     degree: 'Degree',
     fieldOfStudy: 'Field of study',
-    startYear: 'Star year',
-    endYear: 'End year',
+    startYear: 'Star year yy/mm/dd',
+    endYear: 'End year yy/mm/dd',
     description: 'Description',
   };
 

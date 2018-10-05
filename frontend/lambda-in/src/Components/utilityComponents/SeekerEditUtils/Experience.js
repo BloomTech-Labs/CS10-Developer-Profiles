@@ -10,11 +10,11 @@ const Experience = (props) => {
   const schema = {
     title: 'Title',
     company: 'Company',
-    location: 'Location',
+    // location: 'Location', // TODO: validate geolocation data
     headline: 'Head line',
     description: 'Description',
-    startYear: 'Start year',
-    endYear: 'End year',
+    startYear: 'Start year yy/mm/dd',
+    endYear: 'End year yy/mm/dd',
   };
 
   return (
