@@ -1,9 +1,13 @@
+/* eslint-disable */
 const express = require('express');
 const { RouterFactory } = require('express-router-factory');
 const { userHasToken } = require('../middleware/authentication');
 const { getSeekers } = require('../middleware/getters');
 const Seekers = require('../models/Seeker/Seeker.model');
-
+const passport = require("passport");
+const async = require("async");
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
 /**
  * Seekers CRUD endpoints
  *
@@ -12,6 +16,8 @@ const Seekers = require('../models/Seeker/Seeker.model');
  * Authenticate POST, PUT and DELETE endpoints with userHasToken()
  */
 const router = express.Router();
+
+
 const seekersRF = new RouterFactory(router, Seekers);
 
 // Set projections

@@ -73,7 +73,15 @@ export default class DevLogin extends Component {
     /**
      * Validate credential in both endpoints ('seeker' and 'employers')
      */
+<<<<<<< HEAD
     let seekersResponse, employersResponse;
+||||||| merged common ancestors
+    const seekersResponse = await axios.post('/api/login/seekers', loginData);
+    const employersResponse = await axios.post('/api/login/employers', loginData);
+=======
+    const seekersResponse = await axios.post('/api/login/seekers/', loginData);
+    const employersResponse = await axios.post('/api/login/employers/', loginData);
+>>>>>>> f208695987f92b68ce62ed87a15a7ee39e3dab6a
 
     try {
       seekersResponse = await axios.post('/api/login/seekers', loginData);
@@ -226,9 +234,11 @@ export default class DevLogin extends Component {
                 </Typography>
               </Link>
               <br />
-              <Typography variant="caption" gutterBottom align="center">
-                forgot password?
-              </Typography>
+              <Link to="/reset-password-email">
+                <Typography variant="caption" gutterBottom align="center">
+                  forgot password?
+                </Typography>
+              </Link>
             </div>
           </Paper>
         </div>
