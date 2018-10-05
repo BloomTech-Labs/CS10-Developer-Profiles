@@ -10,7 +10,6 @@ import lambdaColorImg from './img/lambdaColor.png';
 import GitHubImg from './img/GitHub.png';
 import linkedinImg from './img/linkedin.jpg';
 import portfolioImg from './img/portfolio.png';
-import ArraySection from '../utilityComponents/ArraySection/ArraySection';
 
 export default ({ getGS, setGS }) => {
   const userInfo = getGS('userInfo');
@@ -19,7 +18,12 @@ export default ({ getGS, setGS }) => {
   const AS = userInfo.additionalSkills;
   const SS = userInfo.skills;
   const allSkills = TS.concat(AS, SS);
-  const skillList = allSkills.map((skill) => <li>{skill}</li>);
+  const skillList = allSkills.map(skill => (
+    <li>
+      {skill}
+      {` `}
+    </li>
+  ));
 
   let handleOpen = () => {
     setGS({ DevProfileModal: true });
@@ -29,33 +33,12 @@ export default ({ getGS, setGS }) => {
     setGS({ DevProfileModal: false });
   };
 
-  /**
-   * This one.
-   * PENDING FIELDS TO IMPLEMENT: "familiarWith", "projects", "experience", "education", "placesInterested"
-   * All them are Arrays of objects.
-   */
-  const field = 'projects';
-  const itemType = 'object';
-  const schema = {
-    title: 'Title',
-    description: 'Description',
-    img: 'Image',
-    link: 'Link',
-    repo: 'Repository',
-    // tech: ['Stack'], // TODO
-  };
-  const schemas = {};
-
   return (
     <div className="profileContainer">
       <Paper className="profilePaper">
         <div className="profileTopCard">
           <div className="profileImage">
-            <img
-              className="profileImage"
-              src="https://robohash.org/tony"
-              alt="Italian "
-            />
+            <img className="profileImage" src="https://robohash.org/tony" alt="Italian " />
           </div>
           <div className="profileBio">
             <div className="basicInfo">
@@ -84,49 +67,24 @@ export default ({ getGS, setGS }) => {
           </div>
           <div className="profileLinks">
             <a href={userInfo.acclaimBadge}>
-              <img
-                src={lambdaColorImg}
-                className="profileLinksIcon"
-                title="Acclaimed Badge"
-                alt="Badge"
-              />
+              <img src={lambdaColorImg} className="profileLinksIcon" title="Acclaimed Badge" alt="Badge" />
             </a>
             <a href={userInfo.github}>
-              <img
-                src={GitHubImg}
-                className="profileLinksIcon"
-                title="Github"
-                alt="Github Repo"
-              />
+              <img src={GitHubImg} className="profileLinksIcon" title="Github" alt="Github Repo" />
             </a>
             <a href={userInfo.linkedin}>
-              <img
-                src={linkedinImg}
-                className="profileLinksIcon"
-                title="Linkedin"
-                alt="Linkedin"
-              />
+              <img src={linkedinImg} className="profileLinksIcon" title="Linkedin" alt="Linkedin" />
             </a>
             <a href={userInfo.portfolio}>
-              <img
-                src={portfolioImg}
-                className="profileLinksIcon"
-                title="Portfolio"
-                alt="Portfolio"
-              />
+              <img src={portfolioImg} className="profileLinksIcon" title="Portfolio" alt="Portfolio" />
             </a>
           </div>
         </div>
         <div className="profileBottomCard">
           <Paper>
-            <ArraySection
-              isProfile
-              header="Projects"
-              userInfo={userInfo}
-              field={field}
-              itemType={itemType}
-              schema={schema}
-            />
+            <div className="profileProjects">
+              <div>Projects: </div>
+            </div>
             <div className="profileProjects">
               <div>Education: </div>
             </div>
