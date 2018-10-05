@@ -147,7 +147,7 @@ export default class DevLogin extends Component {
    * @param {string} userType - The type of profile to login.
    * @return {void}
    */
-  resolveUserConflic = (userType) => {
+  resolveUserConflict = (userType) => {
     console.log();
     if (userType === 'seeker') {
       this.handleAxios(this.state.seekerResponse, userType);
