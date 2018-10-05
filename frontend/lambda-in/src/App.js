@@ -186,9 +186,7 @@ class App extends Component {
                   redirectToUserProfile
                 ) : (
                   <EmpSignUp
-                    {...props}
                     setGS={this.setGlobalState}
-                    getGS={this.getGlobalState}
                   />
                 )
               }
