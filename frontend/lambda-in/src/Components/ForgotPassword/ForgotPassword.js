@@ -1,88 +1,131 @@
 /* eslint-disable */
 import React, { Component } from 'react';
+import AOS from 'aos';
+import axios from 'axios';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import axios from 'axios';
 
-export default class ForgotPassword extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+import 'aos/dist/aos.css';
+
+AOS.init();
+
+const styles = {
+  forgotPasswordContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100vh',
+    padding: '10px 0',
+    width: '100vw',
+  },
+  forgotPasswordForm: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '20px',
+    padding: '5px',
+    width: '30vw',
+  },
+  paper: {
+    alignSelf: 'center',
+  },
+  submitButton: {
+    width: '100%',
+  },
+  submitInput: {
+    display: 'none',
+  },
+};
+
+class ForgotPassword extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      password: '',
+      confirmPassword: '',
+    };
+  }
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value,
+    });
+  };
+
+  handNewUser = event => {
+    event.preventDefault();
+    if (this.state.password !== this.state.confirmPassword) {
+      alert("your passwords don't match. please try again.");
+    }
+    axios
+      .post(`/api/saveresethash/reset/${this.props.match.params.id}/`, {
+        password: this.state.password,
+      })
+      .then(response => {
+        console.log(response);
+        if (response.data) {
+          alert(response.data.success);
+        } else {
+          alert("sorry! we weren't able to change your password!");
+        }
+        this.setState({
           password: '',
           confirmPassword: '',
-        };
-      }
-      handleChange = event => {
-        this.setState({
-            [event.target.id]: event.target.value,
         });
-    };
-
-    handNewUser = event => {
-        event.preventDefault();
-        if(this.state.password !== this.state.confirmPassword){
-          alert("your passwords don't match. please try again.")
-        }
-        axios
-          .post(`/api/saveresethash/reset/${this.props.match.params.id}/`, {
-            password: this.state.password,
-          })
-          .then(response => {
-            console.log(response)
-              if(response.data){
-                alert(response.data.success);
-              }
-              else{
-                alert("sorry! we weren't able to change your password!")
-              }
-            this.setState({
-              password: '',
-              confirmPassword: '',
-            });
-          })
-          .catch(err => {
-            console.log(err)
-            alert(" oh oh you broke our site!")
-          });
-      };
+      })
+      .catch(err => {
+        console.log(err);
+        alert(' oh oh you broke our site!');
+      });
+  };
   render() {
-    // console.log('props',this.props.match.params.id)
+    const { classes } = this.props;
+
     return (
-      <div className="forgotPasswordClass">
-        <div className="formConatiner">
-          <Paper className="paper" onChange={this.handleChange}>
-            <div className="form2">
-              <div>
-                <Typography variant="display1" gutterBottom align="center">
-                  Meet Dev
-                </Typography>
-
-                <Typography variant="headline" gutterBottom align="center">
-                  Reset Password
-                </Typography>
-              </div>
-
-
-              <TextField id="password" type="password" placeholder="Your new password goes here!" label="Password" value={this.state.password} margin="normal" />
-
-              <TextField
-                id="confirmPassword"
-                type="password"
-                placeholder="Confirm your password!"
-                label="Confirm Password"
-                value={this.state.confirmPassword}
-                margin="normal"
-              />
-              <br />
-              <Button variant="contained" color="primary" onClick={this.handNewUser}>
+      <div data-aos="zoom-in-down" className={classes.forgotPasswordContainer}>
+        <Paper className={classes.paper} onChange={this.handleChange}>
+          <form className={classes.forgotPasswordForm} onSubmit={this.handNewUser}>
+            <div>
+              <Typography variant="display1" gutterBottom align="center">
+                Meet Dev
+              </Typography>
+              <Typography variant="headline" gutterBottom align="center">
+                Reset Password
+              </Typography>
+            </div>
+            <TextField
+              id="password"
+              type="password"
+              placeholder="Your new password goes here!"
+              label="Password"
+              value={this.state.password}
+              margin="normal"
+            />
+            <TextField
+              id="confirmPassword"
+              type="password"
+              placeholder="Confirm your password!"
+              label="Confirm Password"
+              value={this.state.confirmPassword}
+              margin="normal"
+            />
+            <br />
+            <label htmlFor="input-submit-button">
+              <input id="input-submit-button" className={classes.submitInput} type="submit" />
+              <Button
+                className={classes.submitButton}
+                variant="contained"
+                color="primary"
+                onClick={this.handNewUser}
+              >
                 Submit
               </Button>
-            </div>
-          </Paper>
-        </div>
+            </label>
+          </form>
+        </Paper>
       </div>
     );
   }
 }
+
+export default withStyles(styles)(ForgotPassword);
