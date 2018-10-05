@@ -47,19 +47,19 @@ export default class OpenPositionAdd extends Component {
     const { setGS } = this.props;
 
     const newPosition = {
-      projectName,
-      description,
-      jobTitle,
-      techStack,
-      skills,
-      minSalary,
-      maxSalary
+      projectName: this.state.projectName,
+      description: this.state.description,
+      jobTitle: this.state.jobTitle,
+      techStack: this.state.techStack,
+      skills: this.state.skills,
+      minSalary: this.state.minSalary,
+      maxSalary: this.state.maxSalary,
     };
 
     event.preventDefault();
 
     axios
-      .post("/api/employers/", newPosition)
+      .post("/api/employers/", {newPosition})
       .then(response => {
         localStorage.setItem("token", response.data.jwt);
         localStorage.setItem("_id", response.data.newPosition._id);
@@ -73,8 +73,8 @@ export default class OpenPositionAdd extends Component {
           minSalary: "",
           maxSalary: ""
         });
-        setGS({
-          // userInfo: { ...response.data.newPosition },
+        this.props.setGS({
+          userInfo: { ...response.data.newPosition },
           isSignedIn: true,
           userType: "employer"
         });
