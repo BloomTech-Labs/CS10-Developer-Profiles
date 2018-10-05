@@ -7,11 +7,11 @@ import MapDropDown from '../MapArrays/MapDropDown';
 
 // eslint-disable-next-line arrow-parens
 const ArraySection = (props) => {
-  const { isProfile, header, userInfo, field, itemType, schema } = props;
+  const { header, userInfo, field, itemType, schema } = props;
 
   const propsAndLabels = Object.entries(schema);
 
-  const renderForm = (
+  return (
     <DropDown header={header}>
       <DropDown header={`Add new ${header}`}>
         <StateCapsule schema={schema} object={{}}>
@@ -26,10 +26,7 @@ const ArraySection = (props) => {
                 Create
               </Button>
               {propsAndLabels.map((propLabel, index) => (
-                <div
-                  className="inputFieldLargeMultiline"
-                  key={`${Math.random()}-${index}`}
-                >
+                <div className="inputFieldLargeMultiline">
                   <TextField
                     id={`new-${propLabel[0]}`}
                     label={propLabel[1]}
@@ -61,22 +58,6 @@ const ArraySection = (props) => {
       />
     </DropDown>
   );
-
-  const renderProfile = (
-    <DropDown header={header}>
-      <MapDropDown
-        isProfile
-        array={userInfo[field]}
-        field={field}
-        itemType={itemType}
-        schema={schema}
-        propsAndLabels={propsAndLabels}
-      />
-    </DropDown>
-  );
-
-  isProfile ? console.log('renderProfile') : console.log('renderForm');
-  return isProfile ? renderProfile : renderForm;
 };
 
 export default ArraySection;
