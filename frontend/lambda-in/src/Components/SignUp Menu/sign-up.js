@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Route, Switch, Link, Redirect, withRouter } from 'react-router-dom';
 
-class SimpleMenu extends React.Component {
+class SignUpMenu extends React.Component {
   state = {
     anchorEl: null,
   };
@@ -43,4 +43,4 @@ class SimpleMenu extends React.Component {
   }
 }
 
-export default SimpleMenu;
+export default SignUpMenu;
