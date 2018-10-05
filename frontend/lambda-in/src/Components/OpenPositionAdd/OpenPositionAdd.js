@@ -34,6 +34,8 @@ export default class OpenPositionAdd extends Component {
   };
 
   handleNewPos = event => {
+    const id = {...this.props.userInfo._id};
+
     const {
       projectName,
       description,
@@ -59,8 +61,12 @@ export default class OpenPositionAdd extends Component {
     event.preventDefault();
 
     axios
-      .post("/api/employers/", {newPosition})
-      .then(response => {
+      .post("/api/employers/", {newPosition},           {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      })
+      .then((response) => {
         localStorage.setItem("token", response.data.jwt);
         localStorage.setItem("_id", response.data.newPosition._id);
 
