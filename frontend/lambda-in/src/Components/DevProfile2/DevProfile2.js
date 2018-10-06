@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -11,7 +12,7 @@ import portfolioImg from './img/portfolio.png';
 import ArraySectionDisplay from '../utilityComponents/ArraySection/ArraySectionDisplay';
 import MapChips from '../utilityComponents/MapArrays/MapChips';
 
-export default ({ getGS, setGS }) => {
+const DevProfile2 = ({ getGS }) => {
   const userInfo = getGS('userInfo');
 
   /**
@@ -164,3 +165,9 @@ export default ({ getGS, setGS }) => {
     </div>
   );
 };
+
+DevProfile2.propTypes = {
+  getGS: PropTypes.func.isRequired,
+};
+
+export default DevProfile2;
