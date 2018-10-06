@@ -31,6 +31,8 @@
     flex-direction: column;
     justify-content: center;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    opacity: 0.9;
+    padding: 10px;
 }
 
 .questionheader {
