@@ -1,10 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 
-// eslint-disable-next-line arrow-parens
-const Experience = (props) => {
-  const { userInfo } = props;
-
+// eslint-disable-next-line react/prop-types
+const Experience = ({ userInfo }) => {
   const field = 'experience';
   const itemType = 'object';
   const schema = {
@@ -26,6 +25,10 @@ const Experience = (props) => {
       schema={schema}
     />
   );
+};
+
+Experience.prototype = {
+  userInfo: PropTypes.shape({}).isRequired,
 };
 
 export default Experience;
