@@ -5,10 +5,17 @@ import Button from '@material-ui/core/Button';
 import DropDown from '../DropDown/DropDown';
 import StateCapsule from '../StateCapsule/StateCapsule';
 
-// eslint-disable-next-line object-curly-newline
-const MapDropDown = ({ array, field, itemType, schema, propsAndLabels }) =>
-  // eslint-disable-next-line implicit-arrow-linebreak
-  array.map((item, index) => (
+const MapDropDown = (props) => {
+  // prettier-ignore
+  const {
+    array,
+    field,
+    itemType,
+    schema,
+    propsAndLabels,
+  } = props;
+
+  return array.map((item, index) => (
     <DropDown
       header={item.title || item.degree}
       key={`${item.title || item.degree}${Math.random()}`}
@@ -54,6 +61,7 @@ const MapDropDown = ({ array, field, itemType, schema, propsAndLabels }) =>
       </StateCapsule>
     </DropDown>
   ));
+};
 
 MapDropDown.propTypes = {
   array: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
