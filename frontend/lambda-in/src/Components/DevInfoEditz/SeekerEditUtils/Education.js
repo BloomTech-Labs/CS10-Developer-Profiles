@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 
-const Education = (props) => {
-  const { userInfo } = props;
-
+// eslint-disable-next-line react/prop-types
+const Education = ({ userInfo }) => {
   const field = 'education';
   const itemType = 'object';
   const schema = {
@@ -25,4 +25,9 @@ const Education = (props) => {
     />
   );
 };
+
+Education.prototype = {
+  userInfo: PropTypes.shape({}).isRequired,
+};
+
 export default Education;
