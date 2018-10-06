@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import EventEmitter
 import PropTypes from 'prop-types';
 
 /**
@@ -180,6 +179,9 @@ class StateCapsule extends Component {
   }
 }
 
-StateCapsule.propTypes = {};
+StateCapsule.propTypes = {
+  schema: PropTypes.shape({}).isRequired,
+  object: PropTypes.shape({}).isRequired,
+};
 
 export default StateCapsule;
