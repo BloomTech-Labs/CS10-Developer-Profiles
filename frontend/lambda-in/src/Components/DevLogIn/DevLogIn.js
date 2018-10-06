@@ -52,8 +52,8 @@ class DevLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'reg@c14.com',
+      password: '12345678Aa$',
       seekerResponse: '',
       employerResponse: '',
     };
@@ -204,41 +204,46 @@ class DevLogin extends Component {
     const { email, password } = this.state;
     const { classes, getGS } = this.props;
 
-    const buttonConflict = getGS('login') !== 'conflict' ? (
-      <React.Fragment>
-        <label htmlFor="input-submit-button">
-          <input id="input-submit-button" className={classes.submitInput} type="submit" />
-          <Button
-            className={classes.submitButton}
-            variant="contained"
-            color="primary"
-            onClick={this.handleLogin}
-          >
+    const buttonConflict =
+      getGS('login') !== 'conflict' ? (
+        <React.Fragment>
+          <label htmlFor="input-submit-button">
+            <input
+              id="input-submit-button"
+              className={classes.submitInput}
+              type="submit"
+            />
+            <Button
+              className={classes.submitButton}
+              variant="contained"
+              color="primary"
+              onClick={this.handleLogin}
+            >
               Login
-          </Button>
-        </label>
-      </React.Fragment>
-    ) : (
-      <div>
-        <Typography variant="caption" gutterBottom align="center">
+            </Button>
+          </label>
+        </React.Fragment>
+      ) : (
+        <div>
+          <Typography variant="caption" gutterBottom align="center">
             Continue as:
-        </Typography>
-        <div className={classes.resolveConflict}>
-          <Chip
-            onClick={() => this.resolveUserConflict('seeker')}
-            label="Developer"
-            color="primary"
-            variant="outlined"
-          />
-          <Chip
-            onClick={() => this.resolveUserConflict('employer')}
-            label="Employer"
-            color="primary"
-            variant="outlined"
-          />
+          </Typography>
+          <div className={classes.resolveConflict}>
+            <Chip
+              onClick={() => this.resolveUserConflict('seeker')}
+              label="Developer"
+              color="primary"
+              variant="outlined"
+            />
+            <Chip
+              onClick={() => this.resolveUserConflict('employer')}
+              label="Employer"
+              color="primary"
+              variant="outlined"
+            />
+          </div>
         </div>
-      </div>
-    );
+      );
 
     return (
       <div data-aos="zoom-in-down" className={classes.loginContainer}>
