@@ -11,9 +11,8 @@ import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
  * @function
  * @return {object} A React component.
  */
-const BioSkills = (props) => {
-  const { userInfo } = props;
-
+// eslint-disable-next-line react/prop-types
+const BioSkills = ({ userInfo }) => {
   const field = 'topSkills';
   const schema = {
     summary: userInfo.summary,
