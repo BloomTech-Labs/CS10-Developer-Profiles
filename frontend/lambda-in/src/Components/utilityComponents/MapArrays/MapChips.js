@@ -44,7 +44,7 @@ const MapChips = (props) => {
             label={`${value}`}
             className={classes.item}
             deleteIcon={DoneIcon}
-            onDelete={removeItem(field, index)}
+            onDelete={removeItem && removeItem(field, index)}
           />
         </div>
       ))}
@@ -53,12 +53,16 @@ const MapChips = (props) => {
 };
 
 MapChips.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.object),
   array: PropTypes.arrayOf(
     PropTypes.oneOf([PropTypes.string, PropTypes.number]),
   ).isRequired,
-  removeItem: PropTypes.func.isRequired,
-  field: PropTypes.string.isRequired,
+  classes: PropTypes.objectOf(PropTypes.object),
+  removeItem: PropTypes.func,
+  field: PropTypes.string,
+};
+MapChips.defaultProps = {
+  removeItem: null,
+  field: null,
 };
 
 MapChips.defaultProps = {
