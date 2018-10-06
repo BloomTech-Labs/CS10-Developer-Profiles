@@ -25,7 +25,7 @@ const Education = ({ userInfo }) => {
   );
 };
 
-BioSkills.propTypes = {
+Education.propTypes = {
   userInfo: PropTypes.shape({}).isRequired,
 };
 
