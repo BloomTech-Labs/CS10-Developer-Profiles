@@ -12,10 +12,10 @@ import Icon from '@material-ui/core/Icon';
  * @description A Dropdown component wrapper, which accepts any type of children.
  *
  * @function A functional component.
- * @prop {string} header - Text ot be displayed when the Dropdown is collapsed.
+ * @prop {string} header - Text to be displayed when the Dropdown is collapsed.
  *
  * @example How to use it
- * <DropDown header="Heder text to display here">
+ * <DropDown header="Header text to display here">
  */
 // eslint-disable-next-line react/prop-types
 const DropDown = ({ header, children }) => (
