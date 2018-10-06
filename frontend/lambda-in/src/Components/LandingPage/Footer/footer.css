@@ -49,7 +49,8 @@ table {
 .footer {
     display: flex;
     justify-content: flex-end;
-    padding-top: 5px;
+	padding-top: 5px;
+	height: 10vh;
 }
 .footer-left {
     display: flex;
