@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
-// import './DevInfoEditz.css';
+import './DevInfoEditz.css';
 import BasicInfo from './SeekerEditUtils/BasicInfo';
 import SocialLinks from './SeekerEditUtils/SocialLinks';
 import BioSkills from './SeekerEditUtils/BioSkills';
