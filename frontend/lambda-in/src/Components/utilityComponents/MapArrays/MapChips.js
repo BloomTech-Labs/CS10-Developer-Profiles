@@ -18,9 +18,14 @@ import Chip from '@material-ui/core/Chip';
  * @return {object} A React component
  */
 
-// prettier-ignore
 const MapChips = (props) => {
-  const { field, classes, array, removeItem } = props;
+  // prettier-ignore
+  const {
+    field,
+    classes,
+    array,
+    removeItem,
+  } = props;
 
   return (
     <Grid
@@ -32,16 +37,16 @@ const MapChips = (props) => {
       justify="center"
     >
       {array.map((value, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Chip
-          key={`${value}${Math.random()}`}
-          id={`${index}$${value}`}
-          icon={null}
-          label={`${value}`}
-          className={classes.item}
-          deleteIcon={DoneIcon}
-          onDelete={removeItem(field, index)}
-        />
+        <div key={`${value}${Math.random()}`}>
+          <Chip
+            id={`${index}$${value}`}
+            icon={null}
+            label={`${value}`}
+            className={classes.item}
+            deleteIcon={DoneIcon}
+            onDelete={removeItem(field, index)}
+          />
+        </div>
       ))}
     </Grid>
   );
@@ -50,8 +55,7 @@ const MapChips = (props) => {
 MapChips.propTypes = {
   classes: PropTypes.objectOf(PropTypes.object),
   array: PropTypes.arrayOf(
-    // eslint-disable-next-line comma-dangle
-    PropTypes.oneOf([PropTypes.string, PropTypes.number])
+    PropTypes.oneOf([PropTypes.string, PropTypes.number]),
   ).isRequired,
   removeItem: PropTypes.func.isRequired,
   field: PropTypes.string.isRequired,
