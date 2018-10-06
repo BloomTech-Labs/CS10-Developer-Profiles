@@ -18,8 +18,8 @@ export default class OpenPositionAdd extends Component {
       projectName: "",
       description: "",
       jobTitle: "",
-      techStack: "",
-      skills: "",
+      // techStack: "", // TODO: Sanitize info to avoid validation error in database whild POST/PUT
+      // skills: "", // TODO: Sanitize info to avoid validation error in database whild POST/PUT
       minSalary: "",
       maxSalary: ""
     };
@@ -37,21 +37,17 @@ export default class OpenPositionAdd extends Component {
     const {getGS} = this.props; 
     const {setGS} = this.props; 
     const userInfo = getGS('userInfo'); // getGS('userInfo') comes from App.js
-    
-    const {
-      projectName,
-      description,
-      jobTitle,
-      techStack,
-      skills,
-      minSalary,
-      maxSalary
-    } = this.state;
 
+    const userInfoCopy = {...userInfo};
+
+    const  {_id, openPositions} = userInfoCopy;
+
+    openPositions.push(this.state);
+ 
     event.preventDefault();
 
     axios
-      .post("/api/employers/", {newPosition},           {
+      .put(`/api/employers/${_id}`, {openPositions}, {
         headers: {
           Authorization: localStorage.getItem('token'),
         },
@@ -60,22 +56,23 @@ export default class OpenPositionAdd extends Component {
         localStorage.setItem("token", response.data.jwt);
         localStorage.setItem("_id", response.data.newPosition._id);
 
-        this.setStage({
-          projectName: "",
-          description: "",
-          jobTitle: "",
-          techStack: "",
-          skills: "",
-          minSalary: "",
-          maxSalary: ""
-        });
         this.props.setGS({
           userInfo: { ...response.data.newPosition },
           isSignedIn: true,
           userType: "employer"
         });
         console.log(response);
-      })
+
+        this.setState({
+          projectName: "",
+          description: "",
+          jobTitle: "",
+          // techStack: "",
+          // skills: "",
+          minSalary: "",
+          maxSalary: ""
+        });
+        })
       .catch(error => {
         console.log(error);
         this.props.setGS({ updateState: "error" });
@@ -87,8 +84,8 @@ export default class OpenPositionAdd extends Component {
       projectName,
       description,
       jobTitle,
-      techStack,
-      skills,
+      // techStack,
+      // skills,
       minSalary,
       maxSalary
     } = this.state;
@@ -127,7 +124,7 @@ export default class OpenPositionAdd extends Component {
               margin="normal"
               fullWidth="true"
             />
-
+    {/*
             <TextField
               name="techStack"
               label="Tech Stack"
@@ -145,7 +142,7 @@ export default class OpenPositionAdd extends Component {
               margin="normal"
               fullWidth="true"
             />
-
+    */}
             <TextField
               name="minSalary"
               label="minSalary"
