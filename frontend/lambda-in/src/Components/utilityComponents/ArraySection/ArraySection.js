@@ -32,7 +32,8 @@ const ArraySection = (props) => {
               >
                 Create
               </Button>
-              {propsAndLabels.map((propLabel, index) => (
+              {// prettier-ignore
+              propsAndLabels.map(propLabel => (
                 <div className="inputFieldLargeMultiline">
                   <TextField
                     id={`new-${propLabel[0]}`}
