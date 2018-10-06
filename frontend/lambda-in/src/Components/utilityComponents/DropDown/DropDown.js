@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -16,21 +17,24 @@ import Icon from '@material-ui/core/Icon';
  * @example How to use it
  * <DropDown header="Heder text to display here">
  */
-const DropDown = ({ header, children }) => {
-  return (
-    <Fragment>
-      <div className="panelMargin">
-        <ExpansionPanel>
-          <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
-            <Typography>{header}</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <div className="expansionPanel">{children}</div>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-      </div>
-    </Fragment>
-  );
+// eslint-disable-next-line react/prop-types
+const DropDown = ({ header, children }) => (
+  <Fragment>
+    <div className="panelMargin">
+      <ExpansionPanel>
+        <ExpansionPanelSummary expandIcon={<Icon>add_circle</Icon>}>
+          <Typography>{header}</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <div className="expansionPanel">{children}</div>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+    </div>
+  </Fragment>
+);
+
+DropDown.propTypes = {
+  header: PropTypes.string.isRequired,
 };
 
 export default DropDown;
