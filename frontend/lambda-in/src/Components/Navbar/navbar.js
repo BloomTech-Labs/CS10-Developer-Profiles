@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
-import SignUpMenu from '../SignUp Menu/sign-up';
+import SignUpMenu from '../SignUpMenu/sign-up';
 
 import './navbar.css';
 
@@ -15,7 +15,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: '#757ce8',
-      main: '#3f50b5',
+      main: '#5C6BC0',
       dark: '#002884',
       contrastText: '#fff',
     },
@@ -45,7 +45,7 @@ export default ({ getGS, logOut }) => {
      */
     leftNavBar: (
       <Fragment>
-        <Button className='navButton'
+        <Button color='inherit' className='navButton'
           component={Link}
           to={userType === 'seeker' ? '/dev-profile' : '/emp-profile'}
         >
