@@ -1,19 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import DropDown from '../../utilityComponents/DropDown/DropDown';
 import MapChips from '../../utilityComponents/MapArrays/MapChips';
-import ArrayController from '../../utilityComponents/MapArrays/ArrayController';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
 /**
- * Render the Developer's 'summary' and 'topSkills' fields.Fragment
+ * Render the Developer's 'summary' and 'topSkills' fields.
  *
  * @function
  * @return {object} A React component.
  */
-// eslint-disable-next-line arrow-parens
 const BioSkills = (props) => {
-  // eslint-disable-next-line react/prop-types
   const { userInfo } = props;
 
   const field = 'topSkills';
@@ -38,46 +36,40 @@ const BioSkills = (props) => {
               variant="outlined"
             />
           </div>
-          {/* TODO */}
-          <ArrayController
-            itemSchema="singleItem"
-            title="Top Skills"
+          <div className="inputFieldLargeMultiline">
+            <TextField
+              id="edit-topSkills_edit"
+              label="Add skills - press enter"
+              fullWidth
+              multiline
+              rowsMax="4"
+              value={stateCapsule.topSkills_edit}
+              margin="normal"
+              variant="outlined"
+              inputProps={{
+                // info for the DevInfoEditz's onBlur handler.
+                'data-chips': true,
+                'data-field': field,
+                'data-itemType': 'string',
+                'data-value': stateCapsule.topSkills.join('-'),
+              }}
+            />
+          </div>
+          {/* <MapUnorderedList array={arr} /> */}
+          <MapChips
             field={field}
-            arr={stateCapsule.topSkills}
-          >
-            {/* eslint-disable-next-line object-curly-newline */}
-            {({ arr }) => (
-              <Fragment>
-                <div className="inputFieldLargeMultiline">
-                  <TextField
-                    id="edit-topSkills_edit"
-                    label="Add skills - press enter"
-                    fullWidth
-                    multiline
-                    rowsMax="4"
-                    value={stateCapsule.topSkills_edit}
-                    margin="normal"
-                    variant="outlined"
-                    inputProps={{
-                      // info for the DevInfoEditz's onBlur handler.
-                      'data-chips': true,
-                      'data-field': field,
-                      'data-itemType': 'string',
-                      'data-value': stateCapsule.topSkills.join('-'),
-                    }}
-                  />
-                </div>
-                {/* <MapUnorderedList array={arr} /> */}
-                <MapChips field={field} array={arr} removeItem={removeItem} />
-              </Fragment>
-            )}
-          </ArrayController>
-
+            array={stateCapsule.topSkills}
+            removeItem={removeItem}
+          />
           {/* TODO: Add summary - enable uploading a file */}
         </DropDown>
       )}
     </StateCapsule>
   );
+};
+
+BioSkills.prototype = {
+  userInfo: PropTypes.shape({}).isRequired,
 };
 
 export default BioSkills;
