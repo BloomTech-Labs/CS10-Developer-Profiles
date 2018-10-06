@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
-// eslint-disable-next-line arrow-parens
-const BasicInfo = (props) => {
-  const { userInfo } = props;
-
+// eslint-disable-next-line react/prop-types
+const BasicInfo = ({ userInfo }) => {
   const schema = {
     firstName: userInfo.firstName,
     lastName: userInfo.lastName,
@@ -74,6 +73,10 @@ const BasicInfo = (props) => {
       )}
     </StateCapsule>
   );
+};
+
+BasicInfo.prototype = {
+  userInfo: PropTypes.shape({}),
 };
 
 export default BasicInfo;
