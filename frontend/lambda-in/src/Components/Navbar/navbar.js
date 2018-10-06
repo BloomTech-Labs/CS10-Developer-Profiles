@@ -2,9 +2,28 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import SignUpMenu from '../SignUp Menu/sign-up';
+import AppBar from '@material-ui/core/AppBar';
+import SignUpMenu from '../SignUpMenu/sign-up';
 
 import './navbar.css';
+
+import { createMuiTheme } from '@material-ui/core/styles';
+import indigo from '@material-ui/core/colors/indigo';
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#5C6BC0',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#B79A3F',
+    },
+  },
+});
 
 /**
  * Functional component responsible of Navigation links
@@ -26,18 +45,18 @@ export default ({ getGS, logOut }) => {
      */
     leftNavBar: (
       <Fragment>
-        <Button
+        <Button color='inherit' className='navButton'
           component={Link}
           to={userType === 'seeker' ? '/dev-profile' : '/emp-profile'}
         >
           profile
         </Button>
-        <Button component={Link} to="/billing">
+        <Button color='inherit' className='navButton' component={Link} to="/billing">
           Billing
         </Button>
       </Fragment>
     ),
-    rightNavBar: <Button onClick={logOut}>Log out</Button>,
+    rightNavBar: <Button color='inherit' onClick={logOut}>Log out</Button>,
   };
 
   /**
@@ -48,7 +67,7 @@ export default ({ getGS, logOut }) => {
     rightNavBar: (
       <Fragment>
         <SignUpMenu />
-        <Button component={Link} to="/dev-login">
+        <Button color='inherit' component={Link} to="/dev-login">
           Log-in
         </Button>
       </Fragment>
@@ -56,13 +75,13 @@ export default ({ getGS, logOut }) => {
   };
 
   return (
-    <Paper>
+    <AppBar position="static" color='primary'>
       <div className="navBar">
         <div className="leftNavBar">
-          <Button component={Link} to="/">
+          <Button color='inherit' className='navButton' component={Link} to="/">
             Home
           </Button>
-          <Button
+          <Button color='inherit' className='navButton'
             component={Link}
             to={userType === 'seeker' ? '/meetposition' : '/meetdev'}
           >
@@ -74,6 +93,6 @@ export default ({ getGS, logOut }) => {
           {isSignedIn ? withToken.rightNavBar : withNotToken.rightNavBar}
         </div>
       </div>
-    </Paper>
+    </AppBar>
   );
 };

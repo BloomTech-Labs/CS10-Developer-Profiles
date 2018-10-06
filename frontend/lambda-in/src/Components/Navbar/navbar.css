@@ -51,6 +51,7 @@ table {
     height: 5vh;
     display: flex;
     justify-content: space-evenly;
+    color: #ffffff;
 }
   
 .leftNavBar {
@@ -58,6 +59,7 @@ table {
     height: 5vh;
     display: flex;
     justify-content: flex-start;
+    color: #ffffff;
 }
   
 .rightNavBar {
@@ -65,4 +67,8 @@ table {
     height: 5vh;
     display: flex;
     justify-content: flex-end;
+    color: #ffffff;
+}
+.navButton {
+    color: #ffffff;
 }
