@@ -5,7 +5,6 @@ import NavBar from './Components/Navbar/navbar';
 import DevSignUp from './Components/DevSignUp/DevSignUp';
 import DevLogin from './Components/DevLogIn/DevLogIn';
 import LandingPage from './Components/LandingPage/landing-page';
-import DevProfile from './Components/DevProfile/DevProfile';
 import DevProfile2 from './Components/DevProfile2/DevProfile2';
 import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
 import Billing from './Components/Billing/billing';
