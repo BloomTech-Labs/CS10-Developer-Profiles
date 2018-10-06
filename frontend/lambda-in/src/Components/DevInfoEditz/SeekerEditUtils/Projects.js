@@ -1,10 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 
-// eslint-disable-next-line arrow-parens
-const Projects = (props) => {
-  const { userInfo } = props;
-
+// eslint-disable-next-line react/prop-types
+const Projects = ({ userInfo }) => {
   const field = 'projects';
   const itemType = 'object';
   const schema = {
@@ -25,6 +24,10 @@ const Projects = (props) => {
       schema={schema}
     />
   );
+};
+
+Projects.prototype = {
+  userInfo: PropTypes.shape({}).isRequired,
 };
 
 export default Projects;
