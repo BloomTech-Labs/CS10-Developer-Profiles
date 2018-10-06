@@ -12,25 +12,33 @@ import "aos/dist/aos.css";
 AOS.init();
 
 
-class EmployerPositionCard extends React.Component {
-  static defaultProps = {
-    projectName: "Enterprise-D",
-    description: "We are watching for the captain of the Federation Flagship.",
-    jobTitle: "Captain",
-    techStack: "full stack",
-    skills: ["Diplomacy", "Leadership", "Tactical Strategy"],
-    minSalary: 1000000,
-    maxSalary: 2000000
-  };
+class EmpCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      projectName: "",
+      description: "",
+      jobTitle: "",
+      // techStack: "", // TODO: Sanitize info to avoid validation error in database whild POST/PUT
+      // skills: "", // TODO: Sanitize info to avoid validation error in database whild POST/PUT
+      minSalary: "",
+      maxSalary: ""
+    };
+    // this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    // this.handleEdit = this.handleEdit.bind(this);
+  }
 
-  handleDelete(e) {
-    const id = e.target.dataset.id;
-    axios.delete(`/api/register/employers/${id}`).then(() => {
+
+  handleDelete = event => {
+    const id = event.target.openPositions.id;
+        axios.delete(`/api/register/employers/${id}`,
+    ).then(() => {
       window.location.reload();
     });
   }
 
-  // handleEdit(e) {
+  // handleEdit(event) {
   //   const id = e.target.database.id;
   //   axios.put(`/api/register/employers/${id}`,
   //   {
@@ -75,7 +83,7 @@ class EmployerPositionCard extends React.Component {
             <Typography variant="subheading">{this.props.jobTitle}</Typography>
           </div>
 
-          <div>
+          {/* <div>
             <Typography variant="caption">Tech Stack:</Typography>
             <Typography variant="subheading">{this.props.techStack}</Typography>
           </div>
@@ -83,7 +91,7 @@ class EmployerPositionCard extends React.Component {
           <div>
             <Typography variant="caption">Required Skills</Typography>
             <Typography variant="subheading">{this.props.skills}</Typography>
-          </div>
+          </div> */}
 
           <div>
             <Typography variant="caption">Salary range</Typography>
@@ -117,4 +125,4 @@ class EmployerPositionCard extends React.Component {
     );
   }
 }
-export default EmployerPositionCard;
+export default EmpCard;

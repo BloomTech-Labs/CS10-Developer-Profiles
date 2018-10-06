@@ -11,7 +11,7 @@ export default class OpenPositionEdit extends Component {
     super(props);
     this.handleDelete = this.handleChange.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
-    this.setFormState= this.setFormState.bind(this);
+    this.setFormState= this.handleUpdate.bind(this);
   }
 
   componentDidMount() {
