@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * TODO: Clean this component code.
- * There are a lot of code that is not neccesary - jesuarva
- */
-/**
  * Handle Array-type properties
  *
  * @description Handle in a local-state new date to be added to a global-state array-field.
@@ -64,10 +60,7 @@ class ArrayController extends Component {
    * Set local state: this.setState( { name: '', email: '' } )
    */
   initializeLocalState() {
-    // eslint-disable-next-line react/prop-types
     const { itemSchema } = this.props;
-
-    // const item = arr[0];
 
     // Get the item type
     const itemType = Object.prototype.toString.call(itemSchema);
@@ -87,7 +80,6 @@ class ArrayController extends Component {
           ready: true,
         });
         break;
-      // If itemSchema='singleItem'
       default:
         // '[object String]' || '[object Number]' || // '[object Boolean]'
         this.setState({ newItem: '', itemType: 'singleItem', ready: true });
@@ -101,7 +93,6 @@ class ArrayController extends Component {
      * @description Stop this event to be listened and handled in parent Nodes.
      */
     ev.stopPropagation();
-    // // console.log('AC onChange', { id: ev.target.id, value: ev.target.value });
     // Get the item type
     const { itemType } = this.state;
 
@@ -119,8 +110,6 @@ class ArrayController extends Component {
       // Update array-item
       toUpdate[index][itemProperty] = ev.target.value;
 
-      // console.log('TYPE', itemType, field, itemProperty, toUpdate);
-
       /**
        * Set parent-form state
        */
@@ -132,27 +121,14 @@ class ArrayController extends Component {
     }
   }
 
-  // handleKeyPress(e) {
-  //   // e.stopPropagation();
-  //   // // console.log(e.key, e.target.value);
-
-  //   if (e.key === 'Enter') {
-  //     e.preventDefault();
-  //     this.initializeLocalState();
-  //   }
-  // }
-
   /**
    * Update parent Form-state.
    */
   updateFormState(e, obj) {
-    // console.log('AC: updateFormState');
-    // eslint-disable-next-line react/prop-types
     const { arr, field, setPFS } = this.props;
 
     if (obj) {
-      // prettier-ignore
-      return (event) => {
+      return () => {
         // console.log('AC: STATE CAPSULE UPDATE', event.target, e, obj);
         setPFS({});
       };
@@ -202,8 +178,6 @@ class ArrayController extends Component {
        * @description Stop this event to be listened and handled in parent Nodes.
        */
       e.stopPropagation();
-
-      // // console.log('REMOVE ITEM', { index, E: e.target });
 
       // Make a cooy of the original Array
       const toUpdate = [...arr];
