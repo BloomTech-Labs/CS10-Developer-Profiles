@@ -20,13 +20,21 @@ class Billing extends React.Component {
     render() {
         return (
             <div>
-                <div className='billingimage' style={backgroundImage}></div>
+                <div className='billingimage' style={backgroundImage}>
+                    <div className='question'>
+                        <h1 className='questionheader'>Why should I subscribe and what does it pay for?</h1>
+                        <br/>
+                        <p>
+                            Our developers are the cream of the crop and their time is valuable just like yours. Your subscription allows you to contact the developers within our database and further explore potential collaboration and or employment.
+                        </p>
+                    </div>
+                </div>
                 <div className='checkoutcontainer'>
                     <span className='checkout1'>
                         <Card data-aos='flip-up'>
                             <CardContent align='center'>
                                  <Typography variant="headline" component="h1">
-                                    Employer 1 month Sub
+                                    1 month Subscription
                                 </Typography>
                                 <Typography>
                                     $3.99
@@ -43,7 +51,7 @@ class Billing extends React.Component {
                         <Card data-aos='flip-down' className='checkout'>
                             <CardContent align='center'>
                                 <Typography variant="headline" component="h1">
-                                    Employer 6 month Sub
+                                    6 month Subscription
                                 </Typography>
                                 <Typography>
                                     $9.99 - Save $2.32/month
@@ -60,7 +68,7 @@ class Billing extends React.Component {
                         <Card data-aos='flip-up' className='checkout'>
                             <CardContent align='center'>
                                 <Typography variant="headline" component="h1">
-                                    Employer 1 Year Sub
+                                    1 Year Subsciption
                                 </Typography>
                                 <Typography>
                                     $15.99 - Save $2.62/month

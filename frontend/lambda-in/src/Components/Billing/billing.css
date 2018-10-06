@@ -6,30 +6,33 @@
     flex-direction: row;
     justify-content: space-evenly;
     background-color: #4A4F6B;
+    background-image: linear-gradient(#ffffff, #4A4F6B);
     margin-left: -40px;
 }
 
 .billingimage {
     width: 100vw;
     height: 50vh;
+    display: flex;
     background-size: cover;
     background-position: center;
     opacity: 0.6;
+    justify-content: center;
 }
 
-.title {
-    font-size: 1.75vw;
-    margin-top: 20px;
-    margin-left: 375px;
-    font-family: 'Roboto', sans-serif;
+.question {
+    margin-top: 5vh;
+    width: 75vw;
+    height: 20vh;
+    background-color: #3F51B5;
+    color: #ffffff;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
-.checkout1 {
-    
-}
-.checkout2 {
-    
-}
-.checkout3 {
-    
+.questionheader {
+    font-size: 32px;
 }
