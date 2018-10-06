@@ -11,7 +11,6 @@ import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
  * @function
  * @return {object} A React component.
  */
-// eslint-disable-next-line react/prop-types
 const BioSkills = ({ userInfo }) => {
   const field = 'topSkills';
   const schema = {
@@ -67,7 +66,7 @@ const BioSkills = ({ userInfo }) => {
   );
 };
 
-BioSkills.prototype = {
+BioSkills.propTypes = {
   userInfo: PropTypes.shape({}).isRequired,
 };
 
