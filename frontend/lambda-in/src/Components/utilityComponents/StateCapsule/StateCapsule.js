@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * Create a local state to manage an object whilist is edited.
+ * Create a local state to manage an object's properties whilist is edited.
  *
  * @description
  */
@@ -16,10 +16,9 @@ class StateCapsule extends Component {
     this.createItem = this.createItem.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    // eslint-disable-next-line arrow-parens
-    this.mapAndResetKeysValues = (object) =>
-      // eslint-disable-next-line implicit-arrow-linebreak
-      Object.keys(object).reduce((resetKeys, key) => {
+    // prettier-ignore
+    this.mapAndResetKeysValues = object => Object.keys(object)
+      .reduce((resetKeys, key) => {
         const valueType = Object.prototype.toString.call(object[key]);
 
         switch (valueType) {
