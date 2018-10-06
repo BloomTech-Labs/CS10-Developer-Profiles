@@ -15,11 +15,6 @@ import MapChips from '../utilityComponents/MapArrays/MapChips';
 const DevProfile2 = ({ getGS }) => {
   const userInfo = getGS('userInfo');
 
-  /**
-   * This one.
-   * PENDING FIELDS TO IMPLEMENT: "familiarWith", "projects", "experience", "education", "placesInterested"
-   * All them are Arrays of objects.
-   */
   const schemas = {
     projects: {
       title: 'Title',
