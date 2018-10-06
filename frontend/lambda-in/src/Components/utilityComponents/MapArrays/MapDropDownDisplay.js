@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import DropDown from '../DropDown/DropDown';
 
@@ -31,6 +32,11 @@ const MapDropDownDisplay = (props) => {
       </div>
     </DropDown>
   ));
+};
+
+MapDropDownDisplay.propTypes = {
+  array: PropTypes.arrayOf(PropTypes.object).isRequired,
+  propsAndLabels: PropTypes.arrayOf(PropTypes.array).isRequired,
 };
 
 export default MapDropDownDisplay;
