@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -13,10 +14,13 @@ import Experience from './SeekerEditUtils/Experience';
 import Education from './SeekerEditUtils/Education';
 
 /**
- * Form handling user profile updates
+ * Form handling user profile updates.
  *
  * @description This component handle in a local-state all data modification.
- * The global state is updeated only when the PUT request response with status 200
+ * The global state is updeated only when a PUT request response with status 200.
+ *
+ * @param {function} setGS - An App.js' method to set global state.
+ * @param {fuction} getGS - An App.js' method to get global state.
  */
 class DevInfoEdit extends Component {
   constructor(props) {
@@ -33,7 +37,7 @@ class DevInfoEdit extends Component {
   }
 
   /**
-   * Get a copy of user's data to keep global state inmutable.
+   * Get a copy of App's global user state to keep global state inmutable.
    */
   componentDidMount() {
     // eslint-disable-next-line react/prop-types
@@ -334,5 +338,10 @@ class DevInfoEdit extends Component {
     );
   }
 }
+
+DevInfoEdit.prototype = {
+  getGS: PropTypes.func.isRequired,
+  setGS: PropTypes.func.isRequired,
+};
 
 export default DevInfoEdit;
