@@ -107,7 +107,7 @@ class DevInfoEdit extends Component {
       itemtype,
       index,
       property,
-      subindex,
+      // subindex,
       value,
     } = dataset;
 
