@@ -68,7 +68,11 @@ class DevSignUp extends Component {
 
     const { setGS } = this.props;
     const {
-      firstName, lastName, email, password, confirmPassword,
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
     } = this.state;
 
     /**
@@ -126,7 +130,11 @@ class DevSignUp extends Component {
   render() {
     const { classes } = this.props;
     const {
-      firstName, lastName, email, password, confirmPassword,
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
     } = this.state;
 
     return (
@@ -180,7 +188,11 @@ class DevSignUp extends Component {
             />
             <br />
             <label htmlFor="input-submit-button">
-              <input id="input-submit-button" className={classes.submitInput} type="submit" />
+              <input
+                id="input-submit-button"
+                className={classes.submitInput}
+                type="submit"
+              />
               <Button
                 className={classes.submitButton}
                 variant="contained"

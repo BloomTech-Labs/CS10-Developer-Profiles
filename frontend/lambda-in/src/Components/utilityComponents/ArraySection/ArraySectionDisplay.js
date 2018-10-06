@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DropDown from '../DropDown/DropDown';
-import MapDropDown from '../MapArrays/MapDropDown';
+import MapDropDownDisplay from '../MapArrays/MapDropDownDisplay';
 
-const ArraySectionProfile = (props) => {
+const ArraySectionDisplay = (props) => {
   // prettier-ignore
   const {
     header,
@@ -17,7 +17,7 @@ const ArraySectionProfile = (props) => {
 
   return (
     <DropDown header={header}>
-      <MapDropDown
+      <MapDropDownDisplay
         isProfile
         array={userInfo[field]}
         field={field}
@@ -29,7 +29,7 @@ const ArraySectionProfile = (props) => {
   );
 };
 
-ArraySectionProfile.propTypes = {
+ArraySectionDisplay.propTypes = {
   header: PropTypes.string.isRequired,
   userInfo: PropTypes.shape({}).isRequired,
   field: PropTypes.string.isRequired,
@@ -37,4 +37,4 @@ ArraySectionProfile.propTypes = {
   schema: PropTypes.shape({}).isRequired,
 };
 
-export default ArraySectionProfile;
+export default ArraySectionDisplay;
