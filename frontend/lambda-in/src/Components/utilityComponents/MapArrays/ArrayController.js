@@ -94,7 +94,6 @@ class ArrayController extends Component {
      */
     ev.stopPropagation();
     // Get the item type
-    const { itemType } = this.state;
 
     const { id } = ev.target;
     const details = id.split('-');
@@ -223,6 +222,7 @@ ArrayController.propTypes = {
   title: PropTypes.string.isRequired,
   field: PropTypes.string.isRequired,
   setPFS: PropTypes.func.isRequired,
+  itemSchema: PropTypes.shape({}).isRequired,
 };
 
 export default ArrayController;
