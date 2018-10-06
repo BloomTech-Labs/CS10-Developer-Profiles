@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DropDown from '../DropDown/DropDown';
@@ -24,7 +25,9 @@ const MapDropDown = ({ array, field, itemType, schema, propsAndLabels }) =>
               >
                 delete
               </Button>
-              {propsAndLabels.map((propLabel, propIndex) => (
+
+              {// prettier-ignore
+              propsAndLabels.map(propLabel => (
                 <div className="inputFieldLargeMultiline">
                   <TextField
                     id={`edit-${propLabel[0]}`}
@@ -51,4 +54,13 @@ const MapDropDown = ({ array, field, itemType, schema, propsAndLabels }) =>
       </StateCapsule>
     </DropDown>
   ));
+
+MapDropDown.propTypes = {
+  array: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  field: PropTypes.string.isRequired,
+  itemType: PropTypes.string.isRequired,
+  schema: PropTypes.shape({}).isRequired,
+  propsAndLabels: PropTypes.arrayOf(PropTypes.array).isRequired,
+};
+
 export default MapDropDown;
