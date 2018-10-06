@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
-// eslint-disable-next-line react/prop-types
 const BasicInfo = ({ userInfo }) => {
   const schema = {
     firstName: userInfo.firstName,
@@ -75,8 +74,8 @@ const BasicInfo = ({ userInfo }) => {
   );
 };
 
-BasicInfo.prototype = {
-  userInfo: PropTypes.shape({}),
+BasicInfo.propTypes = {
+  userInfo: PropTypes.shape({}).isRequired,
 };
 
 export default BasicInfo;
