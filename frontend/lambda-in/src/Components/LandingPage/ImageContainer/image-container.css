@@ -5,7 +5,7 @@
 }
 
 .image {
-    width: 50%;
+    width: 50vw;
     background-size: cover;
     opacity: 0.5;
 }
@@ -15,11 +15,12 @@
     flex-direction: column;
     align-items: center;
     margin-left: 85px;
-    margin-top: 200px;
-    margin-bottom: 20px;
+    margin-top: 150px;
+    margin-bottom: 50px;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    padding: 20px;
 }
 
 .header {

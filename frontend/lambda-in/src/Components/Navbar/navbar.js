@@ -7,7 +7,7 @@ import SignUpMenu from '../SignUpMenu/sign-up';
 
 import './navbar.css';
 
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import indigo from '@material-ui/core/colors/indigo';
 
 
@@ -15,7 +15,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: '#757ce8',
-      main: '#5C6BC0',
+      main: '#5160B5',
       dark: '#002884',
       contrastText: '#fff',
     },
@@ -75,24 +75,26 @@ export default ({ getGS, logOut }) => {
   };
 
   return (
-    <AppBar position="static" color='primary'>
-      <div className="navBar">
-        <div className="leftNavBar">
-          <Button color='inherit' className='navButton' component={Link} to="/">
-            Home
-          </Button>
-          <Button color='inherit' className='navButton'
-            component={Link}
-            to={userType === 'seeker' ? '/meetposition' : '/meetdev'}
-          >
+    <MuiThemeProvider theme={theme}>
+      <AppBar position="static" color='primary'>
+        <div className="navBar">
+          <div className="leftNavBar">
+            <Button color='inherit' className='navButton' component={Link} to="/">
+              Home
+            </Button>
+            <Button color='inherit' className='navButton'
+              component={Link}
+              to={userType === 'seeker' ? '/meetposition' : '/meetdev'}
+            >
             Browse
-          </Button>
-          {isSignedIn ? withToken.leftNavBar : withNotToken.leftNavBar}
+            </Button>
+            {isSignedIn ? withToken.leftNavBar : withNotToken.leftNavBar}
+          </div>
+          <div className="rightNavBar">
+            {isSignedIn ? withToken.rightNavBar : withNotToken.rightNavBar}
+          </div>
         </div>
-        <div className="rightNavBar">
-          {isSignedIn ? withToken.rightNavBar : withNotToken.rightNavBar}
-        </div>
-      </div>
-    </AppBar>
+      </AppBar>
+    </MuiThemeProvider>
   );
 };
