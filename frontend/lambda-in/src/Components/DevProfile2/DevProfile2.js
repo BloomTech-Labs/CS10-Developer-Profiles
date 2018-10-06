@@ -3,31 +3,16 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Modal from '@material-ui/core/Modal';
-import MapList from '../MapList/MapList';
 import './DevProfile2.css';
 import lambdaColorImg from './img/lambdaColor.png';
 import GitHubImg from './img/GitHub.png';
 import linkedinImg from './img/linkedin.jpg';
 import portfolioImg from './img/portfolio.png';
 import ArraySectionDisplay from '../utilityComponents/ArraySection/ArraySectionDisplay';
+import MapChips from '../utilityComponents/MapArrays/MapChips';
 
 export default ({ getGS, setGS }) => {
   const userInfo = getGS('userInfo');
-
-  const TS = userInfo.topSkills;
-  const AS = userInfo.additionalSkills;
-  const SS = userInfo.skills;
-  const allSkills = TS.concat(AS, SS);
-  const skillList = allSkills.map((skill) => <li>{skill}</li>);
-
-  let handleOpen = () => {
-    setGS({ DevProfileModal: true });
-  };
-
-  let handleClose = () => {
-    setGS({ DevProfileModal: false });
-  };
 
   /**
    * This one.
@@ -69,7 +54,7 @@ export default ({ getGS, setGS }) => {
           <div className="profileImage">
             <img
               className="profileImage"
-              src="https://robohash.org/tony"
+              src={`https://robohash.org/1${userInfo.firstName}`}
               alt="Italian "
             />
           </div>
@@ -94,7 +79,7 @@ export default ({ getGS, setGS }) => {
                 {userInfo.desiredTitle}
               </div>
               <div className="tagCloud">
-                <MapList array={allSkills} />
+                <MapChips array={userInfo.topSkills} />
               </div>
             </div>
           </div>
@@ -133,6 +118,11 @@ export default ({ getGS, setGS }) => {
             </a>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <div className="profileBottomCard">
           <Paper>
             <ArraySectionDisplay
@@ -159,13 +149,11 @@ export default ({ getGS, setGS }) => {
             <div className="profileButtons">
               <Link to="/dev-info-edit">
                 <Button variant="outlined" color="primary">
-                  {' '}
                   edit
                 </Button>
               </Link>
               <Link to="/dev-profile2">
                 <Button variant="outlined" color="secondary">
-                  {' '}
                   Delete
                 </Button>
               </Link>
