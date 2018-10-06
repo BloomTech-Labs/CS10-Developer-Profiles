@@ -1,24 +1,23 @@
 import React, { Fragment } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import DropDown from '../DropDown/DropDown';
-import StateCapsule from '../StateCapsule/StateCapsule';
 
 const MapDropDownDisplay = (props) => {
-  const { isProfile, array, field, itemType, schema, propsAndLabels } = props;
+  const { array, propsAndLabels } = props;
 
-  return array.map((item, index) => (
+  // prettier-ignore
+  return array.map(item => (
     <DropDown
       header={item.title || item.degree}
       key={`${item.title || item.degree}${Math.random()}`}
     >
       <div className="dropdown-item-list blur-handler">
         <Fragment>
-          {propsAndLabels.map((propLabel, propIndex) => (
+          {// prettier-ignore
+          propsAndLabels.map(propLabel => (
             <div
               className="inputFieldLargeMultiline"
-              key={`${Math.random()}-${propIndex}`}
+              key={`${Math.random()}-${propLabel[1]}`}
             >
               <div>
                 <Typography variant="caption">{propLabel[1]}</Typography>
