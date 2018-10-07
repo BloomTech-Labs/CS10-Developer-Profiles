@@ -4,7 +4,6 @@ import TextField from '@material-ui/core/TextField';
 import DropDown from '../../utilityComponents/DropDown/DropDown';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
-// eslint-disable-next-line react/prop-types
 const SocialLinks = ({ userInfo }) => {
   const schema = {
     github: userInfo.github,
@@ -54,7 +53,7 @@ const SocialLinks = ({ userInfo }) => {
   );
 };
 
-SocialLinks.prototype = {
+SocialLinks.propTypes = {
   userInfo: PropTypes.shape({}).isRequired,
 };
 

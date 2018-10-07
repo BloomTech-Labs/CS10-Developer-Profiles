@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 
-// eslint-disable-next-line react/prop-types
 const Education = ({ userInfo }) => {
   const field = 'education';
   const itemType = 'object';
@@ -26,7 +25,7 @@ const Education = ({ userInfo }) => {
   );
 };
 
-Education.prototype = {
+Education.propTypes = {
   userInfo: PropTypes.shape({}).isRequired,
 };
 
