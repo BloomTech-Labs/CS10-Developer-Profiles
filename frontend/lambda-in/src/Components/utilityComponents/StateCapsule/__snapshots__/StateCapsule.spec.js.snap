@@ -21,46 +21,46 @@ exports[`StateCapsule component should renders children correctly 1`] = `
       <div>
         <li>
           JS
+          <button
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
         </li>
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          X
-        </button>
       </div>
       <div>
         <li>
           React
+          <button
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
         </li>
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          X
-        </button>
       </div>
       <div>
         <li>
           TDD
+          <button
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
         </li>
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          X
-        </button>
       </div>
       <div>
         <li>
           Full stack developer
+          <button
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
         </li>
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          X
-        </button>
       </div>
     </ul>
   </div>

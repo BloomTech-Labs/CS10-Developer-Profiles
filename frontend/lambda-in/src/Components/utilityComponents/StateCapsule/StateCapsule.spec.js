@@ -40,10 +40,15 @@ describe('StateCapsule component', () => {
             <ul>
               {stateCapsule.topSkills.map((skill, index) => (
                 <div key={`${Math.random()}-${Date.now()}`}>
-                  <li>{skill}</li>
-                  <button type="button" onClick={removeItem}>
-                    X
-                  </button>
+                  <li>
+                    {skill}
+                    <button
+                      type="button"
+                      onClick={removeItem('topSkills', index)}
+                    >
+                      X
+                    </button>
+                  </li>
                 </div>
               ))}
             </ul>
@@ -104,7 +109,9 @@ describe('StateCapsule component', () => {
     const modifiedArray = ['JS', 'React', 'TDD'];
 
     // Before any 'onChange' event
-    expect(originalArray).toEqual(expect.arrayContaining(originalArray));
+    expect(shallowSC.state().topSkills).toEqual(
+      expect.arrayContaining(originalArray),
+    );
 
     shallowSC.find('.state-capsule').simulate('click', {
       target: {
@@ -115,6 +122,8 @@ describe('StateCapsule component', () => {
     });
 
     // After an 'onChange' event
-    expect(originalArray).toEqual(expect.arrayContaining(modifiedArray));
+    expect(shallowSC.state().topSkills).toEqual(
+      expect.arrayContaining(modifiedArray),
+    );
   });
 });
