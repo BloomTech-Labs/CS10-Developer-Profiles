@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import DoneIcon from '@material-ui/icons/Done';
+import DeleteForever from '@material-ui/icons/DeleteForever';
 import Chip from '@material-ui/core/Chip';
 
 /**
@@ -42,7 +42,7 @@ const MapChips = (props) => {
             id={`${index}$${value}`}
             label={`${value}`}
             className={classes.item}
-            deleteIcon={<DoneIcon />}
+            deleteIcon={<DeleteForever />}
             onDelete={removeItem && removeItem(field, index)}
           />
         </div>
