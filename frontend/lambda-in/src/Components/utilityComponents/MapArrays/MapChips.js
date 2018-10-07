@@ -40,10 +40,9 @@ const MapChips = (props) => {
         <div key={`${value}${Math.random()}`}>
           <Chip
             id={`${index}$${value}`}
-            icon={null}
             label={`${value}`}
             className={classes.item}
-            deleteIcon={DoneIcon}
+            deleteIcon={<DoneIcon />}
             onDelete={removeItem && removeItem(field, index)}
           />
         </div>
@@ -53,9 +52,7 @@ const MapChips = (props) => {
 };
 
 MapChips.propTypes = {
-  array: PropTypes.arrayOf(
-    PropTypes.oneOf([PropTypes.string, PropTypes.number]),
-  ).isRequired,
+  array: PropTypes.arrayOf(PropTypes.any).isRequired,
   classes: PropTypes.objectOf(PropTypes.object),
   removeItem: PropTypes.func,
   field: PropTypes.string,
