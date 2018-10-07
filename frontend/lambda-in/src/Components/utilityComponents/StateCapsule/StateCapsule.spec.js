@@ -1,9 +1,8 @@
 import React from 'react';
-import { configure, mount, shallow } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import StateCapsule from './StateCapsule';
-import MapChips from '../../utilityComponents/MapArrays/MapChips';
 
 configure({ adapter: new Adapter() });
 
