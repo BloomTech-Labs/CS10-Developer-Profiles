@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropDown component should renders correctly 1`] = `
+<div
+  className="panelMargin"
+>
+  <div
+    className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+  >
+    <div
+      aria-expanded={false}
+      className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      <div
+        className="MuiExpansionPanelSummary-content-35"
+      >
+        <p
+          className="MuiTypography-root-40 MuiTypography-body1-49"
+        >
+          Testing DropDown component
+        </p>
+      </div>
+      <div
+        aria-hidden="true"
+        className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={-1}
+      >
+        <span
+          className="MuiIconButton-label-71"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-72"
+          >
+            add_circle
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-81"
+        />
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      className="MuiCollapse-container-88"
+      style={
+        Object {
+          "minHeight": "0px",
+        }
+      }
+    >
+      <div
+        className="MuiCollapse-wrapper-90"
+      >
+        <div
+          className="MuiCollapse-wrapperInner-91"
+        >
+          <div
+            className="MuiExpansionPanelDetails-root-92"
+          >
+            <div
+              className="expansionPanel"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
