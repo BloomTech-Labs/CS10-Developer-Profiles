@@ -11,10 +11,12 @@ configure({ adapter: new Adapter() });
  * Porps are checked itn the componet PropTypes definitions.
  */
 describe('MapDropDown component', () => {
+  /**
+   * @todo include 'tech' field int to the schema and projects.
+   */
   const projects = [
     {
       // tech: ['NODE', 'Express', 'Mongoose'],
-      // _id: '5bb748545cdfe308de503a27',
       title: 'A nice project',
       description: 'A DRY library for express-mongoose',
       img: '/nice.img.edit',
@@ -23,7 +25,6 @@ describe('MapDropDown component', () => {
     },
     {
       // tech: ['NODE', 'Express', 'Mongoose'],
-      // _id: '5bb748545cdfe308de503a26',
       title: 'router Factroy',
       description: 'A DRY library for express-mongoose',
       img: '/nice.img',
@@ -32,7 +33,6 @@ describe('MapDropDown component', () => {
     },
     {
       // tech: [],
-      // _id: '5bb752d4f363000aeded8422',
       title: 'proj 1',
       description: 'desc 1',
       img: 'new.img',
@@ -41,7 +41,6 @@ describe('MapDropDown component', () => {
     },
     {
       // tech: [],
-      // _id: '5bb93a563375a411eb0fd94b',
       title: 'today',
       description: 'today',
       img: 'today',
