@@ -9,6 +9,7 @@ import React, { Component, Fragment } from 'react';
  * props.
  * Because enzyme's shallow generate an instance for class coponents, <TestWrapper/>
  * allow us to access any functional coponent passed as a children.
+ * @see https://github.com/airbnb/enzyme/issues/1232#issuecomment-334510754
  */
 class TestWrapper extends Component {
   constructor(props) {
