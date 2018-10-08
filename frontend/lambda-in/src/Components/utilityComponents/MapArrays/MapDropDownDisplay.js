@@ -12,12 +12,12 @@ const MapDropDownDisplay = (props) => {
       header={item.title || item.degree}
       key={`${item.title || item.degree}${Math.random()}`}
     >
-      <div className="dropdown-item-list blur-handler">
+      <div className="dropdown-item blur-handler">
         <Fragment>
           {// prettier-ignore
           propsAndLabels.map(propLabel => (
             <div
-              className="inputFieldLargeMultiline"
+              className="mpadropdowndisplay-item--propperty inputFieldLargeMultiline"
               key={`${Math.random()}-${propLabel[1]}`}
             >
               <div>
