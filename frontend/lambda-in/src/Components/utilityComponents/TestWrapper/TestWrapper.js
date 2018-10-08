@@ -16,6 +16,19 @@ class TestWrapper extends Component {
     this.state = {};
   }
 
+  /**
+   * Catch children component error an log them in test-enviroment
+   *
+   * @description An Error bundary to catch potential children component's
+   * Javascrip errors
+   * @see https://reactjs.org/docs/error-boundaries.html
+   * @param {object} error - Error ebject
+   * @param {object} info - Component stack on error
+   */
+  componentDidCatch(error, info) {
+    console.log('Error Bundary', error, info);
+  }
+
   render() {
     // eslint-disable-next-line react/prop-types
     const { children } = this.props;
