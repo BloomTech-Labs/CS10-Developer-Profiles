@@ -3,31 +3,46 @@ import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import StateCapsule from './StateCapsule';
+import TestWrapper from '../TestWrapper/TestWrapper';
 
 configure({ adapter: new Adapter() });
 
 describe('StateCapsule component', () => {
-  /**
-   * Shortans for StateCapsule: 'sc' || 'SC'
-   */
   const schema = {
-    summary: 'Summary',
-    topSkills: ['Top Skills'],
+    forRemoveButton: {
+      summary: 'Summary',
+      topSkills: ['Top Skills'],
+    },
+    forCreateButton: {
+      title: 'Title',
+      description: 'Description',
+      img: 'Image',
+      link: 'Link',
+      repo: 'Repository',
+      // tech: ['Stack'], // TODO
+    },
   };
 
+  // const data = {
+  //   forRemoveButton: {
+  //     topSkills: ['JS', 'React', 'TDD', 'Full stack developer'],
+  //     summary: 'Some summary here',
+  //   },
+  //   forCreateButton: {},
+  // };
   const data = {
-    summary: 'Some summary here',
     topSkills: ['JS', 'React', 'TDD', 'Full stack developer'],
+    summary: 'Some summary here',
   };
 
   const stateCapsules = {
     basic: (
-      <StateCapsule schema={schema} object={data}>
+      <StateCapsule schema={schema.forRemoveButton} object={data}>
         {() => {}}
       </StateCapsule>
     ),
-    withChildren: (
-      <StateCapsule schema={schema} object={data}>
+    withChildrenRemoveButton: (
+      <StateCapsule schema={schema.forRemoveButton} object={data}>
         {({ stateCapsule, removeItem }) => (
           <div>
             <input id="edit-summary" type="text" value={stateCapsule.summary} />
@@ -42,6 +57,7 @@ describe('StateCapsule component', () => {
                   <li>
                     {skill}
                     <button
+                      className="button-remove"
                       type="button"
                       onClick={removeItem('topSkills', index)}
                     >
@@ -55,12 +71,53 @@ describe('StateCapsule component', () => {
         )}
       </StateCapsule>
     ),
+    withChildrenCreateButton: (
+      <StateCapsule schema={schema.forCreateButton} object={{}}>
+        {({ stateCapsule, createItem }) => (
+          <div>
+            <button type="button" onClick={createItem('projects')}>
+              Create
+            </button>
+            <ul>
+              {// prettier-ignore
+              Object.keys(stateCapsule).map(field => (
+                <div key={`${Math.random()}-${Date.now()}`}>
+                  <input
+                    id={`new-${field}`}
+                    type="text"
+                    value={stateCapsule[field]}
+                  />
+                </div>
+              ))}
+            </ul>
+          </div>
+        )}
+      </StateCapsule>
+    ),
   };
 
-  it('should renders correctly', () => {
-    const tree = renderer.create(stateCapsules.basic).toJSON();
+  describe('Renders correctly', () => {
+    it('should renders basic component', () => {
+      const tree = renderer.create(stateCapsules.basic).toJSON();
 
-    expect(tree).toMatchSnapshot();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('should renders children with remove functionality.', () => {
+      const tree = renderer
+        .create(stateCapsules.withChildrenRemoveButton)
+        .toJSON();
+
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('should renders children with create functionality.', () => {
+      const tree = renderer
+        .create(stateCapsules.withChildrenCreateButton)
+        .toJSON();
+
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   it('should initialize state with schema`s properties', () => {
@@ -78,14 +135,8 @@ describe('StateCapsule component', () => {
     ]);
   });
 
-  it('should renders children correctly', () => {
-    const tree = renderer.create(stateCapsules.withChildren).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
   it('should update state onChange', () => {
-    const shallowSC = shallow(stateCapsules.withChildren);
+    const shallowSC = shallow(stateCapsules.withChildrenRemoveButton);
 
     // Before any 'onChange' event
     expect(shallowSC.state().topSkills_edit).toMatch('');
@@ -102,27 +153,48 @@ describe('StateCapsule component', () => {
     expect(shallowSC.state().topSkills_edit).toMatch('JavaScrip');
   });
 
-  it('should update state`s array-like property onClick', () => {
-    const shallowSC = shallow(stateCapsules.withChildren);
-    const originalArray = ['JS', 'React', 'TDD', 'Full stack developer'];
-    const modifiedArray = ['JS', 'React', 'TDD'];
+  describe('Remove items from an array', () => {
+    let shallowSC;
 
-    // Before any 'onChange' event
-    expect(shallowSC.state().topSkills).toEqual(
-      expect.arrayContaining(originalArray),
-    );
+    // originalArray = ['JS', 'React', 'TDD', 'Full stack developer'];
+    const modifiedArray = [];
 
-    shallowSC.find('.state-capsule').simulate('click', {
-      target: {
-        field: 'topSkills',
-        index: 3,
-      },
-      stopPropagation: () => {},
+    const mockDispatchEvent = jest.fn(() => {});
+
+    beforeAll(() => {
+      shallowSC = shallow(stateCapsules.withChildrenRemoveButton);
+
+      // prettier-ignore
+      const mockEvent = index => Object.assign({
+        target: {
+          field: 'topSkills',
+          index,
+          dispatchEvent: mockDispatchEvent,
+        },
+        stopPropagation: () => {},
+      });
+
+      const buttons = shallowSC.find('.button-remove');
+
+      let aux = 0;
+      /**
+       * Simulate 'click' on each rendered item to remove them all
+       */
+      buttons.forEach((button) => {
+        button.simulate('click', mockEvent(aux));
+        aux += 1;
+      });
     });
 
-    // After an 'onChange' event
-    expect(shallowSC.state().topSkills).toEqual(
-      expect.arrayContaining(modifiedArray),
-    );
+    it('should update state`s array-like property onClick', () => {
+      // After on click event => array must be empty
+      expect(shallowSC.state().topSkills).toEqual(
+        expect.arrayContaining(modifiedArray),
+      );
+    });
+
+    it('should call dispatchEvent', () => {
+      expect(mockDispatchEvent.mock.calls.length).toBe(4);
+    });
   });
 });
