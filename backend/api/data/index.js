@@ -7,6 +7,8 @@ const { tracks } = require('./datasets/tracks');
 
 const avatars = faker.helpers.shuffle(faces);
 
+faker.locale = 'en_US';
+
 /**
  * @todo location schema -> currentLocation, placesInterested
  * @todo skillSchema -> topskills, additionalSkills, familiarWith
