@@ -25,6 +25,7 @@ const MapDropDown = (props) => {
           <div className="dropdown-item-list blur-handler">
             <Fragment>
               <Button
+                className="mapdropdown-button--delete"
                 variant="outlined"
                 color="primary"
                 align="center"
@@ -35,7 +36,10 @@ const MapDropDown = (props) => {
 
               {// prettier-ignore
               propsAndLabels.map(propLabel => (
-                <div className="inputFieldLargeMultiline">
+                <div
+                  key={`${Date.now()}${Math.random()}`}
+                  className="inputFieldLargeMultiline"
+                >
                   <TextField
                     id={`edit-${propLabel[0]}`}
                     label={propLabel[1]}
