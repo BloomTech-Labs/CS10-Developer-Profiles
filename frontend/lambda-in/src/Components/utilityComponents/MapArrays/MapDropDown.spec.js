@@ -81,10 +81,15 @@ describe('MapDropDown component', () => {
   describe('Renders all items and its properties', () => {
     const mounted = mount(<TestWrapper>{() => mapDropDown}</TestWrapper>);
     const items = mounted.find('.dropdown-item-list');
+    const allButtons = mounted.find('button');
     const allProperties = mounted.find('.inputFieldLargeMultiline');
 
     it('should renders all items in the array', () => {
       expect(items).toHaveLength(4);
+    });
+
+    it('should renders a button for each item in the array', () => {
+      expect(allButtons).toHaveLength(4);
     });
 
     it('should renders all properties for each item in the array', () => {
