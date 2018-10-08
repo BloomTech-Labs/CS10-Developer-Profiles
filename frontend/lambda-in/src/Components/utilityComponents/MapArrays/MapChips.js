@@ -53,7 +53,7 @@ const MapChips = (props) => {
 
 MapChips.propTypes = {
   array: PropTypes.arrayOf(PropTypes.any).isRequired,
-  classes: PropTypes.objectOf(PropTypes.object),
+  classes: PropTypes.objectOf(PropTypes.string),
   removeItem: PropTypes.func,
   field: PropTypes.string,
 };
