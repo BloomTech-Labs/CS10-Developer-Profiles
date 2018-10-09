@@ -255,7 +255,7 @@ const numSkills = {
 };
 
 const getSkills = (track) => {
-  const skillsByTrack = shuffle(skills[track]);
+  const skillsByTrack = shuffle(skills[track].slice(0));
   const TS = Array(getRandomInt(numSkills[track].TS.min, numSkills[track].TS.max)).fill(0);
   const AS = Array(getRandomInt(numSkills[track].AS.min, numSkills[track].AS.max)).fill(0);
   const FW = Array(getRandomInt(numSkills[track].FW.min, numSkills[track].FW.max)).fill(0);
@@ -270,7 +270,7 @@ const getSkills = (track) => {
 const getTechStack = (min, max, blank) => {
   const rand = Math.random();
   const numTech = blank && (rand >= 0 && rand < blank / 100) ? 0 : getRandomInt(min, max);
-  const allTech = shuffle(tech);
+  const allTech = shuffle(tech.slice(0));
   const techStack = [];
 
   for (let i = 0; i < numTech; i += 1) {
