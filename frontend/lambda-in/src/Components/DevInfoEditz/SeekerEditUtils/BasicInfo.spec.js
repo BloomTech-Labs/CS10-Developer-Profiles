@@ -1,8 +1,10 @@
 import React from 'react';
-import { configure } from 'enzyme';
+import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import BasicInfo from './BasicInfo';
+import TestWrapper from '../../utilityComponents/TestWrapper/TestWrapper';
+import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
 configure({ adapter: new Adapter() });
 
@@ -26,5 +28,12 @@ describe('BasicInfo component', () => {
   it('should renders correctly', () => {
     const tree = renderer.create(basicInfo);
     expect(tree).toMatchSnapshot();
+  });
+
+  it('should renders a SteceCapsule component', () => {
+    const mounted = mount(<TestWrapper>{() => basicInfo}</TestWrapper>);
+
+    const stateCapsule = mounted.find(StateCapsule);
+    expect(stateCapsule).toHaveLength(1);
   });
 });
