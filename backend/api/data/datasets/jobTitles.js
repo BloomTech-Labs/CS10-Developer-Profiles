@@ -1,3 +1,5 @@
+const { getRandomInt } = require('../utils/getRandomInt');
+
 const jobTitles = {
   FSW: [
     'Junior Front End Developer',
@@ -73,6 +75,15 @@ const jobTitles = {
   ],
 };
 
+const getJobTitle = (track, blank) => {
+  const rand = Math.random();
+  const titles = jobTitles[track];
+
+  return blank && (rand >= 0 && rand < blank / 100)
+    ? ''
+    : titles[getRandomInt(0, titles.length - 1)];
+};
+
 module.exports = {
-  jobTitles,
+  getJobTitle,
 };

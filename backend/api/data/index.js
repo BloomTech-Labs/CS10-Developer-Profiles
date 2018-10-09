@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const { getRandomInt } = require('./utils/getRandomInt');
 const { getEmail } = require('./datasets/emails');
 const { faces } = require('./datasets/faces');
-const { jobTitles } = require('./datasets/jobTitles');
+const { getJobTitle } = require('./datasets/jobTitles');
 const { tracks } = require('./datasets/tracks');
 
 const avatars = faker.helpers.shuffle(faces);
@@ -24,7 +24,6 @@ faker.locale = 'en_US';
 
 const getSeeker = (avatar) => {
   const track = tracks[getRandomInt(0, tracks.length - 1)];
-  const titles = jobTitles[track];
 
   const firstName = faker.name.firstName(avatar.gender);
   const lastName = faker.name.lastName(avatar.gender);
@@ -38,7 +37,7 @@ const getSeeker = (avatar) => {
     password: passwordHash,
     email: getEmail(firstName, lastName, 0),
     currentTitle: faker.name.jobTitle(),
-    desiredTitle: titles[getRandomInt(0, titles.length - 1)],
+    desiredTitle: getJobTitle(track, 0),
     currentLocation: 'locationSchema',
     summary: summary.length > 128 ? `${summary.substring(0, 127)}.` : summary,
     github: `https://github.com/${firstName.toLowerCase()}-${lastName.toLowerCase()}`,
