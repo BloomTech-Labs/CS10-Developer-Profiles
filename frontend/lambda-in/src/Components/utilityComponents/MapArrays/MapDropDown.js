@@ -17,6 +17,7 @@ const MapDropDown = (props) => {
 
   return array.map((item, index) => (
     <DropDown
+      className="dropdown-edit"
       header={item.title || item.degree}
       key={`${item.title || item.degree}${Math.random()}`}
     >
