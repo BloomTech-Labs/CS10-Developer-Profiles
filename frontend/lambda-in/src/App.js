@@ -5,13 +5,12 @@ import NavBar from './Components/Navbar/navbar';
 import DevSignUp from './Components/DevSignUp/DevSignUp';
 import DevLogin from './Components/DevLogIn/DevLogIn';
 import LandingPage from './Components/LandingPage/landing-page';
-import DevProfile from './Components/DevProfile/DevProfile';
 import DevProfile2 from './Components/DevProfile2/DevProfile2';
 import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
 import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpProfile from './Components/EmpProfile/EmpProfile';
-import EmpPositionAdd from './Components/OpenPositionAdd/OpenPositionAdd';
+import OpenPositionAdd from './Components/OpenPositionAdd/OpenPositionAdd';
 import EmpPositionEdit from './Components/OpenPositionEdit/OpenPositionEdit';
 
 import UserSetting from './Components/UserSetting/UserSetting';
@@ -202,19 +201,14 @@ class App extends Component {
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/emp-profile"
-              render={() => (isSignedIn ? <EmpProfile /> : <Redirect to="/" />)}
-            />
-            {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
-            <Route
-              path="/emp-info-edit"
               render={(props) =>
                 isSignedIn ? (
-                  <EmpPositionEdit
+                  <EmpProfile
                     {...props}
                     setGS={this.setGlobalState}
                     getGS={this.getGlobalState}
                   />
-                ) : (
+                  ) : (
                   <Redirect to="/" />
                 )
               }
@@ -225,7 +219,7 @@ class App extends Component {
               path="/emp-pos-add"
               render={(props) =>
                 isSignedIn ? (
-                  <EmpPositionAdd
+                  <OpenPositionAdd
                     {...props}
                     setGS={this.setGlobalState}
                     getGS={this.getGlobalState}

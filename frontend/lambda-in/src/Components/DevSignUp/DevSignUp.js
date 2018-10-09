@@ -1,20 +1,48 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import AOS from 'aos';
+import axios from 'axios';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import Typography from '@material-ui/core/Typography';
 
-import '../DevSignUp/DevSignUp.css';
-
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 AOS.init();
 
+const styles = {
+  paper: {
+    alignSelf: 'center',
+  },
+  signUpContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100vh',
+    padding: '10px 0',
+    width: '100vw',
+  },
+  signUpForm: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '20px',
+    padding: '5px',
+    width: '30vw',
+  },
+  signUp: {
+    margin: '16px',
+  },
+  submitButton: {
+    width: '100%',
+  },
+  submitInput: {
+    display: 'none',
+  },
+};
 
-export default class DevSignUp extends Component {
+class DevSignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,23 +52,37 @@ export default class DevSignUp extends Component {
       password: '',
       confirmPassword: '',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleNewUser = this.handleNewUser.bind(this);
   }
 
-  handleChange = event => {
+  handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
     });
-  };
+  }
 
-  handNewUser = event => {
+  handleNewUser(event) {
     event.preventDefault();
+
+    const { setGS } = this.props;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+    } = this.state;
 
     /**
      * VALIDATE password input.
      * @description Validate that `password` and `confirmPassword` fields match.
+     *
+     * @todo: Improve UX for alert
      */
-    if (this.state.password !== this.state.confirmPassword) {
-      alert("Your passwors don't match. Please try again!");
+    if (password !== confirmPassword) {
+      alert("Your passwords don't match. Please try again!"); // eslint-disable-line no-alert
       this.setState({
         password: '',
         confirmPassword: '',
@@ -50,14 +92,15 @@ export default class DevSignUp extends Component {
 
     axios
       .post('/api/register/seekers', {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        password: this.state.password,
+        firstName,
+        lastName,
+        email,
+        password,
       })
-      .then(response => {
+      .then((response) => {
         localStorage.setItem('token', response.data.jwt);
-        localStorage.setItem('_id', response.data.newUser._id);
+        localStorage.setItem('_id', response.data.newUser._id); // eslint-disable-line no-underscore-dangle
+
         // RESET local state
         this.setState({
           firstName: '',
@@ -68,7 +111,7 @@ export default class DevSignUp extends Component {
         /**
          * SET GLOBAL STATE
          */
-        this.props.setGS({
+        setGS({
           userInfo: { ...response.data.newUser }, // Set user data.
           isSignedIn: true,
           userType: 'seeker',
@@ -76,91 +119,111 @@ export default class DevSignUp extends Component {
 
         console.log('POST_NEW_DEV', { status: response.status });
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({
           password: '',
           confirmPassword: '',
         });
-        console.log(err);
       });
-  };
+  }
 
   render() {
+    const { classes } = this.props;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+    } = this.state;
+
     return (
-      <div data-aos="zoom-in-down" className="signupContainer">
-        <div className="formConatiner">
-          <Paper className="paper" onChange={this.handleChange}>
-            <div className="form2">
-              <div>
-                <Typography variant="display1" gutterBottom align="center">
-                  Lambda Network
-                </Typography>
-
-                <Typography variant="headline" gutterBottom align="center">
-                  Sign Up
-                </Typography>
-              </div>
-              {/* look at https://material-ui.com/demos/text-fields/ for documentaition */}
-              <TextField
-                id="firstName"
-                label="First Name"
-                value={this.state.firstName}
-                margin="normal"
+      <div data-aos="zoom-in-down" className={classes.signUpContainer}>
+        <Paper className={classes.paper}>
+          <form className={classes.signUpForm} onSubmit={this.handleNewUser}>
+            <div>
+              <Typography variant="display1" gutterBottom align="center">
+                MeetDev
+              </Typography>
+              <Typography variant="headline" gutterBottom align="center">
+                Developer Sign Up
+              </Typography>
+            </div>
+            <TextField
+              id="firstName"
+              label="First Name"
+              value={firstName}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="lastName"
+              label="Last Name"
+              value={lastName}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="email"
+              label="Email"
+              value={email}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="password"
+              type="password"
+              label="Password"
+              value={password}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="confirmPassword"
+              type="password"
+              label="Confirm Password"
+              value={confirmPassword}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+            <br />
+            <label htmlFor="input-submit-button">
+              <input
+                id="input-submit-button"
+                className={classes.submitInput}
+                type="submit"
               />
-
-              <TextField
-                id="lastName"
-                label="Last Name"
-                value={this.state.lastName}
-                margin="normal"
-              />
-
-              <TextField
-                id="email"
-                label="Email"
-                value={this.state.email}
-                margin="normal"
-              />
-
-              <TextField
-                id="password"
-                type="password"
-                label="Password"
-                value={this.state.password}
-                margin="normal"
-              />
-
-              <TextField
-                id="confirmPassword"
-                type="password"
-                label="Confirm Password"
-                value={this.state.confirmPassword}
-                margin="normal"
-              />
-              <br />
               <Button
+                className={classes.submitButton}
                 variant="contained"
                 color="primary"
-                onClick={this.handNewUser}
+                onClick={this.handleNewUser}
               >
-                Submit
+                Sign Up
               </Button>
-            </div>
-            <div className="login">
-              <Link to="/employer-signup">
-                <Typography variant="caption" gutterBottom align="center">
-                  are you an employer? Sign up here!
-                </Typography>
-              </Link>
-              <Link to="/dev-login">
-                <Typography variant="caption" gutterBottom align="center">
-                  already have an account? Login here!
-                </Typography>
-              </Link>
-            </div>
-          </Paper>
-        </div>
+            </label>
+          </form>
+          <div className={classes.signUp}>
+            <Link to="/employer-signup">
+              <Typography variant="caption" gutterBottom align="center">
+                Are You An Employer? Sign Up Here!
+              </Typography>
+            </Link>
+            <Link to="/dev-login">
+              <Typography variant="caption" gutterBottom align="center">
+                Already Have An Account? Login Here!
+              </Typography>
+            </Link>
+          </div>
+        </Paper>
       </div>
     );
   }
 }
+
+DevSignUp.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  setGS: PropTypes.func.isRequired,
+};
+
+export default withStyles(styles)(DevSignUp);

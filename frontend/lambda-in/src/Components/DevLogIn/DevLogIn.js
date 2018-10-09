@@ -1,30 +1,66 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import AOS from 'aos';
+import axios from 'axios';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 
-import '../DevLogIn/DevLogin.css';
-
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 AOS.init();
 
-export default class DevLogin extends Component {
+const styles = {
+  loginContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100vh',
+    padding: '10px 0',
+    width: '100vw',
+  },
+  loginForm: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '20px',
+    padding: '5px',
+    width: '30vw',
+  },
+  paper: {
+    alignSelf: 'center',
+  },
+  resolveConflict: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  signup: {
+    margin: '16px',
+  },
+  submitButton: {
+    width: '100%',
+  },
+  submitInput: {
+    display: 'none',
+  },
+};
+
+class DevLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
-      userType: '',
       seekerResponse: '',
       employerResponse: '',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.resolveUserConflict = this.resolveUserConflict.bind(this);
   }
 
   /**
@@ -34,17 +70,19 @@ export default class DevLogin extends Component {
    * @param {string} userType - Type of user
    */
   handleAxios(httpResponse, userType) {
-    console.log(httpResponse, userType);
+    const { setGS } = this.props;
+
     localStorage.setItem('token', httpResponse.data.jwt);
+
     // RESET local state
     this.setState({
-      username: '',
       password: '',
     });
+
     /**
      * SET GLOBAL STATE
      */
-    this.props.setGS({
+    setGS({
       userInfo: { ...httpResponse.data.user }, // Set user data.
       isSignedIn: true,
       userType,
@@ -61,19 +99,18 @@ export default class DevLogin extends Component {
    *
    * @param {event} event - Even object
    */
-  /* eslint-disable */
-  handleLogin = async (event) => {
+  async handleLogin(event) {
     event.preventDefault();
 
-    const loginData = {
-      email: this.state.email,
-      password: this.state.password,
-    };
+    const { email, password } = this.state;
+    const { setGS } = this.props;
+    const loginData = { email, password };
 
     /**
      * Validate credential in both endpoints ('seeker' and 'employers')
      */
-    let seekersResponse, employersResponse;
+    let seekersResponse;
+    let employersResponse;
 
     try {
       seekersResponse = await axios.post('/api/login/seekers', loginData);
@@ -93,13 +130,11 @@ export default class DevLogin extends Component {
      * 'login' === 'conflict' will display a UI feature to resolve the conflict.
      */
     if (seekersResponse.status === 200 && employersResponse.status === 200) {
-      console.log('CONFLICT');
       this.setState({
-        userType: 'conflict',
         seekerResponse: seekersResponse,
         employerResponse: employersResponse,
       });
-      this.props.setGS({ login: 'conflict' });
+      setGS({ login: 'conflict' });
       return;
     }
 
@@ -107,7 +142,6 @@ export default class DevLogin extends Component {
      * If success loginin as a 'seeker', process response and 'return'
      */
     if (seekersResponse.status === 200) {
-      console.log('seeker');
       this.handleAxios(seekersResponse, 'seeker');
       return;
     }
@@ -122,9 +156,11 @@ export default class DevLogin extends Component {
 
     /**
      * If any Error reset password field
+     *
+     * @todo: Improve UX
      */
     this.setState({ password: '' });
-    alert('Error with your credential'); // TODO: Improve UX
+    alert('Error with your credential'); // eslint-disable-line no-alert
 
     console.log({
       'HTTP login seekersResponse status': seekersResponse.status,
@@ -132,14 +168,13 @@ export default class DevLogin extends Component {
     console.log({
       'HTTP login employersResponse status': employersResponse.status,
     });
-  };
-  /* eslint-enable */
+  }
 
-  handleChange = (event) => {
+  handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
     });
-  };
+  }
 
   /**
    * Set APP's global state according to user choise
@@ -147,46 +182,61 @@ export default class DevLogin extends Component {
    * @param {string} userType - The type of profile to login.
    * @return {void}
    */
-  resolveUserConflict = (userType) => {
-    console.log();
+  resolveUserConflict(userType) {
+    const { seekerResponse, employerResponse } = this.state;
+
     if (userType === 'seeker') {
-      this.handleAxios(this.state.seekerResponse, userType);
+      this.handleAxios(seekerResponse, userType);
     } else {
-      this.handleAxios(this.state.employerResponse, userType);
+      this.handleAxios(employerResponse, userType);
     }
 
     // Reset local-state
     this.setState({
       email: '',
       password: '',
-      userType: '',
       seekerResponse: '',
       employerResponse: '',
     });
-  };
+  }
 
   render() {
-    const { userType } = this.setState;
+    const { email, password } = this.state;
+    const { classes, getGS } = this.props;
 
     const buttonConflict =
-      this.props.getGS('login') !== 'conflict' ? (
-        <Button variant="contained" color="primary" onClick={this.handleLogin}>
-          Submit
-        </Button>
+      getGS('login') !== 'conflict' ? (
+        <React.Fragment>
+          <label htmlFor="input-submit-button">
+            <input
+              id="input-submit-button"
+              className={classes.submitInput}
+              type="submit"
+            />
+            <Button
+              className={classes.submitButton}
+              variant="contained"
+              color="primary"
+              onClick={this.handleLogin}
+            >
+              Login
+            </Button>
+          </label>
+        </React.Fragment>
       ) : (
         <div>
           <Typography variant="caption" gutterBottom align="center">
             Continue as:
           </Typography>
-          <div className="resolve-conflict">
+          <div className={classes.resolveConflict}>
             <Chip
-              onClick={this.resolveUserConflict.bind(this, 'seeker')}
+              onClick={() => this.resolveUserConflict('seeker')}
               label="Developer"
               color="primary"
               variant="outlined"
             />
             <Chip
-              onClick={this.resolveUserConflict.bind(this, 'employer')}
+              onClick={() => this.resolveUserConflict('employer')}
               label="Employer"
               color="primary"
               variant="outlined"
@@ -196,54 +246,58 @@ export default class DevLogin extends Component {
       );
 
     return (
-      <div data-aos="zoom-in-down" className="loginContainer">
-        <div className="formConatiner">
-          <Paper onChange={this.handleChange} className="paper">
-            <div className="form2">
-              <div>
-                <Typography variant="display1" gutterBottom align="center">
-                  Lambda Network
-                </Typography>
-
-                <Typography variant="headline" gutterBottom align="center">
-                  Login
-                </Typography>
-              </div>
-              <TextField
-                id="email"
-                label="Email"
-                value={this.state.email}
-                margin="normal"
-              />
-
-              <TextField
-                id="password"
-                type="password"
-                label="password"
-                value={this.state.password}
-                margin="normal"
-              />
-
-              <br />
-              {buttonConflict}
+      <div data-aos="zoom-in-down" className={classes.loginContainer}>
+        <Paper className={classes.paper}>
+          <form className={classes.loginForm} onSubmit={this.handleLogin}>
+            <div>
+              <Typography variant="display1" gutterBottom align="center">
+                MeetDev
+              </Typography>
+              <Typography variant="headline" gutterBottom align="center">
+                Login
+              </Typography>
             </div>
-
-            <div className="login">
-              <Link to="/dev-signup">
-                <Typography variant="caption" gutterBottom align="center">
-                  Not Registered? Signup here!
-                </Typography>
-              </Link>
-              <br />
-              <Link to="/reset-password-email">
-                <Typography variant="caption" gutterBottom align="center">
-                  forgot password?
-                </Typography>
-              </Link>
-            </div>
-          </Paper>
-        </div>
+            <TextField
+              id="email"
+              label="Email"
+              value={email}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="password"
+              type="password"
+              label="Password"
+              value={password}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+            <br />
+            {buttonConflict}
+          </form>
+          <div className={classes.signup}>
+            <Link to="/dev-signup">
+              <Typography variant="caption" gutterBottom align="center">
+                Not Registered? Signup here!
+              </Typography>
+            </Link>
+            <br />
+            <Link to="/reset-password-email">
+              <Typography variant="caption" gutterBottom align="center">
+                Forgot Password?
+              </Typography>
+            </Link>
+          </div>
+        </Paper>
       </div>
     );
   }
 }
+
+DevLogin.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  setGS: PropTypes.func.isRequired,
+  getGS: PropTypes.func.isRequired,
+};
+
+export default withStyles(styles)(DevLogin);
