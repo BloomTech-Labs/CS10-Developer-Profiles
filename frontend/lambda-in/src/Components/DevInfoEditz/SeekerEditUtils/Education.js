@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 
 const Education = ({ userInfo }) => {
@@ -26,7 +26,7 @@ const Education = ({ userInfo }) => {
 };
 
 Education.propTypes = {
-  userInfo: PropTypes.shape({}).isRequired,
+  userInfo: SEEKER_PROP_TYPES.isRequired,
 };
 
 export default Education;
