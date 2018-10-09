@@ -34,7 +34,11 @@ const DropDown = ({ header, children }) => (
 
 DropDown.propTypes = {
   header: PropTypes.string.isRequired,
-  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+    PropTypes.func,
+  ]).isRequired,
 };
 
 export default DropDown;
