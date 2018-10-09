@@ -19,6 +19,15 @@ faker.locale = 'en_US';
  * @todo hash password
  */
 
+const getSeekerEmail = (firstName, lastName, blank) => {
+  const rand = Math.random();
+  const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}@${
+    emailProviders[getRandomInt(0, emailProviders.length - 1)]
+  }.com`;
+
+  return blank && (rand >= 0 && rand < blank / 100) ? '' : email;
+};
+
 const getSeeker = (avatar) => {
   const track = tracks[getRandomInt(0, tracks.length - 1)];
   const titles = jobTitles[track];
@@ -33,9 +42,7 @@ const getSeeker = (avatar) => {
     lastName,
     img: avatar.avatar,
     password: 'Password123&',
-    email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@${
-      emailProviders[getRandomInt(0, emailProviders.length - 1)]
-    }.com`,
+    email: getSeekerEmail(firstName, lastName, 0),
     currentTitle: faker.name.jobTitle(),
     desiredTitle: titles[getRandomInt(0, titles.length - 1)],
     currentLocation: 'locationSchema',
