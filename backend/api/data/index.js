@@ -1,6 +1,7 @@
-const faker = require('faker');
+const faker = require('faker/locale/en_US');
 const bcrypt = require('bcrypt');
 const { generateJSONFile } = require('./utils/generateJSONFile');
+const { fakerFirstName } = require('./utils/patchFakerNames.js');
 const { getProjects } = require('./utils/getProjectSchema');
 const { getRandomInt } = require('./utils/getRandomInt');
 const { getCity, getCities } = require('./datasets/cities');
@@ -10,13 +11,14 @@ const { getJobTitle } = require('./datasets/jobTitles');
 const { getSkills } = require('./datasets/skills');
 const { tracks } = require('./datasets/tracks');
 
+faker.locale = 'en_US';
+faker.name.firstName = fakerFirstName;
+
 const avatars = faker.helpers.shuffle(faces);
 const password = 'Password123&';
 const salt = bcrypt.genSaltSync(12);
 const passwordHash = bcrypt.hashSync(password, salt);
 const seekers = [];
-
-faker.locale = 'en_US';
 
 /**
  * @todo experienceSchema -> expreience
