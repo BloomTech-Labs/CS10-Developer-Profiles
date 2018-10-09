@@ -30,6 +30,7 @@ const SORT_OPTIONS = {
  */
 const FILTER_VALUE = {
   desiredTitle: 'desiredTitle',
+  location: 'currentLocation.place',
 };
 
 /**
@@ -57,14 +58,6 @@ const FILTER_ARRAY = {
   familiar: 'familiarWith',
 };
 
-/**
- * @constant
- * @type {Object}
- */
-const FILTER_OBJECT = {
-  location: 'currentLocation.place',
-};
-
 module.exports = {
   PAGINATION_LIMIT,
   SEEKERS_API_PATH,
@@ -72,5 +65,4 @@ module.exports = {
   FILTER_VALUE,
   FILTER_BOOLEAN,
   FILTER_ARRAY,
-  FILTER_OBJECT,
 };
