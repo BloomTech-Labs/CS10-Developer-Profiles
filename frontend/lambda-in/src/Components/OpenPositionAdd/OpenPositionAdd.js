@@ -1,13 +1,30 @@
-import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import axios from "axios";
-import "./OpenPositionAdd.css";
+import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import './OpenPositionAdd.css';
 
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#5C6BC0',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#B79A3F',
+      contrastText: '#fff',
+    },
+  },
+});
 
 AOS.init();
 
@@ -15,74 +32,70 @@ export default class OpenPositionAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projectName: "",
-      description: "",
-      jobTitle: "",
-      techStack: "",
-      skills: "",
-      minSalary: "",
-      maxSalary: ""
+      projectName: '',
+      description: '',
+      jobTitle: '',
+      // techStack: "", // TODO: Sanitize info to avoid validation error in database whild POST/PUT
+      // skills: "", // TODO: Sanitize info to avoid validation error in database whild POST/PUT
+      minSalary: '',
+      maxSalary: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleNewPos = this.handleNewPos.bind(this);
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  handleNewPos = event => {
-    const {
-      projectName,
-      description,
-      jobTitle,
-      techStack,
-      skills,
-      minSalary,
-      maxSalary
-    } = this.state;
-
+  handleNewPos = (event) => {
+    const { getGS } = this.props;
     const { setGS } = this.props;
+    const userInfo = getGS('userInfo');
 
-    const newPosition = {
-      projectName,
-      description,
-      jobTitle,
-      techStack,
-      skills,
-      minSalary,
-      maxSalary
-    };
+    const userInfoCopy = { ...userInfo };
 
-    event.preventDefault();
+    const { _id } = userInfoCopy;
+    const updatedPositions = [...userInfoCopy.openPositions];
+
+    updatedPositions.push(this.state);
 
     axios
-      .post("/api/employers/", newPosition)
-      .then(response => {
-        localStorage.setItem("token", response.data.jwt);
-        localStorage.setItem("_id", response.data.newPosition._id);
+      .put(
+        `/api/employers/${_id}`,
+        { openPositions: updatedPositions },
+        {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          },
+        },
+      )
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(response);
+        } else {
+          setGS({
+            userInfo: { ...response.data['Document(s) modified'] },
+            updateState: 'updated',
+          });
+          console.log({ ...response.data['Document(s) modified'] });
 
-        this.setStage({
-          projectName: "",
-          description: "",
-          jobTitle: "",
-          techStack: "",
-          skills: "",
-          minSalary: "",
-          maxSalary: ""
-        });
-        setGS({
-          // userInfo: { ...response.data.newPosition },
-          isSignedIn: true,
-          userType: "employer"
-        });
-        console.log(response);
+          this.setState({
+            projectName: '',
+            description: '',
+            jobTitle: '',
+            // techStack: "",
+            // skills: "",
+            minSalary: '',
+            maxSalary: '',
+          });
+        }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
-        this.props.setGS({ updateState: "error" });
+        this.props.setGS({ updateState: 'error' });
       });
   };
 
@@ -91,10 +104,10 @@ export default class OpenPositionAdd extends Component {
       projectName,
       description,
       jobTitle,
-      techStack,
-      skills,
+      // techStack,
+      // skills,
       minSalary,
-      maxSalary
+      maxSalary,
     } = this.state;
 
     return (
@@ -131,7 +144,7 @@ export default class OpenPositionAdd extends Component {
               margin="normal"
               fullWidth="true"
             />
-
+            {/*
             <TextField
               name="techStack"
               label="Tech Stack"
@@ -149,7 +162,7 @@ export default class OpenPositionAdd extends Component {
               margin="normal"
               fullWidth="true"
             />
-
+    */}
             <TextField
               name="minSalary"
               label="minSalary"
@@ -167,15 +180,33 @@ export default class OpenPositionAdd extends Component {
               margin="normal"
               fullWidth="true"
             />
-            <div class="buttons">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={this.handleNewPos}
-              >
-                {" "}
-                Submit
-              </Button>
+            <div className="buttons">
+              <MuiThemeProvider theme={theme}>
+                <div>
+                  <Button
+                    className="submitButton"
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleNewPos}
+                  >
+                    {' '}
+                    Submit
+                  </Button>
+                </div>
+
+                <div>
+                  <Button
+                    className="backPropButton"
+                    component={Link}
+                    to="/emp-profile"
+                    variant="contained"
+                    color="secondary"
+                  >
+                    {' '}
+                    Back to Profile
+                  </Button>
+                </div>
+              </MuiThemeProvider>
             </div>
           </div>
         </Paper>

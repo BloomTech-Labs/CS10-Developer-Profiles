@@ -10,8 +10,7 @@ import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
 import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpProfile from './Components/EmpProfile/EmpProfile';
-import EmpPositionAdd from './Components/OpenPositionAdd/OpenPositionAdd';
-import EmpPositionEdit from './Components/OpenPositionEdit/OpenPositionEdit';
+import OpenPositionAdd from './Components/OpenPositionAdd/OpenPositionAdd';
 
 import UserSetting from './Components/UserSetting/UserSetting';
 import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
@@ -192,26 +191,23 @@ class App extends Component {
                 isSignedIn ? (
                   redirectToUserProfile
                 ) : (
-                  <EmpSignUp setGS={this.setGlobalState} />
+                  <EmpSignUp
+                    setGS={this.setGlobalState}
+                  />
                 )
               }
             />
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/emp-profile"
-              render={() => (isSignedIn ? <EmpProfile /> : <Redirect to="/" />)}
-            />
-            {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
-            <Route
-              path="/emp-info-edit"
               render={(props) =>
                 isSignedIn ? (
-                  <EmpPositionEdit
+                  <EmpProfile
                     {...props}
                     setGS={this.setGlobalState}
                     getGS={this.getGlobalState}
                   />
-                ) : (
+                  ) : (
                   <Redirect to="/" />
                 )
               }
@@ -222,23 +218,7 @@ class App extends Component {
               path="/emp-pos-add"
               render={(props) =>
                 isSignedIn ? (
-                  <EmpPositionAdd
-                    {...props}
-                    setGS={this.setGlobalState}
-                    getGS={this.getGlobalState}
-                  />
-                ) : (
-                  <Redirect to="/" />
-                )
-              }
-            />
-
-            {/* EDIT POSITION: If user is not Authenticated 'Redirect' to home page */}
-            <Route
-              path="/emp-pos-edit"
-              render={(props) =>
-                isSignedIn ? (
-                  <EmpPositionEdit
+                  <OpenPositionAdd
                     {...props}
                     setGS={this.setGlobalState}
                     getGS={this.getGlobalState}
