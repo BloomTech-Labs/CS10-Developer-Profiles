@@ -17,7 +17,6 @@ import Icon from '@material-ui/core/Icon';
  * @example How to use it
  * <DropDown header="Header text to display here">
  */
-// eslint-disable-next-line react/prop-types
 const DropDown = ({ header, children }) => (
   <Fragment>
     <div className="panelMargin">
@@ -35,6 +34,7 @@ const DropDown = ({ header, children }) => (
 
 DropDown.propTypes = {
   header: PropTypes.string.isRequired,
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 
 export default DropDown;
