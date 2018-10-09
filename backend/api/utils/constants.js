@@ -56,6 +56,7 @@ const FILTER_ARRAY = {
   topSkills: 'topSkills',
   addSkills: 'additionalSkills',
   familiar: 'familiarWith',
+  places: 'placesInterested.place',
 };
 
 module.exports = {
