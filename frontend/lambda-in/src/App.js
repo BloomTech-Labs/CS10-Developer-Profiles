@@ -11,7 +11,6 @@ import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
 import EmpProfile from './Components/EmpProfile/EmpProfile';
 import OpenPositionAdd from './Components/OpenPositionAdd/OpenPositionAdd';
-import EmpPositionEdit from './Components/OpenPositionEdit/OpenPositionEdit';
 
 import UserSetting from './Components/UserSetting/UserSetting';
 import SearchGeolocation from './Components/InputGeolocation/SearchGeolocation';
@@ -220,22 +219,6 @@ class App extends Component {
               render={(props) =>
                 isSignedIn ? (
                   <OpenPositionAdd
-                    {...props}
-                    setGS={this.setGlobalState}
-                    getGS={this.getGlobalState}
-                  />
-                ) : (
-                  <Redirect to="/" />
-                )
-              }
-            />
-
-            {/* EDIT POSITION: If user is not Authenticated 'Redirect' to home page */}
-            <Route
-              path="/emp-pos-edit"
-              render={(props) =>
-                isSignedIn ? (
-                  <EmpPositionEdit
                     {...props}
                     setGS={this.setGlobalState}
                     getGS={this.getGlobalState}
