@@ -46,7 +46,7 @@ export const DEV_TEST_DATA = {
       tech: ['NODE', 'Express', 'Mongoose', 'React'],
       _id: '5bbcc2aee991c12f8e4bde3a',
       title: 'Dev profiles',
-      description: 'A meeting places for employers and talent developers',
+      description: 'A meeting place for employers and talent developers',
       img: '/nice.img.edit',
       link: 'go.to.project.com',
       repo: 'github.my-repo',
