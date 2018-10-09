@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 import SEEKER_PROP_TYPES from '../../seekerPropTypes';
+import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 
 const Projects = ({ userInfo }) => {
   const field = 'projects';
