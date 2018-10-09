@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
+import React from 'react';
+import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 import DropDown from '../../utilityComponents/DropDown/DropDown';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
-import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 
 const SocialLinks = ({ userInfo }) => {
   const schema = {
