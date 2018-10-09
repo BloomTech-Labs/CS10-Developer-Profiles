@@ -1,5 +1,6 @@
 const faker = require('faker');
 const bcrypt = require('bcrypt');
+const { generateJSONFile } = require('./utils/generateJSONFile');
 const { getRandomInt } = require('./utils/getRandomInt');
 const { getCity, getCities } = require('./datasets/cities');
 const { getEmail } = require('./datasets/emails');
@@ -12,7 +13,6 @@ const avatars = faker.helpers.shuffle(faces);
 const password = 'Password123&';
 const salt = bcrypt.genSaltSync(12);
 const passwordHash = bcrypt.hashSync(password, salt);
-
 const seekers = [];
 
 faker.locale = 'en_US';
@@ -60,7 +60,6 @@ const getSeeker = (avatar) => {
   const skills = getSkills(track);
 
   return {
-    track,
     firstName,
     lastName,
     img: avatar.avatar,
@@ -77,9 +76,9 @@ const getSeeker = (avatar) => {
     topSkills: skills.topSkills,
     additionalSkills: skills.additionalSkills,
     familiarWith: skills.familiarWith,
-    projects: '[projectsSchema]',
-    experience: '[experienceSchema]',
-    education: '[educationSchema]',
+    projects: [],
+    experience: [],
+    education: [],
   };
 };
 
@@ -87,4 +86,4 @@ for (let i = 0; i < 1; i += 1) {
   seekers.push(getSeeker(avatars[0]));
 }
 
-console.log(seekers);
+generateJSONFile('./Seekers.json', seekers);
