@@ -9,9 +9,10 @@
 
 .profilePaper{
     width: 60vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-
+    margin-top: 5vh;
 }
 
 .profileTopCard{
