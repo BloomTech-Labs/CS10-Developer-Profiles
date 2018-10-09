@@ -1,4 +1,5 @@
 const faker = require('faker');
+const bcrypt = require('bcrypt');
 const { getRandomInt } = require('./utils/getRandomInt');
 const { emailProviders } = require('./datasets/emailProviders');
 const { faces } = require('./datasets/faces');
@@ -6,6 +7,9 @@ const { jobTitles } = require('./datasets/jobTitles');
 const { tracks } = require('./datasets/tracks');
 
 const avatars = faker.helpers.shuffle(faces);
+const password = 'Password123&';
+const salt = bcrypt.genSaltSync(12);
+const passwordHash = bcrypt.hashSync(password, salt);
 
 faker.locale = 'en_US';
 
@@ -16,7 +20,6 @@ faker.locale = 'en_US';
  * @todo experienceSchema -> expreience
  * @todo educationSchema -> education
  * @todo randomize missing data
- * @todo hash password
  */
 
 const getSeekerEmail = (firstName, lastName, blank) => {
@@ -41,7 +44,7 @@ const getSeeker = (avatar) => {
     firstName,
     lastName,
     img: avatar.avatar,
-    password: 'Password123&',
+    password: passwordHash,
     email: getSeekerEmail(firstName, lastName, 0),
     currentTitle: faker.name.jobTitle(),
     desiredTitle: titles[getRandomInt(0, titles.length - 1)],
