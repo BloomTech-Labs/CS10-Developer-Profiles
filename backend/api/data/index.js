@@ -5,6 +5,7 @@ const { getCity, getCities } = require('./datasets/cities');
 const { getEmail } = require('./datasets/emails');
 const { faces } = require('./datasets/faces');
 const { getJobTitle } = require('./datasets/jobTitles');
+const { getSkills } = require('./datasets/skills');
 const { tracks } = require('./datasets/tracks');
 
 const avatars = faker.helpers.shuffle(faces);
@@ -15,11 +16,9 @@ const passwordHash = bcrypt.hashSync(password, salt);
 faker.locale = 'en_US';
 
 /**
- * @todo skillSchema -> topskills, additionalSkills, familiarWith
  * @todo projectsSchema -> projects
  * @todo experienceSchema -> expreience
  * @todo educationSchema -> education
- * @todo randomize missing data
  */
 
 const getSummary = (blank) => {
@@ -56,6 +55,9 @@ const getSeeker = (avatar) => {
   const track = tracks[getRandomInt(0, tracks.length - 1)];
   const firstName = faker.name.firstName(avatar.gender);
   const lastName = faker.name.lastName(avatar.gender);
+  const skills = getSkills(track);
+
+  console.log(skills);
 
   return {
     track,
@@ -72,9 +74,9 @@ const getSeeker = (avatar) => {
     linkedIn: getLinkedIn(firstName, lastName, 40),
     portfolio: getPortfolio(firstName, lastName, 70),
     placesInterested: getCities(0),
-    topSkills: '[skillSchema]',
-    additionalSkills: '[skillSchema]',
-    familiarWith: '[skillSchema]',
+    topSkills: skills.topSkills,
+    additionalSkills: skills.additionalSkills,
+    familiarWith: skills.familiarWith,
     projects: '[projectsSchema]',
     experience: '[experienceSchema]',
     education: '[educationSchema]',

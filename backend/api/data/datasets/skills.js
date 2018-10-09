@@ -1,3 +1,6 @@
+const { shuffle } = require('faker').helpers;
+const { getRandomInt } = require('../utils/getRandomInt');
+
 const skills = {
   FSW: [
     'JavaScript',
@@ -75,6 +78,7 @@ const skills = {
     'Django',
     'Android Studio',
     'Git',
+    'Unit Testing',
     'Agile Project Management',
     'Algorithms',
     'Big-O Notation',
@@ -134,6 +138,92 @@ const skills = {
   ],
 };
 
+const numSkills = {
+  FSW: {
+    TS: {
+      min: 5,
+      max: 8,
+    },
+    AS: {
+      min: 5,
+      max: 8,
+    },
+    FW: {
+      min: 8,
+      max: 12,
+    },
+  },
+  IOS: {
+    TS: {
+      min: 3,
+      max: 5,
+    },
+    AS: {
+      min: 3,
+      max: 5,
+    },
+    FW: {
+      min: 3,
+      max: 5,
+    },
+  },
+  AND: {
+    TS: {
+      min: 3,
+      max: 5,
+    },
+    AS: {
+      min: 3,
+      max: 5,
+    },
+    FW: {
+      min: 3,
+      max: 5,
+    },
+  },
+  DS: {
+    TS: {
+      min: 4,
+      max: 6,
+    },
+    AS: {
+      min: 4,
+      max: 6,
+    },
+    FW: {
+      min: 4,
+      max: 6,
+    },
+  },
+  UX: {
+    TS: {
+      min: 4,
+      max: 6,
+    },
+    AS: {
+      min: 4,
+      max: 6,
+    },
+    FW: {
+      min: 4,
+      max: 6,
+    },
+  },
+};
+
+const getSkills = (track) => {
+  const skillsByTrack = shuffle(skills[track]);
+  const TS = Array(getRandomInt(numSkills[track].TS.min, numSkills[track].TS.max)).fill(0);
+  const AS = Array(getRandomInt(numSkills[track].AS.min, numSkills[track].AS.max)).fill(0);
+  const FW = Array(getRandomInt(numSkills[track].FW.min, numSkills[track].FW.max)).fill(0);
+
+  return {
+    topSkills: TS.map(() => skillsByTrack.pop()),
+    additionalSkills: AS.map(() => skillsByTrack.pop()),
+    familiarWith: FW.map(() => skillsByTrack.pop()),
+  };
+};
+
 module.exports = {
-  skills,
+  getSkills,
 };
