@@ -27,7 +27,7 @@ const styles = {
  * @param {String} props.img - URL to seeker's profile image.
  * @param {String} props.fullName - Seeker's full name.
  * @param {String} props.initials - Seeker's initials using first character of first and last name.
- * @param {String} props.location - Seeker's current location.
+ * @param {Object} props.location - Seeker's current location.
  * @param {String} props.summry - A 128 character description about the Seeker.
  * @param {String} props.title - Job title the Seeker is looking for.
  * @param {Array} props.topSkills - Seeker's top skills which get displayed in large text.
@@ -71,7 +71,7 @@ const DevSnapshot = (props) => {
           <Typography variant="headline">
             <Link to={`/dev-profile/${_id}`}>{fullName}</Link>
           </Typography>
-          {location && <Typography>{location}</Typography>}
+          {location && <Typography>{location.place}</Typography>}
           {summary && <Typography>{summary}</Typography>}
         </CardContent>
       </div>
@@ -88,7 +88,11 @@ DevSnapshot.propTypes = {
   img: PropTypes.string,
   fullName: PropTypes.string.isRequired,
   initials: PropTypes.string.isRequired,
-  location: PropTypes.string,
+  location: PropTypes.shape({
+    place: PropTypes.string.isRequired,
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+  }),
   summary: PropTypes.string,
   title: PropTypes.string,
   topSkills: PropTypes.arrayOf(PropTypes.string),
@@ -99,7 +103,7 @@ DevSnapshot.propTypes = {
 DevSnapshot.defaultProps = {
   img: '',
   summary: '',
-  location: '',
+  location: null,
   title: '',
   topSkills: [],
   addSkills: [],
