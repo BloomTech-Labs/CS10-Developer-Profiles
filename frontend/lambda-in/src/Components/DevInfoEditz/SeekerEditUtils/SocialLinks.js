@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import DropDown from '../../utilityComponents/DropDown/DropDown';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
+import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 
 const SocialLinks = ({ userInfo }) => {
   const schema = {
@@ -54,7 +55,7 @@ const SocialLinks = ({ userInfo }) => {
 };
 
 SocialLinks.propTypes = {
-  userInfo: PropTypes.shape({}).isRequired,
+  userInfo: SEEKER_PROP_TYPES.isRequired,
 };
 
 export default SocialLinks;
