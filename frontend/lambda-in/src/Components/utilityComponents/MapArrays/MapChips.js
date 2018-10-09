@@ -63,9 +63,6 @@ MapChips.propTypes = {
 MapChips.defaultProps = {
   removeItem: null,
   field: null,
-};
-
-MapChips.defaultProps = {
   classes: {},
 };
 
