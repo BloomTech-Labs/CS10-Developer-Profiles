@@ -9,6 +9,9 @@ import MapDropDownDisplay from '../MapArrays/MapDropDownDisplay';
 
 configure({ adapter: new Adapter() });
 
+/**
+ * @author jesuarva
+ */
 describe('ArraySectionDisplay component', () => {
   const userInfo = {
     projects: [
