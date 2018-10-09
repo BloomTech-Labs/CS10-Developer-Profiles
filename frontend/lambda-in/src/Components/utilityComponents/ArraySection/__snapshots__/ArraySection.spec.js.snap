@@ -30,7 +30,7 @@ exports[`ArraySection component should renders correctly 1`] = `
         <p
           className="MuiTypography-root-40 MuiTypography-body1-49"
         >
-          
+          Project
         </p>
       </div>
       <div
@@ -114,7 +114,7 @@ exports[`ArraySection component should renders correctly 1`] = `
                       <p
                         className="MuiTypography-root-40 MuiTypography-body1-49"
                       >
-                        Add new 
+                        Add new Project
                       </p>
                     </div>
                     <div

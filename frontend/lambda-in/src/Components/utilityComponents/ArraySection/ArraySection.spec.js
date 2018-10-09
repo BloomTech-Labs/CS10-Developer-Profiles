@@ -63,7 +63,7 @@ describe('ArraySection component', () => {
     // tech: ['Stack'], // TODO
   };
   const props = {
-    header: '',
+    header: 'Project',
     userInfo,
     field: 'projects',
     itemType: 'object',
