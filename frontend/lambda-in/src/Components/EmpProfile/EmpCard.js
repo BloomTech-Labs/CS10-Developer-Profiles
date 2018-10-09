@@ -84,13 +84,7 @@ class EmpCard extends React.Component {
 
   render() {
     return (
-      <div
-        class="cardContainer"
-        data-aos="flip-up"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-sine"
-      >
-        <Card class="cardPaper">
+      <div class="cardContainer">
           <div className="cardInputs">
             <div>
               <Typography variant="caption">Project Name</Typography>
@@ -142,8 +136,6 @@ class EmpCard extends React.Component {
                 </Button>
               </MuiThemeProvider>
             </div>
-
-        </Card>
       </div>
     );
   }

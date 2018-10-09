@@ -113,9 +113,12 @@ export default class OpenPositionAdd extends Component {
 
     return (
       <div data-aos="zoom-in-down" className="addContainer">
-        <Paper className="paperContainer" elevation={1}>
+        <Paper className="paperContainer">
           <Typography variant="display1" gutterBottom align="center">
-            Add Open Position
+            Add Position
+          </Typography>
+          <Typography variant="headline" gutterBottom align="center">
+            Add Available Positions
           </Typography>
           <br />
           <div className="inputRow">
@@ -181,7 +184,7 @@ export default class OpenPositionAdd extends Component {
               margin="normal"
               fullWidth="true"
             />
-            <div className="buttons">
+            <div className="addPosButtons">
             <MuiThemeProvider theme={theme}>
             <div>
               <Button
