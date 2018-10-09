@@ -15,7 +15,6 @@ const passwordHash = bcrypt.hashSync(password, salt);
 faker.locale = 'en_US';
 
 /**
- * @todo location schema -> placesInterested
  * @todo skillSchema -> topskills, additionalSkills, familiarWith
  * @todo projectsSchema -> projects
  * @todo experienceSchema -> expreience
@@ -23,12 +22,40 @@ faker.locale = 'en_US';
  * @todo randomize missing data
  */
 
+const getSummary = (blank) => {
+  const rand = Math.random();
+  const maxLength = 128;
+  const summary = faker.lorem.sentences(3);
+  const trimmedSummary = summary.length > maxLength ? `${summary.substring(0, maxLength - 1)}.` : summary;
+
+  return blank && (rand >= 0 && rand < blank / 100) ? '' : trimmedSummary;
+};
+
+const getGitHub = (firstName, lastName, blank) => {
+  const rand = Math.random();
+  const github = `https://github.com/${firstName.toLowerCase()}-${lastName.toLowerCase()}`;
+
+  return blank && (rand >= 0 && rand < blank / 100) ? '' : github;
+};
+
+const getLinkedIn = (firstName, lastName, blank) => {
+  const rand = Math.random();
+  const linkedIn = `https://www.linkedin.com/in/${firstName.toLowerCase()}${lastName.toLowerCase()}`;
+
+  return blank && (rand >= 0 && rand < blank / 100) ? '' : linkedIn;
+};
+
+const getPortfolio = (firstName, lastName, blank) => {
+  const rand = Math.random();
+  const portfolio = `https://${firstName.toLowerCase()}${lastName.toLowerCase()}.com`;
+
+  return blank && (rand >= 0 && rand < blank / 100) ? '' : portfolio;
+};
+
 const getSeeker = (avatar) => {
   const track = tracks[getRandomInt(0, tracks.length - 1)];
-
   const firstName = faker.name.firstName(avatar.gender);
   const lastName = faker.name.lastName(avatar.gender);
-  const summary = faker.lorem.sentences(3);
 
   return {
     track,
@@ -40,10 +67,10 @@ const getSeeker = (avatar) => {
     currentTitle: faker.name.jobTitle(),
     desiredTitle: getJobTitle(track, 0),
     currentLocation: getCity(10, 0),
-    summary: summary.length > 128 ? `${summary.substring(0, 127)}.` : summary,
-    github: `https://github.com/${firstName.toLowerCase()}-${lastName.toLowerCase()}`,
-    linkedIn: `https://www.linkedin.com/in/${firstName.toLowerCase()}${lastName.toLowerCase()}`,
-    portfolio: `https://${firstName.toLowerCase()}${lastName.toLowerCase()}.com`,
+    summary: getSummary(50),
+    github: getGitHub(firstName, lastName, 30),
+    linkedIn: getLinkedIn(firstName, lastName, 40),
+    portfolio: getPortfolio(firstName, lastName, 70),
     placesInterested: getCities(0),
     topSkills: '[skillSchema]',
     additionalSkills: '[skillSchema]',
