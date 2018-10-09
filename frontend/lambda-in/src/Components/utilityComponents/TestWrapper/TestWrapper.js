@@ -27,6 +27,7 @@ class TestWrapper extends Component {
    * @param {object} info - Component stack on error
    */
   componentDidCatch(error, info) {
+    // eslint-disable-next-line no-console
     console.log('Error Bundary', error, info);
   }
 
