@@ -3,7 +3,6 @@ import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import StateCapsule from './StateCapsule';
-import TestWrapper from '../TestWrapper/TestWrapper';
 
 configure({ adapter: new Adapter() });
 
@@ -23,13 +22,6 @@ describe('StateCapsule component', () => {
     },
   };
 
-  // const data = {
-  //   forRemoveButton: {
-  //     topSkills: ['JS', 'React', 'TDD', 'Full stack developer'],
-  //     summary: 'Some summary here',
-  //   },
-  //   forCreateButton: {},
-  // };
   const data = {
     topSkills: ['JS', 'React', 'TDD', 'Full stack developer'],
     summary: 'Some summary here',
@@ -75,7 +67,11 @@ describe('StateCapsule component', () => {
       <StateCapsule schema={schema.forCreateButton} object={{}}>
         {({ stateCapsule, createItem }) => (
           <div>
-            <button type="button" onClick={createItem('projects')}>
+            <button
+              className="button-create"
+              type="button"
+              onClick={createItem('projects')}
+            >
               Create
             </button>
             <ul>
@@ -156,30 +152,30 @@ describe('StateCapsule component', () => {
   describe('Remove items from an array', () => {
     let shallowSC;
 
-    // originalArray = ['JS', 'React', 'TDD', 'Full stack developer'];
+    // Initialized Array = ['JS', 'React', 'TDD', 'Full stack developer'];
     const modifiedArray = [];
 
     const mockDispatchEvent = jest.fn(() => {});
+    const mockStopPropagation = jest.fn(() => {});
+    // prettier-ignore
+    const mockEvent = index => Object.assign({
+      target: {
+        field: 'topSkills',
+        index,
+        dispatchEvent: mockDispatchEvent,
+      },
+      stopPropagation: mockStopPropagation,
+    });
 
     beforeAll(() => {
       shallowSC = shallow(stateCapsules.withChildrenRemoveButton);
 
-      // prettier-ignore
-      const mockEvent = index => Object.assign({
-        target: {
-          field: 'topSkills',
-          index,
-          dispatchEvent: mockDispatchEvent,
-        },
-        stopPropagation: () => {},
-      });
-
       const buttons = shallowSC.find('.button-remove');
 
-      let aux = 0;
       /**
-       * Simulate 'click' on each rendered item to remove them all
+       * Simulate 'click' on each rendered button, thus all items are removed.
        */
+      let aux = 0; // to mimic an index
       buttons.forEach((button) => {
         button.simulate('click', mockEvent(aux));
         aux += 1;
@@ -194,7 +190,71 @@ describe('StateCapsule component', () => {
     });
 
     it('should call dispatchEvent', () => {
-      expect(mockDispatchEvent.mock.calls.length).toBe(4);
+      expect(mockDispatchEvent).toHaveBeenCalledTimes(4);
+    });
+
+    it('should call stopPropagation', () => {
+      expect(mockStopPropagation).toHaveBeenCalledTimes(4);
+    });
+  });
+
+  describe('Create new array-item and push it to its array', () => {
+    let shallowSC;
+    let button;
+    const mockDispatchEvent = jest.fn(() => {});
+    const mockStopPropagation = jest.fn(() => {});
+    const mockEvent = {
+      target: {
+        field: 'projects',
+        dispatchEvent: mockDispatchEvent,
+      },
+      stopPropagation: mockStopPropagation,
+    };
+
+    beforeAll(() => {
+      shallowSC = shallow(stateCapsules.withChildrenCreateButton);
+
+      button = shallowSC.find('button.button-create');
+
+      /**
+       * Simulate user interaction typing some text in input fields.
+       */
+      shallowSC.setState({
+        title: 'A happy user filling title field',
+        description: 'A happy user filling description field',
+        img: 'A happy user filling img field',
+        link: 'A happy user filling link field',
+        repo: 'A happy user filling repo field',
+      });
+
+      /**
+       * Submit the form and create a new entry in the corresponding array.
+       *
+       * This user interaction shall also reset the state.
+       */
+      button.simulate('click', mockEvent);
+    });
+
+    it('should have only one create-button', () => {
+      expect(button).toHaveLength(1);
+    });
+
+    it('should call dispatchEvent', () => {
+      expect(mockDispatchEvent).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call stopPropagation', () => {
+      expect(mockStopPropagation).toHaveBeenCalledTimes(1);
+    });
+
+    it('should reset state', () => {
+      expect(shallowSC.state()).toMatchObject({
+        title: '',
+        description: '',
+        img: '',
+        link: '',
+        repo: '',
+      });
     });
   });
 });

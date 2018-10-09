@@ -16,6 +16,7 @@ exports[`StateCapsule component Renders correctly should renders children with c
 >
   <div>
     <button
+      className="button-create"
       onClick={[Function]}
       type="button"
     >
