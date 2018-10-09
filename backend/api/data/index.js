@@ -29,28 +29,28 @@ const getSummary = (blank) => {
   const summary = faker.lorem.sentences(3);
   const trimmedSummary = summary.length > maxLength ? `${summary.substring(0, maxLength - 1)}.` : summary;
 
-  return blank && (rand >= 0 && rand < blank / 100) ? '' : trimmedSummary;
+  return blank && (rand >= 0 && rand < blank / 100) ? null : trimmedSummary;
 };
 
 const getGitHub = (firstName, lastName, blank) => {
   const rand = Math.random();
   const github = `https://github.com/${firstName.toLowerCase()}-${lastName.toLowerCase()}`;
 
-  return blank && (rand >= 0 && rand < blank / 100) ? '' : github;
+  return blank && (rand >= 0 && rand < blank / 100) ? null : github;
 };
 
 const getLinkedIn = (firstName, lastName, blank) => {
   const rand = Math.random();
   const linkedIn = `https://www.linkedin.com/in/${firstName.toLowerCase()}${lastName.toLowerCase()}`;
 
-  return blank && (rand >= 0 && rand < blank / 100) ? '' : linkedIn;
+  return blank && (rand >= 0 && rand < blank / 100) ? null : linkedIn;
 };
 
 const getPortfolio = (firstName, lastName, blank) => {
   const rand = Math.random();
   const portfolio = `https://${firstName.toLowerCase()}${lastName.toLowerCase()}.com`;
 
-  return blank && (rand >= 0 && rand < blank / 100) ? '' : portfolio;
+  return blank && (rand >= 0 && rand < blank / 100) ? null : portfolio;
 };
 
 const getSeeker = (avatar) => {

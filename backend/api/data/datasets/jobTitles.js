@@ -80,7 +80,7 @@ const getJobTitle = (track, blank) => {
   const titles = jobTitles[track];
 
   return blank && (rand >= 0 && rand < blank / 100)
-    ? ''
+    ? null
     : titles[getRandomInt(0, titles.length - 1)];
 };
 

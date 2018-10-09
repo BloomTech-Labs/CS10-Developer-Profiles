@@ -8,7 +8,7 @@ const getEmail = (firstName, lastName, blank) => {
     emailProviders[getRandomInt(0, emailProviders.length - 1)]
   }.com`;
 
-  return blank && (rand >= 0 && rand < blank / 100) ? '' : email;
+  return blank && (rand >= 0 && rand < blank / 100) ? null : email;
 };
 
 module.exports = {

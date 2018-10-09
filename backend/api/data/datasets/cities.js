@@ -320,7 +320,7 @@ const getCity = (blank) => {
   const rand = Math.random();
 
   return blank && (rand >= 0 && rand < blank / 100)
-    ? ''
+    ? null
     : usCities[getRandomInt(0, usCities.length - 1)];
 };
 

@@ -6,21 +6,21 @@ const getProjectImage = (blank) => {
   const rand = Math.random();
   const img = 'http://placeimg.com/1000/480/tech';
 
-  return blank && (rand >= 0 && rand < blank / 100) ? '' : img;
+  return blank && (rand >= 0 && rand < blank / 100) ? null : img;
 };
 
 const getProjectLink = (blank) => {
   const rand = Math.random();
   const link = faker.internet.url();
 
-  return blank && (rand >= 0 && rand < blank / 100) ? '' : link;
+  return blank && (rand >= 0 && rand < blank / 100) ? null : link;
 };
 
 const getProjectRepo = (firstName, lastName, blank) => {
   const rand = Math.random();
   const repo = `https://github.com/${firstName.toLowerCase()}-${lastName.toLowerCase()}/${faker.lorem.word()}`;
 
-  return blank && (rand >= 0 && rand < blank / 100) ? '' : repo;
+  return blank && (rand >= 0 && rand < blank / 100) ? null : repo;
 };
 
 const getProjects = (maxProjects, firstName, lastName, blank) => {
