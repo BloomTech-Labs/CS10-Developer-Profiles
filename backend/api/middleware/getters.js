@@ -164,7 +164,7 @@ const getFilterByBoolean = val => ({ $exists: val });
  */
 const getFilterByArrayValue = (val) => {
   const values = val.split('|').map((v) => {
-    const regex = new RegExp(v.replace(/,/g, ', '));
+    const regex = new RegExp(v.replace(/\+/g, ' '));
     return regex;
   });
 
