@@ -82,7 +82,7 @@ const getSeeker = (avatar) => {
   };
 };
 
-for (let i = 0; i < 1; i += 1) {
+for (let i = 0; i < avatars.length; i += 1) {
   seekers.push(getSeeker(avatars[0]));
 }
 
