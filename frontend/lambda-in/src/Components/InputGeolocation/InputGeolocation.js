@@ -32,6 +32,7 @@ import './InputGeolocation.css';
  * />
  *
  * @prop {object} listItemProps - Contains all props needed to be passed to <ListItem /> component.
+ * @prop {Function} googleCallback - Optional callback to enable async mode.
  * @example How to pass listItemProps
  * <ListItem textFieldProps={{
  *    className: 'list-suggestion--options',
