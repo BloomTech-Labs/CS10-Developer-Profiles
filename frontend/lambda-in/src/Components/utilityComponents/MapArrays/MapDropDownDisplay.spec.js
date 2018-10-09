@@ -52,7 +52,7 @@ describe('MapDropDown component', () => {
 
     it('should renders all properties for each item in the array', () => {
       /**
-       * Sample array's length is 4.
+       * Sample array's length is 2.
        * Each item in the array has 5 properties.
        * Total number of rendered properties shall be 20.
        */
