@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import DropDown from '../DropDown/DropDown';
 import MapDropDownDisplay from '../MapArrays/MapDropDownDisplay';
 
+/**
+ * Renders a user-array-section in individual blocks.
+ * @param {onject} props - Required props
+ */
 const ArraySectionDisplay = (props) => {
   // prettier-ignore
   const {
