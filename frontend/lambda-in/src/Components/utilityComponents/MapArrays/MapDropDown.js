@@ -5,6 +5,11 @@ import Button from '@material-ui/core/Button';
 import DropDown from '../DropDown/DropDown';
 import StateCapsule from '../StateCapsule/StateCapsule';
 
+/**
+ * Scaffolds and renders array-items and allow editing on them.
+ *
+ * @param {props} props - Required props
+ */
 const MapDropDown = (props) => {
   // prettier-ignore
   const {

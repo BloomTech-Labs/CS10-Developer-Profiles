@@ -6,6 +6,9 @@ import StateCapsule from './StateCapsule';
 
 configure({ adapter: new Adapter() });
 
+/**
+ * @author jesuarva
+ */
 describe('StateCapsule component', () => {
   const schema = {
     forRemoveButton: {

@@ -8,7 +8,7 @@ import MapDropDownDisplay from './MapDropDownDisplay';
 configure({ adapter: new Adapter() });
 
 /**
- * Porps are checked itn the componet PropTypes definitions.
+ * @author jesuarva
  */
 describe('MapDropDown component', () => {
   /**

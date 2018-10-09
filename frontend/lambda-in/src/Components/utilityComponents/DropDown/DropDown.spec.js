@@ -8,6 +8,9 @@ import TestWrapper from '../TestWrapper/TestWrapper';
 
 configure({ adapter: new Adapter() });
 
+/**
+ * @author jesuarva
+ */
 describe('DropDown component', () => {
   const dropDown = <DropDown header="Testing DropDown component" />;
 

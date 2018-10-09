@@ -7,6 +7,9 @@ import MapChips from './MapChips';
 
 configure({ adapter: new Adapter() });
 
+/**
+ * @author jesuarva
+ */
 describe('MapChips component', () => {
   // prettier-ignore
   const removeItem = jest.fn((field, index) => e => Object.assign({}, e, { field }, { index }));
