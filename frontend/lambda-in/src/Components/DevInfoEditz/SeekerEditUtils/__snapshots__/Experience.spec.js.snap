@@ -1,0 +1,2089 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Experience component should renders correctly 1`] = `
+<div
+  className="panelMargin"
+>
+  <div
+    className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+  >
+    <div
+      aria-expanded={false}
+      className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      <div
+        className="MuiExpansionPanelSummary-content-35"
+      >
+        <p
+          className="MuiTypography-root-40 MuiTypography-body1-49"
+        >
+          Experience
+        </p>
+      </div>
+      <div
+        aria-hidden="true"
+        className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={-1}
+      >
+        <span
+          className="MuiIconButton-label-71"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-72"
+          >
+            add_circle
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-81"
+        />
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      className="MuiCollapse-container-88"
+      style={
+        Object {
+          "minHeight": "0px",
+        }
+      }
+    >
+      <div
+        className="MuiCollapse-wrapper-90"
+      >
+        <div
+          className="MuiCollapse-wrapperInner-91"
+        >
+          <div
+            className="MuiExpansionPanelDetails-root-92"
+          >
+            <div
+              className="expansionPanel"
+            >
+              <div
+                className="panelMargin"
+              >
+                <div
+                  className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+                >
+                  <div
+                    aria-expanded={false}
+                    className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <div
+                      className="MuiExpansionPanelSummary-content-35"
+                    >
+                      <p
+                        className="MuiTypography-root-40 MuiTypography-body1-49"
+                      >
+                        Add new Experience
+                      </p>
+                    </div>
+                    <div
+                      aria-hidden="true"
+                      className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role="button"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="MuiIconButton-label-71"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="material-icons MuiIcon-root-72"
+                        >
+                          add_circle
+                        </span>
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-81"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    aria-hidden="true"
+                    className="MuiCollapse-container-88"
+                    style={
+                      Object {
+                        "minHeight": "0px",
+                      }
+                    }
+                  >
+                    <div
+                      className="MuiCollapse-wrapper-90"
+                    >
+                      <div
+                        className="MuiCollapse-wrapperInner-91"
+                      >
+                        <div
+                          className="MuiExpansionPanelDetails-root-92"
+                        >
+                          <div
+                            className="expansionPanel"
+                          >
+                            <div
+                              className="state-capsule"
+                              onChange={[Function]}
+                              onKeyPress={[Function]}
+                            >
+                              <button
+                                align="center"
+                                className="MuiButtonBase-root-37 MuiButton-root-93 MuiButton-text-95 MuiButton-textPrimary-96 MuiButton-outlined-101 MuiButton-outlinedPrimary-102 arraysection-button--create"
+                                disabled={false}
+                                onBlur={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                onKeyUp={[Function]}
+                                onMouseDown={[Function]}
+                                onMouseLeave={[Function]}
+                                onMouseUp={[Function]}
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                                tabIndex="0"
+                                type="button"
+                              >
+                                <span
+                                  className="MuiButton-label-94"
+                                >
+                                  Create
+                                </span>
+                                <span
+                                  className="MuiTouchRipple-root-81"
+                                />
+                              </button>
+                              <div
+                                className="arraysection-field--new inputFieldLargeMultiline"
+                              >
+                                <div
+                                  aria-describedby={undefined}
+                                  className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                >
+                                  <label
+                                    className="MuiFormLabel-root-130 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-outlined-129"
+                                    data-shrink={false}
+                                    htmlFor="new-title"
+                                  >
+                                    Title
+                                  </label>
+                                  <div
+                                    className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                    onClick={[Function]}
+                                  >
+                                    <fieldset
+                                      aria-hidden={true}
+                                      className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                      style={
+                                        Object {
+                                          "paddingLeft": NaN,
+                                        }
+                                      }
+                                    >
+                                      <legend
+                                        className="MuiNotchedOutline-legend-168"
+                                        style={
+                                          Object {
+                                            "width": 0.01,
+                                          }
+                                        }
+                                      />
+                                    </fieldset>
+                                    <div
+                                      className="Textarea-root-172"
+                                    >
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        readOnly={true}
+                                        rows="1"
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        defaultValue={undefined}
+                                        readOnly={true}
+                                        rows={1}
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-invalid={false}
+                                        autoComplete={undefined}
+                                        autoFocus={undefined}
+                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                        data-field="experience"
+                                        data-itemtype="object"
+                                        data-property="title"
+                                        data-value=""
+                                        defaultValue={undefined}
+                                        disabled={false}
+                                        id="new-title"
+                                        name={undefined}
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={undefined}
+                                        onKeyUp={undefined}
+                                        placeholder={undefined}
+                                        readOnly={undefined}
+                                        required={false}
+                                        rows={1}
+                                        style={
+                                          Object {
+                                            "height": 19,
+                                          }
+                                        }
+                                        value=""
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                className="arraysection-field--new inputFieldLargeMultiline"
+                              >
+                                <div
+                                  aria-describedby={undefined}
+                                  className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                >
+                                  <label
+                                    className="MuiFormLabel-root-130 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-outlined-129"
+                                    data-shrink={false}
+                                    htmlFor="new-company"
+                                  >
+                                    Company
+                                  </label>
+                                  <div
+                                    className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                    onClick={[Function]}
+                                  >
+                                    <fieldset
+                                      aria-hidden={true}
+                                      className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                      style={
+                                        Object {
+                                          "paddingLeft": NaN,
+                                        }
+                                      }
+                                    >
+                                      <legend
+                                        className="MuiNotchedOutline-legend-168"
+                                        style={
+                                          Object {
+                                            "width": 0.01,
+                                          }
+                                        }
+                                      />
+                                    </fieldset>
+                                    <div
+                                      className="Textarea-root-172"
+                                    >
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        readOnly={true}
+                                        rows="1"
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        defaultValue={undefined}
+                                        readOnly={true}
+                                        rows={1}
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-invalid={false}
+                                        autoComplete={undefined}
+                                        autoFocus={undefined}
+                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                        data-field="experience"
+                                        data-itemtype="object"
+                                        data-property="company"
+                                        data-value=""
+                                        defaultValue={undefined}
+                                        disabled={false}
+                                        id="new-company"
+                                        name={undefined}
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={undefined}
+                                        onKeyUp={undefined}
+                                        placeholder={undefined}
+                                        readOnly={undefined}
+                                        required={false}
+                                        rows={1}
+                                        style={
+                                          Object {
+                                            "height": 19,
+                                          }
+                                        }
+                                        value=""
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                className="arraysection-field--new inputFieldLargeMultiline"
+                              >
+                                <div
+                                  aria-describedby={undefined}
+                                  className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                >
+                                  <label
+                                    className="MuiFormLabel-root-130 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-outlined-129"
+                                    data-shrink={false}
+                                    htmlFor="new-headline"
+                                  >
+                                    Head line
+                                  </label>
+                                  <div
+                                    className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                    onClick={[Function]}
+                                  >
+                                    <fieldset
+                                      aria-hidden={true}
+                                      className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                      style={
+                                        Object {
+                                          "paddingLeft": NaN,
+                                        }
+                                      }
+                                    >
+                                      <legend
+                                        className="MuiNotchedOutline-legend-168"
+                                        style={
+                                          Object {
+                                            "width": 0.01,
+                                          }
+                                        }
+                                      />
+                                    </fieldset>
+                                    <div
+                                      className="Textarea-root-172"
+                                    >
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        readOnly={true}
+                                        rows="1"
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        defaultValue={undefined}
+                                        readOnly={true}
+                                        rows={1}
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-invalid={false}
+                                        autoComplete={undefined}
+                                        autoFocus={undefined}
+                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                        data-field="experience"
+                                        data-itemtype="object"
+                                        data-property="headline"
+                                        data-value=""
+                                        defaultValue={undefined}
+                                        disabled={false}
+                                        id="new-headline"
+                                        name={undefined}
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={undefined}
+                                        onKeyUp={undefined}
+                                        placeholder={undefined}
+                                        readOnly={undefined}
+                                        required={false}
+                                        rows={1}
+                                        style={
+                                          Object {
+                                            "height": 19,
+                                          }
+                                        }
+                                        value=""
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                className="arraysection-field--new inputFieldLargeMultiline"
+                              >
+                                <div
+                                  aria-describedby={undefined}
+                                  className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                >
+                                  <label
+                                    className="MuiFormLabel-root-130 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-outlined-129"
+                                    data-shrink={false}
+                                    htmlFor="new-description"
+                                  >
+                                    Description
+                                  </label>
+                                  <div
+                                    className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                    onClick={[Function]}
+                                  >
+                                    <fieldset
+                                      aria-hidden={true}
+                                      className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                      style={
+                                        Object {
+                                          "paddingLeft": NaN,
+                                        }
+                                      }
+                                    >
+                                      <legend
+                                        className="MuiNotchedOutline-legend-168"
+                                        style={
+                                          Object {
+                                            "width": 0.01,
+                                          }
+                                        }
+                                      />
+                                    </fieldset>
+                                    <div
+                                      className="Textarea-root-172"
+                                    >
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        readOnly={true}
+                                        rows="1"
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        defaultValue={undefined}
+                                        readOnly={true}
+                                        rows={1}
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-invalid={false}
+                                        autoComplete={undefined}
+                                        autoFocus={undefined}
+                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                        data-field="experience"
+                                        data-itemtype="object"
+                                        data-property="description"
+                                        data-value=""
+                                        defaultValue={undefined}
+                                        disabled={false}
+                                        id="new-description"
+                                        name={undefined}
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={undefined}
+                                        onKeyUp={undefined}
+                                        placeholder={undefined}
+                                        readOnly={undefined}
+                                        required={false}
+                                        rows={1}
+                                        style={
+                                          Object {
+                                            "height": 19,
+                                          }
+                                        }
+                                        value=""
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                className="arraysection-field--new inputFieldLargeMultiline"
+                              >
+                                <div
+                                  aria-describedby={undefined}
+                                  className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                >
+                                  <label
+                                    className="MuiFormLabel-root-130 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-outlined-129"
+                                    data-shrink={false}
+                                    htmlFor="new-startYear"
+                                  >
+                                    Start year yy/mm/dd
+                                  </label>
+                                  <div
+                                    className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                    onClick={[Function]}
+                                  >
+                                    <fieldset
+                                      aria-hidden={true}
+                                      className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                      style={
+                                        Object {
+                                          "paddingLeft": NaN,
+                                        }
+                                      }
+                                    >
+                                      <legend
+                                        className="MuiNotchedOutline-legend-168"
+                                        style={
+                                          Object {
+                                            "width": 0.01,
+                                          }
+                                        }
+                                      />
+                                    </fieldset>
+                                    <div
+                                      className="Textarea-root-172"
+                                    >
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        readOnly={true}
+                                        rows="1"
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        defaultValue={undefined}
+                                        readOnly={true}
+                                        rows={1}
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-invalid={false}
+                                        autoComplete={undefined}
+                                        autoFocus={undefined}
+                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                        data-field="experience"
+                                        data-itemtype="object"
+                                        data-property="startYear"
+                                        data-value=""
+                                        defaultValue={undefined}
+                                        disabled={false}
+                                        id="new-startYear"
+                                        name={undefined}
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={undefined}
+                                        onKeyUp={undefined}
+                                        placeholder={undefined}
+                                        readOnly={undefined}
+                                        required={false}
+                                        rows={1}
+                                        style={
+                                          Object {
+                                            "height": 19,
+                                          }
+                                        }
+                                        value=""
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                className="arraysection-field--new inputFieldLargeMultiline"
+                              >
+                                <div
+                                  aria-describedby={undefined}
+                                  className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                >
+                                  <label
+                                    className="MuiFormLabel-root-130 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-outlined-129"
+                                    data-shrink={false}
+                                    htmlFor="new-endYear"
+                                  >
+                                    End year yy/mm/dd
+                                  </label>
+                                  <div
+                                    className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                    onClick={[Function]}
+                                  >
+                                    <fieldset
+                                      aria-hidden={true}
+                                      className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                      style={
+                                        Object {
+                                          "paddingLeft": NaN,
+                                        }
+                                      }
+                                    >
+                                      <legend
+                                        className="MuiNotchedOutline-legend-168"
+                                        style={
+                                          Object {
+                                            "width": 0.01,
+                                          }
+                                        }
+                                      />
+                                    </fieldset>
+                                    <div
+                                      className="Textarea-root-172"
+                                    >
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        readOnly={true}
+                                        rows="1"
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-hidden="true"
+                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                        defaultValue={undefined}
+                                        readOnly={true}
+                                        rows={1}
+                                        tabIndex={-1}
+                                        value=""
+                                      />
+                                      <textarea
+                                        aria-invalid={false}
+                                        autoComplete={undefined}
+                                        autoFocus={undefined}
+                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                        data-field="experience"
+                                        data-itemtype="object"
+                                        data-property="endYear"
+                                        data-value=""
+                                        defaultValue={undefined}
+                                        disabled={false}
+                                        id="new-endYear"
+                                        name={undefined}
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={undefined}
+                                        onKeyUp={undefined}
+                                        placeholder={undefined}
+                                        readOnly={undefined}
+                                        required={false}
+                                        rows={1}
+                                        style={
+                                          Object {
+                                            "height": 19,
+                                          }
+                                        }
+                                        value=""
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="panelMargin"
+              >
+                <div
+                  className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+                >
+                  <div
+                    aria-expanded={false}
+                    className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <div
+                      className="MuiExpansionPanelSummary-content-35"
+                    >
+                      <p
+                        className="MuiTypography-root-40 MuiTypography-body1-49"
+                      >
+                        LCAI
+                      </p>
+                    </div>
+                    <div
+                      aria-hidden="true"
+                      className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role="button"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="MuiIconButton-label-71"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="material-icons MuiIcon-root-72"
+                        >
+                          add_circle
+                        </span>
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-81"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    aria-hidden="true"
+                    className="MuiCollapse-container-88"
+                    style={
+                      Object {
+                        "minHeight": "0px",
+                      }
+                    }
+                  >
+                    <div
+                      className="MuiCollapse-wrapper-90"
+                    >
+                      <div
+                        className="MuiCollapse-wrapperInner-91"
+                      >
+                        <div
+                          className="MuiExpansionPanelDetails-root-92"
+                        >
+                          <div
+                            className="expansionPanel"
+                          >
+                            <div
+                              className="state-capsule"
+                              onChange={[Function]}
+                              onKeyPress={[Function]}
+                            >
+                              <div
+                                className="dropdown-item-list blur-handler"
+                              >
+                                <button
+                                  align="center"
+                                  className="MuiButtonBase-root-37 MuiButton-root-93 MuiButton-text-95 MuiButton-textPrimary-96 MuiButton-outlined-101 MuiButton-outlinedPrimary-102 mapdropdown-button--delete"
+                                  disabled={false}
+                                  onBlur={[Function]}
+                                  onClick={[Function]}
+                                  onFocus={[Function]}
+                                  onKeyDown={[Function]}
+                                  onKeyUp={[Function]}
+                                  onMouseDown={[Function]}
+                                  onMouseLeave={[Function]}
+                                  onMouseUp={[Function]}
+                                  onTouchEnd={[Function]}
+                                  onTouchMove={[Function]}
+                                  onTouchStart={[Function]}
+                                  tabIndex="0"
+                                  type="button"
+                                >
+                                  <span
+                                    className="MuiButton-label-94"
+                                  >
+                                    delete
+                                  </span>
+                                  <span
+                                    className="MuiTouchRipple-root-81"
+                                  />
+                                </button>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-title"
+                                    >
+                                      Title
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="LCAI"
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={0}
+                                          data-itemtype="object"
+                                          data-property="title"
+                                          data-value="LCAI"
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-title"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="LCAI"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-company"
+                                    >
+                                      Company
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="UAM research group"
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={0}
+                                          data-itemtype="object"
+                                          data-property="company"
+                                          data-value="UAM research group"
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-company"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="UAM research group"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-headline"
+                                    >
+                                      Head line
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="Wedsite for an research group."
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={0}
+                                          data-itemtype="object"
+                                          data-property="headline"
+                                          data-value="Wedsite for an research group."
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-headline"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="Wedsite for an research group."
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-description"
+                                    >
+                                      Description
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="A dynamic website with no know CRM and Backend hosted in google Spreadsheet."
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={0}
+                                          data-itemtype="object"
+                                          data-property="description"
+                                          data-value="A dynamic website with no know CRM and Backend hosted in google Spreadsheet."
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-description"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="A dynamic website with no know CRM and Backend hosted in google Spreadsheet."
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-startYear"
+                                    >
+                                      Start year yy/mm/dd
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="2018-09-27T19:10:21.809Z"
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={0}
+                                          data-itemtype="object"
+                                          data-property="startYear"
+                                          data-value="2018-09-27T19:10:21.809Z"
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-startYear"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="2018-09-27T19:10:21.809Z"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-endYear"
+                                    >
+                                      End year yy/mm/dd
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="2018-09-27T19:10:21.809Z"
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={0}
+                                          data-itemtype="object"
+                                          data-property="endYear"
+                                          data-value="2018-09-27T19:10:21.809Z"
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-endYear"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="2018-09-27T19:10:21.809Z"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="panelMargin"
+              >
+                <div
+                  className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+                >
+                  <div
+                    aria-expanded={false}
+                    className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <div
+                      className="MuiExpansionPanelSummary-content-35"
+                    >
+                      <p
+                        className="MuiTypography-root-40 MuiTypography-body1-49"
+                      >
+                        Developer profiles
+                      </p>
+                    </div>
+                    <div
+                      aria-hidden="true"
+                      className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role="button"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="MuiIconButton-label-71"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="material-icons MuiIcon-root-72"
+                        >
+                          add_circle
+                        </span>
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-81"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    aria-hidden="true"
+                    className="MuiCollapse-container-88"
+                    style={
+                      Object {
+                        "minHeight": "0px",
+                      }
+                    }
+                  >
+                    <div
+                      className="MuiCollapse-wrapper-90"
+                    >
+                      <div
+                        className="MuiCollapse-wrapperInner-91"
+                      >
+                        <div
+                          className="MuiExpansionPanelDetails-root-92"
+                        >
+                          <div
+                            className="expansionPanel"
+                          >
+                            <div
+                              className="state-capsule"
+                              onChange={[Function]}
+                              onKeyPress={[Function]}
+                            >
+                              <div
+                                className="dropdown-item-list blur-handler"
+                              >
+                                <button
+                                  align="center"
+                                  className="MuiButtonBase-root-37 MuiButton-root-93 MuiButton-text-95 MuiButton-textPrimary-96 MuiButton-outlined-101 MuiButton-outlinedPrimary-102 mapdropdown-button--delete"
+                                  disabled={false}
+                                  onBlur={[Function]}
+                                  onClick={[Function]}
+                                  onFocus={[Function]}
+                                  onKeyDown={[Function]}
+                                  onKeyUp={[Function]}
+                                  onMouseDown={[Function]}
+                                  onMouseLeave={[Function]}
+                                  onMouseUp={[Function]}
+                                  onTouchEnd={[Function]}
+                                  onTouchMove={[Function]}
+                                  onTouchStart={[Function]}
+                                  tabIndex="0"
+                                  type="button"
+                                >
+                                  <span
+                                    className="MuiButton-label-94"
+                                  >
+                                    delete
+                                  </span>
+                                  <span
+                                    className="MuiTouchRipple-root-81"
+                                  />
+                                </button>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-title"
+                                    >
+                                      Title
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="Developer profiles"
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={1}
+                                          data-itemtype="object"
+                                          data-property="title"
+                                          data-value="Developer profiles"
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-title"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="Developer profiles"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-company"
+                                    >
+                                      Company
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="Lambda"
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={1}
+                                          data-itemtype="object"
+                                          data-property="company"
+                                          data-value="Lambda"
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-company"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="Lambda"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-headline"
+                                    >
+                                      Head line
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="Meeting point for employers looking for talent developers."
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={1}
+                                          data-itemtype="object"
+                                          data-property="headline"
+                                          data-value="Meeting point for employers looking for talent developers."
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-headline"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="Meeting point for employers looking for talent developers."
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-description"
+                                    >
+                                      Description
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="A place to match employer needs with a talent developer"
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={1}
+                                          data-itemtype="object"
+                                          data-property="description"
+                                          data-value="A place to match employer needs with a talent developer"
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-description"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="A place to match employer needs with a talent developer"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-startYear"
+                                    >
+                                      Start year yy/mm/dd
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="2018-09-27T19:10:21.809Z"
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={1}
+                                          data-itemtype="object"
+                                          data-property="startYear"
+                                          data-value="2018-09-27T19:10:21.809Z"
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-startYear"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="2018-09-27T19:10:21.809Z"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="inputFieldLargeMultiline"
+                                >
+                                  <div
+                                    aria-describedby={undefined}
+                                    className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                  >
+                                    <label
+                                      className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                      data-shrink={true}
+                                      htmlFor="edit-endYear"
+                                    >
+                                      End year yy/mm/dd
+                                    </label>
+                                    <div
+                                      className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                      onClick={[Function]}
+                                    >
+                                      <fieldset
+                                        aria-hidden={true}
+                                        className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                        style={
+                                          Object {
+                                            "paddingLeft": 8,
+                                          }
+                                        }
+                                      >
+                                        <legend
+                                          className="MuiNotchedOutline-legend-168"
+                                          style={
+                                            Object {
+                                              "width": NaN,
+                                            }
+                                          }
+                                        />
+                                      </fieldset>
+                                      <div
+                                        className="Textarea-root-172"
+                                      >
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          readOnly={true}
+                                          rows="1"
+                                          tabIndex={-1}
+                                          value=""
+                                        />
+                                        <textarea
+                                          aria-hidden="true"
+                                          className="Textarea-textarea-173 Textarea-shadow-174"
+                                          defaultValue={undefined}
+                                          readOnly={true}
+                                          rows={1}
+                                          tabIndex={-1}
+                                          value="2018-10-12T19:10:21.809Z"
+                                        />
+                                        <textarea
+                                          aria-invalid={false}
+                                          autoComplete={undefined}
+                                          autoFocus={undefined}
+                                          className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                          data-field="experience"
+                                          data-index={1}
+                                          data-itemtype="object"
+                                          data-property="endYear"
+                                          data-value="2018-10-12T19:10:21.809Z"
+                                          defaultValue={undefined}
+                                          disabled={false}
+                                          id="edit-endYear"
+                                          name={undefined}
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          onKeyDown={undefined}
+                                          onKeyUp={undefined}
+                                          placeholder={undefined}
+                                          readOnly={undefined}
+                                          required={false}
+                                          rows={1}
+                                          style={
+                                            Object {
+                                              "height": 19,
+                                            }
+                                          }
+                                          value="2018-10-12T19:10:21.809Z"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
