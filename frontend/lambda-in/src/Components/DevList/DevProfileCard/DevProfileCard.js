@@ -27,7 +27,7 @@ const styles = {
  * @param {String} props.seeker.img - URL to Seeker's profile image.
  * @param {String} props.seeker.firstName - Seeker's first name.
  * @param {String} props.seeker.lastName - Seeker's last name.
- * @param {String} props.seeker.currentLocation - Seeker's current location.
+ * @param {Object} props.seeker.currentLocation - Seeker's current location.
  * @param {String} props.seeker.summary - A 128 character description about the Seeker.
  * @param {String} props.seeker.desiredTitle - Job title the Seeker is looking for.
  * @param {Array} props.seeker.topSkills - Seeker's top skills which get displayed in large text.
@@ -85,7 +85,11 @@ DevProfileCard.propTypes = {
     img: PropTypes.string,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
-    currentLocation: PropTypes.string,
+    currentLocation: PropTypes.shape({
+      place: PropTypes.string.isRequired,
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired,
+    }),
     summary: PropTypes.string,
     desiredTitle: PropTypes.string,
     topSkills: PropTypes.array,

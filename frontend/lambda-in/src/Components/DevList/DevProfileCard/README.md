@@ -24,7 +24,7 @@ resume and social links, return a Material UI Card component with a DevSnapshot 
 | props.seeker.img | <code>String</code> | URL to Seeker's profile image. |
 | props.seeker.firstName | <code>String</code> | Seeker's first name. |
 | props.seeker.lastName | <code>String</code> | Seeker's last name. |
-| props.seeker.currentLocation | <code>String</code> | Seeker's current location. |
+| props.seeker.currentLocation | <code>Object</code> | Seeker's current location. |
 | props.seeker.summary | <code>String</code> | A 128 character description about the Seeker. |
 | props.seeker.desiredTitle | <code>String</code> | Job title the Seeker is looking for. |
 | props.seeker.topSkills | <code>Array</code> | Seeker's top skills which get displayed in large text. |
