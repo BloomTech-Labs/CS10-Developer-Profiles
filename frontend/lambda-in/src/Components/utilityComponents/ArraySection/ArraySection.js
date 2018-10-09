@@ -20,11 +20,12 @@ const ArraySection = (props) => {
 
   return (
     <DropDown header={header}>
-      <DropDown header={`Add new ${header}`}>
+      <DropDown className="arraysection-create" header={`Add new ${header}`}>
         <StateCapsule schema={schema} object={{}}>
           {({ stateCapsule, createItem }) => (
             <Fragment>
               <Button
+                className="arraysection-button--create"
                 variant="outlined"
                 color="primary"
                 align="center"
@@ -34,7 +35,10 @@ const ArraySection = (props) => {
               </Button>
               {// prettier-ignore
               propsAndLabels.map(propLabel => (
-                <div className="inputFieldLargeMultiline">
+                <div
+                  key={`${Math.random()}${Date.now()}`}
+                  className="arraysection-field--new inputFieldLargeMultiline"
+                >
                   <TextField
                     id={`new-${propLabel[0]}`}
                     label={propLabel[1]}
