@@ -1,6 +1,7 @@
 const faker = require('faker');
 const bcrypt = require('bcrypt');
 const { getRandomInt } = require('./utils/getRandomInt');
+const { getCity, getCities } = require('./datasets/cities');
 const { getEmail } = require('./datasets/emails');
 const { faces } = require('./datasets/faces');
 const { getJobTitle } = require('./datasets/jobTitles');
@@ -14,7 +15,7 @@ const passwordHash = bcrypt.hashSync(password, salt);
 faker.locale = 'en_US';
 
 /**
- * @todo location schema -> currentLocation, placesInterested
+ * @todo location schema -> placesInterested
  * @todo skillSchema -> topskills, additionalSkills, familiarWith
  * @todo projectsSchema -> projects
  * @todo experienceSchema -> expreience
@@ -38,12 +39,12 @@ const getSeeker = (avatar) => {
     email: getEmail(firstName, lastName, 0),
     currentTitle: faker.name.jobTitle(),
     desiredTitle: getJobTitle(track, 0),
-    currentLocation: 'locationSchema',
+    currentLocation: getCity(0),
     summary: summary.length > 128 ? `${summary.substring(0, 127)}.` : summary,
     github: `https://github.com/${firstName.toLowerCase()}-${lastName.toLowerCase()}`,
     linkedIn: `https://www.linkedin.com/in/${firstName.toLowerCase()}${lastName.toLowerCase()}`,
     portfolio: `https://${firstName.toLowerCase()}${lastName.toLowerCase()}.com`,
-    placesInterested: '[locationSchema]',
+    placesInterested: getCities(0),
     topSkills: '[skillSchema]',
     additionalSkills: '[skillSchema]',
     familiarWith: '[skillSchema]',
