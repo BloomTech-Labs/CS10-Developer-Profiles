@@ -6,6 +6,7 @@ import TestWrapper from '../TestWrapper/TestWrapper';
 import ArraySection from './ArraySection';
 import MapDropDown from '../MapArrays/MapDropDown';
 import StateCapsule from '../StateCapsule/StateCapsule';
+import { DEV_TEST_DATA } from '../../testData';
 
 configure({ adapter: new Adapter() });
 
@@ -18,42 +19,6 @@ configure({ adapter: new Adapter() });
  * - Nested components fucntionalities => refer to each component test
  */
 describe('ArraySection component', () => {
-  const userInfo = {
-    projects: [
-      {
-        // tech: ['NODE', 'Express', 'Mongoose'],
-        title: 'A nice project',
-        description: 'A DRY library for express-mongoose',
-        img: '/nice.img.edit',
-        link: 'go.to.project.com',
-        repo: 'github.my-repo',
-      },
-      {
-        // tech: ['NODE', 'Express', 'Mongoose'],
-        title: 'router Factroy',
-        description: 'A DRY library for express-mongoose',
-        img: '/nice.img',
-        link: 'go.to.project.com',
-        repo: 'github.my-repo',
-      },
-      {
-        // tech: [],
-        title: 'proj 1',
-        description: 'desc 1',
-        img: 'new.img',
-        link: 'link',
-        repo: '',
-      },
-      {
-        // tech: [],
-        title: 'today',
-        description: 'today',
-        img: 'today',
-        link: 'today',
-        repo: 'today',
-      },
-    ],
-  };
   const schema = {
     title: 'Title',
     description: 'Description',
@@ -64,14 +29,16 @@ describe('ArraySection component', () => {
   };
   const props = {
     header: 'Project',
-    userInfo,
+    userInfo: DEV_TEST_DATA,
     field: 'projects',
     itemType: 'object',
     schema,
   };
 
-  const numberOfProjects = userInfo.projects.length;
-  const numOfProperties = Object.keys(userInfo.projects[0]).length;
+  const numberOfProjects = DEV_TEST_DATA.projects.length;
+  const numOfPropertiesInDevTestDataProjects = Object.keys(
+    DEV_TEST_DATA.projects[0],
+  ).length;
 
   const arraySection = (
     <ArraySection
@@ -107,7 +74,7 @@ describe('ArraySection component', () => {
       /**
        * For this specific test there must be 5-StateCasule component rendered.
        * - 1 rendered by the ArraySection.js component, its declared in its code line 32.
-       * - 4 rendered by the MapDropDown.js component ( 1 for each 'userInfo.project' )
+       * - 2 rendered by the MapDropDown.js component ( 1 for each 'DEV_TEST_DATA.project' )
        */
       expect(stateCapsuleComponent).toHaveLength(1 + numberOfProjects);
     });
@@ -119,7 +86,15 @@ describe('ArraySection component', () => {
 
     it('should renders 5 fields to create a new item', () => {
       const createInput = mounted.find('div.arraysection-field--new');
-      expect(createInput).toHaveLength(numOfProperties);
+
+      /**
+       * Shall renders one field for each field passed in the 'schema'
+       * Shouldn't renders all properties in DEV_TEST_DATA.projects
+       */
+      expect(createInput).toHaveLength(5);
+      expect(createInput).not.toHaveLength(
+        numOfPropertiesInDevTestDataProjects,
+      );
     });
   });
 });
