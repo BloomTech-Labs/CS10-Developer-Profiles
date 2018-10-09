@@ -1,16 +1,16 @@
 .container {
     width: 50vw;
+    margin: auto;
+    margin-top:20px;
     display:flex;
-    flex-direction: column;
-    align-self: center;
 }
 
 .buttonContainer {
-    justify-content: center;
+    margin: auto;
 }
 
 .addButton {
-    width: 45vw;
+    width: 20vw;
 }
 
 .cards {

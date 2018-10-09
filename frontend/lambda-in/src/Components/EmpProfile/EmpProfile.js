@@ -7,21 +7,24 @@ import { Link } from "react-router-dom";
 import EmpCard from "./EmpCard";
 
 import "./EmpProfile.css";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: "#757ce8",
+      main: "#5C6BC0",
+      dark: "#002884",
+      contrastText: "#fff"
+    },
+    secondary: {
+      main: "#B79A3F",
+      contrastText: "#fff"
+    }
+  }
+});
 
 class EmpProfile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      projectName: "",
-      description: "",
-      jobTitle: "",
-      // techStack: "",
-      // skills: "",
-      minSalary: "",
-      maxSalary: ""
-    };
-  }
-
   render() {
     return (
       <div class="container">
@@ -35,44 +38,34 @@ class EmpProfile extends React.Component {
               Manage Current Open Positions
             </Typography>
             <div className="buttonContainer">
-              <Button
-                className="addButton"
-                component={Link}
-                to="/emp-pos-add"
-                variant="contained"
-                color="primary"
-              >
-                {" "}
-                Add More Position
-              </Button>
+              <MuiThemeProvider theme={theme}>
+                <Button
+                  className="addButton"
+                  component={Link}
+                  to="/emp-pos-add"
+                  variant="contained"
+                  color="primary"
+                >
+                  {" "}
+                  Add More Position
+                </Button>
+              </MuiThemeProvider>
             </div>
             <div class="cards">
               {/* <ul>
-                {this.props.openPositions.map(pos => {
+                {this.props.positions.map(pos => { 
                   return ( */}
               <EmpCard
-                // id={pos._id}
-                // projectName={pos.projectName}
-                // description={pos.description}
-                // jobTitle={pos.jobTitle}
-                // // techStack={pos.techStack}
-                // // skills={pos.skills}
-                // minSalary={pos.minSalary}
-                // maxSalary={pos.maxSalary}
-
-                id={this.state._id}
-                projectName={this.state.projectName}
-                description={this.state.description}
-                jobTitle={this.state.jobTitle}
-                // techStack={this.state.techStack}
-                // skills={this.state.skills}
-                minSalary={this.state.minSalary}
-                maxSalary={this.state.maxSalary}
+                id={this.props._id}
+                projectName={this.props.projectName}
+                description={this.props.description}
+                jobTitle={this.props.jobTitle}
+                minSalary={this.props.minSalary}
+                maxSalary={this.props.maxSalary}
               />
-              {/*
-                );
+              {/*);
                 })}
-              </ul> */}
+              </ul>*/}
             </div>
           </Paper>
         </div>

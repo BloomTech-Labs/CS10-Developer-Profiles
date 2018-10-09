@@ -6,11 +6,28 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import AOS from "aos";
-import "./EmpCard.css";
+
 import "aos/dist/aos.css";
+import "./EmpCard.css";
+
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 AOS.init();
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: "#757ce8",
+      main: "#5C6BC0",
+      dark: "#002884",
+      contrastText: "#fff"
+    },
+    secondary: {
+      main: "#B79A3F",
+      contrastText: "#fff"
+    }
+  }
+});
 
 class EmpCard extends React.Component {
   constructor(props) {
@@ -101,6 +118,8 @@ class EmpCard extends React.Component {
           </div>
 
           <div className="cardButtons">
+          <MuiThemeProvider theme={theme}>
+
             <Button
               className="cardButton"
               variant="contained"
@@ -118,6 +137,7 @@ class EmpCard extends React.Component {
             >
               Delete
             </Button>
+            </MuiThemeProvider>
           </div>
           </div>
         </Card>
