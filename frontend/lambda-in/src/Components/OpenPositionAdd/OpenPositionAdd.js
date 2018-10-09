@@ -1,29 +1,29 @@
-import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import "./OpenPositionAdd.css";
+import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import './OpenPositionAdd.css';
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: "#757ce8",
-      main: "#5C6BC0",
-      dark: "#002884",
-      contrastText: "#fff"
+      light: '#757ce8',
+      main: '#5C6BC0',
+      dark: '#002884',
+      contrastText: '#fff',
     },
     secondary: {
-      main: "#B79A3F",
-      contrastText: "#fff"
-    }
-  }
+      main: '#B79A3F',
+      contrastText: '#fff',
+    },
+  },
 });
 
 AOS.init();
@@ -32,28 +32,28 @@ export default class OpenPositionAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projectName: "",
-      description: "",
-      jobTitle: "",
+      projectName: '',
+      description: '',
+      jobTitle: '',
       // techStack: "", // TODO: Sanitize info to avoid validation error in database whild POST/PUT
       // skills: "", // TODO: Sanitize info to avoid validation error in database whild POST/PUT
-      minSalary: "",
-      maxSalary: ""
+      minSalary: '',
+      maxSalary: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleNewPos = this.handleNewPos.bind(this);
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  handleNewPos = event => {
+  handleNewPos = (event) => {
     const { getGS } = this.props;
     const { setGS } = this.props;
-    const userInfo = getGS("userInfo");
+    const userInfo = getGS('userInfo');
 
     const userInfoCopy = { ...userInfo };
 
@@ -69,34 +69,34 @@ export default class OpenPositionAdd extends Component {
         { openPositions },
         {
           headers: {
-            Authorization: localStorage.getItem("token")
-          }
-        }
+            Authorization: localStorage.getItem('token'),
+          },
+        },
       )
-      .then(response => {
-        localStorage.setItem("token", response.data.jwt);
-        localStorage.setItem("_id", response.data.openPosition._id);
+      .then((response) => {
+        localStorage.setItem('token', response.data.jwt);
+        localStorage.setItem('_id', response.data.openPosition._id);
 
         this.props.setGS({
           userInfo: { ...response.data.newPosition },
           isSignedIn: true,
-          userType: "employer"
+          userType: 'employer',
         });
         console.log(response);
 
         this.setState({
-          projectName: "",
-          description: "",
-          jobTitle: "",
+          projectName: '',
+          description: '',
+          jobTitle: '',
           // techStack: "",
           // skills: "",
-          minSalary: "",
-          maxSalary: ""
+          minSalary: '',
+          maxSalary: '',
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
-        this.props.setGS({ updateState: "error" });
+        this.props.setGS({ updateState: 'error' });
       });
   };
 
@@ -108,7 +108,7 @@ export default class OpenPositionAdd extends Component {
       // techStack,
       // skills,
       minSalary,
-      maxSalary
+      maxSalary,
     } = this.state;
 
     return (
@@ -182,31 +182,31 @@ export default class OpenPositionAdd extends Component {
               fullWidth="true"
             />
             <div className="buttons">
-            <MuiThemeProvider theme={theme}>
-            <div>
-              <Button
-                className="submitButton"
-                variant="contained"
-                color="primary"
-                onClick={this.handleNewPos}
-              >
-                {" "}
-                Submit
-              </Button>
-              </div>
+              <MuiThemeProvider theme={theme}>
+                <div>
+                  <Button
+                    className="submitButton"
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleNewPos}
+                  >
+                    {' '}
+                    Submit
+                  </Button>
+                </div>
 
-              <div>
-              <Button
-                  className="backPropButton"
-                  component={Link}
-                  to="/emp-profile"
-                  variant="contained"
-                  color="secondary"
-              >
-                {" "}
-                Back to Profile
-              </Button>
-              </div>
+                <div>
+                  <Button
+                    className="backPropButton"
+                    component={Link}
+                    to="/emp-profile"
+                    variant="contained"
+                    color="secondary"
+                  >
+                    {' '}
+                    Back to Profile
+                  </Button>
+                </div>
               </MuiThemeProvider>
             </div>
           </div>
