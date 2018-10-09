@@ -326,14 +326,14 @@ const getCity = (blank) => {
 
 const getCities = (maxCities, blank) => {
   const rand = Math.random();
-  const numCities = getRandomInt(1, maxCities);
+  const numCities = blank && (rand >= 0 && rand < blank / 100) ? [] : getRandomInt(1, maxCities);
   const cities = [];
 
   for (let i = 0; i < numCities; i += 1) {
     cities.push(usCities[getRandomInt(0, usCities.length - 1)]);
   }
 
-  return blank && (rand >= 0 && rand < blank / 100) ? [] : cities;
+  return cities;
 };
 
 module.exports = {
