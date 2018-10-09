@@ -39,7 +39,7 @@ const getSeeker = (avatar) => {
     email: getEmail(firstName, lastName, 0),
     currentTitle: faker.name.jobTitle(),
     desiredTitle: getJobTitle(track, 0),
-    currentLocation: getCity(0),
+    currentLocation: getCity(10, 0),
     summary: summary.length > 128 ? `${summary.substring(0, 127)}.` : summary,
     github: `https://github.com/${firstName.toLowerCase()}-${lastName.toLowerCase()}`,
     linkedIn: `https://www.linkedin.com/in/${firstName.toLowerCase()}${lastName.toLowerCase()}`,

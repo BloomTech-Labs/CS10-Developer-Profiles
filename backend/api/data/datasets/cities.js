@@ -324,9 +324,9 @@ const getCity = (blank) => {
     : usCities[getRandomInt(0, usCities.length - 1)];
 };
 
-const getCities = (blank) => {
+const getCities = (maxCities, blank) => {
   const rand = Math.random();
-  const numCities = getRandomInt(1, 10);
+  const numCities = getRandomInt(1, maxCities);
   const cities = [];
 
   for (let i = 0; i < numCities; i += 1) {
