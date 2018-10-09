@@ -25,54 +25,54 @@ const theme = createMuiTheme({
 });
 
 export default ({ getGS, setGS }) => {
-  const userInfo = getGS('userInfo');
+  const userInfo = getGS("userInfo");
   const positions = userInfo.openPositions;
- 
-    return (
-      <div className="container">
-        <div className="body">
-          <Paper class="paper">
-            <Typography variant="display1" gutterBottom align="center">
-              Open Positions
-            </Typography>
 
-            <Typography variant="headline" gutterBottom align="center">
-              Manage Current Open Positions
-            </Typography>
-            <div className="buttonContainer">
-              <MuiThemeProvider theme={theme}>
-                <Button
-                  className="addButton"
-                  component={Link}
-                  to="/emp-pos-add"
-                  variant="contained"
-                  color="primary"
-                >
-                  {" "}
-                  Add More Position
-                </Button>
-              </MuiThemeProvider>
-            </div>
-            <div class="cards">
-              <ul>
-                {positions.map(pos => {
-                  return (
-                    <EmpCard
+  return (
+    <div className="container">
+      <div className="body">
+        <Paper class="paper">
+          <Typography variant="display1" gutterBottom align="center">
+            Open Positions
+          </Typography>
+
+          <Typography variant="headline" gutterBottom align="center">
+            Manage Current Open Positions
+          </Typography>
+          <div className="buttonContainer">
+            <MuiThemeProvider theme={theme}>
+              <Button
+                className="addButton"
+                component={Link}
+                to="/emp-pos-add"
+                variant="contained"
+                color="primary"
+              >
+                {" "}
+                Add More Position
+              </Button>
+            </MuiThemeProvider>
+          </div>
+          <div class="cards">
+            <ul>
+              {positions.map(pos => {
+                return (
+                  <EmpCard
                     getGS={getGS}
                     setGS={setGS}
-                      posId={pos._id}
-                      projectName={pos.projectName}
-                      description={pos.description}
-                      jobTitle={pos.jobTitle}
-                      minSalary={pos.minSalary}
-                      maxSalary={pos.maxSalary}
-                    />
-                  );
-                })}
-              </ul>
-            </div>
-          </Paper>
-        </div>
+                    posId={pos._id}
+                    projectName={pos.projectName}
+                    description={pos.description}
+                    jobTitle={pos.jobTitle}
+                    minSalary={pos.minSalary}
+                    maxSalary={pos.maxSalary}
+                  />
+                );
+              })}
+            </ul>
+          </div>
+        </Paper>
       </div>
-    );
-  }
+    </div>
+  );
+};

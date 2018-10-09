@@ -62,7 +62,7 @@ class EmpCard extends React.Component {
 
     axios
       .put(
-        `/api/employers/${_id}`, { openPositions : updatedPositions }, {
+        `/api/employers/${_id}`, { openPositions: updatedPositions }, {
           headers: {
             Authorization: localStorage.getItem("token")
           }
