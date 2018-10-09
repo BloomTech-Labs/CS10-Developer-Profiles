@@ -3,11 +3,28 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./OpenPositionAdd.css";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: "#757ce8",
+      main: "#5C6BC0",
+      dark: "#002884",
+      contrastText: "#fff"
+    },
+    secondary: {
+      main: "#B79A3F",
+      contrastText: "#fff"
+    }
+  }
+});
 
 AOS.init();
 
@@ -34,25 +51,29 @@ export default class OpenPositionAdd extends Component {
   };
 
   handleNewPos = event => {
-    const {getGS} = this.props; 
-    const {setGS} = this.props; 
-    const userInfo = getGS('userInfo'); // getGS('userInfo') comes from App.js
+    const { getGS } = this.props;
+    const { setGS } = this.props;
+    const userInfo = getGS("userInfo");
 
-    const userInfoCopy = {...userInfo};
+    const userInfoCopy = { ...userInfo };
 
-    const  {_id, openPositions} = userInfoCopy;
+    const { _id, openPositions } = userInfoCopy;
 
     openPositions.push(this.state);
- 
+
     event.preventDefault();
 
     axios
-      .put(`/api/employers/${_id}`, {openPositions}, {
-        headers: {
-          Authorization: localStorage.getItem('token'),
-        },
-      })
-      .then((response) => {
+      .put(
+        `/api/employers/${_id}`,
+        { openPositions },
+        {
+          headers: {
+            Authorization: localStorage.getItem("token")
+          }
+        }
+      )
+      .then(response => {
         localStorage.setItem("token", response.data.jwt);
         // localStorage.setItem("_id", response.data.newPosition._id);
 
@@ -72,7 +93,7 @@ export default class OpenPositionAdd extends Component {
           minSalary: "",
           maxSalary: ""
         });
-        })
+      })
       .catch(error => {
         console.log(error);
         this.props.setGS({ updateState: "error" });
@@ -124,7 +145,7 @@ export default class OpenPositionAdd extends Component {
               margin="normal"
               fullWidth="true"
             />
-    {/*
+            {/*
             <TextField
               name="techStack"
               label="Tech Stack"
@@ -160,8 +181,11 @@ export default class OpenPositionAdd extends Component {
               margin="normal"
               fullWidth="true"
             />
-            <div class="buttons">
+            <div className="buttons">
+            <MuiThemeProvider theme={theme}>
+            <div>
               <Button
+                className="submitButton"
                 variant="contained"
                 color="primary"
                 onClick={this.handleNewPos}
@@ -169,6 +193,21 @@ export default class OpenPositionAdd extends Component {
                 {" "}
                 Submit
               </Button>
+              </div>
+
+              <div>
+              <Button
+                  className="backPropButton"
+                  component={Link}
+                  to="/emp-profile"
+                  variant="contained"
+                  color="secondary"
+              >
+                {" "}
+                Back to Profile
+              </Button>
+              </div>
+              </MuiThemeProvider>
             </div>
           </div>
         </Paper>

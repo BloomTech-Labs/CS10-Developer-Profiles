@@ -29,8 +29,8 @@ export default ({ getGS, setGS }) => {
   const positions = userInfo.openPositions;
  
     return (
-      <div class="container">
-        <div class="body">
+      <div className="container">
+        <div className="body">
           <Paper class="paper">
             <Typography variant="display1" gutterBottom align="center">
               Open Positions

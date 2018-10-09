@@ -4,12 +4,11 @@
     display: flex;
     flex-direction: row;
     padding: 5px;
+    line-height: 4;
 }
 
-.cardButtons {
-    justify-content: center;
-    align-items: center;
-    align-self: center;
+.cardInputs * {
+    margin-top: 7px;
 }
 
 .cardButtons cardButton {

@@ -48,7 +48,7 @@ class EmpCard extends React.Component {
   handleDelete = event => {
     const { getGS } = this.props;
     const { setGS } = this.props;
-    const userInfo = getGS("userInfo"); // getGS('userInfo') comes from App.js
+    const userInfo = getGS("userInfo");
 
     const userInfoCopy = { ...userInfo };
 
@@ -91,7 +91,7 @@ class EmpCard extends React.Component {
         data-aos-easing="ease-in-sine"
       >
         <Card class="cardPaper">
-          <div>
+          <div className="cardInputs">
             <div>
               <Typography variant="caption">Project Name</Typography>
               <Typography variant="subheading">
@@ -129,18 +129,9 @@ class EmpCard extends React.Component {
                 {this.props.minSalary} - {this.props.maxSalary}
               </Typography>
             </div>
-
+            </div>
             <div className="cardButtons">
               <MuiThemeProvider theme={theme}>
-                {/* <Button
-              className="cardButton"
-              variant="contained"
-              color="primary"
-              onClick={this.edit}
-            >
-              Edit
-            </Button> */}
-
                 <Button
                   className="cardButton"
                   variant="contained"
@@ -151,7 +142,7 @@ class EmpCard extends React.Component {
                 </Button>
               </MuiThemeProvider>
             </div>
-          </div>
+
         </Card>
       </div>
     );
