@@ -1,5 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 import DropDown from '../DropDown/DropDown';
 import MapDropDownDisplay from '../MapArrays/MapDropDownDisplay';
 
@@ -26,7 +27,7 @@ const ArraySectionDisplay = (props) => {
 
 ArraySectionDisplay.propTypes = {
   header: PropTypes.string.isRequired,
-  userInfo: PropTypes.shape({}).isRequired,
+  userInfo: SEEKER_PROP_TYPES.isRequired,
   field: PropTypes.string.isRequired,
   schema: PropTypes.shape({}).isRequired,
 };
