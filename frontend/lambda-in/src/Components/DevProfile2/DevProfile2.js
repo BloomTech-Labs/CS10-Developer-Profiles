@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -88,13 +89,14 @@ export default ({ getGS, setGS }) => {
                 </Typography>
               </div>
               <div className="summary">
-                <Typography>{userInfo.summary}</Typography>
+                <Typography variant="subheading" gutterBottom> Bio - {userInfo.summary}</Typography>
               </div>
               <div className="desiredTitle">
-                {userInfo.desiredTitle}
+                <Typography variant="subheading" gutterBottom>Desired Title - {userInfo.desiredTitle}</Typography>
               </div>
               <div className="tagCloud">
-                <MapList array={allSkills} />
+                {console.log(allSkills)}              
+                <Typography variant="subheading" gutterBottom> Top skills -  {allSkills.map(item => item + ' ')}</Typography>
               </div>
             </div>
           </div>
@@ -157,7 +159,7 @@ export default ({ getGS, setGS }) => {
           />
           <div className="profileButtons">
             <Link to="/dev-info-edit">
-              <Button variant="outlined" color="primary">
+              <Button variant="contained" color="primary">
                 {' '}
                 edit
               </Button>
