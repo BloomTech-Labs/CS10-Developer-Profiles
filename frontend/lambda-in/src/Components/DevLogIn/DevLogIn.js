@@ -204,8 +204,9 @@ class DevLogin extends Component {
     const { email, password } = this.state;
     const { classes, getGS } = this.props;
 
-    const buttonConflict =
-      getGS('login') !== 'conflict' ? (
+    // prettier-ignore
+    const buttonConflict = getGS('login') !== 'conflict'
+      ? (
         <React.Fragment>
           <label htmlFor="input-submit-button">
             <input
