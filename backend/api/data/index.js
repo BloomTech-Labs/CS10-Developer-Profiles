@@ -1,6 +1,7 @@
 const faker = require('faker');
 const bcrypt = require('bcrypt');
 const { generateJSONFile } = require('./utils/generateJSONFile');
+const { getProjects } = require('./utils/getProjectSchema');
 const { getRandomInt } = require('./utils/getRandomInt');
 const { getCity, getCities } = require('./datasets/cities');
 const { getEmail } = require('./datasets/emails');
@@ -18,7 +19,6 @@ const seekers = [];
 faker.locale = 'en_US';
 
 /**
- * @todo projectsSchema -> projects
  * @todo experienceSchema -> expreience
  * @todo educationSchema -> education
  */
@@ -76,7 +76,7 @@ const getSeeker = (avatar) => {
     topSkills: skills.topSkills,
     additionalSkills: skills.additionalSkills,
     familiarWith: skills.familiarWith,
-    projects: [],
+    projects: getProjects(5, firstName, lastName, 10),
     experience: [],
     education: [],
   };
