@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -69,7 +70,7 @@ export default ({ getGS, setGS }) => {
           <div className="profileImage">
             <img
               className="profileImage"
-              src="https://robohash.org/tony"
+              src={`https://robohash.org/1${userInfo.firstName}`}
               alt="Italian "
             />
           </div>
@@ -78,6 +79,7 @@ export default ({ getGS, setGS }) => {
               <div className="name">
                 <Typography variant="headline" component="h3">
                   {userInfo.firstName}
+                  {' '}
                   {userInfo.lastName}
                 </Typography>
               </div>
@@ -87,14 +89,14 @@ export default ({ getGS, setGS }) => {
                 </Typography>
               </div>
               <div className="summary">
-                <Typography>{userInfo.summary}</Typography>
+                <Typography variant="subheading" gutterBottom> Bio - {userInfo.summary}</Typography>
               </div>
               <div className="desiredTitle">
-                Desired Title:
-                {userInfo.desiredTitle}
+                <Typography variant="subheading" gutterBottom>Desired Title - {userInfo.desiredTitle}</Typography>
               </div>
               <div className="tagCloud">
-                <MapList array={allSkills} />
+                {console.log(allSkills)}              
+                <Typography variant="subheading" gutterBottom> Top skills -  {allSkills.map(item => item + ' ')}</Typography>
               </div>
             </div>
           </div>
@@ -134,43 +136,41 @@ export default ({ getGS, setGS }) => {
           </div>
         </div>
         <div className="profileBottomCard">
-          <Paper>
-            <ArraySectionDisplay
-              header="Projects"
-              userInfo={userInfo}
-              field="projects"
-              itemType="object"
-              schema={schemas.projects}
-            />
-            <ArraySectionDisplay
-              header="Experience"
-              userInfo={userInfo}
-              field="experience"
-              itemType="object"
-              schema={schemas.experience}
-            />
-            <ArraySectionDisplay
-              header="Education"
-              userInfo={userInfo}
-              field="education"
-              itemType="object"
-              schema={schemas.education}
-            />
-            <div className="profileButtons">
-              <Link to="/dev-info-edit">
-                <Button variant="outlined" color="primary">
-                  {' '}
-                  edit
-                </Button>
-              </Link>
-              <Link to="/dev-profile2">
-                <Button variant="outlined" color="secondary">
-                  {' '}
-                  Delete
-                </Button>
-              </Link>
-            </div>
-          </Paper>
+          <ArraySectionDisplay
+            header="Projects"
+            userInfo={userInfo}
+            field="projects"
+            itemType="object"
+            schema={schemas.projects}
+          />
+          <ArraySectionDisplay
+            header="Experience"
+            userInfo={userInfo}
+            field="experience"
+            itemType="object"
+            schema={schemas.experience}
+          />
+          <ArraySectionDisplay
+            header="Education"
+            userInfo={userInfo}
+            field="education"
+            itemType="object"
+            schema={schemas.education}
+          />
+          <div className="profileButtons">
+            <Link to="/dev-info-edit">
+              <Button variant="contained" color="primary">
+                {' '}
+                edit
+              </Button>
+            </Link>
+            <Link to="/dev-profile2">
+              <Button variant="outlined" color="secondary">
+                {' '}
+                Delete
+              </Button>
+            </Link>
+          </div>
         </div>
       </Paper>
     </div>
