@@ -3,7 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import axios from "axios";
 import AOS from "aos";
 
@@ -33,6 +33,7 @@ class EmpCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       projectName: "",
       description: "",
       jobTitle: "",
@@ -41,35 +42,45 @@ class EmpCard extends React.Component {
       minSalary: "",
       maxSalary: ""
     };
-    // this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    // this.handleEdit = this.handleEdit.bind(this);
   }
-
 
   handleDelete = event => {
-    const id = event.target.openPositions.id;
-        axios.delete(`/api/register/employers/${id}`,
-    ).then(() => {
-      window.location.reload();
-    });
-  }
+    const { getGS } = this.props;
+    const { setGS } = this.props;
+    const userInfo = getGS("userInfo"); // getGS('userInfo') comes from App.js
 
-  // handleEdit(event) {
-  //   const id = e.target.database.id;
-  //   axios.put(`/api/register/employers/${id}`,
-  //   {
-  //     ...userInfo,
-  //   },
-  //   {
-  //     headers: {
-  //       Authorization: localStorage.getItem('token'),
-  //     },
-  //   },).then(() => {
-  //     window.location.reload();
-  //   });
-  // }
+    const userInfoCopy = { ...userInfo };
 
+    const {_id,  openPositions } = userInfoCopy;
+    const {posId} = this.props;
+
+    const updatedPositions = openPositions.filter(openPosition => openPosition._id !== posId);
+    console.log(updatedPositions);
+
+    event.preventDefault();
+
+    axios
+      .put(
+        `/api/employers/${_id}`, { openPositions : updatedPositions }, {
+          headers: {
+            Authorization: localStorage.getItem("token")
+          }
+        }
+      )
+      .then(response => {
+        console.log(response)
+        this.props.setGS({
+          userInfo: { ...response.data['Document(s) modified'] },
+        });
+
+
+      })
+      .catch(error => {
+        console.log(error);
+        this.props.setGS({ updateState: "error" });
+      });
+  };
 
   render() {
     return (
@@ -80,27 +91,29 @@ class EmpCard extends React.Component {
         data-aos-easing="ease-in-sine"
       >
         <Card class="cardPaper">
-        <div>
           <div>
-            <Typography variant="caption">Project Name</Typography>
-            <Typography variant="subheading">
-              {this.props.projectName}
-            </Typography>
-          </div>
+            <div>
+              <Typography variant="caption">Project Name</Typography>
+              <Typography variant="subheading">
+                {this.props.projectName}
+              </Typography>
+            </div>
 
-          <div class="disc">
-            <Typography variant="caption">description</Typography>
-            <Typography variant="subheading">
-              {this.props.description}
-            </Typography>
-          </div>
+            <div class="disc">
+              <Typography variant="caption">description</Typography>
+              <Typography variant="subheading">
+                {this.props.description}
+              </Typography>
+            </div>
 
-          <div>
-            <Typography variant="caption">Job Title</Typography>
-            <Typography variant="subheading">{this.props.jobTitle}</Typography>
-          </div>
+            <div>
+              <Typography variant="caption">Job Title</Typography>
+              <Typography variant="subheading">
+                {this.props.jobTitle}
+              </Typography>
+            </div>
 
-          {/* <div>
+            {/* <div>
             <Typography variant="caption">Tech Stack:</Typography>
             <Typography variant="subheading">{this.props.techStack}</Typography>
           </div>
@@ -110,35 +123,34 @@ class EmpCard extends React.Component {
             <Typography variant="subheading">{this.props.skills}</Typography>
           </div> */}
 
-          <div>
-            <Typography variant="caption">Salary range</Typography>
-            <Typography variant="subheading">
-              {this.props.minSalary} - {this.props.maxSalary}
-            </Typography>
-          </div>
+            <div>
+              <Typography variant="caption">Salary range</Typography>
+              <Typography variant="subheading">
+                {this.props.minSalary} - {this.props.maxSalary}
+              </Typography>
+            </div>
 
-          <div className="cardButtons">
-          <MuiThemeProvider theme={theme}>
-
-            <Button
+            <div className="cardButtons">
+              <MuiThemeProvider theme={theme}>
+                {/* <Button
               className="cardButton"
               variant="contained"
               color="primary"
-              onClick={this.handleDelete}
+              onClick={this.edit}
             >
               Edit
-            </Button>
+            </Button> */}
 
-            <Button
-              className="cardButton"
-              variant="contained"
-              color="secondary"
-              onClick={this.handleDelete}
-            >
-              Delete
-            </Button>
-            </MuiThemeProvider>
-          </div>
+                <Button
+                  className="cardButton"
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.handleDelete}
+                >
+                  Delete
+                </Button>
+              </MuiThemeProvider>
+            </div>
           </div>
         </Card>
       </div>

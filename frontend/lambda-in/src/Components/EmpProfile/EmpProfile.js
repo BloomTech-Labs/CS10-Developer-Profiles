@@ -24,8 +24,10 @@ const theme = createMuiTheme({
   }
 });
 
-class EmpProfile extends React.Component {
-  render() {
+export default ({ getGS, setGS }) => {
+  const userInfo = getGS('userInfo');
+  const positions = userInfo.openPositions;
+ 
     return (
       <div class="container">
         <div class="body">
@@ -52,26 +54,25 @@ class EmpProfile extends React.Component {
               </MuiThemeProvider>
             </div>
             <div class="cards">
-              {/* <ul>
-                {this.props.positions.map(pos => { 
-                  return ( */}
-              <EmpCard
-                id={this.props._id}
-                projectName={this.props.projectName}
-                description={this.props.description}
-                jobTitle={this.props.jobTitle}
-                minSalary={this.props.minSalary}
-                maxSalary={this.props.maxSalary}
-              />
-              {/*);
+              <ul>
+                {positions.map(pos => {
+                  return (
+                    <EmpCard
+                    getGS={getGS}
+                    setGS={setGS}
+                      posId={pos._id}
+                      projectName={pos.projectName}
+                      description={pos.description}
+                      jobTitle={pos.jobTitle}
+                      minSalary={pos.minSalary}
+                      maxSalary={pos.maxSalary}
+                    />
+                  );
                 })}
-              </ul>*/}
+              </ul>
             </div>
           </Paper>
         </div>
       </div>
     );
   }
-}
-
-export default EmpProfile;

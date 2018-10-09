@@ -201,11 +201,6 @@ class App extends Component {
             {/* PROFILE: If user is not Authenticated 'Redirect' to home page */}
             <Route
               path="/emp-profile"
-              render={() => (isSignedIn ? <EmpProfile /> : <Redirect to="/" />)}
-            />
-            {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
-            <Route
-              path="/emp-info-edit"
               render={(props) =>
                 isSignedIn ? (
                   <EmpProfile

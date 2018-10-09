@@ -54,7 +54,7 @@ export default class OpenPositionAdd extends Component {
       })
       .then((response) => {
         localStorage.setItem("token", response.data.jwt);
-        localStorage.setItem("_id", response.data.newPosition._id);
+        // localStorage.setItem("_id", response.data.newPosition._id);
 
         this.props.setGS({
           userInfo: { ...response.data.newPosition },
