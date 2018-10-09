@@ -1,4 +1,5 @@
 const emailProviders = ['gmail', 'yahoo', 'outlook'];
+const { getRandomInt } = require('../utils/getRandomInt');
 
 const getEmail = (firstName, lastName, blank) => {
   const rand = Math.random();
