@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
+import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 
 const BasicInfo = ({ userInfo }) => {
   const schema = {
@@ -75,7 +75,7 @@ const BasicInfo = ({ userInfo }) => {
 };
 
 BasicInfo.propTypes = {
-  userInfo: PropTypes.shape({}).isRequired,
+  userInfo: SEEKER_PROP_TYPES.isRequired,
 };
 
 export default BasicInfo;
