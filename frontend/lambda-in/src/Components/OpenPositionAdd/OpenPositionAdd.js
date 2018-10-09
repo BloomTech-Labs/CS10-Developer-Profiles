@@ -57,16 +57,15 @@ export default class OpenPositionAdd extends Component {
 
     const userInfoCopy = { ...userInfo };
 
-    const { _id, openPositions } = userInfoCopy;
+    const { _id } = userInfoCopy;
+    const updatedPositions = [...userInfoCopy.openPositions];
 
-    openPositions.push(this.state);
-
-    event.preventDefault();
+    updatedPositions.push(this.state);
 
     axios
       .put(
         `/api/employers/${_id}`,
-        { openPositions },
+        { openPositions: updatedPositions },
         {
           headers: {
             Authorization: localStorage.getItem('token'),
@@ -74,25 +73,25 @@ export default class OpenPositionAdd extends Component {
         },
       )
       .then((response) => {
-        localStorage.setItem('token', response.data.jwt);
-        localStorage.setItem('_id', response.data.openPosition._id);
+        if (response.status !== 200) {
+          throw new Error(response);
+        } else {
+          setGS({
+            userInfo: { ...response.data['Document(s) modified'] },
+            updateState: 'updated',
+          });
+          console.log({ ...response.data['Document(s) modified'] });
 
-        this.props.setGS({
-          userInfo: { ...response.data.newPosition },
-          isSignedIn: true,
-          userType: 'employer',
-        });
-        console.log(response);
-
-        this.setState({
-          projectName: '',
-          description: '',
-          jobTitle: '',
-          // techStack: "",
-          // skills: "",
-          minSalary: '',
-          maxSalary: '',
-        });
+          this.setState({
+            projectName: '',
+            description: '',
+            jobTitle: '',
+            // techStack: "",
+            // skills: "",
+            minSalary: '',
+            maxSalary: '',
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
