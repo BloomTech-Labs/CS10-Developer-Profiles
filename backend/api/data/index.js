@@ -13,6 +13,8 @@ const password = 'Password123&';
 const salt = bcrypt.genSaltSync(12);
 const passwordHash = bcrypt.hashSync(password, salt);
 
+const seekers = [];
+
 faker.locale = 'en_US';
 
 /**
@@ -57,8 +59,6 @@ const getSeeker = (avatar) => {
   const lastName = faker.name.lastName(avatar.gender);
   const skills = getSkills(track);
 
-  console.log(skills);
-
   return {
     track,
     firstName,
@@ -82,8 +82,6 @@ const getSeeker = (avatar) => {
     education: '[educationSchema]',
   };
 };
-
-const seekers = [];
 
 for (let i = 0; i < 1; i += 1) {
   seekers.push(getSeeker(avatars[0]));
