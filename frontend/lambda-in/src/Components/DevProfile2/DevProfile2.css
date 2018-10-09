@@ -8,7 +8,7 @@
 }
 
 .profilePaper{
-    width: 50vw;
+    width: 60vw;
     height: 70vh;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
 }
 
 .profileTopCard{
-    width: 50vw;
+    width: 60vw;
     height: 20vh;
     display: flex;
     flex-direction: row;
@@ -28,22 +28,22 @@
 }
 
 .profileLinks{
-    width:5vw;
+    width:4vw;
     height:20vh;
     padding-top: 10px;
 }
 .profileLinksIcon{
-    width:4vw;
+    width:40px;
     height:4vh;
 }
 
 .profileBio{
-    width:30vw;
+    width:40vw;
     height:20vh;
     padding-top: 10px;
 }
 .profileBottomCard{
-    width: 50vw;
+    width: 60vw;
     height: 50vh;
 
 }
