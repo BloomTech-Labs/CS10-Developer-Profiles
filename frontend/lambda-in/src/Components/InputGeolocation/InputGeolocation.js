@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -83,14 +80,8 @@ class InputGeolocation extends Component {
     }[type];
 
     const propsClass = {
-      input:
-        textFieldProps && textFieldProps.className
-          ? textFieldProps.className
-          : null,
-      listItem:
-        listItemProps && listItemProps.className
-          ? listItemProps.className
-          : null,
+      input: textFieldProps && textFieldProps.className ? textFieldProps.className : null,
+      listItem: listItemProps && listItemProps.className ? listItemProps.className : null,
     }[type];
 
     return propsClass ? `${baseClass} ${propsClass}` : baseClass;
@@ -129,11 +120,19 @@ class InputGeolocation extends Component {
    * @return {void}
    */
   handleChange(place) {
-    this.setState({
-      place,
-      lat: '',
-      lng: '',
-    });
+    const clearParentState = () => {
+      const { place } = this.state;
+      if (place === '') this.passStateToParent();
+    };
+
+    this.setState(
+      {
+        place,
+        lat: '',
+        lng: '',
+      },
+      clearParentState,
+    );
   }
 
   /**
@@ -199,10 +198,7 @@ class InputGeolocation extends Component {
               <List dense={isDense} className="suggestion-list">
                 {suggestions.map((suggestion) => {
                   const { active } = suggestion;
-                  const {
-                    mainText,
-                    secondaryText,
-                  } = suggestion.formattedSuggestion;
+                  const { mainText, secondaryText } = suggestion.formattedSuggestion;
 
                   /**
                    * function getSuggestionItemProps -> is a built-in
@@ -221,10 +217,7 @@ class InputGeolocation extends Component {
                         className: this.setClassName('listItem', active),
                       })}
                     >
-                      <ListItemText
-                        primary={mainText}
-                        secondary={secondaryText && secondaryText}
-                      />
+                      <ListItemText primary={mainText} secondary={secondaryText && secondaryText} />
                     </ListItem>
                   );
                 })}
