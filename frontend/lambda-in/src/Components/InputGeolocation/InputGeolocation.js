@@ -165,7 +165,7 @@ class InputGeolocation extends Component {
   /** Return a <TextField /> and a <List /> components */
   render() {
     const { place } = this.state;
-    const { textFieldProps, listItemProps } = this.props;
+    const { textFieldProps, listItemProps, googleCallback } = this.props;
     const isDense = true;
     return (
       <PlacesAutocomplete
@@ -173,6 +173,7 @@ class InputGeolocation extends Component {
         onChange={this.handleChange}
         onSelect={this.handleSelect}
         onError={this.handleError}
+        googleCallbackName={googleCallback}
       >
         {/* This function renders the 'input' and the 'suggestion-list' Elements */}
         {({
