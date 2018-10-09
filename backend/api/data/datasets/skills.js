@@ -1,6 +1,49 @@
 const { shuffle } = require('faker').helpers;
 const { getRandomInt } = require('../utils/getRandomInt');
 
+const tech = [
+  'JavaScript',
+  'C Programming',
+  'C++',
+  'C#',
+  'Java',
+  'Kotlin',
+  'Python',
+  'SQL',
+  'Swift',
+  'Objective-C',
+  'Node JS',
+  'Express JS',
+  'React',
+  'Redux',
+  'Bootstrap',
+  'jQuery',
+  'HTML',
+  'CSS',
+  'MongoDB',
+  'PostgreSQL',
+  'Django',
+  'LESS',
+  'RESTful Architecture',
+  'Responsive Design',
+  'Single Page Application',
+  'TypeScript',
+  'AngularJS',
+  'Vue.js',
+  'Go',
+  'Ruby',
+  'Ruby on Rails',
+  'MySQL',
+  'Ember.js',
+  'Flask',
+  'Rust',
+  'NumPy',
+  'SciPy',
+  'Scikit-learn',
+  'pandas',
+  'TensorFlow',
+];
+
 const skills = {
   FSW: [
     'JavaScript',
@@ -224,6 +267,20 @@ const getSkills = (track) => {
   };
 };
 
+const getTechStack = (min, max, blank) => {
+  const rand = Math.random();
+  const numTech = blank && (rand >= 0 && rand < blank / 100) ? 0 : getRandomInt(min, max);
+  const allTech = shuffle(tech);
+  const techStack = [];
+
+  for (let i = 0; i < numTech; i += 1) {
+    techStack.push(allTech.pop());
+  }
+
+  return techStack;
+};
+
 module.exports = {
   getSkills,
+  getTechStack,
 };
