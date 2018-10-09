@@ -8,6 +8,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/lib/animated';
 import DevProfileCard from './DevProfileCard/DevProfileCard';
 import FilterToggle from './FilterToggle/FilterToggle';
+import InputGeolocation from '../InputGeolocation/InputGeolocation';
 import Pagination from '../Pagination/Pagination';
 import {
   ENABLE, DISABLE, SORT, FILTERS,
@@ -117,8 +118,12 @@ class DevList extends Component {
       prev: null,
       currentPage: DevList.getCurrentPage(),
       seekers: [],
+      place: '',
+      lat: null,
+      lng: null,
     });
 
+    this.handleLocationSelect = this.handleLocationSelect.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
     this.handleSwitchEnable = this.handleSwitchEnable.bind(this);
@@ -325,11 +330,19 @@ class DevList extends Component {
   cleanQuery(param) {
     const { query } = this.state;
     const regEx = new RegExp(
-      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[A-z|+.-]+|&${param}=[A-z|+.-]+`,
+      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[,A-z|+.-]+|&${param}=[,A-z|+.-]+`,
       'i',
     );
     const cleanedQuery = query.replace(regEx, '');
     return cleanedQuery === '' ? 'page=1' : cleanedQuery;
+  }
+
+  handleLocationSelect(place, lat, lng) {
+    const valStr = `&places=${place.replace(/ /g, '+')}`;
+    const newQuery = `${this.cleanQuery('places')}${place.length !== 0 ? valStr : ''}`;
+
+    this.setQuery(newQuery);
+    this.setState({ place, lat, lng });
   }
 
   /**
@@ -474,6 +487,10 @@ class DevList extends Component {
               onChange={value => this.handleSelect(value, FILTERS.familiar.eleName)}
               isMulti
             />
+            <InputGeolocation
+              talkToParentState={this.handleLocationSelect}
+              googleCallback="initPlacesInterested"
+            />
             <FilterToggle
               filter={FILTERS.acclaim}
               isChecked={acclaim}
@@ -542,10 +559,11 @@ class DevList extends Component {
               onChange={value => this.handleSelect(value, FILTERS.sort.eleName)}
               isMulti
             />
-            {seekers.length !== 0 && seekers.map(seeker => (
-              // eslint-disable-next-line no-underscore-dangle
-              <DevProfileCard key={seeker._id} seeker={seeker} />
-            ))}
+            {seekers.length !== 0
+              && seekers.map(seeker => (
+                // eslint-disable-next-line no-underscore-dangle
+                <DevProfileCard key={seeker._id} seeker={seeker} />
+              ))}
             {seekers.length !== 0 && (
               <Pagination
                 pages={pages}
