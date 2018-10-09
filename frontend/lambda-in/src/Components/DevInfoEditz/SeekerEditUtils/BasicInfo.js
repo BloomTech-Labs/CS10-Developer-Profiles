@@ -1,7 +1,7 @@
-import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
+import React from 'react';
 import SEEKER_PROP_TYPES from '../../seekerPropTypes';
+import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
 const BasicInfo = ({ userInfo }) => {
   const schema = {
