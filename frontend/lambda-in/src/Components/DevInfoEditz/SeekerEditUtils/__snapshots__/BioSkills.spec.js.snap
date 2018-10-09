@@ -1,0 +1,431 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BioSkills component should renders correctly 1`] = `
+<div
+  className="state-capsule"
+  onChange={[Function]}
+  onKeyPress={[Function]}
+>
+  <div
+    className="panelMargin"
+  >
+    <div
+      className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+    >
+      <div
+        aria-expanded={false}
+        className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        <div
+          className="MuiExpansionPanelSummary-content-35"
+        >
+          <p
+            className="MuiTypography-root-40 MuiTypography-body1-49"
+          >
+            Biio and Skills
+          </p>
+        </div>
+        <div
+          aria-hidden="true"
+          className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex={-1}
+        >
+          <span
+            className="MuiIconButton-label-71"
+          >
+            <span
+              aria-hidden="true"
+              className="material-icons MuiIcon-root-72"
+            >
+              add_circle
+            </span>
+          </span>
+          <span
+            className="MuiTouchRipple-root-81"
+          />
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        className="MuiCollapse-container-88"
+        style={
+          Object {
+            "minHeight": "0px",
+          }
+        }
+      >
+        <div
+          className="MuiCollapse-wrapper-90"
+        >
+          <div
+            className="MuiCollapse-wrapperInner-91"
+          >
+            <div
+              className="MuiExpansionPanelDetails-root-92"
+            >
+              <div
+                className="expansionPanel"
+              >
+                <div
+                  className="inputFieldLargeMultiline"
+                >
+                  <div
+                    aria-describedby={undefined}
+                    className="MuiFormControl-root-93 MuiFormControl-marginNormal-94 MuiFormControl-fullWidth-96"
+                  >
+                    <label
+                      className="MuiFormLabel-root-104 MuiFormLabel-filled-108 MuiInputLabel-root-97 MuiInputLabel-formControl-98 MuiInputLabel-animated-101 MuiInputLabel-shrink-100 MuiInputLabel-outlined-103"
+                      data-shrink={true}
+                      htmlFor="edit-summary"
+                    >
+                      Your Bio
+                    </label>
+                    <div
+                      className="MuiInputBase-root-124 MuiOutlinedInput-root-111 MuiInputBase-fullWidth-133 MuiInputBase-formControl-125 MuiInputBase-multiline-132 MuiOutlinedInput-multiline-117"
+                      onClick={[Function]}
+                    >
+                      <fieldset
+                        aria-hidden={true}
+                        className="MuiNotchedOutline-root-141 MuiOutlinedInput-notchedOutline-118"
+                        style={
+                          Object {
+                            "paddingLeft": 8,
+                          }
+                        }
+                      >
+                        <legend
+                          className="MuiNotchedOutline-legend-142"
+                          style={
+                            Object {
+                              "width": NaN,
+                            }
+                          }
+                        />
+                      </fieldset>
+                      <div
+                        className="Textarea-root-146"
+                      >
+                        <textarea
+                          aria-hidden="true"
+                          className="Textarea-textarea-147 Textarea-shadow-148"
+                          readOnly={true}
+                          rows="1"
+                          tabIndex={-1}
+                          value=""
+                        />
+                        <textarea
+                          aria-hidden="true"
+                          className="Textarea-textarea-147 Textarea-shadow-148"
+                          defaultValue={undefined}
+                          readOnly={true}
+                          rows={1}
+                          tabIndex={-1}
+                          value="A nice personal and descriptive summary"
+                        />
+                        <textarea
+                          aria-invalid={false}
+                          autoComplete={undefined}
+                          autoFocus={undefined}
+                          className="Textarea-textarea-147 MuiInputBase-input-134 MuiOutlinedInput-input-119 MuiInputBase-inputMultiline-136 MuiOutlinedInput-inputMultiline-121"
+                          defaultValue={undefined}
+                          disabled={false}
+                          id="edit-summary"
+                          name={undefined}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={undefined}
+                          onKeyUp={undefined}
+                          placeholder={undefined}
+                          readOnly={undefined}
+                          required={false}
+                          rows={1}
+                          style={
+                            Object {
+                              "height": 19,
+                            }
+                          }
+                          value="A nice personal and descriptive summary"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="inputFieldLargeMultiline"
+                >
+                  <div
+                    aria-describedby={undefined}
+                    className="MuiFormControl-root-93 MuiFormControl-marginNormal-94 MuiFormControl-fullWidth-96"
+                  >
+                    <label
+                      className="MuiFormLabel-root-104 MuiInputLabel-root-97 MuiInputLabel-formControl-98 MuiInputLabel-animated-101 MuiInputLabel-outlined-103"
+                      data-shrink={false}
+                      htmlFor="edit-topSkills_edit"
+                    >
+                      Add skills - press enter
+                    </label>
+                    <div
+                      className="MuiInputBase-root-124 MuiOutlinedInput-root-111 MuiInputBase-fullWidth-133 MuiInputBase-formControl-125 MuiInputBase-multiline-132 MuiOutlinedInput-multiline-117"
+                      onClick={[Function]}
+                    >
+                      <fieldset
+                        aria-hidden={true}
+                        className="MuiNotchedOutline-root-141 MuiOutlinedInput-notchedOutline-118"
+                        style={
+                          Object {
+                            "paddingLeft": NaN,
+                          }
+                        }
+                      >
+                        <legend
+                          className="MuiNotchedOutline-legend-142"
+                          style={
+                            Object {
+                              "width": 0.01,
+                            }
+                          }
+                        />
+                      </fieldset>
+                      <div
+                        className="Textarea-root-146"
+                      >
+                        <textarea
+                          aria-hidden="true"
+                          className="Textarea-textarea-147 Textarea-shadow-148"
+                          readOnly={true}
+                          rows="1"
+                          tabIndex={-1}
+                          value=""
+                        />
+                        <textarea
+                          aria-hidden="true"
+                          className="Textarea-textarea-147 Textarea-shadow-148"
+                          defaultValue={undefined}
+                          readOnly={true}
+                          rows={1}
+                          tabIndex={-1}
+                          value=""
+                        />
+                        <textarea
+                          aria-invalid={false}
+                          autoComplete={undefined}
+                          autoFocus={undefined}
+                          className="Textarea-textarea-147 MuiInputBase-input-134 MuiOutlinedInput-input-119 MuiInputBase-inputMultiline-136 MuiOutlinedInput-inputMultiline-121"
+                          data-chips={true}
+                          data-field="topSkills"
+                          data-itemtype="string"
+                          data-value="JS-React-TDD-Full stack developer"
+                          defaultValue={undefined}
+                          disabled={false}
+                          id="edit-topSkills_edit"
+                          name={undefined}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={undefined}
+                          onKeyUp={undefined}
+                          placeholder={undefined}
+                          readOnly={undefined}
+                          required={false}
+                          rows={1}
+                          style={
+                            Object {
+                              "height": 19,
+                            }
+                          }
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="MuiGrid-container-149 MuiGrid-spacing-xs-16-172 MuiGrid-align-items-xs-center-157 MuiGrid-justify-xs-center-166"
+                >
+                  <div>
+                    <div
+                      className="MuiChip-root-246 MuiChip-deletable-252"
+                      id="0$JS"
+                      onClick={undefined}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <span
+                        className="MuiChip-label-265"
+                      >
+                        JS
+                      </span>
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-271 MuiChip-deleteIcon-266"
+                        color={undefined}
+                        focusable="false"
+                        onClick={[Function]}
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M0 0h24v24H0V0z"
+                          fill="none"
+                        />
+                        <path
+                          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                        />
+                        <path
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="MuiChip-root-246 MuiChip-deletable-252"
+                      id="1$React"
+                      onClick={undefined}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <span
+                        className="MuiChip-label-265"
+                      >
+                        React
+                      </span>
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-271 MuiChip-deleteIcon-266"
+                        color={undefined}
+                        focusable="false"
+                        onClick={[Function]}
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M0 0h24v24H0V0z"
+                          fill="none"
+                        />
+                        <path
+                          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                        />
+                        <path
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="MuiChip-root-246 MuiChip-deletable-252"
+                      id="2$TDD"
+                      onClick={undefined}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <span
+                        className="MuiChip-label-265"
+                      >
+                        TDD
+                      </span>
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-271 MuiChip-deleteIcon-266"
+                        color={undefined}
+                        focusable="false"
+                        onClick={[Function]}
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M0 0h24v24H0V0z"
+                          fill="none"
+                        />
+                        <path
+                          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                        />
+                        <path
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="MuiChip-root-246 MuiChip-deletable-252"
+                      id="3$Full stack developer"
+                      onClick={undefined}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <span
+                        className="MuiChip-label-265"
+                      >
+                        Full stack developer
+                      </span>
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-271 MuiChip-deleteIcon-266"
+                        color={undefined}
+                        focusable="false"
+                        onClick={[Function]}
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M0 0h24v24H0V0z"
+                          fill="none"
+                        />
+                        <path
+                          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                        />
+                        <path
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
