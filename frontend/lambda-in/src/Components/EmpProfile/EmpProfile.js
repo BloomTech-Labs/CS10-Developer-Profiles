@@ -1,31 +1,31 @@
-import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
-import { Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import { Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
-import EmpCard from "./EmpCard";
+import EmpCard from './EmpCard';
 
-import "./EmpProfile.css";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import './EmpProfile.css';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: "#757ce8",
-      main: "#5C6BC0",
-      dark: "#002884",
-      contrastText: "#fff"
+      light: '#757ce8',
+      main: '#5C6BC0',
+      dark: '#002884',
+      contrastText: '#fff',
     },
     secondary: {
-      main: "#B79A3F",
-      contrastText: "#fff"
-    }
-  }
+      main: '#B79A3F',
+      contrastText: '#fff',
+    },
+  },
 });
 
 export default ({ getGS, setGS }) => {
-  const userInfo = getGS("userInfo");
+  const userInfo = getGS('userInfo');
   const positions = userInfo.openPositions;
 
   return (
@@ -48,14 +48,14 @@ export default ({ getGS, setGS }) => {
                 variant="contained"
                 color="primary"
               >
-                {" "}
+                {' '}
                 Add More Position
               </Button>
             </MuiThemeProvider>
           </div>
           <div class="cards">
             <ul>
-              {positions.map(pos => {
+              {positions.map((pos) => {
                 return (
                   <EmpCard
                     getGS={getGS}
