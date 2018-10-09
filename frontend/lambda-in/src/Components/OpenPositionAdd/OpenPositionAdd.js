@@ -112,7 +112,7 @@ export default class OpenPositionAdd extends Component {
 
     return (
       <div data-aos="zoom-in-down" className="addContainer">
-        <Paper className="paperContainer">
+        <Paper className="paperEmployerContainer">
           <Typography variant="display1" gutterBottom align="center">
             Add Position
           </Typography>

@@ -4,8 +4,11 @@
     justify-content: center;
 }
 
-.paperContainer{
+.paperEmployerContainer{
     width: 50vw;
+    height: 70vh;
+    padding: 10px;
+    margin: 20px;
 }
 
 .addPosButtons * {
