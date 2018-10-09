@@ -40,7 +40,6 @@ class DevInfoEdit extends Component {
    * Get a copy of App's global user state to keep global state inmutable.
    */
   componentDidMount() {
-    // eslint-disable-next-line react/prop-types
     const { getGS } = this.props;
     this.userStateCopy = { ...getGS('userInfo') };
     this.setState({ ready: true, ...getGS('userInfo') });
@@ -137,7 +136,6 @@ class DevInfoEdit extends Component {
       const value = dataset.value || e.target.value;
 
       const typeOfField = Object.prototype.toString.call(
-        // eslint-disable-next-line comma-dangle
         this.userStateCopy[field],
       );
 
@@ -172,7 +170,6 @@ class DevInfoEdit extends Component {
   }
 
   update() {
-    // eslint-disable-next-line react/prop-types
     const { setGS } = this.props;
 
     // Prepare data to be updated
@@ -235,7 +232,6 @@ class DevInfoEdit extends Component {
        */
       // eslint-disable-next-line no-alert
       alert(
-        // eslint-disable-next-line comma-dangle
         'An error occurred updating your information, please resubmit the form',
       );
     }
