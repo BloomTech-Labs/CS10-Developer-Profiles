@@ -101,7 +101,7 @@ class App extends Component {
     const { isSignedIn } = this.state;
     const redirectToUserProfile =
       this.state.userType === 'seeker' ? (
-        <Redirect to="/dev-profile" />
+        <Redirect to="/dev-profile2" />
       ) : (
         <Redirect to="/emp-profile" />
       );
@@ -191,9 +191,7 @@ class App extends Component {
                 isSignedIn ? (
                   redirectToUserProfile
                 ) : (
-                  <EmpSignUp
-                    setGS={this.setGlobalState}
-                  />
+                  <EmpSignUp setGS={this.setGlobalState} />
                 )
               }
             />
@@ -207,7 +205,7 @@ class App extends Component {
                     setGS={this.setGlobalState}
                     getGS={this.getGlobalState}
                   />
-                  ) : (
+                ) : (
                   <Redirect to="/" />
                 )
               }
