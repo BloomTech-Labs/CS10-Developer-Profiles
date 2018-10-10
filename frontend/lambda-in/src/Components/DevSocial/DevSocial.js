@@ -38,19 +38,19 @@ const DevSocial = (props) => {
     <div className={classes.devSocial}>
       <List component="ul">
         <ListItem>
-          <FontAwesomeIcon icon={faCertificate} size="2x" />
+          <FontAwesomeIcon icon={faCertificate} size="lg" />
         </ListItem>
         <ListItem>
-          <FontAwesomeIcon icon={faShareAlt} size="2x" />
+          <FontAwesomeIcon icon={faShareAlt} size="lg" />
         </ListItem>
         <ListItem>
-          <FontAwesomeIcon icon={faGithub} size="2x" />
+          <FontAwesomeIcon icon={faGithub} size="lg" />
         </ListItem>
         <ListItem>
-          <FontAwesomeIcon icon={faLinkedinIn} size="2x" />
+          <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
         </ListItem>
         <ListItem>
-          <FontAwesomeIcon icon={faFile} size="2x" />
+          <FontAwesomeIcon icon={faFile} size="lg" />
         </ListItem>
       </List>
     </div>

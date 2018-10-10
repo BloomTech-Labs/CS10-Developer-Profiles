@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -35,6 +32,7 @@ import './InputGeolocation.css';
  * />
  *
  * @prop {object} listItemProps - Contains all props needed to be passed to <ListItem /> component.
+ * @prop {Function} googleCallback - Optional callback to enable async mode.
  * @example How to pass listItemProps
  * <ListItem textFieldProps={{
  *    className: 'list-suggestion--options',
@@ -83,14 +81,8 @@ class InputGeolocation extends Component {
     }[type];
 
     const propsClass = {
-      input:
-        textFieldProps && textFieldProps.className
-          ? textFieldProps.className
-          : null,
-      listItem:
-        listItemProps && listItemProps.className
-          ? listItemProps.className
-          : null,
+      input: textFieldProps && textFieldProps.className ? textFieldProps.className : null,
+      listItem: listItemProps && listItemProps.className ? listItemProps.className : null,
     }[type];
 
     return propsClass ? `${baseClass} ${propsClass}` : baseClass;
@@ -129,11 +121,19 @@ class InputGeolocation extends Component {
    * @return {void}
    */
   handleChange(place) {
-    this.setState({
-      place,
-      lat: '',
-      lng: '',
-    });
+    const clearParentState = () => {
+      const { place } = this.state;
+      if (place === '') this.passStateToParent();
+    };
+
+    this.setState(
+      {
+        place,
+        lat: '',
+        lng: '',
+      },
+      clearParentState,
+    );
   }
 
   /**
@@ -166,7 +166,7 @@ class InputGeolocation extends Component {
   /** Return a <TextField /> and a <List /> components */
   render() {
     const { place } = this.state;
-    const { textFieldProps, listItemProps } = this.props;
+    const { textFieldProps, listItemProps, googleCallback } = this.props;
     const isDense = true;
     return (
       <PlacesAutocomplete
@@ -174,6 +174,7 @@ class InputGeolocation extends Component {
         onChange={this.handleChange}
         onSelect={this.handleSelect}
         onError={this.handleError}
+        googleCallbackName={googleCallback}
       >
         {/* This function renders the 'input' and the 'suggestion-list' Elements */}
         {({
@@ -199,10 +200,7 @@ class InputGeolocation extends Component {
               <List dense={isDense} className="suggestion-list">
                 {suggestions.map((suggestion) => {
                   const { active } = suggestion;
-                  const {
-                    mainText,
-                    secondaryText,
-                  } = suggestion.formattedSuggestion;
+                  const { mainText, secondaryText } = suggestion.formattedSuggestion;
 
                   /**
                    * function getSuggestionItemProps -> is a built-in
@@ -221,10 +219,7 @@ class InputGeolocation extends Component {
                         className: this.setClassName('listItem', active),
                       })}
                     >
-                      <ListItemText
-                        primary={mainText}
-                        secondary={secondaryText && secondaryText}
-                      />
+                      <ListItemText primary={mainText} secondary={secondaryText && secondaryText} />
                     </ListItem>
                   );
                 })}

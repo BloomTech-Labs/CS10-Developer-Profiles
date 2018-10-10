@@ -7,9 +7,13 @@ const locationSchema = new Schema({
     type: String,
     required: [true, 'A location name is required'],
   },
-  loc: {
-    type: { type: String },
-    coordinates: [],
+  lat: {
+    type: Number,
+    required: [true, 'Latitude cooridinate is required.'],
+  },
+  lng: {
+    type: Number,
+    required: [true, 'Longitude cooridinate is required.'],
   },
 });
 

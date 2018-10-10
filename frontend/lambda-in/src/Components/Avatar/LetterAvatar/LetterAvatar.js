@@ -6,6 +6,8 @@ import Avatar from '@material-ui/core/Avatar';
 const styles = {
   letterAvatar: {
     backgroundColor: '#a0021e',
+    height: '100px',
+    width: '100px',
   },
 };
 

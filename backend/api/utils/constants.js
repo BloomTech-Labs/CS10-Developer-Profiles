@@ -30,7 +30,7 @@ const SORT_OPTIONS = {
  */
 const FILTER_VALUE = {
   desiredTitle: 'desiredTitle',
-  location: 'currentLocation',
+  location: 'currentLocation.place',
 };
 
 /**
@@ -53,10 +53,10 @@ const FILTER_BOOLEAN = {
  * @type {Object}
  */
 const FILTER_ARRAY = {
-  places: 'placesInterested',
   topSkills: 'topSkills',
   addSkills: 'additionalSkills',
   familiar: 'familiarWith',
+  places: 'placesInterested.place',
 };
 
 module.exports = {
