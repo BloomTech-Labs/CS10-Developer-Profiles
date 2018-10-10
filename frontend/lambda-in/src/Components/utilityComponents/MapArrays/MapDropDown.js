@@ -1,14 +1,28 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DropDown from '../DropDown/DropDown';
 import StateCapsule from '../StateCapsule/StateCapsule';
 
-// eslint-disable-next-line object-curly-newline
-const MapDropDown = ({ array, field, itemType, schema, propsAndLabels }) =>
-  // eslint-disable-next-line implicit-arrow-linebreak
-  array.map((item, index) => (
+/**
+ * Scaffolds and renders array-items and allow editing on them.
+ *
+ * @param {props} props - Required props
+ */
+const MapDropDown = (props) => {
+  // prettier-ignore
+  const {
+    array,
+    field,
+    itemType,
+    schema,
+    propsAndLabels,
+  } = props;
+
+  return array.map((item, index) => (
     <DropDown
+      className="dropdown-edit"
       header={item.title || item.degree}
       key={`${item.title || item.degree}${Math.random()}`}
     >
@@ -17,6 +31,7 @@ const MapDropDown = ({ array, field, itemType, schema, propsAndLabels }) =>
           <div className="dropdown-item-list blur-handler">
             <Fragment>
               <Button
+                className="mapdropdown-button--delete"
                 variant="outlined"
                 color="primary"
                 align="center"
@@ -24,8 +39,13 @@ const MapDropDown = ({ array, field, itemType, schema, propsAndLabels }) =>
               >
                 delete
               </Button>
-              {propsAndLabels.map((propLabel, propIndex) => (
-                <div className="inputFieldLargeMultiline">
+
+              {// prettier-ignore
+              propsAndLabels.map(propLabel => (
+                <div
+                  key={`${Date.now()}${Math.random()}`}
+                  className="inputFieldLargeMultiline"
+                >
                   <TextField
                     id={`edit-${propLabel[0]}`}
                     label={propLabel[1]}
@@ -51,4 +71,14 @@ const MapDropDown = ({ array, field, itemType, schema, propsAndLabels }) =>
       </StateCapsule>
     </DropDown>
   ));
+};
+
+MapDropDown.propTypes = {
+  array: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  field: PropTypes.string.isRequired,
+  itemType: PropTypes.string.isRequired,
+  schema: PropTypes.shape({}).isRequired,
+  propsAndLabels: PropTypes.arrayOf(PropTypes.array).isRequired,
+};
+
 export default MapDropDown;

@@ -1,9 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
 
-const Education = (props) => {
-  const { userInfo } = props;
-
+const Education = ({ userInfo }) => {
   const field = 'education';
   const itemType = 'object';
   const schema = {
@@ -25,4 +24,9 @@ const Education = (props) => {
     />
   );
 };
+
+Education.propTypes = {
+  userInfo: PropTypes.shape({}).isRequired,
+};
+
 export default Education;

@@ -1,0 +1,235 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapChips component Renders correctly sholud renders whit delete icon 1`] = `
+<div
+  className="MuiGrid-container-1 MuiGrid-spacing-xs-16-24 MuiGrid-align-items-xs-center-9 MuiGrid-justify-xs-center-18 container-class"
+>
+  <div>
+    <div
+      className="MuiChip-root-98 MuiChip-deletable-104 item-class"
+      id="0$JS"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      <span
+        className="MuiChip-label-117"
+      >
+        JS
+      </span>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-123 MuiChip-deleteIcon-118"
+        color={undefined}
+        focusable="false"
+        onClick={[Function]}
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+        <path
+          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+  </div>
+  <div>
+    <div
+      className="MuiChip-root-98 MuiChip-deletable-104 item-class"
+      id="1$React"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      <span
+        className="MuiChip-label-117"
+      >
+        React
+      </span>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-123 MuiChip-deleteIcon-118"
+        color={undefined}
+        focusable="false"
+        onClick={[Function]}
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+        <path
+          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+  </div>
+  <div>
+    <div
+      className="MuiChip-root-98 MuiChip-deletable-104 item-class"
+      id="2$TDD"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      <span
+        className="MuiChip-label-117"
+      >
+        TDD
+      </span>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-123 MuiChip-deleteIcon-118"
+        color={undefined}
+        focusable="false"
+        onClick={[Function]}
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+        <path
+          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+  </div>
+  <div>
+    <div
+      className="MuiChip-root-98 MuiChip-deletable-104 item-class"
+      id="3$Full stack developer"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      <span
+        className="MuiChip-label-117"
+      >
+        Full stack developer
+      </span>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-123 MuiChip-deleteIcon-118"
+        color={undefined}
+        focusable="false"
+        onClick={[Function]}
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+        <path
+          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MapChips component Renders correctly sholud renders whitout delete icon 1`] = `
+<div
+  className="MuiGrid-container-1 MuiGrid-spacing-xs-16-24 MuiGrid-align-items-xs-center-9 MuiGrid-justify-xs-center-18 container-class"
+>
+  <div>
+    <div
+      className="MuiChip-root-98 item-class"
+      id="0$JS"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-117"
+      >
+        JS
+      </span>
+    </div>
+  </div>
+  <div>
+    <div
+      className="MuiChip-root-98 item-class"
+      id="1$React"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-117"
+      >
+        React
+      </span>
+    </div>
+  </div>
+  <div>
+    <div
+      className="MuiChip-root-98 item-class"
+      id="2$TDD"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-117"
+      >
+        TDD
+      </span>
+    </div>
+  </div>
+  <div>
+    <div
+      className="MuiChip-root-98 item-class"
+      id="3$Full stack developer"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-117"
+      >
+        Full stack developer
+      </span>
+    </div>
+  </div>
+</div>
+`;

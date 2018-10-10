@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
-import './DevInfoEditz.css';
+// import './DevInfoEditz.css';
 import BasicInfo from './SeekerEditUtils/BasicInfo';
 import SocialLinks from './SeekerEditUtils/SocialLinks';
 import BioSkills from './SeekerEditUtils/BioSkills';
@@ -13,10 +14,13 @@ import Experience from './SeekerEditUtils/Experience';
 import Education from './SeekerEditUtils/Education';
 
 /**
- * Form handling user profile updates
+ * Form handling user profile updates.
  *
  * @description This component handle in a local-state all data modification.
- * The global state is updeated only when the PUT request response with status 200
+ * The global state is updeated only when a PUT request response with status 200.
+ *
+ * @param {function} setGS - An App.js' method to set global state.
+ * @param {fuction} getGS - An App.js' method to get global state.
  */
 class DevInfoEdit extends Component {
   constructor(props) {
@@ -33,12 +37,11 @@ class DevInfoEdit extends Component {
   }
 
   /**
-   * Get a copy of user's data to keep global state inmutable.
+   * Get a copy of App's global user state to keep global state inmutable.
    */
   componentDidMount() {
     // eslint-disable-next-line react/prop-types
     const { getGS } = this.props;
-    // // console.log('FORM', this.props);
     this.userStateCopy = { ...getGS('userInfo') };
     this.setState({ ready: true, ...getGS('userInfo') });
 
@@ -76,7 +79,6 @@ class DevInfoEdit extends Component {
    * <Component setLS={this.setFormState} />
    */
   setFormState(properties) {
-    // // console.log({ setGS: properties });
     this.setState(properties);
   }
 
@@ -84,7 +86,6 @@ class DevInfoEdit extends Component {
    * Sync local state with input field.
    */
   handleChange(event) {
-    // // console.log('Form Dev update');
     event.stopPropagation();
     this.setState({ [event.target.id]: event.target.value });
   }
@@ -100,41 +101,24 @@ class DevInfoEdit extends Component {
      *  'data-value': New value,
      * }
      */
-    // console.log('FORM updateArray DATASET', dataset);
     // prettier-ignore
     const {
       field,
       itemtype,
       index,
       property,
-      subindex,
+      // subindex,
       value,
     } = dataset;
 
     switch (itemtype) {
       case 'object':
-        // console.log('FORM updateArray [Array][Object]', {
-        //   index,
-        //   property,
-        //   value,
-        // });
         this.userStateCopy[field][index][property] = value;
         break;
       case 'array':
-        // console.log('FORM updateArray [Array][Array]', {
-        //   index,
-        //   subindex,
-        //   value,
-        // });
         break;
-      // If itemSchema='singleItem'
       default:
         // '[object String]' || '[object Number]' || // '[object Boolean]'
-        // console.log('FORM updateArray [Array][String]', {
-        //   field,
-        //   itemtype,
-        //   value,
-        // });
         this.userStateCopy[field] = value.split('-');
     }
   }
@@ -145,16 +129,11 @@ class DevInfoEdit extends Component {
   handleOnBlur(e) {
     const { id } = e.target;
     const details = id.split('-'); // 'id' came in the following format: 'new-email' || 'edit-email'
-    // console.log('FORM handleOnBlur', { details });
 
     const field = e.target.dataset.field || details[1];
 
     if (details[0] !== 'new' && field) {
       const dataset = { ...e.target.dataset };
-      // console.log('FORM handleOnBlur', {
-      //   e: e.target,
-      //   DATASET: dataset,
-      // });
       const value = dataset.value || e.target.value;
 
       const typeOfField = Object.prototype.toString.call(
@@ -165,36 +144,28 @@ class DevInfoEdit extends Component {
       switch (typeOfField) {
         case '[object Object]':
           // this.updateObj(e);
-          // console.log('FORM handleOnBlur [Object]', { field, value });
           break;
         case '[object Array]':
           this.updateArray(dataset);
           break;
-        // If itemSchema='singleItem'
         default:
           // '[object String]' || '[object Number]' || '[object Boolean]'
-          // console.log('FORM handleOnBlur [String]', { field, value });
           this.userStateCopy[field] = value;
       }
-
-      // console.log(
-      //   'FORM handleOnBlur: current userStateCopy',
-      //   this.userStateCopy,
-      // );
     } else {
-      // console.log('FORM handleOnBlur: Nothing to handle');
+      /**
+       * @todo improve UX with some type of error message.
+       */
     }
   }
 
   handleOnDeleteItem(e) {
-    // console.log('handleOnDeleteItem', e.detail);
     const { field, index } = e.detail;
     this.userStateCopy[field].splice(index, 1);
     this.setState({ ...this.userStateCopy });
   }
 
   handleCreateItem(e) {
-    // console.log('handleCreateItem', e.detail);
     const { field, newData } = e.detail;
     this.userStateCopy[field].push(newData);
     this.setState({ ...this.userStateCopy });
@@ -207,7 +178,6 @@ class DevInfoEdit extends Component {
     // Prepare data to be updated
     const userInfo = { ...this.userStateCopy };
     delete userInfo.ready;
-    // console.log('MAIN FORM', userInfo);
 
     const { _id } = userInfo;
 
@@ -243,33 +213,31 @@ class DevInfoEdit extends Component {
         )
         .then((response) => {
           const updatedData = response.data['Document(s) modified'];
-          // eslint-disable-next-line no-console
-          // console.log('UPDATE USER', { response, status: response.status });
           /**
            * Update GS
            */
           setGS({ updateState: 'updated', userInfo: updatedData });
         })
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          // console.log(error);
+        .catch(() => {
           /**
            * Set in GS 'updateState': 'updateState' = 'error'
            */
           setGS({ updateState: 'error' });
         });
     } else {
-      // eslint-disable-next-line no-console
-      // console.log('updating without ID');
       /**
        * Set in GS 'updateState': 'updateState' = 'error'
        */
       setGS({ updateState: 'error' });
-      // eslint-disable-next-line no-alert, no-undef
+
+      /**
+       * @todo improve UX, change 'alert' for a more friendly error interaction
+       */
+      // eslint-disable-next-line no-alert
       alert(
         // eslint-disable-next-line comma-dangle
         'An error occurred updating your information, please resubmit the form',
-      ); // TODO: improve UX
+      );
     }
   }
 
@@ -334,5 +302,10 @@ class DevInfoEdit extends Component {
     );
   }
 }
+
+DevInfoEdit.propTypes = {
+  getGS: PropTypes.func.isRequired,
+  setGS: PropTypes.func.isRequired,
+};
 
 export default DevInfoEdit;

@@ -52,8 +52,8 @@ class DevLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'reg@c14.com',
+      password: '12345678Aa$',
       seekerResponse: '',
       employerResponse: '',
     };

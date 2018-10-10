@@ -1,23 +1,39 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DropDown from '../DropDown/DropDown';
 import StateCapsule from '../StateCapsule/StateCapsule';
 import MapDropDown from '../MapArrays/MapDropDown';
 
-// eslint-disable-next-line arrow-parens
+/**
+ * Scaffolds a user-section. With create and edit blocks.
+ *
+ * @description Build two sections.
+ * - One for creating a new array-item an add it to its corresponding user-property
+ * - One for editing passed array-items.
+ * @param {object} props -Required props.
+ */
 const ArraySection = (props) => {
-  const { header, userInfo, field, itemType, schema } = props;
+  // prettier-ignore
+  const {
+    header,
+    userInfo,
+    field,
+    itemType,
+    schema,
+  } = props;
 
   const propsAndLabels = Object.entries(schema);
 
   return (
     <DropDown header={header}>
-      <DropDown header={`Add new ${header}`}>
+      <DropDown className="arraysection-create" header={`Add new ${header}`}>
         <StateCapsule schema={schema} object={{}}>
           {({ stateCapsule, createItem }) => (
             <Fragment>
               <Button
+                className="arraysection-button--create"
                 variant="outlined"
                 color="primary"
                 align="center"
@@ -25,8 +41,12 @@ const ArraySection = (props) => {
               >
                 Create
               </Button>
-              {propsAndLabels.map((propLabel, index) => (
-                <div className="inputFieldLargeMultiline">
+              {// prettier-ignore
+              propsAndLabels.map(propLabel => (
+                <div
+                  key={`${Math.random()}${Date.now()}`}
+                  className="arraysection-field--new inputFieldLargeMultiline"
+                >
                   <TextField
                     id={`new-${propLabel[0]}`}
                     label={propLabel[1]}
@@ -58,6 +78,14 @@ const ArraySection = (props) => {
       />
     </DropDown>
   );
+};
+
+ArraySection.propTypes = {
+  header: PropTypes.string.isRequired,
+  userInfo: PropTypes.shape({}).isRequired,
+  field: PropTypes.string.isRequired,
+  itemType: PropTypes.string.isRequired,
+  schema: PropTypes.shape({}).isRequired,
 };
 
 export default ArraySection;
