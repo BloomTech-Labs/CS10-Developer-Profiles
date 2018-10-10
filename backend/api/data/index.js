@@ -57,11 +57,19 @@ const getPortfolio = (firstName, lastName, blank) => {
 
 const getSeeker = (avatar) => {
   const track = tracks[getRandomInt(0, tracks.length - 1)];
-  const firstName = faker.name.firstName(avatar.gender);
-  const lastName = faker.name.lastName(avatar.gender);
   const skills = getSkills(track);
 
-  return {
+  const firstName = faker.name.firstName(avatar.gender);
+  const lastName = faker.name.lastName(avatar.gender);
+  const summary = getSummary(20);
+  const github = getGitHub(firstName, lastName, 30);
+  const linkedIn = getLinkedIn(firstName, lastName, 40);
+  const portfolio = getPortfolio(firstName, lastName, 70);
+  const projects = getProjects(5, firstName, lastName, 10);
+  const experience = [];
+  const education = [];
+
+  const seeker = {
     firstName,
     lastName,
     img: avatar.avatar,
@@ -70,18 +78,19 @@ const getSeeker = (avatar) => {
     currentTitle: faker.name.jobTitle(),
     desiredTitle: getJobTitle(track, 0),
     currentLocation: getCity(0),
-    summary: getSummary(50),
-    github: getGitHub(firstName, lastName, 30),
-    linkedIn: getLinkedIn(firstName, lastName, 40),
-    portfolio: getPortfolio(firstName, lastName, 70),
     placesInterested: getCities(10, 0),
     topSkills: skills.topSkills,
     additionalSkills: skills.additionalSkills,
     familiarWith: skills.familiarWith,
-    projects: getProjects(5, firstName, lastName, 10),
-    experience: [],
-    education: [],
   };
+
+  if (summary) seeker.summary = summary;
+  if (github) seeker.github = github;
+  if (linkedIn) seeker.linkedIn = linkedIn;
+  if (portfolio) seeker.portfolio = portfolio;
+  if (projects.length) seeker.projects = projects;
+
+  return seeker;
 };
 
 for (let i = 0; i < avatars.length; i += 1) {
