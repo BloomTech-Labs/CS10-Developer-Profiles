@@ -10,7 +10,22 @@ import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-const styles = {};
+const styles = {
+  filterSelect: {
+    margin: '10px 0',
+  },
+  input: {
+    display: 'flex',
+    fontSize: '12px',
+    fontWeight: 'lighter',
+    padding: 0,
+  },
+  label: {
+    color: '#333',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+  },
+};
 
 class FilterSelect extends Component {
   static inputComponent({ inputRef, ...props }) {
@@ -59,13 +74,14 @@ class FilterSelect extends Component {
     const { val } = this.state;
 
     return (
-      <div className={classes.root}>
+      <div className={classes.filterSelect}>
         <Select
           classes={classes}
           textFieldProps={{
             label,
             InputLabelProps: {
               shrink: true,
+              className: classes.label,
             },
           }}
           options={options}
