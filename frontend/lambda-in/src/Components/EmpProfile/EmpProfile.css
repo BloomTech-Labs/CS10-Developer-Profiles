@@ -12,12 +12,17 @@
 
 .buttonContainer {
     display:flex;
-    width:20vw;
-    margin: auto;
-    padding-top: 20px;
+    padding: 20px;
+    justify-content: center;
 }
 
 .cards {
     display: flex;
     flex-direction: column;
+}
+
+.cards * {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
 }

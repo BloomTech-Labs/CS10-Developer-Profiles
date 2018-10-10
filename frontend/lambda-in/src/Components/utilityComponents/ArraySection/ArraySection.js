@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import DropDown from '../DropDown/DropDown';
 import StateCapsule from '../StateCapsule/StateCapsule';
 import MapDropDown from '../MapArrays/MapDropDown';
+import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 
 /**
  * Scaffolds a user-section. With create and edit blocks.
@@ -83,7 +84,7 @@ const ArraySection = (props) => {
 
 ArraySection.propTypes = {
   header: PropTypes.string.isRequired,
-  userInfo: PropTypes.shape({}).isRequired,
+  userInfo: SEEKER_PROP_TYPES.isRequired,
   field: PropTypes.string.isRequired,
   itemType: PropTypes.string.isRequired,
   schema: PropTypes.shape({}).isRequired,

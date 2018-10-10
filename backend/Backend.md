@@ -1,7 +1,8 @@
-Some nice Backend docs are in progress.
+# Some nice Backend docs are in progress.
+
 Please contact us for any needed details missing here.
 
-# Developer enviroment
+# Developer environment
 
 ### Requirements:
 
@@ -14,10 +15,10 @@ At the `/backend` root folder, create a `.env` file with the following:
 ```
   NODE_ENV=development
   PORT=5000
-  MONGODB_URI='mongodb://localhost/developer-profiles5'
+  MONGODB_URI='mongodb://localhost/developer-profiles'
   MONGODB_URI_TEST='mongodb://localhost/testdb'
   JWT_SECRET="your personal secret goes here"
-  STRIPE_BACKEND_SECRET_KEY_TEST=sk_test_key_goes_here
+  STRIPE_BACKEND_SECRET_KEY_TEST=sk_test_k8mGtXkO8MVgyDH8Y1Nct5n2
   STRIPE_BACKEND_SECRET_KEY_PRODUCTION=sk_production_key_goes_here
 ```
 
@@ -28,8 +29,16 @@ Also, at the `/backend` root folder, create a `.eslintrc` file with the followin
     "extends": "airbnb-base",
     "env": {
       "jest": true
+    },
+    "rules": {
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true
+        }
+      ]
+    }
   }
-}
 ```
 
 then change your working directory to the `backend` root folder:
@@ -51,21 +60,27 @@ lastly, install dependencies and run the server:
 # Dependencies
 
 ```
-  "dependencies": {
-    "bcrypt": "^3.0.0",
+    "dependencies": {
+    "async": "^2.6.1",
+    "bcrypt": "^3.0.1",
     "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "express-router-factory": "^1.0.3",
+    "express-router-factory": "^1.1.0",
     "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.2.14"
+    "mongoose": "^5.2.14",
+    "nodemailer": "^4.6.8",
+    "stripe": "^6.12.1"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "faker": "^4.1.0",
     "jest": "^23.6.0",
     "nodemon": "^1.18.4",
     "supertest": "^3.3.0"
@@ -121,13 +136,13 @@ Launches Jest in interactive watch mode.
 
 ### `yarn test-console-log`
 
-Launches Jest in interactive watch mode but prevents Jest from overwritting console logs.
+Launches Jest in interactive watch mode but prevents Jest from overwriting console logs.
 
 # Public and Private content
 
 ## Private content
 
-Is only accesible for registerd/logged-in clients.
+Is only accessible for registered/logged-in clients
 
 > The Auth workflow is done with JWT
 

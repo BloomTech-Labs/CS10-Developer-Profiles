@@ -116,7 +116,7 @@ class App extends Component {
 
             {/* BROWSE */}
             <Route path="/meetdev" component={DevList} />
-            <Route path="/meetposition" component={EmpProfile} />
+            {/* TODO: IMPLEMENT => <Route path="/meetposition" component={BrowseOpenPositions} */}
 
             {/* BILLING: If user is not Authenticated 'Redirect' to home page */}
             <Route

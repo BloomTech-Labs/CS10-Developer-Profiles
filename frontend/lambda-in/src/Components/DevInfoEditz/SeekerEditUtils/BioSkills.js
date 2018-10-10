@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
+import React from 'react';
+import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 import DropDown from '../../utilityComponents/DropDown/DropDown';
 import MapChips from '../../utilityComponents/MapArrays/MapChips';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
@@ -67,7 +67,7 @@ const BioSkills = ({ userInfo }) => {
 };
 
 BioSkills.propTypes = {
-  userInfo: PropTypes.shape({}).isRequired,
+  userInfo: SEEKER_PROP_TYPES.isRequired,
 };
 
 export default BioSkills;

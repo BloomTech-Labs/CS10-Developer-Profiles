@@ -1,7 +1,8 @@
-Some nice Frontend docs are in progress.
+# Some nice Frontend docs are in progress.
+
 Please contact us for any needed details.
 
-# Developer enviroment
+# Developer environment
 
 ### Requirements:
 
@@ -24,7 +25,7 @@ then change your working directory to the `frontend/lambda-in` root folder:
   $ cd frontend/lambda-in/
 ```
 
-than, install dependencies and run the APP:
+then, install dependencies and run the APP:
 
 ```
   $ yarn
@@ -42,21 +43,52 @@ lastly, go to the APP in your browser:
 
 ```
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-brands-svg-icons": "^5.3.1",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/react-fontawesome": "^0.1.3",
     "@material-ui/core": "3.1.0",
+    "@material-ui/icons": "^3.0.1",
+    "aos": "^3.0.0-beta.5",
     "axios": "^0.18.0",
+    "classnames": "^2.2.6",
     "dotenv": "^6.0.0",
+    "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-form": "^3.5.6",
+    "react-gsap-enhancer": "^0.3.0",
+    "react-places-autocomplete": "^7.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "react-stripe-checkout": "^2.6.3"
+    "react-select": "^2.0.0",
+    "react-stripe-checkout": "^2.6.3",
+    "react-transition-group": "^2.4.0"
   },
+  "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "prop-types": "^15.6.2",
+    "react-test-renderer": "^16.5.2"
+  }
 ```
 
 # Code Style
 
-> pending to define
+> Airbnb react style guides.
+
+# Auth flow
+
+[[https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/jesuarva-polish-the-code/frontend/Component%20structure%20and%20data%20flow/Component%20structure%20and%20data%20flow-1.png]]
+
+# Components structure and data flow
+
+[[https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/jesuarva-polish-the-code/frontend/Component%20structure%20and%20data%20flow/Component%20structure%20and%20data%20flow-2.png]]
 
 # Testing components
 
@@ -85,7 +117,7 @@ error Command failed with exit code 1.
 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
 
-it is neccesary to install [`watchman`](https://facebook.github.io/watchman/docs/install.html)
+it is necessary to install [`watchman`](https://facebook.github.io/watchman/docs/install.html)
 
 run:
 

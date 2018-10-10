@@ -1,14 +1,18 @@
 # CS10-Developer-Profiles
 
+# Description
+
+A place where employers meet talented developers.
+
 ## Contributors
 
 The dream team behind this project:
 
-- Il Ho Kim: [@ilhoKim](https://github.com/ilhoKim)
 - Jean S Ariza: [@jesuarva](https://github.com/jesuarva)
 - Danny Vail: [@d-vail](https://github.com/d-vail)
-- Nate Flory: [@Nate152](https://github.com/Nate152)
 - Samarvir Singh: [@samarv](https://github.com/samarv)
+- Il Ho Kim: [@ilhoKim](https://github.com/ilhoKim)
+- Nate Flory: [@Nate152](https://github.com/Nate152)
 
 # Stack
 
@@ -28,62 +32,16 @@ The dream team behind this project:
 
 # Backend API
 
-> Detailed docs with installations and running instructions on [Backend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/master/backend/Backend.md)
+> Detailed docs with installations and running instructions on [Backend docs](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/wiki/Backend-docs)
 
-### Location:
+### Project location:
 
 > [./backend/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/backend)
 
 # Frontend APP
 
-> Detailed docs with installations and running instructions on [Frontend.md](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/Documentation/frontend/Frontend.md)
+> Detailed docs with installations and running instructions on [Frontend docs](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/wiki/Frontend-docs)
 
-### Location:
+### Project location:
 
 > [./frontend/lambda-in/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/frontend/lambda-in)
-
-### Components structure
-
-Components prefixed with '_**@**_', belongs to _Material Design_
-
-```
-  - index.js
-      - App.js
-            - LandingPage.js
-            - DevLogin.js
-            |     - @Paper
-            |     |       - @Button : Find Developer
-            |     |       - @Button : Browse
-            |     |       - @Button : Profile
-            |     |       - @Button : Billing
-            |     |       - @Button : Setting
-            |     |- @Typography : h3
-            |     |- @Typography : p
-            |     |- @Paper
-            |             - @Typography : h3
-            |             - @TextField : email
-            |             - @TextField : password
-            |             - @Button : Submit
-            |- DevSignUp.js
-                    - @Paper
-                    |       - @Button : Find Developer
-                    |       - @Button : Browse
-                    |       - @Button : Profile
-                    |       - @Button : Billing
-                    |       - @Button : Setting
-                    |- @Typography : h3
-                    |- @Typography : p
-                    |- @Paper
-                            - @TextField : First name
-                            - @TextField : Last name
-                            - @TextField : email
-                            - @TextField : Desired Title
-                            - @TextField : Current location
-                            - @TextField : Github
-                            - @TextField : Linkedin
-                            - @TextField : Portfolio
-                            - @TextField : Acclaim badge
-                            - @TextField : Password
-                            - @TextField : Confirm password
-                            - @Button : Submit
-```

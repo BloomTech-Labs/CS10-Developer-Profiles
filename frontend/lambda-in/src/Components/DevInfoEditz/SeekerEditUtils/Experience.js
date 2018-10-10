@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
+import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 
 const Experience = ({ userInfo }) => {
   const field = 'experience';
@@ -27,7 +28,7 @@ const Experience = ({ userInfo }) => {
 };
 
 Experience.propTypes = {
-  userInfo: PropTypes.shape({}).isRequired,
+  userInfo: SEEKER_PROP_TYPES.isRequired,
 };
 
 export default Experience;
