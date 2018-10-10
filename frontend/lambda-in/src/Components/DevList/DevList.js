@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Select from 'react-select';
 import makeAnimated from 'react-select/lib/animated';
 import DevProfileCard from './DevProfileCard/DevProfileCard';
+import FilterSelect from './FilterSelect/FilterSelect';
 import FilterToggle from './FilterToggle/FilterToggle';
 import InputGeolocation from '../InputGeolocation/InputGeolocation';
 import Pagination from '../Pagination/Pagination';
@@ -443,49 +444,37 @@ class DevList extends Component {
       <React.Fragment>
         <Grid container className={classes.mainContainer} spacing={24}>
           <Grid item className={classes.sideBar} xs={3} data-aos="fade-right">
-            <Select
-              placeholder={FILTERS.desiredTitle.placeholder}
-              value={desiredTitle}
-              className={classes.select}
+            <FilterSelect
+              filterName={FILTERS.desiredTitle.eleName}
+              label="I'm looking for a"
               options={jobTitleSelectOptions}
-              closeMenuOnSelect={false}
-              components={makeAnimated()}
-              styles={selectCustomStyles}
-              onChange={value => this.handleSelect(value, FILTERS.desiredTitle.eleName)}
-              isMulti
+              placeholder={FILTERS.desiredTitle.placeholder}
+              val={desiredTitle}
+              onChange={this.handleSelect}
             />
-            <Select
+            <FilterSelect
+              filterName={FILTERS.topSkills.eleName}
+              label="Who is proficient with"
+              options={techSkillsSelectOptions}
               placeholder={FILTERS.topSkills.placeholder}
-              value={topSkills}
-              className={classes.select}
-              options={techSkillsSelectOptions}
-              closeMenuOnSelect={false}
-              components={makeAnimated()}
-              styles={selectCustomStyles}
-              onChange={value => this.handleSelect(value, FILTERS.topSkills.eleName)}
-              isMulti
+              val={topSkills}
+              onChange={this.handleSelect}
             />
-            <Select
+            <FilterSelect
+              filterName={FILTERS.addSkills.eleName}
+              label="Who is knowledgeable with"
+              options={techSkillsSelectOptions}
               placeholder={FILTERS.addSkills.placeholder}
-              value={addSkills}
-              className={classes.select}
-              options={techSkillsSelectOptions}
-              closeMenuOnSelect={false}
-              components={makeAnimated()}
-              styles={selectCustomStyles}
-              onChange={value => this.handleSelect(value, FILTERS.addSkills.eleName)}
-              isMulti
+              val={addSkills}
+              onChange={this.handleSelect}
             />
-            <Select
-              placeholder={FILTERS.familiar.placeholder}
-              value={familiar}
-              className={classes.select}
+            <FilterSelect
+              filterName={FILTERS.familiar.eleName}
+              label="Who is familiar with"
               options={techSkillsSelectOptions}
-              closeMenuOnSelect={false}
-              components={makeAnimated()}
-              styles={selectCustomStyles}
-              onChange={value => this.handleSelect(value, FILTERS.familiar.eleName)}
-              isMulti
+              placeholder={FILTERS.familiar.placeholder}
+              val={familiar}
+              onChange={this.handleSelect}
             />
             <InputGeolocation
               talkToParentState={this.handleLocationSelect}
