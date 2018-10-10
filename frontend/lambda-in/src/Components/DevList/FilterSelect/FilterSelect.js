@@ -25,6 +25,12 @@ const styles = {
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },
+  paper: {
+    position: 'absolute',
+    zIndex: 2,
+    left: 0,
+    right: 0,
+  },
 };
 
 class FilterSelect extends Component {
@@ -52,6 +58,16 @@ class FilterSelect extends Component {
         }}
         {...selectProps.textFieldProps}
       />
+    );
+  }
+
+  static menuComponent(props) {
+    const { selectProps, innerProps, children } = props;
+
+    return (
+      <Paper square className={selectProps.classes.paper} {...innerProps}>
+        {children}
+      </Paper>
     );
   }
 
@@ -85,7 +101,7 @@ class FilterSelect extends Component {
             },
           }}
           options={options}
-          components={{ Control: FilterSelect.controlComponent }}
+          components={{ Control: FilterSelect.controlComponent, Menu: FilterSelect.menuComponent }}
           value={val}
           onChange={value => this.handleChange(value, 'val')}
           placeholder={placeholder}
