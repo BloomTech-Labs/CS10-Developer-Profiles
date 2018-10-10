@@ -6,19 +6,31 @@ import Chip from '@material-ui/core/Chip';
 
 const styles = {
   skill: {
-    // display: 'inline-block',
-    // padding: '0 5px',
+    margin: '4px',
   },
   top: {
-    // fontSize: '1.5em',
+    backgroundColor: '#4A4F6B',
+    color: '#FFF',
+    '&:hover': {
+      backgroundColor: '#7D829E',
+    },
   },
   additional: {
-    // fontSize: '1em',
+    backgroundColor: '#FFF',
+    border: '1px solid #4A4F6B',
+    color: '#4A4F6B',
+    '&:hover': {
+      backgroundColor: '#eeeff6',
+    },
   },
   familiar: {
-    // fontSize: '.5em',
+    backgroundColor: '#FFF',
+    border: '1px solid #c9c9c9',
+    color: '#c9c9c9',
+    '&:hover': {
+      backgroundColor: '#F3F3F3',
+    },
   },
-  chip: {},
 };
 
 /**
