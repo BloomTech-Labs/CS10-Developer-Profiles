@@ -80,8 +80,6 @@ const DevProfile2 = ({ getGS }) => {
               </div>
               <div className="tagCloud">
                 <MapChips array={userInfo.topSkills} />
-                {/* {console.log(allSkills)}              
-                <Typography variant="subheading" gutterBottom> Top skills -  {allSkills.map(item => item + ' ')}</Typography> */}
               </div>
             </div>
           </div>
