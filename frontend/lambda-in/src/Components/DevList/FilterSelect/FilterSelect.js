@@ -14,7 +14,7 @@ const styles = {
     margin: '4px',
   },
   filterSelect: {
-    margin: '10px 0',
+    margin: '40px 0',
   },
   input: {
     display: 'flex',
