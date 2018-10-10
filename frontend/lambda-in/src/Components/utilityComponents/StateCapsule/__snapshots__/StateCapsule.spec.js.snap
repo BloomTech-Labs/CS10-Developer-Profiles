@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StateCapsule component Renders correctly should renders basic component 1`] = `
+<div
+  className="state-capsule"
+  onChange={[Function]}
+  onKeyPress={[Function]}
+/>
+`;
+
+exports[`StateCapsule component Renders correctly should renders children with create functionality. 1`] = `
+<div
+  className="state-capsule"
+  onChange={[Function]}
+  onKeyPress={[Function]}
+>
+  <div>
+    <button
+      className="button-create"
+      onClick={[Function]}
+      type="button"
+    >
+      Create
+    </button>
+    <ul>
+      <div>
+        <input
+          id="new-title"
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <input
+          id="new-description"
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <input
+          id="new-img"
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <input
+          id="new-link"
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <input
+          id="new-repo"
+          type="text"
+          value=""
+        />
+      </div>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`StateCapsule component Renders correctly should renders children with remove functionality. 1`] = `
+<div
+  className="state-capsule"
+  onChange={[Function]}
+  onKeyPress={[Function]}
+>
+  <div>
+    <input
+      id="edit-summary"
+      type="text"
+      value="Some summary here"
+    />
+    <input
+      id="edit-topSkills_edit"
+      type="text"
+      value="Some summary here"
+    />
+    <ul>
+      <div>
+        <li>
+          JS
+          <button
+            className="button-remove"
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
+        </li>
+      </div>
+      <div>
+        <li>
+          React
+          <button
+            className="button-remove"
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
+        </li>
+      </div>
+      <div>
+        <li>
+          TDD
+          <button
+            className="button-remove"
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
+        </li>
+      </div>
+      <div>
+        <li>
+          Full stack developer
+          <button
+            className="button-remove"
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
+`;

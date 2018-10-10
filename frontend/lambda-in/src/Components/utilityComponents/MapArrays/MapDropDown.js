@@ -5,6 +5,11 @@ import Button from '@material-ui/core/Button';
 import DropDown from '../DropDown/DropDown';
 import StateCapsule from '../StateCapsule/StateCapsule';
 
+/**
+ * Scaffolds and renders array-items and allow editing on them.
+ *
+ * @param {props} props - Required props
+ */
 const MapDropDown = (props) => {
   // prettier-ignore
   const {
@@ -17,6 +22,7 @@ const MapDropDown = (props) => {
 
   return array.map((item, index) => (
     <DropDown
+      className="dropdown-edit"
       header={item.title || item.degree}
       key={`${item.title || item.degree}${Math.random()}`}
     >
@@ -25,6 +31,7 @@ const MapDropDown = (props) => {
           <div className="dropdown-item-list blur-handler">
             <Fragment>
               <Button
+                className="mapdropdown-button--delete"
                 variant="outlined"
                 color="primary"
                 align="center"
@@ -35,7 +42,10 @@ const MapDropDown = (props) => {
 
               {// prettier-ignore
               propsAndLabels.map(propLabel => (
-                <div className="inputFieldLargeMultiline">
+                <div
+                  key={`${Date.now()}${Math.random()}`}
+                  className="inputFieldLargeMultiline"
+                >
                   <TextField
                     id={`edit-${propLabel[0]}`}
                     label={propLabel[1]}

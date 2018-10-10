@@ -1,0 +1,2318 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapDropDown component should renders correctly 1`] = `
+Array [
+  <div
+    className="panelMargin"
+>
+    <div
+        className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+    >
+        <div
+            aria-expanded={false}
+            className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="0"
+        >
+            <div
+                className="MuiExpansionPanelSummary-content-35"
+            >
+                <p
+                    className="MuiTypography-root-40 MuiTypography-body1-49"
+                >
+                    A nice project
+                </p>
+            </div>
+            <div
+                aria-hidden="true"
+                className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={-1}
+            >
+                <span
+                    className="MuiIconButton-label-71"
+                >
+                    <span
+                        aria-hidden="true"
+                        className="material-icons MuiIcon-root-72"
+                    >
+                        add_circle
+                    </span>
+                </span>
+                <span
+                    className="MuiTouchRipple-root-81"
+                />
+            </div>
+        </div>
+        <div
+            aria-hidden="true"
+            className="MuiCollapse-container-88"
+            style={
+                Object {
+                    "minHeight": "0px",
+                  }
+            }
+        >
+            <div
+                className="MuiCollapse-wrapper-90"
+            >
+                <div
+                    className="MuiCollapse-wrapperInner-91"
+                >
+                    <div
+                        className="MuiExpansionPanelDetails-root-92"
+                    >
+                        <div
+                            className="expansionPanel"
+                        >
+                            <div
+                                className="state-capsule"
+                                onChange={[Function]}
+                                onKeyPress={[Function]}
+                            >
+                                <div
+                                    className="dropdown-item-list blur-handler"
+                                >
+                                    <button
+                                        align="center"
+                                        className="MuiButtonBase-root-37 MuiButton-root-93 MuiButton-text-95 MuiButton-textPrimary-96 MuiButton-outlined-101 MuiButton-outlinedPrimary-102 mapdropdown-button--delete"
+                                        disabled={false}
+                                        onBlur={[Function]}
+                                        onClick={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex="0"
+                                        type="button"
+                                    >
+                                        <span
+                                            className="MuiButton-label-94"
+                                        >
+                                            delete
+                                        </span>
+                                        <span
+                                            className="MuiTouchRipple-root-81"
+                                        />
+                                    </button>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-title"
+                                            >
+                                                Title
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="A nice project"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={0}
+                                                        data-itemtype="object"
+                                                        data-property="title"
+                                                        data-value="A nice project"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-title"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="A nice project"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-description"
+                                            >
+                                                Description
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="A DRY library for express-mongoose"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={0}
+                                                        data-itemtype="object"
+                                                        data-property="description"
+                                                        data-value="A DRY library for express-mongoose"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-description"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="A DRY library for express-mongoose"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-img"
+                                            >
+                                                Image
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="/nice.img.edit"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={0}
+                                                        data-itemtype="object"
+                                                        data-property="img"
+                                                        data-value="/nice.img.edit"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-img"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="/nice.img.edit"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-link"
+                                            >
+                                                Link
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="go.to.project.com"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={0}
+                                                        data-itemtype="object"
+                                                        data-property="link"
+                                                        data-value="go.to.project.com"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-link"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="go.to.project.com"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-repo"
+                                            >
+                                                Repository
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="github.my-repo"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={0}
+                                                        data-itemtype="object"
+                                                        data-property="repo"
+                                                        data-value="github.my-repo"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-repo"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="github.my-repo"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>,
+  <div
+    className="panelMargin"
+>
+    <div
+        className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+    >
+        <div
+            aria-expanded={false}
+            className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="0"
+        >
+            <div
+                className="MuiExpansionPanelSummary-content-35"
+            >
+                <p
+                    className="MuiTypography-root-40 MuiTypography-body1-49"
+                >
+                    router Factroy
+                </p>
+            </div>
+            <div
+                aria-hidden="true"
+                className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={-1}
+            >
+                <span
+                    className="MuiIconButton-label-71"
+                >
+                    <span
+                        aria-hidden="true"
+                        className="material-icons MuiIcon-root-72"
+                    >
+                        add_circle
+                    </span>
+                </span>
+                <span
+                    className="MuiTouchRipple-root-81"
+                />
+            </div>
+        </div>
+        <div
+            aria-hidden="true"
+            className="MuiCollapse-container-88"
+            style={
+                Object {
+                    "minHeight": "0px",
+                  }
+            }
+        >
+            <div
+                className="MuiCollapse-wrapper-90"
+            >
+                <div
+                    className="MuiCollapse-wrapperInner-91"
+                >
+                    <div
+                        className="MuiExpansionPanelDetails-root-92"
+                    >
+                        <div
+                            className="expansionPanel"
+                        >
+                            <div
+                                className="state-capsule"
+                                onChange={[Function]}
+                                onKeyPress={[Function]}
+                            >
+                                <div
+                                    className="dropdown-item-list blur-handler"
+                                >
+                                    <button
+                                        align="center"
+                                        className="MuiButtonBase-root-37 MuiButton-root-93 MuiButton-text-95 MuiButton-textPrimary-96 MuiButton-outlined-101 MuiButton-outlinedPrimary-102 mapdropdown-button--delete"
+                                        disabled={false}
+                                        onBlur={[Function]}
+                                        onClick={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex="0"
+                                        type="button"
+                                    >
+                                        <span
+                                            className="MuiButton-label-94"
+                                        >
+                                            delete
+                                        </span>
+                                        <span
+                                            className="MuiTouchRipple-root-81"
+                                        />
+                                    </button>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-title"
+                                            >
+                                                Title
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="router Factroy"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={1}
+                                                        data-itemtype="object"
+                                                        data-property="title"
+                                                        data-value="router Factroy"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-title"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="router Factroy"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-description"
+                                            >
+                                                Description
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="A DRY library for express-mongoose"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={1}
+                                                        data-itemtype="object"
+                                                        data-property="description"
+                                                        data-value="A DRY library for express-mongoose"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-description"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="A DRY library for express-mongoose"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-img"
+                                            >
+                                                Image
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="/nice.img"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={1}
+                                                        data-itemtype="object"
+                                                        data-property="img"
+                                                        data-value="/nice.img"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-img"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="/nice.img"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-link"
+                                            >
+                                                Link
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="go.to.project.com"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={1}
+                                                        data-itemtype="object"
+                                                        data-property="link"
+                                                        data-value="go.to.project.com"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-link"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="go.to.project.com"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-repo"
+                                            >
+                                                Repository
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="github.my-repo"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={1}
+                                                        data-itemtype="object"
+                                                        data-property="repo"
+                                                        data-value="github.my-repo"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-repo"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="github.my-repo"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>,
+  <div
+    className="panelMargin"
+>
+    <div
+        className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+    >
+        <div
+            aria-expanded={false}
+            className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="0"
+        >
+            <div
+                className="MuiExpansionPanelSummary-content-35"
+            >
+                <p
+                    className="MuiTypography-root-40 MuiTypography-body1-49"
+                >
+                    proj 1
+                </p>
+            </div>
+            <div
+                aria-hidden="true"
+                className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={-1}
+            >
+                <span
+                    className="MuiIconButton-label-71"
+                >
+                    <span
+                        aria-hidden="true"
+                        className="material-icons MuiIcon-root-72"
+                    >
+                        add_circle
+                    </span>
+                </span>
+                <span
+                    className="MuiTouchRipple-root-81"
+                />
+            </div>
+        </div>
+        <div
+            aria-hidden="true"
+            className="MuiCollapse-container-88"
+            style={
+                Object {
+                    "minHeight": "0px",
+                  }
+            }
+        >
+            <div
+                className="MuiCollapse-wrapper-90"
+            >
+                <div
+                    className="MuiCollapse-wrapperInner-91"
+                >
+                    <div
+                        className="MuiExpansionPanelDetails-root-92"
+                    >
+                        <div
+                            className="expansionPanel"
+                        >
+                            <div
+                                className="state-capsule"
+                                onChange={[Function]}
+                                onKeyPress={[Function]}
+                            >
+                                <div
+                                    className="dropdown-item-list blur-handler"
+                                >
+                                    <button
+                                        align="center"
+                                        className="MuiButtonBase-root-37 MuiButton-root-93 MuiButton-text-95 MuiButton-textPrimary-96 MuiButton-outlined-101 MuiButton-outlinedPrimary-102 mapdropdown-button--delete"
+                                        disabled={false}
+                                        onBlur={[Function]}
+                                        onClick={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex="0"
+                                        type="button"
+                                    >
+                                        <span
+                                            className="MuiButton-label-94"
+                                        >
+                                            delete
+                                        </span>
+                                        <span
+                                            className="MuiTouchRipple-root-81"
+                                        />
+                                    </button>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-title"
+                                            >
+                                                Title
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="proj 1"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={2}
+                                                        data-itemtype="object"
+                                                        data-property="title"
+                                                        data-value="proj 1"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-title"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="proj 1"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-description"
+                                            >
+                                                Description
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="desc 1"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={2}
+                                                        data-itemtype="object"
+                                                        data-property="description"
+                                                        data-value="desc 1"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-description"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="desc 1"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-img"
+                                            >
+                                                Image
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="new.img"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={2}
+                                                        data-itemtype="object"
+                                                        data-property="img"
+                                                        data-value="new.img"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-img"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="new.img"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-link"
+                                            >
+                                                Link
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="link"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={2}
+                                                        data-itemtype="object"
+                                                        data-property="link"
+                                                        data-value="link"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-link"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="link"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-outlined-129"
+                                                data-shrink={false}
+                                                htmlFor="edit-repo"
+                                            >
+                                                Repository
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": NaN,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": 0.01,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={2}
+                                                        data-itemtype="object"
+                                                        data-property="repo"
+                                                        data-value=""
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-repo"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>,
+  <div
+    className="panelMargin"
+>
+    <div
+        className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1"
+    >
+        <div
+            aria-expanded={false}
+            className="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="0"
+        >
+            <div
+                className="MuiExpansionPanelSummary-content-35"
+            >
+                <p
+                    className="MuiTypography-root-40 MuiTypography-body1-49"
+                >
+                    today
+                </p>
+            </div>
+            <div
+                aria-hidden="true"
+                className="MuiButtonBase-root-37 MuiIconButton-root-66 MuiExpansionPanelSummary-expandIcon-36"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={-1}
+            >
+                <span
+                    className="MuiIconButton-label-71"
+                >
+                    <span
+                        aria-hidden="true"
+                        className="material-icons MuiIcon-root-72"
+                    >
+                        add_circle
+                    </span>
+                </span>
+                <span
+                    className="MuiTouchRipple-root-81"
+                />
+            </div>
+        </div>
+        <div
+            aria-hidden="true"
+            className="MuiCollapse-container-88"
+            style={
+                Object {
+                    "minHeight": "0px",
+                  }
+            }
+        >
+            <div
+                className="MuiCollapse-wrapper-90"
+            >
+                <div
+                    className="MuiCollapse-wrapperInner-91"
+                >
+                    <div
+                        className="MuiExpansionPanelDetails-root-92"
+                    >
+                        <div
+                            className="expansionPanel"
+                        >
+                            <div
+                                className="state-capsule"
+                                onChange={[Function]}
+                                onKeyPress={[Function]}
+                            >
+                                <div
+                                    className="dropdown-item-list blur-handler"
+                                >
+                                    <button
+                                        align="center"
+                                        className="MuiButtonBase-root-37 MuiButton-root-93 MuiButton-text-95 MuiButton-textPrimary-96 MuiButton-outlined-101 MuiButton-outlinedPrimary-102 mapdropdown-button--delete"
+                                        disabled={false}
+                                        onBlur={[Function]}
+                                        onClick={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex="0"
+                                        type="button"
+                                    >
+                                        <span
+                                            className="MuiButton-label-94"
+                                        >
+                                            delete
+                                        </span>
+                                        <span
+                                            className="MuiTouchRipple-root-81"
+                                        />
+                                    </button>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-title"
+                                            >
+                                                Title
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="today"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={3}
+                                                        data-itemtype="object"
+                                                        data-property="title"
+                                                        data-value="today"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-title"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="today"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-description"
+                                            >
+                                                Description
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="today"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={3}
+                                                        data-itemtype="object"
+                                                        data-property="description"
+                                                        data-value="today"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-description"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="today"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-img"
+                                            >
+                                                Image
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="today"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={3}
+                                                        data-itemtype="object"
+                                                        data-property="img"
+                                                        data-value="today"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-img"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="today"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-link"
+                                            >
+                                                Link
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="today"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={3}
+                                                        data-itemtype="object"
+                                                        data-property="link"
+                                                        data-value="today"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-link"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="today"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="inputFieldLargeMultiline"
+                                    >
+                                        <div
+                                            aria-describedby={undefined}
+                                            className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122"
+                                        >
+                                            <label
+                                                className="MuiFormLabel-root-130 MuiFormLabel-filled-134 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126 MuiInputLabel-outlined-129"
+                                                data-shrink={true}
+                                                htmlFor="edit-repo"
+                                            >
+                                                Repository
+                                            </label>
+                                            <div
+                                                className="MuiInputBase-root-150 MuiOutlinedInput-root-137 MuiInputBase-fullWidth-159 MuiInputBase-formControl-151 MuiInputBase-multiline-158 MuiOutlinedInput-multiline-143"
+                                                onClick={[Function]}
+                                            >
+                                                <fieldset
+                                                    aria-hidden={true}
+                                                    className="MuiNotchedOutline-root-167 MuiOutlinedInput-notchedOutline-144"
+                                                    style={
+                                                        Object {
+                                                            "paddingLeft": 8,
+                                                          }
+                                                    }
+                                                >
+                                                    <legend
+                                                        className="MuiNotchedOutline-legend-168"
+                                                        style={
+                                                            Object {
+                                                                "width": NaN,
+                                                              }
+                                                        }
+                                                    />
+                                                </fieldset>
+                                                <div
+                                                    className="Textarea-root-172"
+                                                >
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        readOnly={true}
+                                                        rows="1"
+                                                        tabIndex={-1}
+                                                        value=""
+                                                    />
+                                                    <textarea
+                                                        aria-hidden="true"
+                                                        className="Textarea-textarea-173 Textarea-shadow-174"
+                                                        defaultValue={undefined}
+                                                        readOnly={true}
+                                                        rows={1}
+                                                        tabIndex={-1}
+                                                        value="today"
+                                                    />
+                                                    <textarea
+                                                        aria-invalid={false}
+                                                        autoComplete={undefined}
+                                                        autoFocus={undefined}
+                                                        className="Textarea-textarea-173 MuiInputBase-input-160 MuiOutlinedInput-input-145 MuiInputBase-inputMultiline-162 MuiOutlinedInput-inputMultiline-147"
+                                                        data-field="projects"
+                                                        data-index={3}
+                                                        data-itemtype="object"
+                                                        data-property="repo"
+                                                        data-value="today"
+                                                        defaultValue={undefined}
+                                                        disabled={false}
+                                                        id="edit-repo"
+                                                        name={undefined}
+                                                        onBlur={[Function]}
+                                                        onChange={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={undefined}
+                                                        onKeyUp={undefined}
+                                                        placeholder={undefined}
+                                                        readOnly={undefined}
+                                                        required={false}
+                                                        rows={1}
+                                                        style={
+                                                            Object {
+                                                                "height": 19,
+                                                              }
+                                                        }
+                                                        value="today"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>,
+]
+`;

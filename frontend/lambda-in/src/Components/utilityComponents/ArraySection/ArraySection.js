@@ -7,6 +7,14 @@ import StateCapsule from '../StateCapsule/StateCapsule';
 import MapDropDown from '../MapArrays/MapDropDown';
 import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 
+/**
+ * Scaffolds a user-section. With create and edit blocks.
+ *
+ * @description Build two sections.
+ * - One for creating a new array-item an add it to its corresponding user-property
+ * - One for editing passed array-items.
+ * @param {object} props -Required props.
+ */
 const ArraySection = (props) => {
   // prettier-ignore
   const {
@@ -21,11 +29,12 @@ const ArraySection = (props) => {
 
   return (
     <DropDown header={header}>
-      <DropDown header={`Add new ${header}`}>
+      <DropDown className="arraysection-create" header={`Add new ${header}`}>
         <StateCapsule schema={schema} object={{}}>
           {({ stateCapsule, createItem }) => (
             <Fragment>
               <Button
+                className="arraysection-button--create"
                 variant="outlined"
                 color="primary"
                 align="center"
@@ -35,7 +44,10 @@ const ArraySection = (props) => {
               </Button>
               {// prettier-ignore
               propsAndLabels.map(propLabel => (
-                <div className="inputFieldLargeMultiline">
+                <div
+                  key={`${Math.random()}${Date.now()}`}
+                  className="arraysection-field--new inputFieldLargeMultiline"
+                >
                   <TextField
                     id={`new-${propLabel[0]}`}
                     label={propLabel[1]}

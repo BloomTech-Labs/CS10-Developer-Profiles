@@ -1,6 +1,5 @@
 Some nice Frontend docs are in progress.
 Please contact us for any needed details.
-Please contact us for any needed details missing here.
 
 # Developer enviroment
 
@@ -58,3 +57,39 @@ lastly, go to the APP in your browser:
 # Code Style
 
 > pending to define
+
+# Testing components
+
+## Do not install jest
+
+[Create-react-app already have `jest` installed.](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
+
+## Potential bug and solution:
+
+If you fall into this Error:
+
+```
+$ react-scripts test --env=jsdom
+2018-10-07 02:07 node[18472] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-22)
+2018-10-07 02:07 node[18472] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-22)
+2018-10-07 02:07 node[18472] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-22)
+events.js:167
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EMFILE: too many open files, watch
+    at FSEvent.FSWatcher._handle.onchange (fs.js:1372:28)
+Emitted 'error' event at:
+    at FSEvent.FSWatcher._handle.onchange (fs.js:1378:12)
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
+
+it is neccesary to install [`watchman`](https://facebook.github.io/watchman/docs/install.html)
+
+run:
+
+> $ brew update
+> $ brew install watchman
+
+in case you do not have `brew`, [install it](https://docs.brew.sh/Installation)
