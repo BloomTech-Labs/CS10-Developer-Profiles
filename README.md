@@ -40,7 +40,7 @@ The dream team behind this project:
 
 ### Location:
 
-> [./frontend/lambda-in/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/frontend/lambda-in)
+> [./frontend/lambda-in/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/jesuarva-test-devinfoedit-component/frontend/Frontend.md)
 
 ### Components structure
 
