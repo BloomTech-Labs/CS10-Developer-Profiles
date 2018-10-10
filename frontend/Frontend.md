@@ -1,4 +1,5 @@
-Some nice Frontend docs are in progress.
+# Some nice Frontend docs are in progress.
+
 Please contact us for any needed details.
 
 # Developer enviroment
@@ -42,16 +43,36 @@ lastly, go to the APP in your browser:
 
 ```
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-brands-svg-icons": "^5.3.1",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/react-fontawesome": "^0.1.3",
     "@material-ui/core": "3.1.0",
+    "@material-ui/icons": "^3.0.1",
+    "aos": "^3.0.0-beta.5",
     "axios": "^0.18.0",
+    "classnames": "^2.2.6",
     "dotenv": "^6.0.0",
+    "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-form": "^3.5.6",
+    "react-gsap-enhancer": "^0.3.0",
+    "react-places-autocomplete": "^7.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "react-stripe-checkout": "^2.6.3"
+    "react-select": "^2.0.0",
+    "react-stripe-checkout": "^2.6.3",
+    "react-transition-group": "^2.4.0"
   },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "prop-types": "^15.6.2"
 ```
 
 # Code Style
@@ -93,3 +114,51 @@ run:
 > $ brew install watchman
 
 in case you do not have `brew`, [install it](https://docs.brew.sh/Installation)
+
+# Components structure
+
+[[https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/jesuarva-polish-the-code/frontend/Component%20structure%20and%20data%20flow/Component%20structure%20and%20data%20flow-1.png]]
+
+Components prefixed with '_**@**_', belongs to _Material Design_
+
+```
+  - index.js
+      - App.js
+            - LandingPage.js
+            - DevLogin.js
+            |     - @Paper
+            |     |       - @Button : Find Developer
+            |     |       - @Button : Browse
+            |     |       - @Button : Profile
+            |     |       - @Button : Billing
+            |     |       - @Button : Setting
+            |     |- @Typography : h3
+            |     |- @Typography : p
+            |     |- @Paper
+            |             - @Typography : h3
+            |             - @TextField : email
+            |             - @TextField : password
+            |             - @Button : Submit
+            |- DevSignUp.js
+                    - @Paper
+                    |       - @Button : Find Developer
+                    |       - @Button : Browse
+                    |       - @Button : Profile
+                    |       - @Button : Billing
+                    |       - @Button : Setting
+                    |- @Typography : h3
+                    |- @Typography : p
+                    |- @Paper
+                            - @TextField : First name
+                            - @TextField : Last name
+                            - @TextField : email
+                            - @TextField : Desired Title
+                            - @TextField : Current location
+                            - @TextField : Github
+                            - @TextField : Linkedin
+                            - @TextField : Portfolio
+                            - @TextField : Acclaim badge
+                            - @TextField : Password
+                            - @TextField : Confirm password
+                            - @Button : Submit
+```
