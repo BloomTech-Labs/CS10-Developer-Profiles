@@ -27,12 +27,13 @@ const theme = createMuiTheme({
 
 export default ({ getGS, setGS }) => {
   const userInfo = getGS('userInfo');
+  const userType = getGS('userType');
   const positions = userInfo.openPositions;
 
   return (
     <div className="container">
       <div className="body">
-        <Paper class="paper">
+        <Paper className="paper">
           <Typography variant="display1" gutterBottom align="center">
             Open Positions
           </Typography>
