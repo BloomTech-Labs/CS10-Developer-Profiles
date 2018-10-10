@@ -4,6 +4,7 @@ import axios from 'axios';
 import AOS from 'aos';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import Select from 'react-select';
 import makeAnimated from 'react-select/lib/animated';
 import DevProfileCard from './DevProfileCard/DevProfileCard';
@@ -438,6 +439,9 @@ class DevList extends Component {
       <React.Fragment>
         <Grid container className={classes.mainContainer} spacing={24}>
           <Grid item className={classes.sideBar} xs={3} data-aos="fade-right">
+            <Typography variant="display1" gutterBottom>
+              Search
+            </Typography>
             <FilterSelect
               filterName={FILTERS.desiredTitle.eleName}
               label="I'm looking for a"
@@ -474,6 +478,9 @@ class DevList extends Component {
               talkToParentState={this.handleLocationSelect}
               googleCallback="initPlacesInterested"
             />
+            <Typography variant="headline" gutterBottom>
+              Filter
+            </Typography>
             <FilterToggle
               filter={FILTERS.acclaim}
               isChecked={acclaim}
