@@ -123,24 +123,15 @@ class FilterSelect extends Component {
     return <div className={selectProps.classes.valueContainer}>{children}</div>;
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      val: null,
-    };
-  }
-
-  handleChange(value, name) {
+  handleChange(value) {
     const { filterName, onChange } = this.props;
-    this.setState({ [name]: value }, onChange(value, filterName));
+    onChange(value, filterName);
   }
 
   render() {
     const {
-      classes, placeholder, options, label, init,
+      classes, placeholder, options, label, val,
     } = this.props;
-    const { val } = this.state;
-    const selectValue = !val ? init : val;
 
     return (
       <div className={classes.filterSelect}>
@@ -161,8 +152,8 @@ class FilterSelect extends Component {
             Option: FilterSelect.optionComponent,
             ValueContainer: FilterSelect.valueContainerComponent,
           }}
-          value={selectValue}
-          onChange={value => this.handleChange(value, 'val')}
+          value={val}
+          onChange={value => this.handleChange(value)}
           placeholder={placeholder}
           isMulti
         />
