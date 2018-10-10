@@ -101,7 +101,7 @@ class App extends Component {
     const { isSignedIn } = this.state;
     const redirectToUserProfile =
       this.state.userType === 'seeker' ? (
-        <Redirect to="/dev-profile2" />
+        <Redirect to="/dev-profile" />
       ) : (
         <Redirect to="/emp-profile" />
       );
