@@ -493,6 +493,16 @@ class DevList extends Component {
             <InputGeolocation
               talkToParentState={this.handleLocationSelect}
               googleCallback="initPlacesInterested"
+              textFieldProps={{
+                label: 'Willing to Relocate to',
+                fullWidth: true,
+                placeholder: 'Search cities',
+                margin: 'normal',
+                style: {
+                  background: 'transparent',
+                  margin: '0 0 60px 0',
+                },
+              }}
             />
             <Typography variant="headline" gutterBottom>
               Filter
