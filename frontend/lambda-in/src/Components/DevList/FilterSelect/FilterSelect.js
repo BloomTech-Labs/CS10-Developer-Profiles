@@ -15,21 +15,42 @@ const styles = {};
 class FilterSelect extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      val: null,
+    };
+  }
+
+  handleChange(value, name) {
+    const { onChange } = this.props;
+    this.setState({ [name]: value }, onChange);
   }
 
   render() {
-    return <div>FilterSelect</div>;
+    const { classes, placeholder, options } = this.props;
+    const { val } = this.state;
+
+    return (
+      <Select
+        placeholder={placeholder}
+        value={val}
+        className={classes.select}
+        options={options}
+        closeMenuOnSelect={false}
+        onChange={value => this.handleChange(value, 'val')}
+        isMulti
+      />
+    );
   }
 }
 
 FilterSelect.propTypes = {
-  placeholder: PropTypes.string,
+  classes: PropTypes.shape({}).isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
 };
 
-FilterSelect.defaultProp = {
+FilterSelect.defaultProps = {
   placeholder: '',
 };
 
