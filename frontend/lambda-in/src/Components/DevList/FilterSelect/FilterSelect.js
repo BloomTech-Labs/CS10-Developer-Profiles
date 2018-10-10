@@ -13,12 +13,12 @@ import CancelIcon from '@material-ui/icons/Cancel';
 const styles = {};
 
 class FilterSelect extends Component {
-  static InputComponent({ inputRef, ...props }) {
+  static inputComponent({ inputRef, ...props }) {
     return <div ref={inputRef} {...props} />;
   }
 
-  static ControlComponent(props) {
-    const { InputComponent } = FilterSelect;
+  static controlComponent(props) {
+    const { inputComponent } = FilterSelect;
     const {
       selectProps, innerRef, children, innerProps,
     } = props;
@@ -27,7 +27,7 @@ class FilterSelect extends Component {
       <TextField
         fullWidth
         InputProps={{
-          InputComponent,
+          inputComponent,
           inputProps: {
             className: selectProps.classes.input,
             inputRef: innerRef,
@@ -69,7 +69,7 @@ class FilterSelect extends Component {
             },
           }}
           options={options}
-          components={{ Control: FilterSelect.ControlComponent }}
+          components={{ Control: FilterSelect.controlComponent }}
           value={val}
           onChange={value => this.handleChange(value, 'val')}
           placeholder={placeholder}
