@@ -58,12 +58,9 @@ MapChips.propTypes = {
   field: PropTypes.string,
 };
 MapChips.defaultProps = {
+  classes: {},
   removeItem: null,
   field: null,
-};
-
-MapChips.defaultProps = {
-  classes: {},
 };
 
 export default MapChips;

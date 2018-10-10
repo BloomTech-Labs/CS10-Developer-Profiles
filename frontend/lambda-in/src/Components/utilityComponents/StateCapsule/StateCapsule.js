@@ -140,7 +140,6 @@ class StateCapsule extends Component {
     const stateCapsule = { ...this.state };
     delete stateCapsule.ready;
 
-    // eslint-disable-next-line react/prop-types
     const { children } = this.props;
 
     return ready ? (
@@ -163,6 +162,11 @@ class StateCapsule extends Component {
 StateCapsule.propTypes = {
   schema: PropTypes.shape({}).isRequired,
   object: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+    PropTypes.func,
+  ]).isRequired,
 };
 
 export default StateCapsule;
