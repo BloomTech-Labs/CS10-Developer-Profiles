@@ -48,6 +48,22 @@ const styles = {
     backgroundColor: '#f8f9fa',
     padding: '0 30px',
   },
+  sort: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+};
+
+const customSortStyles = {
+  control: base => ({
+    ...base,
+    width: '30%',
+  }),
+  menu: base => ({
+    ...base,
+    width: '30%',
+    right: 0,
+  }),
 };
 
 /**
@@ -542,10 +558,11 @@ class DevList extends Component {
             <Select
               placeholder={FILTERS.sort.placeholder}
               value={sort}
-              className={classes.select}
+              className={classes.sort}
               options={sortSelectOptions}
               closeMenuOnSelect={false}
               components={makeAnimated()}
+              styles={customSortStyles}
               onChange={value => this.handleSelect(value, FILTERS.sort.eleName)}
               isMulti
             />
