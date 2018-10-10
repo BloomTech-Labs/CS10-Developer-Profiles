@@ -1,13 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import DropDown from '../../utilityComponents/DropDown/DropDown';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
-// eslint-disable-next-line arrow-parens
-const SocialLinks = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { userInfo } = props;
-
+const SocialLinks = ({ userInfo }) => {
   const schema = {
     github: userInfo.github,
     linkedin: userInfo.linkedin,
@@ -54,6 +51,10 @@ const SocialLinks = (props) => {
       )}
     </StateCapsule>
   );
+};
+
+SocialLinks.propTypes = {
+  userInfo: PropTypes.shape({}).isRequired,
 };
 
 export default SocialLinks;

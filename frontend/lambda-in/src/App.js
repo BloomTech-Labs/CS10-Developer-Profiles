@@ -191,9 +191,7 @@ class App extends Component {
                 isSignedIn ? (
                   redirectToUserProfile
                 ) : (
-                  <EmpSignUp
-                    setGS={this.setGlobalState}
-                  />
+                  <EmpSignUp setGS={this.setGlobalState} />
                 )
               }
             />
@@ -207,7 +205,7 @@ class App extends Component {
                     setGS={this.setGlobalState}
                     getGS={this.getGlobalState}
                   />
-                  ) : (
+                ) : (
                   <Redirect to="/" />
                 )
               }
