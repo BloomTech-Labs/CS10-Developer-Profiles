@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
-import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import ImageAvatar from '../Avatar/ImageAvatar/ImageAvatar';
 import LetterAvatar from '../Avatar/LetterAvatar/LetterAvatar';
@@ -15,6 +14,15 @@ const styles = {
   },
   devSnapshotHeader: {
     display: 'flex',
+    marginBottom: '14px',
+  },
+  devIntro: {
+    padding: '4px 0 0 24px',
+  },
+  devName: {
+    color: '#333333',
+    fontWeight: 'bold',
+    textDecoration: 'none',
   },
 };
 
@@ -69,14 +77,15 @@ const DevSnapshot = (props) => {
         )}
         <CardContent className={classes.devIntro}>
           <Typography variant="headline">
-            <Link to={`/dev-profile/${_id}`}>{fullName}</Link>
+            <Link className={classes.devName} to={`/dev-profile/${_id}`}>
+              {fullName}
+            </Link>
           </Typography>
           {location && <Typography>{location.place}</Typography>}
-          {summary && <Typography>{summary}</Typography>}
+          {summary && <Typography variant="caption">{summary}</Typography>}
         </CardContent>
       </div>
       {title && <Typography variant="title">{title}</Typography>}
-      <Divider />
       <SkillCloud topSkills={topSkills} addSkills={addSkills} familiar={familiar} />
     </CardContent>
   );
