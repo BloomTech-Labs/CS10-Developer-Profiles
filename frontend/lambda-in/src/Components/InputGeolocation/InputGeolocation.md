@@ -11,6 +11,7 @@ A class component constructor
 | talkToParentState | <code>function</code> | A function to pass InputGeolocation's state to a parent component. |
 | textFieldProps | <code>object</code> | Contains all props needed to be passed to <TextField /> component. |
 | listItemProps | <code>object</code> | Contains all props needed to be passed to <ListItem /> component. |
+| googleCallback | <code>function</code> | Optional callback to enable async mode. |
 
 
 * [InputGeolocation](#InputGeolocation)

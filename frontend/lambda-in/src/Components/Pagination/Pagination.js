@@ -4,7 +4,19 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { PAGINATION_SETTINGS } from '../constants';
 
-const styles = {};
+const styles = {
+  pagination: {
+    display: 'flex',
+  },
+  pageItem: {
+    margin: '0 4px',
+  },
+  pageLink: {
+    color: '#333333',
+    fontWeight: 'bold',
+    textDecoration: 'none',
+  },
+};
 
 /**
  * Pagination component
@@ -167,6 +179,7 @@ class Pagination extends Component {
         {pageLinks.map(page => (
           <li key={page} className={classes.pageItem}>
             <Link
+              className={classes.pageLink}
               to={`${pathname}?page=${page}${cleanQuery}`}
               onClick={() => window.scrollTo(0, 0)}
             >

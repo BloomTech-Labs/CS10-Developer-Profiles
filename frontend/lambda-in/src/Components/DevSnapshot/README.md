@@ -26,7 +26,7 @@ Material UI CardContent component containing a snapshot/preview of the seeker's 
 | props.img | <code>String</code> | URL to seeker's profile image. |
 | props.fullName | <code>String</code> | Seeker's full name. |
 | props.initials | <code>String</code> | Seeker's initials using first character of first and last name. |
-| props.location | <code>String</code> | Seeker's current location. |
+| props.location | <code>Object</code> | Seeker's current location. |
 | props.summry | <code>String</code> | A 128 character description about the Seeker. |
 | props.title | <code>String</code> | Job title the Seeker is looking for. |
 | props.topSkills | <code>Array</code> | Seeker's top skills which get displayed in large text. |

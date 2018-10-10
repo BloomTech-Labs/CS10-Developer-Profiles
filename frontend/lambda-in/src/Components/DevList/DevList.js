@@ -4,10 +4,13 @@ import axios from 'axios';
 import AOS from 'aos';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import Select from 'react-select';
 import makeAnimated from 'react-select/lib/animated';
 import DevProfileCard from './DevProfileCard/DevProfileCard';
+import FilterSelect from './FilterSelect/FilterSelect';
 import FilterToggle from './FilterToggle/FilterToggle';
+import InputGeolocation from '../InputGeolocation/InputGeolocation';
 import Pagination from '../Pagination/Pagination';
 import {
   ENABLE, DISABLE, SORT, FILTERS,
@@ -42,14 +45,27 @@ const sortSelectOptions = sortOptions.map(option => ({
 
 const styles = {
   mainContainer: {
+    backgroundColor: '#f8f9fa',
     padding: '0 30px',
+  },
+  sort: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  filterHeader: {
+    marginTop: '60px',
   },
 };
 
-const selectCustomStyles = {
+const customSortStyles = {
+  control: base => ({
+    ...base,
+    width: '30%',
+  }),
   menu: base => ({
     ...base,
-    zIndex: 2,
+    width: '30%',
+    right: 0,
   }),
 };
 
@@ -117,8 +133,12 @@ class DevList extends Component {
       prev: null,
       currentPage: DevList.getCurrentPage(),
       seekers: [],
+      place: '',
+      lat: null,
+      lng: null,
     });
 
+    this.handleLocationSelect = this.handleLocationSelect.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
     this.handleSwitchEnable = this.handleSwitchEnable.bind(this);
@@ -325,11 +345,19 @@ class DevList extends Component {
   cleanQuery(param) {
     const { query } = this.state;
     const regEx = new RegExp(
-      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[A-z|+.-]+|&${param}=[A-z|+.-]+`,
+      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[,A-z|+.-]+|&${param}=[,A-z|+.-]+`,
       'i',
     );
     const cleanedQuery = query.replace(regEx, '');
     return cleanedQuery === '' ? 'page=1' : cleanedQuery;
+  }
+
+  handleLocationSelect(place, lat, lng) {
+    const valStr = `&places=${place.replace(/ /g, '+')}`;
+    const newQuery = `${this.cleanQuery('places')}${place.length !== 0 ? valStr : ''}`;
+
+    this.setQuery(newQuery);
+    this.setState({ place, lat, lng });
   }
 
   /**
@@ -430,50 +458,58 @@ class DevList extends Component {
       <React.Fragment>
         <Grid container className={classes.mainContainer} spacing={24}>
           <Grid item className={classes.sideBar} xs={3} data-aos="fade-right">
-            <Select
-              placeholder={FILTERS.desiredTitle.placeholder}
-              value={desiredTitle}
-              className={classes.select}
+            <Typography variant="display1" gutterBottom>
+              Search
+            </Typography>
+            <FilterSelect
+              filterName={FILTERS.desiredTitle.eleName}
+              label="I'm looking for a"
               options={jobTitleSelectOptions}
-              closeMenuOnSelect={false}
-              components={makeAnimated()}
-              styles={selectCustomStyles}
-              onChange={value => this.handleSelect(value, FILTERS.desiredTitle.eleName)}
-              isMulti
+              placeholder={FILTERS.desiredTitle.placeholder}
+              val={desiredTitle}
+              onChange={this.handleSelect}
             />
-            <Select
+            <FilterSelect
+              filterName={FILTERS.topSkills.eleName}
+              label="Who is proficient with"
+              options={techSkillsSelectOptions}
               placeholder={FILTERS.topSkills.placeholder}
-              value={topSkills}
-              className={classes.select}
-              options={techSkillsSelectOptions}
-              closeMenuOnSelect={false}
-              components={makeAnimated()}
-              styles={selectCustomStyles}
-              onChange={value => this.handleSelect(value, FILTERS.topSkills.eleName)}
-              isMulti
+              val={topSkills}
+              onChange={this.handleSelect}
             />
-            <Select
+            <FilterSelect
+              filterName={FILTERS.addSkills.eleName}
+              label="Who is knowledgeable with"
+              options={techSkillsSelectOptions}
               placeholder={FILTERS.addSkills.placeholder}
-              value={addSkills}
-              className={classes.select}
-              options={techSkillsSelectOptions}
-              closeMenuOnSelect={false}
-              components={makeAnimated()}
-              styles={selectCustomStyles}
-              onChange={value => this.handleSelect(value, FILTERS.addSkills.eleName)}
-              isMulti
+              val={addSkills}
+              onChange={this.handleSelect}
             />
-            <Select
+            <FilterSelect
+              filterName={FILTERS.familiar.eleName}
+              label="Who is familiar with"
+              options={techSkillsSelectOptions}
               placeholder={FILTERS.familiar.placeholder}
-              value={familiar}
-              className={classes.select}
-              options={techSkillsSelectOptions}
-              closeMenuOnSelect={false}
-              components={makeAnimated()}
-              styles={selectCustomStyles}
-              onChange={value => this.handleSelect(value, FILTERS.familiar.eleName)}
-              isMulti
+              val={familiar}
+              onChange={this.handleSelect}
             />
+            <InputGeolocation
+              talkToParentState={this.handleLocationSelect}
+              googleCallback="initPlacesInterested"
+              textFieldProps={{
+                label: 'Willing to Relocate to',
+                fullWidth: true,
+                placeholder: 'Search cities',
+                margin: 'normal',
+                style: {
+                  background: 'transparent',
+                  margin: '0',
+                },
+              }}
+            />
+            <Typography className={classes.filterHeader} variant="headline" gutterBottom>
+              Filter
+            </Typography>
             <FilterToggle
               filter={FILTERS.acclaim}
               isChecked={acclaim}
@@ -535,17 +571,19 @@ class DevList extends Component {
             <Select
               placeholder={FILTERS.sort.placeholder}
               value={sort}
-              className={classes.select}
+              className={classes.sort}
               options={sortSelectOptions}
               closeMenuOnSelect={false}
               components={makeAnimated()}
+              styles={customSortStyles}
               onChange={value => this.handleSelect(value, FILTERS.sort.eleName)}
               isMulti
             />
-            {seekers.length !== 0 && seekers.map(seeker => (
-              // eslint-disable-next-line no-underscore-dangle
-              <DevProfileCard key={seeker._id} seeker={seeker} />
-            ))}
+            {seekers.length !== 0
+              && seekers.map(seeker => (
+                // eslint-disable-next-line no-underscore-dangle
+                <DevProfileCard key={seeker._id} seeker={seeker} />
+              ))}
             {seekers.length !== 0 && (
               <Pagination
                 pages={pages}

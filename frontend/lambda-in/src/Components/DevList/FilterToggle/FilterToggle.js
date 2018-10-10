@@ -7,7 +7,14 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Switch from '@material-ui/core/Switch';
 import { ENABLE, DISABLE } from '../../constants';
 
-const styles = {};
+const styles = {
+  toggleEnable: {
+    fontSize: '11px',
+  },
+  toggleLabel: {
+    width: '50%',
+  },
+};
 
 /**
  * Given filter data and event handlers for onClick and onChange, return a togglable filter
@@ -34,12 +41,13 @@ const styles = {};
  */
 const FilterToggle = (props) => {
   const {
-    filter, isChecked, isEnabled, onCheck, onEnable,
+    classes, filter, isChecked, isEnabled, onCheck, onEnable,
   } = props;
 
   return (
     <FormGroup row>
       <FormControlLabel
+        className={classes.toggleLabel}
         control={
           <Switch name={filter.eleName} checked={isChecked} color="primary" onChange={onCheck} />
         }
@@ -47,6 +55,7 @@ const FilterToggle = (props) => {
         disabled={!isEnabled}
       />
       <Button
+        className={classes.toggleEnable}
         name={filter.toggleName}
         size="small"
         onClick={onEnable}
@@ -59,6 +68,7 @@ const FilterToggle = (props) => {
 };
 
 FilterToggle.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
   filter: PropTypes.shape({
     displayName: PropTypes.string.isRequired,
     eleName: PropTypes.string.isRequired,

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
-import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import ImageAvatar from '../Avatar/ImageAvatar/ImageAvatar';
 import LetterAvatar from '../Avatar/LetterAvatar/LetterAvatar';
@@ -15,6 +14,15 @@ const styles = {
   },
   devSnapshotHeader: {
     display: 'flex',
+    marginBottom: '14px',
+  },
+  devIntro: {
+    padding: '4px 0 0 24px',
+  },
+  devName: {
+    color: '#333333',
+    fontWeight: 'bold',
+    textDecoration: 'none',
   },
 };
 
@@ -27,7 +35,7 @@ const styles = {
  * @param {String} props.img - URL to seeker's profile image.
  * @param {String} props.fullName - Seeker's full name.
  * @param {String} props.initials - Seeker's initials using first character of first and last name.
- * @param {String} props.location - Seeker's current location.
+ * @param {Object} props.location - Seeker's current location.
  * @param {String} props.summry - A 128 character description about the Seeker.
  * @param {String} props.title - Job title the Seeker is looking for.
  * @param {Array} props.topSkills - Seeker's top skills which get displayed in large text.
@@ -69,14 +77,15 @@ const DevSnapshot = (props) => {
         )}
         <CardContent className={classes.devIntro}>
           <Typography variant="headline">
-            <Link to={`/dev-profile/${_id}`}>{fullName}</Link>
+            <Link className={classes.devName} to={`/dev-profile/${_id}`}>
+              {fullName}
+            </Link>
           </Typography>
-          {location && <Typography>{location}</Typography>}
-          {summary && <Typography>{summary}</Typography>}
+          {location && <Typography>{location.place}</Typography>}
+          {summary && <Typography variant="caption">{summary}</Typography>}
         </CardContent>
       </div>
       {title && <Typography variant="title">{title}</Typography>}
-      <Divider />
       <SkillCloud topSkills={topSkills} addSkills={addSkills} familiar={familiar} />
     </CardContent>
   );
@@ -88,7 +97,11 @@ DevSnapshot.propTypes = {
   img: PropTypes.string,
   fullName: PropTypes.string.isRequired,
   initials: PropTypes.string.isRequired,
-  location: PropTypes.string,
+  location: PropTypes.shape({
+    place: PropTypes.string.isRequired,
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+  }),
   summary: PropTypes.string,
   title: PropTypes.string,
   topSkills: PropTypes.arrayOf(PropTypes.string),
@@ -99,7 +112,7 @@ DevSnapshot.propTypes = {
 DevSnapshot.defaultProps = {
   img: '',
   summary: '',
-  location: '',
+  location: null,
   title: '',
   topSkills: [],
   addSkills: [],
