@@ -49,13 +49,6 @@ const styles = {
   },
 };
 
-const selectCustomStyles = {
-  menu: base => ({
-    ...base,
-    zIndex: 2,
-  }),
-};
-
 /**
  * Dev List component
  *
