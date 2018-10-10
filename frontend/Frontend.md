@@ -2,7 +2,7 @@
 
 Please contact us for any needed details.
 
-# Developer enviroment
+# Developer environment
 
 ### Requirements:
 
@@ -25,7 +25,7 @@ then change your working directory to the `frontend/lambda-in` root folder:
   $ cd frontend/lambda-in/
 ```
 
-than, install dependencies and run the APP:
+then, install dependencies and run the APP:
 
 ```
   $ yarn
@@ -66,18 +66,29 @@ lastly, go to the APP in your browser:
     "react-transition-group": "^2.4.0"
   },
   "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "jest": "^23.6.0",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react-test-renderer": "^16.5.2"
+  }
 ```
 
 # Code Style
 
-> pending to define
+> Airbnb react style guides.
+
+# Auth flow
+
+[[https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/jesuarva-polish-the-code/frontend/Component%20structure%20and%20data%20flow/Component%20structure%20and%20data%20flow-1.png]]
+
+# Components structure and data flow
+
+[[https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/jesuarva-polish-the-code/frontend/Component%20structure%20and%20data%20flow/Component%20structure%20and%20data%20flow-2.png]]
 
 # Testing components
 
@@ -106,7 +117,7 @@ error Command failed with exit code 1.
 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
 
-it is neccesary to install [`watchman`](https://facebook.github.io/watchman/docs/install.html)
+it is necessary to install [`watchman`](https://facebook.github.io/watchman/docs/install.html)
 
 run:
 
@@ -114,51 +125,3 @@ run:
 > $ brew install watchman
 
 in case you do not have `brew`, [install it](https://docs.brew.sh/Installation)
-
-# Components structure
-
-[[https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/blob/jesuarva-polish-the-code/frontend/Component%20structure%20and%20data%20flow/Component%20structure%20and%20data%20flow-1.png]]
-
-Components prefixed with '_**@**_', belongs to _Material Design_
-
-```
-  - index.js
-      - App.js
-            - LandingPage.js
-            - DevLogin.js
-            |     - @Paper
-            |     |       - @Button : Find Developer
-            |     |       - @Button : Browse
-            |     |       - @Button : Profile
-            |     |       - @Button : Billing
-            |     |       - @Button : Setting
-            |     |- @Typography : h3
-            |     |- @Typography : p
-            |     |- @Paper
-            |             - @Typography : h3
-            |             - @TextField : email
-            |             - @TextField : password
-            |             - @Button : Submit
-            |- DevSignUp.js
-                    - @Paper
-                    |       - @Button : Find Developer
-                    |       - @Button : Browse
-                    |       - @Button : Profile
-                    |       - @Button : Billing
-                    |       - @Button : Setting
-                    |- @Typography : h3
-                    |- @Typography : p
-                    |- @Paper
-                            - @TextField : First name
-                            - @TextField : Last name
-                            - @TextField : email
-                            - @TextField : Desired Title
-                            - @TextField : Current location
-                            - @TextField : Github
-                            - @TextField : Linkedin
-                            - @TextField : Portfolio
-                            - @TextField : Acclaim badge
-                            - @TextField : Password
-                            - @TextField : Confirm password
-                            - @Button : Submit
-```
