@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
-import './DevInfoEditz.css';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+// import './DevInfoEditz.css';
 import BasicInfo from './SeekerEditUtils/BasicInfo';
-import SocialLinks from './SeekerEditUtils/SocialLinks';
 import BioSkills from './SeekerEditUtils/BioSkills';
-import Projects from './SeekerEditUtils/Projects';
-import Experience from './SeekerEditUtils/Experience';
 import Education from './SeekerEditUtils/Education';
+import Experience from './SeekerEditUtils/Experience';
+import Projects from './SeekerEditUtils/Projects';
+import SocialLinks from './SeekerEditUtils/SocialLinks';
 
 /**
  * Form handling user profile updates.
@@ -48,24 +48,16 @@ class DevInfoEdit extends Component {
     /**
      * Listen for MapChip's custom event emmited when a item is deleted.
      */
-    // eslint-disable-next-line react/no-find-dom-node
-    ReactDOM.findDOMNode(this).addEventListener(
-      'onDeleteItem',
-      this.handleOnDeleteItem,
-    );
+    document.addEventListener('onDeleteItem', this.handleOnDeleteItem);
 
-    // eslint-disable-next-line react/no-find-dom-node
-    ReactDOM.findDOMNode(this).addEventListener(
-      'onCreateItem',
-      this.handleCreateItem,
-    );
+    document.addEventListener('onCreateItem', this.handleCreateItem);
   }
 
   componentWillUnmount() {
     // eslint-disable-next-line react/no-find-dom-node
-    ReactDOM.findDOMNode(this).removeEventListener('onDeleteItem', () => null);
+    document.removeEventListener('onDeleteItem', () => null);
     // eslint-disable-next-line react/no-find-dom-node
-    ReactDOM.findDOMNode(this).removeEventListener('onCreateItem', () => null);
+    document.removeEventListener('onCreateItem', () => null);
   }
 
   /**
