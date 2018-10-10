@@ -6,6 +6,7 @@ import DevSignUp from './Components/DevSignUp/DevSignUp';
 import DevLogin from './Components/DevLogIn/DevLogIn';
 import LandingPage from './Components/LandingPage/landing-page';
 import DevProfile2 from './Components/DevProfile2/DevProfile2';
+import DevInfoAdd from './Components/DevInfoAdd/DevInfoAdd';
 import DevInfoEditz from './Components/DevInfoEditz/DevInfoEditz';
 import Billing from './Components/Billing/billing';
 import EmpSignUp from './Components/EmployerSignUp/EmployerSignUp';
@@ -177,6 +178,26 @@ class App extends Component {
                   />
                 ) : (
                   <Redirect to="/" />
+                )
+              }
+            />
+
+            {/* EDIT PAGE: If user is not Authenticated 'Redirect' to home page */}
+            <Route
+              path="/dev-info-add"
+              render={(props) =>
+                isSignedIn ? (
+                  <DevInfoAdd
+                    {...props}
+                    setGS={this.setGlobalState}
+                    getGS={this.getGlobalState}
+                  />
+                ) : (
+                  <DevInfoAdd
+                    {...props}
+                    setGS={this.setGlobalState}
+                    getGS={this.getGlobalState}
+                  />
                 )
               }
             />
