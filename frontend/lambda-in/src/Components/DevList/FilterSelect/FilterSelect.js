@@ -99,6 +99,26 @@ class FilterSelect extends Component {
     );
   }
 
+  static optionComponent(props) {
+    const {
+      children, innerRef, innerProps, isFocused, isSelected,
+    } = props;
+
+    return (
+      <MenuItem
+        buttonRef={innerRef}
+        selected={isFocused}
+        component="div"
+        style={{
+          fontWeight: isSelected ? 500 : 400,
+        }}
+        {...innerProps}
+      >
+        {children}
+      </MenuItem>
+    );
+  }
+
   static valueContainerComponent(props) {
     const { selectProps, children } = props;
     return <div className={selectProps.classes.valueContainer}>{children}</div>;
@@ -138,6 +158,7 @@ class FilterSelect extends Component {
             Control: FilterSelect.controlComponent,
             Menu: FilterSelect.menuComponent,
             MultiValue: FilterSelect.multiValueComponent,
+            Option: FilterSelect.optionComponent,
             ValueContainer: FilterSelect.valueContainerComponent,
           }}
           value={val}
