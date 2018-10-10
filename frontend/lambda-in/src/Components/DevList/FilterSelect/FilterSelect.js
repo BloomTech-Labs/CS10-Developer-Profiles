@@ -11,6 +11,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 const styles = {
+  chip: {
+    margin: '4px',
+  },
   filterSelect: {
     margin: '10px 0',
   },
@@ -32,10 +35,11 @@ const styles = {
     right: 0,
   },
   valueContainer: {
+    alignItems: 'center',
     display: 'flex',
     flexWrap: 'wrap',
     flex: 1,
-    alignItems: 'center',
+    padding: '6px 0',
   },
 };
 
@@ -77,6 +81,24 @@ class FilterSelect extends Component {
     );
   }
 
+  static multiValueComponent(props) {
+    const {
+      children, selectProps, isFocused, removeProps,
+    } = props;
+
+    return (
+      <Chip
+        tabIndex={-1}
+        label={children}
+        className={classNames(selectProps.classes.chip, {
+          [selectProps.classes.chipFocused]: isFocused,
+        })}
+        onDelete={removeProps.onClick}
+        deleteIcon={<CancelIcon {...removeProps} />}
+      />
+    );
+  }
+
   static valueContainerComponent(props) {
     const { selectProps, children } = props;
     return <div className={selectProps.classes.valueContainer}>{children}</div>;
@@ -115,6 +137,7 @@ class FilterSelect extends Component {
           components={{
             Control: FilterSelect.controlComponent,
             Menu: FilterSelect.menuComponent,
+            MultiValue: FilterSelect.multiValueComponent,
             ValueContainer: FilterSelect.valueContainerComponent,
           }}
           value={val}
