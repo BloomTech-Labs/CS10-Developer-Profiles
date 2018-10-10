@@ -64,7 +64,7 @@ const DevProfile2 = ({ getGS }) => {
               </div>
               <div className="currentLocation">
                 <Typography variant="headline" component="h3">
-                  {userInfo.currentLocation}
+                  {userInfo.currentLocation.place}
                 </Typography>
               </div>
               <div className="summary">
