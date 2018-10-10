@@ -31,6 +31,12 @@ const styles = {
     left: 0,
     right: 0,
   },
+  valueContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flex: 1,
+    alignItems: 'center',
+  },
 };
 
 class FilterSelect extends Component {
@@ -71,6 +77,11 @@ class FilterSelect extends Component {
     );
   }
 
+  static valueContainerComponent(props) {
+    const { selectProps, children } = props;
+    return <div className={selectProps.classes.valueContainer}>{children}</div>;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -101,7 +112,11 @@ class FilterSelect extends Component {
             },
           }}
           options={options}
-          components={{ Control: FilterSelect.controlComponent, Menu: FilterSelect.menuComponent }}
+          components={{
+            Control: FilterSelect.controlComponent,
+            Menu: FilterSelect.menuComponent,
+            ValueContainer: FilterSelect.valueContainerComponent,
+          }}
           value={val}
           onChange={value => this.handleChange(value, 'val')}
           placeholder={placeholder}
