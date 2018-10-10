@@ -131,15 +131,16 @@ class FilterSelect extends Component {
   }
 
   handleChange(value, name) {
-    const { onChange } = this.props;
-    this.setState({ [name]: value }, onChange);
+    const { filterName, onChange } = this.props;
+    this.setState({ [name]: value }, onChange(value, filterName));
   }
 
   render() {
     const {
-      classes, placeholder, options, label,
+      classes, placeholder, options, label, init,
     } = this.props;
     const { val } = this.state;
+    const selectValue = !val ? init : val;
 
     return (
       <div className={classes.filterSelect}>
@@ -160,7 +161,7 @@ class FilterSelect extends Component {
             Option: FilterSelect.optionComponent,
             ValueContainer: FilterSelect.valueContainerComponent,
           }}
-          value={val}
+          value={selectValue}
           onChange={value => this.handleChange(value, 'val')}
           placeholder={placeholder}
           isMulti
@@ -172,6 +173,7 @@ class FilterSelect extends Component {
 
 FilterSelect.propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  filterName: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
