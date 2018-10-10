@@ -44,6 +44,7 @@ const sortSelectOptions = sortOptions.map(option => ({
 
 const styles = {
   mainContainer: {
+    backgroundColor: '#f8f9fa',
     padding: '0 30px',
   },
 };
