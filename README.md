@@ -34,7 +34,7 @@ The dream team behind this project:
 
 > Detailed docs with installations and running instructions on [Backend docs](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/wiki/Backend-docs)
 
-### Location:
+### Project location:
 
 > [./backend/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/backend)
 
@@ -42,6 +42,6 @@ The dream team behind this project:
 
 > Detailed docs with installations and running instructions on [Frontend docs](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/wiki/Frontend-docs)
 
-### Location:
+### Project location:
 
 > [./frontend/lambda-in/](https://github.com/Lambda-School-Labs/CS10-Developer-Profiles/tree/master/frontend/lambda-in)
