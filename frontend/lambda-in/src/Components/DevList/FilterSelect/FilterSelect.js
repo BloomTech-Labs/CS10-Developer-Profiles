@@ -23,6 +23,14 @@ class FilterSelect extends Component {
   }
 }
 
-FilterSelect.propTypes = {};
+FilterSelect.propTypes = {
+  placeholder: PropTypes.string,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+FilterSelect.defaultProp = {
+  placeholder: '',
+};
 
 export default withStyles(styles)(FilterSelect);
