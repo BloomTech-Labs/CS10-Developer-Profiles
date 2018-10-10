@@ -13,6 +13,7 @@ AOS.init();
 const styles = {
   devProfileCard: {
     display: 'flex',
+    margin: '20px 0',
   },
 };
 
