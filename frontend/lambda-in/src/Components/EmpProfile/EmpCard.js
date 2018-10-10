@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import AOS from "aos";
 
@@ -42,12 +39,16 @@ class EmpCard extends React.Component {
       minSalary: "",
       maxSalary: ""
     };
+    
     this.handleDelete = this.handleDelete.bind(this);
   }
+
+
 
   handleDelete = event => {
     const { getGS } = this.props;
     const { setGS } = this.props;
+        
     const userInfo = getGS("userInfo");
 
     const userInfoCopy = { ...userInfo };
@@ -83,14 +84,10 @@ class EmpCard extends React.Component {
   };
 
   render() {
+    const userType  = this.props.getGS('userType')
+
     return (
-      <div
-        class="cardContainer"
-        data-aos="flip-up"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-sine"
-      >
-        <Card class="cardPaper">
+      <div className="cardContainer">
           <div className="cardInputs">
             <div>
               <Typography variant="caption">Project Name</Typography>
@@ -99,7 +96,7 @@ class EmpCard extends React.Component {
               </Typography>
             </div>
 
-            <div class="disc">
+            <div className="disc">
               <Typography variant="caption">description</Typography>
               <Typography variant="subheading">
                 {this.props.description}
@@ -142,8 +139,6 @@ class EmpCard extends React.Component {
                 </Button>
               </MuiThemeProvider>
             </div>
-
-        </Card>
       </div>
     );
   }

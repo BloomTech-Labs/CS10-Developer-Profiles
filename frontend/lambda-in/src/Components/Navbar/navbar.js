@@ -84,7 +84,7 @@ export default ({ getGS, logOut }) => {
             </Button>
             <Button color='inherit' className='navButton'
               component={Link}
-              to={userType === 'seeker' ? '/meetposition' : '/meetdev'}
+              to={'/meetdev'}
             >
             Browse
             </Button>
