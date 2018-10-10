@@ -1,7 +1,8 @@
 const faker = require('faker/locale/en_US');
 const bcrypt = require('bcrypt');
+const { getExperience } = require('./utils/getExperienceSchema');
 const { generateJSONFile } = require('./utils/generateJSONFile');
-const { fakerFirstName } = require('./utils/patchFakerNames.js');
+const { fakerFirstName } = require('./utils/patchFakerNames');
 const { getProjects } = require('./utils/getProjectSchema');
 const { getRandomInt } = require('./utils/getRandomInt');
 const { getCity, getCities } = require('./datasets/cities');
@@ -66,7 +67,7 @@ const getSeeker = (avatar) => {
   const linkedIn = getLinkedIn(firstName, lastName, 40);
   const portfolio = getPortfolio(firstName, lastName, 70);
   const projects = getProjects(5, firstName, lastName, 10);
-  const experience = [];
+  const experience = getExperience(3, 50);
   const education = [];
 
   const seeker = {
@@ -89,6 +90,8 @@ const getSeeker = (avatar) => {
   if (linkedIn) seeker.linkedIn = linkedIn;
   if (portfolio) seeker.portfolio = portfolio;
   if (projects.length) seeker.projects = projects;
+  if (experience.length) seeker.experience = experience;
+  if (education.length) seeker.education = education;
 
   return seeker;
 };
