@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -58,8 +59,7 @@ const DevProfile2 = ({ getGS }) => {
             <div className="basicInfo">
               <div className="name">
                 <Typography variant="headline" component="h3">
-                  {userInfo.firstName}
-                  {userInfo.lastName}
+                  {userInfo.firstName} {userInfo.lastName}
                 </Typography>
               </div>
               <div className="currentLocation">
@@ -68,14 +68,20 @@ const DevProfile2 = ({ getGS }) => {
                 </Typography>
               </div>
               <div className="summary">
-                <Typography>{userInfo.summary}</Typography>
+                <Typography variant="subheading" gutterBottom>
+                  {' '}
+                  Bio - {userInfo.summary}
+                </Typography>
               </div>
               <div className="desiredTitle">
-                Desired Title:
-                {userInfo.desiredTitle}
+                <Typography variant="subheading" gutterBottom>
+                  Desired Title - {userInfo.desiredTitle}
+                </Typography>
               </div>
               <div className="tagCloud">
                 <MapChips array={userInfo.topSkills} />
+                {/* {console.log(allSkills)}              
+                <Typography variant="subheading" gutterBottom> Top skills -  {allSkills.map(item => item + ' ')}</Typography> */}
               </div>
             </div>
           </div>
@@ -120,41 +126,41 @@ const DevProfile2 = ({ getGS }) => {
         <br />
         <br />
         <div className="profileBottomCard">
-          <Paper>
-            <ArraySectionDisplay
-              header="Projects"
-              userInfo={userInfo}
-              field="projects"
-              itemType="object"
-              schema={schemas.projects}
-            />
-            <ArraySectionDisplay
-              header="Experience"
-              userInfo={userInfo}
-              field="experience"
-              itemType="object"
-              schema={schemas.experience}
-            />
-            <ArraySectionDisplay
-              header="Education"
-              userInfo={userInfo}
-              field="education"
-              itemType="object"
-              schema={schemas.education}
-            />
-            <div className="profileButtons">
-              <Link to="/dev-info-edit">
-                <Button variant="outlined" color="primary">
-                  edit
-                </Button>
-              </Link>
-              <Link to="/dev-profile2">
-                <Button variant="outlined" color="secondary">
-                  Delete
-                </Button>
-              </Link>
-            </div>
-          </Paper>
+          <ArraySectionDisplay
+            header="Projects"
+            userInfo={userInfo}
+            field="projects"
+            itemType="object"
+            schema={schemas.projects}
+          />
+          <ArraySectionDisplay
+            header="Experience"
+            userInfo={userInfo}
+            field="experience"
+            itemType="object"
+            schema={schemas.experience}
+          />
+          <ArraySectionDisplay
+            header="Education"
+            userInfo={userInfo}
+            field="education"
+            itemType="object"
+            schema={schemas.education}
+          />
+          <div className="profileButtons">
+            <Link to="/dev-info-edit">
+              <Button variant="contained" color="primary">
+                {' '}
+                edit
+              </Button>
+            </Link>
+            <Link to="/dev-profile2">
+              <Button variant="outlined" color="secondary">
+                {' '}
+                Delete
+              </Button>
+            </Link>
+          </div>
         </div>
       </Paper>
     </div>
