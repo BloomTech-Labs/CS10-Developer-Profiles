@@ -1,8 +1,10 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import './DevProfile2.css';
@@ -12,9 +14,13 @@ import linkedinImg from './img/linkedin.jpg';
 import portfolioImg from './img/portfolio.png';
 import ArraySectionDisplay from '../utilityComponents/ArraySection/ArraySectionDisplay';
 import MapChips from '../utilityComponents/MapArrays/MapChips';
+import DevSnapshot from '../DevSnapshot/DevSnapshot';
+import DevSocial from '../DevSocial/DevSocial';
 
 const DevProfile2 = ({ getGS }) => {
   const userInfo = getGS('userInfo');
+  const fullName = `${userInfo.firstName} ${userInfo.lastName}`;
+  const initials = `${userInfo.firstName.slice(0, 1)}${userInfo.lastName.slice(0, 1)}`;
 
   const schemas = {
     projects: {
@@ -47,77 +53,21 @@ const DevProfile2 = ({ getGS }) => {
   return (
     <div className="profileContainer">
       <Paper className="profilePaper">
-        <div className="profileTopCard">
-          <div className="profileImage">
-            <img
-              className="profileImage"
-              src={`https://robohash.org/1${userInfo.firstName}`}
-              alt="Italian "
-            />
-          </div>
-          <div className="profileBio">
-            <div className="basicInfo">
-              <div className="name">
-                <Typography variant="headline" component="h3">
-                  {userInfo.firstName} {userInfo.lastName}
-                </Typography>
-              </div>
-              <div className="currentLocation">
-                <Typography variant="headline" component="h3">
-                  {userInfo.currentLocation.place}
-                </Typography>
-              </div>
-              <div className="summary">
-                <Typography variant="subheading" gutterBottom>
-                  {' '}
-                  Bio - {userInfo.summary}
-                </Typography>
-              </div>
-              <div className="desiredTitle">
-                <Typography variant="subheading" gutterBottom>
-                  Desired Title - {userInfo.desiredTitle}
-                </Typography>
-              </div>
-              <div className="tagCloud">
-                <MapChips array={userInfo.topSkills} />
-              </div>
-            </div>
-          </div>
-          <div className="profileLinks">
-            <a href={userInfo.acclaimBadge}>
-              <img
-                src={lambdaColorImg}
-                className="profileLinksIcon"
-                title="Acclaimed Badge"
-                alt="Badge"
-              />
-            </a>
-            <a href={userInfo.github}>
-              <img
-                src={GitHubImg}
-                className="profileLinksIcon"
-                title="Github"
-                alt="Github Repo"
-              />
-            </a>
-            <a href={userInfo.linkedin}>
-              <img
-                src={linkedinImg}
-                className="profileLinksIcon"
-                title="Linkedin"
-                alt="Linkedin"
-              />
-            </a>
-            <a href={userInfo.portfolio}>
-              <img
-                src={portfolioImg}
-                className="profileLinksIcon"
-                title="Portfolio"
-                alt="Portfolio"
-              />
-            </a>
-          </div>
-        </div>
+        <Card>
+          <DevSnapshot
+            _id={userInfo._id} // eslint-disable-line no-underscore-dangle
+            fullName={fullName}
+            initials={initials}
+            img={userInfo.img}
+            location={userInfo.currentLocation}
+            summary={userInfo.summary}
+            title={userInfo.desiredTitle}
+            topSkills={userInfo.topSkills}
+            addSkills={userInfo.additionalSkills}
+            familiar={userInfo.familiarWith}
+          />
+          {/* <DevSocial /> */}
+        </Card>
         <br />
         <br />
         <br />
@@ -166,6 +116,7 @@ const DevProfile2 = ({ getGS }) => {
 };
 
 DevProfile2.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
   getGS: PropTypes.func.isRequired,
 };
 
