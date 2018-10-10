@@ -52,6 +52,9 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-end',
   },
+  filterHeader: {
+    marginTop: '60px',
+  },
 };
 
 const customSortStyles = {
@@ -500,11 +503,11 @@ class DevList extends Component {
                 margin: 'normal',
                 style: {
                   background: 'transparent',
-                  margin: '0 0 60px 0',
+                  margin: '0',
                 },
               }}
             />
-            <Typography variant="headline" gutterBottom>
+            <Typography className={classes.filterHeader} variant="headline" gutterBottom>
               Filter
             </Typography>
             <FilterToggle
