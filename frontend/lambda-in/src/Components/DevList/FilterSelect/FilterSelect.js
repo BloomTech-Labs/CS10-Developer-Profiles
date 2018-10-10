@@ -115,7 +115,7 @@ const optionComponent = (props) => {
 };
 
 const valueContainerComponent = (props) => {
-  const { selectProps, children } = props;
+  const { selectProps, children } = props; // eslint-disable-line react/prop-types
   return <div className={selectProps.classes.valueContainer}>{children}</div>;
 };
 
@@ -156,13 +156,21 @@ FilterSelect.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   filterName: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  options: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.strings),
+    PropTypes.shape({}),
+  ]).isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
+  val: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.strings),
+    PropTypes.shape({}),
+  ]),
 };
 
 FilterSelect.defaultProps = {
   placeholder: '',
+  val: '',
 };
 
 export default withStyles(styles)(FilterSelect);
