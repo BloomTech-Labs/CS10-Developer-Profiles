@@ -29,14 +29,20 @@ const getProjects = (maxProjects, firstName, lastName, blank) => {
   const projects = [];
 
   for (let i = 0; i < numProjects; i += 1) {
-    projects.push({
+    const img = getProjectImage(20);
+    const link = getProjectLink(60);
+    const repo = getProjectRepo(firstName, lastName, 10);
+    const project = {
       title: faker.lorem.words(getRandomInt(3, 5)),
       description: faker.lorem.sentences(getRandomInt(1, 10)),
-      img: getProjectImage(20),
-      link: getProjectLink(60),
-      repo: getProjectRepo(firstName, lastName, 10),
       tech: getTechStack(3, 5, 10),
-    });
+    };
+
+    if (img) project.img = img;
+    if (link) project.link = link;
+    if (repo) project.repo = repo;
+
+    projects.push(project);
   }
 
   return projects;
