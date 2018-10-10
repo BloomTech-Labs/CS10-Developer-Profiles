@@ -45,7 +45,8 @@ const ArraySection = (props) => {
               {// prettier-ignore
               propsAndLabels.map(propLabel => (
                 <div
-                  key={`${Math.random()}${Date.now()}`}
+                  // key={`${Math.random()}${Date.now()}`} UNABLE TO ADD 'KEY' - This line breaks
+                  // the nested <TextField/> input onChange functionality
                   className="arraysection-field--new inputFieldLargeMultiline"
                 >
                   <TextField
