@@ -13,6 +13,33 @@ import CancelIcon from '@material-ui/icons/Cancel';
 const styles = {};
 
 class FilterSelect extends Component {
+  static InputComponent({ inputRef, ...props }) {
+    return <div ref={inputRef} {...props} />;
+  }
+
+  static ControlComponent(props) {
+    const { InputComponent } = FilterSelect;
+    const {
+      selectProps, innerRef, children, innerProps,
+    } = props;
+
+    return (
+      <TextField
+        fullWidth
+        InputProps={{
+          InputComponent,
+          inputProps: {
+            className: selectProps.classes.input,
+            inputRef: innerRef,
+            children,
+            ...innerProps,
+          },
+        }}
+        {...selectProps.textFieldProps}
+      />
+    );
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,19 +53,29 @@ class FilterSelect extends Component {
   }
 
   render() {
-    const { classes, placeholder, options } = this.props;
+    const {
+      classes, placeholder, options, label,
+    } = this.props;
     const { val } = this.state;
 
     return (
-      <Select
-        placeholder={placeholder}
-        value={val}
-        className={classes.select}
-        options={options}
-        closeMenuOnSelect={false}
-        onChange={value => this.handleChange(value, 'val')}
-        isMulti
-      />
+      <div className={classes.root}>
+        <Select
+          classes={classes}
+          textFieldProps={{
+            label,
+            InputLabelProps: {
+              shrink: true,
+            },
+          }}
+          options={options}
+          components={{ Control: FilterSelect.ControlComponent }}
+          value={val}
+          onChange={value => this.handleChange(value, 'val')}
+          placeholder={placeholder}
+          isMulti
+        />
+      </div>
     );
   }
 }
