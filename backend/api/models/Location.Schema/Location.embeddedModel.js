@@ -20,9 +20,9 @@ const locationSchema = new Schema({
     type: String,
     required: [true, 'A location name is required'],
   },
-  location: geoJSONSchema,
+  geolocation: geoJSONSchema,
 });
 
-locationSchema.index({ location: '2dsphere' });
+locationSchema.index({ geolocation: '2dsphere' });
 
 module.exports = locationSchema;
