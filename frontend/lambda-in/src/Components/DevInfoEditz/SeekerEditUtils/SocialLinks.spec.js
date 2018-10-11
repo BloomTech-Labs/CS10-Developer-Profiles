@@ -6,6 +6,7 @@ import SocialLinks from './SocialLinks';
 import TestWrapper from '../../utilityComponents/TestWrapper/TestWrapper';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 import DropDown from '../../utilityComponents/DropDown/DropDown';
+import { DEV_TEST_DATA } from '../../testData';
 
 configure({ adapter: new Adapter() });
 
@@ -18,12 +19,7 @@ configure({ adapter: new Adapter() });
  * @see DropDown.spec.js for specific test related to its fucntionality.
  */
 describe('SocialLinks component', () => {
-  const userInfo = {
-    github: 'http://github.devprofiles',
-    linkedin: 'http://linkedin.devprofiles',
-    portfolio: 'http://portfolio.devprofiles',
-  };
-  const socialLinksComponent = <SocialLinks userInfo={userInfo} />;
+  const socialLinksComponent = <SocialLinks userInfo={DEV_TEST_DATA} />;
 
   it('should renders correctly', () => {
     const tree = renderer.create(socialLinksComponent);

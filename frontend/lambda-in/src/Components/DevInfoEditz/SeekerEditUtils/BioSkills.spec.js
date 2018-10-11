@@ -7,6 +7,7 @@ import TestWrapper from '../../utilityComponents/TestWrapper/TestWrapper';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 import DropDown from '../../utilityComponents/DropDown/DropDown';
 import MapChips from '../../utilityComponents/MapArrays/MapChips';
+import { DEV_TEST_DATA } from '../../testData';
 
 configure({ adapter: new Adapter() });
 
@@ -20,11 +21,7 @@ configure({ adapter: new Adapter() });
  * @see MapChips.spec.js for specific test related to its fucntionality.
  */
 describe('BioSkills component', () => {
-  const userInfo = {
-    summary: 'A nice personal and descriptive summary',
-    topSkills: ['JS', 'React', 'TDD', 'Full stack developer'],
-  };
-  const bioSkills = <BioSkills userInfo={userInfo} />;
+  const bioSkills = <BioSkills userInfo={DEV_TEST_DATA} />;
 
   it('should renders correctly', () => {
     const tree = renderer.create(bioSkills);

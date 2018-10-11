@@ -1,10 +1,11 @@
-import React from 'react';
 import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import React from 'react';
 import renderer from 'react-test-renderer';
-import BasicInfo from './BasicInfo';
-import TestWrapper from '../../utilityComponents/TestWrapper/TestWrapper';
+import { DEV_TEST_DATA } from '../../testData';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
+import TestWrapper from '../../utilityComponents/TestWrapper/TestWrapper';
+import BasicInfo from './BasicInfo';
 
 configure({ adapter: new Adapter() });
 
@@ -17,13 +18,7 @@ configure({ adapter: new Adapter() });
  * @todo Wire InputGeolocation.js component and test is rendering.
  */
 describe('BasicInfo component', () => {
-  const userInfo = {
-    firstName: 'Happy',
-    lastName: 'User',
-    desiredTitle: 'Software developer',
-    currentLocation: 'Madrid',
-  };
-  const basicInfo = <BasicInfo userInfo={userInfo} />;
+  const basicInfo = <BasicInfo userInfo={DEV_TEST_DATA} />;
 
   it('should renders correctly', () => {
     const tree = renderer.create(basicInfo);

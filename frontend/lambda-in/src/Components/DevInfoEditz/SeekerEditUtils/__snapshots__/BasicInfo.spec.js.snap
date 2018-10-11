@@ -67,7 +67,7 @@ exports[`BasicInfo component should renders correctly 1`] = `
               required={false}
               rows={undefined}
               type="text"
-              value="Happy"
+              value="Jean Surkouf"
             />
           </div>
         </div>
@@ -127,7 +127,7 @@ exports[`BasicInfo component should renders correctly 1`] = `
               required={false}
               rows={undefined}
               type="text"
-              value="User"
+              value="Ariza Varela"
             />
           </div>
         </div>
@@ -187,7 +187,7 @@ exports[`BasicInfo component should renders correctly 1`] = `
               required={false}
               rows={undefined}
               type="text"
-              value="Software developer"
+              value="Full Stack Software Developer"
             />
           </div>
         </div>
@@ -199,7 +199,7 @@ exports[`BasicInfo component should renders correctly 1`] = `
       <img
         alt="Italian "
         className="displayPic"
-        src="https://robohash.org/1Happy"
+        src="https://robohash.org/1Jean Surkouf"
       />
     </div>
   </div>

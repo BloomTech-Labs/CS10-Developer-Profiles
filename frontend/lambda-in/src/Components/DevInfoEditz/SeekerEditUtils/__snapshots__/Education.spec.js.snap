@@ -1186,7 +1186,7 @@ exports[`Education component should renders correctly 1`] = `
                                           readOnly={true}
                                           rows={1}
                                           tabIndex={-1}
-                                          value="2018/04/01"
+                                          value="2018-03-31T22:00:00.000Z"
                                         />
                                         <textarea
                                           aria-invalid={false}
@@ -1197,7 +1197,7 @@ exports[`Education component should renders correctly 1`] = `
                                           data-index={0}
                                           data-itemtype="object"
                                           data-property="startYear"
-                                          data-value="2018/04/01"
+                                          data-value="2018-03-31T22:00:00.000Z"
                                           defaultValue={undefined}
                                           disabled={false}
                                           id="edit-startYear"
@@ -1216,7 +1216,7 @@ exports[`Education component should renders correctly 1`] = `
                                               "height": 19,
                                             }
                                           }
-                                          value="2018/04/01"
+                                          value="2018-03-31T22:00:00.000Z"
                                         />
                                       </div>
                                     </div>
@@ -1276,7 +1276,7 @@ exports[`Education component should renders correctly 1`] = `
                                           readOnly={true}
                                           rows={1}
                                           tabIndex={-1}
-                                          value="2018/10/12"
+                                          value="2018-10-11T22:00:00.000Z"
                                         />
                                         <textarea
                                           aria-invalid={false}
@@ -1287,7 +1287,7 @@ exports[`Education component should renders correctly 1`] = `
                                           data-index={0}
                                           data-itemtype="object"
                                           data-property="endYear"
-                                          data-value="2018/10/12"
+                                          data-value="2018-10-11T22:00:00.000Z"
                                           defaultValue={undefined}
                                           disabled={false}
                                           id="edit-endYear"
@@ -1306,7 +1306,7 @@ exports[`Education component should renders correctly 1`] = `
                                               "height": 19,
                                             }
                                           }
-                                          value="2018/10/12"
+                                          value="2018-10-11T22:00:00.000Z"
                                         />
                                       </div>
                                     </div>
@@ -1854,7 +1854,7 @@ exports[`Education component should renders correctly 1`] = `
                                           readOnly={true}
                                           rows={1}
                                           tabIndex={-1}
-                                          value="2012/04/01"
+                                          value="2012-03-31T22:00:00.000Z"
                                         />
                                         <textarea
                                           aria-invalid={false}
@@ -1865,7 +1865,7 @@ exports[`Education component should renders correctly 1`] = `
                                           data-index={1}
                                           data-itemtype="object"
                                           data-property="startYear"
-                                          data-value="2012/04/01"
+                                          data-value="2012-03-31T22:00:00.000Z"
                                           defaultValue={undefined}
                                           disabled={false}
                                           id="edit-startYear"
@@ -1884,7 +1884,7 @@ exports[`Education component should renders correctly 1`] = `
                                               "height": 19,
                                             }
                                           }
-                                          value="2012/04/01"
+                                          value="2012-03-31T22:00:00.000Z"
                                         />
                                       </div>
                                     </div>
@@ -1944,7 +1944,7 @@ exports[`Education component should renders correctly 1`] = `
                                           readOnly={true}
                                           rows={1}
                                           tabIndex={-1}
-                                          value="2017/10/12"
+                                          value="2017-10-11T22:00:00.000Z"
                                         />
                                         <textarea
                                           aria-invalid={false}
@@ -1955,7 +1955,7 @@ exports[`Education component should renders correctly 1`] = `
                                           data-index={1}
                                           data-itemtype="object"
                                           data-property="endYear"
-                                          data-value="2017/10/12"
+                                          data-value="2017-10-11T22:00:00.000Z"
                                           defaultValue={undefined}
                                           disabled={false}
                                           id="edit-endYear"
@@ -1974,7 +1974,7 @@ exports[`Education component should renders correctly 1`] = `
                                               "height": 19,
                                             }
                                           }
-                                          value="2017/10/12"
+                                          value="2017-10-11T22:00:00.000Z"
                                         />
                                       </div>
                                     </div>

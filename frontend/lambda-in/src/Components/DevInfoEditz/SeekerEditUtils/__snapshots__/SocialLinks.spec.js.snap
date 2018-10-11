@@ -145,7 +145,7 @@ exports[`SocialLinks component should renders correctly 1`] = `
                         required={false}
                         rows={undefined}
                         type="text"
-                        value="http://github.devprofiles"
+                        value="https://github.com/talent_developer"
                       />
                     </div>
                   </div>
@@ -205,7 +205,7 @@ exports[`SocialLinks component should renders correctly 1`] = `
                         required={false}
                         rows={undefined}
                         type="text"
-                        value="http://linkedin.devprofiles"
+                        value="Linkedin/talent_developer"
                       />
                     </div>
                   </div>
@@ -265,7 +265,7 @@ exports[`SocialLinks component should renders correctly 1`] = `
                         required={false}
                         rows={undefined}
                         type="text"
-                        value="http://portfolio.devprofiles"
+                        value="portfolio.talent_developer"
                       />
                     </div>
                   </div>

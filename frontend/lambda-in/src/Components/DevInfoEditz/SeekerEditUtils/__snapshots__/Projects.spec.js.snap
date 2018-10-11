@@ -917,7 +917,7 @@ exports[`Projects component should renders correctly 1`] = `
                                           readOnly={true}
                                           rows={1}
                                           tabIndex={-1}
-                                          value="A meeting places for employers and talent developers"
+                                          value="A meeting place for employers and talent developers"
                                         />
                                         <textarea
                                           aria-invalid={false}
@@ -928,7 +928,7 @@ exports[`Projects component should renders correctly 1`] = `
                                           data-index={0}
                                           data-itemtype="object"
                                           data-property="description"
-                                          data-value="A meeting places for employers and talent developers"
+                                          data-value="A meeting place for employers and talent developers"
                                           defaultValue={undefined}
                                           disabled={false}
                                           id="edit-description"
@@ -947,7 +947,7 @@ exports[`Projects component should renders correctly 1`] = `
                                               "height": 19,
                                             }
                                           }
-                                          value="A meeting places for employers and talent developers"
+                                          value="A meeting place for employers and talent developers"
                                         />
                                       </div>
                                     </div>

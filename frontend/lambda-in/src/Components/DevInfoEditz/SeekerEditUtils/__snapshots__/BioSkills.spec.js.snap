@@ -144,7 +144,7 @@ exports[`BioSkills component should renders correctly 1`] = `
                           readOnly={true}
                           rows={1}
                           tabIndex={-1}
-                          value="A nice personal and descriptive summary"
+                          value="CS and Software development passionate."
                         />
                         <textarea
                           aria-invalid={false}
@@ -169,7 +169,7 @@ exports[`BioSkills component should renders correctly 1`] = `
                               "height": 19,
                             }
                           }
-                          value="A nice personal and descriptive summary"
+                          value="CS and Software development passionate."
                         />
                       </div>
                     </div>
@@ -239,7 +239,7 @@ exports[`BioSkills component should renders correctly 1`] = `
                           data-chips={true}
                           data-field="topSkills"
                           data-itemtype="string"
-                          data-value="JS-React-TDD-Full stack developer"
+                          data-value="React-TDD-LESS-CS-HTML-HAPPY_CODING"
                           defaultValue={undefined}
                           disabled={false}
                           id="edit-topSkills_edit"
@@ -270,45 +270,7 @@ exports[`BioSkills component should renders correctly 1`] = `
                   <div>
                     <div
                       className="MuiChip-root-246 MuiChip-deletable-252"
-                      id="0$JS"
-                      onClick={undefined}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      role="button"
-                      tabIndex={0}
-                    >
-                      <span
-                        className="MuiChip-label-265"
-                      >
-                        JS
-                      </span>
-                      <svg
-                        aria-hidden="true"
-                        className="MuiSvgIcon-root-271 MuiChip-deleteIcon-266"
-                        color={undefined}
-                        focusable="false"
-                        onClick={[Function]}
-                        role="presentation"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M0 0h24v24H0V0z"
-                          fill="none"
-                        />
-                        <path
-                          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
-                        />
-                        <path
-                          d="M0 0h24v24H0z"
-                          fill="none"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      className="MuiChip-root-246 MuiChip-deletable-252"
-                      id="1$React"
+                      id="0$React"
                       onClick={undefined}
                       onKeyDown={[Function]}
                       onKeyUp={[Function]}
@@ -346,7 +308,7 @@ exports[`BioSkills component should renders correctly 1`] = `
                   <div>
                     <div
                       className="MuiChip-root-246 MuiChip-deletable-252"
-                      id="2$TDD"
+                      id="1$TDD"
                       onClick={undefined}
                       onKeyDown={[Function]}
                       onKeyUp={[Function]}
@@ -384,7 +346,7 @@ exports[`BioSkills component should renders correctly 1`] = `
                   <div>
                     <div
                       className="MuiChip-root-246 MuiChip-deletable-252"
-                      id="3$Full stack developer"
+                      id="2$LESS"
                       onClick={undefined}
                       onKeyDown={[Function]}
                       onKeyUp={[Function]}
@@ -394,7 +356,121 @@ exports[`BioSkills component should renders correctly 1`] = `
                       <span
                         className="MuiChip-label-265"
                       >
-                        Full stack developer
+                        LESS
+                      </span>
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-271 MuiChip-deleteIcon-266"
+                        color={undefined}
+                        focusable="false"
+                        onClick={[Function]}
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M0 0h24v24H0V0z"
+                          fill="none"
+                        />
+                        <path
+                          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                        />
+                        <path
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="MuiChip-root-246 MuiChip-deletable-252"
+                      id="3$CS"
+                      onClick={undefined}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <span
+                        className="MuiChip-label-265"
+                      >
+                        CS
+                      </span>
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-271 MuiChip-deleteIcon-266"
+                        color={undefined}
+                        focusable="false"
+                        onClick={[Function]}
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M0 0h24v24H0V0z"
+                          fill="none"
+                        />
+                        <path
+                          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                        />
+                        <path
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="MuiChip-root-246 MuiChip-deletable-252"
+                      id="4$HTML"
+                      onClick={undefined}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <span
+                        className="MuiChip-label-265"
+                      >
+                        HTML
+                      </span>
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-271 MuiChip-deleteIcon-266"
+                        color={undefined}
+                        focusable="false"
+                        onClick={[Function]}
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M0 0h24v24H0V0z"
+                          fill="none"
+                        />
+                        <path
+                          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                        />
+                        <path
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="MuiChip-root-246 MuiChip-deletable-252"
+                      id="5$HAPPY_CODING"
+                      onClick={undefined}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <span
+                        className="MuiChip-label-265"
+                      >
+                        HAPPY_CODING
                       </span>
                       <svg
                         aria-hidden="true"

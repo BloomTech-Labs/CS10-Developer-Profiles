@@ -5,6 +5,7 @@ import renderer from 'react-test-renderer';
 import TestWrapper from '../../utilityComponents/TestWrapper/TestWrapper';
 import Experience from './Experience';
 import ArraySection from '../../utilityComponents/ArraySection/ArraySection';
+import { DEV_TEST_DATA } from '../../testData';
 
 configure({ adapter: new Adapter() });
 
@@ -16,44 +17,7 @@ configure({ adapter: new Adapter() });
  * @see ArraySection.spec.js for specific test related to its fucntionality.
  */
 describe('Experience component', () => {
-  const userInfo = {
-    experience: [
-      {
-        title: 'LCAI',
-        company: 'UAM research group',
-        location: {
-          loc: {
-            coordinates: ['-0.666', '-66.666'],
-            type: 'Point',
-          },
-          _id: '5bb748545cdfe308de503a2b',
-          place: 'Madrid',
-        },
-        headline: 'Wedsite for an research group.',
-        description:
-          'A dynamic website with no know CRM and Backend hosted in google Spreadsheet.',
-        startYear: '2018-09-27T19:10:21.809Z',
-        endYear: '2018-09-27T19:10:21.809Z',
-      },
-      {
-        title: 'Developer profiles',
-        company: 'Lambda',
-        location: {
-          loc: {
-            coordinates: ['10.666', '43.666'],
-            type: 'Point',
-          },
-          _id: '5bb748545cdfe308de503a29',
-          place: 'Califormia',
-        },
-        headline: 'Meeting point for employers looking for talent developers.',
-        description: 'A place to match employer needs with a talent developer',
-        startYear: '2018-09-27T19:10:21.809Z',
-        endYear: '2018-10-12T19:10:21.809Z',
-      },
-    ],
-  };
-  const experienceComponent = <Experience userInfo={userInfo} />;
+  const experienceComponent = <Experience userInfo={DEV_TEST_DATA} />;
 
   it('should renders correctly', () => {
     const tree = renderer.create(experienceComponent);
