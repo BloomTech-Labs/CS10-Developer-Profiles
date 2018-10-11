@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 
-const styles = {};
+const styles = {
+  imageAvatar: {
+    height: '100px',
+    width: '100px',
+  },
+};
 
 /**
  * Given a name and an image, return a Material UI Avatar component formatted as an image.

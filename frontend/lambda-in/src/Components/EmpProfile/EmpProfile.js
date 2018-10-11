@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -26,12 +27,13 @@ const theme = createMuiTheme({
 
 export default ({ getGS, setGS }) => {
   const userInfo = getGS('userInfo');
+  const userType = getGS('userType');
   const positions = userInfo.openPositions;
 
   return (
     <div className="container">
       <div className="body">
-        <Paper class="paper">
+        <Paper className="paper">
           <Typography variant="display1" gutterBottom align="center">
             Open Positions
           </Typography>
@@ -53,20 +55,26 @@ export default ({ getGS, setGS }) => {
               </Button>
             </MuiThemeProvider>
           </div>
-          <div class="cards">
+          <div className="cards">
             <ul>
               {positions.map((pos) => {
                 return (
-                  <EmpCard
-                    getGS={getGS}
-                    setGS={setGS}
-                    posId={pos._id}
-                    projectName={pos.projectName}
-                    description={pos.description}
-                    jobTitle={pos.jobTitle}
-                    minSalary={pos.minSalary}
-                    maxSalary={pos.maxSalary}
-                  />
+                  <Card
+                    data-aos="flip-up"
+                    data-aos-offset="300"
+                    data-aos-easing="ease-in-sine"
+                  >
+                    <EmpCard
+                      getGS={getGS}
+                      setGS={setGS}
+                      posId={pos._id}
+                      projectName={pos.projectName}
+                      description={pos.description}
+                      jobTitle={pos.jobTitle}
+                      minSalary={pos.minSalary}
+                      maxSalary={pos.maxSalary}
+                    />
+                  </Card>
                 );
               })}
             </ul>

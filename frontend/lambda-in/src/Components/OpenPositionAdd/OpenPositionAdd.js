@@ -112,9 +112,12 @@ export default class OpenPositionAdd extends Component {
 
     return (
       <div data-aos="zoom-in-down" className="addContainer">
-        <Paper className="paperContainer" elevation={1}>
+        <Paper className="paperEmployerContainer">
           <Typography variant="display1" gutterBottom align="center">
-            Add Open Position
+            Add Position
+          </Typography>
+          <Typography variant="headline" gutterBottom align="center">
+            Add Available Positions
           </Typography>
           <br />
           <div className="inputRow">
@@ -180,32 +183,32 @@ export default class OpenPositionAdd extends Component {
               margin="normal"
               fullWidth="true"
             />
-            <div className="buttons">
-              <MuiThemeProvider theme={theme}>
-                <div>
-                  <Button
-                    className="submitButton"
-                    variant="contained"
-                    color="primary"
-                    onClick={this.handleNewPos}
-                  >
-                    {' '}
-                    Submit
-                  </Button>
-                </div>
+            <div className="addPosButtons">
+            <MuiThemeProvider theme={theme}>
+            <div>
+              <Button
+                className="submitButton"
+                variant="contained"
+                color="primary"
+                onClick={this.handleNewPos}
+              >
+                {' '}
+                Submit
+              </Button>
+              </div>
 
-                <div>
-                  <Button
-                    className="backPropButton"
-                    component={Link}
-                    to="/emp-profile"
-                    variant="contained"
-                    color="secondary"
-                  >
-                    {' '}
-                    Back to Profile
-                  </Button>
-                </div>
+              <div>
+              <Button
+                  className="backPropButton"
+                  component={Link}
+                  to="/emp-profile"
+                  variant="contained"
+                  color="secondary"
+              >
+                {' '}
+                Back to Profile
+              </Button>
+              </div>
               </MuiThemeProvider>
             </div>
           </div>
