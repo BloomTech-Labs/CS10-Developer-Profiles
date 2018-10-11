@@ -100,4 +100,4 @@ for (let i = 0; i < avatars.length; i += 1) {
   seekers.push(getSeeker(avatars[i]));
 }
 
-generateJSONFile('./Seekers.json', seekers);
+generateJSONFile('./api/dataGenerator/data/Seekers.json', seekers);
