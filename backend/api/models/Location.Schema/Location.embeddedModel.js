@@ -13,7 +13,6 @@ const geoJSONSchema = new Schema({
     type: [Number],
     required: [true, 'Coordinates are required as [longitude, latitude].'],
   },
-  index: '2dsphere',
 });
 
 const locationSchema = new Schema({
@@ -23,5 +22,7 @@ const locationSchema = new Schema({
   },
   location: geoJSONSchema,
 });
+
+locationSchema.index({ location: '2dsphere' });
 
 module.exports = locationSchema;
