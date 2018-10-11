@@ -30,7 +30,6 @@ class DevInfoEdit extends Component {
     };
     this.handleOnDeleteItem = this.handleOnDeleteItem.bind(this);
     this.handleCreateItem = this.handleCreateItem.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.setFormState = this.setFormState.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
     this.update = this.update.bind(this);
@@ -48,14 +47,14 @@ class DevInfoEdit extends Component {
      * Listen for MapChip's custom event emmited when a item is deleted.
      */
     document.addEventListener('onDeleteItem', this.handleOnDeleteItem);
-
+    /**
+     * Listen for a custom event emmited when a item is created.
+     */
     document.addEventListener('onCreateItem', this.handleCreateItem);
   }
 
   componentWillUnmount() {
-    // eslint-disable-next-line react/no-find-dom-node
     document.removeEventListener('onDeleteItem', () => null);
-    // eslint-disable-next-line react/no-find-dom-node
     document.removeEventListener('onCreateItem', () => null);
   }
 
@@ -71,14 +70,6 @@ class DevInfoEdit extends Component {
    */
   setFormState(properties) {
     this.setState(properties);
-  }
-
-  /**
-   * Sync local state with input field.
-   */
-  handleChange(event) {
-    event.stopPropagation();
-    this.setState({ [event.target.id]: event.target.value });
   }
 
   updateArray(dataset) {
@@ -270,7 +261,7 @@ class DevInfoEdit extends Component {
             Lambda Network
           </Typography>
           <br />
-          <form onChange={this.handleChange}>
+          <form>
             <div className="inputRow">
               <div>
                 <Button
