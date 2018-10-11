@@ -310,6 +310,7 @@ const usCities = [
   { place: 'Honolulu, HI, USA', geolocation: { coordinates: [21.30694, -157.85833] } },
   { place: 'Anchorage, AK, USA', geolocation: { coordinates: [61.21806, -149.90028] } },
 ];
+
 const getCity = (blank) => {
   const rand = Math.random();
 
