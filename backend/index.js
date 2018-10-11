@@ -8,7 +8,7 @@ const { PORT, MONGODB_URI } = process.env;
 mongoose
   .connect(
     MONGODB_URI,
-    { useNewUrlParser: true },
+    { useNewUrlParser: true, useCreateIndex: true },
   )
   .then(() => {
     // eslint-disable-next-line no-console
