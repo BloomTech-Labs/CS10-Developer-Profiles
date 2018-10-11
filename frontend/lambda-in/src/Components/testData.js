@@ -24,19 +24,15 @@ export const DEV_TEST_DATA = {
   portfolio: 'portfolio.talent_developer',
   placesInterested: [
     {
-      loc: {
-        coordinates: ['65.98', '-55.666'],
-        type: 'Point',
-      },
-      _id: '5ba39769cc47111861ac5574',
+      _id: '5bbf84f72553bf278fda8612',
+      lat: 65.98,
+      lng: -55.666,
       place: 'Califirnia',
     },
     {
-      loc: {
-        coordinates: ['-0.666', '-66.666'],
-        type: 'Point',
-      },
-      _id: '5ba39769cc47111861ac5573',
+      _id: '5bbf84f72553bf278fda8611',
+      lat: -0.666,
+      lng: -66.666,
       place: 'Canada',
     },
   ],
@@ -67,11 +63,9 @@ export const DEV_TEST_DATA = {
       title: 'LCAI',
       company: 'UAM research group',
       location: {
-        loc: {
-          coordinates: ['-0.666', '-66.666'],
-          type: 'Point',
-        },
-        _id: '5bb748545cdfe308de503a2b',
+        _id: '5bbf84f72553bf278fda8618',
+        lat: -0.666,
+        lng: -66.666,
         place: 'Madrid',
       },
       headline: 'Wedsite for an research group.',
@@ -85,11 +79,9 @@ export const DEV_TEST_DATA = {
       title: 'Developer profiles',
       company: 'Lambda',
       location: {
-        loc: {
-          coordinates: ['10.666', '43.666'],
-          type: 'Point',
-        },
-        _id: '5bb748545cdfe308de503a29',
+        _id: '5bbf84f72553bf278fda8616',
+        lat: 10.666,
+        lng: 43.666,
         place: 'Califormia',
       },
       headline: 'Meeting point for employers looking for talent developers.',
