@@ -43,7 +43,8 @@ const MapDropDown = (props) => {
               {// prettier-ignore
               propsAndLabels.map(propLabel => (
                 <div
-                  key={`${Date.now()}${Math.random()}`}
+                  // key={`${Math.random()}${Date.now()}`} UNABLE TO ADD 'KEY' - This line breaks
+                  // the nested <TextField/> input onChange functionality
                   className="inputFieldLargeMultiline"
                 >
                   <TextField
