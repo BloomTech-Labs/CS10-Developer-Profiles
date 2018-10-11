@@ -4,8 +4,6 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-// import './DevInfoEditz.css';
 import BasicInfo from './SeekerEditUtils/BasicInfo';
 import BioSkills from './SeekerEditUtils/BioSkills';
 import Education from './SeekerEditUtils/Education';
@@ -30,7 +28,6 @@ class DevInfoEdit extends Component {
     };
     this.handleOnDeleteItem = this.handleOnDeleteItem.bind(this);
     this.handleCreateItem = this.handleCreateItem.bind(this);
-    this.setFormState = this.setFormState.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
     this.update = this.update.bind(this);
   }
@@ -56,20 +53,6 @@ class DevInfoEdit extends Component {
   componentWillUnmount() {
     document.removeEventListener('onDeleteItem', () => null);
     document.removeEventListener('onCreateItem', () => null);
-  }
-
-  /**
-   * Update local state.
-   *
-   * @method setFormState
-   * @param {object} properties - Properties to be set. { property: value }
-   * @return {void}
-   *
-   * @example Pass as a prop to component.
-   * <Component setLS={this.setFormState} />
-   */
-  setFormState(properties) {
-    this.setState(properties);
   }
 
   updateArray(dataset) {
