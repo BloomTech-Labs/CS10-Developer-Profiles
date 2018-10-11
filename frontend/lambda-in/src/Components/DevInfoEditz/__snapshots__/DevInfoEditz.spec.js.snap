@@ -13,9 +13,7 @@ exports[`DevInfoEditz component Renders correctly should renders correctly 1`] =
       Lambda Network
     </h1>
     <br />
-    <form
-      onChange={[Function]}
-    >
+    <form>
       <div
         className="inputRow"
       >
