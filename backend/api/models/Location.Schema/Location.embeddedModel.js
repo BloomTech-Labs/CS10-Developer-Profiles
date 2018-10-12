@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const geoJSONSchema = new Schema({
-  type: {
+  // eslint-disable-next-line quote-props
+  'type': {
     type: String,
     required: [true, 'A GeoJSON object type must be declared.'],
     enum: ['Point'],
@@ -22,7 +23,5 @@ const locationSchema = new Schema({
   },
   geolocation: geoJSONSchema,
 });
-
-locationSchema.index({ geolocation: '2dsphere' });
 
 module.exports = locationSchema;
