@@ -15,9 +15,11 @@ exports[`DevInfoEditz component Renders correctly should renders correctly 1`] =
     <br />
     <form>
       <div
-        className="inputRow"
+        className="inputRow "
       >
-        <div>
+        <div
+          className="confirm-changes"
+        >
           <button
             align="center"
             className="MuiButtonBase-root-80 MuiButton-root-54 MuiButton-text-56 MuiButton-textPrimary-57 MuiButton-outlined-62 MuiButton-outlinedPrimary-63"

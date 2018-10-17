@@ -26,6 +26,7 @@ class DevInfoEdit extends Component {
     this.state = {
       ready: false,
     };
+    this.onBlurState = ''; // 'ignored' || 'processing' || 'processed'
     this.handleOnDeleteItem = this.handleOnDeleteItem.bind(this);
     this.handleCreateItem = this.handleCreateItem.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
@@ -92,34 +93,42 @@ class DevInfoEdit extends Component {
    * Update local copy of user state
    */
   handleOnBlur(e) {
+    this.onBlurState = 'processing';
+
     const { id } = e.target;
     const details = id.split('-'); // 'id' came in the following format: 'new-email' || 'edit-email'
+    const field = e.target.dataset.field ? e.target.dataset.field : details[1];
 
-    const field = e.target.dataset.field || details[1];
+    if (field) {
+      if (details[0] === 'edit') {
+        this.onBlurState = 'processing 0';
+        const dataset = { ...e.target.dataset };
+        const value = dataset.value || e.target.value;
 
-    if (details[0] !== 'new' && field) {
-      const dataset = { ...e.target.dataset };
-      const value = dataset.value || e.target.value;
+        const typeOfField = Object.prototype.toString.call(
+          this.userStateCopy[field],
+        );
 
-      const typeOfField = Object.prototype.toString.call(
-        this.userStateCopy[field],
-      );
-
-      switch (typeOfField) {
-        case '[object Object]':
-          // this.updateObj(e);
-          break;
-        case '[object Array]':
-          this.updateArray(dataset);
-          break;
-        default:
-          // '[object String]' || '[object Number]' || '[object Boolean]'
-          this.userStateCopy[field] = value;
+        switch (typeOfField) {
+          case '[object Object]':
+            // this.updateObj(e);
+            break;
+          case '[object Array]':
+            this.updateArray(dataset);
+            this.onBlurState = 'processed 1';
+            break;
+          default:
+            // '[object String]' || '[object Number]' || '[object Boolean]'
+            this.userStateCopy[field] = value;
+            this.onBlurState = 'processed 2';
+        }
       }
+      this.onBlurState = 'ignored';
     } else {
       /**
        * @todo improve UX with some type of error message.
        */
+      this.onBlurState = 'ignored';
     }
   }
 
@@ -245,8 +254,8 @@ class DevInfoEdit extends Component {
           </Typography>
           <br />
           <form>
-            <div className="inputRow">
-              <div>
+            <div className="inputRow ">
+              <div className="confirm-changes">
                 <Button
                   variant="outlined"
                   color="primary"
