@@ -165,11 +165,15 @@ class DevList extends Component {
       currentPage: DevList.getCurrentPage(),
       seekers: [],
       place: '',
-      lat: null,
-      lng: null,
+      placeLat: null,
+      placeLng: null,
+      miles: '',
+      locationLat: null,
+      locationLng: null,
     });
 
     this.handleLocationSelect = this.handleLocationSelect.bind(this);
+    this.handleInput = this.handleInput.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
     this.handleSwitchEnable = this.handleSwitchEnable.bind(this);
@@ -365,6 +369,15 @@ class DevList extends Component {
     });
   }
 
+  setGeoNearQuery(miles) {
+    const { locationLat, locationLng } = this.state;
+
+    if (locationLat && locationLng && miles !== '') {
+      const newQuery = `${this.cleanQuery('location')}&location=${locationLng}|${locationLat}|${miles}`;
+      this.setQuery(newQuery);
+    }
+  }
+
   /**
    * Given a parameter, return the query on state with the parameter removed.
    *
@@ -383,12 +396,20 @@ class DevList extends Component {
     return cleanedQuery === '' ? 'page=1' : cleanedQuery;
   }
 
-  handleLocationSelect(place, lat, lng) {
+  handleLocationSelect(place, placeLat, placeLng) {
     const valStr = `&places=${place.replace(/ /g, '+')}`;
     const newQuery = `${this.cleanQuery('places')}${place.length !== 0 ? valStr : ''}`;
 
     this.setQuery(newQuery);
-    this.setState({ place, lat, lng });
+    this.setState({ place, placeLat, placeLng });
+  }
+
+  handleInput(event) {
+    const { name, value } = event.target;
+
+    if (name === 'miles') this.setGeoNearQuery(value);
+
+    this.setState({ [name]: value }); // update miles
   }
 
   /**
@@ -546,6 +567,8 @@ class DevList extends Component {
                     </InputAdornment>
                   ),
                   classes: { input: classes.locatedWithinInput },
+                  name: 'miles',
+                  onChange: this.handleInput,
                 }}
                 InputLabelProps={{
                   shrink: true,
