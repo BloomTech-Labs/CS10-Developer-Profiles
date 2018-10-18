@@ -24,6 +24,4 @@ const locationSchema = new Schema({
   geolocation: geoJSONSchema,
 });
 
-locationSchema.index({ geolocation: '2dsphere' });
-
 module.exports = locationSchema;
