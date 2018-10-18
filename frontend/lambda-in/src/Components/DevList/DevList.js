@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import AOS from 'aos';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Select from 'react-select';
 import makeAnimated from 'react-select/lib/animated';
@@ -44,6 +47,37 @@ const sortSelectOptions = sortOptions.map(option => ({
 }));
 
 const styles = {
+  adornment: {
+    color: '#808080',
+    fontSize: '12px',
+    fontWeight: 'lighter',
+  },
+  filterHeader: {
+    marginTop: '60px',
+  },
+  label: {
+    color: '#333',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+  },
+  locatedWithin: {
+    alignItems: 'flex-end',
+    display: 'flex',
+    margin: '40px 0',
+  },
+  locatedWithinInput: {
+    fontSize: '12px',
+    fontWeight: 'lighter',
+    padding: '10px 0',
+    textAlign: 'center',
+  },
+  locatedWithinSeperator: {
+    margin: '12px 10px',
+  },
+  locatedWithinTextField: {
+    margin: '0',
+    width: '125px',
+  },
   mainContainer: {
     backgroundColor: '#f8f9fa',
     padding: '0 30px',
@@ -51,9 +85,6 @@ const styles = {
   sort: {
     display: 'flex',
     justifyContent: 'flex-end',
-  },
-  filterHeader: {
-    marginTop: '60px',
   },
 };
 
@@ -493,6 +524,52 @@ class DevList extends Component {
               val={familiar}
               onChange={this.handleSelect}
             />
+            <div className={classes.locatedWithin}>
+              <TextField
+                className={classes.locatedWithinTextField}
+                label="Located"
+                margin="normal"
+                variant="standard"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment
+                      disableTypography
+                      className={classes.adornment}
+                      position="start"
+                    >
+                      Within
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment disableTypography className={classes.adornment} position="end">
+                      Miles
+                    </InputAdornment>
+                  ),
+                  classes: { input: classes.locatedWithinInput },
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                  className: classes.label,
+                }}
+              />
+              <Typography
+                variant="caption"
+                className={classNames(classes.label, classes.locatedWithinSeperator)}
+              >
+                of
+              </Typography>
+              <InputGeolocation
+                textFieldProps={{
+                  label: '',
+                  fullWidth: true,
+                  margin: 'normal',
+                  style: {
+                    background: 'transparent',
+                    margin: '0',
+                  },
+                }}
+              />
+            </div>
             <InputGeolocation
               talkToParentState={this.handleLocationSelect}
               googleCallback="initPlacesInterested"
