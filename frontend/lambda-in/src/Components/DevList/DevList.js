@@ -559,6 +559,7 @@ class DevList extends Component {
                 of
               </Typography>
               <InputGeolocation
+                googleCallback="initLocatedWithin"
                 textFieldProps={{
                   label: '',
                   fullWidth: true,
