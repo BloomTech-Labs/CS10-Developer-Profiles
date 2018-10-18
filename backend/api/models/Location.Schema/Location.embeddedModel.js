@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const geoJSONSchema = new Schema({
   // eslint-disable-next-line quote-props
-  type: {
+  'type': {
     type: String,
     required: [true, 'A GeoJSON object type must be declared.'],
     enum: ['Point'],
