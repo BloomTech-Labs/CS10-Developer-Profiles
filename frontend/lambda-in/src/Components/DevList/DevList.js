@@ -371,6 +371,16 @@ class DevList extends Component {
     });
   }
 
+  /**
+   * Given miles, a location, latitude, and longitude, create a new query to search for records
+   * within the given distance of the given location. If miles or location are not set, ensure the
+   * location parameter is not included in the new query.
+   *
+   * @param {String} miles - Max distance from location to include in search.
+   * @param {String} location - Location to search for.
+   * @param {String} lat - Latitude coordinate for location
+   * @param {String} lng - Longitude coordinate for location.
+   */
   setGeoNearQuery(miles, location, lat, lng) {
     const valStr = `&location=${lng}|${lat}|${miles}`;
     const newQuery = `${this.cleanQuery('location')}${
@@ -398,6 +408,15 @@ class DevList extends Component {
     return cleanedQuery === '' ? 'page=1' : cleanedQuery;
   }
 
+  /**
+   * Talk to parent state handler for the 'Located Within' InputGeolocation component. Brings the
+   * state for location, latitude, and longitude back from the InputGeolocation component and uses
+   * the data to update the search query and state.
+   *
+   * @param {String} location - Location returned from InputGeolocation.
+   * @param {String} locationLat - Latitude coordinate returned from InputGeolocation.
+   * @param {String} locationLng - Longitude coordinate returned from InputGeolocation.
+   */
   handleGeoNearSelect(location, locationLat, locationLng) {
     const { miles } = this.state;
 
@@ -405,6 +424,15 @@ class DevList extends Component {
     this.setState({ location, locationLat, locationLng });
   }
 
+  /**
+   * Talk to parent state handler for the 'Willing to Relocate' InputGeolocation component. Brings
+   * the state for place, latitude, and longitude back from the InputGeolocation component and uses
+   * the data to update the search query and state.
+   *
+   * @param {String} place - Location returned from InputGeolocation.
+   * @param {String} placeLat - Latitude coordinate returned from InputGeolocation.
+   * @param {String} placeLng - Longitude coordinate returned from InputGeolocation.
+   */
   handleLocationSelect(place, placeLat, placeLng) {
     const valStr = `&places=${place.replace(/ /g, '+')}`;
     const newQuery = `${this.cleanQuery('places')}${place.length !== 0 ? valStr : ''}`;
@@ -413,6 +441,13 @@ class DevList extends Component {
     this.setState({ place, placeLat, placeLng });
   }
 
+  /**
+   * On Change event handler for inputs. Given the input element name and value, update the state
+   * with the new value. If the input element is the miles input, call setGeoNearQuery before updating
+   * the state.
+   *
+   * @param {Event} event - Event object for change event.
+   */
   handleInput(event) {
     const { name, value } = event.target;
     const { location, locationLat, locationLng } = this.state;
