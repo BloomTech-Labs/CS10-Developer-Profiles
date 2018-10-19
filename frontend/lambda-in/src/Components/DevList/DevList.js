@@ -443,8 +443,8 @@ class DevList extends Component {
 
   /**
    * On Change event handler for inputs. Given the input element name and value, update the state
-   * with the new value. If the input element is the miles input, call setGeoNearQuery before updating
-   * the state.
+   * with the new value. If the input element is the miles input, call setGeoNearQuery before
+   * updating the state.
    *
    * @param {Event} event - Event object for change event.
    */
