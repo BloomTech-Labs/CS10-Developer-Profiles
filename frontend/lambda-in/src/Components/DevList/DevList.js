@@ -168,10 +168,12 @@ class DevList extends Component {
       placeLat: null,
       placeLng: null,
       miles: '',
+      location: '',
       locationLat: null,
       locationLng: null,
     });
 
+    this.handleGeoNearSelect = this.handleGeoNearSelect.bind(this);
     this.handleLocationSelect = this.handleLocationSelect.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
@@ -369,13 +371,13 @@ class DevList extends Component {
     });
   }
 
-  setGeoNearQuery(miles) {
-    const { locationLat, locationLng } = this.state;
+  setGeoNearQuery(miles, location, lat, lng) {
+    const valStr = `&location=${lng}|${lat}|${miles}`;
+    const newQuery = `${this.cleanQuery('location')}${
+      location !== '' && miles !== '' ? valStr : ''
+    }`;
 
-    if (locationLat && locationLng && miles !== '') {
-      const newQuery = `${this.cleanQuery('location')}&location=${locationLng}|${locationLat}|${miles}`;
-      this.setQuery(newQuery);
-    }
+    this.setQuery(newQuery);
   }
 
   /**
@@ -389,11 +391,18 @@ class DevList extends Component {
   cleanQuery(param) {
     const { query } = this.state;
     const regEx = new RegExp(
-      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[,A-z|+.-]+|&${param}=[,A-z|+.-]+`,
+      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[,A-z0-9|+.-]+|&${param}=[,A-z0-9|+.-]+`,
       'i',
     );
     const cleanedQuery = query.replace(regEx, '');
     return cleanedQuery === '' ? 'page=1' : cleanedQuery;
+  }
+
+  handleGeoNearSelect(location, locationLat, locationLng) {
+    const { miles } = this.state;
+
+    this.setGeoNearQuery(miles, location, locationLat, locationLng);
+    this.setState({ location, locationLat, locationLng });
   }
 
   handleLocationSelect(place, placeLat, placeLng) {
@@ -406,10 +415,11 @@ class DevList extends Component {
 
   handleInput(event) {
     const { name, value } = event.target;
+    const { location, locationLat, locationLng } = this.state;
 
-    if (name === 'miles') this.setGeoNearQuery(value);
+    if (name === 'miles') this.setGeoNearQuery(value, location, locationLat, locationLng);
 
-    this.setState({ [name]: value }); // update miles
+    this.setState({ [name]: value });
   }
 
   /**
@@ -582,6 +592,7 @@ class DevList extends Component {
                 of
               </Typography>
               <InputGeolocation
+                talkToParentState={this.handleGeoNearSelect}
                 googleCallback="initLocatedWithin"
                 textFieldProps={{
                   label: '',
