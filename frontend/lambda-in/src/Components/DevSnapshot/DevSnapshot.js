@@ -99,8 +99,9 @@ DevSnapshot.propTypes = {
   initials: PropTypes.string.isRequired,
   location: PropTypes.shape({
     place: PropTypes.string.isRequired,
-    lat: PropTypes.number.isRequired,
-    lng: PropTypes.number.isRequired,
+    geolocation: PropTypes.shape({
+      coordinates: PropTypes.arrayOf(PropTypes.number),
+    }).isRequired,
   }),
   summary: PropTypes.string,
   title: PropTypes.string,

@@ -88,8 +88,9 @@ DevProfileCard.propTypes = {
     lastName: PropTypes.string.isRequired,
     currentLocation: PropTypes.shape({
       place: PropTypes.string.isRequired,
-      lat: PropTypes.number.isRequired,
-      lng: PropTypes.number.isRequired,
+      geolocation: PropTypes.shape({
+        coordinates: PropTypes.arrayOf(PropTypes.number),
+      }).isRequired,
     }),
     summary: PropTypes.string,
     desiredTitle: PropTypes.string,

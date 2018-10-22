@@ -30,7 +30,6 @@ const SORT_OPTIONS = {
  */
 const FILTER_VALUE = {
   desiredTitle: 'desiredTitle',
-  location: 'currentLocation.place',
 };
 
 /**
@@ -59,6 +58,20 @@ const FILTER_ARRAY = {
   places: 'placesInterested.place',
 };
 
+/**
+ * @constant
+ * @type {Object}
+ */
+const FILTER_NEAR = {
+  location: 'currentLocation.geolocation',
+};
+
+/**
+ * @constant
+ * @type {Number}
+ */
+const EARTH_RADIUS = 3963.2;
+
 module.exports = {
   PAGINATION_LIMIT,
   SEEKERS_API_PATH,
@@ -66,4 +79,6 @@ module.exports = {
   FILTER_VALUE,
   FILTER_BOOLEAN,
   FILTER_ARRAY,
+  FILTER_NEAR,
+  EARTH_RADIUS,
 };
