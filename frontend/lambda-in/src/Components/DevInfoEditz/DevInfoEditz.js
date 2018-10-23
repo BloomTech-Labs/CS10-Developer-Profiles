@@ -35,6 +35,7 @@ class DevInfoEdit extends Component {
 
   /**
    * Get a copy of App's global user state to keep global state inmutable.
+   * And set local-state and userStateCopy with such copy.
    */
   componentDidMount() {
     const { getGS } = this.props;
