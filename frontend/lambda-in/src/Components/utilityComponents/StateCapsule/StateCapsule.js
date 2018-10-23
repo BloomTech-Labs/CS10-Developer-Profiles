@@ -114,11 +114,17 @@ class StateCapsule extends Component {
     return (e) => {
       e.stopPropagation();
 
-      //
+      /**
+       * Notify parent form that an item were delete.
+       * Thus parent form can update its state accordingly
+       */
       e.target.dispatchEvent(removeEvent);
 
-      const typeOfField = Object.prototype.toString.call(field);
+      const typeOfField = Object.prototype.toString.call(this.state[field]);
 
+      /**
+       * Field is not and Array. Update local state.
+       */
       if (
         // prettier-ignore
         typeOfField === '[object String]'
