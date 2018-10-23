@@ -73,26 +73,14 @@ exports[`StateCapsule component Renders correctly should renders children with r
     <input
       id="edit-summary"
       type="text"
-      value="Some summary here"
+      value="CS and Software development passionate."
     />
     <input
       id="edit-topSkills_edit"
       type="text"
-      value="Some summary here"
+      value="CS and Software development passionate."
     />
     <ul>
-      <div>
-        <li>
-          JS
-          <button
-            className="button-remove"
-            onClick={[Function]}
-            type="button"
-          >
-            X
-          </button>
-        </li>
-      </div>
       <div>
         <li>
           React
@@ -119,7 +107,43 @@ exports[`StateCapsule component Renders correctly should renders children with r
       </div>
       <div>
         <li>
-          Full stack developer
+          LESS
+          <button
+            className="button-remove"
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
+        </li>
+      </div>
+      <div>
+        <li>
+          CS
+          <button
+            className="button-remove"
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
+        </li>
+      </div>
+      <div>
+        <li>
+          HTML
+          <button
+            className="button-remove"
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
+        </li>
+      </div>
+      <div>
+        <li>
+          HAPPY_CODING
           <button
             className="button-remove"
             onClick={[Function]}

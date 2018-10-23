@@ -3,6 +3,11 @@ import React from 'react';
 import SEEKER_PROP_TYPES from '../../seekerPropTypes';
 import StateCapsule from '../../utilityComponents/StateCapsule/StateCapsule';
 
+/**
+ * Renders all needed field defined in the schema and allow edition.
+ * @param {object} props.userInfo - User object.
+ * @todo wire InputGeolocation.js component.
+ */
 const BasicInfo = ({ userInfo }) => {
   const schema = {
     firstName: userInfo.firstName,

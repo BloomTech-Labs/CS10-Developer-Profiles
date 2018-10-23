@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasicInfo component should renders correctly 1`] = `
+<div
+  className="state-capsule"
+  onChange={[Function]}
+  onKeyPress={[Function]}
+>
+  <div
+    className="smallInputContainer"
+  >
+    <div
+      className="expansionPanel"
+    >
+      <div
+        className="inputField"
+      >
+        <div
+          aria-describedby={undefined}
+          className="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+        >
+          <label
+            className="MuiFormLabel-root-12 MuiFormLabel-filled-16 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9 MuiInputLabel-shrink-8 MuiInputLabel-outlined-11"
+            data-shrink={true}
+            htmlFor="edit-firstName"
+          >
+            First Name
+          </label>
+          <div
+            className="MuiInputBase-root-32 MuiOutlinedInput-root-19 MuiInputBase-fullWidth-41 MuiInputBase-formControl-33"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="MuiNotchedOutline-root-49 MuiOutlinedInput-notchedOutline-26"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="MuiNotchedOutline-legend-50"
+                style={
+                  Object {
+                    "width": NaN,
+                  }
+                }
+              />
+            </fieldset>
+            <input
+              aria-invalid={false}
+              autoComplete={undefined}
+              autoFocus={undefined}
+              className="MuiInputBase-input-42 MuiOutlinedInput-input-27"
+              defaultValue={undefined}
+              disabled={false}
+              id="edit-firstName"
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={undefined}
+              onKeyUp={undefined}
+              placeholder={undefined}
+              readOnly={undefined}
+              required={false}
+              rows={undefined}
+              type="text"
+              value="Jean Surkouf"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="inputField"
+      >
+        <div
+          aria-describedby={undefined}
+          className="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+        >
+          <label
+            className="MuiFormLabel-root-12 MuiFormLabel-filled-16 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9 MuiInputLabel-shrink-8 MuiInputLabel-outlined-11"
+            data-shrink={true}
+            htmlFor="edit-lastName"
+          >
+            Last Name
+          </label>
+          <div
+            className="MuiInputBase-root-32 MuiOutlinedInput-root-19 MuiInputBase-fullWidth-41 MuiInputBase-formControl-33"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="MuiNotchedOutline-root-49 MuiOutlinedInput-notchedOutline-26"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="MuiNotchedOutline-legend-50"
+                style={
+                  Object {
+                    "width": NaN,
+                  }
+                }
+              />
+            </fieldset>
+            <input
+              aria-invalid={false}
+              autoComplete={undefined}
+              autoFocus={undefined}
+              className="MuiInputBase-input-42 MuiOutlinedInput-input-27"
+              defaultValue={undefined}
+              disabled={false}
+              id="edit-lastName"
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={undefined}
+              onKeyUp={undefined}
+              placeholder={undefined}
+              readOnly={undefined}
+              required={false}
+              rows={undefined}
+              type="text"
+              value="Ariza Varela"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="inputField"
+      >
+        <div
+          aria-describedby={undefined}
+          className="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+        >
+          <label
+            className="MuiFormLabel-root-12 MuiFormLabel-filled-16 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9 MuiInputLabel-shrink-8 MuiInputLabel-outlined-11"
+            data-shrink={true}
+            htmlFor="edit-desiredTitle"
+          >
+            Desired Title
+          </label>
+          <div
+            className="MuiInputBase-root-32 MuiOutlinedInput-root-19 MuiInputBase-fullWidth-41 MuiInputBase-formControl-33"
+            onClick={[Function]}
+          >
+            <fieldset
+              aria-hidden={true}
+              className="MuiNotchedOutline-root-49 MuiOutlinedInput-notchedOutline-26"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                }
+              }
+            >
+              <legend
+                className="MuiNotchedOutline-legend-50"
+                style={
+                  Object {
+                    "width": NaN,
+                  }
+                }
+              />
+            </fieldset>
+            <input
+              aria-invalid={false}
+              autoComplete={undefined}
+              autoFocus={undefined}
+              className="MuiInputBase-input-42 MuiOutlinedInput-input-27"
+              defaultValue={undefined}
+              disabled={false}
+              id="edit-desiredTitle"
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={undefined}
+              onKeyUp={undefined}
+              placeholder={undefined}
+              readOnly={undefined}
+              required={false}
+              rows={undefined}
+              type="text"
+              value="Full Stack Software Developer"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="imageContainer"
+    >
+      <img
+        alt="Italian "
+        className="displayPic"
+        src="https://robohash.org/1Jean Surkouf"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,26 +1,20 @@
-/* eslint-disable */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import './DevProfile2.css';
-import lambdaColorImg from './img/lambdaColor.png';
-import GitHubImg from './img/GitHub.png';
-import linkedinImg from './img/linkedin.jpg';
-import portfolioImg from './img/portfolio.png';
-import ArraySectionDisplay from '../utilityComponents/ArraySection/ArraySectionDisplay';
-import MapChips from '../utilityComponents/MapArrays/MapChips';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import DevSnapshot from '../DevSnapshot/DevSnapshot';
-import DevSocial from '../DevSocial/DevSocial';
+import ArraySectionDisplay from '../utilityComponents/ArraySection/ArraySectionDisplay';
+import './DevProfile2.css';
 
 const DevProfile2 = ({ getGS }) => {
   const userInfo = getGS('userInfo');
   const fullName = `${userInfo.firstName} ${userInfo.lastName}`;
-  const initials = `${userInfo.firstName.slice(0, 1)}${userInfo.lastName.slice(0, 1)}`;
+  const initials = `${userInfo.firstName.slice(0, 1)}${userInfo.lastName.slice(
+    0,
+    1,
+  )}`;
 
   const schemas = {
     projects: {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ArraySection component should renders correctly 1`] = `
+exports[`Projects component should renders correctly 1`] = `
 <div
   className="panelMargin"
 >
@@ -30,7 +30,7 @@ exports[`ArraySection component should renders correctly 1`] = `
         <p
           className="MuiTypography-root-40 MuiTypography-body1-49"
         >
-          Project
+          Projects
         </p>
       </div>
       <div
@@ -114,7 +114,7 @@ exports[`ArraySection component should renders correctly 1`] = `
                       <p
                         className="MuiTypography-root-40 MuiTypography-body1-49"
                       >
-                        Add new Project
+                        Add new Projects
                       </p>
                     </div>
                     <div

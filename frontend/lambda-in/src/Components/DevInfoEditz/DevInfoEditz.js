@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
-// import './DevInfoEditz.css';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import BasicInfo from './SeekerEditUtils/BasicInfo';
-import SocialLinks from './SeekerEditUtils/SocialLinks';
 import BioSkills from './SeekerEditUtils/BioSkills';
-import Projects from './SeekerEditUtils/Projects';
-import Experience from './SeekerEditUtils/Experience';
 import Education from './SeekerEditUtils/Education';
+import Experience from './SeekerEditUtils/Experience';
+import Projects from './SeekerEditUtils/Projects';
+import SocialLinks from './SeekerEditUtils/SocialLinks';
 
 /**
  * Form handling user profile updates.
@@ -28,16 +26,16 @@ class DevInfoEdit extends Component {
     this.state = {
       ready: false,
     };
+    this.onBlurState = ''; // 'ignored' || 'processing' || 'processed'
     this.handleOnDeleteItem = this.handleOnDeleteItem.bind(this);
     this.handleCreateItem = this.handleCreateItem.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.setFormState = this.setFormState.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
     this.update = this.update.bind(this);
   }
 
   /**
    * Get a copy of App's global user state to keep global state inmutable.
+   * And set local-state and userStateCopy with such copy.
    */
   componentDidMount() {
     const { getGS } = this.props;
@@ -47,46 +45,16 @@ class DevInfoEdit extends Component {
     /**
      * Listen for MapChip's custom event emmited when a item is deleted.
      */
-    // eslint-disable-next-line react/no-find-dom-node
-    ReactDOM.findDOMNode(this).addEventListener(
-      'onDeleteItem',
-      this.handleOnDeleteItem,
-    );
-
-    // eslint-disable-next-line react/no-find-dom-node
-    ReactDOM.findDOMNode(this).addEventListener(
-      'onCreateItem',
-      this.handleCreateItem,
-    );
+    document.addEventListener('onDeleteItem', this.handleOnDeleteItem);
+    /**
+     * Listen for a custom event emmited when a item is created.
+     */
+    document.addEventListener('onCreateItem', this.handleCreateItem);
   }
 
   componentWillUnmount() {
-    // eslint-disable-next-line react/no-find-dom-node
-    ReactDOM.findDOMNode(this).removeEventListener('onDeleteItem', () => null);
-    // eslint-disable-next-line react/no-find-dom-node
-    ReactDOM.findDOMNode(this).removeEventListener('onCreateItem', () => null);
-  }
-
-  /**
-   * Update local state.
-   *
-   * @method setFormState
-   * @param {object} properties - Properties to be set. { property: value }
-   * @return {void}
-   *
-   * @example Pass as a prop to component.
-   * <Component setLS={this.setFormState} />
-   */
-  setFormState(properties) {
-    this.setState(properties);
-  }
-
-  /**
-   * Sync local state with input field.
-   */
-  handleChange(event) {
-    event.stopPropagation();
-    this.setState({ [event.target.id]: event.target.value });
+    document.removeEventListener('onDeleteItem', () => null);
+    document.removeEventListener('onCreateItem', () => null);
   }
 
   updateArray(dataset) {
@@ -126,34 +94,42 @@ class DevInfoEdit extends Component {
    * Update local copy of user state
    */
   handleOnBlur(e) {
+    this.onBlurState = 'processing';
+
     const { id } = e.target;
     const details = id.split('-'); // 'id' came in the following format: 'new-email' || 'edit-email'
+    const field = e.target.dataset.field ? e.target.dataset.field : details[1];
 
-    const field = e.target.dataset.field || details[1];
+    if (field) {
+      if (details[0] === 'edit') {
+        this.onBlurState = 'processing 0';
+        const dataset = { ...e.target.dataset };
+        const value = dataset.value || e.target.value;
 
-    if (details[0] !== 'new' && field) {
-      const dataset = { ...e.target.dataset };
-      const value = dataset.value || e.target.value;
+        const typeOfField = Object.prototype.toString.call(
+          this.userStateCopy[field],
+        );
 
-      const typeOfField = Object.prototype.toString.call(
-        this.userStateCopy[field],
-      );
-
-      switch (typeOfField) {
-        case '[object Object]':
-          // this.updateObj(e);
-          break;
-        case '[object Array]':
-          this.updateArray(dataset);
-          break;
-        default:
-          // '[object String]' || '[object Number]' || '[object Boolean]'
-          this.userStateCopy[field] = value;
+        switch (typeOfField) {
+          case '[object Object]':
+            // this.updateObj(e);
+            break;
+          case '[object Array]':
+            this.updateArray(dataset);
+            this.onBlurState = 'processed 1';
+            break;
+          default:
+            // '[object String]' || '[object Number]' || '[object Boolean]'
+            this.userStateCopy[field] = value;
+            this.onBlurState = 'processed 2';
+        }
       }
+      this.onBlurState = 'ignored';
     } else {
       /**
        * @todo improve UX with some type of error message.
        */
+      this.onBlurState = 'ignored';
     }
   }
 
@@ -278,9 +254,9 @@ class DevInfoEdit extends Component {
             Lambda Network
           </Typography>
           <br />
-          <form onChange={this.handleChange}>
-            <div className="inputRow">
-              <div>
+          <form>
+            <div className="inputRow ">
+              <div className="confirm-changes">
                 <Button
                   variant="outlined"
                   color="primary"

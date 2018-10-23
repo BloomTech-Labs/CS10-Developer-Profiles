@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import TestWrapper from '../TestWrapper/TestWrapper';
 import MapChips from './MapChips';
+import { DEV_TEST_DATA } from '../../testData';
 
 configure({ adapter: new Adapter() });
 
@@ -15,18 +16,9 @@ describe('MapChips component', () => {
   const removeItem = jest.fn((field, index) => e => Object.assign({}, e, { field }, { index }));
 
   const props = {
-    fullOneItem: {
+    itemsWithIcons: {
       field: 'topSkills',
-      array: ['JS'],
-      classes: {
-        container: 'container-class',
-        item: 'item-class',
-      },
-      removeItem,
-    },
-    full: {
-      field: 'topSkills',
-      array: ['JS', 'React', 'TDD', 'Full stack developer'],
+      array: DEV_TEST_DATA.topSkills,
       classes: {
         container: 'container-class',
         item: 'item-class',
@@ -34,7 +26,7 @@ describe('MapChips component', () => {
       removeItem,
     },
     onlyArray: {
-      array: ['JS', 'React', 'TDD', 'Full stack developer'],
+      array: DEV_TEST_DATA.topSkills,
       classes: {
         container: 'container-class',
         item: 'item-class',
@@ -43,14 +35,13 @@ describe('MapChips component', () => {
   };
 
   const mapChips = {
-    full: <MapChips {...props.full} />,
-    fullOneItem: <MapChips {...props.fullOneItem} />,
+    itemsWithIcons: <MapChips {...props.itemsWithIcons} />,
     onlyArray: <MapChips {...props.onlyArray} />,
   };
 
   describe('Renders correctly', () => {
     it('sholud renders whit delete icon', () => {
-      const tree = renderer.create(mapChips.full).toJSON();
+      const tree = renderer.create(mapChips.itemsWithIcons).toJSON();
       expect(tree).toMatchSnapshot();
     });
     it('sholud renders whitout delete icon', () => {
@@ -67,7 +58,7 @@ describe('MapChips component', () => {
     const icons = mounted.find('svg');
 
     it('should render all items in the array', () => {
-      expect(items).toHaveLength(4);
+      expect(items).toHaveLength(6);
     });
 
     it('should no render icons', () => {
@@ -76,16 +67,18 @@ describe('MapChips component', () => {
   });
 
   describe('Renders only array items and icons', () => {
-    const mounted = mount(<TestWrapper>{() => mapChips.full}</TestWrapper>);
+    const mounted = mount(
+      <TestWrapper>{() => mapChips.itemsWithIcons}</TestWrapper>,
+    );
     const items = mounted.find('span');
     const icons = mounted.find('svg');
 
     it('should render all items in the array', () => {
-      expect(items).toHaveLength(4);
+      expect(items).toHaveLength(6);
     });
 
     it('should render all icons if passed as props', () => {
-      expect(icons).toHaveLength(4);
+      expect(icons).toHaveLength(6);
     });
 
     it('should call `removeItem` function clicking on an icon', () => {
@@ -94,11 +87,11 @@ describe('MapChips component', () => {
       });
 
       /**
-       * removeItem creates a closure: So it is called 8 times.
-       * - 4 times setting up the onClick event handlers.
-       * - 4 times on 'clicking' each icon.
+       * removeItem creates a closure and retunr an event handler: So it is called 12 times.
+       * - 6 times setting up the onClick event handlers for each item in the array.
+       * - 6 times on 'clicking' each array-item delete icon.
        */
-      expect(removeItem.mock.calls.length).toBe(8);
+      expect(removeItem.mock.calls.length).toBe(12);
     });
   });
 });

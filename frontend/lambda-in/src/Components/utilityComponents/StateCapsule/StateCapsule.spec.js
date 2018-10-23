@@ -3,6 +3,7 @@ import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import StateCapsule from './StateCapsule';
+import { DEV_TEST_DATA } from '../../testData';
 
 configure({ adapter: new Adapter() });
 
@@ -25,19 +26,14 @@ describe('StateCapsule component', () => {
     },
   };
 
-  const data = {
-    topSkills: ['JS', 'React', 'TDD', 'Full stack developer'],
-    summary: 'Some summary here',
-  };
-
   const stateCapsules = {
     basic: (
-      <StateCapsule schema={schema.forRemoveButton} object={data}>
+      <StateCapsule schema={schema.forRemoveButton} object={DEV_TEST_DATA}>
         {() => {}}
       </StateCapsule>
     ),
     withChildrenRemoveButton: (
-      <StateCapsule schema={schema.forRemoveButton} object={data}>
+      <StateCapsule schema={schema.forRemoveButton} object={DEV_TEST_DATA}>
         {({ stateCapsule, removeItem }) => (
           <div>
             <input id="edit-summary" type="text" value={stateCapsule.summary} />
@@ -124,14 +120,9 @@ describe('StateCapsule component', () => {
 
     const scState = shallowSC.state();
 
-    expect(scState).toHaveProperty('summary', 'Some summary here');
+    expect(scState).toHaveProperty('summary', DEV_TEST_DATA.summary);
     expect(scState).toHaveProperty('topSkills_edit');
-    expect(scState).toHaveProperty('topSkills', [
-      'JS',
-      'React',
-      'TDD',
-      'Full stack developer',
-    ]);
+    expect(scState).toHaveProperty('topSkills', DEV_TEST_DATA.topSkills);
   });
 
   it('should update state onChange', () => {
@@ -193,11 +184,11 @@ describe('StateCapsule component', () => {
     });
 
     it('should call dispatchEvent', () => {
-      expect(mockDispatchEvent).toHaveBeenCalledTimes(4);
+      expect(mockDispatchEvent).toHaveBeenCalledTimes(6);
     });
 
     it('should call stopPropagation', () => {
-      expect(mockStopPropagation).toHaveBeenCalledTimes(4);
+      expect(mockStopPropagation).toHaveBeenCalledTimes(6);
     });
   });
 

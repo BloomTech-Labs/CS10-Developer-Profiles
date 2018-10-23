@@ -6,6 +6,7 @@ import TestWrapper from '../TestWrapper/TestWrapper';
 import ArraySectionDisplay from './ArraySectionDisplay';
 import DropDown from '../DropDown/DropDown';
 import MapDropDownDisplay from '../MapArrays/MapDropDownDisplay';
+import { DEV_TEST_DATA } from '../../testData';
 
 configure({ adapter: new Adapter() });
 
@@ -13,42 +14,6 @@ configure({ adapter: new Adapter() });
  * @author jesuarva
  */
 describe('ArraySectionDisplay component', () => {
-  const userInfo = {
-    projects: [
-      {
-        // tech: ['NODE', 'Express', 'Mongoose'],
-        title: 'A nice project',
-        description: 'A DRY library for express-mongoose',
-        img: '/nice.img.edit',
-        link: 'go.to.project.com',
-        repo: 'github.my-repo',
-      },
-      {
-        // tech: ['NODE', 'Express', 'Mongoose'],
-        title: 'router Factroy',
-        description: 'A DRY library for express-mongoose',
-        img: '/nice.img',
-        link: 'go.to.project.com',
-        repo: 'github.my-repo',
-      },
-      {
-        // tech: [],
-        title: 'proj 1',
-        description: 'desc 1',
-        img: 'new.img',
-        link: 'link',
-        repo: '',
-      },
-      {
-        // tech: [],
-        title: 'today',
-        description: 'today',
-        img: 'today',
-        link: 'today',
-        repo: 'today',
-      },
-    ],
-  };
   const schema = {
     title: 'Title',
     description: 'Description',
@@ -59,7 +24,7 @@ describe('ArraySectionDisplay component', () => {
   };
   const props = {
     header: 'Projects',
-    userInfo,
+    userInfo: DEV_TEST_DATA,
     field: 'projects',
     schema,
   };
@@ -71,8 +36,6 @@ describe('ArraySectionDisplay component', () => {
       schema={props.schema}
     />
   );
-
-  const numberOfProjects = userInfo.projects.length;
 
   it('should renders correctly', () => {
     const tree = renderer.create(arraySectionDisplay).toJSON();
@@ -87,11 +50,11 @@ describe('ArraySectionDisplay component', () => {
     /**
      * For this specific test, there shall be 5 DropDown components rendered.
      * - 1 redered by ArraySectionDisplay.js (see line 22 on its file)
-     * - 4 redered by MapDropDownDisplay.js (one for each project in 'userInfo.projects)
+     * - 2 redered by MapDropDownDisplay.js (one for each project in 'DEV_TEST_DATA.projects)
      */
     it('should renders <DropDown/> components', () => {
       const dropDownComponents = mounted.find(DropDown);
-      expect(dropDownComponents).toHaveLength(1 + numberOfProjects);
+      expect(dropDownComponents).toHaveLength(1 + 2);
     });
 
     it('should renders a <MapDropDownDisplay/> component', () => {
