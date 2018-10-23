@@ -24,7 +24,7 @@ At the `/backend` root folder, create a `.env` file with the following:
 
 Also, at the `/backend` root folder, create a `.eslintrc` file with the following:
 
-```
+```json
   {
     "extends": "airbnb-base",
     "env": {
@@ -43,13 +43,13 @@ Also, at the `/backend` root folder, create a `.eslintrc` file with the followin
 
 then change your working directory to the `backend` root folder:
 
-```
+```bash
   $ cd backend/
 ```
 
 lastly, install dependencies and run the server:
 
-```
+```bash
   $ yarn
   ... installing dependencies
   ...
@@ -59,8 +59,8 @@ lastly, install dependencies and run the server:
 
 # Dependencies
 
-```
-    "dependencies": {
+```json
+  "dependencies": {
     "async": "^2.6.1",
     "bcrypt": "^3.0.1",
     "cors": "^2.8.4",
@@ -95,7 +95,7 @@ The backend is following the Airbnb base code style.
 
 Change your working directory to the `backend` root folder:
 
-```
+```bash
   $ cd backend/
 ```
 
@@ -114,9 +114,13 @@ Runs full application, client and server, in development mode.
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - API can be accessed at [http://localhost:5000/api/](http://localhost:5000/api/). See API documentation for more information.
 
+### `yarn get-mock-data`
+
+Generates a new set of mock data for the seed command. Raw data files can be found in `./backend/api/dataGenerator/data`.
+
 ### `yarn seed`
 
-Seeds local development database with mock data records for testing. Raw data can be found in `./backend/api/data`.
+Seeds local development database with mock data records for testing. Raw data can be found in `./backend/api/dataGenerator/data`.
 
 ### `yarn server`
 

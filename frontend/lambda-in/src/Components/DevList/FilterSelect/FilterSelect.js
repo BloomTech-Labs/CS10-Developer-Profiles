@@ -156,16 +156,20 @@ FilterSelect.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   filterName: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  options: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.strings),
-    PropTypes.shape({}),
-  ]).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-  val: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.strings),
-    PropTypes.shape({}),
-  ]),
+  val: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 FilterSelect.defaultProps = {

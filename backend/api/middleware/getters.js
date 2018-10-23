@@ -10,6 +10,8 @@ const {
   FILTER_VALUE,
   FILTER_BOOLEAN,
   FILTER_ARRAY,
+  FILTER_NEAR,
+  EARTH_RADIUS,
   SEEKERS_API_PATH,
 } = require('../utils/constants');
 
@@ -172,6 +174,25 @@ const getFilterByArrayValue = (val) => {
 };
 
 /**
+ * Given a string fragment, parse it for the longitude, latitude, and miles and return an object
+ * with the Mongo operator $geoWithin set to search for all records within given miles.
+ *
+ * @param val {String} Raw filter string.
+ * @example
+ *  -73.93414657|40.82302903|5
+ * @return {Object} An object with $geoWithin search query.
+ * @example
+ *  { $geoWithin: { $centerSphere: [ [ -73.93414657, 40.82302903 ], 5 / 3963.2 ] } } }
+ */
+const getFilterByGeoWithin = (val) => {
+  const geoData = val.split('|');
+  const coordinates = [+geoData[0], +geoData[1]];
+  const distance = +geoData[2] / EARTH_RADIUS;
+
+  return { $geoWithin: { $centerSphere: [coordinates, distance] } };
+};
+
+/**
  * Iterate through an object of raw filter parameters and if set, parse the data and return the
  * filter parameters in an object. Returns an empty object if no fields are set.
  *
@@ -188,6 +209,7 @@ const getFilters = (query) => {
       if (FILTER_VALUE[key]) filters[FILTER_VALUE[key]] = getFilterByValue(query[key]);
       if (FILTER_BOOLEAN[key]) filters[FILTER_BOOLEAN[key]] = getFilterByBoolean(+query[key]);
       if (FILTER_ARRAY[key]) filters[FILTER_ARRAY[key]] = getFilterByArrayValue(query[key]);
+      if (FILTER_NEAR[key]) filters[FILTER_NEAR[key]] = getFilterByGeoWithin(query[key]);
     }
   });
 

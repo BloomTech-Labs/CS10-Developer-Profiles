@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import AOS from 'aos';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Select from 'react-select';
 import makeAnimated from 'react-select/lib/animated';
@@ -44,6 +47,37 @@ const sortSelectOptions = sortOptions.map(option => ({
 }));
 
 const styles = {
+  adornment: {
+    color: '#808080',
+    fontSize: '12px',
+    fontWeight: 'lighter',
+  },
+  filterHeader: {
+    marginTop: '60px',
+  },
+  label: {
+    color: '#333',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+  },
+  locatedWithin: {
+    alignItems: 'flex-end',
+    display: 'flex',
+    margin: '40px 0',
+  },
+  locatedWithinInput: {
+    fontSize: '12px',
+    fontWeight: 'lighter',
+    padding: '10px 0',
+    textAlign: 'center',
+  },
+  locatedWithinSeperator: {
+    margin: '12px 10px',
+  },
+  locatedWithinTextField: {
+    margin: '0',
+    width: '125px',
+  },
   mainContainer: {
     backgroundColor: '#f8f9fa',
     padding: '0 30px',
@@ -51,9 +85,6 @@ const styles = {
   sort: {
     display: 'flex',
     justifyContent: 'flex-end',
-  },
-  filterHeader: {
-    marginTop: '60px',
   },
 };
 
@@ -134,11 +165,17 @@ class DevList extends Component {
       currentPage: DevList.getCurrentPage(),
       seekers: [],
       place: '',
-      lat: null,
-      lng: null,
+      placeLat: null,
+      placeLng: null,
+      miles: '',
+      location: '',
+      locationLat: null,
+      locationLng: null,
     });
 
+    this.handleGeoNearSelect = this.handleGeoNearSelect.bind(this);
     this.handleLocationSelect = this.handleLocationSelect.bind(this);
+    this.handleInput = this.handleInput.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
     this.handleSwitchEnable = this.handleSwitchEnable.bind(this);
@@ -335,6 +372,25 @@ class DevList extends Component {
   }
 
   /**
+   * Given miles, a location, latitude, and longitude, create a new query to search for records
+   * within the given distance of the given location. If miles or location are not set, ensure the
+   * location parameter is not included in the new query.
+   *
+   * @param {String} miles - Max distance from location to include in search.
+   * @param {String} location - Location to search for.
+   * @param {String} lat - Latitude coordinate for location
+   * @param {String} lng - Longitude coordinate for location.
+   */
+  setGeoNearQuery(miles, location, lat, lng) {
+    const valStr = `&location=${lng}|${lat}|${miles}`;
+    const newQuery = `${this.cleanQuery('location')}${
+      location !== '' && miles !== '' ? valStr : ''
+    }`;
+
+    this.setQuery(newQuery);
+  }
+
+  /**
    * Given a parameter, return the query on state with the parameter removed.
    *
    * @param {String} param - A url search query parameter.
@@ -345,19 +401,60 @@ class DevList extends Component {
   cleanQuery(param) {
     const { query } = this.state;
     const regEx = new RegExp(
-      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[,A-z|+.-]+|&${param}=[,A-z|+.-]+`,
+      `^${param}=[0,1]&?|&${param}=[0,1]|^${param}=[,A-z0-9|+.-]+|&${param}=[,A-z0-9|+.-]+`,
       'i',
     );
     const cleanedQuery = query.replace(regEx, '');
     return cleanedQuery === '' ? 'page=1' : cleanedQuery;
   }
 
-  handleLocationSelect(place, lat, lng) {
+  /**
+   * Talk to parent state handler for the 'Located Within' InputGeolocation component. Brings the
+   * state for location, latitude, and longitude back from the InputGeolocation component and uses
+   * the data to update the search query and state.
+   *
+   * @param {String} location - Location returned from InputGeolocation.
+   * @param {String} locationLat - Latitude coordinate returned from InputGeolocation.
+   * @param {String} locationLng - Longitude coordinate returned from InputGeolocation.
+   */
+  handleGeoNearSelect(location, locationLat, locationLng) {
+    const { miles } = this.state;
+
+    this.setGeoNearQuery(miles, location, locationLat, locationLng);
+    this.setState({ location, locationLat, locationLng });
+  }
+
+  /**
+   * Talk to parent state handler for the 'Willing to Relocate' InputGeolocation component. Brings
+   * the state for place, latitude, and longitude back from the InputGeolocation component and uses
+   * the data to update the search query and state.
+   *
+   * @param {String} place - Location returned from InputGeolocation.
+   * @param {String} placeLat - Latitude coordinate returned from InputGeolocation.
+   * @param {String} placeLng - Longitude coordinate returned from InputGeolocation.
+   */
+  handleLocationSelect(place, placeLat, placeLng) {
     const valStr = `&places=${place.replace(/ /g, '+')}`;
     const newQuery = `${this.cleanQuery('places')}${place.length !== 0 ? valStr : ''}`;
 
     this.setQuery(newQuery);
-    this.setState({ place, lat, lng });
+    this.setState({ place, placeLat, placeLng });
+  }
+
+  /**
+   * On Change event handler for inputs. Given the input element name and value, update the state
+   * with the new value. If the input element is the miles input, call setGeoNearQuery before
+   * updating the state.
+   *
+   * @param {Event} event - Event object for change event.
+   */
+  handleInput(event) {
+    const { name, value } = event.target;
+    const { location, locationLat, locationLng } = this.state;
+
+    if (name === 'miles') this.setGeoNearQuery(value, location, locationLat, locationLng);
+
+    this.setState({ [name]: value });
   }
 
   /**
@@ -493,6 +590,56 @@ class DevList extends Component {
               val={familiar}
               onChange={this.handleSelect}
             />
+            <div className={classes.locatedWithin}>
+              <TextField
+                className={classes.locatedWithinTextField}
+                label="Located"
+                margin="normal"
+                variant="standard"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment
+                      disableTypography
+                      className={classes.adornment}
+                      position="start"
+                    >
+                      Within
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment disableTypography className={classes.adornment} position="end">
+                      Miles
+                    </InputAdornment>
+                  ),
+                  classes: { input: classes.locatedWithinInput },
+                  name: 'miles',
+                  onChange: this.handleInput,
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                  className: classes.label,
+                }}
+              />
+              <Typography
+                variant="caption"
+                className={classNames(classes.label, classes.locatedWithinSeperator)}
+              >
+                of
+              </Typography>
+              <InputGeolocation
+                talkToParentState={this.handleGeoNearSelect}
+                googleCallback="initLocatedWithin"
+                textFieldProps={{
+                  label: '',
+                  fullWidth: true,
+                  margin: 'normal',
+                  style: {
+                    background: 'transparent',
+                    margin: '0',
+                  },
+                }}
+              />
+            </div>
             <InputGeolocation
               talkToParentState={this.handleLocationSelect}
               googleCallback="initPlacesInterested"

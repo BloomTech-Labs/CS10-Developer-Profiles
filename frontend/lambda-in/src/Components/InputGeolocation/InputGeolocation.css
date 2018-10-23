@@ -1,4 +1,5 @@
 .geolocation-container {
+  flex-grow: 2;
   position: relative;
 }
 
