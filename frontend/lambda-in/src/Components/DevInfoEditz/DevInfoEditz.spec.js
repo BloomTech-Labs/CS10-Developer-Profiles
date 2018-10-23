@@ -21,7 +21,7 @@ describe('DevInfoEditz component', () => {
   /**
    * Mock getting global state's userInfo data.
    */
-  const mockGetGS = jest.fn(() => DEV_TEST_DATA);
+  const mockGetGS = jest.fn(() => Object.assign({}, DEV_TEST_DATA));
 
   const mockSetGS = jest.fn(() => {});
 
@@ -162,30 +162,83 @@ describe('DevInfoEditz component', () => {
     });
   });
 
+  /**
+   * @todo test custom event listener for 'onDeleteItem'
+   */
   describe('Method: handleOnDeleteItem', () => {
-    it('should remove the data in form`s state', async () => {
+    it('should remove the data in form`s state', () => {
       const mounted = mount(devInfoEditzComponent);
 
+      /**
+       * Local state is initialized getting data from the app.js component in 'componentDidMount'.
+       * Because app.js is not mounted in this test, we initialize local state data manually
+       */
       // Set state with DEV_TEST_DATA
-      mounted.setState(DEV_TEST_DATA);
+      mounted.setState(mockGetGS());
       // Set `userStateCopy` property
-      mounted.setProps({ userStateCopy: DEV_TEST_DATA });
+      mounted.setProps({ userStateCopy: mockGetGS() });
 
-      const customEvent = new CustomEvent('onDeleteItem', {
+      const mockEvent = {
         bubbles: true,
         detail: {
           field: 'projects',
           index: 0,
         },
-      });
+      };
 
       const projectsArray = mounted.prop('userStateCopy').projects;
 
       expect(projectsArray).toHaveLength(2);
 
-      mounted.instance().handleOnDeleteItem(customEvent);
-      console.log(mounted.instance().handleOnDeleteItem);
+      mounted.instance().handleOnDeleteItem(mockEvent);
+
       expect(projectsArray).toHaveLength(1);
+    });
+  });
+
+  /**
+   * @todo test custom even listener 'onCreateItem'
+   */
+  describe('Method: handleCreateItem', () => {
+    it('should create new entries in fields which data is an array of objects', () => {
+      const mountedComponent = mount(devInfoEditzComponent);
+
+      /**
+       * Local state is initialized getting data from the app.js component in 'componentDidMount'.
+       * Because app.js is not mounted in this test, we initialize local state data manually
+       */
+      // Set state with DEV_TEST_DATA
+      mountedComponent.setState(mockGetGS());
+      // Set `userStateCopy` property
+      mountedComponent.setProps({ userStateCopy: mockGetGS() });
+
+      const mockEvent = {
+        bubbles: true,
+        detail: {
+          field: 'experience',
+          newData: {
+            title: 'new',
+            company: 'new',
+            location: {
+              lat: -0.666,
+              lng: -66.666,
+              place: 'Madrid',
+            },
+            headline: 'new',
+            description: 'new',
+            startYear: '2018-09-27T19:10:21.809Z',
+            endYear: '2018-09-27T19:10:21.809Z',
+          },
+        },
+      };
+
+      const experienceArray = mountedComponent.prop('userStateCopy').experience;
+
+      expect(experienceArray).toHaveLength(2);
+
+      mountedComponent.instance().handleCreateItem(mockEvent);
+
+      expect(experienceArray).toHaveLength(3);
     });
   });
 });
