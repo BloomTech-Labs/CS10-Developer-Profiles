@@ -112,7 +112,7 @@ describe('DevInfoEditz component', () => {
     });
   });
 
-  describe('Event listeners', () => {
+  describe('Event listeners: onBlur', () => {
     let mounted;
 
     beforeAll(() => {
@@ -159,6 +159,33 @@ describe('DevInfoEditz component', () => {
       await children.simulate('blur', mockEvent);
 
       expect(onBlurState).toMatch('ignored');
+    });
+  });
+
+  describe('Method: handleOnDeleteItem', () => {
+    it('should remove the data in form`s state', async () => {
+      const mounted = mount(devInfoEditzComponent);
+
+      // Set state with DEV_TEST_DATA
+      mounted.setState(DEV_TEST_DATA);
+      // Set `userStateCopy` property
+      mounted.setProps({ userStateCopy: DEV_TEST_DATA });
+
+      const customEvent = new CustomEvent('onDeleteItem', {
+        bubbles: true,
+        detail: {
+          field: 'projects',
+          index: 0,
+        },
+      });
+
+      const projectsArray = mounted.prop('userStateCopy').projects;
+
+      expect(projectsArray).toHaveLength(2);
+
+      mounted.instance().handleOnDeleteItem(customEvent);
+      console.log(mounted.instance().handleOnDeleteItem);
+      expect(projectsArray).toHaveLength(1);
     });
   });
 });
